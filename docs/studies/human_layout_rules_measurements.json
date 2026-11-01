@@ -1,0 +1,902 @@
+{
+  "scope": "Structural recognition and DI analysis only; no new layout backend or BPMN output generated.",
+  "corpus": {
+    "models": 32,
+    "same_lane_pair_orientations": {
+      "right": 88,
+      "down": 12,
+      "left": 11,
+      "up": 7
+    },
+    "branch_direction_counts": {
+      "yes:continuation": 44,
+      "no:turn": 62,
+      "yes:turn": 71,
+      "no:reverse": 7,
+      "other:turn": 35,
+      "other:continuation": 17,
+      "no:continuation": 44,
+      "other:reverse": 1
+    },
+    "split_join_candidates": 129,
+    "strict_single_entry_exit_regions": 65,
+    "natural_loop_backedge_candidates": 50,
+    "leftward_edges": 157,
+    "leftward_edges_outside_directed_cycles": 68,
+    "edge_classes": {
+      "handoff:event->task": {
+        "count": 7,
+        "bends": 2,
+        "straight": 5
+      },
+      "handoff:task->task": {
+        "count": 158,
+        "bends": 106,
+        "straight": 85
+      },
+      "local:task->task": {
+        "count": 103,
+        "bends": 16,
+        "straight": 92
+      },
+      "local:task->gateway": {
+        "count": 137,
+        "bends": 48,
+        "straight": 101
+      },
+      "local:gateway->task": {
+        "count": 158,
+        "bends": 94,
+        "straight": 87
+      },
+      "handoff:gateway->task": {
+        "count": 141,
+        "bends": 111,
+        "straight": 60
+      },
+      "local:gateway->gateway": {
+        "count": 34,
+        "bends": 25,
+        "straight": 17
+      },
+      "handoff:task->gateway": {
+        "count": 57,
+        "bends": 56,
+        "straight": 16
+      },
+      "local:task->event": {
+        "count": 43,
+        "bends": 6,
+        "straight": 39
+      },
+      "local:event->task": {
+        "count": 43,
+        "bends": 5,
+        "straight": 38
+      },
+      "local:gateway->event": {
+        "count": 27,
+        "bends": 14,
+        "straight": 16
+      },
+      "handoff:gateway->gateway": {
+        "count": 9,
+        "bends": 8,
+        "straight": 4
+      },
+      "handoff:task->event": {
+        "count": 8,
+        "bends": 4,
+        "straight": 5
+      },
+      "local:event->gateway": {
+        "count": 8,
+        "bends": 0,
+        "straight": 8
+      },
+      "handoff:gateway->event": {
+        "count": 5,
+        "bends": 6,
+        "straight": 2
+      }
+    }
+  },
+  "human": {
+    "counts": {
+      "task_decisions": 11,
+      "natural_loops": 4,
+      "split_joins": 8,
+      "terminal_branches": 2,
+      "role_handoffs": 10,
+      "cyclic_components": 4,
+      "not_reachable_from_entry": 0,
+      "not_reaching_exit": 0,
+      "cyclic_edge_ids": 16
+    },
+    "pair_orientations": {
+      "right": 5,
+      "down": 5,
+      "left": 1
+    },
+    "edge_classes": {
+      "local:event->task": {
+        "count": 1,
+        "bends": 0,
+        "mean_bends": 0.0,
+        "straight": 1
+      },
+      "handoff:task->task": {
+        "count": 8,
+        "bends": 10,
+        "mean_bends": 1.25,
+        "straight": 1
+      },
+      "local:task->gateway": {
+        "count": 11,
+        "bends": 2,
+        "mean_bends": 0.1818,
+        "straight": 9
+      },
+      "local:gateway->task": {
+        "count": 21,
+        "bends": 14,
+        "mean_bends": 0.6667,
+        "straight": 12
+      },
+      "local:task->event": {
+        "count": 1,
+        "bends": 0,
+        "mean_bends": 0.0,
+        "straight": 1
+      },
+      "local:task->task": {
+        "count": 5,
+        "bends": 2,
+        "mean_bends": 0.4,
+        "straight": 4
+      },
+      "handoff:gateway->task": {
+        "count": 2,
+        "bends": 2,
+        "mean_bends": 1.0,
+        "straight": 1
+      },
+      "local:gateway->event": {
+        "count": 2,
+        "bends": 1,
+        "mean_bends": 0.5,
+        "straight": 1
+      }
+    },
+    "scc_node_counts": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "leftward_count": 18,
+    "leftward_outside_cycles": 11,
+    "branch_turns": {
+      "no:turn": 3,
+      "yes:continuation": 2,
+      "other:continuation": 4,
+      "other:turn": 10,
+      "yes:turn": 4,
+      "no:continuation": 2
+    }
+  },
+  "automatic_r2": {
+    "counts": {
+      "task_decisions": 21,
+      "natural_loops": 17,
+      "split_joins": 22,
+      "terminal_branches": 1,
+      "role_handoffs": 51,
+      "cyclic_components": 2,
+      "not_reachable_from_entry": 0,
+      "not_reaching_exit": 0,
+      "cyclic_edge_ids": 91
+    },
+    "pair_orientations": {
+      "right": 21
+    },
+    "edge_classes": {
+      "local:event->task": {
+        "count": 1,
+        "bends": 0,
+        "mean_bends": 0.0,
+        "straight": 1
+      },
+      "handoff:task->task": {
+        "count": 15,
+        "bends": 29,
+        "mean_bends": 1.9333,
+        "straight": 3
+      },
+      "local:task->gateway": {
+        "count": 21,
+        "bends": 0,
+        "mean_bends": 0.0,
+        "straight": 21
+      },
+      "local:gateway->task": {
+        "count": 17,
+        "bends": 38,
+        "mean_bends": 2.2353,
+        "straight": 1
+      },
+      "local:task->task": {
+        "count": 4,
+        "bends": 7,
+        "mean_bends": 1.75,
+        "straight": 1
+      },
+      "handoff:gateway->task": {
+        "count": 35,
+        "bends": 98,
+        "mean_bends": 2.8,
+        "straight": 0
+      },
+      "handoff:gateway->event": {
+        "count": 1,
+        "bends": 2,
+        "mean_bends": 2.0,
+        "straight": 0
+      },
+      "local:gateway->gateway": {
+        "count": 1,
+        "bends": 2,
+        "mean_bends": 2.0,
+        "straight": 0
+      }
+    },
+    "scc_node_counts": [
+      4,
+      57
+    ],
+    "leftward_count": 43,
+    "leftward_outside_cycles": 2,
+    "branch_turns": {
+      "yes:turn": 10,
+      "no:turn": 11,
+      "yes:continuation": 7,
+      "no:continuation": 6,
+      "other:turn": 16,
+      "other:continuation": 4
+    }
+  },
+  "same_topology_human_loops": [
+    {
+      "before": {
+        "header": "C1",
+        "nodes": [
+          "A2",
+          "C1",
+          "Crequest",
+          "Gfull"
+        ],
+        "bbox": [
+          448.0,
+          426.0
+        ],
+        "internal_length": 795.0,
+        "internal_bends": 2,
+        "external_entries": [
+          "f2"
+        ],
+        "external_exits": [
+          "f6"
+        ],
+        "signature": "[[\"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 0, 1], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      },
+      "after": {
+        "header": "C1",
+        "nodes": [
+          "A2",
+          "C1",
+          "Crequest",
+          "Gfull"
+        ],
+        "bbox": [
+          431.0,
+          271.0
+        ],
+        "internal_length": 699.0,
+        "internal_bends": 4,
+        "external_entries": [
+          "f2"
+        ],
+        "external_exits": [
+          "f6"
+        ],
+        "signature": "[[\"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 0, 1], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      }
+    },
+    {
+      "before": {
+        "header": "C2",
+        "nodes": [
+          "C2",
+          "CallCheck",
+          "Gcheck",
+          "GresInit"
+        ],
+        "bbox": [
+          618.0,
+          76.0
+        ],
+        "internal_length": 1019.84,
+        "internal_bends": 2,
+        "external_entries": [
+          "f6"
+        ],
+        "external_exits": [
+          "f10",
+          "fnoInitial",
+          "fresInitNo"
+        ],
+        "signature": "[[\"callActivity\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      },
+      "after": {
+        "header": "C2",
+        "nodes": [
+          "C2",
+          "CallCheck",
+          "Gcheck",
+          "GresInit"
+        ],
+        "bbox": [
+          570.0,
+          171.0
+        ],
+        "internal_length": 708.0,
+        "internal_bends": 2,
+        "external_entries": [
+          "f6"
+        ],
+        "external_exits": [
+          "f10",
+          "fnoInitial",
+          "fresInitNo"
+        ],
+        "signature": "[[\"callActivity\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      }
+    },
+    {
+      "before": {
+        "header": "C6",
+        "nodes": [
+          "C6",
+          "CallCheck2",
+          "Gcur",
+          "GresExec"
+        ],
+        "bbox": [
+          688.0,
+          78.0
+        ],
+        "internal_length": 737.0,
+        "internal_bends": 2,
+        "external_entries": [
+          "f16",
+          "f29",
+          "fnewb"
+        ],
+        "external_exits": [
+          "fresExecNo",
+          "f20",
+          "fnoExec"
+        ],
+        "signature": "[[\"callActivity\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      },
+      "after": {
+        "header": "C6",
+        "nodes": [
+          "C6",
+          "CallCheck2",
+          "Gcur",
+          "GresExec"
+        ],
+        "bbox": [
+          413.0,
+          239.0
+        ],
+        "internal_length": 588.0,
+        "internal_bends": 4,
+        "external_entries": [
+          "f16",
+          "f29",
+          "fnewb"
+        ],
+        "external_exits": [
+          "fresExecNo",
+          "f20",
+          "fnoExec"
+        ],
+        "signature": "[[\"callActivity\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      }
+    },
+    {
+      "before": {
+        "header": "Cnewcheck",
+        "nodes": [
+          "CallCheck3",
+          "Cnewcheck",
+          "Gnewok",
+          "GresNew"
+        ],
+        "bbox": [
+          393.0,
+          287.0
+        ],
+        "internal_length": 1085.5,
+        "internal_bends": 2,
+        "external_entries": [
+          "f27"
+        ],
+        "external_exits": [
+          "fnewb",
+          "fnoNew",
+          "fresNewNo"
+        ],
+        "signature": "[[\"callActivity\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      },
+      "after": {
+        "header": "Cnewcheck",
+        "nodes": [
+          "CallCheck3",
+          "Cnewcheck",
+          "Gnewok",
+          "GresNew"
+        ],
+        "bbox": [
+          391.0,
+          323.0
+        ],
+        "internal_length": 501.0,
+        "internal_bends": 1,
+        "external_entries": [
+          "f27"
+        ],
+        "external_exits": [
+          "fnewb",
+          "fnoNew",
+          "fresNewNo"
+        ],
+        "signature": "[[\"callActivity\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 3], [2, 0], [3, 2]]]"
+      }
+    }
+  ],
+  "repeated_small_loop_clusters": [
+    {
+      "signature": "[[\"exclusiveGateway\", \"task\", \"task\"], [0, 0, 1], [[0, 2], [1, 0], [2, 1]]]",
+      "instances": 9,
+      "models": 7,
+      "examples": [
+        {
+          "model": "изм 06 Анализ книг покупок на налоговые риски.bpmn",
+          "header": "Task_AnalyzeOps",
+          "nodes": [
+            "Gateway_NeedDocs",
+            "Task_AnalyzeOps",
+            "Task_ProvideDocs"
+          ]
+        },
+        {
+          "model": "изм 09 Подготовка материалов по запросам правоохранительных органов.bpmn",
+          "header": "Task_Provide",
+          "nodes": [
+            "Gateway_Materials",
+            "Task_Collect",
+            "Task_Provide"
+          ]
+        },
+        {
+          "model": "изм 06 Формирование и утверждение графика отпусков.bpmn",
+          "header": "Task_67",
+          "nodes": [
+            "Gateway_Remarks",
+            "Task_67",
+            "Task_FixHR"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"userTask\", \"userTask\"], [0, 0, 1], [[0, 2], [1, 0], [2, 1]]]",
+      "instances": 3,
+      "models": 3,
+      "examples": [
+        {
+          "model": "изм 02 Оформление приема сотрудника.bpmn",
+          "header": "a",
+          "nodes": [
+            "a",
+            "b",
+            "g1"
+          ]
+        },
+        {
+          "model": "изм 05 Изменение условий труда и кадровое перемещение.bpmn",
+          "header": "docs",
+          "nodes": [
+            "check",
+            "docs",
+            "g5"
+          ]
+        },
+        {
+          "model": "изм 10 Увольнение сотрудника.bpmn",
+          "header": "T_Order",
+          "nodes": [
+            "G_DocsOk",
+            "T_HRCheck",
+            "T_Order"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 1, 1], [[0, 2], [1, 0], [2, 3], [3, 1]]]",
+      "instances": 2,
+      "models": 2,
+      "examples": [
+        {
+          "model": "изм 08 Подготовка материалов по требованиям ФНС.bpmn",
+          "header": "Conclusion",
+          "nodes": [
+            "Conclusion",
+            "Gateway_ReviewDecision",
+            "Review",
+            "ReworkConclusion"
+          ]
+        },
+        {
+          "model": "изм 09 Подготовка материалов по запросам правоохранительных органов.bpmn",
+          "header": "Task_Conclusion",
+          "nodes": [
+            "Gateway_Approve",
+            "Task_Conclusion",
+            "Task_Review",
+            "Task_Rework"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"task\", \"task\"], [0, 0, 0], [[0, 1], [1, 2], [2, 0]]]",
+      "instances": 2,
+      "models": 2,
+      "examples": [
+        {
+          "model": "изм 09 Подготовка материалов по запросам правоохранительных органов.bpmn",
+          "header": "Task_Analyze",
+          "nodes": [
+            "Gateway_Clarify",
+            "Task_Analyze",
+            "Task_Clarify"
+          ]
+        },
+        {
+          "model": "изм 11 Ведение реестра договорных цепочек.bpmn",
+          "header": "Task_Backup",
+          "nodes": [
+            "Gateway_BackupOK",
+            "Task_Backup",
+            "Task_LogBackup"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"userTask\", \"userTask\", \"userTask\"], [0, 0, 1, 1], [[0, 2], [1, 0], [2, 3], [3, 1]]]",
+      "instances": 2,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 02 Оформление приема сотрудника.bpmn",
+          "header": "t3",
+          "nodes": [
+            "g3",
+            "t3",
+            "t4",
+            "t5"
+          ]
+        },
+        {
+          "model": "изм 02 Оформление приема сотрудника.bpmn",
+          "header": "l",
+          "nodes": [
+            "g5",
+            "l",
+            "m",
+            "n"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"eventBasedGateway\", \"intermediateCatchEvent\", \"userTask\"], [0, 0, 0], [[0, 1], [1, 2], [2, 0]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 09 Оформление временной нетрудоспособности сотрудника.bpmn",
+          "header": "G_Status",
+          "nodes": [
+            "Ev_Extend",
+            "Extend",
+            "G_Status"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 0, 0, 0, 1], [[0, 3], [0, 5], [1, 3], [2, 4], [3, 2], [4, 0], [5, 1]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 11 Сокращение численности и штата.bpmn",
+          "header": "Task_CheckVacancies",
+          "nodes": [
+            "Gateway_Accepted",
+            "Gateway_PeriodEnded",
+            "Gateway_Vacancies",
+            "Task_CheckVacancies",
+            "Task_MonitorVacancies",
+            "Task_OfferVacancies"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"receiveTask\", \"userTask\"], [0, 0, 0, 0], [[0, 1], [1, 2], [2, 3], [3, 0]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 02 Оформление приема сотрудника.bpmn",
+          "header": "a",
+          "nodes": [
+            "a",
+            "g1",
+            "gOffer",
+            "waitOffer"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 0, 1, 2], [[0, 1], [1, 3], [2, 0], [3, 4], [4, 2]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 10 Оценка рисков участия в государственных контрактах и проектах с бюджетным финансированием.bpmn",
+          "header": "G_Decision",
+          "nodes": [
+            "G_Decision",
+            "G_Final",
+            "T_CheckConditions",
+            "T_DoConditions",
+            "T_FinalReview"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 0, 1, 2], [[0, 3], [0, 4], [1, 3], [2, 0], [3, 2], [4, 1]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 25 Планирование и изменение штатной численности.bpmn",
+          "header": "Task_Project",
+          "nodes": [
+            "Gateway_FinData",
+            "Gateway_ProjectClear",
+            "Task_CheckData",
+            "Task_Finance",
+            "Task_Project"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 1, 0, 1, 2], [[0, 3], [0, 4], [1, 4], [2, 0], [3, 1], [4, 2]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 07 Предоставление отпуска сотруднику.bpmn",
+          "header": "T53",
+          "nodes": [
+            "GA",
+            "GM",
+            "T53",
+            "T54",
+            "T55"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 1, 0, 1, 2], [[0, 3], [1, 4], [2, 0], [3, 1], [4, 2]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 06 Формирование и утверждение графика отпусков.bpmn",
+          "header": "Task_67",
+          "nodes": [
+            "Gateway_Approved",
+            "Gateway_Remarks",
+            "Task_67",
+            "Task_69",
+            "Task_FixAuth"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\"], [0, 0, 0, 1], [[0, 1], [1, 3], [2, 0], [3, 2]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 16 Актуализация сведений воинского учета.bpmn",
+          "header": "T3",
+          "nodes": [
+            "G3",
+            "G4",
+            "T3",
+            "T4"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"task\", \"task\"], [0, 1, 0, 1], [[0, 3], [1, 2], [2, 0], [3, 1]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 27 Организация и проведение корпоративных мероприятий.bpmn",
+          "header": "Task_ApproveEvent",
+          "nodes": [
+            "Gateway_EventDecision",
+            "Gateway_RevisionFinancialImpact",
+            "Task_ApproveEvent",
+            "Task_ReviseProposal"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"exclusiveGateway\", \"userTask\", \"userTask\", \"userTask\", \"userTask\"], [0, 0, 0, 0, 0, 1], [[0, 2], [0, 3], [1, 4], [2, 1], [3, 5], [4, 0], [5, 2]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 09 Оформление временной нетрудоспособности сотрудника.bpmn",
+          "header": "G_SFROK",
+          "nodes": [
+            "CorrectCalc",
+            "CorrectHR",
+            "G_HRCorrection",
+            "G_SFROK",
+            "RequestHRCorrection",
+            "SendCorrected"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"receiveTask\", \"sendTask\", \"task\", \"task\"], [0, 0, 0, 0, 1], [[0, 3], [1, 0], [2, 1], [3, 4], [4, 2]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 20 Планирование мероприятий воинского учета.bpmn",
+          "header": "Task_Approve",
+          "nodes": [
+            "Gateway_Agreed",
+            "Task_Approve",
+            "Task_Correct",
+            "Task_ReceiveResult",
+            "Task_Send"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"task\", \"task\", \"task\", \"task\"], [0, 0, 1, 1, 2], [[0, 2], [1, 0], [2, 3], [3, 4], [4, 1]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 26 HR-бюджетирование и контроль расходов на персонал.bpmn",
+          "header": "Task_Base",
+          "nodes": [
+            "Gateway_Approved",
+            "Task_ApproveBudget",
+            "Task_Base",
+            "Task_Budget",
+            "Task_FinCheck"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"task\", \"task\", \"task\"], [0, 0, 0, 0], [[0, 1], [1, 2], [2, 3], [3, 0]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 12 Ведение и актуализация личных дел сотрудников.bpmn",
+          "header": "Task_UpdateFile",
+          "nodes": [
+            "Gateway_Complete",
+            "Task_CheckCompleteness",
+            "Task_UpdateFile",
+            "Task_WaitDocument"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"task\"], [0, 0], [[0, 1], [1, 0]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 06 Формирование и утверждение графика отпусков.bpmn",
+          "header": "Gateway_All",
+          "nodes": [
+            "Gateway_All",
+            "Task_Remind"
+          ]
+        }
+      ]
+    },
+    {
+      "signature": "[[\"exclusiveGateway\", \"userTask\", \"userTask\"], [0, 0, 0], [[0, 1], [1, 2], [2, 0]]]",
+      "instances": 1,
+      "models": 1,
+      "examples": [
+        {
+          "model": "изм 03 Подготовка к выходу нового сотрудника.bpmn",
+          "header": "Task_TechCheck",
+          "nodes": [
+            "Gateway_Works",
+            "Task_Fix",
+            "Task_TechCheck"
+          ]
+        }
+      ]
+    }
+  ],
+  "feedback_hint_sensitivity": [
+    {
+      "model": "human",
+      "original_count": 14,
+      "mirror_count": 20,
+      "symmetric_difference": 32,
+      "classification_note": "These are backend display-feedback hints, not a semantic cycle detector."
+    },
+    {
+      "model": "frozen08",
+      "original_count": 23,
+      "mirror_count": 30,
+      "symmetric_difference": 39,
+      "classification_note": "These are backend display-feedback hints, not a semantic cycle detector."
+    }
+  ],
+  "verification": {
+    "structural_tests_passed": 12,
+    "recognition_uses_names": false,
+    "recognition_uses_coordinates": false,
+    "types_and_role_partitions_preserved_in_signatures": true
+  }
+}

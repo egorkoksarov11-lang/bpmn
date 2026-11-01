@@ -1,0 +1,102 @@
+{
+  "version": "0.1-research",
+  "status": "specification_not_backend_configuration",
+  "business_mutations_allowed": false,
+  "recognition_inputs": [
+    "typed_directed_graph",
+    "lane_membership",
+    "subprocess_scope",
+    "full_boundary_edges"
+  ],
+  "geometry_priors": [
+    "preserve_source_task_sizes_when_text_fits",
+    "preserve_lane_order_by_default",
+    "multiple_orientations_per_pattern"
+  ],
+  "rules": [
+    {
+      "id": "task_decision",
+      "preconditions": [
+        "task_unique_successor_is_gateway",
+        "gateway_has_multiple_distinct_successors"
+      ],
+      "variants": [
+        "right",
+        "bottom",
+        "left",
+        "top"
+      ],
+      "interface": "all_original_boundary_edge_ids",
+      "selection_scope": "pattern_plus_neighbors"
+    },
+    {
+      "id": "natural_loop",
+      "preconditions": [
+        "header_dominates_tail",
+        "existing_backedge_tail_to_header"
+      ],
+      "variants": [
+        "local_return_corridor",
+        "multiple_rectangular_arrangements"
+      ],
+      "interface": "all_entries_and_exits",
+      "prohibited": [
+        "assume_negative_dx_means_return",
+        "collapse_whole_large_SCC"
+      ]
+    },
+    {
+      "id": "split_join",
+      "preconditions": [
+        "common_postdominator_on_terminating_paths"
+      ],
+      "requires": [
+        "explicit_external_input_output_audit",
+        "candidate_overlap_resolution"
+      ],
+      "prohibited": [
+        "invent_missing_join_gateway"
+      ]
+    },
+    {
+      "id": "role_handoff",
+      "preconditions": [
+        "distinct_fixed_lanes"
+      ],
+      "variants": [
+        "straight",
+        "L",
+        "Z"
+      ],
+      "selection_scope": "both_blocks_and_corridor"
+    },
+    {
+      "id": "shared_document",
+      "preconditions": [
+        "multiple_existing_activity_links"
+      ],
+      "variants": [
+        "adjacent_free_bay"
+      ],
+      "prohibited": [
+        "drop_links",
+        "duplicate_document_for_geometry"
+      ]
+    }
+  ],
+  "hard_gates": [
+    "full_semantic_equality",
+    "DI_structure_preserved",
+    "no_shape_overlaps",
+    "no_edge_through_unrelated_shape_or_text",
+    "no_collinear_edge_reuse",
+    "complete_text",
+    "valid_contour_endpoints"
+  ],
+  "evaluation": "retain_verified_pareto_candidates_and_compare_complete_diagrams",
+  "unvalidated": [
+    "cost_weights",
+    "global_placement_improvement",
+    "held_out_layout_quality"
+  ]
+}
