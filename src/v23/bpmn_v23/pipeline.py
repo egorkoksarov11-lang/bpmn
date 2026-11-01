@@ -183,5 +183,6 @@ def main():
     p.add_argument('--no-decision-orientations',action='store_true',help='compare with the four baseline human-style placements')
     p.add_argument('--incumbent',type=Path,help='optional previously verified layout of the identical frozen model')
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
+    p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
     a=p.parse_args()
-    print(json.dumps(run(a.input,a.output_dir,HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only)),ensure_ascii=False,indent=2))
+    print(json.dumps(run(a.input,a.output_dir,HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only,repack_spine=a.repack_spine)),ensure_ascii=False,indent=2))
