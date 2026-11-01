@@ -1,0 +1,12 @@
+{
+  "equal": true,
+  "diff_count": 0,
+  "whitelist": [],
+  "comparison": "canonical complete XML excluding BPMNDiagram",
+  "source_file": "process_08_v4_frozen.bpmn",
+  "source_sha256": "3d309b903d401b745b7ddea8758d33ddce7aba66bdf6c0fd20b7c3e830a29cb8",
+  "before_semantic_sha256": "ad79ff8ae6b783656337974249885653d764490e58445e6fd4eb35a8df14be0a",
+  "after_semantic_sha256": "ad79ff8ae6b783656337974249885653d764490e58445e6fd4eb35a8df14be0a",
+  "di_structure_preserved": true,
+  "di_structure_sha256": "fcfedc732dfb852d9a12af8bc42ddfaef53016b1a5b29c894de757b12d562b22"
+}
