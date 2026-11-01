@@ -1,0 +1,259 @@
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Defs_1" targetNamespace="http://example.com/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false" name="Организация операции через поставщика">
+    <bpmn:documentation>Версия v4. Документная и информационная полнота добавлена по разделу 4 и пунктам 5.1–5.16 описания процесса и по приложенным формам. Бизнес-маршруты, типы бизнес-элементов, исполнители и sequenceFlow версии v3 сохранены без изменений. Добавлены только логические документы, рабочие хранилища, references и информационные associations.</bpmn:documentation><bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="L1" name="Уполномоченное лицо">
+        <bpmn:flowNodeRef>S</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T51a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T51c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T54b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G54b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T58c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G58</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L2" name="Руководитель финансового блока">
+        <bpmn:flowNodeRef>T54a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G54a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T58b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T59b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G59</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T510b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T511c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T512b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T516b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G516</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>G511b</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="L3" name="Клиентский менеджер">
+        <bpmn:flowNodeRef>T51b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G51</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T52</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T53</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G53</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C53</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G53b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T55</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G55</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C55</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T56</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G56</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T58a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T59a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T510a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T511b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G511</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T512a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T513</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G513</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T514c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T515c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T516a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T510c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T57a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G57a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T58d</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T59c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G513a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T513a</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>T51d</bpmn:flowNodeRef><bpmn:flowNodeRef>T54c</bpmn:flowNodeRef><bpmn:flowNodeRef>G58d</bpmn:flowNodeRef><bpmn:flowNodeRef>T511d</bpmn:flowNodeRef><bpmn:flowNodeRef>G512</bpmn:flowNodeRef><bpmn:flowNodeRef>T516c</bpmn:flowNodeRef><bpmn:flowNodeRef>G516a</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="L4" name="Инженер ПТО">
+        <bpmn:flowNodeRef>T57</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G57</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T514</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G514</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L5" name="Операционист">
+        <bpmn:flowNodeRef>T511a</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>G511a</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="L6" name="Главный бухгалтер">
+        <bpmn:flowNodeRef>T515</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G515</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="S" name="Возникла потребность провести операцию через поставщика">
+      <bpmn:outgoing>F1</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:userTask id="T51a" name="5.1 Оформить поручение">
+      <bpmn:incoming>F1</bpmn:incoming><bpmn:outgoing>F2</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T51b" name="5.1 Проверить достаточность параметров">
+      <bpmn:incoming>F2</bpmn:incoming><bpmn:outgoing>F3</bpmn:outgoing><bpmn:incoming>F6</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G51" name="Параметров достаточно?">
+      <bpmn:incoming>F3</bpmn:incoming><bpmn:outgoing>F4</bpmn:outgoing><bpmn:outgoing>F5</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T51c" name="Предоставить уточненные параметры поручения">
+      <bpmn:outgoing>F6</bpmn:outgoing><bpmn:incoming>F72</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T52" name="5.2 Подобрать и проработать варианты поставщиков">
+      <bpmn:incoming>F4</bpmn:incoming><bpmn:outgoing>F7</bpmn:outgoing><bpmn:incoming>F13</bpmn:incoming><bpmn:incoming>F19</bpmn:incoming><bpmn:incoming>F34</bpmn:incoming><bpmn:incoming>F75</bpmn:incoming><bpmn:incoming>F84</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T53" name="5.3 Проверить участников выбранного варианта">
+      <bpmn:incoming>F7</bpmn:incoming><bpmn:outgoing>F8</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G53" name="По всем участникам есть действующие результаты проверок?">
+      <bpmn:incoming>F8</bpmn:incoming><bpmn:outgoing>F9</bpmn:outgoing><bpmn:outgoing>F10</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:callActivity calledElement="Process_CheckLegal" id="C53" name="Проверка юридического лица">
+      <bpmn:documentation>Проверяются все участники выбранного варианта. Для каждого юридического лица, по которому результат отсутствует или утратил актуальность, выполняется процесс проверки; при изменении состава проверяется вновь включенное юридическое лицо.</bpmn:documentation><bpmn:incoming>F10</bpmn:incoming><bpmn:outgoing>F11</bpmn:outgoing></bpmn:callActivity>
+    <bpmn:exclusiveGateway id="G53b" name="Взаимодействие допустимо?">
+      <bpmn:incoming>F11</bpmn:incoming><bpmn:outgoing>F12</bpmn:outgoing><bpmn:outgoing>F13</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T54a" name="5.4 Проверить полноту проработки варианта">
+      <bpmn:incoming>F9</bpmn:incoming><bpmn:incoming>F12</bpmn:incoming><bpmn:outgoing>F14</bpmn:outgoing><bpmn:incoming>F73</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G54a" name="Вариант проработан полностью?">
+      <bpmn:incoming>F14</bpmn:incoming><bpmn:outgoing>F15</bpmn:outgoing><bpmn:outgoing>F16</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T54b" name="5.4 Согласовать выбранный вариант">
+      <bpmn:incoming>F15</bpmn:incoming><bpmn:outgoing>F17</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G54b" name="Вариант согласован?">
+      <bpmn:incoming>F17</bpmn:incoming><bpmn:outgoing>F18</bpmn:outgoing><bpmn:outgoing>F19</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T55" name="5.5 Определить применимое договорное основание">
+      <bpmn:incoming>F18</bpmn:incoming><bpmn:outgoing>F20</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G55" name="Основание применимо?">
+      <bpmn:incoming>F20</bpmn:incoming><bpmn:outgoing>F21</bpmn:outgoing><bpmn:outgoing>F22</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:callActivity calledElement="Process_Contract" id="C55" name="Подготовка, согласование и заключение договора">
+      <bpmn:incoming>F22</bpmn:incoming><bpmn:outgoing>F23</bpmn:outgoing></bpmn:callActivity>
+    <bpmn:userTask id="T56" name="5.6 Сформировать документы конкретной операции">
+      <bpmn:incoming>F21</bpmn:incoming><bpmn:incoming>F23</bpmn:incoming><bpmn:outgoing>F24</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G56" name="Требуется техническая проверка?">
+      <bpmn:incoming>F24</bpmn:incoming><bpmn:outgoing>F25</bpmn:outgoing><bpmn:outgoing>F26</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T57" name="5.7 Провести техническую проверку до оплаты">
+      <bpmn:incoming>F25</bpmn:incoming><bpmn:outgoing>F27</bpmn:outgoing><bpmn:incoming>F65</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G57" name="Результат технической проверки?">
+      <bpmn:documentation>Проектное решение: результат «Не соответствует» означает отказ от выбранного варианта и возврат к подбору поставщика. Результат «Требуется корректировка» возвращается на получение исправленных документов и повторную техническую проверку. «Соответствует» и «Есть допустимые отклонения» позволяют перейти к проверке готовности к оплате.</bpmn:documentation><bpmn:incoming>F27</bpmn:incoming><bpmn:outgoing>F28</bpmn:outgoing><bpmn:outgoing>F29</bpmn:outgoing><bpmn:outgoing>F74</bpmn:outgoing><bpmn:outgoing>F75</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T58a" name="5.8 Актуализировать измененные условия">
+      <bpmn:outgoing>F30</bpmn:outgoing><bpmn:incoming>F64</bpmn:incoming><bpmn:incoming>F82</bpmn:incoming><bpmn:incoming>F88</bpmn:incoming><bpmn:incoming>F97</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T58b" name="5.8 Проверить измененные условия">
+      <bpmn:incoming>F30</bpmn:incoming><bpmn:outgoing>F31</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T58c" name="5.8 Согласовать измененные условия">
+      <bpmn:incoming>F31</bpmn:incoming><bpmn:outgoing>F32</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G58" name="Изменения согласованы?">
+      <bpmn:incoming>F32</bpmn:incoming><bpmn:outgoing>F33</bpmn:outgoing><bpmn:outgoing>F34</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T59a" name="5.9 Проверить готовность к оплате">
+      <bpmn:incoming>F26</bpmn:incoming><bpmn:incoming>F28</bpmn:incoming><bpmn:outgoing>F35</bpmn:outgoing><bpmn:incoming>F67</bpmn:incoming><bpmn:incoming>F74</bpmn:incoming><bpmn:incoming>F76</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T59b" name="5.9 Контролировать готовность к оплате">
+      <bpmn:incoming>F35</bpmn:incoming><bpmn:outgoing>F36</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G59" name="Операция готова к оплате?">
+      <bpmn:incoming>F36</bpmn:incoming><bpmn:outgoing>F37</bpmn:outgoing><bpmn:outgoing>F38</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T510a" name="5.10 Сформировать плановые данные операции">
+      <bpmn:incoming>F37</bpmn:incoming><bpmn:outgoing>F39</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T510b" name="5.10 Проверить плановые денежные данные">
+      <bpmn:incoming>F39</bpmn:incoming><bpmn:outgoing>F40</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T511a" name="5.11 Провести платеж">
+      <bpmn:outgoing>F41</bpmn:outgoing><bpmn:incoming>F71</bpmn:incoming><bpmn:incoming>F85</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T511b" name="5.11 Сверить фактический платеж с планом">
+      <bpmn:outgoing>F42</bpmn:outgoing><bpmn:incoming>F78</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G511" name="Есть отклонения в фактических данных платежа?">
+      <bpmn:incoming>F42</bpmn:incoming><bpmn:outgoing>F43</bpmn:outgoing><bpmn:outgoing>F44</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T511c" name="5.11 Рассмотреть отклонение">
+      <bpmn:incoming>F44</bpmn:incoming><bpmn:outgoing>F45</bpmn:outgoing><bpmn:incoming>F79</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T512a" name="5.12 Контролировать исполнение поставщиком">
+      <bpmn:incoming>F43</bpmn:incoming><bpmn:outgoing>F46</bpmn:outgoing><bpmn:incoming>F77</bpmn:incoming><bpmn:incoming>F83</bpmn:incoming><bpmn:incoming>F93</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T512b" name="5.12 Контролировать незавершенные операции">
+      <bpmn:outgoing>F47</bpmn:outgoing><bpmn:incoming>F87</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T513" name="5.13 Получить и проверить комплект документов по исполнению">
+      <bpmn:incoming>F47</bpmn:incoming><bpmn:outgoing>F48</bpmn:outgoing><bpmn:incoming>F70</bpmn:incoming><bpmn:incoming>F94</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G513" name="Нужно техническое подтверждение?">
+      <bpmn:outgoing>F49</bpmn:outgoing><bpmn:outgoing>F50</bpmn:outgoing><bpmn:incoming>F68</bpmn:incoming></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T514" name="5.14 Подтвердить фактическое техническое исполнение">
+      <bpmn:incoming>F50</bpmn:incoming><bpmn:outgoing>F51</bpmn:outgoing><bpmn:incoming>F54</bpmn:incoming><bpmn:incoming>F95</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G514" name="Результат технической проверки?">
+      <bpmn:documentation>Результаты «Соответствует» и «Есть допустимые отклонения» позволяют передать комплект главному бухгалтеру. При «Требуется корректировка» и «Не соответствует» клиентский менеджер организует урегулирование расхождений и повторное техническое подтверждение; до этого комплект не передается главному бухгалтеру.</bpmn:documentation><bpmn:incoming>F51</bpmn:incoming><bpmn:outgoing>F52</bpmn:outgoing><bpmn:outgoing>F53</bpmn:outgoing><bpmn:outgoing>F89</bpmn:outgoing><bpmn:outgoing>F90</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T514c" name="Урегулировать расхождения">
+      <bpmn:incoming>F53</bpmn:incoming><bpmn:outgoing>F54</bpmn:outgoing><bpmn:incoming>F90</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T515" name="5.15 Проверить документы по исполнению">
+      <bpmn:incoming>F49</bpmn:incoming><bpmn:incoming>F52</bpmn:incoming><bpmn:outgoing>F55</bpmn:outgoing><bpmn:incoming>F58</bpmn:incoming><bpmn:incoming>F89</bpmn:incoming><bpmn:incoming>F96</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G515" name="Документы приняты?">
+      <bpmn:incoming>F55</bpmn:incoming><bpmn:outgoing>F56</bpmn:outgoing><bpmn:outgoing>F57</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T515c" name="Получить исправленные / недостающие документы">
+      <bpmn:incoming>F57</bpmn:incoming><bpmn:outgoing>F58</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T516a" name="5.16 Актуализировать итоговый статус">
+      <bpmn:incoming>F56</bpmn:incoming><bpmn:outgoing>F59</bpmn:outgoing><bpmn:incoming>F98</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T516b" name="5.16 Контролировать закрытие операции">
+      <bpmn:incoming>F59</bpmn:incoming><bpmn:outgoing>F60</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G516" name="Все вопросы закрыты?">
+      <bpmn:incoming>F60</bpmn:incoming><bpmn:outgoing>F61</bpmn:outgoing><bpmn:outgoing>F62</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:endEvent id="E" name="Операция завершена">
+      <bpmn:incoming>F61</bpmn:incoming></bpmn:endEvent>
+    <bpmn:userTask id="T510c" name="5.10 Сформировать задачу на проведение платежа">
+      <bpmn:documentation>Клиентский менеджер формирует задачу на проведение платежа после проверки плановых денежных данных руководителем финансового блока и передает ее операционисту вместе с платежным основанием.</bpmn:documentation>
+      <bpmn:incoming>F40</bpmn:incoming><bpmn:outgoing>F71</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T57a" name="5.7 Получить уточненные / исправленные документы">
+      <bpmn:documentation>Клиентский менеджер получает от поставщика уточненные или исправленные документы по результатам технической проверки.</bpmn:documentation>
+      <bpmn:incoming>F29</bpmn:incoming><bpmn:outgoing>F63</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G57a" name="Изменены существенные условия?">
+      <bpmn:incoming>F63</bpmn:incoming><bpmn:outgoing>F64</bpmn:outgoing><bpmn:outgoing>F65</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T58d" name="Организовать повторное выполнение затронутых проверок">
+      <bpmn:documentation>Повторяются только те проверки, на которые повлияло изменение существенных условий: проверка участников, применимости договорного основания и/или техническая проверка. После повторных проверок маршрут определяется этапом, на котором выявлено изменение.</bpmn:documentation>
+      <bpmn:incoming>F33</bpmn:incoming><bpmn:outgoing>F66</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T59c" name="Устранить замечания и повторно проверить готовность к оплате">
+      <bpmn:documentation>После устранения замечаний повторно проверяется готовность к оплате. Переход к формированию плановых данных допускается только при отсутствии незакрытых вопросов.</bpmn:documentation>
+      <bpmn:incoming>F38</bpmn:incoming><bpmn:outgoing>F67</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G513a" name="Комплект документов полный и соответствует операции?">
+      <bpmn:incoming>F48</bpmn:incoming><bpmn:outgoing>F68</bpmn:outgoing><bpmn:outgoing>F69</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T513a" name="5.13 Вернуть документы поставщику на дополнение / исправление">
+      <bpmn:documentation>При неполном комплекте клиентский менеджер возвращает документы поставщику на дополнение или исправление, после чего повторно проверяет комплектность.</bpmn:documentation>
+      <bpmn:incoming>F69</bpmn:incoming><bpmn:outgoing>F70</bpmn:outgoing></bpmn:userTask>
+    <bpmn:sequenceFlow id="F1" sourceRef="S" targetRef="T51a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F2" sourceRef="T51a" targetRef="T51b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F3" sourceRef="T51b" targetRef="G51"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F4" name="Да" sourceRef="G51" targetRef="T52"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F5" name="Нет" sourceRef="G51" targetRef="T51d"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F6" sourceRef="T51c" targetRef="T51b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F7" sourceRef="T52" targetRef="T53"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F8" sourceRef="T53" targetRef="G53"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F9" name="Да" sourceRef="G53" targetRef="T54a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F10" name="Нет" sourceRef="G53" targetRef="C53"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F11" sourceRef="C53" targetRef="G53b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F12" name="Да" sourceRef="G53b" targetRef="T54a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F13" name="Нет" sourceRef="G53b" targetRef="T52"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F14" sourceRef="T54a" targetRef="G54a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F15" name="Да" sourceRef="G54a" targetRef="T54b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F16" name="Нет" sourceRef="G54a" targetRef="T54c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F17" sourceRef="T54b" targetRef="G54b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F18" name="Да" sourceRef="G54b" targetRef="T55"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F19" name="Нет" sourceRef="G54b" targetRef="T52"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F20" sourceRef="T55" targetRef="G55"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F21" name="Да" sourceRef="G55" targetRef="T56"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F22" name="Нет" sourceRef="G55" targetRef="C55"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F23" sourceRef="C55" targetRef="T56"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F24" sourceRef="T56" targetRef="G56"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F25" name="Да" sourceRef="G56" targetRef="T57"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F26" name="Нет" sourceRef="G56" targetRef="T59a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F27" sourceRef="T57" targetRef="G57"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F28" name="Соответствует" sourceRef="G57" targetRef="T59a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F29" name="Требуется корректировка" sourceRef="G57" targetRef="T57a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F30" sourceRef="T58a" targetRef="T58b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F31" sourceRef="T58b" targetRef="T58c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F32" sourceRef="T58c" targetRef="G58"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F33" name="Да" sourceRef="G58" targetRef="T58d"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F34" name="Нет" sourceRef="G58" targetRef="T52"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F35" sourceRef="T59a" targetRef="T59b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F36" sourceRef="T59b" targetRef="G59"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F37" name="Да" sourceRef="G59" targetRef="T510a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F38" name="Нет" sourceRef="G59" targetRef="T59c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F39" sourceRef="T510a" targetRef="T510b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F40" sourceRef="T510b" targetRef="T510c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F41" sourceRef="T511a" targetRef="G511a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F42" sourceRef="T511b" targetRef="G511"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F43" name="Нет" sourceRef="G511" targetRef="T512a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F44" name="Да" sourceRef="G511" targetRef="T511c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F45" sourceRef="T511c" targetRef="G511b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F46" sourceRef="T512a" targetRef="G512"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F47" sourceRef="T512b" targetRef="T513"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F48" sourceRef="T513" targetRef="G513a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F49" name="Нет" sourceRef="G513" targetRef="T515"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F50" name="Да" sourceRef="G513" targetRef="T514"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F51" sourceRef="T514" targetRef="G514"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F52" name="Соответствует" sourceRef="G514" targetRef="T515"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F53" name="Требуется корректировка" sourceRef="G514" targetRef="T514c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F54" sourceRef="T514c" targetRef="T514"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F55" sourceRef="T515" targetRef="G515"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F56" name="Да" sourceRef="G515" targetRef="T516a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F57" name="Нет" sourceRef="G515" targetRef="T515c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F58" sourceRef="T515c" targetRef="T515"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F59" sourceRef="T516a" targetRef="T516b"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F60" sourceRef="T516b" targetRef="G516"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F61" name="Да" sourceRef="G516" targetRef="E"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F62" name="Нет" sourceRef="G516" targetRef="T516c"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F71" sourceRef="T510c" targetRef="T511a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F63" sourceRef="T57a" targetRef="G57a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F64" name="Да" sourceRef="G57a" targetRef="T58a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F65" name="Нет" sourceRef="G57a" targetRef="T57"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F66" sourceRef="T58d" targetRef="G58d"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F67" sourceRef="T59c" targetRef="T59a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F68" name="Да" sourceRef="G513a" targetRef="G513"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F69" name="Нет" sourceRef="G513a" targetRef="T513a"></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F70" sourceRef="T513a" targetRef="T513"></bpmn:sequenceFlow>
+  <bpmn:userTask id="T51d" name="Запросить уточнение параметров поручения"><bpmn:documentation>Клиентский менеджер направляет запрос уполномоченному лицу в рамках того же поручения.</bpmn:documentation><bpmn:incoming>F5</bpmn:incoming><bpmn:outgoing>F72</bpmn:outgoing></bpmn:userTask><bpmn:userTask id="T54c" name="Уточнить вариант по замечаниям"><bpmn:documentation>Клиентский менеджер уточняет вариант по замечаниям руководителя финансового блока и повторно передает его на контроль.</bpmn:documentation><bpmn:incoming>F16</bpmn:incoming><bpmn:outgoing>F73</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G58d" name="На каком этапе выявлено изменение?"><bpmn:documentation>Выход определяется фактическим состоянием операции: до оплаты — повторная проверка готовности к оплате; после оплаты — продолжение контроля исполнения поставщиком.</bpmn:documentation><bpmn:incoming>F66</bpmn:incoming><bpmn:outgoing>F76</bpmn:outgoing><bpmn:outgoing>F77</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:exclusiveGateway id="G511a" name="Платеж исполнен?"><bpmn:incoming>F41</bpmn:incoming><bpmn:outgoing>F78</bpmn:outgoing><bpmn:outgoing>F79</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:exclusiveGateway id="G511b" name="Какое действие требуется?"><bpmn:documentation>Проектное решение по обработке результата платежа: при неисполненном платеже допускается повторное проведение после корректировки задачи либо выбор другого варианта; при изменении существенных условий применяется пункт 5.8; если отклонение урегулировано, процесс продолжается контролем исполнения поставщика.</bpmn:documentation><bpmn:incoming>F45</bpmn:incoming><bpmn:outgoing>F81</bpmn:outgoing><bpmn:outgoing>F82</bpmn:outgoing><bpmn:outgoing>F83</bpmn:outgoing><bpmn:outgoing>F84</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:userTask id="T511d" name="Скорректировать задачу на платеж"><bpmn:documentation>После решения руководителя финансового блока клиентский менеджер корректирует платежную задачу и передает ее на повторное проведение.</bpmn:documentation><bpmn:incoming>F81</bpmn:incoming><bpmn:outgoing>F85</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G512" name="Изменились срок или иные условия исполнения?"><bpmn:incoming>F46</bpmn:incoming><bpmn:outgoing>F87</bpmn:outgoing><bpmn:outgoing>F88</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:userTask id="T516c" name="Определить причину незакрытия и организовать устранение"><bpmn:documentation>При нескольких незакрытых вопросах определяется наиболее ранний затронутый этап. После возврата к нему процесс повторно проходит последующие контрольные операции.</bpmn:documentation><bpmn:incoming>F62</bpmn:incoming><bpmn:outgoing>F92</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G516a" name="На каком этапе требуется доработка?"><bpmn:documentation>Если одновременно выявлено несколько незакрытых вопросов, выбирается наиболее ранний затронутый этап. После возврата процесс последовательно повторяет последующие проверки и вновь проходит итоговый контроль.</bpmn:documentation><bpmn:incoming>F92</bpmn:incoming><bpmn:outgoing>F93</bpmn:outgoing><bpmn:outgoing>F94</bpmn:outgoing><bpmn:outgoing>F95</bpmn:outgoing><bpmn:outgoing>F96</bpmn:outgoing><bpmn:outgoing>F97</bpmn:outgoing><bpmn:outgoing>F98</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:sequenceFlow id="F72" sourceRef="T51d" targetRef="T51c"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F73" sourceRef="T54c" targetRef="T54a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F74" name="Есть допустимые отклонения" sourceRef="G57" targetRef="T59a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F75" name="Не соответствует" sourceRef="G57" targetRef="T52"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F76" name="До оплаты" sourceRef="G58d" targetRef="T59a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F77" name="После оплаты" sourceRef="G58d" targetRef="T512a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F78" name="Да" sourceRef="G511a" targetRef="T511b"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F79" name="Нет" sourceRef="G511a" targetRef="T511c"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F81" name="Повторить платеж" sourceRef="G511b" targetRef="T511d"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F82" name="Изменить существенные условия" sourceRef="G511b" targetRef="T58a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F83" name="Отклонение урегулировано" sourceRef="G511b" targetRef="T512a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F84" name="Новый вариант (платеж не исполнен)" sourceRef="G511b" targetRef="T52"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F85" sourceRef="T511d" targetRef="T511a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F87" name="Нет" sourceRef="G512" targetRef="T512b"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F88" name="Да" sourceRef="G512" targetRef="T58a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F89" name="Есть допустимые отклонения" sourceRef="G514" targetRef="T515"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F90" name="Не соответствует" sourceRef="G514" targetRef="T514c"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F92" sourceRef="T516c" targetRef="G516a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F93" name="Исполнение поставщика" sourceRef="G516a" targetRef="T512a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F94" name="Комплект документов" sourceRef="G516a" targetRef="T513"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F95" name="Техническое подтверждение" sourceRef="G516a" targetRef="T514"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F96" name="Проверка бухгалтера" sourceRef="G516a" targetRef="T515"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F97" name="Существенные условия" sourceRef="G516a" targetRef="T58a"></bpmn:sequenceFlow><bpmn:sequenceFlow id="F98" name="Итоговые данные" sourceRef="G516a" targetRef="T516a"></bpmn:sequenceFlow><bpmn:dataObject id="DO_Order" name="Поручение"></bpmn:dataObject><bpmn:dataObject id="DO_LegalCheckResult" name="Результат проверки ЮЛ"></bpmn:dataObject><bpmn:dataObject id="DO_ContractBasis" name="Договорное основание"></bpmn:dataObject><bpmn:dataObject id="DO_PrePaymentDocs" name="Документы до оплаты"></bpmn:dataObject><bpmn:dataObject id="DO_InitialTechData" name="Исходные тех. данные"></bpmn:dataObject><bpmn:dataObject id="DO_TechCheckTask" name="Задача техпроверки"></bpmn:dataObject><bpmn:dataObject id="DO_PaymentTask" name="Задача на платеж"></bpmn:dataObject><bpmn:dataObject id="DO_BankDocument" name="Банковский документ"></bpmn:dataObject><bpmn:dataObject id="DO_ClosingDocs" name="Закрывающие документы"></bpmn:dataObject><bpmn:dataObject id="DO_AccountantTask" name="Задача бухгалтеру"></bpmn:dataObject><bpmn:dataObjectReference dataObjectRef="DO_Order" id="DOR_Order" name="Поручение"></bpmn:dataObjectReference><bpmn:dataStoreReference dataStoreRef="DS_SupplierOptions" id="DSR_SupplierOptions" name="Перечень поставщиков"></bpmn:dataStoreReference><bpmn:dataObjectReference dataObjectRef="DO_LegalCheckResult" id="DOR_LegalCheck" name="Результат проверки ЮЛ"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_ContractBasis" id="DOR_ContractBasis_Existing" name="Договор / основание"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_ContractBasis" id="DOR_ContractBasis_Final" name="Договор / основание"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_PrePaymentDocs" id="DOR_PrePaymentDocs" name="Документы до оплаты"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_InitialTechData" id="DOR_InitialTechData" name="Тех. данные"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_TechCheckTask" id="DOR_TechTask" name="Задача техпроверки"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_PaymentTask" id="DOR_PaymentTask" name="Задача на платеж"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_BankDocument" id="DOR_BankDocument" name="Банк. документ"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_ClosingDocs" id="DOR_ClosingDocs" name="Закрывающие документы"></bpmn:dataObjectReference><bpmn:dataObjectReference dataObjectRef="DO_AccountantTask" id="DOR_AccountantTask" name="Задача бух."></bpmn:dataObjectReference><bpmn:dataStoreReference dataStoreRef="DS_OperationsFile" id="DSR_OperationsFile_Plan" name="Рабочий файл: план"></bpmn:dataStoreReference><bpmn:dataStoreReference dataStoreRef="DS_OperationsFile" id="DSR_OperationsFile_Actual" name="Рабочий файл: факт"></bpmn:dataStoreReference><bpmn:dataStoreReference dataStoreRef="DS_OperationsFile" id="DSR_OperationsFile_Close" name="Рабочий файл: итог"></bpmn:dataStoreReference><bpmn:dataStoreReference dataStoreRef="DS_CashFlowRegister" id="DSR_CashFlow_Plan" name="Реестр ДДС: план"></bpmn:dataStoreReference><bpmn:dataStoreReference dataStoreRef="DS_CashFlowRegister" id="DSR_CashFlow_Fact" name="Реестр ДДС: факт"></bpmn:dataStoreReference><bpmn:association associationDirection="One" id="A_Order_Out" sourceRef="T51a" targetRef="DOR_Order"></bpmn:association><bpmn:association associationDirection="One" id="A_SupplierOptions_Update" sourceRef="T52" targetRef="DSR_SupplierOptions"></bpmn:association><bpmn:association associationDirection="One" id="A_LegalCheck_Result" sourceRef="C53" targetRef="DOR_LegalCheck"></bpmn:association><bpmn:association associationDirection="One" id="A_Contract_Existing" sourceRef="DOR_ContractBasis_Existing" targetRef="T55"></bpmn:association><bpmn:association associationDirection="One" id="A_Contract_New" sourceRef="C55" targetRef="DOR_ContractBasis_Final"></bpmn:association><bpmn:association associationDirection="One" id="A_Contract_ToOperation" sourceRef="DOR_ContractBasis_Final" targetRef="T56"></bpmn:association><bpmn:association associationDirection="One" id="A_PrePaymentDocs_Out" sourceRef="T56" targetRef="DOR_PrePaymentDocs"></bpmn:association><bpmn:association associationDirection="One" id="A_InitialTechData" sourceRef="DOR_InitialTechData" targetRef="T56"></bpmn:association><bpmn:association associationDirection="One" id="A_TechTask_In" sourceRef="DOR_TechTask" targetRef="T57"></bpmn:association><bpmn:association associationDirection="One" id="A_PaymentTask_Out" sourceRef="T510c" targetRef="DOR_PaymentTask"></bpmn:association><bpmn:association associationDirection="One" id="A_BankDocument_Out" sourceRef="T511a" targetRef="DOR_BankDocument"></bpmn:association><bpmn:association associationDirection="One" id="A_ClosingDocs_In" sourceRef="DOR_ClosingDocs" targetRef="T513"></bpmn:association><bpmn:association associationDirection="One" id="A_AccountantTask_In" sourceRef="DOR_AccountantTask" targetRef="T515"></bpmn:association><bpmn:association associationDirection="One" id="A_WorkFile_Plan" sourceRef="T510a" targetRef="DSR_OperationsFile_Plan"></bpmn:association><bpmn:association associationDirection="One" id="A_WorkFile_Actual" sourceRef="T511b" targetRef="DSR_OperationsFile_Actual"></bpmn:association><bpmn:association associationDirection="One" id="A_WorkFile_Close" sourceRef="T516a" targetRef="DSR_OperationsFile_Close"></bpmn:association><bpmn:association associationDirection="One" id="A_CashRegister_Plan" sourceRef="T510a" targetRef="DSR_CashFlow_Plan"></bpmn:association><bpmn:association associationDirection="One" id="A_CashRegister_Fact" sourceRef="T511b" targetRef="DSR_CashFlow_Fact"></bpmn:association></bpmn:process>
+  <bpmn:dataStore id="DS_SupplierOptions" name="Рабочий перечень вариантов поставщиков"></bpmn:dataStore><bpmn:dataStore id="DS_OperationsFile" name="Рабочий файл операций через поставщиков"></bpmn:dataStore><bpmn:dataStore id="DS_CashFlowRegister" name="Реестр движения денежных средств"></bpmn:dataStore></bpmn:definitions>

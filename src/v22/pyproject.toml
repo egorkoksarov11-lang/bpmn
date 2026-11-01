@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bpmn-universal-layout"
+version = "22.0.0"
+description = "Safe, reproducible BPMN single-process DI layout optimization"
+requires-python = ">=3.10"
+dependencies = ["lxml>=4.9"]
+
+[project.optional-dependencies]
+preview = ["cairosvg>=2.7"]
+test = ["pytest>=7"]
+
+[project.scripts]
+bpmn-layout = "bpmn_universal.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["bpmn_universal*", "bpmn_refkit*"]

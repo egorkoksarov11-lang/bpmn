@@ -1,0 +1,565 @@
+{
+  "before": {
+    "shape_overlaps": 0,
+    "shape_overlap_examples": [],
+    "line_through_shapes": 0,
+    "line_through_examples": [],
+    "crossings": {
+      "overlapping_segments": 65,
+      "flow_flow": 111
+    },
+    "crossing_examples": {
+      "overlapping_segments": [
+        [
+          "F2",
+          "F6"
+        ],
+        [
+          "F2",
+          "F6"
+        ],
+        [
+          "F4",
+          "F13"
+        ],
+        [
+          "F4",
+          "F19"
+        ],
+        [
+          "F4",
+          "F34"
+        ],
+        [
+          "F4",
+          "F5"
+        ],
+        [
+          "F4",
+          "F75"
+        ],
+        [
+          "F9",
+          "F12"
+        ],
+        [
+          "F11",
+          "F13"
+        ],
+        [
+          "F13",
+          "F19"
+        ],
+        [
+          "F13",
+          "F19"
+        ],
+        [
+          "F13",
+          "F34"
+        ],
+        [
+          "F13",
+          "F34"
+        ],
+        [
+          "F13",
+          "F72"
+        ],
+        [
+          "F13",
+          "F75"
+        ],
+        [
+          "F13",
+          "F75"
+        ],
+        [
+          "F18",
+          "F19"
+        ],
+        [
+          "F19",
+          "F34"
+        ],
+        [
+          "F19",
+          "F34"
+        ],
+        [
+          "F19",
+          "F72"
+        ]
+      ],
+      "flow_flow": [
+        [
+          "F4",
+          "F72"
+        ],
+        [
+          "F13",
+          "F19"
+        ],
+        [
+          "F15",
+          "F84"
+        ],
+        [
+          "F18",
+          "F84"
+        ],
+        [
+          "F19",
+          "F84"
+        ],
+        [
+          "F25",
+          "F34"
+        ],
+        [
+          "F26",
+          "F65"
+        ],
+        [
+          "F26",
+          "F28"
+        ],
+        [
+          "F26",
+          "F29"
+        ],
+        [
+          "F26",
+          "F74"
+        ],
+        [
+          "F31",
+          "F82"
+        ],
+        [
+          "F31",
+          "F84"
+        ],
+        [
+          "F33",
+          "F82"
+        ],
+        [
+          "F33",
+          "F84"
+        ],
+        [
+          "F34",
+          "F36"
+        ],
+        [
+          "F34",
+          "F65"
+        ],
+        [
+          "F34",
+          "F67"
+        ],
+        [
+          "F34",
+          "F28"
+        ],
+        [
+          "F34",
+          "F29"
+        ],
+        [
+          "F34",
+          "F74"
+        ]
+      ]
+    },
+    "total_bends": 212,
+    "avg_flow_length": 625.07,
+    "avg_document_length": 81.33,
+    "document_references": 17,
+    "flow_count": 95,
+    "association_count": 18,
+    "diagonal_segments": 2,
+    "diagonal_edges": [
+      "A_BankDocument_Out",
+      "A_LegalCheck_Result"
+    ],
+    "excessive_bend_edges": [],
+    "invalid_endpoints": [
+      "F95",
+      "F96",
+      "A_Contract_New"
+    ],
+    "nonfinite_waypoints": [],
+    "outside_lanes": [],
+    "task_sizes": [
+      [
+        170.0,
+        70.0
+      ],
+      [
+        190.0,
+        70.0
+      ],
+      [
+        200.0,
+        70.0
+      ],
+      [
+        210.0,
+        70.0
+      ],
+      [
+        220.0,
+        70.0
+      ],
+      [
+        230.0,
+        70.0
+      ]
+    ],
+    "task_sizes_uniform": false,
+    "label_collision_pairs": [
+      [
+        "G54b",
+        "T54b"
+      ],
+      [
+        "G58",
+        "T58c"
+      ],
+      [
+        "G54a",
+        "T54a"
+      ],
+      [
+        "G516",
+        "T516b"
+      ],
+      [
+        "G51",
+        "T51b"
+      ],
+      [
+        "G53",
+        "F10"
+      ],
+      [
+        "G53",
+        "T53"
+      ],
+      [
+        "G53",
+        "C53"
+      ],
+      [
+        "G53b",
+        "C53"
+      ],
+      [
+        "G55",
+        "F22"
+      ],
+      [
+        "G55",
+        "T55"
+      ],
+      [
+        "G55",
+        "C55"
+      ],
+      [
+        "G56",
+        "F97"
+      ],
+      [
+        "G56",
+        "T56"
+      ],
+      [
+        "G511",
+        "F77"
+      ],
+      [
+        "G511",
+        "F78"
+      ],
+      [
+        "G511",
+        "T511b"
+      ],
+      [
+        "G513",
+        "F57"
+      ],
+      [
+        "E",
+        "F61"
+      ],
+      [
+        "G57",
+        "F65"
+      ],
+      [
+        "G57",
+        "F28"
+      ],
+      [
+        "G514",
+        "F95"
+      ],
+      [
+        "G515",
+        "F96"
+      ],
+      [
+        "F10",
+        "G53"
+      ],
+      [
+        "F19",
+        "G51"
+      ],
+      [
+        "F50",
+        "T514"
+      ],
+      [
+        "G57a",
+        "T58d"
+      ],
+      [
+        "G513a",
+        "F94"
+      ],
+      [
+        "F69",
+        "G512"
+      ],
+      [
+        "G58d",
+        "T58d"
+      ],
+      [
+        "G516a",
+        "F56"
+      ],
+      [
+        "G516a",
+        "F62"
+      ],
+      [
+        "G516a",
+        "F98"
+      ],
+      [
+        "F16",
+        "T54c"
+      ],
+      [
+        "F53",
+        "F90"
+      ],
+      [
+        "F62",
+        "F98"
+      ],
+      [
+        "F76",
+        "T59a"
+      ],
+      [
+        "F83",
+        "T512a"
+      ],
+      [
+        "F87",
+        "T512b"
+      ],
+      [
+        "F94",
+        "T513"
+      ],
+      [
+        "F96",
+        "G515"
+      ]
+    ],
+    "extent": {
+      "width": 6774.0,
+      "height": 1340.0,
+      "aspect_ratio": 5.055223880597015
+    },
+    "a4_ratio_passed": false,
+    "text_overflow_check": "not_verified_font_measurement_required",
+    "crossing_avoidability": "not_proven",
+    "routing_safety_passed": false,
+    "release_geometry_passed": false
+  },
+  "after": {
+    "shape_overlaps": 0,
+    "shape_overlap_examples": [],
+    "line_through_shapes": 0,
+    "line_through_examples": [],
+    "crossings": {
+      "flow_flow": 101,
+      "flow_association": 4
+    },
+    "crossing_examples": {
+      "flow_flow": [
+        [
+          "F4",
+          "F72"
+        ],
+        [
+          "F9",
+          "F10"
+        ],
+        [
+          "F11",
+          "F13"
+        ],
+        [
+          "F13",
+          "F75"
+        ],
+        [
+          "F13",
+          "F84"
+        ],
+        [
+          "F15",
+          "F19"
+        ],
+        [
+          "F18",
+          "F84"
+        ],
+        [
+          "F21",
+          "F22"
+        ],
+        [
+          "F25",
+          "F75"
+        ],
+        [
+          "F26",
+          "F67"
+        ],
+        [
+          "F26",
+          "F74"
+        ],
+        [
+          "F26",
+          "F74"
+        ],
+        [
+          "F26",
+          "F82"
+        ],
+        [
+          "F26",
+          "F88"
+        ],
+        [
+          "F30",
+          "F88"
+        ],
+        [
+          "F32",
+          "F34"
+        ],
+        [
+          "F33",
+          "F82"
+        ],
+        [
+          "F33",
+          "F84"
+        ],
+        [
+          "F33",
+          "F88"
+        ],
+        [
+          "F35",
+          "F77"
+        ]
+      ],
+      "flow_association": [
+        [
+          "F57",
+          "A_ClosingDocs_In"
+        ],
+        [
+          "F77",
+          "A_PaymentTask_Out"
+        ],
+        [
+          "F85",
+          "A_BankDocument_Out"
+        ],
+        [
+          "F97",
+          "A_PaymentTask_Out"
+        ]
+      ]
+    },
+    "total_bends": 140,
+    "avg_flow_length": 565.14,
+    "avg_document_length": 58.72,
+    "document_references": 17,
+    "flow_count": 95,
+    "association_count": 18,
+    "diagonal_segments": 0,
+    "diagonal_edges": [],
+    "excessive_bend_edges": [
+      "F84",
+      "F97"
+    ],
+    "invalid_endpoints": [],
+    "nonfinite_waypoints": [],
+    "outside_lanes": [],
+    "task_sizes": [
+      [
+        170.0,
+        70.0
+      ],
+      [
+        190.0,
+        70.0
+      ],
+      [
+        200.0,
+        70.0
+      ],
+      [
+        210.0,
+        70.0
+      ],
+      [
+        220.0,
+        70.0
+      ],
+      [
+        230.0,
+        70.0
+      ]
+    ],
+    "task_sizes_uniform": false,
+    "label_collision_pairs": [],
+    "extent": {
+      "width": 6790.0,
+      "height": 1379.5,
+      "aspect_ratio": 4.922073214932947
+    },
+    "a4_ratio_passed": false,
+    "text_overflow_check": "not_verified_font_measurement_required",
+    "crossing_avoidability": "not_proven",
+    "routing_safety_passed": true,
+    "release_geometry_passed": false
+  }
+}

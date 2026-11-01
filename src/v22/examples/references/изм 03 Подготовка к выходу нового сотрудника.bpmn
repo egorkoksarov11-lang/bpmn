@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Process03" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
+  <bpmn:process id="Process_03" name="Подготовка к выходу нового сотрудника" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_03">
+      <bpmn:lane id="Lane_NewEmployee" name="Новый сотрудник">
+        <bpmn:flowNodeRef>Task_FirstLogin</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Ready</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Procurement" name="Ответственный за приобретение оборудования">
+        <bpmn:flowNodeRef>Call_Purchase</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_HandoverEquipment</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_IT" name="ИТ-специалист">
+        <bpmn:flowNodeRef>Task_CheckEquipment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_PurchaseRequest</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Configure</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Accounts</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_TechCheck</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Fix</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendChecklist</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Credentials</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Equipment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Works</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Manager" name="Непосредственный руководитель">
+        <bpmn:flowNodeRef>Task_Checklist</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ManagerReview</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_10Days</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_Late</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:dataObject id="Data_Checklist" name="Чек-лист подготовки к выходу нового сотрудника" />
+    <bpmn:dataObjectReference id="DataRef_Checklist_Start" name="Чек-лист подготовки к выходу нового сотрудника" dataObjectRef="Data_Checklist" />
+    <bpmn:dataObjectReference id="DataRef_Checklist_Final" name="Чек-лист подготовки к выходу нового сотрудника" dataObjectRef="Data_Checklist" />
+    <bpmn:dataObject id="Data_PurchaseRequest" name="Заявка на приобретение оборудования" />
+    <bpmn:dataObjectReference id="DataRef_PurchaseRequest" name="Заявка на приобретение оборудования" dataObjectRef="Data_PurchaseRequest" />
+    <bpmn:startEvent id="Start_10Days" name="За 10 дней до даты выхода">
+      <bpmn:outgoing>Flow_Start_Checklist</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Task_Checklist" name="Сформировать чек-лист подготовки к выходу">
+      <bpmn:incoming>Flow_Start_Checklist</bpmn:incoming>
+      <bpmn:incoming>Flow_Late_Checklist</bpmn:incoming>
+      <bpmn:outgoing>Flow_Checklist_CheckEquipment</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_CheckEquipment" name="Проверить наличие оборудования">
+      <bpmn:incoming>Flow_Checklist_CheckEquipment</bpmn:incoming>
+      <bpmn:outgoing>Flow_CheckEquipment_Gateway</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Equipment" name="Оборудование имеется?">
+      <bpmn:incoming>Flow_CheckEquipment_Gateway</bpmn:incoming>
+      <bpmn:outgoing>Flow_Equipment_Yes</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Equipment_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Task_PurchaseRequest" name="Сформировать заявку на приобретение оборудования">
+      <bpmn:incoming>Flow_Equipment_No</bpmn:incoming>
+      <bpmn:outgoing>Flow_Request_Purchase</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:callActivity id="Call_Purchase" name="Приобрести оборудование">
+      <bpmn:incoming>Flow_Request_Purchase</bpmn:incoming>
+      <bpmn:outgoing>Flow_Purchase_Handover</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:userTask id="Task_HandoverEquipment" name="Передать оборудование ИТ-специалисту">
+      <bpmn:incoming>Flow_Purchase_Handover</bpmn:incoming>
+      <bpmn:outgoing>Flow_Handover_Configure</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_Configure" name="Настроить оборудование и ПО">
+      <bpmn:incoming>Flow_Equipment_Yes</bpmn:incoming>
+      <bpmn:incoming>Flow_Handover_Configure</bpmn:incoming>
+      <bpmn:outgoing>Flow_Configure_Accounts</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_Accounts" name="Создать учетные записи, почту и доступы">
+      <bpmn:incoming>Flow_Configure_Accounts</bpmn:incoming>
+      <bpmn:outgoing>Flow_Accounts_TechCheck</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_TechCheck" name="Провести полную техническую проверку">
+      <bpmn:incoming>Flow_Accounts_TechCheck</bpmn:incoming>
+      <bpmn:incoming>Flow_Fix_TechCheck</bpmn:incoming>
+      <bpmn:outgoing>Flow_TechCheck_Works</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Works" name="Все позиции работают?">
+      <bpmn:incoming>Flow_TechCheck_Works</bpmn:incoming>
+      <bpmn:outgoing>Flow_Works_No</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Works_Yes</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Task_Fix" name="Устранить недостатки">
+      <bpmn:incoming>Flow_Works_No</bpmn:incoming>
+      <bpmn:outgoing>Flow_Fix_TechCheck</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_SendChecklist" name="Передать заполненный чек-лист руководителю">
+      <bpmn:incoming>Flow_Works_Yes</bpmn:incoming>
+      <bpmn:outgoing>Flow_SendChecklist_ManagerReview</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_ManagerReview" name="Сверить подготовленный комплект с заявленной потребностью">
+      <bpmn:incoming>Flow_SendChecklist_ManagerReview</bpmn:incoming>
+      <bpmn:outgoing>Flow_ManagerReview_Credentials</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_Credentials" name="Передать временные данные для входа">
+      <bpmn:incoming>Flow_ManagerReview_Credentials</bpmn:incoming>
+      <bpmn:outgoing>Flow_Credentials_FirstLogin</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_FirstLogin" name="Выполнить первичный вход и заменить временный пароль">
+      <bpmn:incoming>Flow_Credentials_FirstLogin</bpmn:incoming>
+      <bpmn:outgoing>Flow_FirstLogin_End</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="End_Ready" name="Подготовка завершена">
+      <bpmn:incoming>Flow_FirstLogin_End</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_Start_Checklist" sourceRef="Start_10Days" targetRef="Task_Checklist" />
+    <bpmn:sequenceFlow id="Flow_Checklist_CheckEquipment" sourceRef="Task_Checklist" targetRef="Task_CheckEquipment" />
+    <bpmn:sequenceFlow id="Flow_CheckEquipment_Gateway" sourceRef="Task_CheckEquipment" targetRef="Gateway_Equipment" />
+    <bpmn:sequenceFlow id="Flow_Equipment_Yes" name="Да" sourceRef="Gateway_Equipment" targetRef="Task_Configure" />
+    <bpmn:sequenceFlow id="Flow_Equipment_No" name="Нет" sourceRef="Gateway_Equipment" targetRef="Task_PurchaseRequest" />
+    <bpmn:sequenceFlow id="Flow_Request_Purchase" sourceRef="Task_PurchaseRequest" targetRef="Call_Purchase" />
+    <bpmn:sequenceFlow id="Flow_Purchase_Handover" sourceRef="Call_Purchase" targetRef="Task_HandoverEquipment" />
+    <bpmn:sequenceFlow id="Flow_Handover_Configure" sourceRef="Task_HandoverEquipment" targetRef="Task_Configure" />
+    <bpmn:sequenceFlow id="Flow_Configure_Accounts" sourceRef="Task_Configure" targetRef="Task_Accounts" />
+    <bpmn:sequenceFlow id="Flow_Accounts_TechCheck" sourceRef="Task_Accounts" targetRef="Task_TechCheck" />
+    <bpmn:sequenceFlow id="Flow_TechCheck_Works" sourceRef="Task_TechCheck" targetRef="Gateway_Works" />
+    <bpmn:sequenceFlow id="Flow_Works_No" name="Нет" sourceRef="Gateway_Works" targetRef="Task_Fix" />
+    <bpmn:sequenceFlow id="Flow_Fix_TechCheck" sourceRef="Task_Fix" targetRef="Task_TechCheck" />
+    <bpmn:sequenceFlow id="Flow_Works_Yes" name="Да" sourceRef="Gateway_Works" targetRef="Task_SendChecklist" />
+    <bpmn:sequenceFlow id="Flow_SendChecklist_ManagerReview" sourceRef="Task_SendChecklist" targetRef="Task_ManagerReview" />
+    <bpmn:sequenceFlow id="Flow_ManagerReview_Credentials" sourceRef="Task_ManagerReview" targetRef="Task_Credentials" />
+    <bpmn:sequenceFlow id="Flow_Credentials_FirstLogin" sourceRef="Task_Credentials" targetRef="Task_FirstLogin" />
+    <bpmn:sequenceFlow id="Flow_FirstLogin_End" sourceRef="Task_FirstLogin" targetRef="End_Ready" />
+    <bpmn:startEvent id="Start_Late" name="Дата выхода согласована менее чем за 10 дней до выхода">
+      <bpmn:outgoing>Flow_Late_Checklist</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_Late_Checklist" sourceRef="Start_Late" targetRef="Task_Checklist" />
+    <bpmn:association id="Assoc_Checklist_Create" associationDirection="One" sourceRef="Task_Checklist" targetRef="DataRef_Checklist_Start" />
+    <bpmn:association id="Assoc_Checklist_Finalize" associationDirection="One" sourceRef="Task_SendChecklist" targetRef="DataRef_Checklist_Final" />
+    <bpmn:association id="Assoc_Request_Create" associationDirection="One" sourceRef="Task_PurchaseRequest" targetRef="DataRef_PurchaseRequest" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_03">
+    <bpmndi:BPMNPlane id="BPMNPlane_03" bpmnElement="Process_03">
+      <bpmndi:BPMNShape id="Lane_NewEmployee_di" bpmnElement="Lane_NewEmployee" isHorizontal="true">
+        <dc:Bounds x="160" y="800" width="2140" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Procurement_di" bpmnElement="Lane_Procurement" isHorizontal="true">
+        <dc:Bounds x="160" y="610" width="2140" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_IT_di" bpmnElement="Lane_IT" isHorizontal="true">
+        <dc:Bounds x="160" y="250" width="2140" height="360" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Manager_di" bpmnElement="Lane_Manager" isHorizontal="true">
+        <dc:Bounds x="160" y="40" width="2140" height="210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_10Days_di" bpmnElement="Start_10Days">
+        <dc:Bounds x="190" y="119" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="171" y="78" width="100" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Checklist_di" bpmnElement="Task_Checklist">
+        <dc:Bounds x="280" y="105" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckEquipment_di" bpmnElement="Task_CheckEquipment">
+        <dc:Bounds x="470" y="300" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Equipment_di" bpmnElement="Gateway_Equipment" isMarkerVisible="true">
+        <dc:Bounds x="680" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="667" y="276" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PurchaseRequest_di" bpmnElement="Task_PurchaseRequest">
+        <dc:Bounds x="810" y="480" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Call_Purchase_di" bpmnElement="Call_Purchase">
+        <dc:Bounds x="810" y="665" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_HandoverEquipment_di" bpmnElement="Task_HandoverEquipment">
+        <dc:Bounds x="1000" y="665" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Configure_di" bpmnElement="Task_Configure">
+        <dc:Bounds x="1000" y="300" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Accounts_di" bpmnElement="Task_Accounts">
+        <dc:Bounds x="1190" y="300" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_TechCheck_di" bpmnElement="Task_TechCheck">
+        <dc:Bounds x="1380" y="300" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Works_di" bpmnElement="Gateway_Works" isMarkerVisible="true">
+        <dc:Bounds x="1570" y="307" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1566" y="276" width="64" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Fix_di" bpmnElement="Task_Fix">
+        <dc:Bounds x="1380" y="480" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendChecklist_di" bpmnElement="Task_SendChecklist">
+        <dc:Bounds x="1700" y="300" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ManagerReview_di" bpmnElement="Task_ManagerReview">
+        <dc:Bounds x="1700" y="105" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Credentials_di" bpmnElement="Task_Credentials">
+        <dc:Bounds x="1900" y="300" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_FirstLogin_di" bpmnElement="Task_FirstLogin">
+        <dc:Bounds x="1900" y="855" width="160" height="64" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Ready_di" bpmnElement="End_Ready">
+        <dc:Bounds x="2130" y="869" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2092" y="910" width="118" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Checklist_Start_di" bpmnElement="DataRef_Checklist_Start">
+        <dc:Bounds x="377" y="184" width="45" height="58" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="342" y="256" width="135" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_Late_di" bpmnElement="Start_Late">
+        <dc:Bounds x="202" y="181" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="167" y="225" width="166" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_PurchaseRequest_di" bpmnElement="DataRef_PurchaseRequest">
+        <dc:Bounds x="997" y="480" width="45" height="58" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="955" y="540" width="126" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Checklist_Final_di" bpmnElement="DataRef_Checklist_Final">
+        <dc:Bounds x="1787" y="391" width="45" height="58" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1744" y="449" width="135" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Assoc_Checklist_Create_di" bpmnElement="Assoc_Checklist_Create">
+        <di:waypoint x="360" y="169" />
+        <di:waypoint x="360" y="184" />
+        <di:waypoint x="377" y="196" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Request_Create_di" bpmnElement="Assoc_Request_Create">
+        <di:waypoint x="970" y="512" />
+        <di:waypoint x="997" y="512" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Checklist_Finalize_di" bpmnElement="Assoc_Checklist_Finalize">
+        <di:waypoint x="1810" y="364" />
+        <di:waypoint x="1810" y="391" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Start_Checklist_di" bpmnElement="Flow_Start_Checklist">
+        <di:waypoint x="226" y="137" />
+        <di:waypoint x="280" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Late_Checklist_di" bpmnElement="Flow_Late_Checklist">
+        <di:waypoint x="220" y="181" />
+        <di:waypoint x="220" y="153" />
+        <di:waypoint x="280" y="153" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Checklist_CheckEquipment_di" bpmnElement="Flow_Checklist_CheckEquipment">
+        <di:waypoint x="440" y="137" />
+        <di:waypoint x="520" y="137" />
+        <di:waypoint x="520" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_CheckEquipment_Gateway_di" bpmnElement="Flow_CheckEquipment_Gateway">
+        <di:waypoint x="630" y="332" />
+        <di:waypoint x="680" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Equipment_Yes_di" bpmnElement="Flow_Equipment_Yes">
+        <di:waypoint x="730" y="332" />
+        <di:waypoint x="1000" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="747" y="310" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Equipment_No_di" bpmnElement="Flow_Equipment_No">
+        <di:waypoint x="705" y="357" />
+        <di:waypoint x="705" y="512" />
+        <di:waypoint x="810" y="512" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="721" y="482" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Request_Purchase_di" bpmnElement="Flow_Request_Purchase">
+        <di:waypoint x="890" y="544" />
+        <di:waypoint x="890" y="665" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Purchase_Handover_di" bpmnElement="Flow_Purchase_Handover">
+        <di:waypoint x="970" y="697" />
+        <di:waypoint x="1000" y="697" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Handover_Configure_di" bpmnElement="Flow_Handover_Configure">
+        <di:waypoint x="1080" y="665" />
+        <di:waypoint x="1080" y="364" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Configure_Accounts_di" bpmnElement="Flow_Configure_Accounts">
+        <di:waypoint x="1160" y="332" />
+        <di:waypoint x="1190" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Accounts_TechCheck_di" bpmnElement="Flow_Accounts_TechCheck">
+        <di:waypoint x="1350" y="332" />
+        <di:waypoint x="1380" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Fix_TechCheck_di" bpmnElement="Flow_Fix_TechCheck">
+        <di:waypoint x="1460" y="480" />
+        <di:waypoint x="1460" y="364" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_TechCheck_Works_di" bpmnElement="Flow_TechCheck_Works">
+        <di:waypoint x="1540" y="332" />
+        <di:waypoint x="1570" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Works_No_di" bpmnElement="Flow_Works_No">
+        <di:waypoint x="1595" y="357" />
+        <di:waypoint x="1595" y="512" />
+        <di:waypoint x="1540" y="512" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1605" y="480" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Works_Yes_di" bpmnElement="Flow_Works_Yes">
+        <di:waypoint x="1620" y="332" />
+        <di:waypoint x="1700" y="332" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1637" y="310" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_SendChecklist_ManagerReview_di" bpmnElement="Flow_SendChecklist_ManagerReview">
+        <di:waypoint x="1780" y="300" />
+        <di:waypoint x="1780" y="169" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_ManagerReview_Credentials_di" bpmnElement="Flow_ManagerReview_Credentials">
+        <di:waypoint x="1860" y="137" />
+        <di:waypoint x="1980" y="137" />
+        <di:waypoint x="1980" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Credentials_FirstLogin_di" bpmnElement="Flow_Credentials_FirstLogin">
+        <di:waypoint x="1980" y="364" />
+        <di:waypoint x="1980" y="855" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1933" y="516" width="94" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_FirstLogin_End_di" bpmnElement="Flow_FirstLogin_End">
+        <di:waypoint x="2060" y="887" />
+        <di:waypoint x="2130" y="887" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_StaffReduction" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_Main" name="Организация" processRef="Process_StaffReduction" />
+    <bpmn:participant id="Participant_Employment" name="Государственная служба занятости" />
+    <bpmn:messageFlow id="MessageFlow_Employment" sourceRef="Task_NotifyEmployment" targetRef="Participant_Employment" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_StaffReduction" name="Сокращение численности и штата" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_Manager" name="Руководитель подразделения">
+        <bpmn:flowNodeRef>Task_PrepareProject</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_HR" name="HR">
+        <bpmn:flowNodeRef>Task_CheckVacancies</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Vacancies</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Accepted</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Transfer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_MonitorVacancies</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_PeriodEnded</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CheckScope</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CheckRestrictions</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_LegalNeeded</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_CanContinue</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_CompareNeeded</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Compare</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Stop</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Personnel" name="Кадровик">
+        <bpmn:flowNodeRef>Task_NotifyEmployment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_WarnEmployee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Refusal</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_PrepareStaffOrder</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_RefusalAct</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_FormDismissalPackage</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_OfferVacancies</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Dismissal</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Authorized" name="Уполномоченное лицо">
+        <bpmn:flowNodeRef>EndEvent_Rejected</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SignStaffOrder</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_DecideProject</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_ProjectDecision</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Lawyer" name="Юрист">
+        <bpmn:flowNodeRef>Task_LegalReview</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:endEvent id="EndEvent_Rejected" name="Проект отклонен" />
+    <bpmn:task id="Task_SignStaffOrder" name="Подписать приказ">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0237b09">
+        <bpmn:targetRef>DataRef_T3</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_NotifyEmployment" name="5.7 Направить сведения в службу занятости" />
+    <bpmn:task id="Task_WarnEmployee" name="5.8 Подготовить и вручить персональное предупреждение" />
+    <bpmn:exclusiveGateway id="Gateway_Refusal" name="Отказ от получения / подписи?" />
+    <bpmn:exclusiveGateway id="Gateway_Vacancies" name="Есть подходящие вакансии?" />
+    <bpmn:exclusiveGateway id="Gateway_Accepted" name="Работник согласен на перевод?" />
+    <bpmn:endEvent id="EndEvent_Transfer" name="Передача в процесс кадрового перемещения" />
+    <bpmn:task id="Task_MonitorVacancies" name="5.10 Контролировать появление новых вакансий" />
+    <bpmn:exclusiveGateway id="Gateway_PeriodEnded" name="Срок предупреждения истек?" />
+    <bpmn:dataObjectReference id="DataRef_Vacancies_Check" name="Предложение вакансий" dataObjectRef="Data_Vacancies" />
+    <bpmn:task id="Task_PrepareProject" name="5.1 Подготовить проект изменения совместно с HR">
+      <bpmn:property id="Property_1w587f0" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_0bv6lv3">
+        <bpmn:targetRef>Property_1w587f0</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:startEvent id="StartEvent_1" name="Возникла необходимость изменения структуры / численности" />
+    <bpmn:task id="Task_DecideProject" name="5.2 Рассмотреть проект и зафиксировать решение" />
+    <bpmn:exclusiveGateway id="Gateway_ProjectDecision" name="Решение?" />
+    <bpmn:dataObjectReference id="DataRef_Vacancies_Transfer" name="Предложение вакансий / письменное согласие" dataObjectRef="Data_Vacancies" />
+    <bpmn:dataObjectReference id="DataRef_Project_Prepare" name="Проект изменения структуры" dataObjectRef="Data_Project" />
+    <bpmn:sequenceFlow id="F6" name="Отклонить" sourceRef="Gateway_ProjectDecision" targetRef="EndEvent_Rejected" />
+    <bpmn:sequenceFlow id="F7" sourceRef="Task_CheckScope" targetRef="Task_CheckRestrictions" />
+    <bpmn:sequenceFlow id="Flow_1tri2u8" sourceRef="Task_CheckRestrictions" targetRef="Gateway_LegalNeeded" />
+    <bpmn:sequenceFlow id="F10" name="Нет" sourceRef="Gateway_LegalNeeded" targetRef="Gateway_CanContinue" />
+    <bpmn:sequenceFlow id="F11" sourceRef="Task_LegalReview" targetRef="Gateway_CanContinue" />
+    <bpmn:sequenceFlow id="F12" name="Нет" sourceRef="Gateway_CanContinue" targetRef="EndEvent_Stop" />
+    <bpmn:sequenceFlow id="F13" name="Да" sourceRef="Gateway_CanContinue" targetRef="Gateway_CompareNeeded" />
+    <bpmn:sequenceFlow id="F14" name="Да" sourceRef="Gateway_CompareNeeded" targetRef="Task_Compare" />
+    <bpmn:sequenceFlow id="F15" name="Нет" sourceRef="Gateway_CompareNeeded" targetRef="Task_PrepareStaffOrder" />
+    <bpmn:sequenceFlow id="F16" sourceRef="Task_Compare" targetRef="Task_PrepareStaffOrder" />
+    <bpmn:sequenceFlow id="F17" sourceRef="Task_PrepareStaffOrder" targetRef="Task_SignStaffOrder" />
+    <bpmn:sequenceFlow id="F18" sourceRef="Task_SignStaffOrder" targetRef="Task_NotifyEmployment" />
+    <bpmn:sequenceFlow id="F19" sourceRef="Task_NotifyEmployment" targetRef="Task_WarnEmployee" />
+    <bpmn:sequenceFlow id="F20" sourceRef="Task_WarnEmployee" targetRef="Gateway_Refusal" />
+    <bpmn:sequenceFlow id="F21" name="Да" sourceRef="Gateway_Refusal" targetRef="Task_RefusalAct" />
+    <bpmn:sequenceFlow id="F22" name="Нет" sourceRef="Gateway_Refusal" targetRef="Task_CheckVacancies" />
+    <bpmn:sequenceFlow id="F23" sourceRef="Task_RefusalAct" targetRef="Task_CheckVacancies" />
+    <bpmn:sequenceFlow id="F31" name="Нет" sourceRef="Gateway_PeriodEnded" targetRef="Task_CheckVacancies" />
+    <bpmn:sequenceFlow id="F24" sourceRef="Task_CheckVacancies" targetRef="Gateway_Vacancies" />
+    <bpmn:sequenceFlow id="F25" name="Да" sourceRef="Gateway_Vacancies" targetRef="Task_OfferVacancies" />
+    <bpmn:sequenceFlow id="F26" name="Нет" sourceRef="Gateway_Vacancies" targetRef="Task_MonitorVacancies" />
+    <bpmn:sequenceFlow id="F27" sourceRef="Task_OfferVacancies" targetRef="Gateway_Accepted" />
+    <bpmn:sequenceFlow id="F28" name="Да" sourceRef="Gateway_Accepted" targetRef="EndEvent_Transfer" />
+    <bpmn:sequenceFlow id="F29" name="Нет" sourceRef="Gateway_Accepted" targetRef="Task_MonitorVacancies" />
+    <bpmn:sequenceFlow id="F30" sourceRef="Task_MonitorVacancies" targetRef="Gateway_PeriodEnded" />
+    <bpmn:sequenceFlow id="F32" name="Да" sourceRef="Gateway_PeriodEnded" targetRef="Task_FormDismissalPackage" />
+    <bpmn:sequenceFlow id="F1" sourceRef="StartEvent_1" targetRef="Task_PrepareProject" />
+    <bpmn:sequenceFlow id="F5" name="На доработку" sourceRef="Gateway_ProjectDecision" targetRef="Task_PrepareProject" />
+    <bpmn:sequenceFlow id="F2" sourceRef="Task_PrepareProject" targetRef="Task_DecideProject" />
+    <bpmn:sequenceFlow id="F3" sourceRef="Task_DecideProject" targetRef="Gateway_ProjectDecision" />
+    <bpmn:sequenceFlow id="F4" name="Утвердить" sourceRef="Gateway_ProjectDecision" targetRef="Task_CheckScope" />
+    <bpmn:sequenceFlow id="F9" name="Да" sourceRef="Gateway_LegalNeeded" targetRef="Task_LegalReview" />
+    <bpmn:task id="Task_CheckScope" name="5.3 Определить характер и масштаб сокращения" />
+    <bpmn:task id="Task_CheckRestrictions" name="5.4 Проверить ограничения и гарантии">
+      <bpmn:outgoing>Flow_1tri2u8</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_LegalNeeded" name="Нужна правовая оценка?">
+      <bpmn:incoming>Flow_1tri2u8</bpmn:incoming>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_LegalReview" name="Провести правовую оценку" />
+    <bpmn:exclusiveGateway id="Gateway_CanContinue" name="Процедуру можно продолжить?" />
+    <bpmn:exclusiveGateway id="Gateway_CompareNeeded" name="Нужно сравнение работников?" />
+    <bpmn:task id="Task_Compare" name="5.5 Оценить преимущественное право" />
+    <bpmn:endEvent id="EndEvent_Stop" name="Процедура по работнику прекращена" />
+    <bpmn:dataObjectReference id="DataRef_Compare" name="Сравнительный лист" dataObjectRef="Data_Compare" />
+    <bpmn:dataObject id="Data_Compare" />
+    <bpmn:task id="Task_PrepareStaffOrder" name="5.6 Подготовить приказ и штатное расписание в новой редакции">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1hnyqkg">
+        <bpmn:targetRef>DataObjectReference_0aynjyl</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1nmw3kn">
+        <bpmn:targetRef>DataObjectReference_1uzj6jn</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DataObjectReference_0aynjyl" name="Штатное расписание (Т-3)" dataObjectRef="DataObject_1q90znd" />
+    <bpmn:dataObject id="DataObject_1q90znd" />
+    <bpmn:dataObjectReference id="DataObjectReference_1uzj6jn" name="Приказ об изменении штатного расписания" dataObjectRef="DataObject_1i1gtd9" />
+    <bpmn:dataObject id="DataObject_1i1gtd9" />
+    <bpmn:dataObjectReference id="DataRef_T3" name="Штатное расписание (Т-3)" dataObjectRef="Data_T3" />
+    <bpmn:dataObject id="Data_T3" />
+    <bpmn:dataObjectReference id="DataRef_Order" name="Приказ об изменении штатного расписания" dataObjectRef="Data_Order" />
+    <bpmn:dataObject id="Data_Order" />
+    <bpmn:dataObjectReference id="DataRef_EmploymentConfirm" name="Подтверждение направления в службу занятости" dataObjectRef="Data_EmploymentConfirm" />
+    <bpmn:dataObject id="Data_EmploymentConfirm" />
+    <bpmn:sequenceFlow id="F33" sourceRef="Task_FormDismissalPackage" targetRef="EndEvent_Dismissal" />
+    <bpmn:task id="Task_CheckVacancies" name="5.9 Определить подходящие вакансии" />
+    <bpmn:task id="Task_RefusalAct" name="Оформить акт об отказе" />
+    <bpmn:dataObjectReference id="DataRef_Refusal" name="Акт об отказе" dataObjectRef="Data_Refusal" />
+    <bpmn:dataObject id="Data_Refusal" />
+    <bpmn:task id="Task_FormDismissalPackage" name="5.12 Сформировать комплект основания для увольнения" />
+    <bpmn:task id="Task_OfferVacancies" name="Предложить вакансии и получить решение работника" />
+    <bpmn:dataObjectReference id="DataRef_Vacancies" name="Предложение вакансий" dataObjectRef="Data_Vacancies" />
+    <bpmn:dataObject id="Data_Vacancies" />
+    <bpmn:endEvent id="EndEvent_Dismissal" name="5.13 Передача в процесс «Увольнение сотрудника»" />
+    <bpmn:dataObjectReference id="DataRef_DismissalPackage" name="Комплект основания для увольнения" dataObjectRef="Data_DismissalPackage" />
+    <bpmn:dataObject id="Data_DismissalPackage" />
+    <bpmn:dataObjectReference id="DataRef_RequiredDocs" name="Обязательные документы в кадровом деле" dataObjectRef="Data_RequiredDocs" />
+    <bpmn:dataObject id="Data_RequiredDocs" />
+    <bpmn:dataObjectReference id="DataRef_Warning" name="Предупреждение работника" dataObjectRef="Data_Warning" />
+    <bpmn:dataObject id="Data_Warning" />
+    <bpmn:dataObjectReference id="DataRef_Project_DecisionInput" name="Проект изменения структуры" dataObjectRef="Data_Project" />
+    <bpmn:dataObject id="Data_Project" />
+    <bpmn:association id="Assoc_Vacancies_Transfer" associationDirection="One" sourceRef="EndEvent_Transfer" targetRef="DataRef_Vacancies_Transfer" />
+    <bpmn:association id="Assoc_Project_Prepare" associationDirection="One" sourceRef="Task_PrepareProject" targetRef="DataRef_Project_Prepare" />
+    <bpmn:association id="Assoc_Compare" associationDirection="One" sourceRef="Task_Compare" targetRef="DataRef_Compare" />
+    <bpmn:association id="Assoc_Order" associationDirection="One" sourceRef="Task_SignStaffOrder" targetRef="DataRef_Order" />
+    <bpmn:association id="Assoc_EmploymentConfirm" associationDirection="One" sourceRef="Task_NotifyEmployment" targetRef="DataRef_EmploymentConfirm" />
+    <bpmn:association id="Assoc_Vacancies_Check" associationDirection="One" sourceRef="Task_CheckVacancies" targetRef="DataRef_Vacancies_Check" />
+    <bpmn:association id="Assoc_Refusal" associationDirection="One" sourceRef="Task_RefusalAct" targetRef="DataRef_Refusal" />
+    <bpmn:association id="Assoc_Vacancies" associationDirection="One" sourceRef="Task_OfferVacancies" targetRef="DataRef_Vacancies" />
+    <bpmn:association id="Assoc_DismissalPackage" associationDirection="One" sourceRef="Task_FormDismissalPackage" targetRef="DataRef_DismissalPackage" />
+    <bpmn:association id="Assoc_RequiredDocs" associationDirection="One" sourceRef="Task_FormDismissalPackage" targetRef="DataRef_RequiredDocs" />
+    <bpmn:association id="Assoc_Warning" associationDirection="One" sourceRef="Task_WarnEmployee" targetRef="DataRef_Warning" />
+    <bpmn:association id="Assoc_Project" associationDirection="One" sourceRef="Task_DecideProject" targetRef="DataRef_Project_DecisionInput" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_Main_di_v8" bpmnElement="Participant_Main" isHorizontal="true">
+        <dc:Bounds x="160" y="40" width="1690" height="910" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Lawyer_di_v8" bpmnElement="Lane_Lawyer" isHorizontal="true">
+        <dc:Bounds x="190" y="280" width="1660" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Authorized_di_v8" bpmnElement="Lane_Authorized" isHorizontal="true">
+        <dc:Bounds x="190" y="145" width="1660" height="135" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Personnel_di_v8" bpmnElement="Lane_Personnel" isHorizontal="true">
+        <dc:Bounds x="190" y="690" width="1660" height="260" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_HR_di_v8" bpmnElement="Lane_HR" isHorizontal="true">
+        <dc:Bounds x="190" y="380" width="1660" height="310" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Manager_di_v8" bpmnElement="Lane_Manager" isHorizontal="true">
+        <dc:Bounds x="190" y="40" width="1660" height="105" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Rejected_di_v8" bpmnElement="EndEvent_Rejected">
+        <dc:Bounds x="640" y="189" width="34" height="34" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="614" y="223" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SignStaffOrder_di_v8" bpmnElement="Task_SignStaffOrder">
+        <dc:Bounds x="810" y="170" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_NotifyEmployment_di_v8" bpmnElement="Task_NotifyEmployment">
+        <dc:Bounds x="1010" y="715" width="180" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_WarnEmployee_di_v8" bpmnElement="Task_WarnEmployee">
+        <dc:Bounds x="1010" y="805" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Refusal_di_v8" bpmnElement="Gateway_Refusal" isMarkerVisible="true">
+        <dc:Bounds x="1270" y="816" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1216" y="777" width="90" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckVacancies_di_v8" bpmnElement="Task_CheckVacancies">
+        <dc:Bounds x="1200" y="405" width="190" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Vacancies_di_v8" bpmnElement="Gateway_Vacancies" isMarkerVisible="true">
+        <dc:Bounds x="1420" y="416" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1400" y="378.5" width="90" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Accepted_di_v8" bpmnElement="Gateway_Accepted" isMarkerVisible="true">
+        <dc:Bounds x="1510" y="553" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1461" y="520" width="80" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Transfer_di_v8" bpmnElement="EndEvent_Transfer">
+        <dc:Bounds x="1595" y="561" width="34" height="34" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1576" y="595" width="72" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_MonitorVacancies_di_v8" bpmnElement="Task_MonitorVacancies">
+        <dc:Bounds x="1510" y="405" width="190" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_PeriodEnded_di_v8" bpmnElement="Gateway_PeriodEnded" isMarkerVisible="true">
+        <dc:Bounds x="1730" y="416" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1706" y="350" width="87" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Warning_di_v8" bpmnElement="DataRef_Warning">
+        <dc:Bounds x="950" y="810" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="931" y="870" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Vacancies_Check_di_v8" bpmnElement="DataRef_Vacancies_Check">
+        <dc:Bounds x="1355" y="485" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1345" y="545" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PrepareProject_di_v8" bpmnElement="Task_PrepareProject">
+        <dc:Bounds x="335" y="55" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di_v8" bpmnElement="StartEvent_1">
+        <dc:Bounds x="280" y="75" width="34" height="34" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="240" y="109" width="130" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_DecideProject_di_v8" bpmnElement="Task_DecideProject">
+        <dc:Bounds x="335" y="170" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_ProjectDecision_di_v8" bpmnElement="Gateway_ProjectDecision" isMarkerVisible="true">
+        <dc:Bounds x="555" y="181" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="554" y="231" width="53" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Vacancies_Transfer_di_v8" bpmnElement="DataRef_Vacancies_Transfer">
+        <dc:Bounds x="1587" y="610" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1577" y="670" width="71" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Project_Prepare_di_v8" bpmnElement="DataRef_Project_Prepare">
+        <dc:Bounds x="561" y="45" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="558" y="105" width="56" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckScope_di_v8" bpmnElement="Task_CheckScope">
+        <dc:Bounds x="499" y="405" width="180" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckRestrictions_di_v8" bpmnElement="Task_CheckRestrictions">
+        <dc:Bounds x="496" y="514" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_LegalNeeded_di_v8" bpmnElement="Gateway_LegalNeeded" isMarkerVisible="true">
+        <dc:Bounds x="735" y="416" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="718" y="475.5" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_LegalReview_di_v8" bpmnElement="Task_LegalReview">
+        <dc:Bounds x="741" y="296" width="185" height="68" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_CanContinue_di_v8" bpmnElement="Gateway_CanContinue" isMarkerVisible="true">
+        <dc:Bounds x="832" y="416" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="866" y="380" width="68" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_CompareNeeded_di_v8" bpmnElement="Gateway_CompareNeeded" isMarkerVisible="true">
+        <dc:Bounds x="965" y="416" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="950" y="366" width="83" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Compare_di_v8" bpmnElement="Task_Compare">
+        <dc:Bounds x="897" y="542" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Stop_di_v8" bpmnElement="EndEvent_Stop">
+        <dc:Bounds x="783" y="543" width="34" height="34" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="764" y="577" width="72" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Compare_di_v8" bpmnElement="DataRef_Compare">
+        <dc:Bounds x="1035" y="620" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1019" y="680" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PrepareStaffOrder_di_v8" bpmnElement="Task_PrepareStaffOrder">
+        <dc:Bounds x="727" y="715" width="185" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0w8ss18" bpmnElement="DataObjectReference_0aynjyl">
+        <dc:Bounds x="632" y="690" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="614" y="750" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0bhem6d" bpmnElement="DataObjectReference_1uzj6jn">
+        <dc:Bounds x="632" y="790" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="628" y="850" width="60" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_T3_di_v8" bpmnElement="DataRef_T3">
+        <dc:Bounds x="1050" y="196" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1032" y="256" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Order_di_v8" bpmnElement="DataRef_Order">
+        <dc:Bounds x="1005" y="85" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1000" y="145" width="60" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_EmploymentConfirm_di_v8" bpmnElement="DataRef_EmploymentConfirm">
+        <dc:Bounds x="1208" y="650" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1192" y="710" width="82" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_RefusalAct_di_v8" bpmnElement="Task_RefusalAct">
+        <dc:Bounds x="1350" y="807" width="185" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Refusal_di_v8" bpmnElement="DataRef_Refusal">
+        <dc:Bounds x="1295" y="870" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1286" y="930" width="69" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_FormDismissalPackage_di_v8" bpmnElement="Task_FormDismissalPackage">
+        <dc:Bounds x="1625" y="734" width="198" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_OfferVacancies_di_v8" bpmnElement="Task_OfferVacancies">
+        <dc:Bounds x="1346" y="704" width="198" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Vacancies_di_v8" bpmnElement="DataRef_Vacancies">
+        <dc:Bounds x="1559" y="721" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1549" y="781" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Dismissal_di_v8" bpmnElement="EndEvent_Dismissal">
+        <dc:Bounds x="1769" y="826" width="34" height="34" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1711" y="869" width="150" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_DismissalPackage_di_v8" bpmnElement="DataRef_DismissalPackage">
+        <dc:Bounds x="1663" y="830" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1650" y="900" width="76" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_RequiredDocs_di_v8" bpmnElement="DataRef_RequiredDocs">
+        <dc:Bounds x="1576" y="819" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1562" y="886" width="77" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Project_DecisionInput_di_v8" bpmnElement="DataRef_Project_DecisionInput">
+        <dc:Bounds x="271" y="175" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="235" width="56" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Assoc_Refusal_di_v8" bpmnElement="Assoc_Refusal">
+        <di:waypoint x="1372" y="875" />
+        <di:waypoint x="1345" y="888" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Vacancies_di_v8" bpmnElement="Assoc_Vacancies">
+        <di:waypoint x="1544" y="746" />
+        <di:waypoint x="1559" y="748" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_DismissalPackage_di_v8" bpmnElement="Assoc_DismissalPackage">
+        <di:waypoint x="1701" y="806" />
+        <di:waypoint x="1695" y="830" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_RequiredDocs_di_v8" bpmnElement="Assoc_RequiredDocs">
+        <di:waypoint x="1629" y="804" />
+        <di:waypoint x="1620" y="819" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Project_di_v8" bpmnElement="Assoc_Project">
+        <di:waypoint x="335" y="206" />
+        <di:waypoint x="321" y="206" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F6_di_v8" bpmnElement="F6">
+        <di:waypoint x="605" y="206" />
+        <di:waypoint x="640" y="206" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="595" y="181" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F7_di_v8" bpmnElement="F7">
+        <di:waypoint x="589" y="477" />
+        <di:waypoint x="589" y="514" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tri2u8_di_v8" bpmnElement="Flow_1tri2u8">
+        <di:waypoint x="681" y="550" />
+        <di:waypoint x="710" y="550" />
+        <di:waypoint x="710" y="441" />
+        <di:waypoint x="735" y="441" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di_v8" bpmnElement="F10">
+        <di:waypoint x="785" y="441" />
+        <di:waypoint x="832" y="441" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="800" y="416" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di_v8" bpmnElement="F11">
+        <di:waypoint x="860" y="364" />
+        <di:waypoint x="860" y="390" />
+        <di:waypoint x="857" y="390" />
+        <di:waypoint x="857" y="416" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di_v8" bpmnElement="F12">
+        <di:waypoint x="857" y="466" />
+        <di:waypoint x="857" y="560" />
+        <di:waypoint x="817" y="560" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="827" y="535" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di_v8" bpmnElement="F13">
+        <di:waypoint x="861" y="420" />
+        <di:waypoint x="986" y="420" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="914" y="395" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di_v8" bpmnElement="F14">
+        <di:waypoint x="990" y="466" />
+        <di:waypoint x="990" y="542" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="993" y="495" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F15_di_v8" bpmnElement="F15">
+        <di:waypoint x="965" y="441" />
+        <di:waypoint x="890" y="441" />
+        <di:waypoint x="890" y="715" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="892" y="504" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F16_di_v8" bpmnElement="F16">
+        <di:waypoint x="940" y="614" />
+        <di:waypoint x="940" y="751" />
+        <di:waypoint x="912" y="751" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F17_di_v8" bpmnElement="F17">
+        <di:waypoint x="820" y="787" />
+        <di:waypoint x="820" y="810" />
+        <di:waypoint x="440" y="810" />
+        <di:waypoint x="440" y="270" />
+        <di:waypoint x="860" y="270" />
+        <di:waypoint x="860" y="242" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F18_di_v8" bpmnElement="F18">
+        <di:waypoint x="903" y="242" />
+        <di:waypoint x="903" y="285" />
+        <di:waypoint x="1100" y="285" />
+        <di:waypoint x="1100" y="715" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F19_di_v8" bpmnElement="F19">
+        <di:waypoint x="1100" y="787" />
+        <di:waypoint x="1100" y="805" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F20_di_v8" bpmnElement="F20">
+        <di:waypoint x="1195" y="841" />
+        <di:waypoint x="1270" y="841" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F21_di_v8" bpmnElement="F21">
+        <di:waypoint x="1320" y="841" />
+        <di:waypoint x="1350" y="841" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1325" y="819" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F22_di_v8" bpmnElement="F22">
+        <di:waypoint x="1295" y="816" />
+        <di:waypoint x="1295" y="477" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1300" y="783" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F23_di_v8" bpmnElement="F23">
+        <di:waypoint x="1350" y="820" />
+        <di:waypoint x="1335" y="820" />
+        <di:waypoint x="1335" y="477" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F31_di_v8" bpmnElement="F31">
+        <di:waypoint x="1755" y="416" />
+        <di:waypoint x="1755" y="390" />
+        <di:waypoint x="1295" y="390" />
+        <di:waypoint x="1295" y="405" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1516" y="365" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F24_di_v8" bpmnElement="F24">
+        <di:waypoint x="1390" y="441" />
+        <di:waypoint x="1420" y="441" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F25_di_v8" bpmnElement="F25">
+        <di:waypoint x="1445" y="466" />
+        <di:waypoint x="1445" y="704" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1453" y="577" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F26_di_v8" bpmnElement="F26">
+        <di:waypoint x="1470" y="441" />
+        <di:waypoint x="1510" y="441" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1481" y="416" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F27_di_v8" bpmnElement="F27">
+        <di:waypoint x="1495" y="704" />
+        <di:waypoint x="1495" y="654" />
+        <di:waypoint x="1535" y="654" />
+        <di:waypoint x="1535" y="603" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F28_di_v8" bpmnElement="F28">
+        <di:waypoint x="1560" y="578" />
+        <di:waypoint x="1595" y="578" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1571" y="553" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F29_di_v8" bpmnElement="F29">
+        <di:waypoint x="1535" y="553" />
+        <di:waypoint x="1535" y="473" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1541" y="503" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F30_di_v8" bpmnElement="F30">
+        <di:waypoint x="1700" y="441" />
+        <di:waypoint x="1730" y="441" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F32_di_v8" bpmnElement="F32">
+        <di:waypoint x="1755" y="466" />
+        <di:waypoint x="1755" y="734" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1763" y="593" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F1_di_v8" bpmnElement="F1">
+        <di:waypoint x="314" y="92" />
+        <di:waypoint x="335" y="92" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5_di_v8" bpmnElement="F5">
+        <di:waypoint x="580" y="181" />
+        <di:waypoint x="580" y="150" />
+        <di:waypoint x="428" y="150" />
+        <di:waypoint x="428" y="127" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="469" y="129" width="70" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_di_v8" bpmnElement="F2">
+        <di:waypoint x="400" y="127" />
+        <di:waypoint x="400" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F3_di_v8" bpmnElement="F3">
+        <di:waypoint x="520" y="206" />
+        <di:waypoint x="555" y="206" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F4_di_v8" bpmnElement="F4">
+        <di:waypoint x="580" y="231" />
+        <di:waypoint x="580" y="405" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="577" y="310" width="54" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F9_di_v8" bpmnElement="F9">
+        <di:waypoint x="760" y="416" />
+        <di:waypoint x="760" y="364" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="760" y="395" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F33_di_v8" bpmnElement="F33">
+        <di:waypoint x="1800" y="806" />
+        <di:waypoint x="1800" y="816" />
+        <di:waypoint x="1786" y="816" />
+        <di:waypoint x="1786" y="826" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Warning_di_v8" bpmnElement="Assoc_Warning">
+        <di:waypoint x="1010" y="841" />
+        <di:waypoint x="1000" y="841" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Vacancies_Check_di_v8" bpmnElement="Assoc_Vacancies_Check">
+        <di:waypoint x="1380" y="477" />
+        <di:waypoint x="1380" y="485" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Vacancies_Transfer_di_v8" bpmnElement="Assoc_Vacancies_Transfer">
+        <di:waypoint x="1612" y="595" />
+        <di:waypoint x="1612" y="610" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Project_Prepare_di_v8" bpmnElement="Assoc_Project_Prepare">
+        <di:waypoint x="520" y="91" />
+        <di:waypoint x="561" y="91" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Compare_di_v8" bpmnElement="Assoc_Compare">
+        <di:waypoint x="1025" y="614" />
+        <di:waypoint x="1035" y="625" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Order_di_v8" bpmnElement="Assoc_Order">
+        <di:waypoint x="945" y="170" />
+        <di:waypoint x="1005" y="142" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_EmploymentConfirm_di_v8" bpmnElement="Assoc_EmploymentConfirm">
+        <di:waypoint x="1174" y="715" />
+        <di:waypoint x="1208" y="698" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_Employment_di_v8" bpmnElement="Participant_Employment" isHorizontal="true">
+        <dc:Bounds x="980" y="954" width="300" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0237b09_di" bpmnElement="DataOutputAssociation_0237b09">
+        <di:waypoint x="995" y="222" />
+        <di:waypoint x="1050" y="231" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1hnyqkg_di" bpmnElement="DataOutputAssociation_1hnyqkg">
+        <di:waypoint x="727" y="733" />
+        <di:waypoint x="682" y="724" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1nmw3kn_di" bpmnElement="DataOutputAssociation_1nmw3kn">
+        <di:waypoint x="747" y="787" />
+        <di:waypoint x="682" y="819" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_Employment_di_v8" bpmnElement="MessageFlow_Employment">
+        <di:waypoint x="1010" y="770" />
+        <di:waypoint x="930" y="770" />
+        <di:waypoint x="930" y="989" />
+        <di:waypoint x="980" y="989" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

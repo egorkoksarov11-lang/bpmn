@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Timekeeping" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_Main" name="Табелирование и учет рабочего времени" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_HR" name="Кадровик">
+        <bpmn:flowNodeRef>Timer_MonthEnd</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Control</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Deviation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Send</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Final</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1C" name="1С:ЗУП">
+        <bpmn:flowNodeRef>Task_Absence</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Auto</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_122kvd5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Update</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_LateCorrection</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:intermediateCatchEvent id="Timer_MonthEnd" name="Окончание отчетного месяца">
+      <bpmn:timerEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:task id="Task_Absence" name="5.2 Учесть результат процесса «Внеплановое отсутствие сотрудника»">
+      <bpmn:incoming>Flow_1jgazor</bpmn:incoming>
+      <bpmn:outgoing>F3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_Auto" name="5.1 Автоматически формировать данные учета рабочего времени" />
+    <bpmn:startEvent id="Start_1" name="Начало отчетного месяца" />
+    <bpmn:sequenceFlow id="F3" sourceRef="Task_Absence" targetRef="Timer_MonthEnd" />
+    <bpmn:sequenceFlow id="F4" sourceRef="Timer_MonthEnd" targetRef="Task_Control" />
+    <bpmn:sequenceFlow id="F9" sourceRef="Task_Update" targetRef="Task_Control" />
+    <bpmn:sequenceFlow id="F5" sourceRef="Task_Control" targetRef="Gateway_Deviation" />
+    <bpmn:sequenceFlow id="F6" name="Нет" sourceRef="Gateway_Deviation" targetRef="Task_Final" />
+    <bpmn:sequenceFlow id="F7" name="Да" sourceRef="Gateway_Deviation" targetRef="Task_Send" />
+    <bpmn:sequenceFlow id="F8" sourceRef="Task_Send" targetRef="Task_Update" />
+    <bpmn:sequenceFlow id="F10" sourceRef="Task_Final" targetRef="End_1" />
+    <bpmn:sequenceFlow id="F2" sourceRef="Task_Auto" targetRef="Timer_MonthEnd" />
+    <bpmn:sequenceFlow id="Flow_1jgazor" sourceRef="Event_122kvd5" targetRef="Task_Absence" />
+    <bpmn:sequenceFlow id="F1" sourceRef="Start_1" targetRef="Task_Auto" />
+    <bpmn:sequenceFlow id="F11" sourceRef="Start_LateCorrection" targetRef="Task_Update" />
+    <bpmn:dataObjectReference id="DR_AbsenceResult" name="Оформленный документ из процесса «Внеплановое отсутствие сотрудника»" dataObjectRef="DO_AbsenceResult" />
+    <bpmn:dataObject id="DO_AbsenceResult" name="Результат процесса «Внеплановое отсутствие сотрудника»" />
+    <bpmn:startEvent id="Event_122kvd5" name="Оформленное основание отсутствия">
+      <bpmn:outgoing>Flow_1jgazor</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_Deviation" name="Есть необработанные отклонения?" />
+    <bpmn:task id="Task_Send" name="Передать отклонение в соответствующий кадровый процесс" />
+    <bpmn:task id="Task_Final" name="5.4 Сформировать итоговый табель">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0mi9jqs">
+        <bpmn:targetRef>DR_Timesheet</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DR_Timesheet" name="Табель учета рабочего времени (Т-13)" dataObjectRef="DO_Timesheet" />
+    <bpmn:dataObject id="DO_Timesheet" />
+    <bpmn:endEvent id="End_1" name="Итоговый табель сформирован" />
+    <bpmn:task id="Task_Update" name="Актуализировать данные после оформления основания" />
+    <bpmn:startEvent id="Start_LateCorrection" name="Оформлен документ за прошедший отчетный период" />
+    <bpmn:task id="Task_Control" name="5.3 Проверить необработанные отклонения" />
+    <bpmn:association id="A_AbsenceInput" associationDirection="One" sourceRef="DR_AbsenceResult" targetRef="Task_Absence" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_1">
+    <bpmndi:BPMNPlane id="Plane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="PMain_di" bpmnElement="Participant_Main" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1160" height="540" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L1_di" bpmnElement="Lane_1C" isHorizontal="true">
+        <dc:Bounds x="220" y="80" width="1130" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L2_di" bpmnElement="Lane_HR" isHorizontal="true">
+        <dc:Bounds x="220" y="310" width="1130" height="310" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Timer_di" bpmnElement="Timer_MonthEnd">
+        <dc:Bounds x="642" y="400" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="632" y="436" width="56" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Abs_di" bpmnElement="Task_Absence">
+        <dc:Bounds x="620" y="100" width="240" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Auto_di" bpmnElement="Task_Auto">
+        <dc:Bounds x="340" y="100" width="210" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_di" bpmnElement="Start_1">
+        <dc:Bounds x="250" y="120" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="241" y="158" width="57" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DR_AbsenceResult_di" bpmnElement="DR_AbsenceResult">
+        <dc:Bounds x="822" y="210" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="759" y="260" width="142" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1wpble6" bpmnElement="Event_122kvd5">
+        <dc:Bounds x="692" y="232" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="673" y="268" width="75" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gate_di" bpmnElement="Gateway_Deviation" isMarkerVisible="true">
+        <dc:Bounds x="965" y="393" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="946" y="343" width="87" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Send_di" bpmnElement="Task_Send">
+        <dc:Bounds x="875" y="540" width="230" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Final_di" bpmnElement="Task_Final">
+        <dc:Bounds x="1055" y="381" width="210" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Timesheet_di" bpmnElement="DR_Timesheet">
+        <dc:Bounds x="1172" y="465" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1092" y="519" width="197" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_di" bpmnElement="End_1">
+        <dc:Bounds x="1282" y="400" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1257" y="436" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Update_di" bpmnElement="Task_Update">
+        <dc:Bounds x="980" y="122" width="220" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="LateCorrection_di" bpmnElement="Start_LateCorrection">
+        <dc:Bounds x="1022" y="228" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="987" y="269" width="107" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Control_di" bpmnElement="Task_Control">
+        <dc:Bounds x="715" y="381" width="210" height="75" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F3_di" bpmnElement="F3">
+        <di:waypoint x="660" y="175" />
+        <di:waypoint x="660" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F4_di" bpmnElement="F4">
+        <di:waypoint x="678" y="418" />
+        <di:waypoint x="715" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F9_di" bpmnElement="F9">
+        <di:waypoint x="980" y="160" />
+        <di:waypoint x="900" y="160" />
+        <di:waypoint x="900" y="381" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5_di" bpmnElement="F5">
+        <di:waypoint x="925" y="418" />
+        <di:waypoint x="965" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F6_di" bpmnElement="F6">
+        <di:waypoint x="1015" y="418" />
+        <di:waypoint x="1055" y="418" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1023" y="426" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F7_di" bpmnElement="F7">
+        <di:waypoint x="990" y="443" />
+        <di:waypoint x="990" y="540" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1005" y="480" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F8_di" bpmnElement="F8">
+        <di:waypoint x="1105" y="570" />
+        <di:waypoint x="1340" y="570" />
+        <di:waypoint x="1340" y="160" />
+        <di:waypoint x="1200" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
+        <di:waypoint x="1265" y="418" />
+        <di:waypoint x="1282" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_di" bpmnElement="F2">
+        <di:waypoint x="550" y="137.5" />
+        <di:waypoint x="590" y="137.5" />
+        <di:waypoint x="590" y="418" />
+        <di:waypoint x="642" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jgazor_di" bpmnElement="Flow_1jgazor">
+        <di:waypoint x="710" y="232" />
+        <di:waypoint x="710" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F1_di" bpmnElement="F1">
+        <di:waypoint x="286" y="137.5" />
+        <di:waypoint x="340" y="137.5" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
+        <di:waypoint x="1040" y="228" />
+        <di:waypoint x="1040" y="197" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A_AbsenceInput_di" bpmnElement="A_AbsenceInput">
+        <di:waypoint x="829" y="210" />
+        <di:waypoint x="839" y="175" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0mi9jqs_di" bpmnElement="DataOutputAssociation_0mi9jqs">
+        <di:waypoint x="1179" y="456" />
+        <di:waypoint x="1183" y="465" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

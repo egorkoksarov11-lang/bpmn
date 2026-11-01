@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Defs" targetNamespace="http://example.com/hr" exporter="Camunda Modeler" exporterVersion="5.50.1">
+  <bpmn:dataStore id="DS_ZUP" name="1С:ЗУП" />
+  <bpmn:process id="Process" name="Изменение условий труда и кадровое перемещение сотрудника" isExecutable="false">
+    <bpmn:laneSet id="LS">
+      <bpmn:lane id="L5" name="ИТ-специалист">
+        <bpmn:flowNodeRef>it</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L4" name="Кадровик">
+        <bpmn:flowNodeRef>docs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>zup</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>end</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L3" name="Уполномоченное лицо">
+        <bpmn:flowNodeRef>auth</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>sign</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L2" name="Директор по персоналу">
+        <bpmn:flowNodeRef>hr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>org</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>check</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g5</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L1" name="Непосредственный руководитель">
+        <bpmn:flowNodeRef>start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>mgr</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>app</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>g4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>access</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>stop</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L0" name="Сотрудник">
+        <bpmn:flowNodeRef>emp</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>signemp</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="start" name="Необходимость изменения условий" />
+    <bpmn:exclusiveGateway id="g0" name="Инициатор сотрудник?" />
+    <bpmn:userTask id="emp" name="Сформировать письменное обращение" />
+    <bpmn:userTask id="mgr" name="Рассмотреть обращение" />
+    <bpmn:exclusiveGateway id="g1" name="Изменение поддержано?" />
+    <bpmn:userTask id="app" name="Сформировать заявку на изменение условий" />
+    <bpmn:userTask id="hr" name="Проверить возможность изменения" />
+    <bpmn:exclusiveGateway id="g2" name="Требуется предварительное организационное изменение?" />
+    <bpmn:userTask id="org" name="Оформить необходимое организационное изменение" />
+    <bpmn:userTask id="auth" name="Рассмотреть и принять решение" />
+    <bpmn:exclusiveGateway id="g3" name="Согласовано?" />
+    <bpmn:userTask id="docs" name="Подготовить допсоглашение, Т-5 и при необходимости должностную инструкцию" />
+    <bpmn:userTask id="check" name="Проверить кадровые документы" />
+    <bpmn:userTask id="sign" name="Подписать документы" />
+    <bpmn:userTask id="signemp" name="Подписать допсоглашение и ознакомиться с документами">
+      <bpmn:property id="Property_0wzybde" name="__targetRef_placeholder" />
+      <bpmn:dataInputAssociation id="DataInputAssociation_022y51z">
+        <bpmn:sourceRef>R04_signemp</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0wzybde</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_1d84vha">
+        <bpmn:sourceRef>R05_signemp</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0wzybde</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:userTask>
+    <bpmn:userTask id="zup" name="Внести изменения в 1С:ЗУП" />
+    <bpmn:exclusiveGateway id="g4" name="Нужно изменить права доступа?" />
+    <bpmn:userTask id="access" name="Сформировать заявку на изменение прав доступа" />
+    <bpmn:userTask id="it" name="Изменить и проверить права доступа" />
+    <bpmn:endEvent id="end" name="Изменение оформлено" />
+    <bpmn:endEvent id="stop" name="Условия не изменены" />
+    <bpmn:exclusiveGateway id="g5" name="Есть замечания к документам?" />
+    <bpmn:dataObject id="D01" name="Письменное обращение сотрудника" />
+    <bpmn:dataObject id="D02" name="Заявка на изменение условий работы" />
+    <bpmn:dataObject id="D03" name="Дополнительное соглашение" />
+    <bpmn:dataObject id="D04" name="Приказ по форме Т-5" />
+    <bpmn:dataObject id="D05" name="Должностная инструкция (при необходимости)" />
+    <bpmn:dataObject id="D06" name="Заявка на изменение прав доступа" />
+    <bpmn:dataObjectReference id="R01_emp" name="Письменное обращение" dataObjectRef="D01" />
+    <bpmn:dataObjectReference id="R01_mgr" name="Письменное обращение" dataObjectRef="D01" />
+    <bpmn:dataObjectReference id="R02_app" name="Заявка на изменение условий" dataObjectRef="D02" />
+    <bpmn:dataObjectReference id="R02_hr" name="Заявка на изменение условий" dataObjectRef="D02" />
+    <bpmn:dataObjectReference id="R02_auth" name="Согласованная заявка" dataObjectRef="D02" />
+    <bpmn:dataObjectReference id="R02_check" name="Согласованная заявка" dataObjectRef="D02" />
+    <bpmn:dataObjectReference id="R03_docs" name="Дополнительное соглашение" dataObjectRef="D03" />
+    <bpmn:dataObjectReference id="R03_check" name="Дополнительное соглашение" dataObjectRef="D03" />
+    <bpmn:dataObjectReference id="R03_sign" name="Дополнительное соглашение" dataObjectRef="D03" />
+    <bpmn:dataObjectReference id="R03_signemp" name="Дополнительное соглашение" dataObjectRef="D03" />
+    <bpmn:dataObjectReference id="R04_docs" name="Приказ Т-5" dataObjectRef="D04" />
+    <bpmn:dataObjectReference id="R04_check" name="Приказ Т-5" dataObjectRef="D04" />
+    <bpmn:dataObjectReference id="R04_sign" name="Приказ Т-5" dataObjectRef="D04" />
+    <bpmn:dataObjectReference id="R04_signemp" name="Приказ Т-5" dataObjectRef="D04" />
+    <bpmn:dataObjectReference id="R05_docs" name="Должностная инструкция" dataObjectRef="D05" />
+    <bpmn:dataObjectReference id="R05_check" name="Должностная инструкция" dataObjectRef="D05" />
+    <bpmn:dataObjectReference id="R05_signemp" name="Должностная инструкция" dataObjectRef="D05" />
+    <bpmn:dataObjectReference id="R06_access" name="Заявка на изменение прав доступа" dataObjectRef="D06" />
+    <bpmn:dataObjectReference id="R06_it" name="Заявка на изменение прав доступа" dataObjectRef="D06" />
+    <bpmn:dataStoreReference id="DSR_ZUP" name="1С:ЗУП" dataStoreRef="DS_ZUP" />
+    <bpmn:sequenceFlow id="F0" sourceRef="start" targetRef="g0" />
+    <bpmn:sequenceFlow id="F1" name="Да" sourceRef="g0" targetRef="emp" />
+    <bpmn:sequenceFlow id="F2" sourceRef="emp" targetRef="mgr" />
+    <bpmn:sequenceFlow id="F3" sourceRef="mgr" targetRef="g1" />
+    <bpmn:sequenceFlow id="F4" name="Да" sourceRef="g1" targetRef="app" />
+    <bpmn:sequenceFlow id="F5" name="Нет" sourceRef="g1" targetRef="stop" />
+    <bpmn:sequenceFlow id="F6" name="Нет" sourceRef="g0" targetRef="app" />
+    <bpmn:sequenceFlow id="F7" sourceRef="app" targetRef="hr" />
+    <bpmn:sequenceFlow id="F8" sourceRef="hr" targetRef="g2" />
+    <bpmn:sequenceFlow id="F9" name="Да" sourceRef="g2" targetRef="org" />
+    <bpmn:sequenceFlow id="F10" sourceRef="org" targetRef="auth" />
+    <bpmn:sequenceFlow id="F11" name="Нет" sourceRef="g2" targetRef="auth" />
+    <bpmn:sequenceFlow id="F12" sourceRef="auth" targetRef="g3" />
+    <bpmn:sequenceFlow id="F13" name="Нет" sourceRef="g3" targetRef="stop" />
+    <bpmn:sequenceFlow id="F14" name="Да" sourceRef="g3" targetRef="docs" />
+    <bpmn:sequenceFlow id="F15" sourceRef="docs" targetRef="check" />
+    <bpmn:sequenceFlow id="F16" sourceRef="check" targetRef="g5" />
+    <bpmn:sequenceFlow id="F17" sourceRef="sign" targetRef="signemp" />
+    <bpmn:sequenceFlow id="F18" sourceRef="signemp" targetRef="zup" />
+    <bpmn:sequenceFlow id="F19" sourceRef="zup" targetRef="g4" />
+    <bpmn:sequenceFlow id="F20" name="Да" sourceRef="g4" targetRef="access" />
+    <bpmn:sequenceFlow id="F21" sourceRef="access" targetRef="it" />
+    <bpmn:sequenceFlow id="F22" sourceRef="it" targetRef="end" />
+    <bpmn:sequenceFlow id="F23" name="Нет" sourceRef="g4" targetRef="end" />
+    <bpmn:sequenceFlow id="F24" name="Да" sourceRef="g5" targetRef="docs" />
+    <bpmn:sequenceFlow id="F25" name="Нет" sourceRef="g5" targetRef="sign" />
+    <bpmn:association id="A01" associationDirection="One" sourceRef="emp" targetRef="R01_emp" />
+    <bpmn:association id="A02" associationDirection="One" sourceRef="R01_mgr" targetRef="mgr" />
+    <bpmn:association id="A03" associationDirection="One" sourceRef="app" targetRef="R02_app" />
+    <bpmn:association id="A04" associationDirection="One" sourceRef="R02_hr" targetRef="hr" />
+    <bpmn:association id="A05" associationDirection="One" sourceRef="R02_auth" targetRef="auth" />
+    <bpmn:association id="A06" associationDirection="One" sourceRef="R02_check" targetRef="check" />
+    <bpmn:association id="A07" associationDirection="One" sourceRef="docs" targetRef="R03_docs" />
+    <bpmn:association id="A08" associationDirection="One" sourceRef="R03_check" targetRef="check" />
+    <bpmn:association id="A09" associationDirection="One" sourceRef="R03_sign" targetRef="sign" />
+    <bpmn:association id="A10" associationDirection="One" sourceRef="R03_signemp" targetRef="signemp" />
+    <bpmn:association id="A11" associationDirection="One" sourceRef="docs" targetRef="R04_docs" />
+    <bpmn:association id="A12" associationDirection="One" sourceRef="R04_check" targetRef="check" />
+    <bpmn:association id="A13" associationDirection="One" sourceRef="R04_sign" targetRef="sign" />
+    <bpmn:association id="A15" associationDirection="One" sourceRef="docs" targetRef="R05_docs" />
+    <bpmn:association id="A16" associationDirection="One" sourceRef="R05_check" targetRef="check" />
+    <bpmn:association id="A18" associationDirection="One" sourceRef="access" targetRef="R06_access" />
+    <bpmn:association id="A19" associationDirection="One" sourceRef="R06_it" targetRef="it" />
+    <bpmn:association id="A20" associationDirection="One" sourceRef="zup" targetRef="DSR_ZUP" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="D">
+    <bpmndi:BPMNPlane id="P" bpmnElement="Process">
+      <bpmndi:BPMNShape id="L0di" bpmnElement="L0" isHorizontal="true">
+        <dc:Bounds x="160" y="100" width="2700" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L1di" bpmnElement="L1" isHorizontal="true">
+        <dc:Bounds x="160" y="280" width="2700" height="300" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L2di" bpmnElement="L2" isHorizontal="true">
+        <dc:Bounds x="160" y="580" width="2700" height="300" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L3di" bpmnElement="L3" isHorizontal="true">
+        <dc:Bounds x="160" y="880" width="2700" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L4di" bpmnElement="L4" isHorizontal="true">
+        <dc:Bounds x="160" y="1160" width="2700" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L5di" bpmnElement="L5" isHorizontal="true">
+        <dc:Bounds x="160" y="1390" width="2700" height="140" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="startdi" bpmnElement="start">
+        <dc:Bounds x="220" y="400" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="198" y="436" width="80" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g0di" bpmnElement="g0" isMarkerVisible="true">
+        <dc:Bounds x="320" y="393" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="380" y="404" width="58" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="empdi" bpmnElement="emp">
+        <dc:Bounds x="430" y="180" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="mgrdi" bpmnElement="mgr">
+        <dc:Bounds x="600" y="380" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g1di" bpmnElement="g1" isMarkerVisible="true">
+        <dc:Bounds x="790" y="393" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="781" y="443" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="appdi" bpmnElement="app">
+        <dc:Bounds x="910" y="380" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="hrdi" bpmnElement="hr">
+        <dc:Bounds x="910" y="680" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g2di" bpmnElement="g2" isMarkerVisible="true">
+        <dc:Bounds x="1110" y="693" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1090" y="632.5" width="110" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="orgdi" bpmnElement="org">
+        <dc:Bounds x="1230" y="680" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="authdi" bpmnElement="auth">
+        <dc:Bounds x="1230" y="980" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g3di" bpmnElement="g3" isMarkerVisible="true">
+        <dc:Bounds x="1430" y="993" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1489.5" y="1011" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="docsdi" bpmnElement="docs">
+        <dc:Bounds x="1430" y="1189" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="checkdi" bpmnElement="check">
+        <dc:Bounds x="1630" y="680" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="signdi" bpmnElement="sign">
+        <dc:Bounds x="1820" y="980" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="signempdi" bpmnElement="signemp">
+        <dc:Bounds x="2030" y="156" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="zupdi" bpmnElement="zup">
+        <dc:Bounds x="2030" y="1189" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g4di" bpmnElement="g4" isMarkerVisible="true">
+        <dc:Bounds x="2240" y="393" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2223" y="359" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="accessdi" bpmnElement="access">
+        <dc:Bounds x="2360" y="380" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="enddi" bpmnElement="end">
+        <dc:Bounds x="2580" y="1300" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2568" y="1346" width="60" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="stopdi" bpmnElement="stop">
+        <dc:Bounds x="2730" y="400" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2700" y="436" width="90" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="g5di" bpmnElement="g5" isMarkerVisible="true">
+        <dc:Bounds x="1820" y="800" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1864" y="836" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R01_empdi" bpmnElement="R01_emp">
+        <dc:Bounds x="642" y="193" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="628" y="243" width="64" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R01_mgrdi" bpmnElement="R01_mgr">
+        <dc:Bounds x="667" y="480" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="653" y="530" width="64" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R02_appdi" bpmnElement="R02_app">
+        <dc:Bounds x="1030" y="480" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1020" y="530" width="56" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R02_hrdi" bpmnElement="R02_hr">
+        <dc:Bounds x="950" y="780" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="940" y="830" width="56" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R02_authdi" bpmnElement="R02_auth">
+        <dc:Bounds x="1297" y="1080" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1276" y="1130" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R02_checkdi" bpmnElement="R02_check">
+        <dc:Bounds x="1865" y="680" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1844" y="732" width="79" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R03_docsdi" bpmnElement="R03_docs">
+        <dc:Bounds x="1420" y="1299" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1395" y="1349" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R03_checkdi" bpmnElement="R03_check">
+        <dc:Bounds x="1620" y="780" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1595" y="833" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R03_signdi" bpmnElement="R03_sign">
+        <dc:Bounds x="1820" y="1080" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1795" y="1130" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R04_docsdi" bpmnElement="R04_docs">
+        <dc:Bounds x="1470" y="1299" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1460" y="1349" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R04_checkdi" bpmnElement="R04_check">
+        <dc:Bounds x="1700" y="780" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1690" y="835" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R04_signdi" bpmnElement="R04_sign">
+        <dc:Bounds x="1900" y="1080" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1890" y="1130" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R05_docsdi" bpmnElement="R05_docs">
+        <dc:Bounds x="1560" y="1299" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1544" y="1349" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R05_checkdi" bpmnElement="R05_check">
+        <dc:Bounds x="1771" y="780" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1755" y="830" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R06_accessdi" bpmnElement="R06_access">
+        <dc:Bounds x="2550" y="380" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2527" y="430" width="83" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DSR_ZUPdi" bpmnElement="DSR_ZUP">
+        <dc:Bounds x="2150" y="1299" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2156" y="1349" width="39" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="itdi" bpmnElement="it">
+        <dc:Bounds x="2360" y="1412" width="170" height="76" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R06_itdi" bpmnElement="R06_it">
+        <dc:Bounds x="2550" y="1412" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2527" y="1462" width="83" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R05_signempdi" bpmnElement="R05_signemp">
+        <dc:Bounds x="2272" y="169" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2256" y="219" width="69" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R03_signempdi" bpmnElement="R03_signemp">
+        <dc:Bounds x="2247" y="245" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2222" y="295" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R04_signempdi" bpmnElement="R04_signemp">
+        <dc:Bounds x="2172" y="255" width="36" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2162" y="305" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="A19di" bpmnElement="A19">
+        <di:waypoint x="2550" y="1437" />
+        <di:waypoint x="2540" y="1437" />
+        <di:waypoint x="2540" y="1430" />
+        <di:waypoint x="2530" y="1430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A10di" bpmnElement="A10">
+        <di:waypoint x="2251" y="245" />
+        <di:waypoint x="2200" y="209" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_022y51z_di" bpmnElement="DataInputAssociation_022y51z">
+        <di:waypoint x="2190" y="255" />
+        <di:waypoint x="2190" y="232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1d84vha_di" bpmnElement="DataInputAssociation_1d84vha">
+        <di:waypoint x="2272" y="194" />
+        <di:waypoint x="2200" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F0di" bpmnElement="F0">
+        <di:waypoint x="256" y="418" />
+        <di:waypoint x="320" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F1di" bpmnElement="F1">
+        <di:waypoint x="345" y="393" />
+        <di:waypoint x="345" y="218" />
+        <di:waypoint x="430" y="218" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="353" y="299" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2di" bpmnElement="F2">
+        <di:waypoint x="515" y="256" />
+        <di:waypoint x="515" y="418" />
+        <di:waypoint x="600" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F3di" bpmnElement="F3">
+        <di:waypoint x="770" y="418" />
+        <di:waypoint x="790" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F4di" bpmnElement="F4">
+        <di:waypoint x="840" y="418" />
+        <di:waypoint x="910" y="418" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="868" y="393" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5di" bpmnElement="F5">
+        <di:waypoint x="815" y="393" />
+        <di:waypoint x="815" y="120" />
+        <di:waypoint x="2748" y="120" />
+        <di:waypoint x="2748" y="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="820" y="362" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F6di" bpmnElement="F6">
+        <di:waypoint x="345" y="443" />
+        <di:waypoint x="345" y="570" />
+        <di:waypoint x="995" y="570" />
+        <di:waypoint x="995" y="456" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="350" y="463" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F7di" bpmnElement="F7">
+        <di:waypoint x="1010" y="456" />
+        <di:waypoint x="1010" y="680" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F8di" bpmnElement="F8">
+        <di:waypoint x="1080" y="718" />
+        <di:waypoint x="1110" y="718" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F9di" bpmnElement="F9">
+        <di:waypoint x="1160" y="718" />
+        <di:waypoint x="1230" y="718" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1188" y="693" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10di" bpmnElement="F10">
+        <di:waypoint x="1315" y="756" />
+        <di:waypoint x="1315" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11di" bpmnElement="F11">
+        <di:waypoint x="1135" y="743" />
+        <di:waypoint x="1135" y="1018" />
+        <di:waypoint x="1230" y="1018" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1141" y="763" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12di" bpmnElement="F12">
+        <di:waypoint x="1400" y="1018" />
+        <di:waypoint x="1430" y="1018" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13di" bpmnElement="F13">
+        <di:waypoint x="1455" y="993" />
+        <di:waypoint x="1455" y="140" />
+        <di:waypoint x="2710" y="140" />
+        <di:waypoint x="2710" y="418" />
+        <di:waypoint x="2730" y="418" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1460" y="956" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14di" bpmnElement="F14">
+        <di:waypoint x="1455" y="1043" />
+        <di:waypoint x="1455" y="1189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1463" y="1053" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F15di" bpmnElement="F15">
+        <di:waypoint x="1600" y="1227" />
+        <di:waypoint x="1690" y="1227" />
+        <di:waypoint x="1690" y="756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F16di" bpmnElement="F16">
+        <di:waypoint x="1800" y="718" />
+        <di:waypoint x="1845" y="718" />
+        <di:waypoint x="1845" y="800" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F17di" bpmnElement="F17">
+        <di:waypoint x="1990" y="1018" />
+        <di:waypoint x="2010" y="1018" />
+        <di:waypoint x="2010" y="194" />
+        <di:waypoint x="2030" y="194" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F18di" bpmnElement="F18">
+        <di:waypoint x="2115" y="232" />
+        <di:waypoint x="2115" y="1189" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F19di" bpmnElement="F19">
+        <di:waypoint x="2180" y="1189" />
+        <di:waypoint x="2180" y="418" />
+        <di:waypoint x="2240" y="418" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F20di" bpmnElement="F20">
+        <di:waypoint x="2290" y="418" />
+        <di:waypoint x="2360" y="418" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2318" y="393" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F21di" bpmnElement="F21">
+        <di:waypoint x="2445" y="456" />
+        <di:waypoint x="2445" y="1412" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F22di" bpmnElement="F22">
+        <di:waypoint x="2490" y="1412" />
+        <di:waypoint x="2490" y="1318" />
+        <di:waypoint x="2580" y="1318" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F23di" bpmnElement="F23">
+        <di:waypoint x="2265" y="443" />
+        <di:waypoint x="2265" y="1010" />
+        <di:waypoint x="2598" y="1010" />
+        <di:waypoint x="2598" y="1300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2270" y="448" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F24di" bpmnElement="F24">
+        <di:waypoint x="1870" y="825" />
+        <di:waypoint x="1930" y="825" />
+        <di:waypoint x="1930" y="650" />
+        <di:waypoint x="1570" y="650" />
+        <di:waypoint x="1570" y="1189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1878" y="798" width="53" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F25di" bpmnElement="F25">
+        <di:waypoint x="1845" y="850" />
+        <di:waypoint x="1845" y="980" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1835" y="955" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A01di" bpmnElement="A01">
+        <di:waypoint x="600" y="218" />
+        <di:waypoint x="642" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A02di" bpmnElement="A02">
+        <di:waypoint x="685" y="480" />
+        <di:waypoint x="685" y="456" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A03di" bpmnElement="A03">
+        <di:waypoint x="1048" y="456" />
+        <di:waypoint x="1048" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A04di" bpmnElement="A04">
+        <di:waypoint x="968" y="780" />
+        <di:waypoint x="960" y="756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A05di" bpmnElement="A05">
+        <di:waypoint x="1315" y="1080" />
+        <di:waypoint x="1315" y="1056" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A06di" bpmnElement="A06">
+        <di:waypoint x="1865" y="705" />
+        <di:waypoint x="1800" y="705" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A07di" bpmnElement="A07">
+        <di:waypoint x="1460" y="1265" />
+        <di:waypoint x="1460" y="1284" />
+        <di:waypoint x="1438" y="1284" />
+        <di:waypoint x="1438" y="1299" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A08di" bpmnElement="A08">
+        <di:waypoint x="1638" y="780" />
+        <di:waypoint x="1638" y="770" />
+        <di:waypoint x="1670" y="770" />
+        <di:waypoint x="1670" y="756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A09di" bpmnElement="A09">
+        <di:waypoint x="1838" y="1080" />
+        <di:waypoint x="1838" y="1070" />
+        <di:waypoint x="1855" y="1070" />
+        <di:waypoint x="1855" y="1056" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A11di" bpmnElement="A11">
+        <di:waypoint x="1515" y="1265" />
+        <di:waypoint x="1515" y="1284" />
+        <di:waypoint x="1488" y="1284" />
+        <di:waypoint x="1488" y="1299" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A12di" bpmnElement="A12">
+        <di:waypoint x="1718" y="780" />
+        <di:waypoint x="1718" y="756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A13di" bpmnElement="A13">
+        <di:waypoint x="1918" y="1080" />
+        <di:waypoint x="1918" y="1070" />
+        <di:waypoint x="1955" y="1070" />
+        <di:waypoint x="1955" y="1056" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A15di" bpmnElement="A15">
+        <di:waypoint x="1570" y="1265" />
+        <di:waypoint x="1570" y="1284" />
+        <di:waypoint x="1578" y="1284" />
+        <di:waypoint x="1578" y="1299" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A16di" bpmnElement="A16">
+        <di:waypoint x="1795" y="780" />
+        <di:waypoint x="1798" y="770" />
+        <di:waypoint x="1760" y="770" />
+        <di:waypoint x="1760" y="756" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A18di" bpmnElement="A18">
+        <di:waypoint x="2530" y="418" />
+        <di:waypoint x="2540" y="418" />
+        <di:waypoint x="2540" y="405" />
+        <di:waypoint x="2550" y="405" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A20di" bpmnElement="A20">
+        <di:waypoint x="2170" y="1265" />
+        <di:waypoint x="2170" y="1299" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
+  <bpmn:process id="Process_Military_Onboarding" name="Воинский учет при приеме сотрудника" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_HR" name="Кадровик">
+        <bpmn:flowNodeRef>Task_CheckApplicability</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CheckDocs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ReturnOriginals</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CompareData</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_NotifyEmployee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Form10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SendInfo</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_RecordResult</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ReportDiscrepancy</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_NotApplicable</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Done</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Discrepancy</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_NotRegistered</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Applicable</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_08eleo7" name="Сотрудник">
+        <bpmn:flowNodeRef>Task_PresentDocs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ClarifyData</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Прием сотрудника оформлен">
+      <bpmn:outgoing>F1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_CheckApplicability" name="Определить применимость воинского учета">
+      <bpmn:incoming>F1</bpmn:incoming>
+      <bpmn:outgoing>F2</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1du73eh">
+        <bpmn:targetRef>DataStoreReference_054rv06</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Applicable" name="Подлежит воинскому учету?">
+      <bpmn:incoming>F2</bpmn:incoming>
+      <bpmn:outgoing>F3Y</bpmn:outgoing>
+      <bpmn:outgoing>F3N</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_NotApplicable" name="Воинский учет не применяется">
+      <bpmn:incoming>F3N</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Task_PresentDocs" name="Предъявить паспорт и документ воинского учета">
+      <bpmn:incoming>F3Y</bpmn:incoming>
+      <bpmn:outgoing>F4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_CheckDocs" name="Проверить документы и военно-учетные отметки">
+      <bpmn:incoming>F4</bpmn:incoming>
+      <bpmn:outgoing>F5</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_ReturnOriginals" name="Вернуть оригиналы паспорта и документа воинского учета">
+      <bpmn:incoming>F5</bpmn:incoming>
+      <bpmn:outgoing>F5b</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_09x02zi">
+        <bpmn:targetRef>DataObjectReference_1xd5mmc</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_12sx7hs">
+        <bpmn:targetRef>DataObjectReference_0yvjvzd</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_CompareData" name="Сопоставить сведения с 1С:ЗУП">
+      <bpmn:incoming>F5b</bpmn:incoming>
+      <bpmn:outgoing>F6</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_13zjx05">
+        <bpmn:targetRef>DataStoreReference_1m4u9pz</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_ClarifyData" name="Сообщить отсутствующие / актуальные сведения">
+      <bpmn:incoming>F6</bpmn:incoming>
+      <bpmn:outgoing>F7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_Discrepancy" name="Есть обстоятельства для сообщения в военкомат?">
+      <bpmn:incoming>F7</bpmn:incoming>
+      <bpmn:outgoing>F8Y</bpmn:outgoing>
+      <bpmn:outgoing>F8N</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_ReportDiscrepancy" name="Зафиксировать расхождение и направить сообщение">
+      <bpmn:incoming>F8Y</bpmn:incoming>
+      <bpmn:outgoing>F9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_NotRegistered" name="Обязан состоять на учете, но не состоит?">
+      <bpmn:incoming>F8N</bpmn:incoming>
+      <bpmn:incoming>F9</bpmn:incoming>
+      <bpmn:outgoing>F10Y</bpmn:outgoing>
+      <bpmn:outgoing>F10N</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_NotifyEmployee" name="Проинформировать о постановке на учет и поставить на контроль">
+      <bpmn:incoming>F10Y</bpmn:incoming>
+      <bpmn:outgoing>F11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_Form10" name="Оформить карточку формы № 10">
+      <bpmn:incoming>F10N</bpmn:incoming>
+      <bpmn:incoming>F11</bpmn:incoming>
+      <bpmn:outgoing>F12</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0smsuax">
+        <bpmn:targetRef>DataStoreReference_06msvpy</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1vuse74">
+        <bpmn:targetRef>DR_Military_Form10</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_SendInfo" name="Сформировать и направить сведения о приеме">
+      <bpmn:incoming>F12</bpmn:incoming>
+      <bpmn:outgoing>F13</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_077tzps">
+        <bpmn:targetRef>DataStoreReference_0es3csc</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_RecordResult" name="Зафиксировать результат и сохранить подтверждение">
+      <bpmn:incoming>F13</bpmn:incoming>
+      <bpmn:outgoing>F14</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0r0m7zy">
+        <bpmn:targetRef>DataStoreReference_0lt40vj</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Done" name="Мероприятия выполнены; контрольные действия отслеживаются">
+      <bpmn:incoming>F14</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:dataObjectReference id="DataRef_Form10" name="Форма № 10" dataObjectRef="Data_Form10" />
+    <bpmn:dataObject id="Data_Info" name="Сведения о гражданине при принятии на работу" />
+    <bpmn:dataObjectReference id="DataRef_Info" name="Сведения о гражданине" dataObjectRef="Data_Info" />
+    <bpmn:dataObject id="Data_MilitaryDoc" name="Оригинал документа воинского учета" />
+    <bpmn:dataObjectReference id="DR_Military_Input" name="Документ воинского учета" dataObjectRef="Data_MilitaryDoc" />
+    <bpmn:dataObjectReference id="DR_Military_Form10" name="Документ воинского учета" dataObjectRef="Data_MilitaryDoc" />
+    <bpmn:sequenceFlow id="F1" sourceRef="StartEvent_1" targetRef="Task_CheckApplicability" />
+    <bpmn:sequenceFlow id="F2" sourceRef="Task_CheckApplicability" targetRef="Gateway_Applicable" />
+    <bpmn:sequenceFlow id="F3Y" name="Да" sourceRef="Gateway_Applicable" targetRef="Task_PresentDocs" />
+    <bpmn:sequenceFlow id="F3N" name="Нет" sourceRef="Gateway_Applicable" targetRef="End_NotApplicable" />
+    <bpmn:sequenceFlow id="F4" sourceRef="Task_PresentDocs" targetRef="Task_CheckDocs" />
+    <bpmn:sequenceFlow id="F5" sourceRef="Task_CheckDocs" targetRef="Task_ReturnOriginals" />
+    <bpmn:sequenceFlow id="F5b" sourceRef="Task_ReturnOriginals" targetRef="Task_CompareData" />
+    <bpmn:sequenceFlow id="F6" sourceRef="Task_CompareData" targetRef="Task_ClarifyData" />
+    <bpmn:sequenceFlow id="F7" sourceRef="Task_ClarifyData" targetRef="Gateway_Discrepancy" />
+    <bpmn:sequenceFlow id="F8Y" name="Да" sourceRef="Gateway_Discrepancy" targetRef="Task_ReportDiscrepancy" />
+    <bpmn:sequenceFlow id="F8N" name="Нет" sourceRef="Gateway_Discrepancy" targetRef="Gateway_NotRegistered" />
+    <bpmn:sequenceFlow id="F9" sourceRef="Task_ReportDiscrepancy" targetRef="Gateway_NotRegistered" />
+    <bpmn:sequenceFlow id="F10Y" name="Да" sourceRef="Gateway_NotRegistered" targetRef="Task_NotifyEmployee" />
+    <bpmn:sequenceFlow id="F10N" name="Нет" sourceRef="Gateway_NotRegistered" targetRef="Task_Form10" />
+    <bpmn:sequenceFlow id="F11" sourceRef="Task_NotifyEmployee" targetRef="Task_Form10" />
+    <bpmn:sequenceFlow id="F12" sourceRef="Task_Form10" targetRef="Task_SendInfo" />
+    <bpmn:sequenceFlow id="F13" sourceRef="Task_SendInfo" targetRef="Task_RecordResult" />
+    <bpmn:sequenceFlow id="F14" sourceRef="Task_RecordResult" targetRef="End_Done" />
+    <bpmn:dataStoreReference id="DataStoreReference_0es3csc" name="1С:ЗУП / Электронная база карточек" />
+    <bpmn:dataStoreReference id="DataStoreReference_0lt40vj" name="1С:ЗУП / Электронная база карточек" />
+    <bpmn:dataStoreReference id="DataStoreReference_054rv06" name="1С:ЗУП / Электронная база карточек" />
+    <bpmn:dataStoreReference id="DataStoreReference_06msvpy" name="1С:ЗУП / Электронная база карточек / Картотека воинского учета" />
+    <bpmn:dataStoreReference id="DataStoreReference_1m4u9pz" name="1С:ЗУП / Электронная база карточек" />
+    <bpmn:dataObjectReference id="DataObjectReference_0yvjvzd" name="Документ воинского учета" dataObjectRef="DataObject_16todiu" />
+    <bpmn:dataObject id="DataObject_16todiu" />
+    <bpmn:dataObjectReference id="DataObjectReference_1xd5mmc" name="Паспорт" dataObjectRef="DataObject_0yas7hp" />
+    <bpmn:dataObject id="DataObject_0yas7hp" />
+    <bpmn:dataObject id="Data_Form10" name="Карточка формы № 10" />
+    <bpmn:association id="Assoc_Form10" associationDirection="One" sourceRef="Task_Form10" targetRef="DataRef_Form10" />
+    <bpmn:association id="Assoc_Info" associationDirection="One" sourceRef="Task_SendInfo" targetRef="DataRef_Info" />
+    <bpmn:association id="Assoc_Military_Check" associationDirection="One" sourceRef="Task_CheckDocs" targetRef="DR_Military_Input" />
+  </bpmn:process>
+  <bpmn:dataStore id="DataStore_Systems" name="1С:ЗУП / Электронная база карточек" />
+  <bpmn:dataStore id="DataStore_Form10Paper" name="Картотека воинского учета" />
+  <bpmndi:BPMNDiagram id="Diagram_1">
+    <bpmndi:BPMNPlane id="Plane_1" bpmnElement="Process_Military_Onboarding">
+      <bpmndi:BPMNShape id="Lane_08eleo7_di" bpmnElement="Lane_08eleo7" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1420" height="120" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_HR_di" bpmnElement="Lane_HR" isHorizontal="true">
+        <dc:Bounds x="160" y="200" width="1420" height="480" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="190" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="182" y="308" width="67" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckApplicability_di" bpmnElement="Task_CheckApplicability">
+        <dc:Bounds x="250" y="250" width="180" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Applicable_di" bpmnElement="Gateway_Applicable" isMarkerVisible="true">
+        <dc:Bounds x="465" y="265" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="519" y="270" width="54" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_NotApplicable_di" bpmnElement="End_NotApplicable">
+        <dc:Bounds x="472" y="390" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="449" y="426" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PresentDocs_di" bpmnElement="Task_PresentDocs">
+        <dc:Bounds x="241" y="100" width="190" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CheckDocs_di" bpmnElement="Task_CheckDocs">
+        <dc:Bounds x="580" y="250" width="190" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReturnOriginals_di" bpmnElement="Task_ReturnOriginals">
+        <dc:Bounds x="800" y="250" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CompareData_di" bpmnElement="Task_CompareData">
+        <dc:Bounds x="1030" y="250" width="180" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ClarifyData_di" bpmnElement="Task_ClarifyData">
+        <dc:Bounds x="1265" y="100" width="190" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Discrepancy_di" bpmnElement="Gateway_Discrepancy" isMarkerVisible="true">
+        <dc:Bounds x="1500" y="265" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1401.5" y="242.5" width="89" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReportDiscrepancy_di" bpmnElement="Task_ReportDiscrepancy">
+        <dc:Bounds x="1280" y="435" width="220" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_NotRegistered_di" bpmnElement="Gateway_NotRegistered" isMarkerVisible="true">
+        <dc:Bounds x="1130" y="450" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1190" y="420" width="86" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_NotifyEmployee_di" bpmnElement="Task_NotifyEmployee">
+        <dc:Bounds x="880" y="450" width="220" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Form10_di" bpmnElement="Task_Form10">
+        <dc:Bounds x="650" y="450" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SendInfo_di" bpmnElement="Task_SendInfo">
+        <dc:Bounds x="420" y="450" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_RecordResult_di" bpmnElement="Task_RecordResult">
+        <dc:Bounds x="190" y="450" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Done_di" bpmnElement="End_Done">
+        <dc:Bounds x="318" y="567" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="273" y="605" width="123" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Form10_di" bpmnElement="DataRef_Form10">
+        <dc:Bounds x="685" y="540" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="678" y="600" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataRef_Info_di" bpmnElement="DataRef_Info">
+        <dc:Bounds x="485" y="555" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="480" y="615" width="61" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DR_Military_Input_di" bpmnElement="DR_Military_Input">
+        <dc:Bounds x="725" y="345" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="709" y="405" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DR_Military_Form10_di" bpmnElement="DR_Military_Form10">
+        <dc:Bounds x="755" y="540" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="739" y="600" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataStoreReference_0es3csc_di" bpmnElement="DataStoreReference_0es3csc">
+        <dc:Bounds x="555" y="545" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="545" y="602" width="71" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1jsw6rs" bpmnElement="DataStoreReference_0lt40vj">
+        <dc:Bounds x="202" y="545" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="192" y="602" width="71" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0vifq23" bpmnElement="DataStoreReference_054rv06">
+        <dc:Bounds x="270" y="345" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="260" y="402" width="71" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1osjp7o" bpmnElement="DataStoreReference_06msvpy">
+        <dc:Bounds x="825" y="545" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="789" y="630" width="141" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1wd5fmx" bpmnElement="DataStoreReference_1m4u9pz">
+        <dc:Bounds x="1130" y="345" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1054" y="350" width="71" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1et1ikv" bpmnElement="DataObjectReference_0yvjvzd">
+        <dc:Bounds x="876" y="340" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="860" y="400" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0k25dq8" bpmnElement="DataObjectReference_1xd5mmc">
+        <dc:Bounds x="800" y="340" width="50" height="60" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="804" y="400" width="43" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1du73eh_di" bpmnElement="DataOutputAssociation_1du73eh">
+        <di:waypoint x="319" y="330" />
+        <di:waypoint x="311" y="345" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_09x02zi_di" bpmnElement="DataOutputAssociation_09x02zi">
+        <di:waypoint x="854" y="330" />
+        <di:waypoint x="843" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_12sx7hs_di" bpmnElement="DataOutputAssociation_12sx7hs">
+        <di:waypoint x="903" y="330" />
+        <di:waypoint x="904" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_13zjx05_di" bpmnElement="DataOutputAssociation_13zjx05">
+        <di:waypoint x="1136" y="330" />
+        <di:waypoint x="1142" y="345" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0smsuax_di" bpmnElement="DataOutputAssociation_0smsuax">
+        <di:waypoint x="806" y="530" />
+        <di:waypoint x="827" y="545" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1vuse74_di" bpmnElement="DataOutputAssociation_1vuse74">
+        <di:waypoint x="767" y="530" />
+        <di:waypoint x="771" y="540" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_077tzps_di" bpmnElement="DataOutputAssociation_077tzps">
+        <di:waypoint x="549" y="530" />
+        <di:waypoint x="560" y="545" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0r0m7zy_di" bpmnElement="DataOutputAssociation_0r0m7zy">
+        <di:waypoint x="259" y="530" />
+        <di:waypoint x="247" y="545" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F1_di" bpmnElement="F1">
+        <di:waypoint x="226" y="290" />
+        <di:waypoint x="250" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_di" bpmnElement="F2">
+        <di:waypoint x="430" y="290" />
+        <di:waypoint x="465" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F3Y_di" bpmnElement="F3Y">
+        <di:waypoint x="490" y="265" />
+        <di:waypoint x="490" y="140" />
+        <di:waypoint x="431" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="491" y="228" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F3N_di" bpmnElement="F3N">
+        <di:waypoint x="490" y="315" />
+        <di:waypoint x="490" y="390" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="498" y="345" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F4_di" bpmnElement="F4">
+        <di:waypoint x="431" y="120" />
+        <di:waypoint x="675" y="120" />
+        <di:waypoint x="675" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5_di" bpmnElement="F5">
+        <di:waypoint x="770" y="290" />
+        <di:waypoint x="800" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5b_di" bpmnElement="F5b">
+        <di:waypoint x="1000" y="290" />
+        <di:waypoint x="1030" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F6_di" bpmnElement="F6">
+        <di:waypoint x="1120" y="250" />
+        <di:waypoint x="1120" y="140" />
+        <di:waypoint x="1265" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F7_di" bpmnElement="F7">
+        <di:waypoint x="1455" y="140" />
+        <di:waypoint x="1525" y="140" />
+        <di:waypoint x="1525" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F8Y_di" bpmnElement="F8Y">
+        <di:waypoint x="1500" y="290" />
+        <di:waypoint x="1460" y="290" />
+        <di:waypoint x="1460" y="435" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1466" y="366" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F8N_di" bpmnElement="F8N">
+        <di:waypoint x="1525" y="315" />
+        <di:waypoint x="1525" y="540" />
+        <di:waypoint x="1170" y="540" />
+        <di:waypoint x="1170" y="485" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1540" y="321" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F9_di" bpmnElement="F9">
+        <di:waypoint x="1280" y="475" />
+        <di:waypoint x="1180" y="475" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10Y_di" bpmnElement="F10Y">
+        <di:waypoint x="1130" y="475" />
+        <di:waypoint x="1100" y="475" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1106" y="455" width="14" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10N_di" bpmnElement="F10N">
+        <di:waypoint x="1140" y="465" />
+        <di:waypoint x="1140" y="430" />
+        <di:waypoint x="750" y="430" />
+        <di:waypoint x="750" y="450" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="945" y="410" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
+        <di:waypoint x="880" y="490" />
+        <di:waypoint x="850" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
+        <di:waypoint x="650" y="490" />
+        <di:waypoint x="620" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
+        <di:waypoint x="420" y="490" />
+        <di:waypoint x="390" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
+        <di:waypoint x="336" y="530" />
+        <di:waypoint x="336" y="567" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Form10_di" bpmnElement="Assoc_Form10">
+        <di:waypoint x="700" y="530" />
+        <di:waypoint x="703" y="540" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Info_di" bpmnElement="Assoc_Info">
+        <di:waypoint x="510" y="530" />
+        <di:waypoint x="510" y="555" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Military_Check_di" bpmnElement="Assoc_Military_Check">
+        <di:waypoint x="731" y="330" />
+        <di:waypoint x="738" y="345" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

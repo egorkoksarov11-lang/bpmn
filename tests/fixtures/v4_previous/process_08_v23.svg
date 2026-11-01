@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0 0.0 6924.0 1485.0" width="6924.0" height="1485.0">
+<defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto-start-reverse"><path d="M0 0 L8 4.5 L0 9" fill="none" stroke="#364556" stroke-width="1.2"/></marker><marker id="assocArr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L7 4 L0 8" fill="none" stroke="#5995b9" stroke-width="1"/></marker></defs>
+<rect x="0" y="0" width="6924.0" height="1485.0" fill="#ffffff"/>
+<text x="84" y="30" font-size="20" font-family="Arial,sans-serif" font-weight="bold" fill="#233850">Организация операции через поставщика</text>
+<rect x="70" y="50.0" width="6804.0" height="210.0" fill="#eff6ff" stroke="#d3dfe8" stroke-width="2"/>
+<text x="94" y="155.0" transform="rotate(-90 94 155.0)" text-anchor="middle" font-size="16.31578947368421" font-family="Arial" fill="#43586d" font-weight="bold">Уполномоченное лицо</text>
+<rect x="70" y="260.0" width="6804.0" height="210.0" fill="#fff" stroke="#d3dfe8" stroke-width="2"/>
+<text x="94" y="365.0" transform="rotate(-90 94 365.0)" text-anchor="middle" font-size="10.333333333333334" font-family="Arial" fill="#43586d" font-weight="bold">Руководитель финансового блока</text>
+<rect x="70" y="470.0" width="6804.0" height="290.0" fill="#f0faf5" stroke="#d3dfe8" stroke-width="2"/>
+<text x="94" y="615.0" transform="rotate(-90 94 615.0)" text-anchor="middle" font-size="18" font-family="Arial" fill="#43586d" font-weight="bold">Клиентский менеджер</text>
+<rect x="70" y="760.0" width="6804.0" height="210.0" fill="#fff9f2" stroke="#d3dfe8" stroke-width="2"/>
+<text x="94" y="865.0" transform="rotate(-90 94 865.0)" text-anchor="middle" font-size="18" font-family="Arial" fill="#43586d" font-weight="bold">Инженер ПТО</text>
+<rect x="70" y="970.0" width="6804.0" height="210.0" fill="#eff6ff" stroke="#d3dfe8" stroke-width="2"/>
+<text x="94" y="1075.0" transform="rotate(-90 94 1075.0)" text-anchor="middle" font-size="18" font-family="Arial" fill="#43586d" font-weight="bold">Операционист</text>
+<rect x="70" y="1180.0" width="6804.0" height="210.0" fill="#fff" stroke="#d3dfe8" stroke-width="2"/>
+<text x="94" y="1285.0" transform="rotate(-90 94 1285.0)" text-anchor="middle" font-size="18" font-family="Arial" fill="#43586d" font-weight="bold">Главный бухгалтер</text>
+<polyline points="225.0,185.0 225.0,195.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="880.0,555.0 880.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="1335.0,625.0 1335.0,630.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="2160.0,525.0 2160.0,555.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="2620.0,611.0 2620.0,630.0 2668.0,630.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="2680.0,630.0 2680.0,625.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="2760.0,555.0 2760.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="2890.0,525.0 2800.0,525.0 2800.0,555.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="2840.0,815.0 2840.0,870.0 2960.0,870.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="4570.0,655.0 4570.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="4610.0,1105.0 4750.0,1105.0 4750.0,1110.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="5820.0,525.0 5820.0,555.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="6210.0,1225.0 6210.0,1245.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="4170.0,555.0 4170.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="4880.0,555.0 4880.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="6130.0,555.0 6130.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="4330.0,555.0 4330.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="4920.0,555.0 5030.0,555.0 5030.0,525.0" stroke="#6aa1c3" stroke-width="2" stroke-dasharray="6,5" fill="none" marker-end="url(#assocArr)"/>
+<polyline points="106.0,153.0 140.0,153.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="310.0,150.0 350.0,150.0 350.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="540.0,590.0 565.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="615.0,590.0 700.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="590.0,615.0 590.0,655.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="515.0,185.0 515.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="900.0,590.0 930.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1130.0,590.0 1160.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1185.0,615.0 1228.0,615.0 1228.0,325.0 1635.0,325.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1210.0,590.0 1240.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1430.0,590.0 1455.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1505.0,590.0 1540.0,590.0 1540.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1480.0,565.0 1439.0,565.0 1439.0,625.0 800.0,625.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1730.0,360.0 1755.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1780.0,335.0 1885.0,335.0 1885.0,185.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1785.0,385.0 1785.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1970.0,150.0 2005.0,150.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2055.0,150.0 2100.0,150.0 2100.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2030.0,175.0 2030.0,323.0 800.0,323.0 800.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2300.0,590.0 2325.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2350.0,615.0 2398.0,615.0 2398.0,555.0 2755.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2375.0,590.0 2410.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2620.0,590.0 2650.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2860.0,590.0 2885.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2935.0,590.0 2960.0,590.0 2960.0,860.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="2935.0,582.5 2935.0,555.0 3543.0,555.0 3543.0,550.0 3560.0,550.0 3560.0,579.5" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3170.0,860.0 3200.0,860.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3250.0,860.0 3560.0,860.0 3560.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3225.0,835.0 3225.0,725.0 3065.0,725.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3175.0,555.0 3175.0,395.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3250.0,360.0 3280.0,360.0 3280.0,150.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3450.0,150.0 3485.0,150.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3510.0,175.0 3510.0,475.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3495.0,175.0 3458.0,175.0 3458.0,107.0 795.0,107.0 795.0,555.0 900.0,555.0 900.0,569.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3750.0,590.0 3780.0,590.0 3780.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3970.0,360.0 4005.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4055.0,360.0 4140.0,360.0 4140.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4030.0,385.0 4030.0,655.0 4195.0,655.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4360.0,590.0 4450.0,590.0 4450.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4550.0,395.0 4550.0,655.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4710.0,1070.0 4740.0,1070.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4940.0,590.0 4970.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5020.0,590.0 5300.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4995.0,615.0 5138.0,615.0 5138.0,325.0 5245.0,325.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5245.0,395.0 5415.0,395.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5490.0,590.0 5520.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5625.0,395.0 5885.0,395.0 5885.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5990.0,590.0 5990.0,635.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6015.0,735.0 6015.0,1245.0 6175.0,1245.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6040.0,760.0 6070.0,760.0 6070.0,860.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6290.0,860.0 6320.0,860.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6370.0,860.0 6370.0,1075.0 6070.0,1075.0 6070.0,1280.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6345.0,885.0 6345.0,897.0 5875.0,897.0 5875.0,725.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5980.0,690.0 5980.0,895.0 6180.0,895.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6280.0,1280.0 6310.0,1280.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6335.0,1305.0 6532.0,1305.0 6532.0,555.0 6210.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6310.0,1265.0 6310.0,1320.0 5762.0,1320.0 5762.0,547.0 6102.0,547.0 6102.0,650.0 6270.0,650.0 6270.0,711.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6175.0,655.0 6068.0,655.0 6068.0,1315.0 6175.0,1315.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6310.0,590.0 6350.0,590.0 6350.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6540.0,360.0 6565.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6615.0,360.0 6640.0,360.0 6640.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6590.0,335.0 6688.0,335.0 6688.0,725.0 6405.0,725.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4610.0,725.0 4610.0,1035.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3170.0,690.0 3300.0,690.0 3300.0,635.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3300.0,615.0 3270.0,615.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3325.0,610.0 3362.0,610.0 3362.0,895.0 3065.0,895.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3530.0,510.0 3550.0,510.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4195.0,725.0 3548.0,725.0 3548.0,555.0 3655.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6027.5,660.0 6027.5,710.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6000.0,660.0 5982.0,660.0 5982.0,655.0 5755.0,655.0 5755.0,669.0 5750.0,669.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5750.0,690.0 5750.0,590.0 5780.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="665.0,655.0 665.0,185.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="1890.0,555.0 1635.0,555.0 1635.0,395.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3250.0,845.0 3358.0,845.0 3358.0,553.0 3555.0,553.0 3555.0,611.0 3560.0,611.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3200.0,845.0 3200.0,730.0 900.0,730.0 900.0,611.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3575.0,535.0 3575.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="3575.0,485.0 4128.0,485.0 4128.0,625.0 5395.0,625.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4765.0,1045.0 4765.0,625.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="4790.0,1070.0 5150.0,1070.0 5150.0,360.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5440.0,420.0 5502.0,420.0 5502.0,655.0 5260.0,655.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5390.0,420.0 3270.0,420.0 3270.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5415.0,445.0 5415.0,555.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5400.0,445.0 5390.0,445.0 5390.0,320.0 3285.0,320.0 3285.0,395.0 2008.0,395.0 2008.0,630.0 905.0,630.0 905.0,595.0 900.0,595.0 900.0,579.5" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5370.0,690.0 5370.0,1107.0 4510.0,1107.0 4510.0,1070.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5545.0,565.0 5545.0,395.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="5570.0,590.0 5570.0,473.0 3080.0,473.0 3080.0,590.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6330.0,885.0 6375.0,885.0 6375.0,1250.0 6280.0,1250.0 6280.0,1259.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6320.0,845.0 6320.0,725.0 6072.0,725.0 6072.0,650.0 6048.0,650.0 6048.0,711.0 5980.0,711.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6520.0,690.0 6540.0,690.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6550.0,665.0 6550.0,647.0 6043.0,647.0 6043.0,710.0 5985.0,710.0 5985.0,650.0 5507.0,650.0 5507.0,657.0 5490.0,657.0 5490.0,611.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6540.0,675.0 6540.0,630.0 6043.0,630.0 6043.0,611.0 5990.0,611.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6565.0,715.0 6565.0,825.0 6180.0,825.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6557.5,715.0 6570.0,715.0 6570.0,1255.0 6282.0,1255.0 6282.0,1269.5 6280.0,1269.5" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6540.0,682.5 6527.0,682.5 6527.0,645.0 6053.0,645.0 6053.0,660.0 6007.0,660.0 6007.0,662.0 5980.0,662.0 5980.0,652.0 5495.0,652.0 5495.0,660.0 5375.0,660.0 5375.0,652.0 4555.0,652.0 4555.0,655.0 4208.0,655.0 4208.0,652.0 4035.0,652.0 4035.0,657.0 3363.0,657.0 3363.0,606.0 3270.0,606.0 3270.0,611.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<polyline points="6565.0,665.0 6565.0,625.0 6210.0,625.0" stroke="#33495c" stroke-width="2.3" fill="none" marker-end="url(#arr)"/>
+<circle cx="88.0" cy="153.0" r="16.0" fill="white" stroke="#3e9870" stroke-width="3"/>
+<rect x="140.0" y="115.0" width="170.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="225.0" y="146.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.1 Оформить</text>
+<text x="225.0" y="162.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">поручение</text>
+<rect x="350.0" y="555.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="445.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.1 Проверить</text>
+<text x="445.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">достаточность</text>
+<text x="445.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">параметров</text>
+<polygon points="590.0,565.0 615.0,590.0 590.0,615.0 565.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="590.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="500.0" y="115.0" width="170.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="585.0" y="134.6" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">Предоставить</text>
+<text x="585.0" y="148.0" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">уточненные</text>
+<text x="585.0" y="161.4" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">параметры</text>
+<text x="585.0" y="174.9" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">поручения</text>
+<rect x="700.0" y="555.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="800.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.2 Подобрать и</text>
+<text x="800.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">проработать варианты</text>
+<text x="800.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">поставщиков</text>
+<rect x="930.0" y="555.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="1030.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.3 Проверить</text>
+<text x="1030.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">участников выбранного</text>
+<text x="1030.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">варианта</text>
+<polygon points="1185.0,565.0 1210.0,590.0 1185.0,615.0 1160.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="1185.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="1240.0" y="555.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<rect x="1245.0" y="560.0" width="180.0" height="60.0" rx="9" fill="none" stroke="#33556b" stroke-width="1"/>
+<text x="1335.0" y="586.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Проверка</text>
+<text x="1335.0" y="602.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">юридического лица</text>
+<polygon points="1480.0,565.0 1505.0,590.0 1480.0,615.0 1455.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="1480.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="1540.0" y="325.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="1635.0" y="348.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.4 Проверить</text>
+<text x="1635.0" y="364.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">полноту проработки</text>
+<text x="1635.0" y="380.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">варианта</text>
+<polygon points="1780.0,335.0 1805.0,360.0 1780.0,385.0 1755.0,360.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="1780.0" y="367.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="1800.0" y="115.0" width="170.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="1885.0" y="146.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.4 Согласовать</text>
+<text x="1885.0" y="162.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">выбранный вариант</text>
+<polygon points="2030.0,125.0 2055.0,150.0 2030.0,175.0 2005.0,150.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="2030.0" y="157.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="2100.0" y="555.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="2200.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.5 Определить</text>
+<text x="2200.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">применимое договорное</text>
+<text x="2200.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">основание</text>
+<polygon points="2350.0,565.0 2375.0,590.0 2350.0,615.0 2325.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="2350.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="2410.0" y="555.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<rect x="2415.0" y="560.0" width="200.0" height="60.0" rx="9" fill="none" stroke="#33556b" stroke-width="1"/>
+<text x="2515.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Подготовка,</text>
+<text x="2515.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">согласование и</text>
+<text x="2515.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">заключение договора</text>
+<rect x="2650.0" y="555.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="2755.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.6 Сформировать</text>
+<text x="2755.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">документы конкретной</text>
+<text x="2755.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">операции</text>
+<polygon points="2910.0,565.0 2935.0,590.0 2910.0,615.0 2885.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="2910.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="2960.0" y="825.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3065.0" y="848.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.7 Провести</text>
+<text x="3065.0" y="864.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">техническую проверку</text>
+<text x="3065.0" y="880.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">до оплаты</text>
+<polygon points="3225.0,835.0 3250.0,860.0 3225.0,885.0 3200.0,860.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="3225.0" y="867.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="3080.0" y="555.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3175.0" y="586.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.8 Актуализировать</text>
+<text x="3175.0" y="602.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">измененные условия</text>
+<rect x="3060.0" y="325.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3155.0" y="356.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.8 Проверить</text>
+<text x="3155.0" y="372.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">измененные условия</text>
+<rect x="3280.0" y="115.0" width="170.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3365.0" y="146.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.8 Согласовать</text>
+<text x="3365.0" y="162.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">измененные условия</text>
+<polygon points="3510.0,125.0 3535.0,150.0 3510.0,175.0 3485.0,150.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="3510.0" y="157.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="3560.0" y="555.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3655.0" y="586.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.9 Проверить</text>
+<text x="3655.0" y="602.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">готовность к оплате</text>
+<rect x="3780.0" y="325.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3875.0" y="356.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.9 Контролировать</text>
+<text x="3875.0" y="372.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">готовность к оплате</text>
+<polygon points="4030.0,335.0 4055.0,360.0 4030.0,385.0 4005.0,360.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="4030.0" y="367.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="4140.0" y="555.0" width="220.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="4250.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.10 Сформировать</text>
+<text x="4250.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">плановые данные</text>
+<text x="4250.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">операции</text>
+<rect x="4450.0" y="325.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="4550.0" y="348.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.10 Проверить</text>
+<text x="4550.0" y="364.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">плановые денежные</text>
+<text x="4550.0" y="380.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">данные</text>
+<rect x="4510.0" y="1035.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="4610.0" y="1074.0" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.11 Провести платеж</text>
+<rect x="4740.0" y="555.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="4840.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.11 Сверить</text>
+<text x="4840.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">фактический платеж с</text>
+<text x="4840.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">планом</text>
+<polygon points="4995.0,565.0 5020.0,590.0 4995.0,615.0 4970.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="4995.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="5150.0" y="325.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5245.0" y="356.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.11 Рассмотреть</text>
+<text x="5245.0" y="372.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">отклонение</text>
+<rect x="5300.0" y="555.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5395.0" y="578.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.12 Контролировать</text>
+<text x="5395.0" y="594.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">исполнение</text>
+<text x="5395.0" y="610.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">поставщиком</text>
+<rect x="5520.0" y="325.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5625.0" y="356.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.12 Контролировать</text>
+<text x="5625.0" y="372.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">незавершенные операции</text>
+<rect x="5780.0" y="555.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5885.0" y="574.6" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">5.13 Получить и</text>
+<text x="5885.0" y="588.0" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">проверить комплект</text>
+<text x="5885.0" y="601.4" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">документов по</text>
+<text x="5885.0" y="614.9" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">исполнению</text>
+<polygon points="6040.0,710.0 6065.0,735.0 6040.0,760.0 6015.0,735.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="6040.0" y="742.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="6070.0" y="825.0" width="220.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="6180.0" y="848.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.14 Подтвердить</text>
+<text x="6180.0" y="864.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">фактическое техническое</text>
+<text x="6180.0" y="880.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">исполнение</text>
+<polygon points="6345.0,835.0 6370.0,860.0 6345.0,885.0 6320.0,860.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="6345.0" y="867.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="5770.0" y="655.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5875.0" y="686.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Урегулировать</text>
+<text x="5875.0" y="702.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">расхождения</text>
+<rect x="6070.0" y="1245.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="6175.0" y="1268.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.15 Проверить</text>
+<text x="6175.0" y="1284.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">документы по</text>
+<text x="6175.0" y="1300.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">исполнению</text>
+<polygon points="6335.0,1255.0 6360.0,1280.0 6335.0,1305.0 6310.0,1280.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="6335.0" y="1287.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="6080.0" y="655.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="6175.0" y="674.6" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">Получить</text>
+<text x="6175.0" y="688.0" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">исправленные /</text>
+<text x="6175.0" y="701.4" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">недостающие</text>
+<text x="6175.0" y="714.9" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">документы</text>
+<rect x="6110.0" y="555.0" width="200.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="6210.0" y="586.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.16 Актуализировать</text>
+<text x="6210.0" y="602.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">итоговый статус</text>
+<rect x="6350.0" y="325.0" width="190.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="6445.0" y="356.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.16 Контролировать</text>
+<text x="6445.0" y="372.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">закрытие операции</text>
+<polygon points="6590.0,335.0 6615.0,360.0 6590.0,385.0 6565.0,360.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="6590.0" y="367.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<circle cx="6658.0" cy="590.0" r="16.0" fill="white" stroke="#cc655a" stroke-width="3"/>
+<rect x="4400.0" y="655.0" width="220.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="4510.0" y="678.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.10 Сформировать</text>
+<text x="4510.0" y="694.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">задачу на проведение</text>
+<text x="4510.0" y="710.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">платежа</text>
+<rect x="2960.0" y="655.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3065.0" y="678.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">5.7 Получить</text>
+<text x="3065.0" y="694.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">уточненные /</text>
+<text x="3065.0" y="710.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">исправленные документы</text>
+<polygon points="3325.0,610.0 3350.0,635.0 3325.0,660.0 3300.0,635.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="3325.0" y="642.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="3300.0" y="475.0" width="230.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="3415.0" y="498.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Организовать повторное</text>
+<text x="3415.0" y="514.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">выполнение затронутых</text>
+<text x="3415.0" y="530.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">проверок</text>
+<rect x="4080.0" y="655.0" width="230.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="4195.0" y="678.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Устранить замечания и</text>
+<text x="4195.0" y="694.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">повторно проверить</text>
+<text x="4195.0" y="710.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">готовность к оплате</text>
+<polygon points="6015.0,610.0 6040.0,635.0 6015.0,660.0 5990.0,635.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="6015.0" y="642.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="5530.0" y="655.0" width="220.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5640.0" y="674.6" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">5.13 Вернуть документы</text>
+<text x="5640.0" y="688.0" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">поставщику на</text>
+<text x="5640.0" y="701.4" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">дополнение /</text>
+<text x="5640.0" y="714.9" text-anchor="middle" font-size="12" font-family="Arial" fill="#20384b">исправление</text>
+<rect x="470.0" y="655.0" width="210.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="575.0" y="686.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Запросить уточнение</text>
+<text x="575.0" y="702.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">параметров поручения</text>
+<rect x="1780.0" y="555.0" width="220.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="1890.0" y="586.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Уточнить вариант по</text>
+<text x="1890.0" y="602.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">замечаниям</text>
+<polygon points="3575.0,485.0 3600.0,510.0 3575.0,535.0 3550.0,510.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="3575.0" y="517.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<polygon points="4765.0,1045.0 4790.0,1070.0 4765.0,1095.0 4740.0,1070.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="4765.0" y="1077.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<polygon points="5415.0,395.0 5440.0,420.0 5415.0,445.0 5390.0,420.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="5415.0" y="427.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="5150.0" y="655.0" width="220.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="5260.0" y="686.4" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Скорректировать задачу</text>
+<text x="5260.0" y="702.1" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">на платеж</text>
+<polygon points="5545.0,565.0 5570.0,590.0 5545.0,615.0 5520.0,590.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="5545.0" y="597.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<rect x="6290.0" y="655.0" width="230.0" height="70.0" rx="12" fill="white" stroke="#33556b" stroke-width="2"/>
+<text x="6405.0" y="678.9" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">Определить причину</text>
+<text x="6405.0" y="694.6" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">незакрытия и организовать</text>
+<text x="6405.0" y="710.2" text-anchor="middle" font-size="14" font-family="Arial" fill="#20384b">устранение</text>
+<polygon points="6565.0,665.0 6590.0,690.0 6565.0,715.0 6540.0,690.0" fill="#fff8e8" stroke="#a8762e" stroke-width="2"/>
+<text x="6565.0" y="697.0" text-anchor="middle" font-family="Arial" font-size="25" fill="#a8762e">×</text>
+<path d="M220.0 195.0 H248.0 L260.0 207.0 V240.0 H220.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M248.0 195.0 V207.0 H260.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<ellipse cx="880.0" cy="488.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/><rect x="850.0" y="488.0" width="60.0" height="29.0" fill="#e6f7ff" stroke="#4c98bc"/><ellipse cx="880.0" cy="517.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/>
+<path d="M1300.0 630.0 H1328.0 L1340.0 642.0 V675.0 H1300.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M1328.0 630.0 V642.0 H1340.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M2140.0 480.0 H2168.0 L2180.0 492.0 V525.0 H2140.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M2168.0 480.0 V492.0 H2180.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M2660.0 630.0 H2688.0 L2700.0 642.0 V675.0 H2660.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M2688.0 630.0 V642.0 H2700.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M2740.0 480.0 H2768.0 L2780.0 492.0 V525.0 H2740.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M2768.0 480.0 V492.0 H2780.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M2870.0 480.0 H2898.0 L2910.0 492.0 V525.0 H2870.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M2898.0 480.0 V492.0 H2910.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M2820.0 770.0 H2848.0 L2860.0 782.0 V815.0 H2820.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M2848.0 770.0 V782.0 H2860.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M4550.0 480.0 H4578.0 L4590.0 492.0 V525.0 H4550.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M4578.0 480.0 V492.0 H4590.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M4730.0 1110.0 H4758.0 L4770.0 1122.0 V1155.0 H4730.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M4758.0 1110.0 V1122.0 H4770.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M5800.0 480.0 H5828.0 L5840.0 492.0 V525.0 H5800.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M5828.0 480.0 V492.0 H5840.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<path d="M6190.0 1180.0 H6218.0 L6230.0 1192.0 V1225.0 H6190.0 Z" fill="#ffffff" stroke="#5a98b9" stroke-width="2"/><path d="M6218.0 1180.0 V1192.0 H6230.0" fill="none" stroke="#5a98b9" stroke-width="1.7"/>
+<ellipse cx="4170.0" cy="488.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/><rect x="4140.0" y="488.0" width="60.0" height="29.0" fill="#e6f7ff" stroke="#4c98bc"/><ellipse cx="4170.0" cy="517.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/>
+<ellipse cx="4880.0" cy="488.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/><rect x="4850.0" y="488.0" width="60.0" height="29.0" fill="#e6f7ff" stroke="#4c98bc"/><ellipse cx="4880.0" cy="517.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/>
+<ellipse cx="6130.0" cy="488.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/><rect x="6100.0" y="488.0" width="60.0" height="29.0" fill="#e6f7ff" stroke="#4c98bc"/><ellipse cx="6130.0" cy="517.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/>
+<ellipse cx="4330.0" cy="488.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/><rect x="4300.0" y="488.0" width="60.0" height="29.0" fill="#e6f7ff" stroke="#4c98bc"/><ellipse cx="4330.0" cy="517.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/>
+<ellipse cx="5030.0" cy="488.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/><rect x="5000.0" y="488.0" width="60.0" height="29.0" fill="#e6f7ff" stroke="#4c98bc"/><ellipse cx="5030.0" cy="517.0" rx="30.0" ry="7" stroke="#4c98bc" fill="#e6f7ff"/>
+<text x="248.0" y="79.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Возникла потребность провести</text><text x="248.0" y="93.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">операцию через поставщика</text><text x="2136.5" y="125.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Вариант согласован?</text><text x="3558.0" y="113.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Изменения согласованы?</text><text x="1732.0" y="315.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Вариант проработан полностью?</text><text x="4030.0" y="315.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Операция готова к оплате?</text><text x="6590.0" y="311.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Все вопросы закрыты?</text><text x="496.0" y="745.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Параметров достаточно?</text><text x="1185.0" y="645.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">По всем участникам есть</text><text x="1185.0" y="659.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">действующие результаты</text><text x="1480.0" y="645.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Взаимодействие допустимо?</text><text x="2350.0" y="649.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Основание применимо?</text><text x="2816.0" y="649.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Требуется техническая</text><text x="2816.0" y="663.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">проверка?</text><text x="4995.0" y="689.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Есть отклонения в фактических</text><text x="4995.0" y="703.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">данных платежа?</text><text x="6184.0" y="763.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Нужно техническое</text><text x="6184.0" y="777.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">подтверждение?</text><text x="6753.5" y="595.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Операция завершена</text><text x="3225.0" y="915.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Результат технической</text><text x="3225.0" y="929.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">проверки?</text><text x="6251.0" y="915.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Результат технической</text><text x="6251.0" y="929.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">проверки?</text><text x="6335.0" y="1335.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Документы приняты?</text><text x="3659.0" y="344.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Изменены существенные условия?</text><text x="6051.0" y="448.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Комплект документов полный и</text><text x="6051.0" y="462.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">соответствует операции?</text><text x="3719.0" y="676.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">На каком этапе выявлено</text><text x="3719.0" y="690.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">изменение?</text><text x="4765.0" y="1181.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Платеж исполнен?</text><text x="5286.5" y="455.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Какое действие требуется?</text><text x="5687.0" y="513.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">Изменились срок или иные</text><text x="5687.0" y="527.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">условия исполнения?</text><text x="6517.0" y="539.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">На каком этапе требуется</text><text x="6517.0" y="553.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#45546a">доработка?</text><rect x="624.5" y="558.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="640.5" y="572.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="1415.5" y="338.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1431.5" y="352.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="1213.85" y="678.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1231.0" y="692.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="1552.0" y="465.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1568.0" y="479.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="1102.35" y="674.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1119.5" y="688.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="1897.0" y="250.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1913.0" y="264.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="2112.0" y="360.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="2128.0" y="374.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="812.0" y="421.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="829.15" y="435.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="2560.5" y="523.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="2576.5" y="537.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="2375.35" y="662.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="2392.5" y="676.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="2972.0" y="769.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="2988.0" y="783.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="3537.75" y="438.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3554.9" y="452.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="3522.0" y="375.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3538.0" y="389.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="851.35" y="641.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="868.5" y="655.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="4152.0" y="419.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="4168.0" y="433.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="4062.35" y="607.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="4079.5" y="621.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="5198.85" y="542.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5216.0" y="556.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="5196.9" y="293.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5212.9" y="307.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="6109.85" y="1197.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6127.0" y="1211.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="6082.0" y="800.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6098.0" y="814.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="6652.0" y="465.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6668.0" y="479.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="3257.0" y="640.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3273.0" y="654.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="3196.35" y="957.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3213.5" y="971.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="5995.5" y="685.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6011.5" y="699.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="5805.95" y="741.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5823.1" y="755.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="626.0" y="593.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="643.15" y="607.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="1797.0" y="486.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1814.15" y="500.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="3572.0" y="761.0" width="105.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3624.65" y="775.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Соответствует</text><rect x="3024.85" y="738.0" width="176.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3113.0" y="752.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Требуется корректировка</text><rect x="6070.0" y="1147.5" width="105.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6122.65" y="1161.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Соответствует</text><rect x="6127.85" y="785.0" width="176.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6216.0" y="799.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Требуется корректировка</text><rect x="6355.0" y="568.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6371.0" y="582.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="6202.45" y="506.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6219.6" y="520.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="6585.95" y="738.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6603.1" y="752.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="3262.8" y="943.0" width="197.6" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3361.6" y="957.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Есть допустимые отклонения</text><rect x="912.0" y="676.3" width="126.6" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="975.3" y="690.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Не соответствует</text><rect x="3657.0" y="507.0" width="76.9" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3695.45" y="521.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">До оплаты</text><rect x="4712.4" y="513.0" width="98.2" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="4761.5" y="527.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">После оплаты</text><rect x="4777.0" y="825.0" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="4793.0" y="839.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="5103.7" y="721.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5120.85" y="735.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="5584.0" y="566.5" width="126.6" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5647.3" y="580.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Повторить платеж</text><rect x="3798.0" y="506.0" width="216.0" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3906.0" y="520.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Изменить существенные</text><text x="3906.0" y="534.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">условия</text><rect x="5219.6" y="492.0" width="183.4" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5311.3" y="506.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Отклонение урегулировано</text><rect x="1127.9" y="728.0" width="216.0" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="1235.9" y="742.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Новый вариант (платеж не</text><text x="1235.9" y="756.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">исполнен)</text><rect x="5570.0" y="448.0" width="34.3" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5587.15" y="462.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Нет</text><rect x="3092.0" y="521.5" width="32.0" height="20.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3108.0" y="535.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Да</text><rect x="6247.7" y="1348.0" width="197.6" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6346.5" y="1362.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Есть допустимые отклонения</text><rect x="6083.1" y="942.0" width="126.6" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6146.4" y="956.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Не соответствует</text><rect x="5584.0" y="606.8" width="162.1" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="5665.05" y="620.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Исполнение поставщика</text><rect x="5941.15" y="499.0" width="147.9" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6015.1" y="513.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Комплект документов</text><rect x="6322.5" y="774.0" width="190.5" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6417.75" y="788.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Техническое подтверждение</text><rect x="6207.45" y="1393.5" width="147.9" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6281.4" y="1407.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Проверка бухгалтера</text><rect x="3375.0" y="613.5" width="155.0" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="3452.5" y="627.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Существенные условия</text><rect x="6398.75" y="577.0" width="119.5" height="36.0" fill="#ffffff" fill-opacity="0.92" stroke="none"/><text x="6458.5" y="591.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#92613e">Итоговые данные</text><text x="240.0" y="261.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Поручение</text><text x="952.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Перечень поставщиков</text><text x="1332.0" y="696.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Результат проверки ЮЛ</text><text x="2232.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Договор / основание</text><text x="2680.0" y="696.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Договор / основание</text><text x="2688.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Документы до оплаты</text><text x="2890.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Тех. данные</text><text x="2840.0" y="884.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Задача техпроверки</text><text x="4630.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Задача на платеж</text><text x="4750.0" y="1212.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Банк. документ</text><text x="5736.0" y="462.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Закрывающие документы</text><text x="6294.0" y="1162.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Задача бух.</text><text x="4242.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Рабочий файл: план</text><text x="4952.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Рабочий файл: факт</text><text x="6226.0" y="450.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Рабочий файл: итог</text><text x="4390.0" y="546.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Реестр ДДС: план</text><text x="5030.0" y="462.0" font-size="12" font-family="Arial,sans-serif" text-anchor="middle" fill="#426a81">Реестр ДДС: факт</text></svg>

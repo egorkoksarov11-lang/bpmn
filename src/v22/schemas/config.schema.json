@@ -1,0 +1,30 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"BPMN Universal Layout v22 Configuration",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["version"],
+  "properties":{
+    "version":{"const":22},
+    "geometry":{"type":"object","additionalProperties":false,"properties":{
+      "horizontal_scale":{"type":"number","minimum":0.35,"maximum":1},
+      "candidate_scales":{"type":"array","minItems":1,"items":{"type":"number","minimum":0.35,"maximum":1}},
+      "task_gap":{"type":"number","minimum":0},
+      "document_gap":{"type":"number","minimum":0},
+      "routing_order":{"enum":["short-first","long-first","name","reverse","flow-first-long","central-first"]},
+      "max_width_growth":{"type":"number","minimum":1},
+      "max_avg_flow_length_growth":{"type":"number","minimum":1}
+    }},
+    "semantics":{"type":"object","additionalProperties":false,"properties":{
+      "mode":{"enum":["strict","approved-associations"]},
+      "approved_association_removals":{"type":"array","uniqueItems":true,"items":{"type":"string"}}
+    }},
+    "outputs":{"type":"object","additionalProperties":false,"properties":{
+      "svg":{"type":"boolean"},"png":{"type":"boolean"},"report":{"type":"boolean"},
+      "png_width":{"type":"integer","minimum":300,"maximum":12000}
+    }},
+    "execution":{"type":"object","additionalProperties":false,"properties":{
+      "timeout_seconds":{"type":"integer","minimum":5,"maximum":600}
+    }}
+  }
+}

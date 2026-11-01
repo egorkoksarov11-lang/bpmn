@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Process_ClientFunds" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_Process_ClientFunds">
+    <bpmn:participant id="Participant_Process_ClientFunds" name="Прием денежных средств от клиента и формирование обязательства по клиентской операции" processRef="Process_ClientFunds"/>
+  </bpmn:collaboration>
+  <bpmn:process id="Process_ClientFunds" name="Прием денежных средств от клиента и формирование обязательства по клиентской операции" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Process_ClientFunds">
+      <bpmn:lane id="L1A" name="Уполномоченное лицо">
+        <bpmn:flowNodeRef>S</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gappr</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L1C" name="Клиентский менеджер">
+        <bpmn:flowNodeRef>C1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gfull</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gcheck</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>CallCheck</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gmatch</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gcur</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>CallCheck2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Cchg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gnew</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>CallCheck3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>F1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>F2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Cnotify</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Crequest</bpmn:flowNodeRef><bpmn:flowNodeRef>Cnewcheck</bpmn:flowNodeRef><bpmn:flowNodeRef>Gnewok</bpmn:flowNodeRef><bpmn:flowNodeRef>CdeniedInit</bpmn:flowNodeRef><bpmn:flowNodeRef>EinitDenied</bpmn:flowNodeRef><bpmn:flowNodeRef>GresInit</bpmn:flowNodeRef><bpmn:flowNodeRef>GresExec</bpmn:flowNodeRef><bpmn:flowNodeRef>GresNew</bpmn:flowNodeRef><bpmn:flowNodeRef>CblockedDoc</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="L1O" name="Операционист">
+        <bpmn:flowNodeRef>O1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L1F" name="Руководитель финансового блока">
+        <bpmn:flowNodeRef>E</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>R1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>R2</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>Gfinish</bpmn:flowNodeRef><bpmn:flowNodeRef>Erej</bpmn:flowNodeRef></bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="S" name="Поручение о работе с клиентом">
+      <bpmn:outgoing>f1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="A1" name="Передать поручение и условия операции">
+      <bpmn:incoming>f1</bpmn:incoming>
+      <bpmn:outgoing>f2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="C1" name="Проверить полноту поручения">
+      <bpmn:incoming>f2</bpmn:incoming>
+      <bpmn:outgoing>f3</bpmn:outgoing>
+      <bpmn:incoming>f5</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gfull" name="Данные полные?">
+      <bpmn:incoming>f3</bpmn:incoming>
+      <bpmn:outgoing>f4</bpmn:outgoing>
+      <bpmn:outgoing>f6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A2" name="Предоставить недостающие сведения">
+      <bpmn:outgoing>f5</bpmn:outgoing>
+    <bpmn:incoming>f4a</bpmn:incoming></bpmn:task>
+    <bpmn:task id="C2" name="Проверить допуск каждого юридического лица из поручения">
+      <bpmn:incoming>f6</bpmn:incoming>
+      <bpmn:outgoing>f7</bpmn:outgoing>
+    <bpmn:incoming>f9</bpmn:incoming></bpmn:task>
+    <bpmn:exclusiveGateway id="Gcheck" name="По всем ЮЛ есть действующий допуск?">
+      <bpmn:incoming>f7</bpmn:incoming>
+      <bpmn:outgoing>f8</bpmn:outgoing>
+      <bpmn:outgoing>f10</bpmn:outgoing>
+    <bpmn:outgoing>fnoInitial</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:callActivity id="CallCheck" name="Проверка юридического лица" calledElement="Process_LegalEntityCheck">
+      <bpmn:incoming>f8</bpmn:incoming>
+      <bpmn:outgoing>fresInitIn</bpmn:outgoing></bpmn:callActivity>
+    <bpmn:task id="C3" name="Сформировать план: приход + связанный расход">
+      <bpmn:incoming>f10</bpmn:incoming>
+      <bpmn:outgoing>f11</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="F1" name="Направить плановый Рабочий файл руководителю финансового блока">
+      <bpmn:incoming>f11</bpmn:incoming>
+      <bpmn:outgoing>f12</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="O1" name="Сформировать и предоставить банковскую выписку">
+      <bpmn:outgoing>f13</bpmn:outgoing>
+      <bpmn:incoming>f12b</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:task id="C4" name="Сопоставить с планом и отразить фактическое поступление">
+      <bpmn:incoming>f13</bpmn:incoming>
+      <bpmn:outgoing>f14</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="C5" name="Получить конкретное поручение клиента и сопоставить с исходным">
+      <bpmn:incoming>f14</bpmn:incoming>
+      <bpmn:outgoing>f15</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gmatch" name="Соответствует поручению?">
+      <bpmn:incoming>f15</bpmn:incoming>
+      <bpmn:outgoing>f16</bpmn:outgoing>
+      <bpmn:outgoing>f21</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="C6" name="Проверить допуск каждого участника на дату исполнения">
+      <bpmn:incoming>f16</bpmn:incoming>
+      <bpmn:outgoing>f17</bpmn:outgoing>
+    <bpmn:incoming>f19</bpmn:incoming><bpmn:incoming>f29</bpmn:incoming><bpmn:incoming>fnewb</bpmn:incoming></bpmn:task>
+    <bpmn:exclusiveGateway id="Gcur" name="На дату исполнения по всем ЮЛ есть допуск?">
+      <bpmn:incoming>f17</bpmn:incoming>
+      <bpmn:outgoing>f18</bpmn:outgoing>
+      <bpmn:outgoing>f20</bpmn:outgoing>
+    <bpmn:outgoing>fnoExec</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:callActivity id="CallCheck2" name="Проверка юридического лица" calledElement="Process_LegalEntityCheck">
+      <bpmn:incoming>f18</bpmn:incoming>
+      <bpmn:outgoing>fresExecIn</bpmn:outgoing></bpmn:callActivity>
+    <bpmn:task id="C7" name="Актуализировать параметры связанного расхода">
+      <bpmn:incoming>f20</bpmn:incoming>
+      <bpmn:outgoing>f30</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Cchg" name="Передать отклонения уполномоченному лицу">
+      <bpmn:incoming>f21</bpmn:incoming>
+      <bpmn:outgoing>f22</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="A3" name="Рассмотреть изменение условий / участника">
+      <bpmn:incoming>f22</bpmn:incoming>
+      <bpmn:outgoing>f23</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gappr" name="Изменение согласовано?">
+      <bpmn:incoming>f23</bpmn:incoming>
+      <bpmn:outgoing>f24</bpmn:outgoing>
+      <bpmn:outgoing>f25</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Erej" name="Факт прихода и неисполненное обязательство переданы">
+      <bpmn:incoming>ffinishNo</bpmn:incoming></bpmn:endEvent>
+    <bpmn:task id="C9" name="Зафиксировать согласованные изменения в поручении">
+      <bpmn:incoming>f25</bpmn:incoming>
+      <bpmn:outgoing>f26</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gnew" name="Есть новый участник?">
+      <bpmn:incoming>f26</bpmn:incoming>
+      <bpmn:outgoing>f27</bpmn:outgoing>
+      <bpmn:outgoing>f29</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:callActivity id="CallCheck3" name="Проверка нового участника" calledElement="Process_LegalEntityCheck">
+      <bpmn:incoming>fnewc</bpmn:incoming><bpmn:outgoing>fresNewIn</bpmn:outgoing></bpmn:callActivity>
+    <bpmn:task id="F2" name="Направить обновленный Рабочий файл руководителю финансового блока">
+      <bpmn:incoming>f30</bpmn:incoming>
+      <bpmn:outgoing>f31</bpmn:outgoing>
+    <bpmn:incoming>fblockedToFin</bpmn:incoming></bpmn:task>
+    <bpmn:endEvent id="E" name="Актуальные данные переданы финансовому блоку">
+      <bpmn:incoming>ffinishYes</bpmn:incoming></bpmn:endEvent>
+    <bpmn:sequenceFlow id="f1" sourceRef="S" targetRef="A1"/>
+    <bpmn:sequenceFlow id="f2" sourceRef="A1" targetRef="C1"/>
+    <bpmn:sequenceFlow id="f3" sourceRef="C1" targetRef="Gfull"/>
+    <bpmn:sequenceFlow id="f4" sourceRef="Gfull" targetRef="Crequest" name="Нет"/>
+    <bpmn:sequenceFlow id="f5" sourceRef="A2" targetRef="C1"/>
+    <bpmn:sequenceFlow id="f6" sourceRef="Gfull" targetRef="C2" name="Да"/>
+    <bpmn:sequenceFlow id="f7" sourceRef="C2" targetRef="Gcheck"/>
+    <bpmn:sequenceFlow id="f8" sourceRef="Gcheck" targetRef="CallCheck" name="Нет действующего результата"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Отсутствует действующий результат проверки как минимум одного необходимого юридического лица и отсутствует действующий недопуск</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f9" sourceRef="GresInit" targetRef="C2" name="Допуск">
+      <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Получен действующий результат проверки, допускающий работу</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f10" sourceRef="Gcheck" targetRef="C3" name="Допуск по всем"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">По всем юридическим лицам есть действующий результат проверки, допускающий работу</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f11" sourceRef="C3" targetRef="F1"/>
+    <bpmn:sequenceFlow id="f12" sourceRef="F1" targetRef="R1"/>
+    <bpmn:sequenceFlow id="f13" sourceRef="O1" targetRef="C4"/>
+    <bpmn:sequenceFlow id="f14" sourceRef="C4" targetRef="C5"/>
+    <bpmn:sequenceFlow id="f15" sourceRef="C5" targetRef="Gmatch"/>
+    <bpmn:sequenceFlow id="f16" sourceRef="Gmatch" targetRef="C6" name="Да"/>
+    <bpmn:sequenceFlow id="f17" sourceRef="C6" targetRef="Gcur"/>
+    <bpmn:sequenceFlow id="f18" sourceRef="Gcur" targetRef="CallCheck2" name="Нет действующего результата"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Отсутствует действующий результат хотя бы одного юридического лица и отсутствует действующий недопуск</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f19" sourceRef="GresExec" targetRef="C6" name="Допуск">
+      <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Получен действующий результат, допускающий работу</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f20" sourceRef="Gcur" targetRef="C7" name="Допуск по всем"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Для всех участвующих юридических лиц на дату исполнения есть действующий допускающий результат</bpmn:conditionExpression></bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f21" sourceRef="Gmatch" targetRef="Cchg" name="Нет"/>
+    <bpmn:sequenceFlow id="f22" sourceRef="Cchg" targetRef="A3"/>
+    <bpmn:sequenceFlow id="f23" sourceRef="A3" targetRef="Gappr"/>
+    <bpmn:sequenceFlow id="f24" sourceRef="Gappr" targetRef="Cnotify" name="Нет"/>
+    <bpmn:sequenceFlow id="f25" sourceRef="Gappr" targetRef="C9" name="Да"/>
+    <bpmn:sequenceFlow id="f26" sourceRef="C9" targetRef="Gnew"/>
+    <bpmn:sequenceFlow id="f27" sourceRef="Gnew" targetRef="Cnewcheck" name="Да"/>
+    <bpmn:sequenceFlow id="f28" sourceRef="GresNew" targetRef="Cnewcheck" name="Допуск">
+      <bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Получен действующий результат, допускающий работу с новым участником</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="f29" sourceRef="Gnew" targetRef="C6" name="Нет"/>
+    <bpmn:sequenceFlow id="f30" sourceRef="C7" targetRef="F2"/>
+    <bpmn:sequenceFlow id="f31" sourceRef="F2" targetRef="R2"/>
+    <bpmn:task id="R1" name="Получить плановый Рабочий файл">
+      <bpmn:incoming>f12</bpmn:incoming>
+      <bpmn:outgoing>f12b</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="R2" name="Получить обновленный Рабочий файл">
+      <bpmn:incoming>f31</bpmn:incoming>
+      <bpmn:outgoing>f31b</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="f12b" sourceRef="R1" targetRef="O1"/>
+    <bpmn:sequenceFlow id="f31b" sourceRef="R2" targetRef="Gfinish"/>
+    <bpmn:task id="Cnotify" name="Сообщить клиенту и уполномоченному лицу о невозможности исполнения на предложенных условиях">
+      <bpmn:incoming>f24</bpmn:incoming>
+      <bpmn:outgoing>f24b</bpmn:outgoing>
+    <bpmn:incoming>fresExecNo</bpmn:incoming><bpmn:incoming>fnoExec</bpmn:incoming><bpmn:incoming>fresNewNo</bpmn:incoming><bpmn:incoming>fnoNew</bpmn:incoming></bpmn:task>
+    <bpmn:sequenceFlow id="f24b" sourceRef="Cnotify" targetRef="CblockedDoc"/>
+    <bpmn:dataObject id="DO_Order" name="Поручение о работе с клиентом"/>
+    <bpmn:dataObject id="DO_Check" name="Действующий результат проверки юридического лица"/>
+    <bpmn:dataObject id="DO_Work" name="Рабочий файл клиентских операций"/>
+    <bpmn:dataObject id="DO_Bank" name="Банковская выписка"/>
+    <bpmn:dataObject id="DO_Client" name="Конкретное поручение клиента (счет/реквизиты или данные выдачи)"/>
+    <bpmn:dataObjectReference id="D_OrderInitial" dataObjectRef="DO_Order" name="Поручение о работе с клиентом"/>
+    <bpmn:dataObjectReference id="D_OrderChange" dataObjectRef="DO_Order" name="Измененное поручение"/>
+    <bpmn:dataObjectReference id="D_OrderChangeAtUpdate" name="Изменённое поручение" dataObjectRef="DO_Order"/><bpmn:dataObjectReference id="D_OrderCompare" dataObjectRef="DO_Order" name="Исходное поручение"/>
+    <bpmn:dataObjectReference id="D_OrderAtPlan" name="Исходное поручение" dataObjectRef="DO_Order"/><bpmn:dataObjectReference id="D_OrderAtExecution" name="Исходное поручение" dataObjectRef="DO_Order"/><bpmn:dataObjectReference id="D_CheckAtC2" name="Результат проверки" dataObjectRef="DO_Check"/><bpmn:dataObjectReference id="D_CheckExecute" dataObjectRef="DO_Check" name="Результат проверки"/>
+    <bpmn:dataObjectReference id="D_CheckAtC6" name="Результат проверки" dataObjectRef="DO_Check"/><bpmn:dataObjectReference id="D_CheckChanged" dataObjectRef="DO_Check" name="Результат проверки нового ЮЛ"/>
+    <bpmn:dataObjectReference id="D_WorkPlan" dataObjectRef="DO_Work" name="Рабочий файл: план"/>
+    <bpmn:dataObjectReference id="D_WorkPlanFinance" name="Рабочий файл: план" dataObjectRef="DO_Work"/><bpmn:dataObjectReference id="D_WorkFact" dataObjectRef="DO_Work" name="Рабочий файл: факт прихода"/>
+    <bpmn:dataObjectReference id="D_WorkFactAtUpdate" name="Рабочий файл: факт прихода" dataObjectRef="DO_Work"/><bpmn:dataObjectReference id="D_WorkUpdated" dataObjectRef="DO_Work" name="Рабочий файл: расход"/>
+    <bpmn:dataObjectReference id="D_WorkUpdatedFinance" name="Рабочий файл: расход" dataObjectRef="DO_Work"/><bpmn:dataObjectReference id="D_BankOperator" dataObjectRef="DO_Bank" name="Банковская выписка"/>
+    <bpmn:dataObjectReference id="D_BankManager" dataObjectRef="DO_Bank" name="Банковская выписка"/>
+    <bpmn:dataObjectReference id="D_ClientOrder" dataObjectRef="DO_Client" name="Поручение клиента / счет / выдача"/>
+    <bpmn:dataStoreReference id="StoreBankClient" name="Банк-клиент" dataStoreRef="DataStoreBank"/>
+    <bpmn:association id="a01" sourceRef="A1" targetRef="D_OrderInitial" associationDirection="One"/>
+    <bpmn:association id="a02" sourceRef="D_OrderInitial" targetRef="C1" associationDirection="One"/>
+    <bpmn:association id="a03" sourceRef="D_OrderCompare" targetRef="C2" associationDirection="One"/>
+    <bpmn:association id="a04" sourceRef="D_OrderAtPlan" targetRef="C3" associationDirection="One"/>
+    <bpmn:association id="a05" sourceRef="D_OrderAtExecution" targetRef="C5" associationDirection="One"/>
+    <bpmn:association id="a06" sourceRef="CallCheck" targetRef="D_CheckAtC2" associationDirection="One"/>
+    <bpmn:association id="a07" sourceRef="D_CheckAtC2" targetRef="C2" associationDirection="One"/>
+    <bpmn:association id="a08" sourceRef="C3" targetRef="D_WorkPlan" associationDirection="One"/>
+    <bpmn:association id="a09" sourceRef="D_WorkPlan" targetRef="F1" associationDirection="One"/>
+    <bpmn:association id="a12" sourceRef="StoreBankClient" targetRef="O1" associationDirection="One"/>
+    <bpmn:association id="a13" sourceRef="O1" targetRef="D_BankOperator" associationDirection="One"/>
+    <bpmn:association id="a14" sourceRef="D_BankManager" targetRef="C4" associationDirection="One"/>
+    <bpmn:association id="a15" sourceRef="C4" targetRef="D_WorkFact" associationDirection="One"/>
+    <bpmn:association id="a16" sourceRef="D_WorkFactAtUpdate" targetRef="C7" associationDirection="One"/>
+    <bpmn:association id="a17" sourceRef="D_ClientOrder" targetRef="C5" associationDirection="One"/>
+    <bpmn:association id="a18" sourceRef="CallCheck2" targetRef="D_CheckExecute" associationDirection="One"/>
+    <bpmn:association id="a19" sourceRef="D_CheckAtC6" targetRef="C6" associationDirection="One"/>
+    <bpmn:association id="a20" sourceRef="C9" targetRef="D_OrderChange" associationDirection="One"/>
+    <bpmn:association id="a21" sourceRef="D_OrderChangeAtUpdate" targetRef="C7" associationDirection="One"/>
+    <bpmn:association id="a22" sourceRef="CallCheck3" targetRef="D_CheckChanged" associationDirection="One"/>
+    <bpmn:association id="a23" sourceRef="D_CheckChanged" targetRef="Cnewcheck" associationDirection="One"/>
+    <bpmn:association id="a24" sourceRef="C7" targetRef="D_WorkUpdated" associationDirection="One"/>
+    <bpmn:association id="a25" sourceRef="D_WorkUpdated" targetRef="F2" associationDirection="One"/>
+    <bpmn:task id="Crequest" name="Запросить недостающие сведения у уполномоченного лица"><bpmn:incoming>f4</bpmn:incoming><bpmn:outgoing>f4a</bpmn:outgoing></bpmn:task><bpmn:sequenceFlow id="f4a" sourceRef="Crequest" targetRef="A2"/><bpmn:task id="Cnewcheck" name="Проверить действующий допуск нового участника"><bpmn:incoming>f27</bpmn:incoming><bpmn:outgoing>fnewa</bpmn:outgoing><bpmn:incoming>f28</bpmn:incoming></bpmn:task><bpmn:exclusiveGateway id="Gnewok" name="Есть действующий допуск?" gatewayDirection="Diverging"><bpmn:incoming>fnewa</bpmn:incoming><bpmn:outgoing>fnewb</bpmn:outgoing><bpmn:outgoing>fnewc</bpmn:outgoing><bpmn:outgoing>fnoNew</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:sequenceFlow id="fnewa" sourceRef="Cnewcheck" targetRef="Gnewok"/><bpmn:sequenceFlow id="fnewb" sourceRef="Gnewok" targetRef="C6" name="Да"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Для нового участника есть действующий результат проверки, допускающий работу</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fnewc" sourceRef="Gnewok" targetRef="CallCheck3" name="Нет результата"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Отсутствует действующий результат проверки нового участника и отсутствует действующий недопуск</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:task id="CdeniedInit" name="Сообщить о недопуске уполномоченному лицу; не планировать"><bpmn:incoming>fresInitNo</bpmn:incoming><bpmn:incoming>fnoInitial</bpmn:incoming><bpmn:outgoing>fendInit</bpmn:outgoing></bpmn:task><bpmn:endEvent id="EinitDenied" name="Планирование прекращено: участник не допущен"><bpmn:incoming>fendInit</bpmn:incoming></bpmn:endEvent><bpmn:exclusiveGateway id="GresInit" name="Результат допускает?"><bpmn:outgoing>f9</bpmn:outgoing><bpmn:incoming>fresInitIn</bpmn:incoming><bpmn:outgoing>fresInitNo</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:exclusiveGateway id="GresExec" name="Результат допускает?"><bpmn:outgoing>f19</bpmn:outgoing><bpmn:incoming>fresExecIn</bpmn:incoming><bpmn:outgoing>fresExecNo</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:exclusiveGateway id="GresNew" name="Результат допускает?"><bpmn:outgoing>f28</bpmn:outgoing><bpmn:incoming>fresNewIn</bpmn:incoming><bpmn:outgoing>fresNewNo</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:task id="CblockedDoc" name="Сохранить факт прихода; указать невозможность расхода в Рабочем файле"><bpmn:incoming>f24b</bpmn:incoming><bpmn:outgoing>fblockedToFin</bpmn:outgoing></bpmn:task><bpmn:exclusiveGateway id="Gfinish" name="Расход согласован и допущен?"><bpmn:incoming>f31b</bpmn:incoming><bpmn:outgoing>ffinishYes</bpmn:outgoing><bpmn:outgoing>ffinishNo</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:sequenceFlow id="fresInitIn" sourceRef="CallCheck" targetRef="GresInit"/><bpmn:sequenceFlow id="fresInitNo" sourceRef="GresInit" targetRef="CdeniedInit" name="Недопуск"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Результат проверки не допускает работу с юридическим лицом</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fnoInitial" sourceRef="Gcheck" targetRef="CdeniedInit" name="Недопуск"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Для хотя бы одного юридического лица имеется действующий недопускающий результат проверки</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fendInit" sourceRef="CdeniedInit" targetRef="EinitDenied"/><bpmn:sequenceFlow id="fresExecIn" sourceRef="CallCheck2" targetRef="GresExec"/><bpmn:sequenceFlow id="fresExecNo" sourceRef="GresExec" targetRef="Cnotify" name="Недопуск"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Получен результат проверки, не допускающий работу</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fnoExec" sourceRef="Gcur" targetRef="Cnotify" name="Недопуск"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Имеется действующий результат проверки, не допускающий работу с участником операции</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fresNewIn" sourceRef="CallCheck3" targetRef="GresNew"/><bpmn:sequenceFlow id="fresNewNo" sourceRef="GresNew" targetRef="Cnotify" name="Недопуск"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Получен результат, не допускающий работу с новым участником</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fnoNew" sourceRef="Gnewok" targetRef="Cnotify" name="Недопуск"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">У нового участника имеется действующий недопускающий результат</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="fblockedToFin" sourceRef="CblockedDoc" targetRef="F2"/><bpmn:sequenceFlow id="ffinishYes" sourceRef="Gfinish" targetRef="E" name="Да"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Есть согласованные параметры расхода и требуемые допуски</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:sequenceFlow id="ffinishNo" sourceRef="Gfinish" targetRef="Erej" name="Нет"><bpmn:conditionExpression xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bpmn:tFormalExpression">Исполнение на текущих условиях невозможно и отмечено в Рабочем файле</bpmn:conditionExpression></bpmn:sequenceFlow><bpmn:association id="a10" sourceRef="F1" targetRef="D_WorkPlan" associationDirection="One"/><bpmn:association id="a11" sourceRef="D_WorkPlanFinance" targetRef="R1" associationDirection="One"/><bpmn:association id="a26" sourceRef="F2" targetRef="D_WorkUpdated" associationDirection="One"/><bpmn:association id="a27" sourceRef="D_WorkUpdatedFinance" targetRef="R2" associationDirection="One"/></bpmn:process>
+  <bpmn:dataStore id="DataStoreBank" name="Система «Банк-клиент»"/>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Process_ClientFunds">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_ClientFunds" bpmnElement="Collaboration_Process_ClientFunds">
+      <bpmndi:BPMNShape id="Participant_Process_ClientFunds_di" bpmnElement="Participant_Process_ClientFunds">
+        <dc:Bounds x="70" y="85.0" width="2858.0" height="1950.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L1A_di" bpmnElement="L1A">
+        <dc:Bounds x="70" y="85.0" width="2858.0" height="210.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L1C_di" bpmnElement="L1C">
+        <dc:Bounds x="70" y="295.0" width="2858.0" height="1135.19"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L1O_di" bpmnElement="L1O">
+        <dc:Bounds x="70" y="1430.19" width="2858.0" height="177.968"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L1F_di" bpmnElement="L1F">
+        <dc:Bounds x="70" y="1608.158" width="2858.0" height="261.842"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_di" bpmnElement="S">
+        <dc:Bounds x="420.0" y="157.0" width="38.0" height="38.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="331.5" y="105.0" width="215" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A1_di" bpmnElement="A1">
+        <dc:Bounds x="500.0" y="136.0" width="185.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A2_di" bpmnElement="A2">
+        <dc:Bounds x="170.0" y="136.0" width="190.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A3_di" bpmnElement="A3">
+        <dc:Bounds x="2025.0" y="137.0" width="204.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gappr_di" bpmnElement="Gappr" isMarkerVisible="true">
+        <dc:Bounds x="2310.0" y="151.0" width="48.0" height="48.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2252.5" y="125.0" width="163" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C1_di" bpmnElement="C1">
+        <dc:Bounds x="335.0" y="330.0" width="190.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gfull_di" bpmnElement="Gfull" isMarkerVisible="true">
+        <dc:Bounds x="570.0" y="344.0" width="48.0" height="48.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="542.0" y="318.0" width="104" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C2_di" bpmnElement="C2">
+        <dc:Bounds x="790.0" y="330.0" width="190.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gcheck_di" bpmnElement="Gcheck" isMarkerVisible="true">
+        <dc:Bounds x="1020.0" y="344.0" width="48.0" height="48.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="794.0" y="296.0" width="216" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CallCheck_di" bpmnElement="CallCheck">
+        <dc:Bounds x="1140.0" y="330.0" width="190.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C3_di" bpmnElement="C3">
+        <dc:Bounds x="1610.0" y="330.0" width="190.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F1_di" bpmnElement="F1">
+        <dc:Bounds x="1840.0" y="330.0" width="190.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C4_di" bpmnElement="C4">
+        <dc:Bounds x="2470.0" y="686.0" width="193.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C5_di" bpmnElement="C5">
+        <dc:Bounds x="2200.0" y="686.0" width="193.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gmatch_di" bpmnElement="Gmatch" isMarkerVisible="true">
+        <dc:Bounds x="2070.0" y="702.0" width="48.0" height="48.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2053.0" y="668.0" width="178" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C6_di" bpmnElement="C6">
+        <dc:Bounds x="1920.0" y="1044.0" width="203.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gcur_di" bpmnElement="Gcur" isMarkerVisible="true">
+        <dc:Bounds x="1800.0" y="1059.0" width="48.0" height="48.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="1716.0" y="993.0" width="216" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CallCheck2_di" bpmnElement="CallCheck2">
+        <dc:Bounds x="1545.0" y="1044.0" width="193.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Cchg_di" bpmnElement="Cchg">
+        <dc:Bounds x="2020.0" y="869.0" width="194.0" height="77.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C9_di" bpmnElement="C9">
+        <dc:Bounds x="2335.0" y="869.0" width="200.0" height="77.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gnew_di" bpmnElement="Gnew" isMarkerVisible="true">
+        <dc:Bounds x="2595.0" y="883.0" width="48.0" height="48.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2545.0" y="857.0" width="148" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CallCheck3_di" bpmnElement="CallCheck3">
+        <dc:Bounds x="2640.0" y="1189.0" width="193.0" height="77.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C7_di" bpmnElement="C7">
+        <dc:Bounds x="915.0" y="1264.0" width="198.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="F2_di" bpmnElement="F2">
+        <dc:Bounds x="1165.0" y="1264.0" width="200.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Cnotify_di" bpmnElement="Cnotify">
+        <dc:Bounds x="1810.0" y="1264.0" width="225.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Erej_di" bpmnElement="Erej">
+        <dc:Bounds x="1655.0" y="1765.0" width="38.0" height="38.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="1566.0" y="1811.0" width="216" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="O1_di" bpmnElement="O1">
+        <dc:Bounds x="2090.0" y="1459.0" width="202.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R1_di" bpmnElement="R1">
+        <dc:Bounds x="1840.0" y="1675.0" width="190.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="R2_di" bpmnElement="R2">
+        <dc:Bounds x="1165.0" y="1675.0" width="200.0" height="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="E_di" bpmnElement="E">
+        <dc:Bounds x="1655.0" y="1640.0" width="38.0" height="38.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="1566.0" y="1686.0" width="216" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_OrderInitial_di" bpmnElement="D_OrderInitial">
+        <dc:Bounds x="455.0" y="245.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_OrderChange_di" bpmnElement="D_OrderChange">
+        <dc:Bounds x="2415.0" y="786.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_OrderCompare_di" bpmnElement="D_OrderCompare">
+        <dc:Bounds x="828.0" y="443.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_CheckExecute_di" bpmnElement="D_CheckExecute">
+        <dc:Bounds x="1610.0" y="1139.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_CheckChanged_di" bpmnElement="D_CheckChanged">
+        <dc:Bounds x="2716.5" y="1113.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_WorkPlan_di" bpmnElement="D_WorkPlan">
+        <dc:Bounds x="1914.0" y="435.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_WorkFact_di" bpmnElement="D_WorkFact">
+        <dc:Bounds x="2546.5" y="610.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_WorkUpdated_di" bpmnElement="D_WorkUpdated">
+        <dc:Bounds x="1150.0" y="1374.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_BankOperator_di" bpmnElement="D_BankOperator">
+        <dc:Bounds x="2325.0" y="1484.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_BankManager_di" bpmnElement="D_BankManager">
+        <dc:Bounds x="2550.0" y="791.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D_ClientOrder_di" bpmnElement="D_ClientOrder">
+        <dc:Bounds x="2270.0" y="791.0" width="40.0" height="52.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StoreBankClient_di" bpmnElement="StoreBankClient">
+        <dc:Bounds x="2163.5" y="1559.0" width="55.0" height="48.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="f1_di" bpmnElement="f1">
+        <di:waypoint x="458.0" y="176.0"/><di:waypoint x="500.0" y="176.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f2_di" bpmnElement="f2">
+        <di:waypoint x="510.0" y="212.0"/><di:waypoint x="510.0" y="330.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f3_di" bpmnElement="f3">
+        <di:waypoint x="525.0" y="368.0"/><di:waypoint x="570.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f4_di" bpmnElement="f4">
+        <di:waypoint x="590.0" y="392.0"/><di:waypoint x="590.0" y="445.0"/><di:waypoint x="362.0" y="445.0"/><di:waypoint x="362.0" y="523.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f5_di" bpmnElement="f5">
+        <di:waypoint x="350.0" y="212.0"/><di:waypoint x="350.0" y="330.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f6_di" bpmnElement="f6">
+        <di:waypoint x="618.0" y="368.0"/><di:waypoint x="790.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f7_di" bpmnElement="f7">
+        <di:waypoint x="980.0" y="368.0"/><di:waypoint x="1020.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f8_di" bpmnElement="f8">
+        <di:waypoint x="1068.0" y="368.0"/><di:waypoint x="1140.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f9_di" bpmnElement="f9">
+        <di:waypoint x="1384.0" y="392.0"/><di:waypoint x="1384.0" y="588.42"/><di:waypoint x="885.0" y="588.42"/><di:waypoint x="885.0" y="406.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f10_di" bpmnElement="f10">
+        <di:waypoint x="1044.0" y="344.0"/><di:waypoint x="1044.0" y="325.51"/><di:waypoint x="1610.0" y="325.51"/><di:waypoint x="1610.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f11_di" bpmnElement="f11">
+        <di:waypoint x="1800.0" y="368.0"/><di:waypoint x="1840.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f12_di" bpmnElement="f12">
+        <di:waypoint x="2030.0" y="368.0"/><di:waypoint x="2892.0" y="368.0"/><di:waypoint x="2892.0" y="1675.0"/><di:waypoint x="1934.0" y="1675.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f12b_di" bpmnElement="f12b">
+        <di:waypoint x="1935.0" y="1675.0"/><di:waypoint x="1935.0" y="1512.04"/><di:waypoint x="2090.0" y="1512.04"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f13_di" bpmnElement="f13">
+        <di:waypoint x="2191.0" y="1459.0"/><di:waypoint x="2870.0" y="1459.0"/><di:waypoint x="2870.0" y="725.0"/><di:waypoint x="2663.0" y="725.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f14_di" bpmnElement="f14">
+        <di:waypoint x="2470.0" y="725.0"/><di:waypoint x="2393.0" y="725.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f15_di" bpmnElement="f15">
+        <di:waypoint x="2200.0" y="725.0"/><di:waypoint x="2118.0" y="725.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f16_di" bpmnElement="f16">
+        <di:waypoint x="2070.0" y="734.64"/><di:waypoint x="1986.99" y="734.64"/><di:waypoint x="1986.99" y="1044.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f17_di" bpmnElement="f17">
+        <di:waypoint x="1920.0" y="1083.0"/><di:waypoint x="1848.0" y="1083.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f18_di" bpmnElement="f18">
+        <di:waypoint x="1800.0" y="1083.0"/><di:waypoint x="1738.0" y="1083.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f19_di" bpmnElement="f19">
+        <di:waypoint x="1483.0" y="1083.0"/><di:waypoint x="1483.0" y="1031.0"/><di:waypoint x="1920.0" y="1031.0"/><di:waypoint x="1920.0" y="1083.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f20_di" bpmnElement="f20">
+        <di:waypoint x="1800.0" y="1107.0"/><di:waypoint x="1800.0" y="1229.0"/><di:waypoint x="1113.0" y="1229.0"/><di:waypoint x="1113.0" y="1303.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f21_di" bpmnElement="f21">
+        <di:waypoint x="2094.0" y="750.0"/><di:waypoint x="2094.0" y="869.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f22_di" bpmnElement="f22">
+        <di:waypoint x="2044.0" y="869.0"/><di:waypoint x="2044.0" y="213.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f23_di" bpmnElement="f23">
+        <di:waypoint x="2229.0" y="175.0"/><di:waypoint x="2310.0" y="175.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f24_di" bpmnElement="f24">
+        <di:waypoint x="2351.28" y="199.0"/><di:waypoint x="2910.0" y="199.0"/><di:waypoint x="2910.0" y="1288.96"/><di:waypoint x="2035.0" y="1288.96"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f24b_di" bpmnElement="f24b">
+        <di:waypoint x="1810.0" y="1303.0"/><di:waypoint x="1685.0" y="1303.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f25_di" bpmnElement="f25">
+        <di:waypoint x="2324.88" y="199.0"/><di:waypoint x="2324.88" y="680.0"/><di:waypoint x="2415.0" y="680.0"/><di:waypoint x="2415.0" y="869.0"/><di:waypoint x="2435.0" y="869.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f26_di" bpmnElement="f26">
+        <di:waypoint x="2535.0" y="907.0"/><di:waypoint x="2595.0" y="907.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f27_di" bpmnElement="f27">
+        <di:waypoint x="2640.0" y="931.0"/><di:waypoint x="2640.0" y="1003.64"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f28_di" bpmnElement="f28">
+        <di:waypoint x="2464.0" y="1203.0"/><di:waypoint x="2464.0" y="1056.0"/><di:waypoint x="2736.0" y="1056.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f29_di" bpmnElement="f29">
+        <di:waypoint x="2619.0" y="931.0"/><di:waypoint x="2619.0" y="955.0"/><di:waypoint x="2050.0" y="955.0"/><di:waypoint x="2050.0" y="1044.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f30_di" bpmnElement="f30">
+        <di:waypoint x="1113.0" y="1303.0"/><di:waypoint x="1165.0" y="1303.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f31_di" bpmnElement="f31">
+        <di:waypoint x="1231.0" y="1342.0"/><di:waypoint x="1231.0" y="1675.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="f31b_di" bpmnElement="f31b">
+        <di:waypoint x="1365.0" y="1714.0"/><di:waypoint x="1455.0" y="1714.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a01_di" bpmnElement="a01">
+        <di:waypoint x="500.0" y="192.0"/><di:waypoint x="485.0" y="192.0"/><di:waypoint x="485.0" y="245.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a02_di" bpmnElement="a02">
+        <di:waypoint x="475.0" y="297.0"/><di:waypoint x="475.0" y="330.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a03_di" bpmnElement="a03">
+        <di:waypoint x="848.0" y="443.0"/><di:waypoint x="848.0" y="406.0"/><di:waypoint x="885.0" y="406.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a04_di" bpmnElement="a04">
+        <di:waypoint x="1668.0" y="443.0"/><di:waypoint x="1668.0" y="406.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a05_di" bpmnElement="a05">
+        <di:waypoint x="2296.5" y="662.0"/><di:waypoint x="2296.5" y="686.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a06_di" bpmnElement="a06">
+        <di:waypoint x="1140.0" y="368.0"/><di:waypoint x="1140.0" y="438.0"/><di:waypoint x="1060.0" y="438.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a07_di" bpmnElement="a07">
+        <di:waypoint x="1040.0" y="463.0"/><di:waypoint x="1040.0" y="496.0"/><di:waypoint x="980.0" y="496.0"/><di:waypoint x="980.0" y="368.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a08_di" bpmnElement="a08">
+        <di:waypoint x="1800.0" y="381.68"/><di:waypoint x="1800.0" y="435.0"/><di:waypoint x="1934.0" y="435.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a09_di" bpmnElement="a09">
+        <di:waypoint x="1928.0" y="435.0"/><di:waypoint x="1928.0" y="406.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a12_di" bpmnElement="a12">
+        <di:waypoint x="2191.0" y="1559.0"/><di:waypoint x="2191.0" y="1537.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a13_di" bpmnElement="a13">
+        <di:waypoint x="2292.0" y="1510.0"/><di:waypoint x="2325.0" y="1510.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a14_di" bpmnElement="a14">
+        <di:waypoint x="2570.0" y="791.0"/><di:waypoint x="2570.0" y="764.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a15_di" bpmnElement="a15">
+        <di:waypoint x="2566.5" y="686.0"/><di:waypoint x="2566.5" y="662.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a16_di" bpmnElement="a16">
+        <di:waypoint x="935.0" y="1212.0"/><di:waypoint x="935.0" y="1264.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a17_di" bpmnElement="a17">
+        <di:waypoint x="2290.0" y="791.0"/><di:waypoint x="2290.0" y="764.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a18_di" bpmnElement="a18">
+        <di:waypoint x="1641.5" y="1122.0"/><di:waypoint x="1641.5" y="1139.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a19_di" bpmnElement="a19">
+        <di:waypoint x="2010.0" y="1144.0"/><di:waypoint x="2010.0" y="1122.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a20_di" bpmnElement="a20">
+        <di:waypoint x="2435.0" y="869.0"/><di:waypoint x="2435.0" y="838.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a21_di" bpmnElement="a21">
+        <di:waypoint x="1070.0" y="1212.0"/><di:waypoint x="1070.0" y="1264.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a22_di" bpmnElement="a22">
+        <di:waypoint x="2736.5" y="1189.0"/><di:waypoint x="2736.5" y="1165.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a23_di" bpmnElement="a23">
+        <di:waypoint x="2736.5" y="1113.0"/><di:waypoint x="2736.5" y="1056.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a24_di" bpmnElement="a24">
+        <di:waypoint x="1113.0" y="1303.0"/><di:waypoint x="1113.0" y="1374.0"/><di:waypoint x="1170.0" y="1374.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="a25_di" bpmnElement="a25">
+        <di:waypoint x="1171.5" y="1374.0"/><di:waypoint x="1171.5" y="1342.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Crequest_di" bpmnElement="Crequest"><dc:Bounds x="170.0" y="485.0" width="192.0" height="77.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Cnewcheck_di" bpmnElement="Cnewcheck"><dc:Bounds x="2640.0" y="979.0" width="193.0" height="77.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Gnewok_di" bpmnElement="Gnewok"><dc:Bounds x="2440.0" y="993.0" width="48.0" height="48.0"/><bpmndi:BPMNLabel><dc:Bounds x="2375.0" y="967.0" width="178" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id="f4a_di" bpmnElement="f4a"><di:waypoint x="250.0" y="485.0"/><di:waypoint x="250.0" y="212.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fnewa_di" bpmnElement="fnewa"><di:waypoint x="2640.0" y="1017.0"/><di:waypoint x="2488.0" y="1017.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fnewb_di" bpmnElement="fnewb"><di:waypoint x="2440.0" y="1025.64"/><di:waypoint x="2123.0" y="1025.64"/><di:waypoint x="2123.0" y="1068.96"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fnewc_di" bpmnElement="fnewc"><di:waypoint x="2488.0" y="1017.0"/><di:waypoint x="2488.0" y="1227.5"/><di:waypoint x="2640.0" y="1227.5"/></bpmndi:BPMNEdge><bpmndi:BPMNShape id="CdeniedInit_di" bpmnElement="CdeniedInit"><dc:Bounds x="950.0" y="495.0" width="245.0" height="82.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="EinitDenied_di" bpmnElement="EinitDenied"><dc:Bounds x="1260.0" y="518.0" width="38.0" height="38.0"/><bpmndi:BPMNLabel><dc:Bounds x="1171.0" y="590.0" width="216" height="32"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="GresInit_di" bpmnElement="GresInit"><dc:Bounds x="1360.0" y="344.0" width="48.0" height="48.0"/><bpmndi:BPMNLabel><dc:Bounds x="1419.0" y="359.0" width="148" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="GresExec_di" bpmnElement="GresExec"><dc:Bounds x="1435.0" y="1059.0" width="48.0" height="48.0"/><bpmndi:BPMNLabel><dc:Bounds x="1385.0" y="1007.0" width="148" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="GresNew_di" bpmnElement="GresNew"><dc:Bounds x="2440.0" y="1203.0" width="48.0" height="48.0"/><bpmndi:BPMNLabel><dc:Bounds x="2390.0" y="1311.0" width="148" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="CblockedDoc_di" bpmnElement="CblockedDoc"><dc:Bounds x="1445.0" y="1264.0" width="240.0" height="78.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Gfinish_di" bpmnElement="Gfinish"><dc:Bounds x="1455.0" y="1688.0" width="48.0" height="48.0"/><bpmndi:BPMNLabel><dc:Bounds x="1375.5" y="1636.0" width="207" height="18"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id="fresInitIn_di" bpmnElement="fresInitIn"><di:waypoint x="1330.0" y="368.0"/><di:waypoint x="1360.0" y="368.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fresInitNo_di" bpmnElement="fresInitNo"><di:waypoint x="1360.0" y="368.0"/><di:waypoint x="1360.0" y="503.0"/><di:waypoint x="1195.0" y="503.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fnoInitial_di" bpmnElement="fnoInitial"><di:waypoint x="1035.84" y="392.0"/><di:waypoint x="1035.84" y="495.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fendInit_di" bpmnElement="fendInit"><di:waypoint x="1195.0" y="537.0"/><di:waypoint x="1260.0" y="537.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fresExecIn_di" bpmnElement="fresExecIn"><di:waypoint x="1545.0" y="1083.0"/><di:waypoint x="1483.0" y="1083.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fresExecNo_di" bpmnElement="fresExecNo"><di:waypoint x="1467.16" y="1107.0"/><di:waypoint x="1467.16" y="1203.0"/><di:waypoint x="1810.0" y="1203.0"/><di:waypoint x="1810.0" y="1288.96"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fnoExec_di" bpmnElement="fnoExec"><di:waypoint x="1848.0" y="1091.64"/><di:waypoint x="1848.0" y="1264.0"/><di:waypoint x="1884.25" y="1264.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fresNewIn_di" bpmnElement="fresNewIn"><di:waypoint x="2640.0" y="1227.0"/><di:waypoint x="2488.0" y="1227.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fresNewNo_di" bpmnElement="fresNewNo"><di:waypoint x="2440.0" y="1235.64"/><di:waypoint x="2035.0" y="1235.64"/><di:waypoint x="2035.0" y="1288.96"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fnoNew_di" bpmnElement="fnoNew"><di:waypoint x="2440.0" y="1017.0"/><di:waypoint x="2440.0" y="1288.0"/><di:waypoint x="2035.0" y="1288.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="fblockedToFin_di" bpmnElement="fblockedToFin"><di:waypoint x="1445.0" y="1303.0"/><di:waypoint x="1365.0" y="1303.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="ffinishYes_di" bpmnElement="ffinishYes"><di:waypoint x="1503.0" y="1703.36"/><di:waypoint x="1503.0" y="1665.84"/><di:waypoint x="1655.0" y="1665.84"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="ffinishNo_di" bpmnElement="ffinishNo"><di:waypoint x="1503.0" y="1720.64"/><di:waypoint x="1503.0" y="1777.16"/><di:waypoint x="1655.0" y="1777.16"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="a10_di" bpmnElement="a10">
+        <di:waypoint x="1940.0" y="406.0"/><di:waypoint x="1940.0" y="435.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="a11_di" bpmnElement="a11">
+        <di:waypoint x="2050.0" y="1705.0"/><di:waypoint x="2030.0" y="1705.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="a26_di" bpmnElement="a26">
+        <di:waypoint x="1183.5" y="1342.0"/><di:waypoint x="1183.5" y="1374.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="a27_di" bpmnElement="a27">
+        <di:waypoint x="1320.0" y="1770.0"/><di:waypoint x="1320.0" y="1753.0"/></bpmndi:BPMNEdge><bpmndi:BPMNShape id="Shape_D_WorkPlanFinance" bpmnElement="D_WorkPlanFinance"><dc:Bounds x="2050.0" y="1680.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_WorkUpdatedFinance" bpmnElement="D_WorkUpdatedFinance"><dc:Bounds x="1300.0" y="1770.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_OrderAtExecution" bpmnElement="D_OrderAtExecution"><dc:Bounds x="2276.5" y="612.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_WorkFactAtUpdate" bpmnElement="D_WorkFactAtUpdate"><dc:Bounds x="915.0" y="1162.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_OrderChangeAtUpdate" bpmnElement="D_OrderChangeAtUpdate"><dc:Bounds x="1050.0" y="1162.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_CheckAtC2" bpmnElement="D_CheckAtC2"><dc:Bounds x="1040.0" y="438.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_CheckAtC6" bpmnElement="D_CheckAtC6"><dc:Bounds x="1990.0" y="1144.0" width="40.0" height="50.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="Shape_D_OrderAtPlan" bpmnElement="D_OrderAtPlan"><dc:Bounds x="1648.0" y="443.0" width="40.0" height="50.0"/></bpmndi:BPMNShape></bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

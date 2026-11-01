@@ -1,0 +1,2678 @@
+{
+  "version": "23.1.1.dev0",
+  "backend": "v23-readable-candidate-search",
+  "status": "layout_candidate_verified",
+  "release_ready": false,
+  "limitations": [
+    "global optimality is not proven",
+    "see geometry_report.json for remaining readability limitations"
+  ],
+  "source_file": "process_08_v4_frozen.bpmn",
+  "validation": {
+    "xml_parse": true,
+    "reference_integrity": true,
+    "preflight": {
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "source": "v23-stage-8mqi4bj2/process_08_v23.bpmn",
+      "counts": {
+        "processes": 1,
+        "diagrams": 1,
+        "nodes": 64,
+        "sequence_flows": 95,
+        "associations": 18,
+        "data_references": 17,
+        "lanes": 6
+      }
+    }
+  },
+  "label_placement": {
+    "unplaced_labels": [],
+    "external_labels": 95,
+    "large_displacements": [
+      {
+        "id": "G513a",
+        "distance": 176.78
+      },
+      {
+        "id": "G516a",
+        "distance": 247.78
+      },
+      {
+        "id": "G59",
+        "distance": 112.06
+      },
+      {
+        "id": "G58",
+        "distance": 113.95
+      },
+      {
+        "id": "E",
+        "distance": 147.8
+      },
+      {
+        "id": "G515",
+        "distance": 115.38
+      },
+      {
+        "id": "G54b",
+        "distance": 107.48
+      },
+      {
+        "id": "DOR_ClosingDocs",
+        "distance": 107.33
+      },
+      {
+        "id": "DOR_AccountantTask",
+        "distance": 132.39
+      },
+      {
+        "id": "F83",
+        "distance": 308.53
+      },
+      {
+        "id": "F93",
+        "distance": 150.25
+      }
+    ],
+    "distant_from_owner": [],
+    "rendering": {
+      "font": "Open Sans bundled",
+      "task_font_size": 14,
+      "label_font_size": 12,
+      "text_overflow_ids": []
+    }
+  },
+  "backend_report": {
+    "backend": "v23-readable-candidate-search",
+    "selected_candidate": "expanded-wide",
+    "quality": [
+      5539.924,
+      [
+        50,
+        132,
+        89945.7
+      ],
+      4.443
+    ],
+    "candidates": [
+      {
+        "candidate": "preserve",
+        "status": "rejected",
+        "reason": "text overflow: ['T51b', 'T51c', 'T52', 'T53', 'C53', 'T55', 'C55', 'T56', 'T510b', 'T511b', 'T512a', 'T513', 'T514', 'T515c', 'T58d', 'T59c', 'T513a', 'T516c']",
+        "seconds": 46.865
+      },
+      {
+        "candidate": "expanded",
+        "status": "verified",
+        "rank": [
+          7234.617,
+          [
+            67,
+            130,
+            89292.2
+          ],
+          4.443
+        ],
+        "seconds": 38.402,
+        "labels": {
+          "unplaced_labels": [],
+          "external_labels": 95,
+          "large_displacements": [
+            {
+              "id": "E",
+              "distance": 122.38
+            },
+            {
+              "id": "DSR_SupplierOptions",
+              "distance": 107.33
+            },
+            {
+              "id": "F97",
+              "distance": 151.79
+            },
+            {
+              "id": "F94",
+              "distance": 107.33
+            }
+          ],
+          "rendering": {
+            "font": "Open Sans bundled",
+            "task_font_size": 14,
+            "label_font_size": 12,
+            "text_overflow_ids": []
+          }
+        },
+        "details": {
+          "astar_fallbacks": 8,
+          "initial_quality": [
+            115,
+            114,
+            89315.8
+          ],
+          "final_quality": [
+            67,
+            130,
+            89126.7
+          ],
+          "refinements": [
+            {
+              "edge": "F88",
+              "before": [
+                13,
+                2,
+                3935.0
+              ],
+              "after": [
+                12,
+                5,
+                3887.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                13,
+                9,
+                5404.4
+              ],
+              "after": [
+                12,
+                7,
+                5419.4
+              ]
+            },
+            {
+              "edge": "F84",
+              "before": [
+                12,
+                12,
+                8365.8
+              ],
+              "after": [
+                11,
+                15,
+                8604.8
+              ]
+            },
+            {
+              "edge": "F93",
+              "before": [
+                8,
+                2,
+                2190.0
+              ],
+              "after": [
+                8,
+                2,
+                2176.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                7,
+                2,
+                1839.0
+              ],
+              "after": [
+                6,
+                6,
+                1791.0
+              ]
+            },
+            {
+              "edge": "F34",
+              "before": [
+                6,
+                2,
+                4977.5
+              ],
+              "after": [
+                1,
+                2,
+                5077.5
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                6,
+                2,
+                2927.0
+              ],
+              "after": [
+                5,
+                6,
+                3357.0
+              ]
+            },
+            {
+              "edge": "F79",
+              "before": [
+                6,
+                2,
+                1770.0
+              ],
+              "after": [
+                4,
+                2,
+                1920.0
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                8,
+                1,
+                948.0
+              ],
+              "after": [
+                5,
+                3,
+                1100.0
+              ]
+            },
+            {
+              "edge": "F26",
+              "before": [
+                5,
+                3,
+                1024.3
+              ],
+              "after": [
+                3,
+                2,
+                1046.5
+              ]
+            },
+            {
+              "edge": "F67",
+              "before": [
+                6,
+                2,
+                1302.0
+              ],
+              "after": [
+                2,
+                1,
+                710.0
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                3,
+                2,
+                979.0
+              ],
+              "after": [
+                3,
+                2,
+                841.0
+              ]
+            },
+            {
+              "edge": "A_CashRegister_Fact",
+              "before": [
+                1,
+                1,
+                382.5
+              ],
+              "after": [
+                0,
+                1,
+                299.0
+              ]
+            },
+            {
+              "edge": "F13",
+              "before": [
+                3,
+                2,
+                1108.5
+              ],
+              "after": [
+                1,
+                2,
+                1465.5
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                2,
+                1,
+                523.5
+              ],
+              "after": [
+                1,
+                3,
+                832.5
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                4,
+                1,
+                1037.0
+              ],
+              "after": [
+                3,
+                1,
+                961.0
+              ]
+            },
+            {
+              "edge": "F52",
+              "before": [
+                2,
+                2,
+                1141.0
+              ],
+              "after": [
+                2,
+                2,
+                927.0
+              ]
+            },
+            {
+              "edge": "F54",
+              "before": [
+                2,
+                2,
+                827.0
+              ],
+              "after": [
+                2,
+                2,
+                499.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                2,
+                2,
+                1220.5
+              ],
+              "after": [
+                2,
+                2,
+                1212.5
+              ]
+            },
+            {
+              "edge": "F65",
+              "before": [
+                2,
+                2,
+                942.5
+              ],
+              "after": [
+                2,
+                2,
+                804.5
+              ]
+            },
+            {
+              "edge": "F75",
+              "before": [
+                4,
+                2,
+                3925.6
+              ],
+              "after": [
+                3,
+                2,
+                3925.6
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                3,
+                2,
+                1521.0
+              ],
+              "after": [
+                2,
+                2,
+                1758.0
+              ]
+            },
+            {
+              "edge": "F47",
+              "before": [
+                1,
+                1,
+                693.0
+              ],
+              "after": [
+                1,
+                1,
+                541.0
+              ]
+            },
+            {
+              "edge": "F51",
+              "before": [
+                3,
+                0,
+                135.0
+              ],
+              "after": [
+                2,
+                0,
+                135.0
+              ]
+            },
+            {
+              "edge": "F64",
+              "before": [
+                2,
+                1,
+                164.5
+              ],
+              "after": [
+                1,
+                1,
+                240.5
+              ]
+            },
+            {
+              "edge": "A_InitialTechData",
+              "before": [
+                1,
+                2,
+                445.5
+              ],
+              "after": [
+                0,
+                1,
+                239.0
+              ]
+            },
+            {
+              "edge": "A_WorkFile_Close",
+              "before": [
+                2,
+                0,
+                82.5
+              ],
+              "after": [
+                1,
+                1,
+                187.5
+              ]
+            },
+            {
+              "edge": "F16",
+              "before": [
+                1,
+                0,
+                324.0
+              ],
+              "after": [
+                0,
+                1,
+                456.5
+              ]
+            },
+            {
+              "edge": "F21",
+              "before": [
+                1,
+                2,
+                649.5
+              ],
+              "after": [
+                0,
+                2,
+                521.5
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                2,
+                1,
+                407.0
+              ],
+              "after": [
+                1,
+                1,
+                483.0
+              ]
+            },
+            {
+              "edge": "F4",
+              "before": [
+                1,
+                0,
+                152.5
+              ],
+              "after": [
+                0,
+                0,
+                152.5
+              ]
+            },
+            {
+              "edge": "F43",
+              "before": [
+                1,
+                0,
+                445.0
+              ],
+              "after": [
+                0,
+                0,
+                445.0
+              ]
+            },
+            {
+              "edge": "F48",
+              "before": [
+                1,
+                1,
+                149.5
+              ],
+              "after": [
+                0,
+                1,
+                225.5
+              ]
+            },
+            {
+              "edge": "F63",
+              "before": [
+                0,
+                1,
+                441.5
+              ],
+              "after": [
+                0,
+                1,
+                365.5
+              ]
+            },
+            {
+              "edge": "F70",
+              "before": [
+                1,
+                1,
+                305.0
+              ],
+              "after": [
+                0,
+                2,
+                603.0
+              ]
+            },
+            {
+              "edge": "F73",
+              "before": [
+                0,
+                1,
+                663.0
+              ],
+              "after": [
+                0,
+                1,
+                511.0
+              ]
+            },
+            {
+              "edge": "F9",
+              "before": [
+                1,
+                2,
+                1123.0
+              ],
+              "after": [
+                0,
+                1,
+                909.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                12,
+                7,
+                5419.4
+              ],
+              "after": [
+                10,
+                5,
+                5262.6
+              ]
+            },
+            {
+              "edge": "F88",
+              "before": [
+                11,
+                5,
+                3887.0
+              ],
+              "after": [
+                11,
+                4,
+                3889.0
+              ]
+            },
+            {
+              "edge": "F57",
+              "before": [
+                6,
+                1,
+                1106.0
+              ],
+              "after": [
+                3,
+                4,
+                1236.0
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                4,
+                3,
+                1100.0
+              ],
+              "after": [
+                3,
+                6,
+                1380.0
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                2,
+                2,
+                988.0
+              ],
+              "after": [
+                2,
+                2,
+                980.0
+              ]
+            },
+            {
+              "edge": "F58",
+              "before": [
+                4,
+                2,
+                1535.0
+              ],
+              "after": [
+                4,
+                2,
+                1527.0
+              ]
+            },
+            {
+              "edge": "F89",
+              "before": [
+                3,
+                1,
+                809.5999999999999
+              ],
+              "after": [
+                1,
+                2,
+                809.5999999999999
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                2,
+                2,
+                1758.0
+              ],
+              "after": [
+                2,
+                2,
+                1744.0
+              ]
+            },
+            {
+              "edge": "F13",
+              "before": [
+                1,
+                2,
+                1465.5
+              ],
+              "after": [
+                1,
+                2,
+                1457.5
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                1,
+                3,
+                832.5
+              ],
+              "after": [
+                1,
+                1,
+                599.5
+              ]
+            },
+            {
+              "edge": "F65",
+              "before": [
+                1,
+                2,
+                804.5
+              ],
+              "after": [
+                1,
+                1,
+                730.5
+              ]
+            },
+            {
+              "edge": "F85",
+              "before": [
+                1,
+                2,
+                1694.0
+              ],
+              "after": [
+                1,
+                2,
+                1436.0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "candidate": "fold-11",
+        "status": "verified",
+        "rank": [
+          16068.891,
+          [
+            153,
+            229,
+            125325.9
+          ],
+          1.575
+        ],
+        "seconds": 151.564,
+        "labels": {
+          "unplaced_labels": [],
+          "external_labels": 95,
+          "large_displacements": [
+            {
+              "id": "G53",
+              "distance": 169.71
+            },
+            {
+              "id": "G513",
+              "distance": 252.0
+            },
+            {
+              "id": "DOR_ClosingDocs",
+              "distance": 122.38
+            },
+            {
+              "id": "DOR_LegalCheck",
+              "distance": 129.24
+            },
+            {
+              "id": "DSR_SupplierOptions",
+              "distance": 129.24
+            },
+            {
+              "id": "DSR_OperationsFile_Plan",
+              "distance": 132.0
+            },
+            {
+              "id": "DSR_CashFlow_Plan",
+              "distance": 204.0
+            },
+            {
+              "id": "F89",
+              "distance": 343.54
+            },
+            {
+              "id": "F13",
+              "distance": 122.38
+            },
+            {
+              "id": "F25",
+              "distance": 120.0
+            }
+          ],
+          "rendering": {
+            "font": "Open Sans bundled",
+            "task_font_size": 14,
+            "label_font_size": 12,
+            "text_overflow_ids": []
+          }
+        },
+        "details": {
+          "astar_fallbacks": 20,
+          "initial_quality": [
+            280,
+            186,
+            122335.8
+          ],
+          "final_quality": [
+            148,
+            229,
+            124892.1
+          ],
+          "refinements": [
+            {
+              "edge": "F79",
+              "before": [
+                24,
+                2,
+                3011.0
+              ],
+              "after": [
+                14,
+                5,
+                3305.0
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                17,
+                2,
+                3544.0
+              ],
+              "after": [
+                13,
+                10,
+                3858.0
+              ]
+            },
+            {
+              "edge": "F30",
+              "before": [
+                16,
+                8,
+                1726.0
+              ],
+              "after": [
+                14,
+                8,
+                1708.0
+              ]
+            },
+            {
+              "edge": "F44",
+              "before": [
+                13,
+                6,
+                2012.6
+              ],
+              "after": [
+                11,
+                6,
+                2028.6
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                10,
+                2,
+                2204.0
+              ],
+              "after": [
+                6,
+                3,
+                2238.0
+              ]
+            },
+            {
+              "edge": "F33",
+              "before": [
+                14,
+                1,
+                1009.0
+              ],
+              "after": [
+                12,
+                4,
+                1299.0
+              ]
+            },
+            {
+              "edge": "F40",
+              "before": [
+                11,
+                5,
+                2733.0
+              ],
+              "after": [
+                9,
+                9,
+                2727.0
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                10,
+                2,
+                1752.0
+              ],
+              "after": [
+                7,
+                2,
+                1752.0
+              ]
+            },
+            {
+              "edge": "F54",
+              "before": [
+                8,
+                3,
+                1895.3999999999999
+              ],
+              "after": [
+                5,
+                3,
+                1895.3999999999999
+              ]
+            },
+            {
+              "edge": "F61",
+              "before": [
+                11,
+                4,
+                2621.8
+              ],
+              "after": [
+                8,
+                6,
+                2479.8
+              ]
+            },
+            {
+              "edge": "F65",
+              "before": [
+                10,
+                2,
+                1872.6
+              ],
+              "after": [
+                9,
+                5,
+                1927.3999999999999
+              ]
+            },
+            {
+              "edge": "F72",
+              "before": [
+                11,
+                1,
+                695.0
+              ],
+              "after": [
+                9,
+                6,
+                1863.0
+              ]
+            },
+            {
+              "edge": "F73",
+              "before": [
+                10,
+                4,
+                2830.8
+              ],
+              "after": [
+                9,
+                4,
+                2830.8
+              ]
+            },
+            {
+              "edge": "F93",
+              "before": [
+                10,
+                2,
+                1255.0
+              ],
+              "after": [
+                7,
+                2,
+                1117.0
+              ]
+            },
+            {
+              "edge": "F16",
+              "before": [
+                7,
+                2,
+                2593.0
+              ],
+              "after": [
+                7,
+                2,
+                2589.0
+              ]
+            },
+            {
+              "edge": "F19",
+              "before": [
+                10,
+                2,
+                885.0
+              ],
+              "after": [
+                7,
+                3,
+                945.0
+              ]
+            },
+            {
+              "edge": "F26",
+              "before": [
+                9,
+                3,
+                2118.1
+              ],
+              "after": [
+                7,
+                3,
+                1926.1
+              ]
+            },
+            {
+              "edge": "F39",
+              "before": [
+                10,
+                2,
+                2087.0
+              ],
+              "after": [
+                8,
+                6,
+                2509.0
+              ]
+            },
+            {
+              "edge": "F85",
+              "before": [
+                11,
+                2,
+                2157.0
+              ],
+              "after": [
+                6,
+                3,
+                2055.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                12,
+                1,
+                571.0
+              ],
+              "after": [
+                9,
+                6,
+                921.0
+              ]
+            },
+            {
+              "edge": "F15",
+              "before": [
+                12,
+                1,
+                882.0
+              ],
+              "after": [
+                2,
+                2,
+                882.0
+              ]
+            },
+            {
+              "edge": "F37",
+              "before": [
+                5,
+                7,
+                1733.8000000000002
+              ],
+              "after": [
+                5,
+                3,
+                1672.6
+              ]
+            },
+            {
+              "edge": "F38",
+              "before": [
+                7,
+                2,
+                1669.0
+              ],
+              "after": [
+                6,
+                4,
+                1669.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                9,
+                2,
+                1520.0
+              ],
+              "after": [
+                2,
+                3,
+                1776.0
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                5,
+                2,
+                1807.6
+              ],
+              "after": [
+                5,
+                1,
+                1807.6
+              ]
+            },
+            {
+              "edge": "F28",
+              "before": [
+                7,
+                2,
+                947.0
+              ],
+              "after": [
+                5,
+                3,
+                947.0
+              ]
+            },
+            {
+              "edge": "F31",
+              "before": [
+                8,
+                1,
+                1217.0
+              ],
+              "after": [
+                4,
+                4,
+                1645.0
+              ]
+            },
+            {
+              "edge": "F34",
+              "before": [
+                6,
+                4,
+                1437.6
+              ],
+              "after": [
+                6,
+                2,
+                1555.0
+              ]
+            },
+            {
+              "edge": "F59",
+              "before": [
+                8,
+                2,
+                1140.0
+              ],
+              "after": [
+                6,
+                2,
+                1140.0
+              ]
+            },
+            {
+              "edge": "F74",
+              "before": [
+                7,
+                2,
+                1085.0
+              ],
+              "after": [
+                7,
+                1,
+                871.0
+              ]
+            },
+            {
+              "edge": "F83",
+              "before": [
+                4,
+                8,
+                2147.6
+              ],
+              "after": [
+                4,
+                8,
+                2135.6
+              ]
+            },
+            {
+              "edge": "F87",
+              "before": [
+                4,
+                2,
+                1831.0
+              ],
+              "after": [
+                3,
+                4,
+                1831.0
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                6,
+                4,
+                3205.4
+              ],
+              "after": [
+                5,
+                2,
+                3195.0
+              ]
+            },
+            {
+              "edge": "F13",
+              "before": [
+                4,
+                2,
+                1502.0
+              ],
+              "after": [
+                3,
+                4,
+                1646.0
+              ]
+            },
+            {
+              "edge": "F75",
+              "before": [
+                8,
+                4,
+                1746.6
+              ],
+              "after": [
+                8,
+                4,
+                1660.6
+              ]
+            },
+            {
+              "edge": "F89",
+              "before": [
+                5,
+                2,
+                1881.0
+              ],
+              "after": [
+                5,
+                2,
+                1769.0
+              ]
+            },
+            {
+              "edge": "F98",
+              "before": [
+                5,
+                2,
+                832.0
+              ],
+              "after": [
+                2,
+                6,
+                1056.0
+              ]
+            },
+            {
+              "edge": "F2",
+              "before": [
+                4,
+                1,
+                695.0
+              ],
+              "after": [
+                1,
+                2,
+                1287.0
+              ]
+            },
+            {
+              "edge": "F21",
+              "before": [
+                4,
+                2,
+                623.0
+              ],
+              "after": [
+                2,
+                1,
+                409.0
+              ]
+            },
+            {
+              "edge": "F58",
+              "before": [
+                5,
+                7,
+                5317.200000000001
+              ],
+              "after": [
+                1,
+                2,
+                4122.0
+              ]
+            },
+            {
+              "edge": "F24",
+              "before": [
+                3,
+                0,
+                190.0
+              ],
+              "after": [
+                2,
+                0,
+                190.0
+              ]
+            },
+            {
+              "edge": "F3",
+              "before": [
+                3,
+                2,
+                758.0
+              ],
+              "after": [
+                3,
+                2,
+                618.0
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                6,
+                6,
+                5225.0
+              ],
+              "after": [
+                5,
+                6,
+                4591.0
+              ]
+            },
+            {
+              "edge": "F52",
+              "before": [
+                4,
+                1,
+                1555.0
+              ],
+              "after": [
+                1,
+                3,
+                1565.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                2,
+                1,
+                3416.0
+              ],
+              "after": [
+                1,
+                2,
+                3706.0
+              ]
+            },
+            {
+              "edge": "F57",
+              "before": [
+                2,
+                2,
+                4115.0
+              ],
+              "after": [
+                1,
+                1,
+                3827.0
+              ]
+            },
+            {
+              "edge": "A_Contract_ToOperation",
+              "before": [
+                2,
+                2,
+                496.0
+              ],
+              "after": [
+                0,
+                1,
+                289.5
+              ]
+            },
+            {
+              "edge": "F42",
+              "before": [
+                3,
+                0,
+                190.0
+              ],
+              "after": [
+                2,
+                2,
+                385.0
+              ]
+            },
+            {
+              "edge": "F47",
+              "before": [
+                3,
+                2,
+                1052.0
+              ],
+              "after": [
+                3,
+                2,
+                876.0
+              ]
+            },
+            {
+              "edge": "F76",
+              "before": [
+                3,
+                0,
+                190.0
+              ],
+              "after": [
+                2,
+                0,
+                190.0
+              ]
+            },
+            {
+              "edge": "F82",
+              "before": [
+                3,
+                2,
+                1187.0
+              ],
+              "after": [
+                3,
+                2,
+                1163.0
+              ]
+            },
+            {
+              "edge": "F18",
+              "before": [
+                2,
+                2,
+                2363.0
+              ],
+              "after": [
+                1,
+                4,
+                2571.0
+              ]
+            },
+            {
+              "edge": "F20",
+              "before": [
+                1,
+                0,
+                190.0
+              ],
+              "after": [
+                0,
+                0,
+                190.0
+              ]
+            },
+            {
+              "edge": "F71",
+              "before": [
+                2,
+                2,
+                976.0
+              ],
+              "after": [
+                1,
+                6,
+                1122.0
+              ]
+            },
+            {
+              "edge": "F32",
+              "before": [
+                1,
+                0,
+                190.0
+              ],
+              "after": [
+                0,
+                0,
+                190.0
+              ]
+            },
+            {
+              "edge": "F6",
+              "before": [
+                1,
+                2,
+                1622.0
+              ],
+              "after": [
+                0,
+                4,
+                1608.0
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                10,
+                10,
+                3858.0
+              ],
+              "after": [
+                10,
+                6,
+                3794.0
+              ]
+            },
+            {
+              "edge": "F9",
+              "before": [
+                10,
+                2,
+                1887.0
+              ],
+              "after": [
+                7,
+                7,
+                2323.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                9,
+                6,
+                921.0
+              ],
+              "after": [
+                9,
+                6,
+                917.0
+              ]
+            },
+            {
+              "edge": "F35",
+              "before": [
+                7,
+                2,
+                595.0
+              ],
+              "after": [
+                6,
+                2,
+                747.0
+              ]
+            },
+            {
+              "edge": "F50",
+              "before": [
+                9,
+                2,
+                3130.0
+              ],
+              "after": [
+                7,
+                2,
+                3130.0
+              ]
+            },
+            {
+              "edge": "F72",
+              "before": [
+                8,
+                6,
+                1863.0
+              ],
+              "after": [
+                8,
+                2,
+                1175.0
+              ]
+            },
+            {
+              "edge": "F12",
+              "before": [
+                7,
+                9,
+                2702.4
+              ],
+              "after": [
+                6,
+                7,
+                2624.4
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                7,
+                9,
+                2659.4
+              ],
+              "after": [
+                7,
+                7,
+                2651.4
+              ]
+            },
+            {
+              "edge": "F61",
+              "before": [
+                6,
+                6,
+                2479.8
+              ],
+              "after": [
+                6,
+                6,
+                2440.2
+              ]
+            },
+            {
+              "edge": "F93",
+              "before": [
+                7,
+                2,
+                1117.0
+              ],
+              "after": [
+                6,
+                2,
+                1087.0
+              ]
+            },
+            {
+              "edge": "F28",
+              "before": [
+                6,
+                3,
+                947.0
+              ],
+              "after": [
+                6,
+                2,
+                1197.0
+              ]
+            },
+            {
+              "edge": "F74",
+              "before": [
+                8,
+                1,
+                871.0
+              ],
+              "after": [
+                6,
+                4,
+                1209.0
+              ]
+            },
+            {
+              "edge": "F40",
+              "before": [
+                6,
+                9,
+                2727.0
+              ],
+              "after": [
+                4,
+                8,
+                2707.0
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                5,
+                2,
+                1752.0
+              ],
+              "after": [
+                4,
+                3,
+                1752.0
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                5,
+                3,
+                2238.0
+              ],
+              "after": [
+                5,
+                3,
+                2230.0
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                3,
+                1,
+                1807.6
+              ],
+              "after": [
+                2,
+                6,
+                2511.6
+              ]
+            },
+            {
+              "edge": "F47",
+              "before": [
+                3,
+                2,
+                876.0
+              ],
+              "after": [
+                3,
+                2,
+                862.0
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                3,
+                6,
+                4591.0
+              ],
+              "after": [
+                3,
+                6,
+                4355.0
+              ]
+            },
+            {
+              "edge": "F89",
+              "before": [
+                3,
+                2,
+                1769.0
+              ],
+              "after": [
+                2,
+                2,
+                1769.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                2,
+                3,
+                1776.0
+              ],
+              "after": [
+                2,
+                2,
+                1776.0
+              ]
+            },
+            {
+              "edge": "F58",
+              "before": [
+                1,
+                2,
+                4122.0
+              ],
+              "after": [
+                0,
+                2,
+                4748.0
+              ]
+            },
+            {
+              "edge": "F63",
+              "before": [
+                1,
+                2,
+                953.0
+              ],
+              "after": [
+                1,
+                2,
+                939.0
+              ]
+            },
+            {
+              "edge": "F71",
+              "before": [
+                1,
+                6,
+                1122.0
+              ],
+              "after": [
+                0,
+                2,
+                1152.0
+              ]
+            },
+            {
+              "edge": "F98",
+              "before": [
+                2,
+                6,
+                1056.0
+              ],
+              "after": [
+                1,
+                2,
+                656.0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "candidate": "fold-9",
+        "status": "rejected",
+        "reason": "BPMN routing exceeded 150 seconds",
+        "seconds": 150.001
+      },
+      {
+        "candidate": "expanded-wide",
+        "status": "verified",
+        "rank": [
+          5539.924,
+          [
+            50,
+            132,
+            89945.7
+          ],
+          4.443
+        ],
+        "seconds": 65.42092370986938,
+        "labels": {
+          "unplaced_labels": [],
+          "external_labels": 95,
+          "large_displacements": [
+            {
+              "id": "G513a",
+              "distance": 156.0
+            },
+            {
+              "id": "E",
+              "distance": 145.99
+            },
+            {
+              "id": "DOR_ClosingDocs",
+              "distance": 107.33
+            },
+            {
+              "id": "DSR_SupplierOptions",
+              "distance": 107.33
+            },
+            {
+              "id": "F83",
+              "distance": 197.91
+            },
+            {
+              "id": "F97",
+              "distance": 151.79
+            }
+          ],
+          "rendering": {
+            "font": "Open Sans bundled",
+            "task_font_size": 14,
+            "label_font_size": 12,
+            "text_overflow_ids": []
+          }
+        },
+        "details": {
+          "astar_fallbacks": 8,
+          "initial_quality": [
+            110,
+            112,
+            89426.7
+          ],
+          "final_quality": [
+            50,
+            132,
+            89789.7
+          ],
+          "refinements": [
+            {
+              "edge": "F88",
+              "before": [
+                14,
+                2,
+                3935.0
+              ],
+              "after": [
+                11,
+                6,
+                4341.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                11,
+                9,
+                5618.6
+              ],
+              "after": [
+                10,
+                5,
+                5287.6
+              ]
+            },
+            {
+              "edge": "F93",
+              "before": [
+                8,
+                2,
+                2190.0
+              ],
+              "after": [
+                6,
+                2,
+                2437.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                7,
+                2,
+                1839.0
+              ],
+              "after": [
+                6,
+                6,
+                1791.0
+              ]
+            },
+            {
+              "edge": "F34",
+              "before": [
+                6,
+                2,
+                4977.5
+              ],
+              "after": [
+                1,
+                2,
+                5077.5
+              ]
+            },
+            {
+              "edge": "F75",
+              "before": [
+                6,
+                6,
+                4341.6
+              ],
+              "after": [
+                2,
+                2,
+                4043.0
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                8,
+                1,
+                948.0
+              ],
+              "after": [
+                4,
+                6,
+                1531.0
+              ]
+            },
+            {
+              "edge": "F26",
+              "before": [
+                4,
+                5,
+                1498.2
+              ],
+              "after": [
+                3,
+                2,
+                1025.8
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                4,
+                2,
+                988.0
+              ],
+              "after": [
+                4,
+                2,
+                980.0
+              ]
+            },
+            {
+              "edge": "F67",
+              "before": [
+                4,
+                2,
+                1302.0
+              ],
+              "after": [
+                0,
+                1,
+                710.0
+              ]
+            },
+            {
+              "edge": "F79",
+              "before": [
+                5,
+                2,
+                1770.0
+              ],
+              "after": [
+                3,
+                2,
+                1920.0
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                4,
+                1,
+                832.0
+              ],
+              "after": [
+                3,
+                4,
+                1191.0
+              ]
+            },
+            {
+              "edge": "F58",
+              "before": [
+                4,
+                2,
+                1535.0
+              ],
+              "after": [
+                3,
+                4,
+                1702.0
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                3,
+                2,
+                979.0
+              ],
+              "after": [
+                3,
+                2,
+                841.0
+              ]
+            },
+            {
+              "edge": "F13",
+              "before": [
+                2,
+                2,
+                1108.5
+              ],
+              "after": [
+                1,
+                2,
+                1175.5
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                4,
+                1,
+                1037.0
+              ],
+              "after": [
+                3,
+                1,
+                961.0
+              ]
+            },
+            {
+              "edge": "F52",
+              "before": [
+                2,
+                2,
+                1141.0
+              ],
+              "after": [
+                2,
+                2,
+                927.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                1,
+                2,
+                1220.5
+              ],
+              "after": [
+                1,
+                2,
+                1212.5
+              ]
+            },
+            {
+              "edge": "F65",
+              "before": [
+                2,
+                2,
+                942.5
+              ],
+              "after": [
+                2,
+                2,
+                804.5
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                4,
+                2,
+                1521.0
+              ],
+              "after": [
+                1,
+                2,
+                1872.0
+              ]
+            },
+            {
+              "edge": "A_CashRegister_Fact",
+              "before": [
+                1,
+                1,
+                382.5
+              ],
+              "after": [
+                0,
+                1,
+                299.0
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                2,
+                1,
+                523.5
+              ],
+              "after": [
+                1,
+                3,
+                832.5
+              ]
+            },
+            {
+              "edge": "F47",
+              "before": [
+                1,
+                1,
+                693.0
+              ],
+              "after": [
+                1,
+                1,
+                541.0
+              ]
+            },
+            {
+              "edge": "F51",
+              "before": [
+                3,
+                0,
+                135.0
+              ],
+              "after": [
+                2,
+                0,
+                135.0
+              ]
+            },
+            {
+              "edge": "F63",
+              "before": [
+                0,
+                1,
+                441.5
+              ],
+              "after": [
+                0,
+                1,
+                365.5
+              ]
+            },
+            {
+              "edge": "A_Contract_New",
+              "before": [
+                0,
+                2,
+                571.0
+              ],
+              "after": [
+                0,
+                1,
+                241.0
+              ]
+            },
+            {
+              "edge": "A_InitialTechData",
+              "before": [
+                1,
+                2,
+                445.5
+              ],
+              "after": [
+                0,
+                1,
+                239.0
+              ]
+            },
+            {
+              "edge": "A_TechTask_In",
+              "before": [
+                0,
+                1,
+                358.5
+              ],
+              "after": [
+                0,
+                1,
+                285.0
+              ]
+            },
+            {
+              "edge": "A_WorkFile_Close",
+              "before": [
+                1,
+                0,
+                82.5
+              ],
+              "after": [
+                0,
+                1,
+                187.5
+              ]
+            },
+            {
+              "edge": "F11",
+              "before": [
+                1,
+                0,
+                82.5
+              ],
+              "after": [
+                0,
+                0,
+                82.5
+              ]
+            },
+            {
+              "edge": "F16",
+              "before": [
+                1,
+                0,
+                324.0
+              ],
+              "after": [
+                0,
+                1,
+                456.5
+              ]
+            },
+            {
+              "edge": "F21",
+              "before": [
+                1,
+                2,
+                649.5
+              ],
+              "after": [
+                0,
+                2,
+                521.5
+              ]
+            },
+            {
+              "edge": "F4",
+              "before": [
+                1,
+                0,
+                152.5
+              ],
+              "after": [
+                0,
+                0,
+                152.5
+              ]
+            },
+            {
+              "edge": "F43",
+              "before": [
+                1,
+                0,
+                445.0
+              ],
+              "after": [
+                0,
+                0,
+                445.0
+              ]
+            },
+            {
+              "edge": "F48",
+              "before": [
+                1,
+                1,
+                149.5
+              ],
+              "after": [
+                0,
+                1,
+                225.5
+              ]
+            },
+            {
+              "edge": "F64",
+              "before": [
+                1,
+                1,
+                164.5
+              ],
+              "after": [
+                0,
+                1,
+                240.5
+              ]
+            },
+            {
+              "edge": "F70",
+              "before": [
+                1,
+                1,
+                305.0
+              ],
+              "after": [
+                0,
+                2,
+                603.0
+              ]
+            },
+            {
+              "edge": "F73",
+              "before": [
+                0,
+                1,
+                663.0
+              ],
+              "after": [
+                0,
+                1,
+                511.0
+              ]
+            },
+            {
+              "edge": "F9",
+              "before": [
+                1,
+                2,
+                1123.0
+              ],
+              "after": [
+                0,
+                1,
+                909.0
+              ]
+            },
+            {
+              "edge": "F88",
+              "before": [
+                11,
+                6,
+                4341.0
+              ],
+              "after": [
+                11,
+                6,
+                4156.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                10,
+                5,
+                5287.6
+              ],
+              "after": [
+                9,
+                11,
+                5846.6
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                6,
+                2,
+                2927.0
+              ],
+              "after": [
+                5,
+                6,
+                3357.0
+              ]
+            },
+            {
+              "edge": "F57",
+              "before": [
+                5,
+                1,
+                1106.0
+              ],
+              "after": [
+                2,
+                4,
+                1236.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                4,
+                6,
+                1791.0
+              ],
+              "after": [
+                4,
+                4,
+                1867.0
+              ]
+            },
+            {
+              "edge": "F75",
+              "before": [
+                5,
+                2,
+                4043.0
+              ],
+              "after": [
+                2,
+                3,
+                4201.0
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                3,
+                4,
+                1191.0
+              ],
+              "after": [
+                2,
+                4,
+                1202.0
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                2,
+                1,
+                407.0
+              ],
+              "after": [
+                1,
+                2,
+                483.0
+              ]
+            },
+            {
+              "edge": "F65",
+              "before": [
+                2,
+                2,
+                804.5
+              ],
+              "after": [
+                2,
+                1,
+                730.5
+              ]
+            },
+            {
+              "edge": "F89",
+              "before": [
+                3,
+                1,
+                809.5999999999999
+              ],
+              "after": [
+                1,
+                2,
+                809.5999999999999
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                0,
+                3,
+                832.5
+              ],
+              "after": [
+                0,
+                2,
+                599.5
+              ]
+            },
+            {
+              "edge": "F85",
+              "before": [
+                0,
+                2,
+                1694.0
+              ],
+              "after": [
+                0,
+                2,
+                1436.0
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                1,
+                2,
+                1872.0
+              ],
+              "after": [
+                1,
+                2,
+                1858.0
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "selection": "best among explored safe readable candidates; not a global optimum",
+    "removed_redundant_associations": [],
+    "output": "output/process_08_v23.bpmn",
+    "artifacts": {
+      "bpmn": "output/process_08_v23.bpmn",
+      "svg": "output/process_08_v23.svg",
+      "png": null
+    }
+  }
+}
