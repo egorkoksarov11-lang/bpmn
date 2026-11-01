@@ -35,3 +35,14 @@ def on_contour(point,box,kind,tolerance=.8):
         return abs(((px-cx)/(w/2))**2+((py-cy)/(h/2))**2-1)<=2*tolerance/min(w/2,h/2)
     return ((abs(px-x)<tolerance or abs(px-x-w)<tolerance) and y-tolerance<=py<=y+h+tolerance or
             (abs(py-y)<tolerance or abs(py-y-h)<tolerance) and x-tolerance<=px<=x+w+tolerance)
+
+
+def bounding_ports(paths,uv,boxes,nodes):
+    paths={eid:list(ps) for eid,ps in paths.items()}
+    for eid,ps in paths.items():
+        for index,near,n in [(0,1,uv[eid][0]),(-1,-2,uv[eid][1])]:
+            if n not in nodes:continue
+            x,y,w,h=boxes[n];px,py=ps[index];other=ps[near]
+            ps[index]=(x+w if other[0]>x+w/2 else x,py) if abs(py-other[1])<.01 else (px,y+h if other[1]>y+h/2 else y)
+    return paths
+

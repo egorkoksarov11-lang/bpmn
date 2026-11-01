@@ -1,6 +1,6 @@
 """Strict, staged backend API with independent post-save audits.
 
-Default backend uses distinct-channel orthogonal routing with a v23 A* fallback.
+Default backend searches compact reference-style layouts and decision orientations.
 The original v22 adapter is retained for comparison. This is not an A4 solver.
 """
 from __future__ import annotations
@@ -17,10 +17,13 @@ from .labels import place_labels
 from . import __version__
 from .router import OrthogonalBackend
 from .search import SearchBackend
+from .human_search import HumanStyleBackend
 from .contours import on_contour
 from .quality import contacts
-from .typography import fits,wrap
+from .readability import metrics as reading_metrics
+from .typography import fits,wrap,task_fits,TASK_FONT
 from .freeze import equal as di_structure_equal,digest as di_structure_digest
+from .reference_style import style_cost
 from bpmn_refkit.geometry import bbox_intersect_seg
 
 
@@ -86,20 +89,34 @@ def geometry(path):
                 if a!=b and overlaps(ab,bb):label_collisions.append([a,b])
     uv={i:(u,v) for i,u,v,_ in seq+assocs}
     robust_contacts=contacts(paths,uv)
-    overflow=[n for n,o in nodes.items() if o['kind'] in TAG_TASK and not fits(o.get('name',''),boxes[n],14,12+(7 if o['kind'] in ('callActivity','subProcess') else 0))]
+    overflow=[n for n,o in nodes.items() if o['kind'] in TAG_TASK and not task_fits(o.get('name',''),boxes[n],o['kind'])]
     label_line_cuts=[]
     for owner,rect in labels:
         for eid,points in paths.items():
             if any(bbox_intersect_seg(rect,a,b,clearance=1) for a,b in zip(points,points[1:])):label_line_cuts.append([owner,eid])
+    result['readability']=reading_metrics(boxes,paths,nodes,seq)
     result.update(ambiguous_contacts=len(robust_contacts),contact_examples=robust_contacts[:40],task_text_overflows=overflow,label_line_cuts=label_line_cuts)
+    clearance_violations=set();header_cuts=set()
+    for eid,u,v,_ in seq+assocs:
+        ps=paths[eid]
+        for index,(a,b) in enumerate(zip(ps,ps[1:])):
+            for n,box in boxes.items():
+                if n not in nodes and n not in docs:continue
+                if n==u and index==0 or n==v and index==len(ps)-2:continue
+                if bbox_intersect_seg(box,a,b,clearance=-7.9):clearance_violations.add((eid,n))
+            for lane in set(membership.values()):
+                if lane in boxes:
+                    x,y,w,h=boxes[lane]
+                    if bbox_intersect_seg((x,y,48,h),a,b,clearance=0):header_cuts.add((eid,lane))
+    result.update(edge_object_clearance_violations=sorted(clearance_violations),lane_header_cuts=sorted(header_cuts),edge_clearance_passed=not clearance_violations and not header_cuts,reference_style=style_cost(boxes,nodes,docs))
     result.update(diagonal_segments=len(diagonal),diagonal_edges=sorted(set(diagonal)), excessive_bend_edges=excessive,
         invalid_endpoints=endpoints,nonfinite_waypoints=nonfinite,outside_lanes=outside,task_sizes=sizes,
         task_sizes_uniform=len(sizes)<=1,label_collision_pairs=label_collisions,
         extent={'width':width,'height':height,'aspect_ratio':ratio},
-        a4_ratio_passed=1.35<=ratio<=1.65,estimated_A4_min_font_pt=round(min_print_font_pt,2),a4_legible_at_8pt=min_print_font_pt>=8,text_overflow_check='measured_bundled_OpenSans_14px',
+        a4_ratio_passed=1.35<=ratio<=1.65,estimated_A4_min_font_pt=round(min_print_font_pt,2),a4_legible_at_8pt=min_print_font_pt>=8,text_overflow_check='measured_bundled_OpenSans_13px',
         crossing_avoidability='not_proven')
     result['routing_safety_passed']=not (result['shape_overlaps'] or result['line_through_shapes'] or result['crossings'].get('overlapping_segments',0) or diagonal or endpoints or outside or nonfinite)
-    result['release_geometry_passed']=result['routing_safety_passed'] and result['a4_ratio_passed'] and not label_collisions and not excessive and len(sizes)<=1 and not robust_contacts and not overflow and not label_line_cuts
+    result['release_geometry_passed']=result['routing_safety_passed'] and result['edge_clearance_passed'] and result['a4_ratio_passed'] and min_print_font_pt>=8 and not label_collisions and not excessive and len(sizes)<=1 and not robust_contacts and not overflow and not label_line_cuts
     return result
 
 
@@ -119,7 +136,7 @@ def validate_xml(path):
 
 def run(source, destination, backend=None):
     source=Path(source).resolve();destination=Path(destination).resolve()
-    backend=backend or SearchBackend()
+    backend=backend or HumanStyleBackend()
     if destination==source.parent or source.is_relative_to(destination):
         raise ValueError('Destination must be separate from input directory')
     validate_xml(source)
@@ -163,5 +180,8 @@ def run(source, destination, backend=None):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
     p.add_argument('--candidate-timeout',type=int,default=150,help='maximum routing seconds per placement candidate (1..600)')
+    p.add_argument('--no-decision-orientations',action='store_true',help='compare with the four baseline human-style placements')
+    p.add_argument('--incumbent',type=Path,help='optional previously verified layout of the identical frozen model')
+    p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     a=p.parse_args()
-    print(json.dumps(run(a.input,a.output_dir,SearchBackend(candidate_seconds=a.candidate_timeout)),ensure_ascii=False,indent=2))
+    print(json.dumps(run(a.input,a.output_dir,HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only)),ensure_ascii=False,indent=2))

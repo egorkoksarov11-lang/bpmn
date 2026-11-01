@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="8" time="47.551" timestamp="2026-11-01T16:21:18.191631+00:00" hostname="758da9420427"><testcase classname="tests.test_contract" name="test_default_config" time="0.001" /><testcase classname="tests.test_contract" name="test_reject_unknown_config" time="0.002" /><testcase classname="tests.test_contract" name="test_process01_strict_semantics" time="20.008"><failure message="TimeoutError: BPMN routing exceeded 20 seconds">tmp_path = PosixPath('/tmp/pytest-of-agent/pytest-22/test_process01_strict_semantic0')
+
+    def test_process01_strict_semantics(tmp_path):
+        output=tmp_path/'out.bpmn'
+&gt;       info=optimize(SOURCE,output,Settings.load(HERE/'examples'/'default_config.json'))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+src/v22/tests/test_contract.py:27: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/v22/bpmn_universal/cli.py:58: in optimize
+    data=run(input=str(source),output=str(tmp),svg=str(tmp_svg) if tmp_svg else None,
+src/v22/bpmn_universal/engine.py:605: in run
+    paths,details=pack_routes(old,boxes,source_paths,seq,assocs,ratio,ordering=routing_order)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/v22/bpmn_universal/engine.py:369: in pack_routes
+    variants=quick_routes(eid,new_boxes,uv,paths,p)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/v22/bpmn_universal/engine.py:277: in quick_routes
+    if good_poly(eid,p,boxes,uv):result.append(p)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+src/v22/bpmn_universal/engine.py:134: in good_poly
+    if abs(a[0]-b[0])&gt;.1 and abs(a[1]-b[1])&gt;.1:return False
+       ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+signum = 14
+frame = &lt;frame at 0x7f23f8968ca0, file '/workspace/work/codex-bpmn-v23/src/v22/bpmn_universal/engine.py', line 134, code good_poly&gt;
+
+    def timeout_handler(signum, frame):
+&gt;       raise TimeoutError(f'BPMN routing exceeded {seconds} seconds')
+E       TimeoutError: BPMN routing exceeded 20 seconds
+
+src/v22/bpmn_universal/cli.py:26: TimeoutError</failure></testcase><testcase classname="tests.test_contract" name="test_reference02_data_associations" time="8.225" /><testcase classname="tests.test_contract" name="test_unsupported_cross_pool" time="0.004" /><testcase classname="tests.test_contract" name="test_approval_whitelist" time="19.185" /><testcase classname="tests.test_contract" name="test_wrong_approval_rejected" time="0.011" /><testcase classname="tests.test_contract" name="test_source_and_output_must_differ" time="0.001" /></testsuite></testsuites>

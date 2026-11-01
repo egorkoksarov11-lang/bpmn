@@ -1,6 +1,6 @@
 {
-  "version": "23.1.1.dev0",
-  "backend": "v23-readable-candidate-search",
+  "version": "23.1.2.dev0",
+  "backend": "v23-human-pattern-construction",
   "status": "layout_candidate_verified",
   "release_ready": false,
   "limitations": [
@@ -15,7 +15,7 @@
       "compatible": true,
       "errors": [],
       "warnings": [],
-      "source": "v23-stage-8mqi4bj2/process_08_v23.bpmn",
+      "source": "/workspace/work/algorithm-r3/v23-stage-9kxc838s/process_08_v23.bpmn",
       "counts": {
         "processes": 1,
         "diagrams": 1,
@@ -32,2646 +32,2002 @@
     "external_labels": 95,
     "large_displacements": [
       {
-        "id": "G513a",
-        "distance": 176.78
+        "id": "G57",
+        "distance": 120.0
       },
       {
-        "id": "G516a",
-        "distance": 247.78
+        "id": "DSR_CashFlow_Plan",
+        "distance": 129.24
       },
       {
-        "id": "G59",
-        "distance": 112.06
+        "id": "DSR_CashFlow_Fact",
+        "distance": 356.38
       },
       {
-        "id": "G58",
-        "distance": 113.95
+        "id": "F29",
+        "distance": 228.0
       },
       {
-        "id": "E",
-        "distance": 147.8
-      },
-      {
-        "id": "G515",
-        "distance": 115.38
-      },
-      {
-        "id": "G54b",
-        "distance": 107.48
-      },
-      {
-        "id": "DOR_ClosingDocs",
-        "distance": 107.33
-      },
-      {
-        "id": "DOR_AccountantTask",
-        "distance": 132.39
-      },
-      {
-        "id": "F83",
-        "distance": 308.53
-      },
-      {
-        "id": "F93",
-        "distance": 150.25
+        "id": "F50",
+        "distance": 258.49
       }
     ],
-    "distant_from_owner": [],
+    "distant_from_owner": [
+      {
+        "id": "DSR_CashFlow_Plan",
+        "distance": 48.55
+      },
+      {
+        "id": "DSR_CashFlow_Fact",
+        "distance": 135.09
+      },
+      {
+        "id": "F95",
+        "distance": 132.92
+      },
+      {
+        "id": "F97",
+        "distance": 73.5
+      },
+      {
+        "id": "F21",
+        "distance": 60.0
+      }
+    ],
     "rendering": {
       "font": "Open Sans bundled",
-      "task_font_size": 14,
+      "task_font_size": 13,
       "label_font_size": 12,
       "text_overflow_ids": []
     }
   },
   "backend_report": {
-    "backend": "v23-readable-candidate-search",
-    "selected_candidate": "expanded-wide",
+    "selection_policy": {
+      "name": "balanced-readability-v1",
+      "contacts_per_flow": 4.0,
+      "parallel_crowding_per_flow": 8.0,
+      "hotspot_excess": 1.2,
+      "forward_hop_excess": 0.8,
+      "bends_per_flow": 0.35,
+      "style_penalty_scale": 0.001
+    },
+    "backend": "v23-human-pattern-construction",
+    "selected_candidate": "human-blocks-2-secondary-2-oriented-refined",
     "quality": [
-      5539.924,
+      4.707598,
       [
-        50,
-        132,
-        89945.7
+        60,
+        200,
+        55159.8
       ],
-      4.443
+      7.2033
     ],
     "candidates": [
       {
-        "candidate": "preserve",
-        "status": "rejected",
-        "reason": "text overflow: ['T51b', 'T51c', 'T52', 'T53', 'C53', 'T55', 'C55', 'T56', 'T510b', 'T511b', 'T512a', 'T513', 'T514', 'T515c', 'T58d', 'T59c', 'T513a', 'T516c']",
-        "seconds": 46.865
-      },
-      {
-        "candidate": "expanded",
+        "candidate": "verified-incumbent",
         "status": "verified",
         "rank": [
-          7234.617,
+          7.596583,
           [
-            67,
-            130,
-            89292.2
+            49,
+            178,
+            54625.8
           ],
-          4.443
+          6.9417
         ],
-        "seconds": 38.402,
-        "labels": {
-          "unplaced_labels": [],
-          "external_labels": 95,
-          "large_displacements": [
-            {
-              "id": "E",
-              "distance": 122.38
-            },
-            {
-              "id": "DSR_SupplierOptions",
-              "distance": 107.33
-            },
-            {
-              "id": "F97",
-              "distance": 151.79
-            },
-            {
-              "id": "F94",
-              "distance": 107.33
-            }
+        "source_file": "process_08_r2.bpmn",
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.464144,
+          "hotspot_excess": 0.168183,
+          "peak_flow_load": 9,
+          "forward_hop_excess": 1.21254,
+          "long_forward_hops": 40,
+          "long_forward_hop_ids": [
+            "F2",
+            "F5",
+            "F7",
+            "F9",
+            "F12",
+            "F16",
+            "F18",
+            "F25",
+            "F28",
+            "F30",
+            "F31",
+            "F33",
+            "F35",
+            "F38",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F52",
+            "F53",
+            "F56",
+            "F57",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F69",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F89",
+            "F90",
+            "F97"
           ],
-          "rendering": {
-            "font": "Open Sans bundled",
-            "task_font_size": 14,
-            "label_font_size": 12,
-            "text_overflow_ids": []
-          }
-        },
-        "details": {
-          "astar_fallbacks": 8,
-          "initial_quality": [
-            115,
-            114,
-            89315.8
-          ],
-          "final_quality": [
-            67,
-            130,
-            89126.7
-          ],
-          "refinements": [
-            {
-              "edge": "F88",
-              "before": [
-                13,
-                2,
-                3935.0
-              ],
-              "after": [
-                12,
-                5,
-                3887.0
-              ]
-            },
-            {
-              "edge": "F97",
-              "before": [
-                13,
-                9,
-                5404.4
-              ],
-              "after": [
-                12,
-                7,
-                5419.4
-              ]
-            },
-            {
-              "edge": "F84",
-              "before": [
-                12,
-                12,
-                8365.8
-              ],
-              "after": [
-                11,
-                15,
-                8604.8
-              ]
-            },
-            {
-              "edge": "F93",
-              "before": [
-                8,
-                2,
-                2190.0
-              ],
-              "after": [
-                8,
-                2,
-                2176.0
-              ]
-            },
-            {
-              "edge": "F56",
-              "before": [
-                7,
-                2,
-                1839.0
-              ],
-              "after": [
-                6,
-                6,
-                1791.0
-              ]
-            },
-            {
-              "edge": "F34",
-              "before": [
-                6,
-                2,
-                4977.5
-              ],
-              "after": [
-                1,
-                2,
-                5077.5
-              ]
-            },
-            {
-              "edge": "F77",
-              "before": [
-                6,
-                2,
-                2927.0
-              ],
-              "after": [
-                5,
-                6,
-                3357.0
-              ]
-            },
-            {
-              "edge": "F79",
-              "before": [
-                6,
-                2,
-                1770.0
-              ],
-              "after": [
-                4,
-                2,
-                1920.0
-              ]
-            },
-            {
-              "edge": "F90",
-              "before": [
-                8,
-                1,
-                948.0
-              ],
-              "after": [
-                5,
-                3,
-                1100.0
-              ]
-            },
-            {
-              "edge": "F26",
-              "before": [
-                5,
-                3,
-                1024.3
-              ],
-              "after": [
-                3,
-                2,
-                1046.5
-              ]
-            },
-            {
-              "edge": "F67",
-              "before": [
-                6,
-                2,
-                1302.0
-              ],
-              "after": [
-                2,
-                1,
-                710.0
-              ]
-            },
-            {
-              "edge": "F81",
-              "before": [
-                3,
-                2,
-                979.0
-              ],
-              "after": [
-                3,
-                2,
-                841.0
-              ]
-            },
-            {
-              "edge": "A_CashRegister_Fact",
-              "before": [
-                1,
-                1,
-                382.5
-              ],
-              "after": [
-                0,
-                1,
-                299.0
-              ]
-            },
-            {
-              "edge": "F13",
-              "before": [
-                3,
-                2,
-                1108.5
-              ],
-              "after": [
-                1,
-                2,
-                1465.5
-              ]
-            },
-            {
-              "edge": "F25",
-              "before": [
-                2,
-                1,
-                523.5
-              ],
-              "after": [
-                1,
-                3,
-                832.5
-              ]
-            },
-            {
-              "edge": "F49",
-              "before": [
-                4,
-                1,
-                1037.0
-              ],
-              "after": [
-                3,
-                1,
-                961.0
-              ]
-            },
-            {
-              "edge": "F52",
-              "before": [
-                2,
-                2,
-                1141.0
-              ],
-              "after": [
-                2,
-                2,
-                927.0
-              ]
-            },
-            {
-              "edge": "F54",
-              "before": [
-                2,
-                2,
-                827.0
-              ],
-              "after": [
-                2,
-                2,
-                499.0
-              ]
-            },
-            {
-              "edge": "F62",
-              "before": [
-                2,
-                2,
-                1220.5
-              ],
-              "after": [
-                2,
-                2,
-                1212.5
-              ]
-            },
-            {
-              "edge": "F65",
-              "before": [
-                2,
-                2,
-                942.5
-              ],
-              "after": [
-                2,
-                2,
-                804.5
-              ]
-            },
-            {
-              "edge": "F75",
-              "before": [
-                4,
-                2,
-                3925.6
-              ],
-              "after": [
-                3,
-                2,
-                3925.6
-              ]
-            },
-            {
-              "edge": "F96",
-              "before": [
-                3,
-                2,
-                1521.0
-              ],
-              "after": [
-                2,
-                2,
-                1758.0
-              ]
-            },
-            {
-              "edge": "F47",
-              "before": [
-                1,
-                1,
-                693.0
-              ],
-              "after": [
-                1,
-                1,
-                541.0
-              ]
-            },
-            {
-              "edge": "F51",
-              "before": [
-                3,
-                0,
-                135.0
-              ],
-              "after": [
-                2,
-                0,
-                135.0
-              ]
-            },
-            {
-              "edge": "F64",
-              "before": [
-                2,
-                1,
-                164.5
-              ],
-              "after": [
-                1,
-                1,
-                240.5
-              ]
-            },
-            {
-              "edge": "A_InitialTechData",
-              "before": [
-                1,
-                2,
-                445.5
-              ],
-              "after": [
-                0,
-                1,
-                239.0
-              ]
-            },
-            {
-              "edge": "A_WorkFile_Close",
-              "before": [
-                2,
-                0,
-                82.5
-              ],
-              "after": [
-                1,
-                1,
-                187.5
-              ]
-            },
-            {
-              "edge": "F16",
-              "before": [
-                1,
-                0,
-                324.0
-              ],
-              "after": [
-                0,
-                1,
-                456.5
-              ]
-            },
-            {
-              "edge": "F21",
-              "before": [
-                1,
-                2,
-                649.5
-              ],
-              "after": [
-                0,
-                2,
-                521.5
-              ]
-            },
-            {
-              "edge": "F29",
-              "before": [
-                2,
-                1,
-                407.0
-              ],
-              "after": [
-                1,
-                1,
-                483.0
-              ]
-            },
-            {
-              "edge": "F4",
-              "before": [
-                1,
-                0,
-                152.5
-              ],
-              "after": [
-                0,
-                0,
-                152.5
-              ]
-            },
-            {
-              "edge": "F43",
-              "before": [
-                1,
-                0,
-                445.0
-              ],
-              "after": [
-                0,
-                0,
-                445.0
-              ]
-            },
-            {
-              "edge": "F48",
-              "before": [
-                1,
-                1,
-                149.5
-              ],
-              "after": [
-                0,
-                1,
-                225.5
-              ]
-            },
-            {
-              "edge": "F63",
-              "before": [
-                0,
-                1,
-                441.5
-              ],
-              "after": [
-                0,
-                1,
-                365.5
-              ]
-            },
-            {
-              "edge": "F70",
-              "before": [
-                1,
-                1,
-                305.0
-              ],
-              "after": [
-                0,
-                2,
-                603.0
-              ]
-            },
-            {
-              "edge": "F73",
-              "before": [
-                0,
-                1,
-                663.0
-              ],
-              "after": [
-                0,
-                1,
-                511.0
-              ]
-            },
-            {
-              "edge": "F9",
-              "before": [
-                1,
-                2,
-                1123.0
-              ],
-              "after": [
-                0,
-                1,
-                909.0
-              ]
-            },
-            {
-              "edge": "F97",
-              "before": [
-                12,
-                7,
-                5419.4
-              ],
-              "after": [
-                10,
-                5,
-                5262.6
-              ]
-            },
-            {
-              "edge": "F88",
-              "before": [
-                11,
-                5,
-                3887.0
-              ],
-              "after": [
-                11,
-                4,
-                3889.0
-              ]
-            },
-            {
-              "edge": "F57",
-              "before": [
-                6,
-                1,
-                1106.0
-              ],
-              "after": [
-                3,
-                4,
-                1236.0
-              ]
-            },
-            {
-              "edge": "F90",
-              "before": [
-                4,
-                3,
-                1100.0
-              ],
-              "after": [
-                3,
-                6,
-                1380.0
-              ]
-            },
-            {
-              "edge": "F53",
-              "before": [
-                2,
-                2,
-                988.0
-              ],
-              "after": [
-                2,
-                2,
-                980.0
-              ]
-            },
-            {
-              "edge": "F58",
-              "before": [
-                4,
-                2,
-                1535.0
-              ],
-              "after": [
-                4,
-                2,
-                1527.0
-              ]
-            },
-            {
-              "edge": "F89",
-              "before": [
-                3,
-                1,
-                809.5999999999999
-              ],
-              "after": [
-                1,
-                2,
-                809.5999999999999
-              ]
-            },
-            {
-              "edge": "F96",
-              "before": [
-                2,
-                2,
-                1758.0
-              ],
-              "after": [
-                2,
-                2,
-                1744.0
-              ]
-            },
-            {
-              "edge": "F13",
-              "before": [
-                1,
-                2,
-                1465.5
-              ],
-              "after": [
-                1,
-                2,
-                1457.5
-              ]
-            },
-            {
-              "edge": "F25",
-              "before": [
-                1,
-                3,
-                832.5
-              ],
-              "after": [
-                1,
-                1,
-                599.5
-              ]
-            },
-            {
-              "edge": "F65",
-              "before": [
-                1,
-                2,
-                804.5
-              ],
-              "after": [
-                1,
-                1,
-                730.5
-              ]
-            },
-            {
-              "edge": "F85",
-              "before": [
-                1,
-                2,
-                1694.0
-              ],
-              "after": [
-                1,
-                2,
-                1436.0
-              ]
-            }
-          ]
+          "bends_per_flow": 1.852632,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
         }
       },
       {
-        "candidate": "fold-11",
+        "candidate": "human-blocks-2-secondary-1-oriented",
+        "status": "rejected",
+        "reason": "readability or routing audit failed",
+        "seconds": 61.471
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1-roles-1-oriented",
+        "status": "rejected",
+        "reason": "readability or routing audit failed",
+        "seconds": 56.74
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2-oriented",
         "status": "verified",
         "rank": [
-          16068.891,
+          4.836745,
           [
-            153,
-            229,
-            125325.9
+            61,
+            206,
+            55415.8
           ],
-          1.575
+          7.2033
         ],
-        "seconds": 151.564,
-        "labels": {
-          "unplaced_labels": [],
-          "external_labels": 95,
-          "large_displacements": [
+        "seconds": 55.122,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.041549,
+          "hotspot_excess": 0.06566,
+          "peak_flow_load": 8,
+          "forward_hop_excess": 1.381952,
+          "long_forward_hops": 33,
+          "long_forward_hop_ids": [
+            "F2",
+            "F5",
+            "F12",
+            "F16",
+            "F18",
+            "F25",
+            "F28",
+            "F30",
+            "F33",
+            "F35",
+            "F38",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F56",
+            "F57",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F69",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F97"
+          ],
+          "bends_per_flow": 2.147368,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 7.2033,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "family": "human-patterns",
+          "chain_depth": 2,
+          "secondary_rows": 2,
+          "task_width": 220.0,
+          "column_stride": 340.0,
+          "body_x": 170,
+          "columns": 8,
+          "paired_decisions": 21,
+          "main_macros": [
+            "S",
+            "T51a",
+            "T51b",
+            "T52",
+            "T53",
+            "C53",
+            "T54a",
+            "T54b",
+            "T55",
+            "C55",
+            "T56",
+            "T57",
+            "T59a",
+            "T59b",
+            "T510a",
+            "T510b",
+            "T510c",
+            "T511a",
+            "T511b",
+            "T512a",
+            "T512b",
+            "T513",
+            "G513",
+            "T514",
+            "T515",
+            "T516a",
+            "T516b",
+            "E"
+          ],
+          "feedback_edges": [
+            "F13",
+            "F19",
+            "F29",
+            "F34",
+            "F53",
+            "F57",
+            "F6",
+            "F62",
+            "F67",
+            "F69",
+            "F73",
+            "F75",
+            "F82",
+            "F84",
+            "F85",
+            "F88",
+            "F90",
+            "F93",
+            "F94",
+            "F95",
+            "F96",
+            "F97",
+            "F98"
+          ],
+          "slots": {
+            "S": [
+              0,
+              0
+            ],
+            "T51a": [
+              0,
+              0
+            ],
+            "T51b": [
+              0,
+              0
+            ],
+            "T52": [
+              0,
+              1
+            ],
+            "T53": [
+              1,
+              0
+            ],
+            "C53": [
+              1,
+              1
+            ],
+            "T54a": [
+              1,
+              0
+            ],
+            "T54b": [
+              1,
+              0
+            ],
+            "T55": [
+              2,
+              0
+            ],
+            "C55": [
+              2,
+              1
+            ],
+            "T56": [
+              3,
+              0
+            ],
+            "T57": [
+              3,
+              0
+            ],
+            "T59a": [
+              3,
+              1
+            ],
+            "T59b": [
+              3,
+              0
+            ],
+            "T510a": [
+              4,
+              0
+            ],
+            "T510b": [
+              4,
+              0
+            ],
+            "T510c": [
+              4,
+              1
+            ],
+            "T511a": [
+              4,
+              0
+            ],
+            "T511b": [
+              5,
+              0
+            ],
+            "T512a": [
+              5,
+              1
+            ],
+            "T512b": [
+              5,
+              0
+            ],
+            "T513": [
+              6,
+              0
+            ],
+            "G513": [
+              6,
+              1
+            ],
+            "T514": [
+              6,
+              0
+            ],
+            "T515": [
+              6,
+              0
+            ],
+            "T516a": [
+              7,
+              0
+            ],
+            "T516b": [
+              7,
+              0
+            ],
+            "E": [
+              7,
+              1
+            ],
+            "T516c": [
+              6,
+              2
+            ],
+            "T511c": [
+              4,
+              1
+            ],
+            "T58a": [
+              5,
+              2
+            ],
+            "T57a": [
+              3,
+              3
+            ],
+            "T514c": [
+              5,
+              3
+            ],
+            "T54c": [
+              2,
+              2
+            ],
+            "T58d": [
+              4,
+              2
+            ],
+            "T58c": [
+              4,
+              1
+            ],
+            "T58b": [
+              5,
+              1
+            ],
+            "T59c": [
+              3,
+              2
+            ],
+            "T511d": [
+              4,
+              3
+            ],
+            "T513a": [
+              6,
+              3
+            ],
+            "T515c": [
+              7,
+              3
+            ],
+            "T51d": [
+              0,
+              3
+            ],
+            "T51c": [
+              0,
+              1
+            ]
+          },
+          "source_reference_models": 32,
+          "pairs": {
+            "T51b": "G51",
+            "T53": "G53",
+            "C53": "G53b",
+            "T54a": "G54a",
+            "T54b": "G54b",
+            "T55": "G55",
+            "T56": "G56",
+            "T57a": "G57a",
+            "T57": "G57",
+            "T58c": "G58",
+            "T58d": "G58d",
+            "T59b": "G59",
+            "T511a": "G511a",
+            "T511b": "G511",
+            "T511c": "G511b",
+            "T512a": "G512",
+            "T513": "G513a",
+            "T515": "G515",
+            "T514": "G514",
+            "T516c": "G516a",
+            "T516b": "G516"
+          },
+          "document_label_anchors": {
+            "DOR_Order": [
+              395.0,
+              186.0,
+              80,
+              58
+            ],
+            "DSR_SupplierOptions": [
+              395.0,
+              1089.0,
+              80,
+              58
+            ],
+            "DOR_LegalCheck": [
+              557.0,
+              1230.0,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Existing": [
+              897.0,
+              924,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Final": [
+              1075.0,
+              1089.0,
+              80,
+              58
+            ],
+            "DOR_InitialTechData": [
+              1237.0,
+              924,
+              110,
+              45
+            ],
+            "DOR_PrePaymentDocs": [
+              1392.0,
+              924,
+              110,
+              45
+            ],
+            "DOR_TechTask": [
+              1237.0,
+              1732.0,
+              110,
+              45
+            ],
+            "DOR_PaymentTask": [
+              1755.0,
+              1089.0,
+              80,
+              58
+            ],
+            "DOR_BankDocument": [
+              1577.0,
+              1957.0,
+              110,
+              45
+            ],
+            "DOR_ClosingDocs": [
+              2257.0,
+              924,
+              110,
+              45
+            ],
+            "DOR_AccountantTask": [
+              2257.0,
+              2182.0,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Plan": [
+              1755.0,
+              859.0,
+              80,
+              58
+            ],
+            "DSR_OperationsFile_Plan": [
+              1597.0,
+              924,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Fact": [
+              1937.0,
+              924,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Actual": [
+              2092.0,
+              924,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Close": [
+              2775.0,
+              859.0,
+              80,
+              58
+            ]
+          },
+          "document_owners": {
+            "DOR_Order": "T51a",
+            "DSR_SupplierOptions": "T52",
+            "DOR_LegalCheck": "C53",
+            "DOR_ContractBasis_Existing": "T55",
+            "DOR_ContractBasis_Final": "C55",
+            "DOR_PrePaymentDocs": "T56",
+            "DOR_InitialTechData": "T56",
+            "DOR_TechTask": "T57",
+            "DOR_PaymentTask": "T510c",
+            "DOR_BankDocument": "T511a",
+            "DOR_ClosingDocs": "T513",
+            "DOR_AccountantTask": "T515",
+            "DSR_OperationsFile_Plan": "T510a",
+            "DSR_OperationsFile_Actual": "T511b",
+            "DSR_OperationsFile_Close": "T516a",
+            "DSR_CashFlow_Plan": "T510a",
+            "DSR_CashFlow_Fact": "T511b"
+          },
+          "role_order": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "return_reserves": {
+            "L1": 0,
+            "L2": 0,
+            "L3": 63,
+            "L4": 7,
+            "L5": 0,
+            "L6": 0
+          },
+          "placement_optimization": {
+            "initial_cost": 29174.2,
+            "final_cost": 12979.000000000002,
+            "moves": 9,
+            "iterations": 1600,
+            "seed": 23
+          },
+          "decision_orientations": {
+            "T51b": "right",
+            "T53": "left",
+            "C53": "bottom",
+            "T54a": "right",
+            "T54b": "right",
+            "T55": "right",
+            "T56": "right",
+            "T57a": "left",
+            "T57": "right",
+            "T58c": "left",
+            "T58d": "right",
+            "T59b": "right",
+            "T511a": "right",
+            "T511b": "right",
+            "T511c": "right",
+            "T512a": "right",
+            "T513": "right",
+            "T515": "right",
+            "T514": "left",
+            "T516c": "right",
+            "T516b": "left"
+          },
+          "orientation_changes": [
             {
-              "id": "G53",
-              "distance": 169.71
+              "task": "C53",
+              "gateway": "G53b",
+              "orientation": "bottom",
+              "proxy_before": 3276.1,
+              "proxy_after": 3175.87
             },
             {
-              "id": "G513",
-              "distance": 252.0
+              "task": "T514",
+              "gateway": "G514",
+              "orientation": "left",
+              "proxy_before": 4607.47,
+              "proxy_after": 3755.72
             },
             {
-              "id": "DOR_ClosingDocs",
-              "distance": 122.38
+              "task": "T516b",
+              "gateway": "G516",
+              "orientation": "left",
+              "proxy_before": 4302.92,
+              "proxy_after": 4193.77
             },
             {
-              "id": "DOR_LegalCheck",
-              "distance": 129.24
+              "task": "T53",
+              "gateway": "G53",
+              "orientation": "left",
+              "proxy_before": 2441.17,
+              "proxy_after": 2123.42
             },
             {
-              "id": "DSR_SupplierOptions",
-              "distance": 129.24
+              "task": "T57a",
+              "gateway": "G57a",
+              "orientation": "left",
+              "proxy_before": 2471.72,
+              "proxy_after": 2123.47
             },
             {
-              "id": "DSR_OperationsFile_Plan",
-              "distance": 132.0
-            },
-            {
-              "id": "DSR_CashFlow_Plan",
-              "distance": 204.0
-            },
-            {
-              "id": "F89",
-              "distance": 343.54
-            },
-            {
-              "id": "F13",
-              "distance": 122.38
-            },
-            {
-              "id": "F25",
-              "distance": 120.0
+              "task": "T58c",
+              "gateway": "G58",
+              "orientation": "left",
+              "proxy_before": 4900.87,
+              "proxy_after": 4643.62
             }
           ],
-          "rendering": {
-            "font": "Open Sans bundled",
-            "task_font_size": 14,
-            "label_font_size": 12,
-            "text_overflow_ids": []
-          }
+          "orientation_aspect_floor": 1.3106,
+          "orientation_method": "complete incident interface, approximate routes and reference aspect guard; full routing and audits required"
         },
-        "details": {
-          "astar_fallbacks": 20,
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 25,
           "initial_quality": [
-            280,
-            186,
-            122335.8
+            138,
+            208,
+            59770.7
           ],
           "final_quality": [
-            148,
-            229,
-            124892.1
+            56,
+            206,
+            54804.7
           ],
           "refinements": [
             {
               "edge": "F79",
               "before": [
-                24,
-                2,
-                3011.0
-              ],
-              "after": [
-                14,
-                5,
-                3305.0
-              ]
-            },
-            {
-              "edge": "F25",
-              "before": [
-                17,
-                2,
-                3544.0
-              ],
-              "after": [
-                13,
-                10,
-                3858.0
-              ]
-            },
-            {
-              "edge": "F30",
-              "before": [
+                30706.75,
                 16,
-                8,
-                1726.0
+                5,
+                1780.0
               ],
               "after": [
-                14,
-                8,
-                1708.0
-              ]
-            },
-            {
-              "edge": "F44",
-              "before": [
-                13,
+                13353.0,
                 6,
-                2012.6
-              ],
-              "after": [
-                11,
-                6,
-                2028.6
-              ]
-            },
-            {
-              "edge": "F81",
-              "before": [
                 10,
-                2,
-                2204.0
-              ],
-              "after": [
-                6,
-                3,
-                2238.0
+                1385.0
               ]
             },
             {
-              "edge": "F33",
+              "edge": "F97",
               "before": [
-                14,
-                1,
-                1009.0
-              ],
-              "after": [
-                12,
+                15039.75,
+                9,
                 4,
-                1299.0
-              ]
-            },
-            {
-              "edge": "F40",
-              "before": [
-                11,
-                5,
-                2733.0
+                826.0
               ],
               "after": [
-                9,
-                9,
-                2727.0
-              ]
-            },
-            {
-              "edge": "F53",
-              "before": [
-                10,
+                3701.875,
                 2,
-                1752.0
-              ],
-              "after": [
-                7,
                 2,
-                1752.0
-              ]
-            },
-            {
-              "edge": "F54",
-              "before": [
-                8,
-                3,
-                1895.3999999999999
-              ],
-              "after": [
-                5,
-                3,
-                1895.3999999999999
-              ]
-            },
-            {
-              "edge": "F61",
-              "before": [
-                11,
-                4,
-                2621.8
-              ],
-              "after": [
-                8,
-                6,
-                2479.8
-              ]
-            },
-            {
-              "edge": "F65",
-              "before": [
-                10,
-                2,
-                1872.6
-              ],
-              "after": [
-                9,
-                5,
-                1927.3999999999999
+                522.5
               ]
             },
             {
               "edge": "F72",
               "before": [
-                11,
+                16887.0,
+                9,
+                4,
+                1791.0
+              ],
+              "after": [
+                4011.5,
                 1,
-                695.0
-              ],
-              "after": [
-                9,
-                6,
-                1863.0
+                2,
+                1199.0
               ]
             },
             {
-              "edge": "F73",
+              "edge": "F40",
               "before": [
-                10,
-                4,
-                2830.8
-              ],
-              "after": [
-                9,
-                4,
-                2830.8
-              ]
-            },
-            {
-              "edge": "F93",
-              "before": [
-                10,
-                2,
-                1255.0
-              ],
-              "after": [
-                7,
-                2,
-                1117.0
-              ]
-            },
-            {
-              "edge": "F16",
-              "before": [
-                7,
-                2,
-                2593.0
-              ],
-              "after": [
-                7,
-                2,
-                2589.0
-              ]
-            },
-            {
-              "edge": "F19",
-              "before": [
-                10,
-                2,
-                885.0
-              ],
-              "after": [
-                7,
-                3,
-                945.0
-              ]
-            },
-            {
-              "edge": "F26",
-              "before": [
-                9,
-                3,
-                2118.1
-              ],
-              "after": [
-                7,
-                3,
-                1926.1
-              ]
-            },
-            {
-              "edge": "F39",
-              "before": [
-                10,
-                2,
-                2087.0
-              ],
-              "after": [
+                13912.5,
                 8,
-                6,
-                2509.0
-              ]
-            },
-            {
-              "edge": "F85",
-              "before": [
-                11,
                 2,
-                2157.0
+                798.0
               ],
               "after": [
-                6,
-                3,
-                2055.0
-              ]
-            },
-            {
-              "edge": "F97",
-              "before": [
-                12,
-                1,
-                571.0
-              ],
-              "after": [
-                9,
-                6,
-                921.0
-              ]
-            },
-            {
-              "edge": "F15",
-              "before": [
-                12,
-                1,
-                882.0
-              ],
-              "after": [
-                2,
-                2,
-                882.0
-              ]
-            },
-            {
-              "edge": "F37",
-              "before": [
+                9212.25,
                 5,
-                7,
-                1733.8000000000002
-              ],
-              "after": [
                 5,
-                3,
-                1672.6
-              ]
-            },
-            {
-              "edge": "F38",
-              "before": [
-                7,
-                2,
-                1669.0
-              ],
-              "after": [
-                6,
-                4,
-                1669.0
-              ]
-            },
-            {
-              "edge": "F62",
-              "before": [
-                9,
-                2,
-                1520.0
-              ],
-              "after": [
-                2,
-                3,
-                1776.0
-              ]
-            },
-            {
-              "edge": "F95",
-              "before": [
-                5,
-                2,
-                1807.6
-              ],
-              "after": [
-                5,
-                1,
-                1807.6
+                778.0
               ]
             },
             {
               "edge": "F28",
               "before": [
-                7,
-                2,
-                947.0
-              ],
-              "after": [
-                5,
-                3,
-                947.0
-              ]
-            },
-            {
-              "edge": "F31",
-              "before": [
-                8,
-                1,
-                1217.0
-              ],
-              "after": [
-                4,
-                4,
-                1645.0
-              ]
-            },
-            {
-              "edge": "F34",
-              "before": [
-                6,
-                4,
-                1437.6
-              ],
-              "after": [
-                6,
-                2,
-                1555.0
-              ]
-            },
-            {
-              "edge": "F59",
-              "before": [
-                8,
-                2,
-                1140.0
-              ],
-              "after": [
-                6,
-                2,
-                1140.0
-              ]
-            },
-            {
-              "edge": "F74",
-              "before": [
-                7,
-                2,
-                1085.0
-              ],
-              "after": [
-                7,
-                1,
-                871.0
-              ]
-            },
-            {
-              "edge": "F83",
-              "before": [
-                4,
-                8,
-                2147.6
-              ],
-              "after": [
-                4,
-                8,
-                2135.6
-              ]
-            },
-            {
-              "edge": "F87",
-              "before": [
-                4,
-                2,
-                1831.0
-              ],
-              "after": [
-                3,
-                4,
-                1831.0
-              ]
-            },
-            {
-              "edge": "F96",
-              "before": [
-                6,
-                4,
-                3205.4
-              ],
-              "after": [
-                5,
-                2,
-                3195.0
-              ]
-            },
-            {
-              "edge": "F13",
-              "before": [
-                4,
-                2,
-                1502.0
-              ],
-              "after": [
-                3,
-                4,
-                1646.0
-              ]
-            },
-            {
-              "edge": "F75",
-              "before": [
-                8,
-                4,
-                1746.6
-              ],
-              "after": [
-                8,
-                4,
-                1660.6
-              ]
-            },
-            {
-              "edge": "F89",
-              "before": [
-                5,
-                2,
-                1881.0
-              ],
-              "after": [
-                5,
-                2,
-                1769.0
-              ]
-            },
-            {
-              "edge": "F98",
-              "before": [
-                5,
-                2,
-                832.0
-              ],
-              "after": [
-                2,
-                6,
-                1056.0
-              ]
-            },
-            {
-              "edge": "F2",
-              "before": [
-                4,
-                1,
-                695.0
-              ],
-              "after": [
-                1,
-                2,
-                1287.0
-              ]
-            },
-            {
-              "edge": "F21",
-              "before": [
-                4,
-                2,
-                623.0
-              ],
-              "after": [
-                2,
-                1,
-                409.0
-              ]
-            },
-            {
-              "edge": "F58",
-              "before": [
-                5,
-                7,
-                5317.200000000001
-              ],
-              "after": [
-                1,
-                2,
-                4122.0
-              ]
-            },
-            {
-              "edge": "F24",
-              "before": [
-                3,
-                0,
-                190.0
-              ],
-              "after": [
-                2,
-                0,
-                190.0
-              ]
-            },
-            {
-              "edge": "F3",
-              "before": [
-                3,
-                2,
-                758.0
-              ],
-              "after": [
-                3,
-                2,
-                618.0
-              ]
-            },
-            {
-              "edge": "F49",
-              "before": [
-                6,
-                6,
-                5225.0
-              ],
-              "after": [
-                5,
-                6,
-                4591.0
-              ]
-            },
-            {
-              "edge": "F52",
-              "before": [
-                4,
-                1,
-                1555.0
-              ],
-              "after": [
-                1,
-                3,
-                1565.0
-              ]
-            },
-            {
-              "edge": "F56",
-              "before": [
-                2,
-                1,
-                3416.0
-              ],
-              "after": [
-                1,
-                2,
-                3706.0
-              ]
-            },
-            {
-              "edge": "F57",
-              "before": [
-                2,
-                2,
-                4115.0
-              ],
-              "after": [
-                1,
-                1,
-                3827.0
-              ]
-            },
-            {
-              "edge": "A_Contract_ToOperation",
-              "before": [
-                2,
-                2,
-                496.0
-              ],
-              "after": [
-                0,
-                1,
-                289.5
-              ]
-            },
-            {
-              "edge": "F42",
-              "before": [
-                3,
-                0,
-                190.0
-              ],
-              "after": [
-                2,
-                2,
-                385.0
-              ]
-            },
-            {
-              "edge": "F47",
-              "before": [
-                3,
-                2,
-                1052.0
-              ],
-              "after": [
-                3,
-                2,
-                876.0
-              ]
-            },
-            {
-              "edge": "F76",
-              "before": [
-                3,
-                0,
-                190.0
-              ],
-              "after": [
-                2,
-                0,
-                190.0
-              ]
-            },
-            {
-              "edge": "F82",
-              "before": [
-                3,
-                2,
-                1187.0
-              ],
-              "after": [
-                3,
-                2,
-                1163.0
-              ]
-            },
-            {
-              "edge": "F18",
-              "before": [
-                2,
-                2,
-                2363.0
-              ],
-              "after": [
-                1,
-                4,
-                2571.0
-              ]
-            },
-            {
-              "edge": "F20",
-              "before": [
-                1,
-                0,
-                190.0
-              ],
-              "after": [
-                0,
-                0,
-                190.0
-              ]
-            },
-            {
-              "edge": "F71",
-              "before": [
-                2,
-                2,
-                976.0
-              ],
-              "after": [
-                1,
-                6,
-                1122.0
-              ]
-            },
-            {
-              "edge": "F32",
-              "before": [
-                1,
-                0,
-                190.0
-              ],
-              "after": [
-                0,
-                0,
-                190.0
-              ]
-            },
-            {
-              "edge": "F6",
-              "before": [
-                1,
-                2,
-                1622.0
-              ],
-              "after": [
-                0,
-                4,
-                1608.0
-              ]
-            },
-            {
-              "edge": "F25",
-              "before": [
-                10,
-                10,
-                3858.0
-              ],
-              "after": [
-                10,
-                6,
-                3794.0
-              ]
-            },
-            {
-              "edge": "F9",
-              "before": [
-                10,
-                2,
-                1887.0
-              ],
-              "after": [
-                7,
-                7,
-                2323.0
-              ]
-            },
-            {
-              "edge": "F97",
-              "before": [
+                15293.5,
                 9,
-                6,
-                921.0
+                4,
+                1120.0
               ],
               "after": [
-                9,
-                6,
-                917.0
+                4635.75,
+                2,
+                5,
+                1121.0
               ]
             },
             {
               "edge": "F35",
               "before": [
-                7,
-                2,
-                595.0
-              ],
-              "after": [
-                6,
-                2,
-                747.0
-              ]
-            },
-            {
-              "edge": "F50",
-              "before": [
-                9,
-                2,
-                3130.0
-              ],
-              "after": [
-                7,
-                2,
-                3130.0
-              ]
-            },
-            {
-              "edge": "F72",
-              "before": [
-                8,
-                6,
-                1863.0
-              ],
-              "after": [
-                8,
-                2,
-                1175.0
-              ]
-            },
-            {
-              "edge": "F12",
-              "before": [
-                7,
-                9,
-                2702.4
-              ],
-              "after": [
-                6,
-                7,
-                2624.4
-              ]
-            },
-            {
-              "edge": "F29",
-              "before": [
-                7,
-                9,
-                2659.4
-              ],
-              "after": [
-                7,
-                7,
-                2651.4
-              ]
-            },
-            {
-              "edge": "F61",
-              "before": [
-                6,
-                6,
-                2479.8
-              ],
-              "after": [
-                6,
-                6,
-                2440.2
-              ]
-            },
-            {
-              "edge": "F93",
-              "before": [
-                7,
-                2,
-                1117.0
-              ],
-              "after": [
-                6,
-                2,
-                1087.0
-              ]
-            },
-            {
-              "edge": "F28",
-              "before": [
-                6,
-                3,
-                947.0
-              ],
-              "after": [
-                6,
-                2,
-                1197.0
-              ]
-            },
-            {
-              "edge": "F74",
-              "before": [
-                8,
-                1,
-                871.0
-              ],
-              "after": [
-                6,
+                10647.5,
+                5,
                 4,
-                1209.0
+                1192.0
+              ],
+              "after": [
+                2460.75,
+                1,
+                3,
+                693.0
               ]
             },
             {
-              "edge": "F40",
+              "edge": "F39",
               "before": [
-                6,
-                9,
-                2727.0
-              ],
-              "after": [
+                7503.25,
                 4,
-                8,
-                2707.0
-              ]
-            },
-            {
-              "edge": "F53",
-              "before": [
                 5,
-                2,
-                1752.0
+                1004.0
               ],
               "after": [
-                4,
+                5074.0,
                 3,
-                1752.0
-              ]
-            },
-            {
-              "edge": "F81",
-              "before": [
-                5,
                 3,
-                2238.0
-              ],
-              "after": [
-                5,
-                3,
-                2230.0
-              ]
-            },
-            {
-              "edge": "F95",
-              "before": [
-                3,
-                1,
-                1807.6
-              ],
-              "after": [
-                2,
-                6,
-                2511.6
-              ]
-            },
-            {
-              "edge": "F47",
-              "before": [
-                3,
-                2,
-                876.0
-              ],
-              "after": [
-                3,
-                2,
-                862.0
-              ]
-            },
-            {
-              "edge": "F49",
-              "before": [
-                3,
-                6,
-                4591.0
-              ],
-              "after": [
-                3,
-                6,
-                4355.0
-              ]
-            },
-            {
-              "edge": "F89",
-              "before": [
-                3,
-                2,
-                1769.0
-              ],
-              "after": [
-                2,
-                2,
-                1769.0
-              ]
-            },
-            {
-              "edge": "F62",
-              "before": [
-                2,
-                3,
-                1776.0
-              ],
-              "after": [
-                2,
-                2,
-                1776.0
-              ]
-            },
-            {
-              "edge": "F58",
-              "before": [
-                1,
-                2,
-                4122.0
-              ],
-              "after": [
-                0,
-                2,
-                4748.0
-              ]
-            },
-            {
-              "edge": "F63",
-              "before": [
-                1,
-                2,
-                953.0
-              ],
-              "after": [
-                1,
-                2,
-                939.0
-              ]
-            },
-            {
-              "edge": "F71",
-              "before": [
-                1,
-                6,
-                1122.0
-              ],
-              "after": [
-                0,
-                2,
-                1152.0
-              ]
-            },
-            {
-              "edge": "F98",
-              "before": [
-                2,
-                6,
-                1056.0
-              ],
-              "after": [
-                1,
-                2,
-                656.0
-              ]
-            }
-          ]
-        }
-      },
-      {
-        "candidate": "fold-9",
-        "status": "rejected",
-        "reason": "BPMN routing exceeded 150 seconds",
-        "seconds": 150.001
-      },
-      {
-        "candidate": "expanded-wide",
-        "status": "verified",
-        "rank": [
-          5539.924,
-          [
-            50,
-            132,
-            89945.7
-          ],
-          4.443
-        ],
-        "seconds": 65.42092370986938,
-        "labels": {
-          "unplaced_labels": [],
-          "external_labels": 95,
-          "large_displacements": [
-            {
-              "id": "G513a",
-              "distance": 156.0
-            },
-            {
-              "id": "E",
-              "distance": 145.99
-            },
-            {
-              "id": "DOR_ClosingDocs",
-              "distance": 107.33
-            },
-            {
-              "id": "DSR_SupplierOptions",
-              "distance": 107.33
-            },
-            {
-              "id": "F83",
-              "distance": 197.91
-            },
-            {
-              "id": "F97",
-              "distance": 151.79
-            }
-          ],
-          "rendering": {
-            "font": "Open Sans bundled",
-            "task_font_size": 14,
-            "label_font_size": 12,
-            "text_overflow_ids": []
-          }
-        },
-        "details": {
-          "astar_fallbacks": 8,
-          "initial_quality": [
-            110,
-            112,
-            89426.7
-          ],
-          "final_quality": [
-            50,
-            132,
-            89789.7
-          ],
-          "refinements": [
-            {
-              "edge": "F88",
-              "before": [
-                14,
-                2,
-                3935.0
-              ],
-              "after": [
-                11,
-                6,
-                4341.0
-              ]
-            },
-            {
-              "edge": "F97",
-              "before": [
-                11,
-                9,
-                5618.6
-              ],
-              "after": [
-                10,
-                5,
-                5287.6
-              ]
-            },
-            {
-              "edge": "F93",
-              "before": [
-                8,
-                2,
-                2190.0
-              ],
-              "after": [
-                6,
-                2,
-                2437.0
-              ]
-            },
-            {
-              "edge": "F56",
-              "before": [
-                7,
-                2,
-                1839.0
-              ],
-              "after": [
-                6,
-                6,
-                1791.0
+                364.0
               ]
             },
             {
               "edge": "F34",
               "before": [
-                6,
-                2,
-                4977.5
-              ],
-              "after": [
-                1,
-                2,
-                5077.5
-              ]
-            },
-            {
-              "edge": "F75",
-              "before": [
-                6,
-                6,
-                4341.6
-              ],
-              "after": [
-                2,
-                2,
-                4043.0
-              ]
-            },
-            {
-              "edge": "F90",
-              "before": [
-                8,
-                1,
-                948.0
-              ],
-              "after": [
-                4,
-                6,
-                1531.0
-              ]
-            },
-            {
-              "edge": "F26",
-              "before": [
-                4,
+                12979.0,
+                7,
                 5,
-                1498.2
+                1930.0
               ],
               "after": [
-                3,
-                2,
-                1025.8
-              ]
-            },
-            {
-              "edge": "F53",
-              "before": [
+                8883.25,
                 4,
-                2,
-                988.0
-              ],
-              "after": [
-                4,
-                2,
-                980.0
-              ]
-            },
-            {
-              "edge": "F67",
-              "before": [
-                4,
-                2,
-                1302.0
-              ],
-              "after": [
-                0,
-                1,
-                710.0
-              ]
-            },
-            {
-              "edge": "F79",
-              "before": [
-                5,
-                2,
-                1770.0
-              ],
-              "after": [
-                3,
-                2,
-                1920.0
-              ]
-            },
-            {
-              "edge": "F95",
-              "before": [
-                4,
-                1,
-                832.0
-              ],
-              "after": [
-                3,
-                4,
-                1191.0
-              ]
-            },
-            {
-              "edge": "F58",
-              "before": [
-                4,
-                2,
-                1535.0
-              ],
-              "after": [
-                3,
-                4,
-                1702.0
-              ]
-            },
-            {
-              "edge": "F81",
-              "before": [
-                3,
-                2,
-                979.0
-              ],
-              "after": [
-                3,
-                2,
-                841.0
-              ]
-            },
-            {
-              "edge": "F13",
-              "before": [
-                2,
-                2,
-                1108.5
-              ],
-              "after": [
-                1,
-                2,
-                1175.5
-              ]
-            },
-            {
-              "edge": "F49",
-              "before": [
-                4,
-                1,
-                1037.0
-              ],
-              "after": [
-                3,
-                1,
-                961.0
-              ]
-            },
-            {
-              "edge": "F52",
-              "before": [
-                2,
-                2,
-                1141.0
-              ],
-              "after": [
-                2,
-                2,
-                927.0
-              ]
-            },
-            {
-              "edge": "F62",
-              "before": [
-                1,
-                2,
-                1220.5
-              ],
-              "after": [
-                1,
-                2,
-                1212.5
-              ]
-            },
-            {
-              "edge": "F65",
-              "before": [
-                2,
-                2,
-                942.5
-              ],
-              "after": [
-                2,
-                2,
-                804.5
+                7,
+                1982.5
               ]
             },
             {
               "edge": "F96",
               "before": [
+                12597.75,
+                7,
+                5,
+                1160.0
+              ],
+              "after": [
+                4192.5,
+                2,
+                4,
+                912.5
+              ]
+            },
+            {
+              "edge": "F78",
+              "before": [
+                7890.25,
                 4,
                 2,
-                1521.0
+                1073.0
               ],
               "after": [
-                1,
-                2,
-                1872.0
-              ]
-            },
-            {
-              "edge": "A_CashRegister_Fact",
-              "before": [
-                1,
-                1,
-                382.5
-              ],
-              "after": [
-                0,
-                1,
-                299.0
-              ]
-            },
-            {
-              "edge": "F25",
-              "before": [
-                2,
-                1,
-                523.5
-              ],
-              "after": [
-                1,
-                3,
-                832.5
-              ]
-            },
-            {
-              "edge": "F47",
-              "before": [
-                1,
-                1,
-                693.0
-              ],
-              "after": [
-                1,
-                1,
-                541.0
-              ]
-            },
-            {
-              "edge": "F51",
-              "before": [
-                3,
-                0,
-                135.0
-              ],
-              "after": [
-                2,
-                0,
-                135.0
-              ]
-            },
-            {
-              "edge": "F63",
-              "before": [
-                0,
-                1,
-                441.5
-              ],
-              "after": [
-                0,
-                1,
-                365.5
-              ]
-            },
-            {
-              "edge": "A_Contract_New",
-              "before": [
-                0,
-                2,
-                571.0
-              ],
-              "after": [
-                0,
-                1,
-                241.0
-              ]
-            },
-            {
-              "edge": "A_InitialTechData",
-              "before": [
-                1,
-                2,
-                445.5
-              ],
-              "after": [
-                0,
-                1,
-                239.0
-              ]
-            },
-            {
-              "edge": "A_TechTask_In",
-              "before": [
-                0,
-                1,
-                358.5
-              ],
-              "after": [
-                0,
-                1,
-                285.0
-              ]
-            },
-            {
-              "edge": "A_WorkFile_Close",
-              "before": [
-                1,
-                0,
-                82.5
-              ],
-              "after": [
-                0,
-                1,
-                187.5
-              ]
-            },
-            {
-              "edge": "F11",
-              "before": [
-                1,
-                0,
-                82.5
-              ],
-              "after": [
-                0,
-                0,
-                82.5
-              ]
-            },
-            {
-              "edge": "F16",
-              "before": [
-                1,
-                0,
-                324.0
-              ],
-              "after": [
-                0,
-                1,
-                456.5
-              ]
-            },
-            {
-              "edge": "F21",
-              "before": [
-                1,
-                2,
-                649.5
-              ],
-              "after": [
-                0,
-                2,
-                521.5
-              ]
-            },
-            {
-              "edge": "F4",
-              "before": [
-                1,
-                0,
-                152.5
-              ],
-              "after": [
-                0,
-                0,
-                152.5
-              ]
-            },
-            {
-              "edge": "F43",
-              "before": [
-                1,
-                0,
-                445.0
-              ],
-              "after": [
-                0,
-                0,
-                445.0
-              ]
-            },
-            {
-              "edge": "F48",
-              "before": [
-                1,
-                1,
-                149.5
-              ],
-              "after": [
-                0,
-                1,
-                225.5
-              ]
-            },
-            {
-              "edge": "F64",
-              "before": [
-                1,
-                1,
-                164.5
-              ],
-              "after": [
-                0,
-                1,
-                240.5
-              ]
-            },
-            {
-              "edge": "F70",
-              "before": [
-                1,
-                1,
-                305.0
-              ],
-              "after": [
-                0,
-                2,
-                603.0
-              ]
-            },
-            {
-              "edge": "F73",
-              "before": [
-                0,
-                1,
-                663.0
-              ],
-              "after": [
-                0,
-                1,
-                511.0
-              ]
-            },
-            {
-              "edge": "F9",
-              "before": [
-                1,
-                2,
-                1123.0
-              ],
-              "after": [
-                0,
-                1,
-                909.0
-              ]
-            },
-            {
-              "edge": "F88",
-              "before": [
-                11,
-                6,
-                4341.0
-              ],
-              "after": [
-                11,
-                6,
-                4156.0
-              ]
-            },
-            {
-              "edge": "F97",
-              "before": [
-                10,
-                5,
-                5287.6
-              ],
-              "after": [
-                9,
-                11,
-                5846.6
+                7712.75,
+                4,
+                4,
+                1221.0
               ]
             },
             {
               "edge": "F77",
               "before": [
-                6,
-                2,
-                2927.0
-              ],
-              "after": [
-                5,
-                6,
-                3357.0
-              ]
-            },
-            {
-              "edge": "F57",
-              "before": [
-                5,
-                1,
-                1106.0
-              ],
-              "after": [
-                2,
-                4,
-                1236.0
-              ]
-            },
-            {
-              "edge": "F56",
-              "before": [
-                4,
-                6,
-                1791.0
-              ],
-              "after": [
-                4,
-                4,
-                1867.0
-              ]
-            },
-            {
-              "edge": "F75",
-              "before": [
+                8768.25,
                 5,
                 2,
-                4043.0
+                306.0
               ],
               "after": [
-                2,
-                3,
-                4201.0
-              ]
-            },
-            {
-              "edge": "F95",
-              "before": [
-                3,
-                4,
-                1191.0
-              ],
-              "after": [
-                2,
-                4,
-                1202.0
-              ]
-            },
-            {
-              "edge": "F29",
-              "before": [
-                2,
+                7844.5,
+                5,
                 1,
-                407.0
-              ],
-              "after": [
-                1,
-                2,
-                483.0
-              ]
-            },
-            {
-              "edge": "F65",
-              "before": [
-                2,
-                2,
-                804.5
-              ],
-              "after": [
-                2,
-                1,
-                730.5
-              ]
-            },
-            {
-              "edge": "F89",
-              "before": [
-                3,
-                1,
-                809.5999999999999
-              ],
-              "after": [
-                1,
-                2,
-                809.5999999999999
+                274.5
               ]
             },
             {
               "edge": "F25",
               "before": [
+                9144.25,
+                5,
+                4,
+                1294.0
+              ],
+              "after": [
+                7806.5,
+                4,
+                6,
+                1011.5
+              ]
+            },
+            {
+              "edge": "F12",
+              "before": [
+                8008.0,
+                3,
+                4,
+                1340.0
+              ],
+              "after": [
+                4238.0,
+                2,
+                5,
+                888.0
+              ]
+            },
+            {
+              "edge": "F69",
+              "before": [
+                12221.5,
+                6,
+                5,
+                1215.0
+              ],
+              "after": [
+                8500.0,
+                4,
+                5,
+                1000.0
+              ]
+            },
+            {
+              "edge": "F71",
+              "before": [
+                11282.25,
+                6,
+                5,
+                1439.0
+              ],
+              "after": [
+                6495.0,
+                3,
+                6,
+                1106.0
+              ]
+            },
+            {
+              "edge": "F5",
+              "before": [
+                9067.0,
+                5,
+                4,
+                1145.0
+              ],
+              "after": [
+                5800.0,
+                3,
+                4,
+                886.0
+              ]
+            },
+            {
+              "edge": "F33",
+              "before": [
+                4319.0,
+                2,
+                4,
+                1039.0
+              ],
+              "after": [
+                4151.0,
+                2,
+                2,
+                1011.0
+              ]
+            },
+            {
+              "edge": "F44",
+              "before": [
+                11313.0,
+                7,
+                2,
+                673.0
+              ],
+              "after": [
+                9758.75,
+                5,
+                7,
+                824.0
+              ]
+            },
+            {
+              "edge": "F93",
+              "before": [
+                9846.0,
+                6,
+                2,
+                706.0
+              ],
+              "after": [
+                8616.75,
+                4,
+                10,
+                1165.0
+              ]
+            },
+            {
+              "edge": "F87",
+              "before": [
+                9885.0,
+                5,
+                4,
+                1084.0
+              ],
+              "after": [
+                4375.0,
+                2,
+                3,
+                669.0
+              ]
+            },
+            {
+              "edge": "F83",
+              "before": [
+                7045.75,
+                3,
+                10,
+                1124.0
+              ],
+              "after": [
+                5471.125,
+                2,
+                9,
+                1010.5
+              ]
+            },
+            {
+              "edge": "F2",
+              "before": [
+                6463.0,
+                3,
+                5,
+                1309.0
+              ],
+              "after": [
+                2281.0,
+                1,
+                2,
+                641.0
+              ]
+            },
+            {
+              "edge": "F16",
+              "before": [
+                2660.0,
+                1,
+                2,
+                904.0
+              ],
+              "after": [
+                2602.0,
+                1,
+                2,
+                904.0
+              ]
+            },
+            {
+              "edge": "F38",
+              "before": [
+                4499.375,
+                2,
+                5,
+                951.0
+              ],
+              "after": [
+                4218.75,
+                2,
+                3,
+                951.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                6627.625,
+                3,
+                2,
+                1298.0
+              ],
+              "after": [
+                2054.5,
+                0,
+                4,
+                1449.0
+              ]
+            },
+            {
+              "edge": "F73",
+              "before": [
+                2921.0,
+                1,
+                6,
+                936.0
+              ],
+              "after": [
+                1502.0,
+                0,
+                5,
+                1056.0
+              ]
+            },
+            {
+              "edge": "F61",
+              "before": [
+                837.9,
+                0,
+                2,
+                696.2
+              ],
+              "after": [
+                798.2,
+                0,
+                2,
+                658.2
+              ]
+            },
+            {
+              "edge": "F75",
+              "before": [
+                5005.5,
+                2,
+                4,
+                1589.0
+              ],
+              "after": [
+                3702.0,
+                1,
+                4,
+                1922.0
+              ]
+            },
+            {
+              "edge": "F23",
+              "before": [
+                2453.5,
+                1,
+                5,
+                536.0
+              ],
+              "after": [
+                707.625,
+                0,
+                4,
+                302.0
+              ]
+            },
+            {
+              "edge": "F31",
+              "before": [
+                5173.0,
+                3,
+                2,
+                533.0
+              ],
+              "after": [
+                2863.75,
+                1,
+                4,
+                693.0
+              ]
+            },
+            {
+              "edge": "F37",
+              "before": [
+                2118.0,
+                1,
+                2,
+                478.0
+              ],
+              "after": [
+                2024.75,
+                1,
+                2,
+                369.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                4297.0,
+                2,
+                3,
+                1087.0
+              ],
+              "after": [
+                2797.0,
+                1,
+                3,
+                1087.0
+              ]
+            },
+            {
+              "edge": "F98",
+              "before": [
+                3953.5,
+                2,
+                4,
+                642.0
+              ],
+              "after": [
+                3764.0,
+                2,
+                2,
+                624.0
+              ]
+            },
+            {
+              "edge": "F13",
+              "before": [
+                709.0,
                 0,
                 3,
-                832.5
+                499.0
               ],
               "after": [
+                697.0,
                 0,
-                2,
-                599.5
+                3,
+                487.0
               ]
             },
             {
-              "edge": "F85",
+              "edge": "F15",
               "before": [
-                0,
+                3545.0,
                 2,
-                1694.0
+                2,
+                405.0
               ],
               "after": [
-                0,
+                3436.0,
                 2,
-                1436.0
+                2,
+                296.0
               ]
             },
             {
-              "edge": "F96",
+              "edge": "F18",
               "before": [
-                1,
+                3853.0,
                 2,
-                1872.0
+                2,
+                713.0
               ],
               "after": [
+                3772.0,
+                2,
+                1,
+                702.0
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                1937.0,
                 1,
                 2,
-                1858.0
+                297.0
+              ],
+              "after": [
+                455.0,
+                0,
+                1,
+                385.0
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                564.0,
+                0,
+                2,
+                367.0
+              ],
+              "after": [
+                426.0,
+                0,
+                2,
+                286.0
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                3926.25,
+                1,
+                7,
+                1353.5
+              ],
+              "after": [
+                3638.75,
+                1,
+                5,
+                1346.0
+              ]
+            },
+            {
+              "edge": "F94",
+              "before": [
+                1964.875,
+                0,
+                3,
+                819.0
+              ],
+              "after": [
+                1468.875,
+                0,
+                6,
+                855.0
+              ]
+            },
+            {
+              "edge": "F26",
+              "before": [
+                646.625,
+                0,
+                2,
+                330.0
+              ],
+              "after": [
+                291.0,
+                0,
+                1,
+                221.0
+              ]
+            },
+            {
+              "edge": "A_Contract_ToOperation",
+              "before": [
+                597.125,
+                0,
+                2,
+                339.0
+              ],
+              "after": [
+                476.625,
+                0,
+                2,
+                294.0
+              ]
+            },
+            {
+              "edge": "F54",
+              "before": [
+                2115.5,
+                1,
+                3,
+                393.0
+              ],
+              "after": [
+                2067.0,
+                1,
+                3,
+                357.0
+              ]
+            },
+            {
+              "edge": "F57",
+              "before": [
+                877.0,
+                0,
+                2,
+                737.0
+              ],
+              "after": [
+                726.0,
+                0,
+                1,
+                656.0
+              ]
+            },
+            {
+              "edge": "F88",
+              "before": [
+                506.0,
+                0,
+                2,
+                366.0
+              ],
+              "after": [
+                425.0,
+                0,
+                2,
+                285.0
+              ]
+            },
+            {
+              "edge": "F43",
+              "before": [
+                946.75,
+                0,
+                2,
+                330.0
+              ],
+              "after": [
+                707.75,
+                0,
+                2,
+                289.5
+              ]
+            },
+            {
+              "edge": "F84",
+              "before": [
+                15033.625,
+                7,
+                4,
+                2663.0
+              ],
+              "after": [
+                13411.375,
+                7,
+                4,
+                2607.0
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                12025.0,
+                6,
+                9,
+                955.0
+              ],
+              "after": [
+                11698.125,
+                6,
+                12,
+                1045.0
+              ]
+            },
+            {
+              "edge": "F79",
+              "before": [
+                10442.25,
+                5,
+                10,
+                1385.0
+              ],
+              "after": [
+                8573.0,
+                4,
+                4,
+                1809.0
+              ]
+            },
+            {
+              "edge": "F64",
+              "before": [
+                9975.0,
+                6,
+                2,
+                835.0
+              ],
+              "after": [
+                9894.0,
+                6,
+                2,
+                754.0
+              ]
+            },
+            {
+              "edge": "F44",
+              "before": [
+                9609.125,
+                5,
+                7,
+                824.0
+              ],
+              "after": [
+                9096.25,
+                5,
+                5,
+                852.0
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                9178.75,
+                5,
+                6,
+                1011.5
+              ],
+              "after": [
+                4393.0,
+                2,
+                4,
+                1113.0
+              ]
+            },
+            {
+              "edge": "F93",
+              "before": [
+                8604.25,
+                4,
+                10,
+                1165.0
+              ],
+              "after": [
+                8408.0,
+                4,
+                8,
+                1165.0
+              ]
+            },
+            {
+              "edge": "F78",
+              "before": [
+                7905.25,
+                4,
+                4,
+                1221.0
+              ],
+              "after": [
+                7827.75,
+                4,
+                4,
+                1310.0
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                4922.875,
+                3,
+                1,
+                274.5
+              ],
+              "after": [
+                4852.0,
+                3,
+                1,
+                282.0
+              ]
+            },
+            {
+              "edge": "F69",
+              "before": [
+                6702.5,
+                3,
+                5,
+                1000.0
+              ],
+              "after": [
+                6651.0,
+                3,
+                5,
+                1024.0
+              ]
+            },
+            {
+              "edge": "F71",
+              "before": [
+                6495.0,
+                3,
+                6,
+                1106.0
+              ],
+              "after": [
+                6018.5,
+                3,
+                6,
+                1091.0
+              ]
+            },
+            {
+              "edge": "F34",
+              "before": [
+                6980.0,
+                3,
+                7,
+                1982.5
+              ],
+              "after": [
+                6655.0,
+                3,
+                3,
+                1945.0
+              ]
+            },
+            {
+              "edge": "F83",
+              "before": [
+                5365.25,
+                2,
+                9,
+                1010.5
+              ],
+              "after": [
+                5349.75,
+                2,
+                10,
+                982.5
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                3993.625,
+                2,
+                2,
+                522.5
+              ],
+              "after": [
+                3716.75,
+                2,
+                2,
+                502.5
+              ]
+            },
+            {
+              "edge": "F30",
+              "before": [
+                4944.5,
+                2,
+                3,
+                885.0
+              ],
+              "after": [
+                4805.75,
+                2,
+                6,
+                857.0
+              ]
+            },
+            {
+              "edge": "F38",
+              "before": [
+                2929.25,
+                1,
+                3,
+                951.0
+              ],
+              "after": [
+                2819.75,
+                1,
+                5,
+                921.0
+              ]
+            },
+            {
+              "edge": "F12",
+              "before": [
+                4238.0,
+                2,
+                5,
+                888.0
+              ],
+              "after": [
+                3362.75,
+                1,
+                6,
+                917.0
+              ]
+            },
+            {
+              "edge": "F31",
+              "before": [
+                2551.75,
+                1,
+                4,
+                693.0
+              ],
+              "after": [
+                2117.0,
+                1,
+                2,
+                345.0
+              ]
+            },
+            {
+              "edge": "F28",
+              "before": [
+                3039.25,
+                1,
+                5,
+                1121.0
+              ],
+              "after": [
+                2825.0,
+                1,
+                3,
+                1115.0
+              ]
+            },
+            {
+              "edge": "F35",
+              "before": [
+                3903.0,
+                2,
+                3,
+                693.0
+              ],
+              "after": [
+                3804.0,
+                2,
+                3,
+                594.0
+              ]
+            },
+            {
+              "edge": "F37",
+              "before": [
+                3566.75,
+                2,
+                2,
+                369.0
+              ],
+              "after": [
+                3563.0,
+                2,
+                2,
+                369.0
+              ]
+            },
+            {
+              "edge": "F68",
+              "before": [
+                1970.0,
+                1,
+                2,
+                330.0
+              ],
+              "after": [
+                1870.0,
+                1,
+                1,
+                300.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                2171.75,
+                0,
+                4,
+                1449.0
+              ],
+              "after": [
+                2023.0,
+                0,
+                6,
+                1435.0
+              ]
+            },
+            {
+              "edge": "F43",
+              "before": [
+                846.0,
+                0,
+                2,
+                289.5
+              ],
+              "after": [
+                389.0,
+                0,
+                2,
+                249.0
+              ]
+            },
+            {
+              "edge": "F23",
+              "before": [
+                691.125,
+                0,
+                4,
+                302.0
+              ],
+              "after": [
+                686.75,
+                0,
+                4,
+                302.0
+              ]
+            },
+            {
+              "edge": "F16",
+              "before": [
+                1325.5,
+                0,
+                2,
+                904.0
+              ],
+              "after": [
+                1005.0,
+                0,
+                2,
+                865.0
+              ]
+            },
+            {
+              "edge": "F73",
+              "before": [
+                3246.25,
+                1,
+                5,
+                1056.0
+              ],
+              "after": [
+                2983.5,
+                1,
+                3,
+                976.0
               ]
             }
           ]
         }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2-roles-1-oriented",
+        "status": "rejected",
+        "reason": "readability or routing audit failed",
+        "seconds": 65.245
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2-oriented-refined",
+        "status": "verified",
+        "rank": [
+          4.707598,
+          [
+            60,
+            200,
+            55159.8
+          ],
+          7.2033
+        ],
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.03554,
+          "hotspot_excess": 0.065178,
+          "peak_flow_load": 8,
+          "forward_hop_excess": 1.361593,
+          "long_forward_hops": 33,
+          "long_forward_hop_ids": [
+            "F2",
+            "F5",
+            "F12",
+            "F16",
+            "F18",
+            "F25",
+            "F28",
+            "F30",
+            "F33",
+            "F35",
+            "F38",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F56",
+            "F57",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F69",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F97"
+          ],
+          "bends_per_flow": 2.084211,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "refinement_interrupted": false,
+        "refinements": [
+          {
+            "edge": "F81",
+            "before": [
+              9702.75,
+              5,
+              12,
+              1045.0
+            ],
+            "after": [
+              9162.5,
+              5,
+              5,
+              931.0
+            ]
+          },
+          {
+            "edge": "F40",
+            "before": [
+              7437.0,
+              4,
+              5,
+              778.0
+            ],
+            "after": [
+              5391.5,
+              3,
+              4,
+              594.0
+            ]
+          },
+          {
+            "edge": "F12",
+            "before": [
+              3134.5,
+              1,
+              6,
+              917.0
+            ],
+            "after": [
+              3117.0,
+              1,
+              6,
+              937.0
+            ]
+          },
+          {
+            "edge": "F73",
+            "before": [
+              2854.0,
+              1,
+              3,
+              976.0
+            ],
+            "after": [
+              2634.75,
+              0,
+              6,
+              980.0
+            ]
+          },
+          {
+            "edge": "F49",
+            "before": [
+              3364.0,
+              1,
+              5,
+              1346.0
+            ],
+            "after": [
+              3224.0,
+              1,
+              3,
+              1346.0
+            ]
+          },
+          {
+            "edge": "F12",
+            "before": [
+              2101.75,
+              0,
+              6,
+              937.0
+            ],
+            "after": [
+              1289.0,
+              0,
+              5,
+              939.0
+            ]
+          },
+          {
+            "edge": "F16",
+            "before": [
+              1587.0,
+              0,
+              2,
+              865.0
+            ],
+            "after": [
+              1312.5,
+              0,
+              4,
+              881.0
+            ]
+          }
+        ]
       }
     ],
-    "selection": "best among explored safe readable candidates; not a global optimum",
+    "seconds": 303.449,
+    "source_reference_models": 32,
+    "selection": "best verified empirical-style candidate; no global optimum guarantee",
     "removed_redundant_associations": [],
-    "output": "output/process_08_v23.bpmn",
+    "output": "/workspace/work/algorithm-r3/balanced/process_08_v23.bpmn",
     "artifacts": {
-      "bpmn": "output/process_08_v23.bpmn",
-      "svg": "output/process_08_v23.svg",
+      "bpmn": "/workspace/work/algorithm-r3/balanced/process_08_v23.bpmn",
+      "svg": "/workspace/work/algorithm-r3/balanced/process_08_v23.svg",
       "png": null
     }
   }

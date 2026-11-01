@@ -1,2 +1,2 @@
-"""BPMN DI readability optimizer with strict semantic freeze."""
-__version__ = "23.1.1.dev0"
+"""Reference-driven BPMN layout with unchanged business semantics."""
+__version__ = "23.1.2.dev0"

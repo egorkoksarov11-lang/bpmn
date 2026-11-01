@@ -3,7 +3,7 @@ import base64,math
 from lxml import etree as ET
 from bpmn_refkit.model import read_bpmn,TAG_TASK,TAG_GATE,TAG_EVENT
 from bpmn_universal.contract import NS,Q,B,BD,DC
-from .typography import FONT,wrap,width
+from .typography import FONT,wrap,width,TASK_FONT,TASK_LINE_HEIGHT
 SVG='http://www.w3.org/2000/svg'
 
 
@@ -82,11 +82,11 @@ def render(path,svg_path):
             if kind in ('callActivity','subProcess'):
                 add(group,'rect',x=x+w/2-6,y=y+h-15,width=12,height=12,fill='white',stroke='#344f65')
                 add(group,'path',d=f'M{x+w/2-4} {y+h-9} H{x+w/2+4} M{x+w/2} {y+h-13} V{y+h-5}',stroke='#344f65')
-            lines=wrap(o.get('name',''),max(1,w-24),14);lineh=19
+            lines=wrap(o.get('name',''),max(1,w-24),TASK_FONT);lineh=TASK_LINE_HEIGHT
             available=h-24-(14 if kind in ('callActivity','subProcess') else 0)
             if len(lines)*lineh>available:text_overflow.append(nid)
             for i,line in enumerate(lines):
-                t=add(group,'text',x=x+w/2,y=y+h/2-(len(lines)-1)*lineh/2+i*lineh+4-(6 if kind in ('callActivity','subProcess') else 0),text_anchor='middle',font_size=14,fill='#24394b');t.text=line
+                t=add(group,'text',x=x+w/2,y=y+h/2-(len(lines)-1)*lineh/2+i*lineh+4-(6 if kind in ('callActivity','subProcess') else 0),text_anchor='middle',font_size=TASK_FONT,fill='#24394b');t.text=line
     for nid,o in docs.items():
         x,y,w,h=boxes[nid];group=add(svg,'g',data_bpmn_id=nid)
         if o['kind']=='dataStoreReference':
@@ -104,4 +104,4 @@ def render(path,svg_path):
         for i,line in enumerate(lines):
             t=add(group,'text',x=x+w/2,y=y+13+i*17,text_anchor='middle',font_size=size,fill='#6d5126' if owner not in nodes and owner not in docs else '#304b60');t.text=line
     ET.ElementTree(svg).write(str(svg_path),encoding='utf-8',xml_declaration=True)
-    return {'font':'Open Sans bundled','task_font_size':14,'label_font_size':12,'text_overflow_ids':text_overflow}
+    return {'font':'Open Sans bundled','task_font_size':TASK_FONT,'label_font_size':12,'text_overflow_ids':text_overflow}

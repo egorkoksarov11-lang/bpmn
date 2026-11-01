@@ -33,3 +33,10 @@ def text_box(text,max_width=210,size=14,padding=12):
 def fits(text,box,size=14,padding=12):
     lines=wrap(text,max(1,box[2]-padding*2),size)
     return all(width(line,size)<=box[2]-padding*2+.01 for line in lines) and len(lines)*(size+5)<=box[3]-padding*2+.01
+
+TASK_FONT=13
+TASK_LINE_HEIGHT=18
+
+def task_fits(text,box,kind='task'):
+    lines=wrap(text,max(1,box[2]-24),TASK_FONT)
+    return len(lines)*TASK_LINE_HEIGHT<=box[3]-24-(14 if kind in ('callActivity','subProcess') else 0)+.01

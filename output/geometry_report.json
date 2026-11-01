@@ -180,6 +180,48 @@
     "document_references": 17,
     "flow_count": 95,
     "association_count": 18,
+    "readability": {
+      "policy": "balanced-readability-v1",
+      "parallel_crowding_per_flow": 0.322054,
+      "hotspot_excess": 0.06194,
+      "peak_flow_load": 7,
+      "forward_hop_excess": 2.684063,
+      "long_forward_hops": 26,
+      "long_forward_hop_ids": [
+        "F2",
+        "F9",
+        "F18",
+        "F21",
+        "F26",
+        "F28",
+        "F38",
+        "F49",
+        "F52",
+        "F53",
+        "F56",
+        "F57",
+        "F62",
+        "F69",
+        "F72",
+        "F74",
+        "F77",
+        "F78",
+        "F79",
+        "F81",
+        "F82",
+        "F88",
+        "F89",
+        "F90",
+        "F95",
+        "F97"
+      ],
+      "bends_per_flow": 2.0,
+      "graph_return_count": 17,
+      "normalization_task_width": 200.0,
+      "wire_gap_diagnostic": 10.5,
+      "hotspot_cell_size": 70.0,
+      "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+    },
     "ambiguous_contacts": 190,
     "contact_examples": [
       [
@@ -507,13 +549,10 @@
       "T51b",
       "T51c",
       "T52",
-      "T53",
       "C53",
       "T55",
       "C55",
       "T56",
-      "T510b",
-      "T511b",
       "T512a",
       "T513",
       "T514",
@@ -533,6 +572,80 @@
         "A_ClosingDocs_In"
       ]
     ],
+    "edge_object_clearance_violations": [
+      [
+        "A_Contract_New",
+        "DOR_ContractBasis_Final"
+      ],
+      [
+        "F15",
+        "T54b"
+      ],
+      [
+        "F34",
+        "DOR_TechTask"
+      ],
+      [
+        "F34",
+        "G59"
+      ],
+      [
+        "F40",
+        "DOR_PaymentTask"
+      ],
+      [
+        "F48",
+        "G513a"
+      ],
+      [
+        "F5",
+        "T51d"
+      ],
+      [
+        "F50",
+        "G513"
+      ],
+      [
+        "F56",
+        "T516c"
+      ],
+      [
+        "F63",
+        "G57a"
+      ],
+      [
+        "F64",
+        "T58a"
+      ],
+      [
+        "F65",
+        "G57"
+      ],
+      [
+        "F69",
+        "T514c"
+      ],
+      [
+        "F70",
+        "T514c"
+      ],
+      [
+        "F93",
+        "G513"
+      ],
+      [
+        "F94",
+        "T516a"
+      ]
+    ],
+    "lane_header_cuts": [],
+    "edge_clearance_passed": false,
+    "reference_style": {
+      "area_factor": 12.0384,
+      "reference_p90": 9.1665,
+      "within_reference_density": false,
+      "penalty": 3759.730756313911
+    },
     "diagonal_segments": 2,
     "diagonal_edges": [
       "A_BankDocument_Out",
@@ -747,7 +860,7 @@
     "a4_ratio_passed": false,
     "estimated_A4_min_font_pt": 1.39,
     "a4_legible_at_8pt": false,
-    "text_overflow_check": "measured_bundled_OpenSans_14px",
+    "text_overflow_check": "measured_bundled_OpenSans_13px",
     "crossing_avoidability": "not_proven",
     "routing_safety_passed": false,
     "release_geometry_passed": false
@@ -758,17 +871,26 @@
     "line_through_shapes": 0,
     "line_through_examples": [],
     "crossings": {
-      "flow_flow": 48
+      "flow_flow": 59,
+      "flow_association": 1
     },
     "crossing_examples": {
       "flow_flow": [
         [
-          "F3",
-          "F72"
+          "F2",
+          "F84"
+        ],
+        [
+          "F6",
+          "F84"
+        ],
+        [
+          "F7",
+          "F10"
         ],
         [
           "F15",
-          "F19"
+          "F34"
         ],
         [
           "F15",
@@ -776,430 +898,486 @@
         ],
         [
           "F18",
+          "F34"
+        ],
+        [
+          "F18",
           "F84"
         ],
         [
-          "F26",
-          "F82"
+          "F19",
+          "F5"
         ],
         [
-          "F27",
-          "F75"
+          "F19",
+          "F72"
+        ],
+        [
+          "F24",
+          "F35"
+        ],
+        [
+          "F25",
+          "F26"
+        ],
+        [
+          "F25",
+          "F35"
+        ],
+        [
+          "F25",
+          "F28"
+        ],
+        [
+          "F30",
+          "F83"
+        ],
+        [
+          "F30",
+          "F87"
         ],
         [
           "F31",
-          "F84"
+          "F83"
+        ],
+        [
+          "F33",
+          "F37"
+        ],
+        [
+          "F33",
+          "F79"
         ],
         [
           "F33",
           "F84"
         ],
         [
-          "F35",
-          "F77"
-        ],
-        [
-          "F38",
-          "F77"
-        ],
+          "F34",
+          "F84"
+        ]
+      ],
+      "flow_association": [
         [
           "F40",
-          "F77"
-        ],
-        [
-          "F47",
-          "F93"
-        ],
-        [
-          "F47",
-          "F97"
-        ],
-        [
-          "F49",
-          "F53"
-        ],
-        [
-          "F49",
-          "F54"
-        ],
-        [
-          "F49",
-          "F90"
-        ],
-        [
-          "F51",
-          "F90"
-        ],
-        [
-          "F59",
-          "F93"
-        ],
-        [
-          "F63",
-          "F88"
-        ],
-        [
-          "F65",
-          "F29"
+          "A_CashRegister_Plan"
         ]
       ]
     },
-    "total_bends": 132,
-    "avg_flow_length": 916.27,
-    "avg_document_length": 161.11,
+    "total_bends": 200,
+    "avg_flow_length": 570.87,
+    "avg_document_length": 51.5,
     "document_references": 17,
     "flow_count": 95,
     "association_count": 18,
-    "ambiguous_contacts": 50,
+    "readability": {
+      "policy": "balanced-readability-v1",
+      "parallel_crowding_per_flow": 0.03554,
+      "hotspot_excess": 0.065178,
+      "peak_flow_load": 8,
+      "forward_hop_excess": 1.361593,
+      "long_forward_hops": 33,
+      "long_forward_hop_ids": [
+        "F2",
+        "F5",
+        "F12",
+        "F16",
+        "F18",
+        "F25",
+        "F28",
+        "F30",
+        "F33",
+        "F35",
+        "F38",
+        "F40",
+        "F44",
+        "F47",
+        "F49",
+        "F50",
+        "F56",
+        "F57",
+        "F61",
+        "F62",
+        "F71",
+        "F64",
+        "F69",
+        "F72",
+        "F74",
+        "F76",
+        "F78",
+        "F79",
+        "F81",
+        "F82",
+        "F83",
+        "F87",
+        "F97"
+      ],
+      "bends_per_flow": 2.084211,
+      "graph_return_count": 17,
+      "normalization_task_width": 220.0,
+      "wire_gap_diagnostic": 12.0,
+      "hotspot_cell_size": 80.0,
+      "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+    },
+    "ambiguous_contacts": 60,
     "contact_examples": [
       [
-        "F3",
-        "F72",
+        "F2",
+        "F84",
         [
-          815.0,
-          967.5
+          398.0,
+          405.0
+        ]
+      ],
+      [
+        "F6",
+        "F84",
+        [
+          280.0,
+          405.0
+        ]
+      ],
+      [
+        "F7",
+        "F10",
+        [
+          535.0,
+          1027.0
         ]
       ],
       [
         "F15",
-        "F19",
+        "F34",
         [
-          2667.5,
-          520.5
+          738.0,
+          307.0
         ]
       ],
       [
         "F15",
         "F84",
         [
-          2667.5,
-          527.5
+          738.0,
+          405.0
+        ]
+      ],
+      [
+        "F18",
+        "F34",
+        [
+          894.0,
+          307.0
         ]
       ],
       [
         "F18",
         "F84",
         [
-          3117.5,
-          527.5
+          894.0,
+          405.0
         ]
       ],
       [
+        "F19",
+        "F5",
+        [
+          162.0,
+          1087.0
+        ]
+      ],
+      [
+        "F19",
+        "F72",
+        [
+          131.0,
+          1087.0
+        ]
+      ],
+      [
+        "F24",
+        "F35",
+        [
+          1418.0,
+          845.0
+        ]
+      ],
+      [
+        "F25",
         "F26",
-        "F82",
         [
-          4827.5,
-          924.5
+          1450.0,
+          860.0
         ]
       ],
       [
-        "F27",
-        "F75",
+        "F25",
+        "F35",
         [
-          4650.5,
-          1426.5
+          1366.0,
+          1027.0
+        ]
+      ],
+      [
+        "F25",
+        "F28",
+        [
+          1163.0,
+          1629.0
+        ]
+      ],
+      [
+        "F30",
+        "F83",
+        [
+          2178.0,
+          878.0
+        ]
+      ],
+      [
+        "F30",
+        "F87",
+        [
+          2178.0,
+          888.0
         ]
       ],
       [
         "F31",
-        "F84",
+        "F83",
         [
-          4887.5,
-          527.5
+          1858.0,
+          564.0
+        ]
+      ],
+      [
+        "F33",
+        "F37",
+        [
+          1522.0,
+          821.0
+        ]
+      ],
+      [
+        "F33",
+        "F79",
+        [
+          1522.0,
+          797.0
         ]
       ],
       [
         "F33",
         "F84",
         [
-          5220.0,
-          527.5
+          1522.0,
+          405.0
         ]
       ],
       [
-        "F35",
-        "F77",
+        "F34",
+        "F84",
         [
-          5637.5,
-          804.5
+          478.0,
+          405.0
+        ]
+      ],
+      [
+        "F37",
+        "F38",
+        [
+          1480.0,
+          492.0
+        ]
+      ],
+      [
+        "F37",
+        "F79",
+        [
+          1508.0,
+          821.0
         ]
       ],
       [
         "F38",
-        "F77",
+        "F76",
         [
-          6000.0,
-          804.5
+          1418.0,
+          1317.0
+        ]
+      ],
+      [
+        "F39",
+        "F44",
+        [
+          1758.0,
+          791.0
+        ]
+      ],
+      [
+        "F39",
+        "F45",
+        [
+          1758.0,
+          612.0
         ]
       ],
       [
         "F40",
-        "F77",
+        "F44",
         [
-          6762.5,
-          1011.5
+          1772.0,
+          791.0
+        ]
+      ],
+      [
+        "F40",
+        "F45",
+        [
+          1772.0,
+          612.0
+        ]
+      ],
+      [
+        "F40",
+        "A_CashRegister_Plan",
+        [
+          1767.0,
+          845.0
+        ]
+      ],
+      [
+        "F43",
+        "F44",
+        [
+          2130.0,
+          860.0
+        ]
+      ],
+      [
+        "F44",
+        "F78",
+        [
+          2112.0,
+          860.0
+        ]
+      ],
+      [
+        "F44",
+        "F81",
+        [
+          1820.0,
+          791.0
+        ]
+      ],
+      [
+        "F44",
+        "F82",
+        [
+          1862.0,
+          975.0
         ]
       ],
       [
         "F47",
-        "F93",
+        "F69",
         [
-          8637.5,
-          788.0
-        ]
-      ],
-      [
-        "F47",
-        "F97",
-        [
-          8637.5,
-          796.5
+          2198.0,
+          797.0
         ]
       ],
       [
         "F49",
-        "F53",
+        "F98",
         [
-          9040.0,
-          1478.5
+          2537.0,
+          1096.0
         ]
       ],
       [
-        "F49",
-        "F54",
+        "F50",
+        "F98",
         [
-          9040.0,
-          1470.5
-        ]
-      ],
-      [
-        "F49",
-        "F90",
-        [
-          9040.0,
-          1475.5
+          2518.0,
+          1096.0
         ]
       ],
       [
         "F51",
-        "F90",
-        [
-          9320.5,
-          1424.5
-        ]
-      ],
-      [
-        "F59",
-        "F93",
-        [
-          9492.5,
-          788.0
-        ]
-      ],
-      [
-        "F63",
-        "F88",
-        [
-          4655.5,
-          1137.5
-        ]
-      ],
-      [
-        "F65",
-        "F29",
-        [
-          4792.5,
-          1382.5
-        ]
-      ],
-      [
-        "F65",
-        "F88",
-        [
-          4942.5,
-          1189.5
-        ]
-      ],
-      [
-        "F71",
-        "F88",
-        [
-          6770.0,
-          1189.5
-        ]
-      ],
-      [
-        "F71",
-        "F97",
-        [
-          6770.0,
-          1181.5
-        ]
-      ],
-      [
-        "F28",
-        "F74",
-        [
-          5307.5,
-          1399.5
-        ]
-      ],
-      [
-        "F28",
-        "F88",
-        [
-          5307.5,
-          1189.5
-        ]
-      ],
-      [
-        "F28",
-        "F97",
-        [
-          5307.5,
-          1181.5
-        ]
-      ],
-      [
-        "F45",
-        "F82",
-        [
-          7940.5,
-          576.5
-        ]
-      ],
-      [
-        "F45",
-        "F84",
-        [
-          7945.5,
-          576.5
-        ]
-      ],
-      [
-        "F46",
-        "F81",
-        [
-          8169.5,
-          967.5
-        ]
-      ],
-      [
-        "F52",
-        "F89",
-        [
-          9312.5,
-          1792.0
-        ]
-      ],
-      [
-        "F56",
-        "F57",
-        [
-          9327.5,
-          1184.5
-        ]
-      ],
-      [
-        "F56",
-        "F94",
-        [
-          9084.5,
-          1016.5
-        ]
-      ],
-      [
-        "F56",
-        "F95",
-        [
-          9084.5,
-          1088.5
-        ]
-      ],
-      [
-        "F56",
-        "F97",
-        [
-          9129.5,
-          923.5
-        ]
-      ],
-      [
-        "F62",
         "F96",
         [
-          9827.5,
-          1181.5
+          2282.0,
+          1653.0
         ]
       ],
       [
-        "F74",
-        "F88",
+        "F64",
+        "F71",
         [
-          5427.5,
-          1189.5
+          1800.0,
+          1414.0
         ]
       ],
       [
-        "F74",
-        "F97",
-        [
-          5427.5,
-          1181.5
-        ]
-      ],
-      [
-        "F77",
+        "F64",
         "F78",
         [
-          7102.5,
-          1011.5
+          1850.0,
+          1414.0
         ]
       ],
       [
-        "F77",
+        "F64",
         "F79",
         [
-          7065.5,
-          796.5
+          1508.0,
+          1414.0
         ]
       ],
       [
-        "F78",
-        "F88",
+        "F64",
+        "F81",
         [
-          7102.5,
-          1088.5
+          1838.0,
+          1414.0
         ]
       ]
     ],
     "task_text_overflows": [],
     "label_line_cuts": [],
+    "edge_object_clearance_violations": [],
+    "lane_header_cuts": [],
+    "edge_clearance_passed": true,
+    "reference_style": {
+      "area_factor": 7.2033,
+      "reference_p90": 9.1665,
+      "within_reference_density": true,
+      "penalty": 0
+    },
     "diagonal_segments": 0,
     "diagonal_edges": [],
     "excessive_bend_edges": [
-      "F97"
+      "F83"
     ],
     "invalid_endpoints": [],
     "nonfinite_waypoints": [],
     "outside_lanes": [],
     "task_sizes": [
       [
-        240.0,
-        88.0
+        220.0,
+        80.0
       ]
     ],
     "task_sizes_uniform": true,
     "label_collision_pairs": [],
     "extent": {
-      "width": 10121.0,
-      "height": 2278.0,
-      "aspect_ratio": 4.442932396839333
+      "width": 2957.5,
+      "height": 2181.0,
+      "aspect_ratio": 1.3560293443374598
     },
-    "a4_ratio_passed": false,
-    "estimated_A4_min_font_pt": 0.93,
+    "a4_ratio_passed": true,
+    "estimated_A4_min_font_pt": 2.96,
     "a4_legible_at_8pt": false,
-    "text_overflow_check": "measured_bundled_OpenSans_14px",
+    "text_overflow_check": "measured_bundled_OpenSans_13px",
     "crossing_avoidability": "not_proven",
     "routing_safety_passed": true,
     "release_geometry_passed": false
