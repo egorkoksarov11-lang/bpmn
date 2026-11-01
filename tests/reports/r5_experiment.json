@@ -1,0 +1,2175 @@
+{
+  "version": "23.1.2.dev0",
+  "backend": "v23-human-pattern-construction",
+  "status": "layout_candidate_verified",
+  "release_ready": false,
+  "limitations": [
+    "global optimality is not proven",
+    "see geometry_report.json for remaining readability limitations"
+  ],
+  "source_file": "process_08_v4_frozen.bpmn",
+  "validation": {
+    "xml_parse": true,
+    "reference_integrity": true,
+    "preflight": {
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "source": "/workspace/work/algorithm-r5/v23-stage-6tz0mlzg/process_08_v23.bpmn",
+      "counts": {
+        "processes": 1,
+        "diagrams": 1,
+        "nodes": 64,
+        "sequence_flows": 95,
+        "associations": 18,
+        "data_references": 17,
+        "lanes": 6
+      }
+    }
+  },
+  "label_placement": {
+    "unplaced_labels": [],
+    "external_labels": 95,
+    "large_displacements": [],
+    "distant_from_owner": [
+      {
+        "id": "G512",
+        "distance": 214.84
+      },
+      {
+        "id": "S",
+        "distance": 50.0
+      },
+      {
+        "id": "DOR_PaymentTask",
+        "distance": 53.0
+      },
+      {
+        "id": "F98",
+        "distance": 76.0
+      },
+      {
+        "id": "F77",
+        "distance": 68.27
+      },
+      {
+        "id": "F26",
+        "distance": 49.0
+      }
+    ],
+    "rendering": {
+      "font": "Open Sans bundled",
+      "task_font_size": 13,
+      "label_font_size": 12,
+      "text_overflow_ids": []
+    }
+  },
+  "backend_report": {
+    "selection_policy": {
+      "name": "balanced-readability-v1",
+      "contacts_per_flow": 4.0,
+      "parallel_crowding_per_flow": 8.0,
+      "hotspot_excess": 1.2,
+      "forward_hop_excess": 0.8,
+      "bends_per_flow": 0.35,
+      "style_penalty_scale": 0.001
+    },
+    "backend": "v23-human-pattern-construction",
+    "selected_candidate": "verified-incumbent",
+    "quality": [
+      3.939774,
+      [
+        40,
+        199,
+        51990.8
+      ],
+      7.3255
+    ],
+    "candidates": [
+      {
+        "candidate": "verified-incumbent",
+        "status": "verified",
+        "rank": [
+          3.939774,
+          [
+            40,
+            199,
+            51990.8
+          ],
+          7.3255
+        ],
+        "source_file": "process_08_v23.bpmn",
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.047757,
+          "hotspot_excess": 0.05543,
+          "peak_flow_load": 7,
+          "forward_hop_excess": 1.356108,
+          "long_forward_hops": 31,
+          "long_forward_hop_ids": [
+            "F4",
+            "F7",
+            "F12",
+            "F18",
+            "F25",
+            "F28",
+            "F33",
+            "F35",
+            "F37",
+            "F40",
+            "F43",
+            "F44",
+            "F49",
+            "F50",
+            "F52",
+            "F56",
+            "F57",
+            "F59",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F83",
+            "F89",
+            "F95"
+          ],
+          "bends_per_flow": 2.063158,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1-repacked-scenarios",
+        "status": "verified",
+        "rank": [
+          4.435607,
+          [
+            51,
+            201,
+            56763.8
+          ],
+          6.9925
+        ],
+        "seconds": 64.091,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.032734,
+          "hotspot_excess": 0.046124,
+          "peak_flow_load": 8,
+          "forward_hop_excess": 1.547325,
+          "long_forward_hops": 35,
+          "long_forward_hop_ids": [
+            "F2",
+            "F4",
+            "F7",
+            "F12",
+            "F16",
+            "F18",
+            "F21",
+            "F28",
+            "F30",
+            "F31",
+            "F33",
+            "F38",
+            "F40",
+            "F47",
+            "F49",
+            "F52",
+            "F53",
+            "F56",
+            "F57",
+            "F59",
+            "F62",
+            "F71",
+            "F72",
+            "F74",
+            "F77",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F89",
+            "F90",
+            "F95",
+            "F97"
+          ],
+          "bends_per_flow": 2.094737,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 6.9925,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "family": "human-patterns",
+          "chain_depth": 2,
+          "secondary_rows": 1,
+          "task_width": 220.0,
+          "column_stride": 340.0,
+          "body_x": 170,
+          "columns": 9,
+          "paired_decisions": 21,
+          "main_macros": [
+            "S",
+            "T51a",
+            "T51b",
+            "T52",
+            "T53",
+            "C53",
+            "T54a",
+            "T54b",
+            "T55",
+            "C55",
+            "T56",
+            "T57",
+            "T59a",
+            "T59b",
+            "T510a",
+            "T510b",
+            "T510c",
+            "T511a",
+            "T511b",
+            "T512a",
+            "T512b",
+            "T513",
+            "G513",
+            "T514",
+            "T515",
+            "T516a",
+            "T516b",
+            "E"
+          ],
+          "feedback_edges": [
+            "F13",
+            "F19",
+            "F29",
+            "F34",
+            "F53",
+            "F57",
+            "F6",
+            "F62",
+            "F67",
+            "F69",
+            "F73",
+            "F75",
+            "F82",
+            "F84",
+            "F85",
+            "F88",
+            "F90",
+            "F93",
+            "F94",
+            "F95",
+            "F96",
+            "F97",
+            "F98"
+          ],
+          "slots": {
+            "S": [
+              0,
+              0
+            ],
+            "T51a": [
+              1,
+              0
+            ],
+            "T51b": [
+              0,
+              0
+            ],
+            "T52": [
+              0,
+              3
+            ],
+            "T53": [
+              1,
+              0
+            ],
+            "C53": [
+              1,
+              1
+            ],
+            "T54a": [
+              1,
+              0
+            ],
+            "T54b": [
+              2,
+              0
+            ],
+            "T55": [
+              2,
+              1
+            ],
+            "C55": [
+              2,
+              2
+            ],
+            "T56": [
+              2,
+              3
+            ],
+            "T57": [
+              3,
+              0
+            ],
+            "T59a": [
+              3,
+              1
+            ],
+            "T59b": [
+              3,
+              0
+            ],
+            "T510a": [
+              4,
+              0
+            ],
+            "T510b": [
+              4,
+              0
+            ],
+            "T510c": [
+              4,
+              2
+            ],
+            "T511a": [
+              5,
+              0
+            ],
+            "T511b": [
+              5,
+              0
+            ],
+            "T512a": [
+              5,
+              1
+            ],
+            "T512b": [
+              6,
+              0
+            ],
+            "T513": [
+              6,
+              2
+            ],
+            "G513": [
+              6,
+              3
+            ],
+            "T514": [
+              6,
+              0
+            ],
+            "T515": [
+              7,
+              0
+            ],
+            "T516a": [
+              7,
+              2
+            ],
+            "T516b": [
+              7,
+              0
+            ],
+            "E": [
+              8,
+              0
+            ],
+            "T516c": [
+              7,
+              3
+            ],
+            "T511c": [
+              5,
+              0
+            ],
+            "T58a": [
+              5,
+              2
+            ],
+            "T57a": [
+              4,
+              3
+            ],
+            "T514c": [
+              5,
+              3
+            ],
+            "T54c": [
+              0,
+              1
+            ],
+            "T58d": [
+              3,
+              2
+            ],
+            "T58c": [
+              3,
+              0
+            ],
+            "T58b": [
+              8,
+              0
+            ],
+            "T59c": [
+              2,
+              0
+            ],
+            "T511d": [
+              4,
+              1
+            ],
+            "T513a": [
+              6,
+              1
+            ],
+            "T515c": [
+              7,
+              1
+            ],
+            "T51d": [
+              0,
+              2
+            ],
+            "T51c": [
+              0,
+              0
+            ]
+          },
+          "source_reference_models": 32,
+          "pairs": {
+            "T51b": "G51",
+            "T53": "G53",
+            "C53": "G53b",
+            "T54a": "G54a",
+            "T54b": "G54b",
+            "T55": "G55",
+            "T56": "G56",
+            "T57a": "G57a",
+            "T57": "G57",
+            "T58c": "G58",
+            "T58d": "G58d",
+            "T59b": "G59",
+            "T511a": "G511a",
+            "T511b": "G511",
+            "T511c": "G511b",
+            "T512a": "G512",
+            "T513": "G513a",
+            "T515": "G515",
+            "T514": "G514",
+            "T516c": "G516a",
+            "T516b": "G516"
+          },
+          "document_label_anchors": {
+            "DOR_Order": [
+              735.0,
+              186.0,
+              80,
+              58
+            ],
+            "DSR_SupplierOptions": [
+              395.0,
+              1199.0,
+              80,
+              58
+            ],
+            "DOR_LegalCheck": [
+              557.0,
+              884,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Existing": [
+              897.0,
+              884,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Final": [
+              1075.0,
+              1009.0,
+              80,
+              58
+            ],
+            "DOR_InitialTechData": [
+              897.0,
+              1264,
+              110,
+              45
+            ],
+            "DOR_PrePaymentDocs": [
+              1052.0,
+              1264,
+              110,
+              45
+            ],
+            "DOR_TechTask": [
+              1237.0,
+              1536,
+              110,
+              45
+            ],
+            "DOR_PaymentTask": [
+              1755.0,
+              1009.0,
+              80,
+              58
+            ],
+            "DOR_BankDocument": [
+              1917.0,
+              1761,
+              110,
+              45
+            ],
+            "DOR_ClosingDocs": [
+              2257.0,
+              1074,
+              110,
+              45
+            ],
+            "DOR_AccountantTask": [
+              2597.0,
+              1986,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Plan": [
+              1755.0,
+              589.0,
+              80,
+              58
+            ],
+            "DSR_OperationsFile_Plan": [
+              1597.0,
+              654,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Fact": [
+              1937.0,
+              654,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Actual": [
+              2092.0,
+              654,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Close": [
+              2775.0,
+              1009.0,
+              80,
+              58
+            ]
+          },
+          "document_owners": {
+            "DOR_Order": "T51a",
+            "DSR_SupplierOptions": "T52",
+            "DOR_LegalCheck": "C53",
+            "DOR_ContractBasis_Existing": "T55",
+            "DOR_ContractBasis_Final": "C55",
+            "DOR_PrePaymentDocs": "T56",
+            "DOR_InitialTechData": "T56",
+            "DOR_TechTask": "T57",
+            "DOR_PaymentTask": "T510c",
+            "DOR_BankDocument": "T511a",
+            "DOR_ClosingDocs": "T513",
+            "DOR_AccountantTask": "T515",
+            "DSR_OperationsFile_Plan": "T510a",
+            "DSR_OperationsFile_Actual": "T511b",
+            "DSR_OperationsFile_Close": "T516a",
+            "DSR_CashFlow_Plan": "T510a",
+            "DSR_CashFlow_Fact": "T511b"
+          },
+          "role_order": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "return_reserves": {
+            "L1": 0,
+            "L2": 0,
+            "L3": 63,
+            "L4": 7,
+            "L5": 0,
+            "L6": 0
+          },
+          "placement_optimization": {
+            "initial_cost": 59818.53999999999,
+            "final_cost": 21016.810000000005,
+            "moves": 27,
+            "iterations": 1600,
+            "seed": 23,
+            "free_spine": true,
+            "spine_moves": 14,
+            "scenario_blocks": [
+              {
+                "nodes": [
+                  "C53",
+                  "T52",
+                  "T53"
+                ],
+                "header": "T52",
+                "returns": [
+                  "F13"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F4",
+                    "source": "T51b",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F9",
+                    "source": "T53",
+                    "target": "T54a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F12",
+                    "source": "C53",
+                    "target": "T54a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F19",
+                    "source": "T54b",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F34",
+                    "source": "T58c",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F75",
+                    "source": "T57",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F84",
+                    "source": "T511c",
+                    "target": "T52",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "C53",
+                  "T52",
+                  "T53",
+                  "T54a",
+                  "T54b",
+                  "T54c"
+                ],
+                "header": "T52",
+                "returns": [
+                  "F19"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F4",
+                    "source": "T51b",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F18",
+                    "source": "T54b",
+                    "target": "T55",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F34",
+                    "source": "T58c",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F75",
+                    "source": "T57",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F84",
+                    "source": "T511c",
+                    "target": "T52",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T511a",
+                  "T511b",
+                  "T511c",
+                  "T511d"
+                ],
+                "header": "T511a",
+                "returns": [
+                  "F85"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F43",
+                    "source": "T511b",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F71",
+                    "source": "T510c",
+                    "target": "T511a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F82",
+                    "source": "T511c",
+                    "target": "T58a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F83",
+                    "source": "T511c",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F84",
+                    "source": "T511c",
+                    "target": "T52",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T513",
+                  "T513a"
+                ],
+                "header": "T513",
+                "returns": [
+                  "F70"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F47",
+                    "source": "T512b",
+                    "target": "T513",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F68",
+                    "source": "T513",
+                    "target": "G513",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F94",
+                    "source": "T516c",
+                    "target": "T513",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T514",
+                  "T514c"
+                ],
+                "header": "T514",
+                "returns": [
+                  "F54"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F50",
+                    "source": "G513",
+                    "target": "T514",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F52",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F89",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F95",
+                    "source": "T516c",
+                    "target": "T514",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T515",
+                  "T515c"
+                ],
+                "header": "T515",
+                "returns": [
+                  "F58"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F49",
+                    "source": "G513",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F52",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F56",
+                    "source": "T515",
+                    "target": "T516a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F89",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F96",
+                    "source": "T516c",
+                    "target": "T515",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T515",
+                  "T516a",
+                  "T516b",
+                  "T516c"
+                ],
+                "header": "T515",
+                "returns": [
+                  "F96"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F49",
+                    "source": "G513",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F52",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F57",
+                    "source": "T515",
+                    "target": "T515c",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F58",
+                    "source": "T515c",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F61",
+                    "source": "T516b",
+                    "target": "E",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F89",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F93",
+                    "source": "T516c",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F94",
+                    "source": "T516c",
+                    "target": "T513",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F95",
+                    "source": "T516c",
+                    "target": "T514",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F97",
+                    "source": "T516c",
+                    "target": "T58a",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T516a",
+                  "T516b",
+                  "T516c"
+                ],
+                "header": "T516a",
+                "returns": [
+                  "F98"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F56",
+                    "source": "T515",
+                    "target": "T516a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F61",
+                    "source": "T516b",
+                    "target": "E",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F93",
+                    "source": "T516c",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F94",
+                    "source": "T516c",
+                    "target": "T513",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F95",
+                    "source": "T516c",
+                    "target": "T514",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F96",
+                    "source": "T516c",
+                    "target": "T515",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F97",
+                    "source": "T516c",
+                    "target": "T58a",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T51b",
+                  "T51c",
+                  "T51d"
+                ],
+                "header": "T51b",
+                "returns": [
+                  "F6"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F2",
+                    "source": "T51a",
+                    "target": "T51b",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F4",
+                    "source": "T51b",
+                    "target": "T52",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T54a",
+                  "T54c"
+                ],
+                "header": "T54a",
+                "returns": [
+                  "F73"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F9",
+                    "source": "T53",
+                    "target": "T54a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F12",
+                    "source": "C53",
+                    "target": "T54a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F15",
+                    "source": "T54a",
+                    "target": "T54b",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T57",
+                  "T57a"
+                ],
+                "header": "T57",
+                "returns": [
+                  "F65"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F25",
+                    "source": "T56",
+                    "target": "T57",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F28",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F64",
+                    "source": "T57a",
+                    "target": "T58a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F74",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F75",
+                    "source": "T57",
+                    "target": "T52",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T59a",
+                  "T59b",
+                  "T59c"
+                ],
+                "header": "T59a",
+                "returns": [
+                  "F67"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F26",
+                    "source": "T56",
+                    "target": "T59a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F28",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F37",
+                    "source": "T59b",
+                    "target": "T510a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F74",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F76",
+                    "source": "T58d",
+                    "target": "T59a",
+                    "direction": "in"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2-repacked-scenarios",
+        "status": "verified",
+        "rank": [
+          4.841714,
+          [
+            61,
+            213,
+            55726.0
+          ],
+          7.7003
+        ],
+        "seconds": 64.596,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.041655,
+          "hotspot_excess": 0.013183,
+          "peak_flow_load": 6,
+          "forward_hop_excess": 1.433581,
+          "long_forward_hops": 42,
+          "long_forward_hop_ids": [
+            "F2",
+            "F5",
+            "F7",
+            "F9",
+            "F12",
+            "F16",
+            "F18",
+            "F28",
+            "F30",
+            "F31",
+            "F33",
+            "F35",
+            "F37",
+            "F39",
+            "F40",
+            "F43",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F52",
+            "F53",
+            "F56",
+            "F57",
+            "F62",
+            "F71",
+            "F64",
+            "F68",
+            "F69",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F89",
+            "F90",
+            "F95",
+            "F97"
+          ],
+          "bends_per_flow": 2.221053,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 7.7003,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "family": "human-patterns",
+          "chain_depth": 2,
+          "secondary_rows": 2,
+          "task_width": 220.0,
+          "column_stride": 340.0,
+          "body_x": 170,
+          "columns": 9,
+          "paired_decisions": 21,
+          "main_macros": [
+            "S",
+            "T51a",
+            "T51b",
+            "T52",
+            "T53",
+            "C53",
+            "T54a",
+            "T54b",
+            "T55",
+            "C55",
+            "T56",
+            "T57",
+            "T59a",
+            "T59b",
+            "T510a",
+            "T510b",
+            "T510c",
+            "T511a",
+            "T511b",
+            "T512a",
+            "T512b",
+            "T513",
+            "G513",
+            "T514",
+            "T515",
+            "T516a",
+            "T516b",
+            "E"
+          ],
+          "feedback_edges": [
+            "F13",
+            "F19",
+            "F29",
+            "F34",
+            "F53",
+            "F57",
+            "F6",
+            "F62",
+            "F67",
+            "F69",
+            "F73",
+            "F75",
+            "F82",
+            "F84",
+            "F85",
+            "F88",
+            "F90",
+            "F93",
+            "F94",
+            "F95",
+            "F96",
+            "F97",
+            "F98"
+          ],
+          "slots": {
+            "S": [
+              0,
+              0
+            ],
+            "T51a": [
+              0,
+              0
+            ],
+            "T51b": [
+              0,
+              1
+            ],
+            "T52": [
+              0,
+              2
+            ],
+            "T53": [
+              1,
+              0
+            ],
+            "C53": [
+              1,
+              1
+            ],
+            "T54a": [
+              1,
+              0
+            ],
+            "T54b": [
+              1,
+              1
+            ],
+            "T55": [
+              1,
+              2
+            ],
+            "C55": [
+              2,
+              1
+            ],
+            "T56": [
+              2,
+              2
+            ],
+            "T57": [
+              3,
+              0
+            ],
+            "T59a": [
+              3,
+              1
+            ],
+            "T59b": [
+              2,
+              1
+            ],
+            "T510a": [
+              4,
+              0
+            ],
+            "T510b": [
+              4,
+              0
+            ],
+            "T510c": [
+              4,
+              3
+            ],
+            "T511a": [
+              5,
+              0
+            ],
+            "T511b": [
+              5,
+              0
+            ],
+            "T512a": [
+              5,
+              2
+            ],
+            "T512b": [
+              5,
+              1
+            ],
+            "T513": [
+              6,
+              0
+            ],
+            "G513": [
+              6,
+              2
+            ],
+            "T514": [
+              7,
+              0
+            ],
+            "T515": [
+              7,
+              0
+            ],
+            "T516a": [
+              7,
+              0
+            ],
+            "T516b": [
+              7,
+              1
+            ],
+            "E": [
+              8,
+              0
+            ],
+            "T516c": [
+              7,
+              1
+            ],
+            "T511c": [
+              4,
+              1
+            ],
+            "T58a": [
+              5,
+              3
+            ],
+            "T57a": [
+              3,
+              2
+            ],
+            "T514c": [
+              7,
+              2
+            ],
+            "T54c": [
+              2,
+              0
+            ],
+            "T58d": [
+              4,
+              2
+            ],
+            "T58c": [
+              1,
+              0
+            ],
+            "T58b": [
+              5,
+              0
+            ],
+            "T59c": [
+              3,
+              0
+            ],
+            "T511d": [
+              4,
+              1
+            ],
+            "T513a": [
+              5,
+              1
+            ],
+            "T515c": [
+              7,
+              3
+            ],
+            "T51d": [
+              0,
+              3
+            ],
+            "T51c": [
+              0,
+              1
+            ]
+          },
+          "source_reference_models": 32,
+          "pairs": {
+            "T51b": "G51",
+            "T53": "G53",
+            "C53": "G53b",
+            "T54a": "G54a",
+            "T54b": "G54b",
+            "T55": "G55",
+            "T56": "G56",
+            "T57a": "G57a",
+            "T57": "G57",
+            "T58c": "G58",
+            "T58d": "G58d",
+            "T59b": "G59",
+            "T511a": "G511a",
+            "T511b": "G511",
+            "T511c": "G511b",
+            "T512a": "G512",
+            "T513": "G513a",
+            "T515": "G515",
+            "T514": "G514",
+            "T516c": "G516a",
+            "T516b": "G516"
+          },
+          "document_label_anchors": {
+            "DOR_Order": [
+              395.0,
+              186.0,
+              80,
+              58
+            ],
+            "DSR_SupplierOptions": [
+              395.0,
+              1279.0,
+              80,
+              58
+            ],
+            "DOR_LegalCheck": [
+              557.0,
+              1154,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Existing": [
+              557.0,
+              1344,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Final": [
+              1075.0,
+              1089.0,
+              80,
+              58
+            ],
+            "DOR_InitialTechData": [
+              897.0,
+              1344,
+              110,
+              45
+            ],
+            "DOR_PrePaymentDocs": [
+              1052.0,
+              1344,
+              110,
+              45
+            ],
+            "DOR_TechTask": [
+              1237.0,
+              1751,
+              110,
+              45
+            ],
+            "DOR_PaymentTask": [
+              1755.0,
+              1509.0,
+              80,
+              58
+            ],
+            "DOR_BankDocument": [
+              1917.0,
+              1976,
+              110,
+              45
+            ],
+            "DOR_ClosingDocs": [
+              2257.0,
+              924,
+              110,
+              45
+            ],
+            "DOR_AccountantTask": [
+              2597.0,
+              2201,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Plan": [
+              1755.0,
+              859.0,
+              80,
+              58
+            ],
+            "DSR_OperationsFile_Plan": [
+              1597.0,
+              924,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Fact": [
+              1937.0,
+              924,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Actual": [
+              2092.0,
+              924,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Close": [
+              2775.0,
+              859.0,
+              80,
+              58
+            ]
+          },
+          "document_owners": {
+            "DOR_Order": "T51a",
+            "DSR_SupplierOptions": "T52",
+            "DOR_LegalCheck": "C53",
+            "DOR_ContractBasis_Existing": "T55",
+            "DOR_ContractBasis_Final": "C55",
+            "DOR_PrePaymentDocs": "T56",
+            "DOR_InitialTechData": "T56",
+            "DOR_TechTask": "T57",
+            "DOR_PaymentTask": "T510c",
+            "DOR_BankDocument": "T511a",
+            "DOR_ClosingDocs": "T513",
+            "DOR_AccountantTask": "T515",
+            "DSR_OperationsFile_Plan": "T510a",
+            "DSR_OperationsFile_Actual": "T511b",
+            "DSR_OperationsFile_Close": "T516a",
+            "DSR_CashFlow_Plan": "T510a",
+            "DSR_CashFlow_Fact": "T511b"
+          },
+          "role_order": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "return_reserves": {
+            "L1": 0,
+            "L2": 0,
+            "L3": 63,
+            "L4": 7,
+            "L5": 0,
+            "L6": 0
+          },
+          "placement_optimization": {
+            "initial_cost": 41173.149999999994,
+            "final_cost": 17183.85,
+            "moves": 26,
+            "iterations": 1600,
+            "seed": 23,
+            "free_spine": true,
+            "spine_moves": 15,
+            "scenario_blocks": [
+              {
+                "nodes": [
+                  "C53",
+                  "T52",
+                  "T53"
+                ],
+                "header": "T52",
+                "returns": [
+                  "F13"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F4",
+                    "source": "T51b",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F9",
+                    "source": "T53",
+                    "target": "T54a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F12",
+                    "source": "C53",
+                    "target": "T54a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F19",
+                    "source": "T54b",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F34",
+                    "source": "T58c",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F75",
+                    "source": "T57",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F84",
+                    "source": "T511c",
+                    "target": "T52",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "C53",
+                  "T52",
+                  "T53",
+                  "T54a",
+                  "T54b",
+                  "T54c"
+                ],
+                "header": "T52",
+                "returns": [
+                  "F19"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F4",
+                    "source": "T51b",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F18",
+                    "source": "T54b",
+                    "target": "T55",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F34",
+                    "source": "T58c",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F75",
+                    "source": "T57",
+                    "target": "T52",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F84",
+                    "source": "T511c",
+                    "target": "T52",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T511a",
+                  "T511b",
+                  "T511c",
+                  "T511d"
+                ],
+                "header": "T511a",
+                "returns": [
+                  "F85"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F43",
+                    "source": "T511b",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F71",
+                    "source": "T510c",
+                    "target": "T511a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F82",
+                    "source": "T511c",
+                    "target": "T58a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F83",
+                    "source": "T511c",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F84",
+                    "source": "T511c",
+                    "target": "T52",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T513",
+                  "T513a"
+                ],
+                "header": "T513",
+                "returns": [
+                  "F70"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F47",
+                    "source": "T512b",
+                    "target": "T513",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F68",
+                    "source": "T513",
+                    "target": "G513",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F94",
+                    "source": "T516c",
+                    "target": "T513",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T514",
+                  "T514c"
+                ],
+                "header": "T514",
+                "returns": [
+                  "F54"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F50",
+                    "source": "G513",
+                    "target": "T514",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F52",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F89",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F95",
+                    "source": "T516c",
+                    "target": "T514",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T515",
+                  "T515c"
+                ],
+                "header": "T515",
+                "returns": [
+                  "F58"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F49",
+                    "source": "G513",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F52",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F56",
+                    "source": "T515",
+                    "target": "T516a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F89",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F96",
+                    "source": "T516c",
+                    "target": "T515",
+                    "direction": "in"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T515",
+                  "T516a",
+                  "T516b",
+                  "T516c"
+                ],
+                "header": "T515",
+                "returns": [
+                  "F96"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F49",
+                    "source": "G513",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F52",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F57",
+                    "source": "T515",
+                    "target": "T515c",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F58",
+                    "source": "T515c",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F61",
+                    "source": "T516b",
+                    "target": "E",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F89",
+                    "source": "T514",
+                    "target": "T515",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F93",
+                    "source": "T516c",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F94",
+                    "source": "T516c",
+                    "target": "T513",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F95",
+                    "source": "T516c",
+                    "target": "T514",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F97",
+                    "source": "T516c",
+                    "target": "T58a",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T516a",
+                  "T516b",
+                  "T516c"
+                ],
+                "header": "T516a",
+                "returns": [
+                  "F98"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F56",
+                    "source": "T515",
+                    "target": "T516a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F61",
+                    "source": "T516b",
+                    "target": "E",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F93",
+                    "source": "T516c",
+                    "target": "T512a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F94",
+                    "source": "T516c",
+                    "target": "T513",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F95",
+                    "source": "T516c",
+                    "target": "T514",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F96",
+                    "source": "T516c",
+                    "target": "T515",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F97",
+                    "source": "T516c",
+                    "target": "T58a",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T51b",
+                  "T51c",
+                  "T51d"
+                ],
+                "header": "T51b",
+                "returns": [
+                  "F6"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F2",
+                    "source": "T51a",
+                    "target": "T51b",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F4",
+                    "source": "T51b",
+                    "target": "T52",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T54a",
+                  "T54c"
+                ],
+                "header": "T54a",
+                "returns": [
+                  "F73"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F9",
+                    "source": "T53",
+                    "target": "T54a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F12",
+                    "source": "C53",
+                    "target": "T54a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F15",
+                    "source": "T54a",
+                    "target": "T54b",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T57",
+                  "T57a"
+                ],
+                "header": "T57",
+                "returns": [
+                  "F65"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F25",
+                    "source": "T56",
+                    "target": "T57",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F28",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F64",
+                    "source": "T57a",
+                    "target": "T58a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F74",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F75",
+                    "source": "T57",
+                    "target": "T52",
+                    "direction": "out"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  "T59a",
+                  "T59b",
+                  "T59c"
+                ],
+                "header": "T59a",
+                "returns": [
+                  "F67"
+                ],
+                "boundary_ports": [
+                  {
+                    "edge": "F26",
+                    "source": "T56",
+                    "target": "T59a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F28",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F37",
+                    "source": "T59b",
+                    "target": "T510a",
+                    "direction": "out"
+                  },
+                  {
+                    "edge": "F74",
+                    "source": "T57",
+                    "target": "T59a",
+                    "direction": "in"
+                  },
+                  {
+                    "edge": "F76",
+                    "source": "T58d",
+                    "target": "T59a",
+                    "direction": "in"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "seconds": 150.062,
+    "source_reference_models": 32,
+    "selection": "best verified empirical-style candidate; no global optimum guarantee",
+    "removed_redundant_associations": []
+  }
+}

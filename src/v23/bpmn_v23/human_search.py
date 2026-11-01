@@ -39,13 +39,14 @@ def seed_document_labels(root,report,boxes):
 
 class HumanStyleBackend:
     name='v23-human-pattern-construction'
-    def __init__(self,candidate_seconds=150,orient_decisions=True,incumbent=None,orientations_only=False,repack_spine=False):
+    def __init__(self,candidate_seconds=150,orient_decisions=True,incumbent=None,orientations_only=False,repack_spine=False,scenario_blocks=False):
         if not isinstance(candidate_seconds,int) or not 1<=candidate_seconds<=600:raise ValueError('candidate_seconds must be 1..600')
         self.candidate_seconds=candidate_seconds
         self.orient_decisions=orient_decisions
         self.incumbent=Path(incumbent) if incumbent is not None else None
         self.orientations_only=orientations_only
-        self.repack_spine=repack_spine
+        self.repack_spine=repack_spine or scenario_blocks
+        self.scenario_blocks=scenario_blocks
         if orientations_only and (self.incumbent is None or not orient_decisions):raise ValueError("orientations_only requires a verified incumbent and enabled orientations")
     def layout(self,source,output,svg):
         source=Path(source);output=Path(output);svg=Path(svg)
@@ -69,7 +70,7 @@ class HumanStyleBackend:
                 parsed=read_bpmn(bp);quality=rank(parsed[-2],parsed[-1],uv,nodes,docs,seq)
                 logs.append({'candidate':'verified-incumbent','status':'verified','rank':quality,'source_file':self.incumbent.name,'readability':reading_metrics(parsed[-2],parsed[-1],nodes,seq)})
                 best=(quality,'verified-incumbent',bp.read_bytes(),sp.read_bytes(),{})
-            for name,boxes,report in proposals(nodes,docs,seq,assocs,member,lanes,original,orient_decisions=self.orient_decisions,repack_spine=self.repack_spine):
+            for name,boxes,report in proposals(nodes,docs,seq,assocs,member,lanes,original,orient_decisions=self.orient_decisions,repack_spine=self.repack_spine,scenario_blocks=self.scenario_blocks):
                 if self.orientations_only and not name.endswith('-oriented'):continue
                 at=time.monotonic();ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
                 pre=geometry_audit(ob,{},[],[],nodes,docs)

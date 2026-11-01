@@ -9,8 +9,9 @@ from .typography import wrap
 from bpmn_refkit.model import TAG_TASK
 
 
-def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_rows=1,chain_depths=(2,3),role_variants=2,free_spine=False):
+def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_rows=1,chain_depths=(2,3),role_variants=2,free_spine=False,scenario_blocks=False):
     motifs=analyze(nodes,seq,membership,original)
+    motifs['entry_macros']=[motifs['owner'][n] for n,o in nodes.items() if o['kind']=='startEvent']
     lanes=sorted(lane_names,key=lambda n:(original[n][1],n))
     # These are the interquartile style dimensions of the supplied 32 examples;
     # full labels may increase task height, never disappear or change content.
@@ -55,7 +56,7 @@ def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_ro
                         if best is None or option<best:best=option
                 _,row,c=best;slots[macro]=(c,row);occupied.add((c,lane,row));remaining.remove(macro);col=max(col,c)
             component_start=max(c for c,_ in slots.values())+1
-        slots,placement_optimization=optimize_slots(slots,motifs,seq,membership,lanes,free_spine=free_spine)
+        slots,placement_optimization=optimize_slots(slots,motifs,seq,membership,lanes,free_spine=free_spine,scenario_blocks=scenario_blocks)
         # Decide whether the local decision is alongside or below its task.
         main_next={a:b for component in motifs['components'] for a,b in zip(component['backbone'],component['backbone'][1:])}
         vertical={}
@@ -138,11 +139,12 @@ def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_ro
                 yield f'human-blocks-{depth}-secondary-{secondary_rows}-roles-{i+1}',changed,info
 
 
-def proposals(nodes,docs,seq,assocs,membership,lane_names,original,orient_decisions=False,repack_spine=False):
+def proposals(nodes,docs,seq,assocs,membership,lane_names,original,orient_decisions=False,repack_spine=False,scenario_blocks=False):
     if not lane_names or any(n not in membership for n in nodes):return
     for secondary_rows in (1,2):
-        for name,boxes,report in _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_rows=secondary_rows,chain_depths=(2,),role_variants=0 if repack_spine else 1,free_spine=repack_spine):
+        for name,boxes,report in _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_rows=secondary_rows,chain_depths=(2,),role_variants=0 if repack_spine else 1,free_spine=repack_spine,scenario_blocks=scenario_blocks):
             if repack_spine:name+='-repacked'
+            if scenario_blocks:name+='-scenarios'
             yield name,boxes,report
             if orient_decisions:
                 from .decision_layout import orient

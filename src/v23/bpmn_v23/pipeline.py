@@ -184,5 +184,6 @@ def main():
     p.add_argument('--incumbent',type=Path,help='optional previously verified layout of the identical frozen model')
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
+    p.add_argument('--scenario-blocks',action='store_true',help='experimental compact local loops and joint moves')
     a=p.parse_args()
-    print(json.dumps(run(a.input,a.output_dir,HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only,repack_spine=a.repack_spine)),ensure_ascii=False,indent=2))
+    print(json.dumps(run(a.input,a.output_dir,HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only,repack_spine=a.repack_spine,scenario_blocks=a.scenario_blocks)),ensure_ascii=False,indent=2))

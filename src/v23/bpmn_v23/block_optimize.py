@@ -3,13 +3,21 @@ from collections import defaultdict
 import random,math
 
 
-def optimize_slots(slots,motifs,seq,membership,lane_order,iterations=1600,free_spine=False):
+def optimize_slots(slots,motifs,seq,membership,lane_order,iterations=1600,free_spine=False,scenario_blocks=False):
     original=dict(slots);locked={n for c in motifs['components'] for n in c['backbone']}
     spine=set(locked)
     if free_spine:locked={n for c in motifs['components'] for n in c['backbone'][:1]}
     main_edges={(a,b) for c in motifs['components'] for a,b in zip(c['backbone'],c['backbone'][1:])}
     movable=sorted(set(slots)-locked);owner=motifs['owner']
     edges=sorted({(owner[u],owner[v]) for _,u,v,_ in seq if owner[u]!=owner[v]})
+    groups=[]
+    if scenario_blocks:
+        from .scenario_blocks import discover
+        groups=discover(slots,[(i,owner[u],owner[v]) for i,u,v,_ in seq if owner[u]!=owner[v]], motifs.get('entry_macros',[c['backbone'][0] for c in motifs['components'] if c['backbone']]))
+    original_edges={i:(u,v) for i,u,v,_ in seq}
+    for group in groups:
+        for port in group['boundary_ports']:
+            port['original_source'],port['original_target']=original_edges[port['edge']]
     maxcol=max(c for c,r in slots.values());maxrow={l:max((r for n,(c,r) in slots.items() if membership.get(n)==l),default=0) for l in lane_order}
     base={};y=0
     for lane in lane_order:base[lane]=y;y+=maxrow[lane]+1.3
@@ -28,7 +36,12 @@ def optimize_slots(slots,motifs,seq,membership,lane_order,iterations=1600,free_s
                 if max(a[0],b[0])<min(c[0],d[0]) or max(c[0],d[0])<min(a[0],b[0]):continue
                 if orient(a,b,c)*orient(a,b,d)<-.0001 and orient(c,d,a)*orient(c,d,b)<-.0001:crossings+=1
         height_penalty=sum(max((r for n,(c,r) in candidate.items() if membership.get(n)==lane),default=0)*35 for lane in lane_order)
-        return crossings*500+length*8+height_penalty
+        cohesion=0
+        for group in groups:
+            points=[xy[n] for n in group['nodes']]
+            span=max(p[0] for p in points)-min(p[0] for p in points)+max(p[1] for p in points)-min(p[1] for p in points)
+            cohesion+=max(0,span-3)**2*35
+        return crossings*500+length*8+height_penalty+cohesion
     current=dict(slots);initial=cost(current);value=initial;best=dict(current);best_value=value;rng=random.Random(23)
     if not movable:return slots,{'initial_cost':initial,'final_cost':initial,'moves':0}
     for i in range(iterations):
@@ -39,6 +52,15 @@ def optimize_slots(slots,motifs,seq,membership,lane_order,iterations=1600,free_s
         trial=dict(current)
         if occupied:trial[occupied[0]]=current[n]
         trial[n]=target
+        if groups and i%4==0:
+            group=rng.choice(groups);dc,dr=rng.choice([(1,0),(-1,0),(0,1),(0,-1)])
+            if any(k in locked for k in group['nodes']):continue
+            trial=dict(current)
+            for k in group['nodes']:
+                c,r=current[k];trial[k]=(c+dc,r+dr)
+            if any(not 0<=c<=maxcol or not 0<=r<=maxrow[membership[k]] for k,(c,r) in trial.items()):continue
+            occupied={(membership[k],c,r) for k,(c,r) in trial.items()}
+            if len(occupied)!=len(trial):continue
         if free_spine:
             invalid=False
             for component in motifs['components']:
@@ -50,4 +72,4 @@ def optimize_slots(slots,motifs,seq,membership,lane_order,iterations=1600,free_s
         if new_value<value or rng.random()<math.exp(min(0,(value-new_value)/temperature)):
             current=trial;value=new_value
             if value<best_value:best=dict(current);best_value=value
-    return best,{'initial_cost':initial,'final_cost':best_value,'moves':sum(best[n]!=original[n] for n in best),'iterations':iterations,'seed':23,'free_spine':free_spine,'spine_moves':sum(best[n]!=original[n] for n in spine)}
+    return best,{'initial_cost':initial,'final_cost':best_value,'moves':sum(best[n]!=original[n] for n in best),'iterations':iterations,'seed':23,'free_spine':free_spine,'spine_moves':sum(best[n]!=original[n] for n in spine),'scenario_blocks':groups}
