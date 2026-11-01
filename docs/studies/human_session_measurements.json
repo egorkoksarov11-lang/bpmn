@@ -1,0 +1,602 @@
+{
+  "scope": "One session with 18 correlated states; 32 reference files. This is an analysis, not a trained layout engine.",
+  "methods": {
+    "length": "Euclidean sum of saved DI segments; all sequenceFlow segments orthogonal in final. Dataset Manhattan data-link lengths kept separate.",
+    "bends": "Actual direction changes after duplicate/collinear removal.",
+    "alignment": "centres within 10 units for cross-lane X, 5 for same-lane Y; thresholds are analysis settings.",
+    "scope": "Snapshots are correlated states of ONE process, not 18 independent samples. Action records are differences per save, not pointer gestures."
+  },
+  "controlflow_invariant_all_saves": true,
+  "final_roles_equal_baseline": true,
+  "baseline": {
+    "sha256": "b29e64de733bd7cdc81a6c364ebb2b45690cb3697760221672849c07313ff87c",
+    "sequence_count": 51,
+    "task_count": 25,
+    "task_width_median": 193.0,
+    "task_height_median": 77.0,
+    "unique_task_sizes": 16,
+    "flow_stats": {
+      "straight": 29,
+      "same_lane": 41,
+      "same_lane_y_aligned_5": 24,
+      "cross_lane": 10,
+      "same_lane_leftwards": 18,
+      "cross_lane_x_aligned_10": 4
+    },
+    "bend_distribution": {
+      "0": 29,
+      "1": 11,
+      "2": 10,
+      "3": 1
+    },
+    "sequence_bends": 34,
+    "sequence_length_euclidean": 19884.18,
+    "median_flow_length": 172.0,
+    "association_stats": {
+      "count": 27,
+      "straight": 21,
+      "diagonal": 0
+    },
+    "median_association_length_euclidean": 32.0,
+    "node_bbox": [
+      2663.0,
+      1684.0
+    ],
+    "node_area_factor": 9.7858
+  },
+  "human_final": {
+    "sha256": "302f533a4843b05183e5de482421032dd441faefedef708490edb880f485e954",
+    "sequence_count": 51,
+    "task_count": 25,
+    "task_width_median": 193.0,
+    "task_height_median": 77.0,
+    "unique_task_sizes": 16,
+    "flow_stats": {
+      "straight": 30,
+      "same_lane": 41,
+      "cross_lane": 10,
+      "cross_lane_x_aligned_10": 2,
+      "same_lane_y_aligned_5": 12,
+      "same_lane_leftwards": 14
+    },
+    "bend_distribution": {
+      "0": 30,
+      "1": 11,
+      "2": 10
+    },
+    "sequence_bends": 31,
+    "sequence_length_euclidean": 10550.0,
+    "median_flow_length": 106.0,
+    "association_stats": {
+      "count": 17,
+      "straight": 17,
+      "diagonal": 14
+    },
+    "median_association_length_euclidean": 35.13,
+    "node_bbox": [
+      2112.0,
+      1322.0
+    ],
+    "node_area_factor": 6.2032
+  },
+  "automatic_r2": {
+    "sha256": "9bc3912356f307885e538ffab99c329c6c845d5bdd9d4baf02c55aad38c59824",
+    "sequence_count": 95,
+    "task_count": 40,
+    "task_width_median": 220.0,
+    "task_height_median": 80.0,
+    "unique_task_sizes": 1,
+    "flow_stats": {
+      "straight": 27,
+      "same_lane": 44,
+      "same_lane_y_aligned_5": 25,
+      "cross_lane": 51,
+      "cross_lane_x_aligned_10": 12,
+      "same_lane_leftwards": 14
+    },
+    "bend_distribution": {
+      "0": 27,
+      "1": 5,
+      "2": 33,
+      "3": 18,
+      "4": 10,
+      "5": 1,
+      "6": 1
+    },
+    "sequence_bends": 176,
+    "sequence_length_euclidean": 53741.8,
+    "median_flow_length": 480.0,
+    "association_stats": {
+      "count": 18,
+      "straight": 17,
+      "diagonal": 0
+    },
+    "median_association_length_euclidean": 37.0,
+    "node_bbox": [
+      2745.0,
+      2017.0
+    ],
+    "node_area_factor": 6.9417
+  },
+  "corpus": {
+    "count": 32,
+    "median_straight_flow_fraction": 0.6339712918660287,
+    "median_bends_per_flow": 0.5,
+    "nonuniform_task_size_models": 26,
+    "diagonal_document_links": 191
+  },
+  "crosslane_matched_corpus": {
+    "tolerance_percentage_points": 15,
+    "count": 17,
+    "median_straight_flow_fraction": 0.625,
+    "median_bends_per_flow": 0.5531914893617021,
+    "nonuniform_task_size_models": 13,
+    "diagonal_document_links": 95
+  },
+  "action_counts": {
+    "CHANGE_SEMANTICS": 1,
+    "MOVE_SHAPE": 234,
+    "MOVE_SHAPE_LABEL": 135,
+    "MOVE_RESIZE_SHAPE": 10,
+    "REROUTE_EDGE": 310,
+    "MOVE_EDGE_LABEL": 111,
+    "DELETE_ELEMENT": 18,
+    "DELETE_EDGE": 13,
+    "DATA_ASSOCIATION_CHANGE": 16,
+    "ADD_ELEMENT": 5,
+    "ADD_EDGE": 3,
+    "CHANGE_LANE_ASSIGNMENT": 10,
+    "DELETE_SHAPE": 4,
+    "RESIZE_SHAPE": 2
+  },
+  "transitions": [
+    {
+      "save": 1,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 60,
+      "dominant_translation": [
+        90.0,
+        0.0
+      ],
+      "moves_with_dominant_translation": 52,
+      "remaining_moves_after_dominant_translation": 8,
+      "sequence_length_delta": 542.0,
+      "sequence_bends_delta": 8,
+      "action_types": {
+        "CHANGE_SEMANTICS": 1,
+        "MOVE_SHAPE": 62,
+        "MOVE_SHAPE_LABEL": 35,
+        "MOVE_RESIZE_SHAPE": 3,
+        "REROUTE_EDGE": 78,
+        "MOVE_EDGE_LABEL": 25
+      }
+    },
+    {
+      "save": 2,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 1,
+      "dominant_translation": [
+        -16.0,
+        60.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 0,
+      "sequence_length_delta": 4.0,
+      "sequence_bends_delta": 2,
+      "action_types": {
+        "MOVE_SHAPE": 1,
+        "REROUTE_EDGE": 3
+      }
+    },
+    {
+      "save": 3,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 1,
+      "dominant_translation": [
+        -189.0,
+        -36.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 0,
+      "sequence_length_delta": -101.0,
+      "sequence_bends_delta": -2,
+      "action_types": {
+        "MOVE_SHAPE": 1,
+        "MOVE_SHAPE_LABEL": 1,
+        "REROUTE_EDGE": 1
+      }
+    },
+    {
+      "save": 4,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 3,
+      "dominant_translation": [
+        0.0,
+        20.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 2,
+      "sequence_length_delta": 8.0,
+      "sequence_bends_delta": 0,
+      "action_types": {
+        "DELETE_ELEMENT": 1,
+        "MOVE_SHAPE": 3,
+        "MOVE_SHAPE_LABEL": 1,
+        "DELETE_EDGE": 1,
+        "REROUTE_EDGE": 5,
+        "DATA_ASSOCIATION_CHANGE": 1
+      }
+    },
+    {
+      "save": 5,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 2,
+      "dominant_translation": [
+        -200.0,
+        0.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 1,
+      "sequence_length_delta": -353.0,
+      "sequence_bends_delta": -3,
+      "action_types": {
+        "MOVE_SHAPE": 2,
+        "REROUTE_EDGE": 3,
+        "MOVE_EDGE_LABEL": 1
+      }
+    },
+    {
+      "save": 6,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 3,
+      "dominant_translation": [
+        -225.0,
+        -20.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 2,
+      "sequence_length_delta": 104.0,
+      "sequence_bends_delta": 1,
+      "action_types": {
+        "ADD_ELEMENT": 2,
+        "DELETE_ELEMENT": 1,
+        "MOVE_SHAPE": 3,
+        "MOVE_SHAPE_LABEL": 2,
+        "ADD_EDGE": 1,
+        "DELETE_EDGE": 1,
+        "REROUTE_EDGE": 8,
+        "MOVE_EDGE_LABEL": 3,
+        "DATA_ASSOCIATION_CHANGE": 2
+      }
+    },
+    {
+      "save": 7,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 6,
+      "dominant_translation": [
+        -195.0,
+        -8.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 5,
+      "sequence_length_delta": -927.82,
+      "sequence_bends_delta": -3,
+      "action_types": {
+        "ADD_ELEMENT": 1,
+        "DELETE_ELEMENT": 2,
+        "MOVE_SHAPE": 6,
+        "MOVE_SHAPE_LABEL": 4,
+        "ADD_EDGE": 1,
+        "DELETE_EDGE": 2,
+        "REROUTE_EDGE": 8,
+        "MOVE_EDGE_LABEL": 5,
+        "DATA_ASSOCIATION_CHANGE": 3
+      }
+    },
+    {
+      "save": 8,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {
+        "R1": [
+          "L1F",
+          "L1O"
+        ]
+      },
+      "noncontainer_moves": 9,
+      "dominant_translation": [
+        -375.0,
+        -8.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 8,
+      "sequence_length_delta": -1546.96,
+      "sequence_bends_delta": -2,
+      "action_types": {
+        "DELETE_ELEMENT": 2,
+        "CHANGE_LANE_ASSIGNMENT": 1,
+        "MOVE_SHAPE": 9,
+        "MOVE_SHAPE_LABEL": 5,
+        "DELETE_EDGE": 2,
+        "REROUTE_EDGE": 10,
+        "MOVE_EDGE_LABEL": 1,
+        "DATA_ASSOCIATION_CHANGE": 2
+      }
+    },
+    {
+      "save": 9,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 10,
+      "dominant_translation": [
+        -508.0,
+        60.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 9,
+      "sequence_length_delta": -650.85,
+      "sequence_bends_delta": -1,
+      "action_types": {
+        "DELETE_ELEMENT": 3,
+        "DELETE_SHAPE": 1,
+        "MOVE_SHAPE": 10,
+        "MOVE_SHAPE_LABEL": 6,
+        "DELETE_EDGE": 1,
+        "REROUTE_EDGE": 17,
+        "MOVE_EDGE_LABEL": 7,
+        "DATA_ASSOCIATION_CHANGE": 1
+      }
+    },
+    {
+      "save": 10,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 4,
+      "dominant_translation": [
+        -625.0,
+        -548.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 3,
+      "sequence_length_delta": -403.64,
+      "sequence_bends_delta": -1,
+      "action_types": {
+        "MOVE_SHAPE": 4,
+        "MOVE_SHAPE_LABEL": 4,
+        "REROUTE_EDGE": 8,
+        "MOVE_EDGE_LABEL": 4
+      }
+    },
+    {
+      "save": 11,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 10,
+      "dominant_translation": [
+        58.0,
+        -203.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 9,
+      "sequence_length_delta": -4416.87,
+      "sequence_bends_delta": -1,
+      "action_types": {
+        "ADD_ELEMENT": 1,
+        "DELETE_ELEMENT": 1,
+        "MOVE_SHAPE": 10,
+        "MOVE_SHAPE_LABEL": 7,
+        "ADD_EDGE": 1,
+        "DELETE_EDGE": 1,
+        "REROUTE_EDGE": 20,
+        "MOVE_EDGE_LABEL": 11,
+        "DATA_ASSOCIATION_CHANGE": 2
+      }
+    },
+    {
+      "save": 12,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 1,
+      "dominant_translation": [
+        -109.0,
+        -41.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 0,
+      "sequence_length_delta": -288.0,
+      "sequence_bends_delta": -2,
+      "action_types": {
+        "MOVE_SHAPE": 1,
+        "MOVE_SHAPE_LABEL": 1,
+        "REROUTE_EDGE": 4,
+        "MOVE_EDGE_LABEL": 2
+      }
+    },
+    {
+      "save": 13,
+      "declared_has_semantic_changes": "True",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 56,
+      "dominant_translation": [
+        -35.0,
+        8.0
+      ],
+      "moves_with_dominant_translation": 43,
+      "remaining_moves_after_dominant_translation": 13,
+      "sequence_length_delta": -1663.04,
+      "sequence_bends_delta": 1,
+      "action_types": {
+        "ADD_ELEMENT": 1,
+        "DELETE_ELEMENT": 8,
+        "DELETE_SHAPE": 3,
+        "MOVE_SHAPE": 56,
+        "MOVE_SHAPE_LABEL": 31,
+        "MOVE_RESIZE_SHAPE": 5,
+        "DELETE_EDGE": 5,
+        "REROUTE_EDGE": 68,
+        "MOVE_EDGE_LABEL": 25,
+        "DATA_ASSOCIATION_CHANGE": 5
+      }
+    },
+    {
+      "save": 14,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {
+        "E": [
+          "L1F",
+          null
+        ],
+        "Erej": [
+          "L1F",
+          null
+        ],
+        "Gfinish": [
+          "L1F",
+          null
+        ],
+        "R2": [
+          "L1F",
+          null
+        ]
+      },
+      "noncontainer_moves": 56,
+      "dominant_translation": [
+        0.0,
+        11.0
+      ],
+      "moves_with_dominant_translation": 51,
+      "remaining_moves_after_dominant_translation": 5,
+      "sequence_length_delta": 112.0,
+      "sequence_bends_delta": 0,
+      "action_types": {
+        "CHANGE_LANE_ASSIGNMENT": 4,
+        "MOVE_SHAPE": 59,
+        "MOVE_SHAPE_LABEL": 31,
+        "MOVE_RESIZE_SHAPE": 2,
+        "REROUTE_EDGE": 68,
+        "MOVE_EDGE_LABEL": 25
+      }
+    },
+    {
+      "save": 15,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {
+        "R1": [
+          "L1O",
+          "L1F"
+        ]
+      },
+      "noncontainer_moves": 2,
+      "dominant_translation": [
+        -55.0,
+        152.0
+      ],
+      "moves_with_dominant_translation": 1,
+      "remaining_moves_after_dominant_translation": 1,
+      "sequence_length_delta": 372.0,
+      "sequence_bends_delta": 2,
+      "action_types": {
+        "CHANGE_LANE_ASSIGNMENT": 1,
+        "MOVE_SHAPE_LABEL": 2,
+        "MOVE_SHAPE": 2,
+        "REROUTE_EDGE": 3
+      }
+    },
+    {
+      "save": 16,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {
+        "E": [
+          null,
+          "L1F"
+        ],
+        "Erej": [
+          null,
+          "L1F"
+        ],
+        "Gfinish": [
+          null,
+          "L1F"
+        ],
+        "R2": [
+          null,
+          "L1F"
+        ]
+      },
+      "noncontainer_moves": 5,
+      "dominant_translation": [
+        0.0,
+        -110.0
+      ],
+      "moves_with_dominant_translation": 4,
+      "remaining_moves_after_dominant_translation": 1,
+      "sequence_length_delta": -125.0,
+      "sequence_bends_delta": -2,
+      "action_types": {
+        "CHANGE_LANE_ASSIGNMENT": 4,
+        "MOVE_SHAPE": 5,
+        "MOVE_SHAPE_LABEL": 4,
+        "RESIZE_SHAPE": 2,
+        "REROUTE_EDGE": 6,
+        "MOVE_EDGE_LABEL": 2
+      }
+    },
+    {
+      "save": 17,
+      "declared_has_semantic_changes": "False",
+      "node_changes": [],
+      "flow_changes": [],
+      "lane_membership_changes": {},
+      "noncontainer_moves": 0,
+      "dominant_translation": [
+        0,
+        0
+      ],
+      "moves_with_dominant_translation": 0,
+      "remaining_moves_after_dominant_translation": 0,
+      "sequence_length_delta": 0.0,
+      "sequence_bends_delta": 0,
+      "action_types": {
+        "MOVE_SHAPE_LABEL": 1
+      }
+    }
+  ]
+}
