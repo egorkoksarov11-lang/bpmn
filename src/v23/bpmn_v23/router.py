@@ -112,7 +112,7 @@ def choice_score(eid,points,others,uv,avoid_crowding=False):
     return (round(raw[0]*1500+near*3+raw[1]*70+raw[2],4),*raw)
 
 
-def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowding=False,simplify=False):
+def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowding=False,simplify=False,protected_ids=()):
     """Rip up congested edges; commit only a strictly better global score."""
     changes=[]
     for iteration in range(rounds):
@@ -124,6 +124,7 @@ def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowd
                 near=edge_crowding(points,{k:p for k,p in paths.items() if k!=eid},12)
                 if near>24:crowded[eid]=near;count.setdefault(eid,0)
         for eid in sorted(count,key=lambda k:(-count[k]*1500-crowded.get(k,0)*3,k)):
+            if eid in protected_ids:continue
             if count[eid]<1 and eid not in crowded and eid not in simplify_ids:continue
             old=paths[eid];others={k:p for k,p in paths.items() if k!=eid};before=choice_score(eid,old,others,uv,avoid_crowding)
             variants=quick_routes(eid,boxes,uv,others,old)
@@ -145,8 +146,12 @@ def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowd
     return changes
 
 
-def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,priority=None,hints=None,avoid_crowding=False):
-    uv={i:(u,v) for i,u,v,_ in seq+assocs};paths={};usage=defaultdict(set)
+def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,priority=None,hints=None,avoid_crowding=False,fixed_paths=None):
+    uv={i:(u,v) for i,u,v,_ in seq+assocs};paths={i:list(p) for i,p in (fixed_paths or {}).items()};usage=defaultdict(set)
+    if not set(paths).issubset(uv):raise ValueError('Unknown fixed edge')
+    for eid,p in paths.items():
+        if not safe_poly(eid,p,boxes,uv) or overlapping(p,{i:q for i,q in paths.items() if i!=eid}):raise ValueError('Unsafe fixed path: '+eid)
+        usage[uv[eid][0]].add(p[0]);usage[uv[eid][1]].add(p[-1])
     def port_options(n):
         x,y,w,h=boxes[n];options=[]
         for f in (.5,.35,.65,.2,.8):
@@ -158,6 +163,7 @@ def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,p
         position={eid:i for i,eid in enumerate(priority)};order.sort(key=lambda eid:(position.get(eid,len(position)),eid))
     fallbacks=0
     for eid in order:
+        if eid in paths:continue
         u,v=uv[eid]
         variants=quick_routes(eid,boxes,uv,paths,oldpaths[eid])
         if hints:variants.extend(p for p in hints(eid,paths) if safe_poly(eid,p,boxes,uv))
@@ -178,7 +184,7 @@ def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,p
         paths[eid]=p;usage[u].add(p[0]);usage[v].add(p[-1])
     initial=score(paths,uv)
     interrupted=False
-    try:changes=refine_paths(boxes,uv,paths,rounds=rounds,clip_window=clip_window,hints=hints,avoid_crowding=avoid_crowding)
+    try:changes=refine_paths(boxes,uv,paths,rounds=0 if fixed_paths else rounds,clip_window=clip_window,hints=hints,avoid_crowding=avoid_crowding)
     except TimeoutError:changes=[];interrupted=True
     return paths,{'refinement_interrupted':interrupted,'astar_fallbacks':fallbacks,'initial_quality':initial,'final_quality':score(paths,uv),'refinements':changes}
 

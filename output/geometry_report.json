@@ -968,8 +968,8 @@
         ]
       ]
     },
-    "total_bends": 151,
-    "avg_flow_length": 516.1,
+    "total_bends": 149,
+    "avg_flow_length": 515.27,
     "avg_document_length": 46.03,
     "document_references": 17,
     "flow_count": 95,
@@ -977,10 +977,10 @@
     "readability": {
       "policy": "balanced-readability-v1",
       "parallel_crowding_per_flow": 0.030865,
-      "hotspot_excess": 0.013036,
+      "hotspot_excess": 0.013065,
       "peak_flow_load": 5,
-      "forward_hop_excess": 1.249785,
-      "long_forward_hops": 31,
+      "forward_hop_excess": 1.255091,
+      "long_forward_hops": 30,
       "long_forward_hop_ids": [
         "F4",
         "F7",
@@ -1011,10 +1011,9 @@
         "F81",
         "F83",
         "F87",
-        "F95",
-        "F97"
+        "F95"
       ],
-      "bends_per_flow": 1.568421,
+      "bends_per_flow": 1.547368,
       "graph_return_count": 17,
       "normalization_task_width": 220.0,
       "wire_gap_diagnostic": 12.0,
@@ -1227,8 +1226,8 @@
         "F64",
         "F83",
         [
-          1914.0,
-          623.0
+          1947.0,
+          705.0
         ]
       ],
       [

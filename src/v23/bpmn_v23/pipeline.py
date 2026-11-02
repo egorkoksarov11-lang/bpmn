@@ -189,7 +189,7 @@ def main():
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
     p.add_argument('--scenario-blocks',action='store_true',help='experimental compact local loops and joint moves')
-    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine'],default='human')
+    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity'],default='human')
     p.add_argument('--elk-module',type=Path,help='optional elk.bundled.js path; otherwise install npm dependencies')
     p.add_argument('--reference-profile',type=Path,help='frozen profile from tools/calibrate_references.py')
     p.add_argument('--seed-report',type=Path,help='original placement report for contextual orientation')
@@ -197,6 +197,9 @@ def main():
     if a.layout_engine=='elk':
         from .elk_layout import ElkBackend
         backend=ElkBackend(elk_module=a.elk_module,candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='local-continuity':
+        from .continuity import ContinuityBackend
+        backend=ContinuityBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
     elif a.layout_engine=='route-refine':
         from .route_refinement import RouteRefinementBackend
         backend=RouteRefinementBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)

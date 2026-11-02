@@ -1,0 +1,1998 @@
+{
+  "definition": "direct sequenceFlow; bounding-box Manhattan gap <= 0.8 median task width; separate from 7-family conformity",
+  "reference_count": 32,
+  "reference_totals": {
+    "frozen_neighbour_count": 566,
+    "straight": 448,
+    "one_bend": 84,
+    "two_plus_bends": 34,
+    "bends": 153,
+    "straight_fraction": 0.7915194346289752
+  },
+  "reference_totals_by_node_kinds": {
+    "event->task": {
+      "frozen_neighbour_count": 46,
+      "straight": 41,
+      "one_bend": 5,
+      "two_plus_bends": 0
+    },
+    "task->gateway": {
+      "frozen_neighbour_count": 138,
+      "straight": 105,
+      "one_bend": 22,
+      "two_plus_bends": 11
+    },
+    "gateway->gateway": {
+      "frozen_neighbour_count": 22,
+      "straight": 16,
+      "one_bend": 1,
+      "two_plus_bends": 5
+    },
+    "gateway->task": {
+      "frozen_neighbour_count": 141,
+      "straight": 99,
+      "one_bend": 32,
+      "two_plus_bends": 10
+    },
+    "task->task": {
+      "frozen_neighbour_count": 142,
+      "straight": 123,
+      "one_bend": 14,
+      "two_plus_bends": 5
+    },
+    "task->event": {
+      "frozen_neighbour_count": 44,
+      "straight": 39,
+      "one_bend": 3,
+      "two_plus_bends": 2
+    },
+    "gateway->event": {
+      "frozen_neighbour_count": 25,
+      "straight": 17,
+      "one_bend": 7,
+      "two_plus_bends": 1
+    },
+    "event->gateway": {
+      "frozen_neighbour_count": 8,
+      "straight": 8,
+      "one_bend": 0,
+      "two_plus_bends": 0
+    }
+  },
+  "reference_median_straight_fraction": 0.8180147058823529,
+  "references": [
+    {
+      "file": "изм 02 Оформление приема сотрудника.bpmn",
+      "sha256": "e4b6fa7820f8222247367fae663536fd71d20ab0ea724763666cf8671a290e99",
+      "frozen_neighbour_count": 21,
+      "straight": 17,
+      "one_bend": 3,
+      "two_plus_bends": 1,
+      "bends": 6,
+      "straight_fraction": 0.8095238095238095,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 8,
+          "straight": 4,
+          "one_bend": 3,
+          "two_plus_bends": 1,
+          "bends": 6,
+          "straight_fraction": 0.5
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 03 Подготовка к выходу нового сотрудника.bpmn",
+      "sha256": "8a52e461997d95091730ce8bc79e9f2533b76bb5f7be1d850922bcf44aed6328",
+      "frozen_neighbour_count": 11,
+      "straight": 10,
+      "one_bend": 1,
+      "two_plus_bends": 0,
+      "bends": 1,
+      "straight_fraction": 0.9090909090909091,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.5
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 04 Адаптация нового сотрудника.bpmn",
+      "sha256": "c95b7b791eddf4e62f140ca01182c3bda0f6ff8fbde0094c94fc9e684a50e91e",
+      "frozen_neighbour_count": 12,
+      "straight": 11,
+      "one_bend": 1,
+      "two_plus_bends": 0,
+      "bends": 1,
+      "straight_fraction": 0.9166666666666666,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.5
+        },
+        "task->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 05 Изменение условий труда и кадровое перемещение.bpmn",
+      "sha256": "414ee58b98394d8809a252b8934d2274a982e1e3dde178326edafbd69be79128",
+      "frozen_neighbour_count": 11,
+      "straight": 8,
+      "one_bend": 3,
+      "two_plus_bends": 0,
+      "bends": 3,
+      "straight_fraction": 0.7272727272727273,
+      "by_node_kinds": {
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.75
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.0
+        }
+      }
+    },
+    {
+      "file": "изм 06 Формирование и утверждение графика отпусков.bpmn",
+      "sha256": "6f80c12931ab029e6c2ab0e843ca84162b41e34a0d0bdd877a21501b85316a31",
+      "frozen_neighbour_count": 12,
+      "straight": 8,
+      "one_bend": 2,
+      "two_plus_bends": 2,
+      "bends": 6,
+      "straight_fraction": 0.6666666666666666,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 1,
+          "bends": 3,
+          "straight_fraction": 0.3333333333333333
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 1,
+          "bends": 3,
+          "straight_fraction": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "file": "изм 07 Предоставление отпуска сотруднику.bpmn",
+      "sha256": "07576890722631586a015ac911179850fefc5fb125bfa1721747c96b77432213",
+      "frozen_neighbour_count": 11,
+      "straight": 10,
+      "one_bend": 1,
+      "two_plus_bends": 0,
+      "bends": 1,
+      "straight_fraction": 0.9090909090909091,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.5
+        }
+      }
+    },
+    {
+      "file": "изм 08 Установление причины отсутствия сотрудника.bpmn",
+      "sha256": "bedf2d93730f8b038bdba6b82f36101ce7b53fb6399d8af037d5d4bc316dc331",
+      "frozen_neighbour_count": 26,
+      "straight": 23,
+      "one_bend": 1,
+      "two_plus_bends": 2,
+      "bends": 5,
+      "straight_fraction": 0.8846153846153846,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 7,
+          "straight": 6,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.8571428571428571
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.8
+        },
+        "task->event": {
+          "frozen_neighbour_count": 8,
+          "straight": 8,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.5
+        },
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 09 Оформление временной нетрудоспособности сотрудника.bpmn",
+      "sha256": "5d2762d5a98fd7e1e9181f8bc29d5602384346bcc24e024b7692960282c2ef6f",
+      "frozen_neighbour_count": 21,
+      "straight": 14,
+      "one_bend": 7,
+      "two_plus_bends": 0,
+      "bends": 7,
+      "straight_fraction": 0.6666666666666666,
+      "by_node_kinds": {
+        "gateway->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 2,
+          "one_bend": 4,
+          "two_plus_bends": 0,
+          "bends": 4,
+          "straight_fraction": 0.3333333333333333
+        },
+        "task->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.5
+        },
+        "task->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "event->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 3,
+          "straight": 1,
+          "one_bend": 2,
+          "two_plus_bends": 0,
+          "bends": 2,
+          "straight_fraction": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "file": "изм 10 Увольнение сотрудника.bpmn",
+      "sha256": "be8d2dcd9297638d6887400477cb0f3d33f050c07fe75634e149aa531f3eacaf",
+      "frozen_neighbour_count": 28,
+      "straight": 15,
+      "one_bend": 12,
+      "two_plus_bends": 1,
+      "bends": 14,
+      "straight_fraction": 0.5357142857142857,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.6666666666666666
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 7,
+          "straight": 3,
+          "one_bend": 4,
+          "two_plus_bends": 0,
+          "bends": 4,
+          "straight_fraction": 0.42857142857142855
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 11,
+          "straight": 5,
+          "one_bend": 6,
+          "two_plus_bends": 0,
+          "bends": 6,
+          "straight_fraction": 0.45454545454545453
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.5
+        }
+      }
+    },
+    {
+      "file": "изм 11 Сокращение численности и штата.bpmn",
+      "sha256": "9042e29827f9c24931fb47705a67667d40fa66e15ed6296339a9e80ba6a19578",
+      "frozen_neighbour_count": 24,
+      "straight": 17,
+      "one_bend": 2,
+      "two_plus_bends": 5,
+      "bends": 12,
+      "straight_fraction": 0.7083333333333334,
+      "by_node_kinds": {
+        "gateway->event": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.6666666666666666
+        },
+        "task->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.75
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 7,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 3,
+          "bends": 6,
+          "straight_fraction": 0.5714285714285714
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.8333333333333334
+        },
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.0
+        }
+      }
+    },
+    {
+      "file": "изм 12 Ведение и актуализация личных дел сотрудников.bpmn",
+      "sha256": "9256e1a63ffabb15a2450d2a189e398f6e59d255409c1f23e65820c3d87ef700",
+      "frozen_neighbour_count": 11,
+      "straight": 11,
+      "one_bend": 0,
+      "two_plus_bends": 0,
+      "bends": 0,
+      "straight_fraction": 1.0,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 13 Табелирование и учет рабочего времени.bpmn",
+      "sha256": "29bc12bb0bae7a0244f51fbfb839e8dfc5fcc464e80ec7f56fab635153af1f9a",
+      "frozen_neighbour_count": 8,
+      "straight": 8,
+      "one_bend": 0,
+      "two_plus_bends": 0,
+      "bends": 0,
+      "straight_fraction": 1.0,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 14 Схема процесса ЛНА.bpmn",
+      "sha256": "1d5e2b4d4e1271aec3829532d39860963f75852da4b93b3c40f740cb0058a52b",
+      "frozen_neighbour_count": 18,
+      "straight": 17,
+      "one_bend": 1,
+      "two_plus_bends": 0,
+      "bends": 1,
+      "straight_fraction": 0.9444444444444444,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 7,
+          "straight": 6,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8571428571428571
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 15 Воинский учет при приеме сотрудника.bpmn",
+      "sha256": "0ba7680aae4ed589f5bd7861614bc5ec0c7f6a24e5a8007bfca5b21367ef0d13",
+      "frozen_neighbour_count": 15,
+      "straight": 11,
+      "one_bend": 4,
+      "two_plus_bends": 0,
+      "bends": 4,
+      "straight_fraction": 0.7333333333333333,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.6666666666666666
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 1,
+          "one_bend": 2,
+          "two_plus_bends": 0,
+          "bends": 2,
+          "straight_fraction": 0.3333333333333333
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 5,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8333333333333334
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 16 Актуализация сведений воинского учета.bpmn",
+      "sha256": "a20dd6145620f06a144cb80a18afd487a1aba994b5f95da7e592dd45ed5c983f",
+      "frozen_neighbour_count": 13,
+      "straight": 12,
+      "one_bend": 1,
+      "two_plus_bends": 0,
+      "bends": 1,
+      "straight_fraction": 0.9230769230769231,
+      "by_node_kinds": {
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.5
+        },
+        "task->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 17 Воинский учет при увольнении.bpmn",
+      "sha256": "64fa224b7224f9bab8d041934bfcfbb7dfacc1994b72128aa840f7700d018737",
+      "frozen_neighbour_count": 4,
+      "straight": 4,
+      "one_bend": 0,
+      "two_plus_bends": 0,
+      "bends": 0,
+      "straight_fraction": 1.0,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 18 Периодическая сверка сведений воинского учета.bpmn",
+      "sha256": "8f77779354dd23b08a9b9ae7dd9698f72cb2447f6e361b6b7953713c6eb8601f",
+      "frozen_neighbour_count": 13,
+      "straight": 12,
+      "one_bend": 0,
+      "two_plus_bends": 1,
+      "bends": 2,
+      "straight_fraction": 0.9230769230769231,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.75
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 19 Обработка документов и запросов военного комиссариата.bpmn",
+      "sha256": "a2be2ec51754d5df615de2af5dba8b6c527d41d979317c04e83c5dc9e04ebbe5",
+      "frozen_neighbour_count": 18,
+      "straight": 11,
+      "one_bend": 3,
+      "two_plus_bends": 4,
+      "bends": 11,
+      "straight_fraction": 0.6111111111111112,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 6,
+          "straight": 4,
+          "one_bend": 2,
+          "two_plus_bends": 0,
+          "bends": 2,
+          "straight_fraction": 0.6666666666666666
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 2,
+          "bends": 5,
+          "straight_fraction": 0.4
+        },
+        "task->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.75
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 20 Планирование мероприятий воинского учета.bpmn",
+      "sha256": "2406809e79d23297c65bb488217870a47353928c0232b62fee3b2aa0d15bda4d",
+      "frozen_neighbour_count": 11,
+      "straight": 11,
+      "one_bend": 0,
+      "two_plus_bends": 0,
+      "bends": 0,
+      "straight_fraction": 1.0,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 21 Рассмотрение дисциплинарного проступка сотрудника.bpmn",
+      "sha256": "9ff84cd8926959f4643f145e7088b55e99f927a76ba067e64094ef2ebc7aaaeb",
+      "frozen_neighbour_count": 17,
+      "straight": 14,
+      "one_bend": 2,
+      "two_plus_bends": 1,
+      "bends": 4,
+      "straight_fraction": 0.8235294117647058,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.75
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 6,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.8333333333333334
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 22 Рассмотрение обращений жалоб и конфликтов работников.bpmn",
+      "sha256": "ed91bdefc9b5bc54ced885ecf2603102ae9c784bc29773760419ae12d177dde7",
+      "frozen_neighbour_count": 17,
+      "straight": 15,
+      "one_bend": 2,
+      "two_plus_bends": 0,
+      "bends": 2,
+      "straight_fraction": 0.8823529411764706,
+      "by_node_kinds": {
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 6,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 5,
+          "straight": 4,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8
+        },
+        "task->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.0
+        }
+      }
+    },
+    {
+      "file": "изм 23 Кадровое сопровождение претензионной и судебной работы.bpmn",
+      "sha256": "108f2c7b20087c5a6251d2a5cbf630462c87018e8dfe507d92233bae0642ec7c",
+      "frozen_neighbour_count": 13,
+      "straight": 10,
+      "one_bend": 2,
+      "two_plus_bends": 1,
+      "bends": 4,
+      "straight_fraction": 0.7692307692307693,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 5,
+          "straight": 3,
+          "one_bend": 1,
+          "two_plus_bends": 1,
+          "bends": 3,
+          "straight_fraction": 0.6
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.75
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 24 Подготовка кадровых документов при проверках государственных органов.bpmn",
+      "sha256": "32b18c0ebacd2375673cdc470697f3b5714b2208c2bb56665a16640ab03c7cda",
+      "frozen_neighbour_count": 17,
+      "straight": 13,
+      "one_bend": 3,
+      "two_plus_bends": 1,
+      "bends": 5,
+      "straight_fraction": 0.7647058823529411,
+      "by_node_kinds": {
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 4,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8
+        },
+        "task->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 5,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8333333333333334
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.6666666666666666
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.0
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 25 Планирование и изменение штатной численности.bpmn",
+      "sha256": "0857c7ad98c8922d07aec42da746f59c601d62738955984009da42888a424e33",
+      "frozen_neighbour_count": 16,
+      "straight": 10,
+      "one_bend": 3,
+      "two_plus_bends": 3,
+      "bends": 9,
+      "straight_fraction": 0.625,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.5
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.75
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 1,
+          "one_bend": 3,
+          "two_plus_bends": 0,
+          "bends": 3,
+          "straight_fraction": 0.25
+        },
+        "task->event": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.6666666666666666
+        }
+      }
+    },
+    {
+      "file": "изм 26 HR-бюджетирование и контроль расходов на персонал.bpmn",
+      "sha256": "f65ad994526c1abbcfe5275b5ca6980b1b2b9000b1d12501c3896fa45bb9ee94",
+      "frozen_neighbour_count": 33,
+      "straight": 23,
+      "one_bend": 6,
+      "two_plus_bends": 4,
+      "bends": 14,
+      "straight_fraction": 0.696969696969697,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 9,
+          "straight": 8,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.8888888888888888
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 8,
+          "straight": 6,
+          "one_bend": 1,
+          "two_plus_bends": 1,
+          "bends": 3,
+          "straight_fraction": 0.75
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 0,
+          "one_bend": 2,
+          "two_plus_bends": 0,
+          "bends": 2,
+          "straight_fraction": 0.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 8,
+          "straight": 3,
+          "one_bend": 3,
+          "two_plus_bends": 2,
+          "bends": 7,
+          "straight_fraction": 0.375
+        },
+        "task->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "изм 27 Организация и проведение корпоративных мероприятий.bpmn",
+      "sha256": "6fe42385a58dbaf7ac89efe9e65bfeaacdeedb547c7254c2b4add370f83ef548",
+      "frozen_neighbour_count": 18,
+      "straight": 15,
+      "one_bend": 3,
+      "two_plus_bends": 0,
+      "bends": 3,
+      "straight_fraction": 0.8333333333333334,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 5,
+          "straight": 4,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 4,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.0
+        }
+      }
+    },
+    {
+      "file": "СБ/изм 06 Анализ книг покупок на налоговые риски.bpmn",
+      "sha256": "75d1bbca41376001105a1f5c9174905795f972d82645cb5142ac9806f1d5f751",
+      "frozen_neighbour_count": 16,
+      "straight": 13,
+      "one_bend": 1,
+      "two_plus_bends": 2,
+      "bends": 5,
+      "straight_fraction": 0.8125,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 4,
+          "straight": 4,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 4,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 1,
+          "bends": 3,
+          "straight_fraction": 0.5
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 0,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "СБ/изм 07 Подготовка материалов по запросам банков.bpmn",
+      "sha256": "9eba7cf5329d5ea375e459a100c501dde1783d67faa69e385e4fc5116ed8a6f5",
+      "frozen_neighbour_count": 21,
+      "straight": 19,
+      "one_bend": 2,
+      "two_plus_bends": 0,
+      "bends": 2,
+      "straight_fraction": 0.9047619047619048,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 7,
+          "straight": 6,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8571428571428571
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 7,
+          "straight": 6,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8571428571428571
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "СБ/изм 08 Подготовка материалов по требованиям ФНС.bpmn",
+      "sha256": "e32649a302418ac61143e1fc3b331f87fa163b7017dada1e098cfc546eecc051",
+      "frozen_neighbour_count": 31,
+      "straight": 23,
+      "one_bend": 5,
+      "two_plus_bends": 3,
+      "bends": 11,
+      "straight_fraction": 0.7419354838709677,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 7,
+          "straight": 5,
+          "one_bend": 1,
+          "two_plus_bends": 1,
+          "bends": 3,
+          "straight_fraction": 0.7142857142857143
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 10,
+          "straight": 6,
+          "one_bend": 3,
+          "two_plus_bends": 1,
+          "bends": 5,
+          "straight_fraction": 0.6
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 9,
+          "straight": 8,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.8888888888888888
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.6666666666666666
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "СБ/изм 09 Подготовка материалов по запросам правоохранительных органов.bpmn",
+      "sha256": "9a6254cc9bf2e0d810d533bdaa44f767e657f343ce3a73c74309073587666e68",
+      "frozen_neighbour_count": 22,
+      "straight": 16,
+      "one_bend": 5,
+      "two_plus_bends": 1,
+      "bends": 7,
+      "straight_fraction": 0.7272727272727273,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 10,
+          "straight": 8,
+          "one_bend": 2,
+          "two_plus_bends": 0,
+          "bends": 2,
+          "straight_fraction": 0.8
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 7,
+          "straight": 3,
+          "one_bend": 3,
+          "two_plus_bends": 1,
+          "bends": 5,
+          "straight_fraction": 0.42857142857142855
+        },
+        "task->event": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        }
+      }
+    },
+    {
+      "file": "СБ/изм 10 Оценка рисков участия в государственных контрактах и проектах с бюджетным финансированием.bpmn",
+      "sha256": "bd13da309d10c9b98b06034b46fcb7c7da8c6a2834761f7f00476867639dfcd1",
+      "frozen_neighbour_count": 16,
+      "straight": 14,
+      "one_bend": 1,
+      "two_plus_bends": 1,
+      "bends": 3,
+      "straight_fraction": 0.875,
+      "by_node_kinds": {
+        "event->task": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 6,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->task": {
+          "frozen_neighbour_count": 3,
+          "straight": 3,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "gateway->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 3,
+          "straight": 2,
+          "one_bend": 1,
+          "two_plus_bends": 0,
+          "bends": 1,
+          "straight_fraction": 0.6666666666666666
+        },
+        "gateway->event": {
+          "frozen_neighbour_count": 2,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 1,
+          "bends": 2,
+          "straight_fraction": 0.5
+        }
+      }
+    },
+    {
+      "file": "СБ/изм 11 Ведение реестра договорных цепочек.bpmn",
+      "sha256": "f504120b363915b7bd0c05f0f1057ae0dc37544855f258c44985ba3f608768a7",
+      "frozen_neighbour_count": 41,
+      "straight": 33,
+      "one_bend": 7,
+      "two_plus_bends": 1,
+      "bends": 9,
+      "straight_fraction": 0.8048780487804879,
+      "by_node_kinds": {
+        "gateway->task": {
+          "frozen_neighbour_count": 6,
+          "straight": 3,
+          "one_bend": 2,
+          "two_plus_bends": 1,
+          "bends": 4,
+          "straight_fraction": 0.5
+        },
+        "task->task": {
+          "frozen_neighbour_count": 17,
+          "straight": 17,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->gateway": {
+          "frozen_neighbour_count": 7,
+          "straight": 4,
+          "one_bend": 3,
+          "two_plus_bends": 0,
+          "bends": 3,
+          "straight_fraction": 0.5714285714285714
+        },
+        "event->gateway": {
+          "frozen_neighbour_count": 1,
+          "straight": 1,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "task->event": {
+          "frozen_neighbour_count": 5,
+          "straight": 5,
+          "one_bend": 0,
+          "two_plus_bends": 0,
+          "bends": 0,
+          "straight_fraction": 1.0
+        },
+        "event->task": {
+          "frozen_neighbour_count": 5,
+          "straight": 3,
+          "one_bend": 2,
+          "two_plus_bends": 0,
+          "bends": 2,
+          "straight_fraction": 0.6
+        }
+      }
+    }
+  ],
+  "baseline": {
+    "frozen_neighbour_count": 38,
+    "straight": 33,
+    "one_bend": 1,
+    "two_plus_bends": 4,
+    "bends": 10,
+    "straight_fraction": 0.868421052631579,
+    "by_node_kinds": {
+      "event->task": {
+        "frozen_neighbour_count": 1,
+        "straight": 1,
+        "one_bend": 0,
+        "two_plus_bends": 0,
+        "bends": 0,
+        "straight_fraction": 1.0
+      },
+      "task->gateway": {
+        "frozen_neighbour_count": 21,
+        "straight": 21,
+        "one_bend": 0,
+        "two_plus_bends": 0,
+        "bends": 0,
+        "straight_fraction": 1.0
+      },
+      "gateway->task": {
+        "frozen_neighbour_count": 12,
+        "straight": 7,
+        "one_bend": 1,
+        "two_plus_bends": 4,
+        "bends": 10,
+        "straight_fraction": 0.5833333333333334
+      },
+      "task->task": {
+        "frozen_neighbour_count": 4,
+        "straight": 4,
+        "one_bend": 0,
+        "two_plus_bends": 0,
+        "bends": 0,
+        "straight_fraction": 1.0
+      }
+    }
+  },
+  "candidate_dynamic_neighbourhood": {
+    "frozen_neighbour_count": 38,
+    "straight": 34,
+    "one_bend": 1,
+    "two_plus_bends": 3,
+    "bends": 8,
+    "straight_fraction": 0.8947368421052632,
+    "by_node_kinds": {
+      "event->task": {
+        "frozen_neighbour_count": 1,
+        "straight": 1,
+        "one_bend": 0,
+        "two_plus_bends": 0,
+        "bends": 0,
+        "straight_fraction": 1.0
+      },
+      "task->gateway": {
+        "frozen_neighbour_count": 21,
+        "straight": 21,
+        "one_bend": 0,
+        "two_plus_bends": 0,
+        "bends": 0,
+        "straight_fraction": 1.0
+      },
+      "gateway->task": {
+        "frozen_neighbour_count": 12,
+        "straight": 8,
+        "one_bend": 1,
+        "two_plus_bends": 3,
+        "bends": 8,
+        "straight_fraction": 0.6666666666666666
+      },
+      "task->task": {
+        "frozen_neighbour_count": 4,
+        "straight": 4,
+        "one_bend": 0,
+        "two_plus_bends": 0,
+        "bends": 0,
+        "straight_fraction": 1.0
+      }
+    }
+  },
+  "note": "Candidate selection freezes incumbent neighbour IDs; moving a bad link out of scope cannot improve its selection score. This external dynamic measurement is diagnostic only; task-to-gateway links influence the aggregate."
+}

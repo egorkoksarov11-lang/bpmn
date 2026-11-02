@@ -4,26 +4,26 @@
     "node_count": 64,
     "return_fraction": 0.17894736842105263
   },
-  "conformity_percent": 70.39,
+  "conformity_percent": 71.16,
   "family_scores": {
-    "routes": 33.78,
-    "distance": 55.77,
+    "routes": 34.6,
+    "distance": 55.72,
     "crossings": 77.3,
-    "crowding": 81.22,
+    "crowding": 81.21,
     "packing": 100.0,
-    "alignment": 72.39,
+    "alignment": 76.37,
     "documents": 100.0
   },
   "metrics": {
     "bends_per_flow": {
-      "value": 1.568421052631579,
-      "score": 19.84,
+      "value": 1.5473684210526315,
+      "score": 20.62,
       "reference_p10": 0.2631578947368421,
       "reference_p90": 0.6896551724137931
     },
     "straight_fraction": {
-      "value": 0.4631578947368421,
-      "score": 87.06,
+      "value": 0.47368421052631576,
+      "score": 89.99,
       "reference_p10": 0.5072463768115942,
       "reference_p90": 0.8
     },
@@ -34,8 +34,8 @@
       "reference_p90": 2
     },
     "mean_length_widths": {
-      "value": 2.345923444976077,
-      "score": 46.35,
+      "value": 2.3421435406698565,
+      "score": 46.55,
       "reference_p10": 0.6858823529411764,
       "reference_p90": 1.6552083333333334
     },
@@ -46,8 +46,8 @@
       "reference_p90": 4.91875
     },
     "forward_hop_excess": {
-      "value": 1.249785,
-      "score": 57.54,
+      "value": 1.255091,
+      "score": 57.14,
       "reference_p10": 0.021121,
       "reference_p90": 0.829051
     },
@@ -64,8 +64,8 @@
       "reference_p90": 0.0023
     },
     "hotspot_excess": {
-      "value": 0.013036,
-      "score": 87.78,
+      "value": 0.013065,
+      "score": 87.75,
       "reference_p10": 0.0,
       "reference_p90": 0.0
     },
@@ -82,8 +82,8 @@
       "reference_p90": 2.69811320754717
     },
     "axis_aligned_fraction": {
-      "value": 0.5789473684210527,
-      "score": 72.39,
+      "value": 0.6,
+      "score": 76.37,
       "reference_p10": 0.7058823529411765,
       "reference_p90": 0.8947368421052632
     },

@@ -9,3 +9,7 @@
 ## Дополнение r6
 
 Новые необязательные npm-зависимости зафиксированы в `package.json`/`package-lock.json`. Добавлены `tools/calibrate_references.py`, `tools/reference_sensitivity.py`, `tools/probe_auto_layout.cjs`, адаптеры размещения и статический профиль `src/v23/bpmn_v23/assets/reference_conformity_profile.json`. Внешние библиотеки и node_modules не публикуются. Результаты: `output/reference_conformity.json`, `tests/reports/reference_metrics_r6/`, `tests/reports/r6_experiments.json`, `tests/reports/r6_all_tests.xml`; описание — `docs/DEVELOPMENT_R6.md`. Исходный r4 сохранён в `examples/process_08_r4.bpmn` с его отчётом размещения.
+
+## Дополнение r7
+
+Добавлены `src/v23/bpmn_v23/continuity.py`, режим `local-continuity`, `tools/measure_continuity.py`, `tests/test_continuity.py`, `tests/reports/r7_all_tests.xml`, `tests/reports/r7_reference_continuity.json`, `docs/DEVELOPMENT_R7.md`. Исходный проверенный r6 сохранён в `examples/process_08_r6.bpmn` и его отчёте. Обновлены выходные BPMN/SVG и независимые отчёты. Входные файлы и исходный v22 сохранены.
