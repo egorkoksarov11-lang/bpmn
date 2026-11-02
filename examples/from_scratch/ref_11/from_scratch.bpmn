@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_PersonalFiles" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.50.1">
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_Main" name="Организация" processRef="Process_PersonalFiles"/>
+  </bpmn:collaboration>
+  <bpmn:process id="Process_PersonalFiles" name="Ведение и актуализация личных дел сотрудников" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_Personnel" name="Кадровик">
+        <bpmn:flowNodeRef>Start_Update</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CheckNeed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Include</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_UpdateFile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CreateFile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_Hire</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Current</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_NoUpdate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CloseFile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Archive</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Archived</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_Dismissal</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CheckCompleteness</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Complete</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_WaitDocument</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Updated</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start_Update" name="Сформирован новый документ / изменились сведения сотрудника"/>
+    <bpmn:task id="Task_CheckNeed" name="5.2 Проверить необходимость включения документа в личное дело"/>
+    <bpmn:exclusiveGateway id="Gateway_Include" name="Документ входит в установленный состав?"/>
+    <bpmn:task id="Task_UpdateFile" name="5.3 Актуализировать личное дело">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_0a19uzl">
+        <bpmn:targetRef>DR_Inventory_Update</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_18b4cmc">
+        <bpmn:targetRef>DR_File_Update</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DR_Inventory" name="Внутренняя опись документов дела" dataObjectRef="DO_Inventory"/>
+    <bpmn:dataObjectReference id="DR_File_Update" name="Личное дело сотрудника" dataObjectRef="DO_File"/>
+    <bpmn:task id="Task_CreateFile" name="5.1 Сформировать личное дело">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1h0ktpn">
+        <bpmn:targetRef>DR_Composition_Check</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1kirtse">
+        <bpmn:targetRef>DR_File</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_04l1gny">
+        <bpmn:targetRef>DR_Inventory</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:startEvent id="Start_Hire" name="Завершен процесс «Прием сотрудника»"/>
+    <bpmn:endEvent id="End_Current" name="Личное дело сформировано и передано на текущее ведение"/>
+    <bpmn:dataObjectReference id="DR_Composition_Check" name="Состав личного дела сотрудника" dataObjectRef="DO_Composition"/>
+    <bpmn:dataObjectReference id="DR_File" name="Личное дело сотрудника" dataObjectRef="DO_File"/>
+    <bpmn:dataObjectReference id="DR_Inventory_Update" name="Внутренняя опись документов дела" dataObjectRef="DO_Inventory"/>
+    <bpmn:sequenceFlow id="F3" sourceRef="Start_Update" targetRef="Task_CheckNeed"/>
+    <bpmn:sequenceFlow id="F4" sourceRef="Task_CheckNeed" targetRef="Gateway_Include"/>
+    <bpmn:sequenceFlow id="F5" name="Нет" sourceRef="Gateway_Include" targetRef="End_NoUpdate"/>
+    <bpmn:sequenceFlow id="F6" name="Да" sourceRef="Gateway_Include" targetRef="Task_UpdateFile"/>
+    <bpmn:sequenceFlow id="F11" sourceRef="Task_WaitDocument" targetRef="Task_UpdateFile"/>
+    <bpmn:sequenceFlow id="F7" sourceRef="Task_UpdateFile" targetRef="Task_CheckCompleteness"/>
+    <bpmn:sequenceFlow id="F8" sourceRef="Task_CheckCompleteness" targetRef="Gateway_Complete"/>
+    <bpmn:sequenceFlow id="F1" sourceRef="Start_Hire" targetRef="Task_CreateFile"/>
+    <bpmn:sequenceFlow id="F2" sourceRef="Task_CreateFile" targetRef="End_Current"/>
+    <bpmn:sequenceFlow id="F12" sourceRef="Start_Dismissal" targetRef="Task_CloseFile"/>
+    <bpmn:endEvent id="End_NoUpdate" name="Учет и хранение по правилам соответствующего процесса"/>
+    <bpmn:task id="Task_CloseFile" name="5.5 Закрыть личное дело">
+      <bpmn:property id="Property_0vnqo2w" name="__targetRef_placeholder"/>
+      <bpmn:dataInputAssociation id="DataInputAssociation_1baszxx">
+        <bpmn:sourceRef>DR_Composition_Close</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0vnqo2w</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1n362rp">
+        <bpmn:targetRef>DR_Inventory_Close</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_1xx268g">
+        <bpmn:targetRef>DR_Certifier</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:dataObjectReference id="DR_Certifier" name="Лист-заверитель дела" dataObjectRef="DO_Certifier"/>
+    <bpmn:dataObject id="DO_Certifier"/>
+    <bpmn:dataObjectReference id="DR_Inventory_Close" name="Внутренняя опись документов дела" dataObjectRef="DO_Inventory"/>
+    <bpmn:dataObject id="DO_Inventory"/>
+    <bpmn:dataObjectReference id="DR_File_Close" name="Личное дело сотрудника" dataObjectRef="DO_File"/>
+    <bpmn:dataObjectReference id="DR_Composition_Close" name="Состав личного дела сотрудника" dataObjectRef="DO_Composition"/>
+    <bpmn:dataObject id="DO_Composition"/>
+    <bpmn:task id="Task_Archive" name="5.6 Передать закрытое личное дело на хранение"/>
+    <bpmn:dataObjectReference id="DR_File_Archive" name="Личное дело сотрудника" dataObjectRef="DO_File"/>
+    <bpmn:dataObject id="DO_File"/>
+    <bpmn:endEvent id="End_Archived" name="Личное дело передано на хранение"/>
+    <bpmn:sequenceFlow id="F13" sourceRef="Task_CloseFile" targetRef="Task_Archive"/>
+    <bpmn:sequenceFlow id="F14" sourceRef="Task_Archive" targetRef="End_Archived"/>
+    <bpmn:startEvent id="Start_Dismissal" name="Завершен процесс «Увольнение сотрудника»"/>
+    <bpmn:task id="Task_CheckCompleteness" name="5.4 Проверить комплектность"/>
+    <bpmn:exclusiveGateway id="Gateway_Complete" name="Комплект полный?"/>
+    <bpmn:task id="Task_WaitDocument" name="Дождаться формирования отсутствующего итогового документа"/>
+    <bpmn:endEvent id="End_Updated" name="Личное дело актуализировано"/>
+    <bpmn:sequenceFlow id="F9" name="Да" sourceRef="Gateway_Complete" targetRef="End_Updated"/>
+    <bpmn:sequenceFlow id="F10" name="Нет" sourceRef="Gateway_Complete" targetRef="Task_WaitDocument"/>
+    <bpmn:association id="A_Composition_Check" associationDirection="One" sourceRef="DR_Composition_Check" targetRef="Task_CheckNeed"/>
+    <bpmn:association id="A_File_Close" associationDirection="One" sourceRef="Task_CloseFile" targetRef="DR_File_Close"/>
+    <bpmn:association id="A_File_Archive" associationDirection="One" sourceRef="DR_File_Archive" targetRef="Task_Archive"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_1">
+    <bpmndi:BPMNPlane id="Plane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Main_di" bpmnElement="Participant_Main" isHorizontal="true">
+        <dc:Bounds x="0.0" y="65" width="1191.0" height="740.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_di" bpmnElement="Lane_Personnel" isHorizontal="true">
+        <dc:Bounds x="30.0" y="65" width="1161.0" height="740.0"/>
+        </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartUpdate_di" bpmnElement="Start_Update">
+        <dc:Bounds x="152.0" y="399.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="93.5" y="336.0" width="129.0" height="56.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CheckNeed_di" bpmnElement="Task_CheckNeed">
+        <dc:Bounds x="264.0" y="379.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GInclude_di" bpmnElement="Gateway_Include" isMarkerVisible="true">
+        <dc:Bounds x="468.0" y="392.0" width="50.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="374.0" y="346.0" width="142.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Update_di" bpmnElement="Task_UpdateFile">
+        <dc:Bounds x="542.0" y="379.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Inventory_di" bpmnElement="DR_Inventory">
+        <dc:Bounds x="276.5" y="85.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="319.5" y="96.0" width="112.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="FileUpdate_di" bpmnElement="DR_File_Update">
+        <dc:Bounds x="559.5" y="475.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="602.5" y="486.0" width="102.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Create_di" bpmnElement="Task_CreateFile">
+        <dc:Bounds x="264.0" y="155.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartHire_di" bpmnElement="Start_Hire">
+        <dc:Bounds x="152.0" y="175.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="107.5" y="140.0" width="125.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndCurrent_di" bpmnElement="End_Current">
+        <dc:Bounds x="475.0" y="175.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="465.5" y="218.0" width="183.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CompositionCheck_di" bpmnElement="DR_Composition_Check">
+        <dc:Bounds x="282.0" y="309.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="337.0" y="315.0" width="196.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="File_di" bpmnElement="DR_File">
+        <dc:Bounds x="281.5" y="251.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="339.5" y="281.0" width="150.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="InventoryUpdate_di" bpmnElement="DR_Inventory_Update">
+        <dc:Bounds x="554.5" y="309.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="597.5" y="320.0" width="112.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NoUpdate_di" bpmnElement="End_NoUpdate">
+        <dc:Bounds x="475.0" y="479.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="402.5" y="525.0" width="181.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_di" bpmnElement="Task_CloseFile">
+        <dc:Bounds x="264.0" y="639.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Certifier_di" bpmnElement="DR_Certifier">
+        <dc:Bounds x="281.0" y="735.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="324.0" y="746.5" width="103.0" height="27.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="InventoryClose_di" bpmnElement="DR_Inventory_Close">
+        <dc:Bounds x="456.5" y="569.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="499.5" y="580.0" width="112.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="FileClose_di" bpmnElement="DR_File_Close">
+        <dc:Bounds x="208.0" y="604.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="111.0" y="615.0" width="80.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CompositionClose_di" bpmnElement="DR_Composition_Close">
+        <dc:Bounds x="282.0" y="569.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="325.0" y="580.0" width="101.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Archive_di" bpmnElement="Task_Archive">
+        <dc:Bounds x="468.0" y="639.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="FileArchive_di" bpmnElement="DR_File_Archive">
+        <dc:Bounds x="485.5" y="735.0" width="36.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="528.5" y="746.0" width="102.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndArchived_di" bpmnElement="End_Archived">
+        <dc:Bounds x="672.0" y="659.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="668.0" y="702.0" width="140.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartDismissal_di" bpmnElement="Start_Dismissal">
+        <dc:Bounds x="152.0" y="659.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="91.0" y="702.0" width="158.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Completeness_di" bpmnElement="Task_CheckCompleteness">
+        <dc:Bounds x="746.0" y="379.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GComplete_di" bpmnElement="Gateway_Complete" isMarkerVisible="true">
+        <dc:Bounds x="950.0" y="392.0" width="50.0" height="50.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="828.0" y="363.5" width="115.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WaitDoc_di" bpmnElement="Task_WaitDocument">
+        <dc:Bounds x="885.0" y="539.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndUpdated_di" bpmnElement="End_Updated">
+        <dc:Bounds x="1024.0" y="399.0" width="36.0" height="36.0"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="949.5" y="375.0" width="185.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="A4_di" bpmnElement="A_Composition_Check">
+        <di:waypoint x="316.27" y="359.0"/><di:waypoint x="329.28" y="379.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A7_di" bpmnElement="A_File_Close">
+        <di:waypoint x="264.0" y="643.25"/><di:waypoint x="244.0" y="635.75"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="A_File_Archive_di" bpmnElement="A_File_Archive">
+        <di:waypoint x="519.92" y="735.0"/><di:waypoint x="533.05" y="715.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F3_di" bpmnElement="F3">
+        <di:waypoint x="188.0" y="417.0"/><di:waypoint x="264.0" y="417.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F4_di" bpmnElement="F4">
+        <di:waypoint x="444.0" y="417.0"/><di:waypoint x="468.0" y="417.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5_di" bpmnElement="F5">
+        <di:waypoint x="493.0" y="442.0"/><di:waypoint x="493.0" y="479.0"/><bpmndi:BPMNLabel><dc:Bounds x="509.15" y="455.0" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F6_di" bpmnElement="F6">
+        <di:waypoint x="518.0" y="417.0"/><di:waypoint x="542.0" y="417.0"/><bpmndi:BPMNLabel><dc:Bounds x="483.5" y="374.5" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
+        <di:waypoint x="885.0" y="554.2"/><di:waypoint x="730.0" y="554.2"/><di:waypoint x="730.0" y="439.8"/><di:waypoint x="722.0" y="439.8"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F7_di" bpmnElement="F7">
+        <di:waypoint x="722.0" y="417.0"/><di:waypoint x="746.0" y="417.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F8_di" bpmnElement="F8">
+        <di:waypoint x="926.0" y="417.0"/><di:waypoint x="950.0" y="417.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F1_di" bpmnElement="F1">
+        <di:waypoint x="188.0" y="193.0"/><di:waypoint x="264.0" y="193.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F2_di" bpmnElement="F2">
+        <di:waypoint x="444.0" y="193.0"/><di:waypoint x="475.0" y="193.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
+        <di:waypoint x="188.0" y="677.0"/><di:waypoint x="264.0" y="677.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
+        <di:waypoint x="444.0" y="677.0"/><di:waypoint x="468.0" y="677.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
+        <di:waypoint x="648.0" y="677.0"/><di:waypoint x="672.0" y="677.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F9_di" bpmnElement="F9">
+        <di:waypoint x="1000.0" y="417.0"/><di:waypoint x="1024.0" y="417.0"/><bpmndi:BPMNLabel><dc:Bounds x="1007.3" y="444.5" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
+        <di:waypoint x="975.0" y="442.0"/><di:waypoint x="975.0" y="539.0"/><bpmndi:BPMNLabel><dc:Bounds x="991.15" y="504.4" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_0a19uzl_di" bpmnElement="DataOutputAssociation_0a19uzl">
+        <di:waypoint x="604.76" y="379.0"/><di:waypoint x="590.42" y="359.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_18b4cmc_di" bpmnElement="DataOutputAssociation_18b4cmc">
+        <di:waypoint x="607.05" y="455.0"/><di:waypoint x="593.92" y="475.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_04l1gny_di" bpmnElement="DataOutputAssociation_04l1gny">
+        <di:waypoint x="326.76" y="155.0"/><di:waypoint x="312.42" y="135.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1h0ktpn_di" bpmnElement="DataOutputAssociation_1h0ktpn">
+        <di:waypoint x="264.0" y="215.8"/><di:waypoint x="256.0" y="215.8"/><di:waypoint x="256.0" y="319.0"/><di:waypoint x="282.0" y="319.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1kirtse_di" bpmnElement="DataOutputAssociation_1kirtse">
+        <di:waypoint x="329.05" y="231.0"/><di:waypoint x="315.92" y="251.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_1baszxx_di" bpmnElement="DataInputAssociation_1baszxx">
+        <di:waypoint x="316.27" y="619.0"/><di:waypoint x="329.28" y="639.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1n362rp_di" bpmnElement="DataOutputAssociation_1n362rp">
+        <di:waypoint x="409.17" y="639.0"/><di:waypoint x="456.5" y="606.4"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_1xx268g_di" bpmnElement="DataOutputAssociation_1xx268g">
+        <di:waypoint x="328.82" y="715.0"/><di:waypoint x="315.57" y="735.0"/></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

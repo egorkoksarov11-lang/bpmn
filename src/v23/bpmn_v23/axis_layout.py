@@ -45,7 +45,7 @@ def semantic_axes(values,initial,edges,tolerance,blocked=None):
     return {n:order[root(initial[n])] for n in values}
 
 
-def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_reserve=1.0,start_above=False):
+def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_reserve=1.0,start_above=False,responsive=False,attachment_owners=()):
     motifs=analyze(nodes,seq,member,original);objects=nodes|docs
     source_tasks=[original[n] for n,o in nodes.items() if o['kind'] in TAG_TASK]
     sw=median(b[2] for b in source_tasks) if source_tasks else 200
@@ -61,14 +61,24 @@ def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_res
     membership={**member,**{d:member[owner] for d,owner in owners.items()}}
     sizes={};frames={};above={};below={}
     for n,o in objects.items():
-        if o['kind'] in TAG_TASK:w,h=taskw,taskh
+        if o['kind'] in TAG_TASK:
+            if responsive:
+                from .typography import task_layout
+                w,h=original[n][2:];fit=task_layout(o.get('name',''),original[n],o['kind'])
+                if not fit['fits']:h=max(h,fit['required_height'])
+            else:w,h=taskw,taskh
         else:w,h=original[n][2:]
         sizes[n]=(w,h);caption=0;fw=w
+        if responsive and o['kind']=='startEvent' and o.get('name'):fw=max(w,140)
         if n in docs or o['kind'] in TAG_GATE|TAG_EVENT:
             caption=len(wrap(o.get('name',''),150,12))*17+6 if o.get('name') else 0
             # Captions use the free bay below the row, not a mandatory
             # 160px horizontal box between consecutive steps.
         frames[n]=fw;above[n]=h/2;below[n]=h/2+((caption+12)*caption_reserve if caption else 0)
+        if n in attachment_owners:
+            count=attachment_owners.get(n,1) if isinstance(attachment_owners,dict) else 1
+            above[n]+=math.ceil(count/2)*72+8
+            below[n]+=(math.floor(count/2)*72+8 if count>1 else 0)
     cx={n:original[n][0]+original[n][2]/2 for n in objects}
     cy={n:original[n][1]+original[n][3]/2 for n in objects}
     links=[(u,v) for _,u,v,_ in seq+assocs]

@@ -11,7 +11,7 @@ from bpmn_refkit.model import read_bpmn, set_di
 from bpmn_refkit.geometry import compress, bbox_intersect_seg, segment_overlap, segment_intersection, geometry_audit
 from bpmn_universal.engine import quick_routes, good_poly, route_cost, save_labels, arrange_flow_labels
 from bpmn_universal.cli import deadline
-from .quality import intersection, score, burdens, contacts, edge_score
+from .quality import intersection, score, burdens, contacts, edge_score, segment_overlap
 from .clearance import safe_poly,segment_blocked
 from .readability import edge_crowding,parallel_nearness
 
@@ -44,7 +44,7 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False):
     @lru_cache(None)
     def cost(i,j,ii,jj):
         a=(xs[i],ys[j]);b=(xs[ii],ys[jj])
-        if any(segment_blocked(a,b,box,n in (u,v),8) for n,box in (relevant.items() if clip_window else boxes.items())):return math.inf
+        if any(segment_blocked(a,b,box,n in (u,v),2 if str(n).startswith('__text_') else 8) for n,box in (relevant.items() if clip_window else boxes.items())):return math.inf
         crossings=0;near=0.0
         nearby=segment_index.query((min(a[0],b[0])-12,min(a[1],b[1])-12,abs(a[0]-b[0])+24,abs(a[1]-b[1])+24)) if segment_index else segments
         for c,d in nearby:
@@ -150,7 +150,15 @@ def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,p
     uv={i:(u,v) for i,u,v,_ in seq+assocs};paths={i:list(p) for i,p in (fixed_paths or {}).items()};usage=defaultdict(set)
     if not set(paths).issubset(uv):raise ValueError('Unknown fixed edge')
     for eid,p in paths.items():
-        if not safe_poly(eid,p,boxes,uv) or overlapping(p,{i:q for i,q in paths.items() if i!=eid}):raise ValueError('Unsafe fixed path: '+eid)
+        others={i:q for i,q in paths.items() if i!=eid}
+        is_information=eid in {i for i,u,v,_ in assocs if u in docs or v in docs}
+        safe=safe_poly(eid,p,boxes,uv)
+        if is_information and len(p)==2:
+            from .document_layout import safe_link
+            from .contours import on_contour
+            u,v=uv[eid]
+            safe=safe_link(eid,p,boxes,uv,others,nodes=nodes) and all(on_contour(p[k],boxes[n],nodes.get(n,{}).get('kind','')) for k,n in ((0,u),(-1,v)))
+        if not safe or overlapping(p,others):raise ValueError('Unsafe fixed path: '+eid)
         usage[uv[eid][0]].add(p[0]);usage[uv[eid][1]].add(p[-1])
     def port_options(n):
         x,y,w,h=boxes[n];options=[]

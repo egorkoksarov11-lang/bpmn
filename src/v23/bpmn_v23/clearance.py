@@ -26,5 +26,5 @@ def safe_poly(eid,points,boxes,uv,gap=8):
     if not outward(points[0],points[1],boxes[u]) or not outward(points[-1],points[-2],boxes[v]):return False
     for i,(a,b) in enumerate(zip(points,points[1:])):
         for n,box in boxes.items():
-            if segment_blocked(a,b,box,n==u and i==0 or n==v and i==last,gap):return False
+            if segment_blocked(a,b,box,n==u and i==0 or n==v and i==last,2 if str(n).startswith('__text_') else gap):return False
     return True

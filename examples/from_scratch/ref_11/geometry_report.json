@@ -1,0 +1,202 @@
+{
+  "before": {
+    "shape_overlaps": 0,
+    "shape_overlap_examples": [],
+    "line_through_shapes": 0,
+    "line_through_examples": [],
+    "crossings": {},
+    "crossing_examples": {},
+    "total_bends": 1,
+    "avg_flow_length": 91.71,
+    "avg_document_length": 33.46,
+    "document_references": 10,
+    "flow_count": 14,
+    "association_count": 11,
+    "readability": {
+      "policy": "balanced-readability-v1",
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0,
+      "peak_flow_load": 2,
+      "forward_hop_excess": 0.0,
+      "long_forward_hops": 0,
+      "long_forward_hop_ids": [],
+      "bends_per_flow": 0.071429,
+      "graph_return_count": 1,
+      "normalization_task_width": 180.0,
+      "wire_gap_diagnostic": 11.25,
+      "hotspot_cell_size": 75.0,
+      "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+    },
+    "ambiguous_contacts": 0,
+    "contact_examples": [],
+    "task_text_overflows": [],
+    "label_line_cuts": [
+      [
+        "DR_Composition_Check",
+        "DataOutputAssociation_1h0ktpn"
+      ],
+      [
+        "DR_Composition_Check",
+        "DataOutputAssociation_1kirtse"
+      ],
+      [
+        "DR_Inventory_Update",
+        "DataOutputAssociation_0a19uzl"
+      ],
+      [
+        "DR_Composition_Close",
+        "DataInputAssociation_1baszxx"
+      ]
+    ],
+    "missing_named_flow_labels": [],
+    "edge_object_clearance_violations": [],
+    "lane_header_cuts": [],
+    "edge_clearance_passed": true,
+    "reference_style": {
+      "area_factor": 4.1769,
+      "reference_p90": 9.1665,
+      "within_reference_density": true,
+      "penalty": 0
+    },
+    "diagonal_segments": 0,
+    "diagonal_edges": [],
+    "excessive_bend_edges": [],
+    "invalid_endpoints": [],
+    "nonfinite_waypoints": [],
+    "outside_lanes": [],
+    "task_sizes": [
+      [
+        180.0,
+        75.0
+      ],
+      [
+        200.0,
+        75.0
+      ],
+      [
+        220.0,
+        70.0
+      ]
+    ],
+    "task_sizes_uniform": false,
+    "label_collision_pairs": [
+      [
+        "Start_Hire",
+        "DR_Composition_Check"
+      ],
+      [
+        "DR_Inventory_Close",
+        "Start_Dismissal"
+      ]
+    ],
+    "extent": {
+      "width": 1160.0,
+      "height": 590.0,
+      "aspect_ratio": 1.9661016949152543
+    },
+    "a4_ratio_passed": false,
+    "estimated_A4_min_font_pt": 6.77,
+    "minimum_measured_font_size": 10,
+    "a4_legible_at_8pt": false,
+    "text_overflow_check": "shared_measured_ink_layout_OpenSans_10_to_13px",
+    "crossing_avoidability": "not_proven",
+    "collinear_overlap_pairs": [],
+    "allowed_straight_document_diagonals": [
+      "A_Composition_Check",
+      "A_File_Close",
+      "DataInputAssociation_1baszxx",
+      "DataOutputAssociation_04l1gny",
+      "DataOutputAssociation_0a19uzl",
+      "DataOutputAssociation_18b4cmc",
+      "DataOutputAssociation_1h0ktpn",
+      "DataOutputAssociation_1kirtse",
+      "DataOutputAssociation_1n362rp",
+      "DataOutputAssociation_1xx268g"
+    ],
+    "routing_safety_passed": true,
+    "release_geometry_passed": false
+  },
+  "after": {
+    "shape_overlaps": 0,
+    "shape_overlap_examples": [],
+    "line_through_shapes": 0,
+    "line_through_examples": [],
+    "crossings": {},
+    "crossing_examples": {},
+    "total_bends": 4,
+    "avg_flow_length": 59.89,
+    "avg_document_length": 37.16,
+    "document_references": 10,
+    "flow_count": 14,
+    "association_count": 11,
+    "readability": {
+      "policy": "balanced-readability-v1",
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0,
+      "peak_flow_load": 2,
+      "forward_hop_excess": 0.0,
+      "long_forward_hops": 0,
+      "long_forward_hop_ids": [],
+      "bends_per_flow": 0.142857,
+      "graph_return_count": 1,
+      "normalization_task_width": 180.0,
+      "wire_gap_diagnostic": 11.4,
+      "hotspot_cell_size": 76.0,
+      "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+    },
+    "ambiguous_contacts": 0,
+    "contact_examples": [],
+    "task_text_overflows": [],
+    "label_line_cuts": [],
+    "missing_named_flow_labels": [],
+    "edge_object_clearance_violations": [],
+    "lane_header_cuts": [],
+    "edge_clearance_passed": true,
+    "reference_style": {
+      "area_factor": 4.9995,
+      "reference_p90": 9.1665,
+      "within_reference_density": true,
+      "penalty": 0
+    },
+    "diagonal_segments": 0,
+    "diagonal_edges": [],
+    "excessive_bend_edges": [],
+    "invalid_endpoints": [],
+    "nonfinite_waypoints": [],
+    "outside_lanes": [],
+    "task_sizes": [
+      [
+        180.0,
+        76.0
+      ]
+    ],
+    "task_sizes_uniform": true,
+    "label_collision_pairs": [],
+    "extent": {
+      "width": 1191.0,
+      "height": 740.0,
+      "aspect_ratio": 1.6094594594594596
+    },
+    "a4_ratio_passed": true,
+    "estimated_A4_min_font_pt": 7.91,
+    "minimum_measured_font_size": 12,
+    "a4_legible_at_8pt": false,
+    "text_overflow_check": "shared_measured_ink_layout_OpenSans_10_to_13px",
+    "crossing_avoidability": "not_proven",
+    "collinear_overlap_pairs": [],
+    "allowed_straight_document_diagonals": [
+      "A_Composition_Check",
+      "A_File_Archive",
+      "A_File_Close",
+      "DataInputAssociation_1baszxx",
+      "DataOutputAssociation_04l1gny",
+      "DataOutputAssociation_0a19uzl",
+      "DataOutputAssociation_18b4cmc",
+      "DataOutputAssociation_1kirtse",
+      "DataOutputAssociation_1n362rp",
+      "DataOutputAssociation_1xx268g"
+    ],
+    "routing_safety_passed": true,
+    "release_geometry_passed": false
+  }
+}

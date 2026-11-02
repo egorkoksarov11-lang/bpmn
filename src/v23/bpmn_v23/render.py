@@ -3,7 +3,7 @@ import base64,math
 from lxml import etree as ET
 from bpmn_refkit.model import read_bpmn,TAG_TASK,TAG_GATE,TAG_EVENT
 from bpmn_universal.contract import NS,Q,B,BD,DC
-from .typography import FONT,wrap,width,TASK_FONT,TASK_LINE_HEIGHT
+from .typography import FONT,wrap,width,TASK_FONT,TASK_LINE_HEIGHT,task_layout,label_layout
 SVG='http://www.w3.org/2000/svg'
 
 
@@ -36,7 +36,7 @@ def render(path,svg_path):
         add(marker,'path',d='M1 1 L9 5 L1 9',fill='none',stroke=colour,stroke_width=1.5)
     add(svg,'rect',x=minx,y=miny,width=maxx-minx,height=maxy-miny,fill='white')
     text=add(svg,'text',x=minx+25,y=28,font_size=18,fill='#243a4d');text.text=title.text
-    text_overflow=[];lane_fonts={}
+    text_overflow=[];lane_fonts={};task_fonts={};label_fonts={}
     for i,(lane,name) in enumerate(lane_names.items()):
         if lane not in boxes:continue
         x,y,w,h=boxes[lane];group=add(svg,'g',data_bpmn_id=lane)
@@ -92,11 +92,10 @@ def render(path,svg_path):
             if kind in ('callActivity','subProcess'):
                 add(group,'rect',x=x+w/2-6,y=y+h-15,width=12,height=12,fill='white',stroke='#344f65')
                 add(group,'path',d=f'M{x+w/2-4} {y+h-9} H{x+w/2+4} M{x+w/2} {y+h-13} V{y+h-5}',stroke='#344f65')
-            lines=wrap(o.get('name',''),max(1,w-24),TASK_FONT);lineh=TASK_LINE_HEIGHT
-            available=h-24-(14 if kind in ('callActivity','subProcess') else 0)
-            if len(lines)*lineh>available:text_overflow.append(nid)
-            for i,line in enumerate(lines):
-                t=add(group,'text',x=x+w/2,y=y+h/2-(len(lines)-1)*lineh/2+i*lineh+4-(6 if kind in ('callActivity','subProcess') else 0),text_anchor='middle',font_size=TASK_FONT,fill='#24394b');t.text=line
+            layout=task_layout(o.get('name',''),boxes[nid],kind);task_fonts[nid]=layout['font_size']
+            if not layout['fits']:text_overflow.append(nid)
+            for line,baseline in zip(layout['lines'],layout['baselines']):
+                t=add(group,'text',x=x+w/2,y=y+baseline,text_anchor='middle',font_size=layout['font_size'],fill='#24394b');t.text=line
     for nid,o in docs.items():
         x,y,w,h=boxes[nid];group=add(svg,'g',data_bpmn_id=nid)
         if o['kind']=='dataStoreReference':
@@ -107,11 +106,11 @@ def render(path,svg_path):
     lookup={**{n:o.get('name','') for n,o in nodes.items()},**{n:o.get('name','') for n,o in docs.items()},**{i:name for i,_,_,name in seq}}
     for owner,(x,y,w,h) in labels.items():
         group=add(svg,'g',data_label_for=owner)
-        if owner not in lookup:continue
-        size=12;lines=wrap(lookup[owner],max(1,w-8),size)
-        if len(lines)*17>h:text_overflow.append('label:'+owner)
+        if owner not in lookup or owner in nodes and nodes[owner]['kind'] in TAG_TASK:continue
+        layout=label_layout(lookup[owner],(x,y,w,h));label_fonts[owner]=layout['font_size']
+        if not layout['fits']:text_overflow.append('label:'+owner)
         add(group,'rect',x=x,y=y,width=w,height=h,fill='white',fill_opacity='.96',rx=3)
-        for i,line in enumerate(lines):
-            t=add(group,'text',x=x+w/2,y=y+13+i*17,text_anchor='middle',font_size=size,fill='#6d5126' if owner not in nodes and owner not in docs else '#304b60');t.text=line
+        for line,baseline in zip(layout['lines'],layout['baselines']):
+            t=add(group,'text',x=x+w/2,y=y+baseline,text_anchor='middle',font_size=layout['font_size'],fill='#6d5126' if owner not in nodes and owner not in docs else '#304b60');t.text=line
     ET.ElementTree(svg).write(str(svg_path),encoding='utf-8',xml_declaration=True)
-    return {'font':'Open Sans bundled','task_font_size':TASK_FONT,'label_font_size':12,'lane_font_sizes':lane_fonts,'text_overflow_ids':text_overflow}
+    return {'font':'Open Sans bundled','task_font_size':TASK_FONT,'label_font_size':12,'lane_font_sizes':lane_fonts,'task_font_sizes':task_fonts,'label_font_sizes':label_fonts,'task_font_size_range':[10,13],'text_overflow_ids':text_overflow}

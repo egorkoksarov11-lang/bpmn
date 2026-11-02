@@ -37,6 +37,15 @@ def on_contour(point,box,kind,tolerance=.8):
             (abs(py-y)<tolerance or abs(py-y-h)<tolerance) and x-tolerance<=px<=x+w+tolerance)
 
 
+def label_hits_shape(rect,box,kind='',gap=0):
+    """Actual diamond/ellipse corners are empty; a bounding-box hit is not ink."""
+    x,y,w,h=box;rx,ry,rw,rh=rect;rx-=gap;ry-=gap;rw+=2*gap;rh+=2*gap
+    if kind in TAG_GATE|TAG_EVENT:
+        cx=x+w/2;cy=y+h/2;px=max(rx,min(rx+rw,cx));py=max(ry,min(ry+rh,cy));dx=abs(px-cx)/(w/2);dy=abs(py-cy)/(h/2)
+        return dx+dy<1-1e-6 if kind in TAG_GATE else dx*dx+dy*dy<1-1e-6
+    return min(rx+rw,x+w)-max(rx,x)>.01 and min(ry+rh,y+h)-max(ry,y)>.01
+
+
 def bounding_ports(paths,uv,boxes,nodes):
     paths={eid:list(ps) for eid,ps in paths.items()}
     for eid,ps in paths.items():

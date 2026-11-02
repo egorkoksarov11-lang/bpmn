@@ -1,0 +1,3170 @@
+{
+  "version": "23.1.2.dev0",
+  "backend": "v23-from-scratch",
+  "status": "layout_candidate_verified",
+  "release_ready": false,
+  "limitations": [
+    "global optimality is not proven",
+    "see geometry_report.json for remaining readability limitations"
+  ],
+  "source_file": "ref_11.bpmn",
+  "validation": {
+    "xml_parse": true,
+    "reference_integrity": true,
+    "preflight": {
+      "compatible": true,
+      "errors": [],
+      "warnings": [
+        "Participants/pools are preserved but not resized or automatically reordered"
+      ],
+      "source": "/workspace/work/algorithm-r10/release/candidate/v23-stage-akpdzbm6/process_08_v23.bpmn",
+      "counts": {
+        "processes": 1,
+        "diagrams": 1,
+        "nodes": 16,
+        "sequence_flows": 14,
+        "associations": 11,
+        "data_references": 10,
+        "lanes": 1
+      }
+    }
+  },
+  "label_placement": {
+    "unplaced_labels": [],
+    "external_labels": 23,
+    "preserved_labels": [
+      "Start_Update",
+      "Gateway_Include",
+      "DR_Inventory",
+      "DR_File_Update",
+      "Start_Hire",
+      "End_Current",
+      "DR_Composition_Check",
+      "DR_File",
+      "DR_Inventory_Update",
+      "End_NoUpdate",
+      "DR_Certifier",
+      "DR_Inventory_Close",
+      "DR_File_Close",
+      "DR_Composition_Close",
+      "DR_File_Archive",
+      "End_Archived",
+      "Start_Dismissal",
+      "Gateway_Complete",
+      "End_Updated",
+      "F5",
+      "F6",
+      "F9",
+      "F10"
+    ],
+    "large_displacements": [],
+    "distant_from_owner": [
+      {
+        "id": "F6",
+        "distance": 33.32
+      }
+    ],
+    "rendering": {
+      "font": "Open Sans bundled",
+      "task_font_size": 13,
+      "label_font_size": 12,
+      "lane_font_sizes": {
+        "Lane_Personnel": 14
+      },
+      "task_font_sizes": {
+        "Task_CheckNeed": 13,
+        "Task_UpdateFile": 13,
+        "Task_CreateFile": 13,
+        "Task_CloseFile": 13,
+        "Task_Archive": 13,
+        "Task_CheckCompleteness": 13,
+        "Task_WaitDocument": 13
+      },
+      "label_font_sizes": {
+        "Start_Update": 12,
+        "Gateway_Include": 12,
+        "DR_Inventory": 12,
+        "DR_File_Update": 12,
+        "Start_Hire": 12,
+        "End_Current": 12,
+        "DR_Composition_Check": 12,
+        "DR_File": 12,
+        "DR_Inventory_Update": 12,
+        "End_NoUpdate": 12,
+        "DR_Certifier": 12,
+        "DR_Inventory_Close": 12,
+        "DR_File_Close": 12,
+        "DR_Composition_Close": 12,
+        "DR_File_Archive": 12,
+        "End_Archived": 12,
+        "Start_Dismissal": 12,
+        "Gateway_Complete": 12,
+        "End_Updated": 12,
+        "F5": 12,
+        "F6": 12,
+        "F9": 12,
+        "F10": 12
+      },
+      "task_font_size_range": [
+        10,
+        13
+      ],
+      "text_overflow_ids": []
+    },
+    "policy": "preserve valid measured bounds; full names; local repair within 32 units; unresolved safe distant captions explicitly reported"
+  },
+  "backend_report": {
+    "selection_policy": {
+      "name": "balanced-readability-v1",
+      "contacts_per_flow": 4.0,
+      "parallel_crowding_per_flow": 8.0,
+      "hotspot_excess": 1.2,
+      "forward_hop_excess": 0.8,
+      "bends_per_flow": 0.35,
+      "style_penalty_scale": 0.001
+    },
+    "backend": "v23-semantic-layers-and-local-information",
+    "selected_candidate": "semantic-network_simplex-gap-24-refined",
+    "quality": [
+      0.05,
+      [
+        0,
+        4,
+        1358.04
+      ],
+      5.2761
+    ],
+    "candidates": [
+      {
+        "candidate": "semantic-network_simplex-gap-24",
+        "status": "verified",
+        "rank": [
+          0.05,
+          [
+            0,
+            4,
+            1359.97
+          ],
+          5.2761
+        ],
+        "seconds": 0.813,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 2,
+          "forward_hop_excess": 0.0,
+          "long_forward_hops": 0,
+          "long_forward_hop_ids": [],
+          "bends_per_flow": 0.142857,
+          "graph_return_count": 1,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 5.2761,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "Task_CheckNeed": "Gateway_Include",
+            "Task_CheckCompleteness": "Gateway_Complete"
+          },
+          "main_macros": [
+            "Start_Hire",
+            "Task_CreateFile",
+            "End_Current",
+            "Start_Update",
+            "Task_CheckNeed",
+            "Task_UpdateFile",
+            "Task_CheckCompleteness",
+            "End_Updated",
+            "Start_Dismissal",
+            "Task_CloseFile",
+            "Task_Archive",
+            "End_Archived"
+          ],
+          "feedback_edges": [
+            "F11"
+          ],
+          "document_owners": {
+            "DR_Inventory": "Task_CreateFile",
+            "DR_File_Update": "Task_UpdateFile",
+            "DR_Composition_Check": "Task_CheckNeed",
+            "DR_File": "Task_CreateFile",
+            "DR_Inventory_Update": "Task_UpdateFile",
+            "DR_Certifier": "Task_CloseFile",
+            "DR_Inventory_Close": "Task_CloseFile",
+            "DR_File_Close": "Task_CloseFile",
+            "DR_Composition_Close": "Task_CloseFile",
+            "DR_File_Archive": "Task_Archive"
+          },
+          "role_order": [
+            "Lane_Personnel"
+          ],
+          "routing_priority": [
+            "F9",
+            "F6",
+            "F1",
+            "F12",
+            "F3",
+            "F5",
+            "F13",
+            "F7",
+            "F4",
+            "F8",
+            "F14",
+            "F2",
+            "F10",
+            "F11"
+          ],
+          "reserved_captions": {
+            "Start_Update": [
+              100.0,
+              442.0,
+              140,
+              56
+            ],
+            "Start_Hire": [
+              100.0,
+              218.0,
+              140,
+              28
+            ],
+            "Start_Dismissal": [
+              100.0,
+              702.0,
+              140,
+              42
+            ],
+            "DR_File_Archive": [
+              528.5,
+              746.0,
+              102,
+              28
+            ],
+            "DR_Composition_Check": [
+              325.0,
+              320.0,
+              101,
+              28
+            ],
+            "DR_Certifier": [
+              324.0,
+              746.5,
+              103,
+              27
+            ],
+            "DR_Composition_Close": [
+              325.0,
+              580.0,
+              101,
+              28
+            ],
+            "DR_File_Close": [
+              144.5,
+              580.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Close": [
+              499.5,
+              580.0,
+              112,
+              28
+            ],
+            "DR_File": [
+              324.5,
+              262.0,
+              102,
+              28
+            ],
+            "DR_Inventory": [
+              319.5,
+              96.0,
+              112,
+              28
+            ],
+            "DR_File_Update": [
+              602.5,
+              486.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Update": [
+              597.5,
+              320.0,
+              112,
+              28
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                302.0,
+                354.0
+              ],
+              [
+                441.0,
+                493.0
+              ],
+              [
+                506.0,
+                558.0
+              ],
+              [
+                580.0,
+                632.0
+              ],
+              [
+                638.0,
+                690.0
+              ],
+              [
+                784.0,
+                836.0
+              ],
+              [
+                923.0,
+                975.0
+              ],
+              [
+                990.0,
+                1042.0
+              ]
+            ],
+            "y": [
+              [
+                207.0,
+                193.0
+              ],
+              [
+                467.0,
+                417.0
+              ],
+              [
+                627.0,
+                497.0
+              ],
+              [
+                793.0,
+                577.0
+              ],
+              [
+                973.0,
+                677.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "Start_Update": 0,
+            "Task_CheckNeed": 1,
+            "Gateway_Include": 2,
+            "Task_UpdateFile": 4,
+            "Task_CreateFile": 1,
+            "Start_Hire": 0,
+            "End_Current": 2,
+            "End_NoUpdate": 2,
+            "Task_CloseFile": 1,
+            "Task_Archive": 3,
+            "End_Archived": 5,
+            "Start_Dismissal": 0,
+            "Task_CheckCompleteness": 6,
+            "Gateway_Complete": 7,
+            "Task_WaitDocument": 7,
+            "End_Updated": 8
+          },
+          "axis_rows": {
+            "Start_Update": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_CheckNeed": [
+              "Lane_Personnel",
+              1
+            ],
+            "Gateway_Include": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_UpdateFile": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_CreateFile": [
+              "Lane_Personnel",
+              0
+            ],
+            "Start_Hire": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_Current": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_NoUpdate": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_CloseFile": [
+              "Lane_Personnel",
+              4
+            ],
+            "Task_Archive": [
+              "Lane_Personnel",
+              4
+            ],
+            "End_Archived": [
+              "Lane_Personnel",
+              4
+            ],
+            "Start_Dismissal": [
+              "Lane_Personnel",
+              4
+            ],
+            "Task_CheckCompleteness": [
+              "Lane_Personnel",
+              1
+            ],
+            "Gateway_Complete": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_WaitDocument": [
+              "Lane_Personnel",
+              3
+            ],
+            "End_Updated": [
+              "Lane_Personnel",
+              1
+            ]
+          },
+          "gap": 24,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            80
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              459.0,
+              76.0,
+              16
+            ],
+            [
+              444.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              485.0,
+              492.0,
+              16,
+              117.0
+            ],
+            [
+              518.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              722.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              926.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              188.0,
+              199.0,
+              76.0,
+              16
+            ],
+            [
+              444.0,
+              199.0,
+              31.0,
+              16
+            ],
+            [
+              188.0,
+              965.0,
+              76.0,
+              16
+            ],
+            [
+              444.0,
+              965.0,
+              24.0,
+              16
+            ],
+            [
+              648.0,
+              965.0,
+              24.0,
+              16
+            ],
+            [
+              1000.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              967.0,
+              492.0,
+              16,
+              263.0
+            ]
+          ],
+          "compact_information_bays": true,
+          "responsive_tasks": true,
+          "row_skyline": {
+            "moves": [
+              {
+                "row": [
+                  "Lane_Personnel",
+                  0
+                ],
+                "dy": -14.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  1
+                ],
+                "dy": -50.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  2
+                ],
+                "dy": -130.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  3
+                ],
+                "dy": -216.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  4
+                ],
+                "dy": -296.0
+              }
+            ],
+            "old_lane_height": 1062.0,
+            "new_lane_height": 740.0,
+            "method": "occupied-column envelopes; measured captions; 8px object and corridor separation; fixed role membership"
+          },
+          "layering": "NETWORK_SIMPLEX",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [
+            [
+              1,
+              2
+            ]
+          ],
+          "scenario_order": [
+            [
+              "End_Current",
+              "Start_Hire",
+              "Task_CreateFile"
+            ],
+            [
+              "End_NoUpdate",
+              "End_Updated",
+              "Gateway_Complete",
+              "Gateway_Include",
+              "Start_Update",
+              "Task_CheckCompleteness",
+              "Task_CheckNeed",
+              "Task_UpdateFile",
+              "Task_WaitDocument"
+            ],
+            [
+              "End_Archived",
+              "Start_Dismissal",
+              "Task_Archive",
+              "Task_CloseFile"
+            ]
+          ],
+          "handoff_groups": {
+            "Start_Update": "Start_Update",
+            "Task_CheckNeed": "Task_CheckNeed",
+            "Gateway_Include": "Gateway_Include",
+            "Task_UpdateFile": "Task_UpdateFile",
+            "Task_CreateFile": "Task_CreateFile",
+            "Start_Hire": "Start_Hire",
+            "End_Current": "End_Current",
+            "End_NoUpdate": "End_NoUpdate",
+            "Task_CloseFile": "Task_CloseFile",
+            "Task_Archive": "Task_Archive",
+            "End_Archived": "End_Archived",
+            "Start_Dismissal": "Start_Dismissal",
+            "Task_CheckCompleteness": "Task_CheckCompleteness",
+            "Gateway_Complete": "Gateway_Complete",
+            "Task_WaitDocument": "Task_WaitDocument",
+            "End_Updated": "End_Updated"
+          },
+          "semantic_spines": [
+            {
+              "main_path": [
+                "Start_Dismissal",
+                "Task_CloseFile",
+                "Task_Archive",
+                "End_Archived"
+              ],
+              "side_nodes": [],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            },
+            {
+              "main_path": [
+                "Start_Hire",
+                "Task_CreateFile",
+                "End_Current"
+              ],
+              "side_nodes": [],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            },
+            {
+              "main_path": [
+                "Start_Update",
+                "Task_CheckNeed",
+                "Gateway_Include",
+                "Task_UpdateFile",
+                "Task_CheckCompleteness",
+                "Gateway_Complete",
+                "End_Updated"
+              ],
+              "side_nodes": [
+                "End_NoUpdate",
+                "Task_WaitDocument"
+              ],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            }
+          ]
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 1,
+          "initial_quality": [
+            0,
+            2,
+            838.4
+          ],
+          "final_quality": [
+            0,
+            2,
+            838.4
+          ],
+          "refinements": [],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 1,
+            "initial_quality": [
+              1,
+              6,
+              1480.28
+            ],
+            "final_quality": [
+              1,
+              6,
+              1480.28
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataOutputAssociation_0a19uzl",
+            "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1kirtse",
+            "DataOutputAssociation_04l1gny",
+            "DataInputAssociation_1baszxx",
+            "DataOutputAssociation_1n362rp",
+            "DataOutputAssociation_1xx268g",
+            "A_Composition_Check",
+            "A_File_Archive"
+          ],
+          "straight_information_links": [
+            "A_File_Close"
+          ]
+        }
+      },
+      {
+        "candidate": "semantic-network_simplex-gap-40",
+        "status": "verified",
+        "rank": [
+          1.124153,
+          [
+            0,
+            7,
+            2371.68
+          ],
+          9.8911
+        ],
+        "seconds": 0.448,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 3,
+          "forward_hop_excess": 0.000678,
+          "long_forward_hops": 0,
+          "long_forward_hop_ids": [],
+          "bends_per_flow": 0.5,
+          "graph_return_count": 1,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 9.8911,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 948.6109549240088
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "Task_CheckNeed": "Gateway_Include",
+            "Task_CheckCompleteness": "Gateway_Complete"
+          },
+          "main_macros": [
+            "Start_Hire",
+            "Task_CreateFile",
+            "End_Current",
+            "Start_Update",
+            "Task_CheckNeed",
+            "Task_UpdateFile",
+            "Task_CheckCompleteness",
+            "End_Updated",
+            "Start_Dismissal",
+            "Task_CloseFile",
+            "Task_Archive",
+            "End_Archived"
+          ],
+          "feedback_edges": [
+            "F11"
+          ],
+          "document_owners": {
+            "DR_Inventory": "Task_CreateFile",
+            "DR_File_Update": "Task_UpdateFile",
+            "DR_Composition_Check": "Task_CreateFile",
+            "DR_File": "Task_CreateFile",
+            "DR_Inventory_Update": "Task_UpdateFile",
+            "DR_Certifier": "Task_CloseFile",
+            "DR_Inventory_Close": "Task_CloseFile",
+            "DR_File_Close": "Task_CloseFile",
+            "DR_Composition_Close": "Task_CloseFile",
+            "DR_File_Archive": "Task_Archive"
+          },
+          "role_order": [
+            "Lane_Personnel"
+          ],
+          "routing_priority": [
+            "F1",
+            "F12",
+            "F3",
+            "F10",
+            "F13",
+            "F7",
+            "F4",
+            "F8",
+            "F14",
+            "F2",
+            "F6",
+            "F9",
+            "F5",
+            "F11"
+          ],
+          "reserved_captions": {
+            "Start_Update": [
+              100.0,
+              662.0,
+              140,
+              56
+            ],
+            "Start_Hire": [
+              100.0,
+              304.0,
+              140,
+              28
+            ],
+            "Start_Dismissal": [
+              100.0,
+              1371.0,
+              140,
+              42
+            ],
+            "DR_File_Archive": [
+              560.5,
+              1415.0,
+              102,
+              28
+            ],
+            "DR_Certifier": [
+              340.0,
+              1415.5,
+              103,
+              27
+            ],
+            "DR_Composition_Close": [
+              341.0,
+              1249.0,
+              101,
+              28
+            ],
+            "DR_File_Close": [
+              160.5,
+              1249.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Close": [
+              515.5,
+              1249.0,
+              112,
+              28
+            ],
+            "DR_Composition_Check": [
+              341.0,
+              348.0,
+              101,
+              28
+            ],
+            "DR_File": [
+              340.5,
+              182.0,
+              102,
+              28
+            ],
+            "DR_Inventory": [
+              515.5,
+              348.0,
+              112,
+              28
+            ],
+            "DR_File_Update": [
+              576.5,
+              951.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Update": [
+              571.5,
+              785.0,
+              112,
+              28
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                254.0,
+                370.0
+              ],
+              [
+                393.5,
+                525.0
+              ],
+              [
+                465.0,
+                590.0
+              ],
+              [
+                540.0,
+                606.0
+              ],
+              [
+                598.0,
+                738.0
+              ],
+              [
+                748.0,
+                826.0
+              ],
+              [
+                891.0,
+                981.0
+              ],
+              [
+                962.0,
+                997.0
+              ],
+              [
+                1034.0,
+                1013.0
+              ]
+            ],
+            "y": [
+              [
+                138.0,
+                279.0
+              ],
+              [
+                274.0,
+                455.0
+              ],
+              [
+                327.8333333333333,
+                637.0
+              ],
+              [
+                370.0,
+                882.0
+              ],
+              [
+                418.0,
+                1078.0
+              ],
+              [
+                574.0,
+                1346.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "Start_Update": 0,
+            "Task_CheckNeed": 1,
+            "Gateway_Include": 2,
+            "Task_UpdateFile": 4,
+            "Task_CreateFile": 1,
+            "Start_Hire": 0,
+            "End_Current": 2,
+            "End_NoUpdate": 3,
+            "Task_CloseFile": 1,
+            "Task_Archive": 3,
+            "End_Archived": 5,
+            "Start_Dismissal": 0,
+            "Task_CheckCompleteness": 6,
+            "Gateway_Complete": 7,
+            "Task_WaitDocument": 9,
+            "End_Updated": 8
+          },
+          "axis_rows": {
+            "Start_Update": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_CheckNeed": [
+              "Lane_Personnel",
+              2
+            ],
+            "Gateway_Include": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_UpdateFile": [
+              "Lane_Personnel",
+              3
+            ],
+            "Task_CreateFile": [
+              "Lane_Personnel",
+              0
+            ],
+            "Start_Hire": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_Current": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_NoUpdate": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_CloseFile": [
+              "Lane_Personnel",
+              5
+            ],
+            "Task_Archive": [
+              "Lane_Personnel",
+              5
+            ],
+            "End_Archived": [
+              "Lane_Personnel",
+              5
+            ],
+            "Start_Dismissal": [
+              "Lane_Personnel",
+              5
+            ],
+            "Task_CheckCompleteness": [
+              "Lane_Personnel",
+              3
+            ],
+            "Gateway_Complete": [
+              "Lane_Personnel",
+              3
+            ],
+            "Task_WaitDocument": [
+              "Lane_Personnel",
+              4
+            ],
+            "End_Updated": [
+              "Lane_Personnel",
+              2
+            ]
+          },
+          "gap": 40,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            80
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              629.0,
+              92.0,
+              16
+            ],
+            [
+              460.0,
+              629.0,
+              40.0,
+              16
+            ],
+            [
+              696.0,
+              874.0,
+              40.0,
+              16
+            ],
+            [
+              916.0,
+              874.0,
+              40.0,
+              16
+            ],
+            [
+              188.0,
+              271.0,
+              92.0,
+              16
+            ],
+            [
+              460.0,
+              271.0,
+              47.0,
+              16
+            ],
+            [
+              188.0,
+              1338.0,
+              92.0,
+              16
+            ],
+            [
+              460.0,
+              1338.0,
+              40.0,
+              16
+            ],
+            [
+              680.0,
+              1338.0,
+              40.0,
+              16
+            ]
+          ],
+          "compact_information_bays": false,
+          "responsive_tasks": true,
+          "layering": "NETWORK_SIMPLEX",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [
+            [
+              1,
+              2
+            ]
+          ],
+          "scenario_order": [
+            [
+              "End_Current",
+              "Start_Hire",
+              "Task_CreateFile"
+            ],
+            [
+              "End_NoUpdate",
+              "End_Updated",
+              "Gateway_Complete",
+              "Gateway_Include",
+              "Start_Update",
+              "Task_CheckCompleteness",
+              "Task_CheckNeed",
+              "Task_UpdateFile",
+              "Task_WaitDocument"
+            ],
+            [
+              "End_Archived",
+              "Start_Dismissal",
+              "Task_Archive",
+              "Task_CloseFile"
+            ]
+          ],
+          "handoff_groups": {
+            "Start_Update": "Start_Update",
+            "Task_CheckNeed": "Task_CheckNeed",
+            "Gateway_Include": "Gateway_Include",
+            "Task_UpdateFile": "Task_UpdateFile",
+            "Task_CreateFile": "Task_CreateFile",
+            "Start_Hire": "Start_Hire",
+            "End_Current": "End_Current",
+            "End_NoUpdate": "End_NoUpdate",
+            "Task_CloseFile": "Task_CloseFile",
+            "Task_Archive": "Task_Archive",
+            "End_Archived": "End_Archived",
+            "Start_Dismissal": "Start_Dismissal",
+            "Task_CheckCompleteness": "Task_CheckCompleteness",
+            "Gateway_Complete": "Gateway_Complete",
+            "Task_WaitDocument": "Task_WaitDocument",
+            "End_Updated": "End_Updated"
+          },
+          "semantic_spines": []
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 1,
+          "initial_quality": [
+            1,
+            6,
+            1805.5
+          ],
+          "final_quality": [
+            0,
+            7,
+            1699.9
+          ],
+          "refinements": [
+            {
+              "edge": "F10",
+              "before": [
+                1633.0,
+                1,
+                0,
+                133.0
+              ],
+              "after": [
+                247.0,
+                0,
+                1,
+                177.0
+              ]
+            },
+            {
+              "edge": "F11",
+              "before": [
+                667.0,
+                0,
+                2,
+                527.0
+              ],
+              "after": [
+                517.4,
+                0,
+                2,
+                377.4000000000001
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 0,
+            "initial_quality": [
+              1,
+              9,
+              2453.49
+            ],
+            "final_quality": [
+              1,
+              9,
+              2453.49
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataOutputAssociation_0a19uzl",
+            "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1h0ktpn",
+            "DataOutputAssociation_1kirtse",
+            "DataOutputAssociation_04l1gny",
+            "DataInputAssociation_1baszxx",
+            "DataOutputAssociation_1n362rp",
+            "DataOutputAssociation_1xx268g",
+            "A_Composition_Check",
+            "A_File_Archive"
+          ],
+          "straight_information_links": [
+            "A_File_Close"
+          ]
+        }
+      },
+      {
+        "candidate": "semantic-longest_path-gap-24",
+        "status": "verified",
+        "rank": [
+          0.05,
+          [
+            0,
+            4,
+            1359.97
+          ],
+          5.2761
+        ],
+        "seconds": 0.33,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 2,
+          "forward_hop_excess": 0.0,
+          "long_forward_hops": 0,
+          "long_forward_hop_ids": [],
+          "bends_per_flow": 0.142857,
+          "graph_return_count": 1,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 5.2761,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "Task_CheckNeed": "Gateway_Include",
+            "Task_CheckCompleteness": "Gateway_Complete"
+          },
+          "main_macros": [
+            "Start_Hire",
+            "Task_CreateFile",
+            "End_Current",
+            "Start_Update",
+            "Task_CheckNeed",
+            "Task_UpdateFile",
+            "Task_CheckCompleteness",
+            "End_Updated",
+            "Start_Dismissal",
+            "Task_CloseFile",
+            "Task_Archive",
+            "End_Archived"
+          ],
+          "feedback_edges": [
+            "F11"
+          ],
+          "document_owners": {
+            "DR_Inventory": "Task_CreateFile",
+            "DR_File_Update": "Task_UpdateFile",
+            "DR_Composition_Check": "Task_CheckNeed",
+            "DR_File": "Task_CreateFile",
+            "DR_Inventory_Update": "Task_UpdateFile",
+            "DR_Certifier": "Task_CloseFile",
+            "DR_Inventory_Close": "Task_CloseFile",
+            "DR_File_Close": "Task_CloseFile",
+            "DR_Composition_Close": "Task_CloseFile",
+            "DR_File_Archive": "Task_Archive"
+          },
+          "role_order": [
+            "Lane_Personnel"
+          ],
+          "routing_priority": [
+            "F9",
+            "F6",
+            "F1",
+            "F12",
+            "F3",
+            "F5",
+            "F13",
+            "F7",
+            "F4",
+            "F8",
+            "F14",
+            "F2",
+            "F10",
+            "F11"
+          ],
+          "reserved_captions": {
+            "Start_Update": [
+              100.0,
+              442.0,
+              140,
+              56
+            ],
+            "Start_Hire": [
+              100.0,
+              218.0,
+              140,
+              28
+            ],
+            "Start_Dismissal": [
+              100.0,
+              702.0,
+              140,
+              42
+            ],
+            "DR_File_Archive": [
+              528.5,
+              746.0,
+              102,
+              28
+            ],
+            "DR_Composition_Check": [
+              325.0,
+              320.0,
+              101,
+              28
+            ],
+            "DR_Certifier": [
+              324.0,
+              746.5,
+              103,
+              27
+            ],
+            "DR_Composition_Close": [
+              325.0,
+              580.0,
+              101,
+              28
+            ],
+            "DR_File_Close": [
+              144.5,
+              580.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Close": [
+              499.5,
+              580.0,
+              112,
+              28
+            ],
+            "DR_File": [
+              324.5,
+              262.0,
+              102,
+              28
+            ],
+            "DR_Inventory": [
+              319.5,
+              96.0,
+              112,
+              28
+            ],
+            "DR_File_Update": [
+              602.5,
+              486.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Update": [
+              597.5,
+              320.0,
+              112,
+              28
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                302.0,
+                354.0
+              ],
+              [
+                441.0,
+                493.0
+              ],
+              [
+                506.0,
+                558.0
+              ],
+              [
+                580.0,
+                632.0
+              ],
+              [
+                638.0,
+                690.0
+              ],
+              [
+                784.0,
+                836.0
+              ],
+              [
+                923.0,
+                975.0
+              ],
+              [
+                990.0,
+                1042.0
+              ]
+            ],
+            "y": [
+              [
+                207.0,
+                193.0
+              ],
+              [
+                467.0,
+                417.0
+              ],
+              [
+                627.0,
+                497.0
+              ],
+              [
+                793.0,
+                577.0
+              ],
+              [
+                973.0,
+                677.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "Start_Update": 0,
+            "Task_CheckNeed": 1,
+            "Gateway_Include": 2,
+            "Task_UpdateFile": 4,
+            "Task_CreateFile": 1,
+            "Start_Hire": 0,
+            "End_Current": 2,
+            "End_NoUpdate": 2,
+            "Task_CloseFile": 1,
+            "Task_Archive": 3,
+            "End_Archived": 5,
+            "Start_Dismissal": 0,
+            "Task_CheckCompleteness": 6,
+            "Gateway_Complete": 7,
+            "Task_WaitDocument": 7,
+            "End_Updated": 8
+          },
+          "axis_rows": {
+            "Start_Update": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_CheckNeed": [
+              "Lane_Personnel",
+              1
+            ],
+            "Gateway_Include": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_UpdateFile": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_CreateFile": [
+              "Lane_Personnel",
+              0
+            ],
+            "Start_Hire": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_Current": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_NoUpdate": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_CloseFile": [
+              "Lane_Personnel",
+              4
+            ],
+            "Task_Archive": [
+              "Lane_Personnel",
+              4
+            ],
+            "End_Archived": [
+              "Lane_Personnel",
+              4
+            ],
+            "Start_Dismissal": [
+              "Lane_Personnel",
+              4
+            ],
+            "Task_CheckCompleteness": [
+              "Lane_Personnel",
+              1
+            ],
+            "Gateway_Complete": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_WaitDocument": [
+              "Lane_Personnel",
+              3
+            ],
+            "End_Updated": [
+              "Lane_Personnel",
+              1
+            ]
+          },
+          "gap": 24,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            80
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              459.0,
+              76.0,
+              16
+            ],
+            [
+              444.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              485.0,
+              492.0,
+              16,
+              117.0
+            ],
+            [
+              518.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              722.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              926.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              188.0,
+              199.0,
+              76.0,
+              16
+            ],
+            [
+              444.0,
+              199.0,
+              31.0,
+              16
+            ],
+            [
+              188.0,
+              965.0,
+              76.0,
+              16
+            ],
+            [
+              444.0,
+              965.0,
+              24.0,
+              16
+            ],
+            [
+              648.0,
+              965.0,
+              24.0,
+              16
+            ],
+            [
+              1000.0,
+              459.0,
+              24.0,
+              16
+            ],
+            [
+              967.0,
+              492.0,
+              16,
+              263.0
+            ]
+          ],
+          "compact_information_bays": true,
+          "responsive_tasks": true,
+          "row_skyline": {
+            "moves": [
+              {
+                "row": [
+                  "Lane_Personnel",
+                  0
+                ],
+                "dy": -14.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  1
+                ],
+                "dy": -50.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  2
+                ],
+                "dy": -130.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  3
+                ],
+                "dy": -216.0
+              },
+              {
+                "row": [
+                  "Lane_Personnel",
+                  4
+                ],
+                "dy": -296.0
+              }
+            ],
+            "old_lane_height": 1062.0,
+            "new_lane_height": 740.0,
+            "method": "occupied-column envelopes; measured captions; 8px object and corridor separation; fixed role membership"
+          },
+          "layering": "LONGEST_PATH",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [
+            [
+              1,
+              2
+            ]
+          ],
+          "scenario_order": [
+            [
+              "End_Current",
+              "Start_Hire",
+              "Task_CreateFile"
+            ],
+            [
+              "End_NoUpdate",
+              "End_Updated",
+              "Gateway_Complete",
+              "Gateway_Include",
+              "Start_Update",
+              "Task_CheckCompleteness",
+              "Task_CheckNeed",
+              "Task_UpdateFile",
+              "Task_WaitDocument"
+            ],
+            [
+              "End_Archived",
+              "Start_Dismissal",
+              "Task_Archive",
+              "Task_CloseFile"
+            ]
+          ],
+          "handoff_groups": {
+            "Start_Update": "Start_Update",
+            "Task_CheckNeed": "Task_CheckNeed",
+            "Gateway_Include": "Gateway_Include",
+            "Task_UpdateFile": "Task_UpdateFile",
+            "Task_CreateFile": "Task_CreateFile",
+            "Start_Hire": "Start_Hire",
+            "End_Current": "End_Current",
+            "End_NoUpdate": "End_NoUpdate",
+            "Task_CloseFile": "Task_CloseFile",
+            "Task_Archive": "Task_Archive",
+            "End_Archived": "End_Archived",
+            "Start_Dismissal": "Start_Dismissal",
+            "Task_CheckCompleteness": "Task_CheckCompleteness",
+            "Gateway_Complete": "Gateway_Complete",
+            "Task_WaitDocument": "Task_WaitDocument",
+            "End_Updated": "End_Updated"
+          },
+          "semantic_spines": [
+            {
+              "main_path": [
+                "Start_Dismissal",
+                "Task_CloseFile",
+                "Task_Archive",
+                "End_Archived"
+              ],
+              "side_nodes": [],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            },
+            {
+              "main_path": [
+                "Start_Hire",
+                "Task_CreateFile",
+                "End_Current"
+              ],
+              "side_nodes": [],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            },
+            {
+              "main_path": [
+                "Start_Update",
+                "Task_CheckNeed",
+                "Gateway_Include",
+                "Task_UpdateFile",
+                "Task_CheckCompleteness",
+                "Gateway_Complete",
+                "End_Updated"
+              ],
+              "side_nodes": [
+                "End_NoUpdate",
+                "Task_WaitDocument"
+              ],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            }
+          ]
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 1,
+          "initial_quality": [
+            0,
+            2,
+            838.4
+          ],
+          "final_quality": [
+            0,
+            2,
+            838.4
+          ],
+          "refinements": [],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 1,
+            "initial_quality": [
+              1,
+              6,
+              1480.28
+            ],
+            "final_quality": [
+              1,
+              6,
+              1480.28
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataOutputAssociation_0a19uzl",
+            "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1kirtse",
+            "DataOutputAssociation_04l1gny",
+            "DataInputAssociation_1baszxx",
+            "DataOutputAssociation_1n362rp",
+            "DataOutputAssociation_1xx268g",
+            "A_Composition_Check",
+            "A_File_Archive"
+          ],
+          "straight_information_links": [
+            "A_File_Close"
+          ]
+        }
+      },
+      {
+        "candidate": "semantic-longest_path-gap-40",
+        "status": "verified",
+        "rank": [
+          1.273009,
+          [
+            0,
+            6,
+            2850.99
+          ],
+          9.8522
+        ],
+        "seconds": 0.343,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 2,
+          "forward_hop_excess": 0.281613,
+          "long_forward_hops": 1,
+          "long_forward_hop_ids": [
+            "F5"
+          ],
+          "bends_per_flow": 0.428571,
+          "graph_return_count": 1,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 9.8522,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 897.7185947027513
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "Task_CheckNeed": "Gateway_Include",
+            "Task_CheckCompleteness": "Gateway_Complete"
+          },
+          "main_macros": [
+            "Start_Hire",
+            "Task_CreateFile",
+            "End_Current",
+            "Start_Update",
+            "Task_CheckNeed",
+            "Task_UpdateFile",
+            "Task_CheckCompleteness",
+            "End_Updated",
+            "Start_Dismissal",
+            "Task_CloseFile",
+            "Task_Archive",
+            "End_Archived"
+          ],
+          "feedback_edges": [
+            "F11"
+          ],
+          "document_owners": {
+            "DR_Inventory": "Task_CreateFile",
+            "DR_File_Update": "Task_UpdateFile",
+            "DR_Composition_Check": "Task_CreateFile",
+            "DR_File": "Task_CreateFile",
+            "DR_Inventory_Update": "Task_UpdateFile",
+            "DR_Certifier": "Task_CloseFile",
+            "DR_Inventory_Close": "Task_CloseFile",
+            "DR_File_Close": "Task_CloseFile",
+            "DR_Composition_Close": "Task_CloseFile",
+            "DR_File_Archive": "Task_Archive"
+          },
+          "role_order": [
+            "Lane_Personnel"
+          ],
+          "routing_priority": [
+            "F9",
+            "F6",
+            "F1",
+            "F12",
+            "F3",
+            "F10",
+            "F13",
+            "F7",
+            "F4",
+            "F8",
+            "F14",
+            "F2",
+            "F5",
+            "F11"
+          ],
+          "reserved_captions": {
+            "Start_Update": [
+              100.0,
+              742.0,
+              140,
+              56
+            ],
+            "Start_Hire": [
+              100.0,
+              304.0,
+              140,
+              28
+            ],
+            "Start_Dismissal": [
+              100.0,
+              1206.0,
+              140,
+              42
+            ],
+            "DR_File_Archive": [
+              560.5,
+              1250.0,
+              102,
+              28
+            ],
+            "DR_Certifier": [
+              340.0,
+              1250.5,
+              103,
+              27
+            ],
+            "DR_Composition_Close": [
+              341.0,
+              1084.0,
+              101,
+              28
+            ],
+            "DR_File_Close": [
+              160.5,
+              1084.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Close": [
+              515.5,
+              1084.0,
+              112,
+              28
+            ],
+            "DR_Composition_Check": [
+              341.0,
+              348.0,
+              101,
+              28
+            ],
+            "DR_File": [
+              340.5,
+              182.0,
+              102,
+              28
+            ],
+            "DR_Inventory": [
+              515.5,
+              348.0,
+              112,
+              28
+            ],
+            "DR_File_Update": [
+              650.5,
+              786.0,
+              102,
+              28
+            ],
+            "DR_Inventory_Update": [
+              645.5,
+              620.0,
+              112,
+              28
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                254.0,
+                370.0
+              ],
+              [
+                393.5,
+                525.0
+              ],
+              [
+                462.0,
+                590.0
+              ],
+              [
+                540.0,
+                680.0
+              ],
+              [
+                598.0,
+                738.0
+              ],
+              [
+                748.0,
+                900.0
+              ],
+              [
+                891.0,
+                1055.0
+              ],
+              [
+                962.0,
+                1138.0
+              ],
+              [
+                1034.0,
+                1154.0
+              ]
+            ],
+            "y": [
+              [
+                138.0,
+                279.0
+              ],
+              [
+                274.0,
+                455.0
+              ],
+              [
+                350.0,
+                717.0
+              ],
+              [
+                446.0,
+                913.0
+              ],
+              [
+                602.0,
+                1181.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "Start_Update": 0,
+            "Task_CheckNeed": 1,
+            "Gateway_Include": 2,
+            "Task_UpdateFile": 4,
+            "Task_CreateFile": 1,
+            "Start_Hire": 0,
+            "End_Current": 2,
+            "End_NoUpdate": 8,
+            "Task_CloseFile": 1,
+            "Task_Archive": 3,
+            "End_Archived": 5,
+            "Start_Dismissal": 0,
+            "Task_CheckCompleteness": 6,
+            "Gateway_Complete": 7,
+            "Task_WaitDocument": 9,
+            "End_Updated": 8
+          },
+          "axis_rows": {
+            "Start_Update": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_CheckNeed": [
+              "Lane_Personnel",
+              2
+            ],
+            "Gateway_Include": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_UpdateFile": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_CreateFile": [
+              "Lane_Personnel",
+              0
+            ],
+            "Start_Hire": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_Current": [
+              "Lane_Personnel",
+              0
+            ],
+            "End_NoUpdate": [
+              "Lane_Personnel",
+              1
+            ],
+            "Task_CloseFile": [
+              "Lane_Personnel",
+              4
+            ],
+            "Task_Archive": [
+              "Lane_Personnel",
+              4
+            ],
+            "End_Archived": [
+              "Lane_Personnel",
+              4
+            ],
+            "Start_Dismissal": [
+              "Lane_Personnel",
+              4
+            ],
+            "Task_CheckCompleteness": [
+              "Lane_Personnel",
+              2
+            ],
+            "Gateway_Complete": [
+              "Lane_Personnel",
+              2
+            ],
+            "Task_WaitDocument": [
+              "Lane_Personnel",
+              3
+            ],
+            "End_Updated": [
+              "Lane_Personnel",
+              2
+            ]
+          },
+          "gap": 40,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            80
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              709.0,
+              92.0,
+              16
+            ],
+            [
+              460.0,
+              709.0,
+              40.0,
+              16
+            ],
+            [
+              550.0,
+              709.0,
+              40.0,
+              16
+            ],
+            [
+              770.0,
+              709.0,
+              40.0,
+              16
+            ],
+            [
+              990.0,
+              709.0,
+              40.0,
+              16
+            ],
+            [
+              188.0,
+              271.0,
+              92.0,
+              16
+            ],
+            [
+              460.0,
+              271.0,
+              47.0,
+              16
+            ],
+            [
+              188.0,
+              1173.0,
+              92.0,
+              16
+            ],
+            [
+              460.0,
+              1173.0,
+              40.0,
+              16
+            ],
+            [
+              680.0,
+              1173.0,
+              40.0,
+              16
+            ],
+            [
+              1080.0,
+              709.0,
+              40.0,
+              16
+            ]
+          ],
+          "compact_information_bays": false,
+          "responsive_tasks": true,
+          "layering": "LONGEST_PATH",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [
+            [
+              1,
+              2
+            ]
+          ],
+          "scenario_order": [
+            [
+              "End_Current",
+              "Start_Hire",
+              "Task_CreateFile"
+            ],
+            [
+              "End_NoUpdate",
+              "End_Updated",
+              "Gateway_Complete",
+              "Gateway_Include",
+              "Start_Update",
+              "Task_CheckCompleteness",
+              "Task_CheckNeed",
+              "Task_UpdateFile",
+              "Task_WaitDocument"
+            ],
+            [
+              "End_Archived",
+              "Start_Dismissal",
+              "Task_Archive",
+              "Task_CloseFile"
+            ]
+          ],
+          "handoff_groups": {
+            "Start_Update": "Start_Update",
+            "Task_CheckNeed": "Task_CheckNeed",
+            "Gateway_Include": "Gateway_Include",
+            "Task_UpdateFile": "Task_UpdateFile",
+            "Task_CreateFile": "Task_CreateFile",
+            "Start_Hire": "Start_Hire",
+            "End_Current": "End_Current",
+            "End_NoUpdate": "End_NoUpdate",
+            "Task_CloseFile": "Task_CloseFile",
+            "Task_Archive": "Task_Archive",
+            "End_Archived": "End_Archived",
+            "Start_Dismissal": "Start_Dismissal",
+            "Task_CheckCompleteness": "Task_CheckCompleteness",
+            "Gateway_Complete": "Gateway_Complete",
+            "Task_WaitDocument": "Task_WaitDocument",
+            "End_Updated": "End_Updated"
+          },
+          "semantic_spines": []
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 0,
+          "initial_quality": [
+            1,
+            4,
+            2162.0
+          ],
+          "final_quality": [
+            0,
+            6,
+            2123.4
+          ],
+          "refinements": [
+            {
+              "edge": "F10",
+              "before": [
+                1633.0,
+                1,
+                0,
+                133.0
+              ],
+              "after": [
+                384.0,
+                0,
+                2,
+                244.0
+              ]
+            },
+            {
+              "edge": "F11",
+              "before": [
+                734.0,
+                0,
+                2,
+                594.0
+              ],
+              "after": [
+                584.4,
+                0,
+                2,
+                444.4000000000001
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 0,
+            "initial_quality": [
+              1,
+              8,
+              2956.3
+            ],
+            "final_quality": [
+              1,
+              8,
+              2956.3
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataOutputAssociation_0a19uzl",
+            "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1h0ktpn",
+            "DataOutputAssociation_1kirtse",
+            "DataOutputAssociation_04l1gny",
+            "DataInputAssociation_1baszxx",
+            "DataOutputAssociation_1n362rp",
+            "DataOutputAssociation_1xx268g",
+            "A_Composition_Check",
+            "A_File_Archive"
+          ],
+          "straight_information_links": [
+            "A_File_Close"
+          ]
+        }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1",
+        "status": "verified",
+        "rank": [
+          0.68983,
+          [
+            1,
+            11,
+            4062.05
+          ],
+          5.0956
+        ],
+        "seconds": 1.034,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 3,
+          "forward_hop_excess": 0.161395,
+          "long_forward_hops": 3,
+          "long_forward_hop_ids": [
+            "F5",
+            "F7",
+            "F14"
+          ],
+          "bends_per_flow": 0.785714,
+          "graph_return_count": 1,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 5.0956,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "family": "human-patterns",
+          "chain_depth": 2,
+          "secondary_rows": 1,
+          "task_width": 220.0,
+          "column_stride": 340.0,
+          "body_x": 170,
+          "columns": 5,
+          "paired_decisions": 2,
+          "main_macros": [
+            "Start_Dismissal",
+            "Task_CloseFile",
+            "Task_Archive",
+            "End_Archived",
+            "Start_Hire",
+            "Task_CreateFile",
+            "End_Current",
+            "Start_Update",
+            "Task_CheckNeed",
+            "Task_UpdateFile",
+            "Task_CheckCompleteness",
+            "End_Updated"
+          ],
+          "feedback_edges": [
+            "F11"
+          ],
+          "slots": {
+            "Start_Dismissal": [
+              0,
+              0
+            ],
+            "Task_CloseFile": [
+              0,
+              0
+            ],
+            "Task_Archive": [
+              0,
+              1
+            ],
+            "End_Archived": [
+              1,
+              0
+            ],
+            "Start_Hire": [
+              2,
+              0
+            ],
+            "Task_CreateFile": [
+              2,
+              0
+            ],
+            "End_Current": [
+              2,
+              1
+            ],
+            "Start_Update": [
+              3,
+              0
+            ],
+            "Task_CheckNeed": [
+              3,
+              0
+            ],
+            "Task_UpdateFile": [
+              3,
+              1
+            ],
+            "Task_CheckCompleteness": [
+              4,
+              0
+            ],
+            "End_Updated": [
+              4,
+              1
+            ],
+            "Task_WaitDocument": [
+              4,
+              2
+            ],
+            "End_NoUpdate": [
+              3,
+              2
+            ]
+          },
+          "source_reference_models": 32,
+          "pairs": {
+            "Task_CheckCompleteness": "Gateway_Complete",
+            "Task_CheckNeed": "Gateway_Include"
+          },
+          "document_label_anchors": {
+            "DR_Composition_Check": [
+              1075.0,
+              191.0,
+              80,
+              58
+            ],
+            "DR_File": [
+              893.0,
+              251,
+              110,
+              45
+            ],
+            "DR_Inventory": [
+              1048.0,
+              251,
+              110,
+              45
+            ],
+            "DR_File_Update": [
+              1415.0,
+              381.0,
+              80,
+              58
+            ],
+            "DR_Inventory_Update": [
+              1233.0,
+              441,
+              110,
+              45
+            ],
+            "DR_Certifier": [
+              395.0,
+              191.0,
+              80,
+              58
+            ],
+            "DR_Composition_Close": [
+              213.0,
+              251,
+              110,
+              45
+            ],
+            "DR_File_Close": [
+              368.0,
+              251,
+              110,
+              45
+            ],
+            "DR_Inventory_Close": [
+              523.0,
+              251,
+              110,
+              45
+            ],
+            "DR_File_Archive": [
+              395.0,
+              381.0,
+              80,
+              58
+            ]
+          },
+          "document_owners": {
+            "DR_Inventory": "Task_CreateFile",
+            "DR_File_Update": "Task_UpdateFile",
+            "DR_Composition_Check": "Task_CreateFile",
+            "DR_File": "Task_CreateFile",
+            "DR_Inventory_Update": "Task_UpdateFile",
+            "DR_Certifier": "Task_CloseFile",
+            "DR_Inventory_Close": "Task_CloseFile",
+            "DR_File_Close": "Task_CloseFile",
+            "DR_Composition_Close": "Task_CloseFile",
+            "DR_File_Archive": "Task_Archive"
+          },
+          "role_order": [
+            "Lane_Personnel"
+          ],
+          "return_reserves": {
+            "Lane_Personnel": 0
+          },
+          "placement_optimization": {
+            "initial_cost": 234.0,
+            "final_cost": 213.20000000000002,
+            "moves": 2,
+            "iterations": 1600,
+            "seed": 23,
+            "free_spine": false,
+            "spine_moves": 0,
+            "scenario_blocks": []
+          }
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 2,
+          "initial_quality": [
+            3,
+            20,
+            4375.2
+          ],
+          "final_quality": [
+            0,
+            11,
+            3482.4
+          ],
+          "refinements": [
+            {
+              "edge": "F5",
+              "before": [
+                6058.0,
+                3,
+                5,
+                1022.0
+              ],
+              "after": [
+                2054.2,
+                1,
+                1,
+                484.20000000000005
+              ]
+            },
+            {
+              "edge": "F11",
+              "before": [
+                1376.0,
+                0,
+                4,
+                1096.0
+              ],
+              "after": [
+                495.0,
+                0,
+                1,
+                425.0
+              ]
+            },
+            {
+              "edge": "F7",
+              "before": [
+                2346.0,
+                1,
+                5,
+                496.0
+              ],
+              "after": [
+                1022.0,
+                0,
+                3,
+                812.0
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 0,
+            "initial_quality": [
+              1,
+              11,
+              4024.85
+            ],
+            "final_quality": [
+              1,
+              11,
+              4024.85
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataOutputAssociation_0a19uzl",
+            "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1kirtse",
+            "DataOutputAssociation_04l1gny",
+            "DataInputAssociation_1baszxx",
+            "DataOutputAssociation_1n362rp",
+            "DataOutputAssociation_1xx268g",
+            "A_File_Close",
+            "A_File_Archive"
+          ],
+          "straight_information_links": []
+        }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2",
+        "status": "verified",
+        "rank": [
+          0.68983,
+          [
+            1,
+            11,
+            4062.05
+          ],
+          5.0956
+        ],
+        "seconds": 0.641,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 3,
+          "forward_hop_excess": 0.161395,
+          "long_forward_hops": 3,
+          "long_forward_hop_ids": [
+            "F5",
+            "F7",
+            "F14"
+          ],
+          "bends_per_flow": 0.785714,
+          "graph_return_count": 1,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 5.0956,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "family": "human-patterns",
+          "chain_depth": 2,
+          "secondary_rows": 2,
+          "task_width": 220.0,
+          "column_stride": 340.0,
+          "body_x": 170,
+          "columns": 5,
+          "paired_decisions": 2,
+          "main_macros": [
+            "Start_Dismissal",
+            "Task_CloseFile",
+            "Task_Archive",
+            "End_Archived",
+            "Start_Hire",
+            "Task_CreateFile",
+            "End_Current",
+            "Start_Update",
+            "Task_CheckNeed",
+            "Task_UpdateFile",
+            "Task_CheckCompleteness",
+            "End_Updated"
+          ],
+          "feedback_edges": [
+            "F11"
+          ],
+          "slots": {
+            "Start_Dismissal": [
+              0,
+              0
+            ],
+            "Task_CloseFile": [
+              0,
+              0
+            ],
+            "Task_Archive": [
+              0,
+              1
+            ],
+            "End_Archived": [
+              1,
+              0
+            ],
+            "Start_Hire": [
+              2,
+              0
+            ],
+            "Task_CreateFile": [
+              2,
+              0
+            ],
+            "End_Current": [
+              2,
+              1
+            ],
+            "Start_Update": [
+              3,
+              0
+            ],
+            "Task_CheckNeed": [
+              3,
+              0
+            ],
+            "Task_UpdateFile": [
+              3,
+              1
+            ],
+            "Task_CheckCompleteness": [
+              4,
+              0
+            ],
+            "End_Updated": [
+              4,
+              1
+            ],
+            "Task_WaitDocument": [
+              4,
+              2
+            ],
+            "End_NoUpdate": [
+              3,
+              2
+            ]
+          },
+          "source_reference_models": 32,
+          "pairs": {
+            "Task_CheckCompleteness": "Gateway_Complete",
+            "Task_CheckNeed": "Gateway_Include"
+          },
+          "document_label_anchors": {
+            "DR_Composition_Check": [
+              1075.0,
+              191.0,
+              80,
+              58
+            ],
+            "DR_File": [
+              893.0,
+              251,
+              110,
+              45
+            ],
+            "DR_Inventory": [
+              1048.0,
+              251,
+              110,
+              45
+            ],
+            "DR_File_Update": [
+              1415.0,
+              381.0,
+              80,
+              58
+            ],
+            "DR_Inventory_Update": [
+              1233.0,
+              441,
+              110,
+              45
+            ],
+            "DR_Certifier": [
+              395.0,
+              191.0,
+              80,
+              58
+            ],
+            "DR_Composition_Close": [
+              213.0,
+              251,
+              110,
+              45
+            ],
+            "DR_File_Close": [
+              368.0,
+              251,
+              110,
+              45
+            ],
+            "DR_Inventory_Close": [
+              523.0,
+              251,
+              110,
+              45
+            ],
+            "DR_File_Archive": [
+              395.0,
+              381.0,
+              80,
+              58
+            ]
+          },
+          "document_owners": {
+            "DR_Inventory": "Task_CreateFile",
+            "DR_File_Update": "Task_UpdateFile",
+            "DR_Composition_Check": "Task_CreateFile",
+            "DR_File": "Task_CreateFile",
+            "DR_Inventory_Update": "Task_UpdateFile",
+            "DR_Certifier": "Task_CloseFile",
+            "DR_Inventory_Close": "Task_CloseFile",
+            "DR_File_Close": "Task_CloseFile",
+            "DR_Composition_Close": "Task_CloseFile",
+            "DR_File_Archive": "Task_Archive"
+          },
+          "role_order": [
+            "Lane_Personnel"
+          ],
+          "return_reserves": {
+            "Lane_Personnel": 0
+          },
+          "placement_optimization": {
+            "initial_cost": 234.0,
+            "final_cost": 213.20000000000002,
+            "moves": 2,
+            "iterations": 1600,
+            "seed": 23,
+            "free_spine": false,
+            "spine_moves": 0,
+            "scenario_blocks": []
+          }
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 2,
+          "initial_quality": [
+            3,
+            20,
+            4375.2
+          ],
+          "final_quality": [
+            0,
+            11,
+            3482.4
+          ],
+          "refinements": [
+            {
+              "edge": "F5",
+              "before": [
+                6058.0,
+                3,
+                5,
+                1022.0
+              ],
+              "after": [
+                2054.2,
+                1,
+                1,
+                484.20000000000005
+              ]
+            },
+            {
+              "edge": "F11",
+              "before": [
+                1376.0,
+                0,
+                4,
+                1096.0
+              ],
+              "after": [
+                495.0,
+                0,
+                1,
+                425.0
+              ]
+            },
+            {
+              "edge": "F7",
+              "before": [
+                2346.0,
+                1,
+                5,
+                496.0
+              ],
+              "after": [
+                1022.0,
+                0,
+                3,
+                812.0
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 0,
+            "initial_quality": [
+              1,
+              11,
+              4024.85
+            ],
+            "final_quality": [
+              1,
+              11,
+              4024.85
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataOutputAssociation_0a19uzl",
+            "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1kirtse",
+            "DataOutputAssociation_04l1gny",
+            "DataInputAssociation_1baszxx",
+            "DataOutputAssociation_1n362rp",
+            "DataOutputAssociation_1xx268g",
+            "A_File_Close",
+            "A_File_Archive"
+          ],
+          "straight_information_links": []
+        }
+      },
+      {
+        "candidate": "semantic-network_simplex-gap-24-refined",
+        "status": "verified",
+        "rank": [
+          0.05,
+          [
+            0,
+            4,
+            1358.04
+          ],
+          5.2761
+        ],
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 2,
+          "forward_hop_excess": 0.0,
+          "long_forward_hops": 0,
+          "long_forward_hop_ids": [],
+          "bends_per_flow": 0.142857,
+          "graph_return_count": 1,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "refinement_interrupted": false,
+        "refinements": []
+      }
+    ],
+    "seconds": 4.797,
+    "source_reference_models": 32,
+    "selection": "best verified empirical-style candidate; no global optimum guarantee",
+    "removed_redundant_associations": [],
+    "local_attachment_moves": {
+      "changes": [
+        {
+          "document": "DR_File_Close",
+          "fixed_owner": "Task_CloseFile",
+          "gap_before": 128.07126922147683,
+          "gap_after": 20.0
+        }
+      ],
+      "trials": 13,
+      "seconds": 0.161,
+      "before": {
+        "fixed_owners": {
+          "DR_Inventory": "Task_CreateFile",
+          "DR_File_Update": "Task_UpdateFile",
+          "DR_Composition_Check": "Task_CreateFile",
+          "DR_File": "Task_CreateFile",
+          "DR_Inventory_Update": "Task_UpdateFile",
+          "DR_Certifier": "Task_CloseFile",
+          "DR_Inventory_Close": "Task_CloseFile",
+          "DR_File_Close": "Task_CloseFile",
+          "DR_Composition_Close": "Task_CloseFile",
+          "DR_File_Archive": "Task_Archive"
+        },
+        "anchor_gaps": {
+          "DR_Inventory": 20.0,
+          "DR_File_Update": 20.0,
+          "DR_Composition_Check": 78.0,
+          "DR_File": 20.0,
+          "DR_Inventory_Update": 20.0,
+          "DR_Certifier": 20.0,
+          "DR_Inventory_Close": 23.585,
+          "DR_File_Close": 128.071,
+          "DR_Composition_Close": 20.0,
+          "DR_File_Archive": 20.0
+        },
+        "mean_anchor_gap": 36.9656,
+        "association_bends": 2,
+        "association_length": 519.6406538521716,
+        "consumer_links": [
+          {
+            "id": "DataOutputAssociation_0a19uzl",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_18b4cmc",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_1h0ktpn",
+            "gap": 78.0
+          },
+          {
+            "id": "DataOutputAssociation_1kirtse",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_04l1gny",
+            "gap": 20.0
+          },
+          {
+            "id": "DataInputAssociation_1baszxx",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_1n362rp",
+            "gap": 23.585
+          },
+          {
+            "id": "DataOutputAssociation_1xx268g",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Composition_Check",
+            "gap": 20.0
+          },
+          {
+            "id": "A_File_Close",
+            "gap": 128.071
+          },
+          {
+            "id": "A_File_Archive",
+            "gap": 20.0
+          }
+        ]
+      },
+      "after": {
+        "fixed_owners": {
+          "DR_Inventory": "Task_CreateFile",
+          "DR_File_Update": "Task_UpdateFile",
+          "DR_Composition_Check": "Task_CreateFile",
+          "DR_File": "Task_CreateFile",
+          "DR_Inventory_Update": "Task_UpdateFile",
+          "DR_Certifier": "Task_CloseFile",
+          "DR_Inventory_Close": "Task_CloseFile",
+          "DR_File_Close": "Task_CloseFile",
+          "DR_Composition_Close": "Task_CloseFile",
+          "DR_File_Archive": "Task_Archive"
+        },
+        "anchor_gaps": {
+          "DR_Inventory": 20.0,
+          "DR_File_Update": 20.0,
+          "DR_Composition_Check": 78.0,
+          "DR_File": 20.0,
+          "DR_Inventory_Update": 20.0,
+          "DR_Certifier": 20.0,
+          "DR_Inventory_Close": 23.585,
+          "DR_File_Close": 20.0,
+          "DR_Composition_Close": 20.0,
+          "DR_File_Archive": 20.0
+        },
+        "mean_anchor_gap": 26.158499999999997,
+        "association_bends": 2,
+        "association_length": 408.73378565346957,
+        "consumer_links": [
+          {
+            "id": "DataOutputAssociation_0a19uzl",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_18b4cmc",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_1h0ktpn",
+            "gap": 78.0
+          },
+          {
+            "id": "DataOutputAssociation_1kirtse",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_04l1gny",
+            "gap": 20.0
+          },
+          {
+            "id": "DataInputAssociation_1baszxx",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_1n362rp",
+            "gap": 23.585
+          },
+          {
+            "id": "DataOutputAssociation_1xx268g",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Composition_Check",
+            "gap": 20.0
+          },
+          {
+            "id": "A_File_Close",
+            "gap": 20.0
+          },
+          {
+            "id": "A_File_Archive",
+            "gap": 20.0
+          }
+        ]
+      },
+      "sequence_nodes_and_waypoints_preserved": true,
+      "guards": "no new contacts, no longer individual consumer link, no larger page, full text, strict geometry and XML freeze"
+    },
+    "geometry_erasure": {
+      "source_positions_used": false,
+      "source_dimensions_used": false,
+      "source_waypoints_used": false,
+      "source_label_bounds_used": false,
+      "external_incumbent_used": false,
+      "inputs": "business graph, fixed role membership, full names, shape kinds; neutral canonical DI and measured text sizes"
+    },
+    "from_scratch": true,
+    "reference_target_met": false,
+    "output": "from_scratch.bpmn",
+    "artifacts": {
+      "bpmn": "from_scratch.bpmn",
+      "svg": "from_scratch.svg",
+      "png": null
+    }
+  }
+}

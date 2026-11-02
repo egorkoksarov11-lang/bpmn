@@ -28,7 +28,10 @@ class SpatialIndex:
         for key in self.keys(rect):indices.update(self.cells.get(key,()))
         return (self.items[i] for i in sorted(indices))
 
-def place_labels(path,svg):
+def place_labels(path,svg,preserve=False):
+    if preserve:
+        from .responsive_labels import place_responsive_labels
+        return place_responsive_labels(path,svg)
     tree,root,_,_,nodes,seq,_,docs,_,lanenames,boxes,paths=read_bpmn(path)
     names={**{n:o.get('name','') for n,o in nodes.items()},**{n:o.get('name','') for n,o in docs.items()},**{i:name for i,_,_,name in seq}}
     shapes={s.get('bpmnElement'):s for s in root.xpath('.//bd:BPMNShape',namespaces=NS)}
@@ -48,6 +51,8 @@ def place_labels(path,svg):
     entries=[]
     for label in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS):
         owner=label.getparent().getparent().get('bpmnElement')
+        from bpmn_refkit.model import TAG_TASK
+        if owner in nodes and nodes[owner]['kind'] in TAG_TASK:continue
         if not names.get(owner):continue
         old=tuple(float(label.get(k)) for k in ('x','y','width','height'))
         w=min(220,max(32,math.ceil(width(names[owner],12))+10))

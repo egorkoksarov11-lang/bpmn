@@ -1,6 +1,6 @@
 """Strict, staged backend API with independent post-save audits.
 
-Default backend searches compact reference-style layouts and decision orientations.
+Default backend reconstructs the business graph after erasing all input geometry.
 The original v22 adapter is retained for comparison. This is not an A4 solver.
 """
 from __future__ import annotations
@@ -18,10 +18,10 @@ from . import __version__
 from .router import OrthogonalBackend
 from .search import SearchBackend
 from .human_search import HumanStyleBackend
-from .contours import on_contour
-from .quality import contacts
+from .contours import on_contour,label_hits_shape
+from .quality import contacts,overlap_pairs,path_length
 from .readability import metrics as reading_metrics
-from .typography import fits,wrap,task_fits,TASK_FONT
+from .typography import fits,wrap,task_fits,task_layout,label_layout,TASK_FONT
 from .freeze import equal as di_structure_equal,digest as di_structure_digest
 from .reference_style import style_cost
 from bpmn_refkit.geometry import bbox_intersect_seg
@@ -49,7 +49,7 @@ class V22Backend:
 def geometry(path):
     _, root, _, _, nodes, seq, assocs, docs, membership, _, boxes, paths = read_bpmn(path)
     result = geometry_audit(boxes, paths, seq, assocs, nodes, docs)
-    diagonal=[]; excessive=[]; endpoints=[]; outside=[]; nonfinite=[]
+    diagonal=[]; allowed_doc_diagonals=[]; excessive=[]; endpoints=[]; outside=[]; nonfinite=[]
     def border(p, b):
         x,y,w,h=b; px,py=p
         return ((abs(px-x)<1 or abs(px-x-w)<1) and y-1<=py<=y+h+1 or
@@ -60,7 +60,9 @@ def geometry(path):
         if not on_contour(points[0],boxes[u],nodes.get(u,{}).get('kind','')) or not on_contour(points[-1],boxes[v],nodes.get(v,{}).get('kind','')):endpoints.append(eid)
         if len(points)-2>8:excessive.append(eid)
         for a,b in zip(points,points[1:]):
-            if abs(a[0]-b[0])>0.01 and abs(a[1]-b[1])>0.01:diagonal.append(eid)
+            if abs(a[0]-b[0])>0.01 and abs(a[1]-b[1])>0.01:
+                if eid in {i for i,_,_,_ in assocs} and len(points)==2 and (u in docs or v in docs):allowed_doc_diagonals.append(eid)
+                else:diagonal.append(eid)
     for nid,lane in membership.items():
         if lane not in boxes or nid not in boxes:outside.append(nid);continue
         x,y,w,h=boxes[nid];lx,ly,lw,lh=boxes[lane]
@@ -74,10 +76,18 @@ def geometry(path):
     height=max([b[1]+b[3] for b in rects]+[p[1] for p in points])-miny
     ratio=width/height
     a4_scale=min(277/width,190/height)
-    min_print_font_pt=12*a4_scale/0.3527777778
+    measured_font_sizes=[task_layout(o.get('name',''),boxes[n],o['kind'])['font_size'] for n,o in nodes.items() if o['kind'] in TAG_TASK]
+    names={**{n:o.get('name','') for n,o in (nodes|docs).items()},**{i:name for i,_,_,name in seq}}
+    for bounds in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS):
+        owner=bounds.getparent().getparent().get('bpmnElement')
+        if owner in names and not(owner in nodes and nodes[owner]['kind'] in TAG_TASK):measured_font_sizes.append(label_layout(names[owner],tuple(float(bounds.get(k)) for k in ('x','y','width','height')))['font_size'])
+    minimum_font_size=min(measured_font_sizes,default=12)
+    min_print_font_pt=minimum_font_size*a4_scale/0.3527777778
     labels=[]
     for e in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS):
-        owner=e.getparent().getparent().get('bpmnElement');b=tuple(float(e.get(k)) for k in ('x','y','width','height'))
+        owner=e.getparent().getparent().get('bpmnElement')
+        if owner in nodes and nodes[owner]['kind'] in TAG_TASK:continue
+        b=tuple(float(e.get(k)) for k in ('x','y','width','height'))
         labels.append((owner,b))
     def overlaps(a,b):return min(a[0]+a[2],b[0]+b[2])-max(a[0],b[0])>0.01 and min(a[1]+a[3],b[1]+b[3])-max(a[1],b[1])>0.01
     label_collisions=[]
@@ -86,7 +96,7 @@ def geometry(path):
             if overlaps(ab,bb):label_collisions.append([a,b])
         for b,bb in boxes.items():
             if b in nodes or b in docs:
-                if a!=b and overlaps(ab,bb):label_collisions.append([a,b])
+                if a!=b and label_hits_shape(ab,bb,nodes.get(b,{}).get('kind','')):label_collisions.append([a,b])
     uv={i:(u,v) for i,u,v,_ in seq+assocs}
     robust_contacts=contacts(paths,uv)
     overflow=[n for n,o in nodes.items() if o['kind'] in TAG_TASK and not task_fits(o.get('name',''),boxes[n],o['kind'])]
@@ -96,6 +106,8 @@ def geometry(path):
             if any(bbox_intersect_seg(rect,a,b,clearance=1) for a,b in zip(points,points[1:])):label_line_cuts.append([owner,eid])
     result['readability']=reading_metrics(boxes,paths,nodes,seq)
     result.update(ambiguous_contacts=len(robust_contacts),contact_examples=robust_contacts[:40],task_text_overflows=overflow,label_line_cuts=label_line_cuts)
+    label_owners={e.getparent().getparent().get('bpmnElement') for e in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)}
+    result['missing_named_flow_labels']=[i for i,_,_,name in seq if name and i not in label_owners]
     clearance_violations=set();header_cuts=set()
     for eid,u,v,_ in seq+assocs:
         ps=paths[eid]
@@ -113,10 +125,13 @@ def geometry(path):
         invalid_endpoints=endpoints,nonfinite_waypoints=nonfinite,outside_lanes=outside,task_sizes=sizes,
         task_sizes_uniform=len(sizes)<=1,label_collision_pairs=label_collisions,
         extent={'width':width,'height':height,'aspect_ratio':ratio},
-        a4_ratio_passed=1.35<=ratio<=1.65,estimated_A4_min_font_pt=round(min_print_font_pt,2),a4_legible_at_8pt=min_print_font_pt>=8,text_overflow_check='measured_bundled_OpenSans_13px',
+        a4_ratio_passed=1.35<=ratio<=1.65,estimated_A4_min_font_pt=round(min_print_font_pt,2),minimum_measured_font_size=minimum_font_size,a4_legible_at_8pt=min_print_font_pt>=8,text_overflow_check='shared_measured_ink_layout_OpenSans_10_to_13px',
         crossing_avoidability='not_proven')
-    result['routing_safety_passed']=not (result['shape_overlaps'] or result['line_through_shapes'] or result['crossings'].get('overlapping_segments',0) or diagonal or endpoints or outside or nonfinite)
-    result['release_geometry_passed']=result['routing_safety_passed'] and result['edge_clearance_passed'] and result['a4_ratio_passed'] and min_print_font_pt>=8 and not label_collisions and not excessive and len(sizes)<=1 and not robust_contacts and not overflow and not label_line_cuts
+    result['collinear_overlap_pairs']=overlap_pairs(paths)
+    result['allowed_straight_document_diagonals']=sorted(set(allowed_doc_diagonals))
+    result['avg_document_length']=round(sum(path_length(paths[i]) for i,_,_,_ in assocs)/max(1,len(assocs)),2)
+    result['routing_safety_passed']=not (result['shape_overlaps'] or result['line_through_shapes'] or result['collinear_overlap_pairs'] or diagonal or endpoints or outside or nonfinite)
+    result['release_geometry_passed']=result['routing_safety_passed'] and result['edge_clearance_passed'] and result['a4_ratio_passed'] and min_print_font_pt>=8 and not label_collisions and not excessive and not robust_contacts and not overflow and not label_line_cuts and not result['missing_named_flow_labels']
     return result
 
 
@@ -137,8 +152,8 @@ def validate_xml(path):
 def run(source, destination, backend=None):
     source=Path(source).resolve();destination=Path(destination).resolve()
     if backend is None:
-        from .adaptive_layout import AdaptiveBackend
-        backend=AdaptiveBackend()
+        from .scratch_layout import ScratchBackend
+        backend=ScratchBackend()
     if destination==source.parent or source.is_relative_to(destination):
         raise ValueError('Destination must be separate from input directory')
     validate_xml(source)
@@ -146,16 +161,19 @@ def run(source, destination, backend=None):
     source_bytes=source.read_bytes()
     with tempfile.TemporaryDirectory(prefix='v23-stage-',dir=destination.parent) as td:
         stage=Path(td);bpmn=stage/'process_08_v23.bpmn';svg=stage/'process_08_v23.svg'
-        before=geometry(source)
+        # Reference measurements must not warm typography caches or affect the
+        # reconstruction's time budget. Audit source geometry only afterwards.
+        before=None if getattr(backend,'source_geometry_used',True) is False else geometry(source)
         report=backend.layout(source,bpmn,svg)
-        label_report=place_labels(bpmn,svg)
+        label_report=place_labels(bpmn,svg,preserve=getattr(backend,'preserve_labels',False))
+        if before is None:before=geometry(source)
         validation=validate_xml(bpmn)
         if not semantic_equality(source,bpmn):raise ValueError('Semantic freeze violation')
         if not di_structure_equal(source,bpmn):raise ValueError('DI structure freeze violation')
         after=geometry(bpmn)
         if not after['routing_safety_passed']:raise ValueError({'routing_safety_rejected':after})
         if label_report['unplaced_labels']:raise ValueError({'unplaced_labels':label_report['unplaced_labels']})
-        if after['label_collision_pairs'] or after['label_line_cuts'] or after['task_text_overflows'] or label_report['rendering']['text_overflow_ids']:
+        if after['label_collision_pairs'] or after['label_line_cuts'] or after['task_text_overflows'] or after['missing_named_flow_labels'] or label_report['rendering']['text_overflow_ids']:
             raise ValueError({'readability_rejected':after,'rendering':label_report['rendering']})
         if source.read_bytes()!=source_bytes:raise ValueError('Input changed during layout')
         semantic={'equal':True,'diff_count':0,'whitelist':[], 'comparison':'canonical complete XML excluding BPMNDiagram',
@@ -185,19 +203,31 @@ def run(source, destination, backend=None):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
-    p.add_argument('--candidate-timeout',type=int,default=150,help='maximum routing seconds per placement candidate (1..600)')
+    p.add_argument('--candidate-timeout',type=int,default=30,help='maximum routing seconds per placement candidate (1..600)')
     p.add_argument('--no-decision-orientations',action='store_true',help='compare with the four baseline human-style placements')
     p.add_argument('--incumbent',type=Path,help='optional previously verified layout of the identical frozen model')
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
     p.add_argument('--scenario-blocks',action='store_true',help='experimental compact local loops and joint moves')
-    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity','axes','adaptive'],default=None,help='default: adaptive; legacy placement flags keep human mode')
+    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity','axes','adaptive','reference','attachments','scratch','scratch-human'],default=None,help='default: scratch; erase every input coordinate before reconstruction')
     p.add_argument('--elk-module',type=Path,help='optional elk.bundled.js path; otherwise install npm dependencies')
     p.add_argument('--reference-profile',type=Path,help='frozen profile from tools/calibrate_references.py')
     p.add_argument('--seed-report',type=Path,help='original placement report for contextual orientation')
+    p.add_argument('--refine-only',action='store_true',help='reference engine: compare current source corridors with the required incumbent, without new axis proposals')
     a=p.parse_args()
-    if a.layout_engine is None:a.layout_engine='human' if a.orientations_only or a.repack_spine or a.scenario_blocks else 'adaptive'
-    if a.layout_engine=='elk':
+    if a.layout_engine is None:a.layout_engine='human' if a.orientations_only or a.repack_spine or a.scenario_blocks else 'scratch'
+    if a.refine_only and (a.layout_engine!='reference' or a.incumbent is None):p.error('--refine-only requires --layout-engine reference and --incumbent')
+    if a.layout_engine in ('scratch','scratch-human'):
+        if a.incumbent is not None:p.error('Scratch reconstruction forbids external incumbents')
+        from .scratch_layout import ScratchBackend
+        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human')
+    elif a.layout_engine=='attachments':
+        from .attachment_refinement import AttachmentBackend
+        backend=AttachmentBackend(incumbent=a.incumbent,seconds=a.candidate_timeout)
+    elif a.layout_engine=='reference':
+        from .reference_layout import ReferenceBackend
+        backend=ReferenceBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile,refine_only=a.refine_only)
+    elif a.layout_engine=='elk':
         from .elk_layout import ElkBackend
         backend=ElkBackend(elk_module=a.elk_module,candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
     elif a.layout_engine=='adaptive':
