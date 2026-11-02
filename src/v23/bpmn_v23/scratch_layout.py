@@ -106,8 +106,9 @@ class GraphChannelsBackend(HumanStyleBackend):
     straight_documents=True
     simplify_routes=True
     return_corridors=True
-    def __init__(self,**kwargs):
-        super().__init__(orient_decisions=False,**kwargs);self.max_search_seconds=max(45,self.candidate_seconds*8)
+    def __init__(self,role_order=None,search_seconds=None,**kwargs):
+        super().__init__(orient_decisions=False,**kwargs);self.max_search_seconds=max(45,self.candidate_seconds*8) if search_seconds is None else search_seconds;self.role_order=role_order
+        if not math.isfinite(self.max_search_seconds) or self.max_search_seconds<=0:raise ValueError('search_seconds must be positive')
     def candidate_rank(self,*args):
         # A single avoided crossing must not justify a much longer navigation
         # path. Use the balanced raw contact/continuity/crowding/area policy.
@@ -154,22 +155,32 @@ class GraphChannelsBackend(HumanStyleBackend):
                 if gap==24:
                     from .skyline_layout import compact_rows
                     boxes,report=compact_rows(boxes,report,nodes,docs,member,lanes,seq)
+                if self.role_order is not None:
+                    from .lane_ordering import reorder_lanes
+                    boxes,report=reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,self.role_order)
                 report.update(external_engine='elkjs@0.12.1-semantic-graph-only',layering=layering,source_geometry_used=False,feedback_edges=sorted(returns),scenario_dependency_hints=dependencies,scenario_order=[sorted(c) for c in components],handoff_groups=grouping,semantic_spines=spines)
                 yield f'semantic-{layering.lower()}-gap-{gap}',boxes,report
         # This fallback also receives only the erased canonical model.
-        yield from super().placements(nodes,docs,seq,assocs,member,lanes,original)
+        for name,boxes,report in super().placements(nodes,docs,seq,assocs,member,lanes,original):
+            if self.role_order is not None:
+                from .lane_ordering import reorder_lanes
+                boxes,report=reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,self.role_order)
+            yield name,boxes,report
 
 
 class ScratchBackend:
     name='v23-from-scratch'
     preserve_labels=True
     source_geometry_used=False
-    def __init__(self,candidate_seconds=30,control=False):self.candidate_seconds=candidate_seconds;self.control=control
+    def __init__(self,candidate_seconds=30,control=False,role_order=None,search_seconds=None,graph_backend=None):
+        if control and role_order is not None:raise ValueError('Role optimization requires the graph scratch backend')
+        self.candidate_seconds=candidate_seconds;self.control=control;self.role_order=role_order;self.search_seconds=search_seconds;self.graph_backend=graph_backend
+
     def layout(self,source,output,svg):
         started=time.monotonic()
         with tempfile.TemporaryDirectory(prefix='semantic-only-',dir=Path(output).parent) as folder:
             neutral=Path(folder)/'neutral.bpmn';erasure=erase_geometry(source,neutral)
-            backend=HumanStyleBackend(candidate_seconds=self.candidate_seconds,orient_decisions=False) if self.control else GraphChannelsBackend(candidate_seconds=self.candidate_seconds)
+            backend=HumanStyleBackend(candidate_seconds=self.candidate_seconds,orient_decisions=False) if self.control else (self.graph_backend or GraphChannelsBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
             result=backend.layout(neutral,output,svg)
             if not self.control:
                 from .attachment_refinement import compact_attachments

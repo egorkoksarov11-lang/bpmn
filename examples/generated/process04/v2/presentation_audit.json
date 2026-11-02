@@ -1,0 +1,119 @@
+{
+  "source_sha256": "3d3c78e22f055231cd4f4216ec39de4e8a6d0cb090d5dbaae8e2dcbd0b647e16",
+  "output_sha256": "fa280726fac5e20a24c7263cad2c43450f9e074f7c73e3bd2c28cfb88a12f3b9",
+  "checks": {
+    "from_scratch": true,
+    "source_geometry_erased": true,
+    "business_xml_equal": true,
+    "di_identity_equal": true,
+    "all_visible_names": true,
+    "routing_safety": true,
+    "clearance": true,
+    "labels_clear": true,
+    "task_text_fits": true,
+    "bend_limit": true
+  },
+  "counts": {
+    "nodes": 69,
+    "sequence_flows": 86,
+    "information_links": 17,
+    "information_objects": 17,
+    "lanes": 9
+  },
+  "after": {
+    "contacts": 16,
+    "sequence_contacts": 15,
+    "sequence_bends": 77,
+    "sequence_length": 40542.55,
+    "association_bends": 0,
+    "association_length": 397.68521637084785,
+    "mean_anchor_gap": 21.46470588235294,
+    "anchor_gaps": {
+      "DO_LegalCheck": 20.0,
+      "DO_OnboardingApproval": 44.9,
+      "DO_FactorRequirements": 20.0,
+      "DO_ContractBasis": 20.0,
+      "DO_OperationPackage": 20.0,
+      "DO_OperationApproval": 20.0,
+      "DO_FactorBalance": 20.0,
+      "DO_OperationDocs": 20.0,
+      "DO_PaymentReady": 20.0,
+      "DO_BankPayment": 20.0,
+      "DO_FactorReceipt": 20.0,
+      "DO_PlanExport": 20.0,
+      "DO_ActualExport": 20.0,
+      "DS_WorkingFile_T57": 20.0,
+      "DS_Register_T510": 20.0,
+      "DO_InitialPackage": 20.0,
+      "DO_CashPayoutFact": 20.0
+    },
+    "extent_area": 17320001.335,
+    "straight_fraction": 0.6162790697674418,
+    "forward_hop_excess": 2.145548,
+    "parallel_crowding_per_flow": 0.003337,
+    "hotspot_excess": 0.001116,
+    "hard_geometry": true,
+    "sequence_bends_raw_waypoints": 77,
+    "association_bends_raw_waypoints": 0
+  },
+  "selected_candidate": "semantic-network_simplex-gap-24-spacing-1.3-refined",
+  "seconds": 77.258,
+  "reference_target_met": false,
+  "interpretation": "strict correctness checks passed; metrics and direction agreement do not establish 80% visual similarity",
+  "authorized_document_delta": true,
+  "original_sha256": "d424847039494592ef088077866534d0a4dfa7cfda3de63a856c282520ab2a6a",
+  "document_policy_counts": {
+    "before": {
+      "information_objects": 18,
+      "information_links": 71
+    },
+    "after": {
+      "information_objects": 17,
+      "information_links": 17
+    }
+  },
+  "lane_order_optimization": {
+    "method": "exact subset dynamic programming",
+    "objective": "sum of vertical distances of actual cross-role sequence-flow endpoints; fixed within-role geometry",
+    "before": 49717.85,
+    "after": 26511.55,
+    "order_ids": [
+      "L_Op",
+      "L_UL",
+      "L_Cash",
+      "L_FH",
+      "L_CM",
+      "L_Factor",
+      "L_Client",
+      "L_Acc",
+      "L_HR"
+    ],
+    "order_names": [
+      "Операционист",
+      "Уполномоченное лицо",
+      "Касса",
+      "Руководитель финансового блока",
+      "Клиентский менеджер",
+      "Факторинговая компания",
+      "Клиент",
+      "Главный бухгалтер / бухгалтерия",
+      "Кадровик / HR"
+    ],
+    "previous_order_ids": [
+      "L_CM",
+      "L_FH",
+      "L_UL",
+      "L_Client",
+      "L_Acc",
+      "L_HR",
+      "L_Factor",
+      "L_Op",
+      "L_Cash"
+    ]
+  },
+  "comparison_scope": "checks.business_xml_equal compares prepared presentation_input.bpmn to the final layout; original document changes are separately whitelisted",
+  "original_business_xml_equal": false,
+  "authorized_removed_reference_count": 1,
+  "authorized_removed_association_count": 54,
+  "publication_scope": "generated layout and derived verification only; original model excluded"
+}

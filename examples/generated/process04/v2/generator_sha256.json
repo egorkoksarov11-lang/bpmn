@@ -1,0 +1,6 @@
+{
+  "src/v23/bpmn_v23/document_policy.py": "2ad16da65bc2bf26861694e25ad1853cf3dd2e6dfd090a99e2f2558e494e0163",
+  "src/v23/bpmn_v23/lane_ordering.py": "34cfe33993de066ebac63a3e947775c2dc1720cfde6e589661e1917abbdfb9ce",
+  "src/v23/bpmn_v23/scratch_layout.py": "617db2d1605ca19564712ef043a291d5fe5aad7d084767f8e3c69aaa8acc8221",
+  "tools/compact_process.py": "c602b42b164a7ec9cd1f9922ca439e0485fb7e002f1f9b423a3248a7a4ef2a02"
+}

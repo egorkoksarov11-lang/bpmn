@@ -1,0 +1,293 @@
+{
+  "policy": "first-appearance; one visible connection per logical document/state",
+  "authorized_scope": "presentation-only document references and their associations; workflow and logical data definitions unchanged",
+  "source_sha256": "d424847039494592ef088077866534d0a4dfa7cfda3de63a856c282520ab2a6a",
+  "removed_reference_ids": [
+    "DO_PaymentInstruction"
+  ],
+  "removed_association_ids": [
+    "A03",
+    "A05",
+    "A07",
+    "A09",
+    "A10",
+    "A11",
+    "A13",
+    "A16",
+    "A17",
+    "A19",
+    "A20",
+    "A21",
+    "A23",
+    "A25",
+    "A27",
+    "A29",
+    "A30",
+    "A31",
+    "A32",
+    "A33",
+    "A34",
+    "A37",
+    "A39",
+    "A41",
+    "A43",
+    "A44",
+    "A45",
+    "A46",
+    "A47",
+    "A48",
+    "A49",
+    "A51",
+    "A52",
+    "A53",
+    "A54",
+    "A55",
+    "A56",
+    "A58",
+    "A60",
+    "A61",
+    "A63",
+    "A64",
+    "A65",
+    "A66",
+    "A67",
+    "A68",
+    "A69",
+    "A70",
+    "A71",
+    "A72",
+    "A73",
+    "A74",
+    "A76",
+    "A77"
+  ],
+  "removed_di_ids": [
+    "DO_PaymentInstruction_di",
+    "A03_di",
+    "A05_di",
+    "A07_di",
+    "A09_di",
+    "A10_di",
+    "A11_di",
+    "A13_di",
+    "A16_di",
+    "A17_di",
+    "A19_di",
+    "A20_di",
+    "A21_di",
+    "A23_di",
+    "A25_di",
+    "A27_di",
+    "A29_di",
+    "A30_di",
+    "A31_di",
+    "A32_di",
+    "A33_di",
+    "A34_di",
+    "A37_di",
+    "A39_di",
+    "A41_di",
+    "A43_di",
+    "A44_di",
+    "A45_di",
+    "A46_di",
+    "A47_di",
+    "A48_di",
+    "A49_di",
+    "A51_di",
+    "A52_di",
+    "A53_di",
+    "A54_di",
+    "A55_di",
+    "A56_di",
+    "A58_di",
+    "A60_di",
+    "A61_di",
+    "A63_di",
+    "A64_di",
+    "A65_di",
+    "A66_di",
+    "A67_di",
+    "A68_di",
+    "A69_di",
+    "A70_di",
+    "A71_di",
+    "A72_di",
+    "A73_di",
+    "A74_di",
+    "A76_di",
+    "A77_di"
+  ],
+  "decisions": [
+    {
+      "reference": "DO_LegalCheck",
+      "kept_association": "A01",
+      "first_operation": "T51",
+      "reason": "first substantive use of existing information",
+      "initial_producers": []
+    },
+    {
+      "reference": "DO_OnboardingApproval",
+      "kept_association": "A02",
+      "first_operation": "T51",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T51"
+      ]
+    },
+    {
+      "reference": "DO_FactorRequirements",
+      "kept_association": "A06",
+      "first_operation": "T52",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T52"
+      ]
+    },
+    {
+      "reference": "DO_ContractBasis",
+      "kept_association": "A12",
+      "first_operation": "C_Contract",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "C_Contract"
+      ]
+    },
+    {
+      "reference": "DO_OperationPackage",
+      "kept_association": "A15",
+      "first_operation": "T56",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T56"
+      ]
+    },
+    {
+      "reference": "DO_OperationApproval",
+      "kept_association": "A18",
+      "first_operation": "T57_CM",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T57_CM"
+      ]
+    },
+    {
+      "reference": "DO_FactorBalance",
+      "kept_association": "A22",
+      "first_operation": "T58_Factor",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T58_Factor"
+      ]
+    },
+    {
+      "reference": "DO_OperationDocs",
+      "kept_association": "A24",
+      "first_operation": "T59_Factor",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T59_Factor"
+      ]
+    },
+    {
+      "reference": "DO_PaymentReady",
+      "kept_association": "A28",
+      "first_operation": "T510_CM",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T510_CM"
+      ]
+    },
+    {
+      "reference": "DO_BankPayment",
+      "kept_association": "A35",
+      "first_operation": "T511_CM_Confirm",
+      "reason": "first common operation after initial contributors or alternative producers",
+      "initial_producers": [
+        "T511_Client",
+        "T511_Internal"
+      ]
+    },
+    {
+      "reference": "DO_FactorReceipt",
+      "kept_association": "A36",
+      "first_operation": "T512_Factor",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T512_Factor"
+      ]
+    },
+    {
+      "reference": "DO_PlanExport",
+      "kept_association": "A38",
+      "first_operation": "T513_CM",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T513_CM"
+      ]
+    },
+    {
+      "reference": "DO_ActualExport",
+      "kept_association": "A40",
+      "first_operation": "T514_CM",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "T514_CM"
+      ]
+    },
+    {
+      "reference": "DS_WorkingFile_T57",
+      "kept_association": "A42",
+      "first_operation": "T57_CM",
+      "reason": "first substantive use of existing information",
+      "initial_producers": [
+        "T510_CM"
+      ]
+    },
+    {
+      "reference": "DS_Register_T510",
+      "kept_association": "A57",
+      "first_operation": "T510_FH_Register",
+      "reason": "first substantive use of existing information",
+      "initial_producers": [
+        "T510_FH_Register"
+      ]
+    },
+    {
+      "reference": "DO_InitialPackage",
+      "kept_association": "A50",
+      "first_operation": "T53_Check",
+      "reason": "first common operation after initial contributors or alternative producers",
+      "initial_producers": [
+        "T53_ACC",
+        "T53_Client",
+        "T53_Corp",
+        "T53_FH",
+        "T53_HR"
+      ]
+    },
+    {
+      "reference": "DO_CashPayoutFact",
+      "kept_association": "A75",
+      "first_operation": "C_CashPlan",
+      "reason": "first producing operation; later reuse is implicit",
+      "initial_producers": [
+        "C_CashPlan"
+      ]
+    }
+  ],
+  "protected_reference_ids": [],
+  "reviewed_omissions": {
+    "DO_PaymentInstruction": "Состав реквизитов уже показан в DO_PaymentReady, а их передача полностью указана в задаче T511_CM; отдельный повторный значок не нужен. Определение данных сохранено."
+  },
+  "before": {
+    "information_objects": 18,
+    "information_links": 71
+  },
+  "after": {
+    "information_objects": 17,
+    "information_links": 17
+  },
+  "workflow_and_data_definitions_equal": true,
+  "source_publication": "Full original and full XML journal retained locally; excluded from public package"
+}
