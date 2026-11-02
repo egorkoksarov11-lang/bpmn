@@ -7,6 +7,14 @@ from .typography import FONT,wrap,width,TASK_FONT,TASK_LINE_HEIGHT
 SVG='http://www.w3.org/2000/svg'
 
 
+def lane_caption(name,height):
+    """Keep the full rotated role name inside the 48px lane header."""
+    for size in (14,13,12,11,10):
+        lines=wrap(name,max(1,height-20),size)
+        if len(lines)*(size+1)<=44:return lines,size,False
+    return lines,10,True
+
+
 def render(path,svg_path):
     _,root,process,plane,nodes,seq,assocs,docs,_,lane_names,boxes,paths=read_bpmn(path)
     labels={}
@@ -28,14 +36,17 @@ def render(path,svg_path):
         add(marker,'path',d='M1 1 L9 5 L1 9',fill='none',stroke=colour,stroke_width=1.5)
     add(svg,'rect',x=minx,y=miny,width=maxx-minx,height=maxy-miny,fill='white')
     text=add(svg,'text',x=minx+25,y=28,font_size=18,fill='#243a4d');text.text=title.text
+    text_overflow=[];lane_fonts={}
     for i,(lane,name) in enumerate(lane_names.items()):
         if lane not in boxes:continue
         x,y,w,h=boxes[lane];group=add(svg,'g',data_bpmn_id=lane)
         add(group,'rect',x=x,y=y,width=w,height=h,fill=['#f1f6fc','#fff','#f0faf5','#fff7ed'][i%4],stroke='#c2d0dc',stroke_width=1)
         add(group,'line',x1=x+48,y1=y,x2=x+48,y2=y+h,stroke='#c2d0dc')
-        lines=wrap(name,h-20,14)
+        lines,size,overflow=lane_caption(name,h);lane_fonts[lane]=size
+        if overflow:text_overflow.append('lane:'+lane)
         for j,line in enumerate(lines):
-            t=add(group,'text',x=x+22+(j-(len(lines)-1)/2)*17,y=y+h/2,transform=f'rotate(-90 {x+22+(j-(len(lines)-1)/2)*17} {y+h/2})',text_anchor='middle',font_size=14,fill='#30465a');t.text=line
+            gap=size+1
+            t=add(group,'text',x=x+24+(j-(len(lines)-1)/2)*gap,y=y+h/2,transform=f'rotate(-90 {x+24+(j-(len(lines)-1)/2)*gap} {y+h/2})',text_anchor='middle',dominant_baseline='middle',font_size=size,fill='#30465a');t.text=line
     for eid,u,v,direction in assocs:
         group=add(svg,'g',data_bpmn_id=eid)
         attrs=dict(points=' '.join(f'{x},{y}' for x,y in paths[eid]),fill='none',stroke='#517b96',stroke_width=1.2,stroke_dasharray='4 4')
@@ -51,7 +62,6 @@ def render(path,svg_path):
             if length:
                 cx=a[0]+dx/length*12;cy=a[1]+dy/length*12
                 add(group,'line',x1=cx-dy/length*5-dx/length*3,y1=cy+dx/length*5-dy/length*3,x2=cx+dy/length*5+dx/length*3,y2=cy-dx/length*5+dy/length*3,stroke='#34485c',stroke_width=1.4)
-    text_overflow=[]
     for nid,o in nodes.items():
         x,y,w,h=boxes[nid];kind=o['kind'];group=add(svg,'g',data_bpmn_id=nid)
         add(group,'title').text=o.get('name','')
@@ -104,4 +114,4 @@ def render(path,svg_path):
         for i,line in enumerate(lines):
             t=add(group,'text',x=x+w/2,y=y+13+i*17,text_anchor='middle',font_size=size,fill='#6d5126' if owner not in nodes and owner not in docs else '#304b60');t.text=line
     ET.ElementTree(svg).write(str(svg_path),encoding='utf-8',xml_declaration=True)
-    return {'font':'Open Sans bundled','task_font_size':TASK_FONT,'label_font_size':12,'text_overflow_ids':text_overflow}
+    return {'font':'Open Sans bundled','task_font_size':TASK_FONT,'label_font_size':12,'lane_font_sizes':lane_fonts,'text_overflow_ids':text_overflow}

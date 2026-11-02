@@ -83,6 +83,8 @@ class HumanStyleBackend:
                 selected_safe=not g['excessive_bend_edges']
                 if selected_safe:best_safe=best
             for name,boxes,report in self.placements(nodes,docs,seq,assocs,member,lanes,original):
+                if best_safe is not None and getattr(self,'max_search_seconds',None) is not None and time.monotonic()-started>self.max_search_seconds:
+                    logs.append({'candidate':name,'status':'skipped-search-budget'});break
                 if self.orientations_only and not name.endswith('-oriented'):continue
                 at=time.monotonic();ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
                 pre=geometry_audit(ob,{},[],[],nodes,docs)
@@ -91,11 +93,21 @@ class HumanStyleBackend:
                 try:
                     with deadline(self.candidate_seconds):
                         routing_boxes={**ob,**{f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes}}
+                        routing_boxes.update({f'__caption_{n}':tuple(b) for n,b in report.get('reserved_captions',{}).items()})
                         hints=None if report.get('external_engine') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})
-                        paths,details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,avoid_crowding=True,priority=routing_order(report,nodes,seq,assocs,boxes),hints=hints)
+                        fixed=None
+                        if report.get('preserve_corridors'):
+                            from .axis_corridors import mapped_routes
+                            basis_boxes,basis_paths=(read_bpmn(self.incumbent)[-2:] if report.get('route_basis')=='verified-incumbent' else (original,oldpaths))
+                            fixed=mapped_routes(report,basis_boxes,basis_paths,boxes,nodes,routing_boxes,uv)
+                        paths,details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,assocs,boxes),hints=hints,fixed_paths=fixed)
+                        if fixed is not None:details['retained_input_corridors']=len(fixed)
                         paths=attach(paths,uv,boxes,nodes)
                         ct=copy.deepcopy(tree);root=ct.getroot();plane=root.xpath('.//bd:BPMNPlane',namespaces=NS)[0]
                         set_di(root,plane,boxes,paths);save_labels(root,plane,boxes,nodes,paths);arrange_flow_labels(root,plane,ob,seq,paths);seed_document_labels(root,report,boxes)
+                        if report.get('reserved_captions'):
+                            from .axis_labels import seed_captions
+                            seed_captions(root,report['reserved_captions'])
                         bp=td/(name+'.bpmn');sp=td/(name+'.svg');ct.write(str(bp),encoding='utf-8',xml_declaration=True)
                         labels=place_labels(bp,sp);g=geometry(bp);validate_xml(bp)
                         if labels['unplaced_labels'] or labels['rendering']['text_overflow_ids'] or g['label_collision_pairs'] or g['label_line_cuts'] or not g['routing_safety_passed'] or not g['edge_clearance_passed']:raise ValueError({'readability_or_routing_audit_failed':{'unplaced_labels':labels['unplaced_labels'],'label_collisions':g['label_collision_pairs'],'label_line_cuts':g['label_line_cuts'],'clearance_violations':g['edge_object_clearance_violations'],'lane_header_cuts':g['lane_header_cuts'],'invalid_endpoints':g['invalid_endpoints'],'routing_safety_passed':g['routing_safety_passed']}})
@@ -134,4 +146,4 @@ class HumanStyleBackend:
                 quality,name,bpmn,svg_bytes,report=best_safe
                 logs.append({'candidate':name,'status':'safe-fallback','reason':'higher-ranked intermediate had pathological bends'})
             output.write_bytes(bpmn);svg.write_bytes(svg_bytes)
-        return {'selection_policy':self.reference_profile['version'] if self.reference_profile else POLICY,'backend':self.name,'selected_candidate':name,'quality':quality,'candidates':logs,'seconds':round(time.monotonic()-started,3),'source_reference_models':32,'selection':'best verified empirical-style candidate; no global optimum guarantee','removed_redundant_associations':[]}
+        return {'selection_policy':getattr(self,'selection_policy',self.reference_profile['version'] if self.reference_profile else POLICY),'backend':self.name,'selected_candidate':name,'quality':quality,'candidates':logs,'seconds':round(time.monotonic()-started,3),'source_reference_models':32,'selection':'best verified empirical-style candidate; no global optimum guarantee','removed_redundant_associations':[]}

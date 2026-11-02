@@ -86,6 +86,14 @@
       "font": "Open Sans bundled",
       "task_font_size": 13,
       "label_font_size": 12,
+      "lane_font_sizes": {
+        "L1": 14,
+        "L2": 14,
+        "L3": 14,
+        "L4": 14,
+        "L5": 14,
+        "L6": 14
+      },
       "text_overflow_ids": []
     }
   },
@@ -594,11 +602,44 @@
       "bpmn": "output/process_08_v23.bpmn",
       "svg": "output/process_08_v23.svg",
       "png": null
-    }
+    },
+    "candidates": [
+      {
+        "candidate": "verified-incumbent",
+        "status": "verified",
+        "rank": [
+          5,
+          12,
+          -36,
+          [
+            40,
+            151,
+            49858.3
+          ]
+        ]
+      },
+      {
+        "candidate": "local-continuity",
+        "status": "verified",
+        "rank": [
+          4,
+          10,
+          -37,
+          [
+            40,
+            149,
+            49779.3
+          ]
+        ],
+        "edge": "F88"
+      }
+    ]
   },
   "final_reaudit": {
     "full_semantics": true,
     "DI_freeze": true,
     "bpmn_sha256": "326d7bc23830b9876de3c7268725f7912be84c8d9c2577644a6fa1d56c5e3fa2"
-  }
+  },
+  "audit_schema_update": "Candidate records normalized from existing verified incumbent and accepted local-change audit; geometry unchanged",
+  "role_caption_reaudit": "Only role-label fit in SVG improved; BPMN geometry and business XML unchanged"
 }

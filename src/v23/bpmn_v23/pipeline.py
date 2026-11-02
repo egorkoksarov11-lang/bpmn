@@ -136,7 +136,9 @@ def validate_xml(path):
 
 def run(source, destination, backend=None):
     source=Path(source).resolve();destination=Path(destination).resolve()
-    backend=backend or HumanStyleBackend()
+    if backend is None:
+        from .adaptive_layout import AdaptiveBackend
+        backend=AdaptiveBackend()
     if destination==source.parent or source.is_relative_to(destination):
         raise ValueError('Destination must be separate from input directory')
     validate_xml(source)
@@ -189,14 +191,21 @@ def main():
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
     p.add_argument('--scenario-blocks',action='store_true',help='experimental compact local loops and joint moves')
-    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity'],default='human')
+    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity','axes','adaptive'],default=None,help='default: adaptive; legacy placement flags keep human mode')
     p.add_argument('--elk-module',type=Path,help='optional elk.bundled.js path; otherwise install npm dependencies')
     p.add_argument('--reference-profile',type=Path,help='frozen profile from tools/calibrate_references.py')
     p.add_argument('--seed-report',type=Path,help='original placement report for contextual orientation')
     a=p.parse_args()
+    if a.layout_engine is None:a.layout_engine='human' if a.orientations_only or a.repack_spine or a.scenario_blocks else 'adaptive'
     if a.layout_engine=='elk':
         from .elk_layout import ElkBackend
         backend=ElkBackend(elk_module=a.elk_module,candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='adaptive':
+        from .adaptive_layout import AdaptiveBackend
+        backend=AdaptiveBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='axes':
+        from .axis_layout import AxisBackend
+        backend=AxisBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
     elif a.layout_engine=='local-continuity':
         from .continuity import ContinuityBackend
         backend=ContinuityBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)

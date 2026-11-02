@@ -1,0 +1,604 @@
+{
+  "version": "23.1.2.dev0",
+  "backend": "v23-local-successor-continuity",
+  "status": "layout_candidate_verified",
+  "release_ready": false,
+  "limitations": [
+    "global optimality is not proven",
+    "see geometry_report.json for remaining readability limitations"
+  ],
+  "source_file": "process_08_v4_frozen.bpmn",
+  "validation": {
+    "xml_parse": true,
+    "reference_integrity": true,
+    "preflight": {
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "source": "/workspace/work/algorithm-r7/v23-stage-5jxan392/process_08_v23.bpmn",
+      "counts": {
+        "processes": 1,
+        "diagrams": 1,
+        "nodes": 64,
+        "sequence_flows": 95,
+        "associations": 18,
+        "data_references": 17,
+        "lanes": 6
+      }
+    }
+  },
+  "label_placement": {
+    "unplaced_labels": [],
+    "external_labels": 95,
+    "large_displacements": [
+      {
+        "id": "DOR_LegalCheck",
+        "distance": 341.9
+      },
+      {
+        "id": "F83",
+        "distance": 291.97
+      },
+      {
+        "id": "F93",
+        "distance": 268.33
+      },
+      {
+        "id": "F97",
+        "distance": 300.72
+      }
+    ],
+    "distant_from_owner": [
+      {
+        "id": "G53",
+        "distance": 142.86
+      },
+      {
+        "id": "G511b",
+        "distance": 59.0
+      },
+      {
+        "id": "F82",
+        "distance": 138.86
+      },
+      {
+        "id": "F83",
+        "distance": 335.4
+      },
+      {
+        "id": "F93",
+        "distance": 115.75
+      },
+      {
+        "id": "F97",
+        "distance": 79.3
+      },
+      {
+        "id": "F98",
+        "distance": 88.04
+      },
+      {
+        "id": "F77",
+        "distance": 58.27
+      }
+    ],
+    "rendering": {
+      "font": "Open Sans bundled",
+      "task_font_size": 13,
+      "label_font_size": 12,
+      "text_overflow_ids": []
+    }
+  },
+  "backend_report": {
+    "backend": "v23-local-successor-continuity",
+    "selected_candidate": "local-continuity",
+    "quality": [
+      4,
+      10,
+      -37,
+      [
+        40,
+        149,
+        49779.3
+      ]
+    ],
+    "baseline_quality": [
+      5,
+      12,
+      -36,
+      [
+        40,
+        151,
+        49858.3
+      ]
+    ],
+    "frozen_neighbour_ids": [
+      "F1",
+      "F3",
+      "F5",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F20",
+      "F21",
+      "F24",
+      "F26",
+      "F27",
+      "F30",
+      "F32",
+      "F36",
+      "F39",
+      "F41",
+      "F42",
+      "F45",
+      "F46",
+      "F47",
+      "F48",
+      "F51",
+      "F55",
+      "F60",
+      "F63",
+      "F66",
+      "F73",
+      "F77",
+      "F82",
+      "F88",
+      "F92",
+      "F93",
+      "F98"
+    ],
+    "optimization_neighbour_ids": [
+      "F1",
+      "F3",
+      "F5",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F20",
+      "F21",
+      "F22",
+      "F24",
+      "F26",
+      "F27",
+      "F30",
+      "F32",
+      "F36",
+      "F39",
+      "F41",
+      "F42",
+      "F45",
+      "F46",
+      "F47",
+      "F48",
+      "F51",
+      "F53",
+      "F55",
+      "F60",
+      "F63",
+      "F65",
+      "F66",
+      "F73",
+      "F77",
+      "F82",
+      "F88",
+      "F90",
+      "F92",
+      "F93",
+      "F98"
+    ],
+    "optimization_radius_task_widths": 1.0,
+    "continuity_before": {
+      "frozen_neighbour_count": 38,
+      "straight": 33,
+      "one_bend": 1,
+      "two_plus_bends": 4,
+      "bends": 10,
+      "straight_fraction": 0.868421052631579
+    },
+    "continuity_after": {
+      "frozen_neighbour_count": 38,
+      "straight": 34,
+      "one_bend": 1,
+      "two_plus_bends": 3,
+      "bends": 8,
+      "straight_fraction": 0.8947368421052632
+    },
+    "changes": [
+      {
+        "edge": "F77",
+        "proposal": "axis-alignment-flexible-split-0.5",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            53,
+            152,
+            50006.3
+          ]
+        ]
+      },
+      {
+        "edge": "F77",
+        "proposal": "axis-alignment-rigid-split-0.5",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            55,
+            151,
+            50097.8
+          ]
+        ]
+      },
+      {
+        "edge": "F77",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            53,
+            153,
+            50235.8
+          ]
+        ]
+      },
+      {
+        "edge": "F10",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          10,
+          -37,
+          [
+            42,
+            145,
+            49734.8
+          ]
+        ]
+      },
+      {
+        "edge": "F10",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          10,
+          -37,
+          [
+            42,
+            145,
+            49889.3
+          ]
+        ]
+      },
+      {
+        "edge": "F22",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          10,
+          -37,
+          [
+            41,
+            149,
+            49854.3
+          ]
+        ]
+      },
+      {
+        "edge": "F22",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          10,
+          -37,
+          [
+            41,
+            149,
+            49851.8
+          ]
+        ]
+      },
+      {
+        "edge": "F88",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          10,
+          -37,
+          [
+            41,
+            152,
+            50060.8
+          ]
+        ]
+      },
+      {
+        "edge": "F88",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "accepted",
+        "before": [
+          5,
+          12,
+          -36,
+          [
+            40,
+            151,
+            49858.3
+          ]
+        ],
+        "after": [
+          4,
+          10,
+          -37,
+          [
+            40,
+            149,
+            49779.3
+          ]
+        ]
+      },
+      {
+        "edge": "F93",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            47,
+            147,
+            50382.3
+          ]
+        ]
+      },
+      {
+        "edge": "F93",
+        "proposal": "axis-alignment-rigid-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            47,
+            146,
+            50408.3
+          ]
+        ]
+      },
+      {
+        "edge": "F5",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -38,
+          [
+            41,
+            147,
+            49478.55
+          ]
+        ]
+      },
+      {
+        "edge": "F5",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -38,
+          [
+            43,
+            147,
+            49467.3
+          ]
+        ]
+      },
+      {
+        "edge": "F77",
+        "proposal": "axis-alignment-flexible-split-0.5",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          7,
+          -38,
+          [
+            52,
+            151,
+            49868.3
+          ]
+        ]
+      },
+      {
+        "edge": "F77",
+        "proposal": "axis-alignment-rigid-split-0.5",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          7,
+          -38,
+          [
+            52,
+            154,
+            49878.3
+          ]
+        ]
+      },
+      {
+        "edge": "F77",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          7,
+          -38,
+          [
+            53,
+            149,
+            50102.3
+          ]
+        ]
+      },
+      {
+        "edge": "F10",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          8,
+          -38,
+          [
+            42,
+            143,
+            49655.8
+          ]
+        ]
+      },
+      {
+        "edge": "F10",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          8,
+          -38,
+          [
+            42,
+            143,
+            49810.3
+          ]
+        ]
+      },
+      {
+        "edge": "F22",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          8,
+          -38,
+          [
+            41,
+            147,
+            49775.3
+          ]
+        ]
+      },
+      {
+        "edge": "F22",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          3,
+          8,
+          -38,
+          [
+            41,
+            147,
+            49772.8
+          ]
+        ]
+      },
+      {
+        "edge": "F93",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            47,
+            147,
+            50382.3
+          ]
+        ]
+      },
+      {
+        "edge": "F93",
+        "proposal": "axis-alignment-rigid-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -37,
+          [
+            47,
+            146,
+            50408.3
+          ]
+        ]
+      },
+      {
+        "edge": "F5",
+        "proposal": "axis-alignment-flexible-split-0.25",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -38,
+          [
+            41,
+            147,
+            49478.55
+          ]
+        ]
+      },
+      {
+        "edge": "F5",
+        "proposal": "axis-alignment-flexible-split-1",
+        "status": "rejected-by-objective",
+        "rank": [
+          4,
+          9,
+          -38,
+          [
+            43,
+            147,
+            49467.3
+          ]
+        ]
+      }
+    ],
+    "incumbent_sha256": "1c11ae7c8004819910fc1a98a908c475e5fc0987143ba973c4f8a5eea43d3a44",
+    "interrupted": false,
+    "seconds": 38.004,
+    "constraints": "no increase relative to incumbent in contacts, total bends or total wire length; protect existing straight neighbours; full geometry/text/semantic/DI audits",
+    "output": "output/process_08_v23.bpmn",
+    "artifacts": {
+      "bpmn": "output/process_08_v23.bpmn",
+      "svg": "output/process_08_v23.svg",
+      "png": null
+    }
+  },
+  "final_reaudit": {
+    "full_semantics": true,
+    "DI_freeze": true,
+    "bpmn_sha256": "326d7bc23830b9876de3c7268725f7912be84c8d9c2577644a6fa1d56c5e3fa2"
+  }
+}

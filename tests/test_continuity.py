@@ -68,3 +68,6 @@ def test_full_pipeline_straightens_a_close_successor_without_business_edits(tmp_
     assert semantic_equality(source,result) and source.read_bytes()==before
     assert len(read_bpmn(result)[-1]['f'])==2
     assert geometry(result)['routing_safety_passed']
+    import json
+    report=json.loads((dest/'run_report.json').read_text())['backend_report']
+    assert report['quality']==min(c['rank'] for c in report['candidates'] if c['status']=='verified')

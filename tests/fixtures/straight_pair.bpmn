@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bd="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="defs" targetNamespace="test">
+<process id="p"><laneSet id="ls"><lane id="lane" name="Role"><flowNodeRef>a</flowNodeRef><flowNodeRef>b</flowNodeRef></lane></laneSet><task id="a" name="First"/><task id="b" name="Next"/><sequenceFlow id="f" sourceRef="a" targetRef="b"/></process>
+<bd:BPMNDiagram id="diagram"><bd:BPMNPlane id="plane" bpmnElement="p">
+<bd:BPMNShape id="sl" bpmnElement="lane"><dc:Bounds x="100" y="100" width="800" height="400"/></bd:BPMNShape>
+<bd:BPMNShape id="sa" bpmnElement="a"><dc:Bounds x="150" y="120" width="200" height="80"/></bd:BPMNShape>
+<bd:BPMNShape id="sb" bpmnElement="b"><dc:Bounds x="420" y="280" width="200" height="80"/></bd:BPMNShape>
+<bd:BPMNEdge id="ef" bpmnElement="f"><di:waypoint x="350" y="160"/><di:waypoint x="400" y="160"/><di:waypoint x="400" y="320"/><di:waypoint x="420" y="320"/></bd:BPMNEdge>
+</bd:BPMNPlane></bd:BPMNDiagram></definitions>

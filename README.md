@@ -1,30 +1,30 @@
-# BPMN Universal Engine — experimental r7
+# BPMN Universal Engine — experimental r8
 
-Автоматическая компоновка BPMN с сохранением бизнес-логики. В r7 добавлен этап прямого подключения соседних шагов по паттернам ручных референсов: небольшие совместные сдвиги фигур, выбор сторон подключения и повторная прокладка конфликтующих линий.
+Автоматическая компоновка BPMN с сохранением бизнес-логики. Новый режим `adaptive` восстанавливает близкие строки и колонки по связям графа, решает ограничения расстояний и переносит пригодные коридоры линий. Он включён по умолчанию и сохраняет проверенный результат, если новые предложения хуже.
 
-- **[Скачать BPMN](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/output/process_08_v23.bpmn)** · **[Открыть SVG](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/output/process_08_v23.svg)**
-- [Прямые соседние связи: измерения, ограничения и запуск r7](docs/DEVELOPMENT_R7.md) · [Исследование алгоритмов r6](docs/DEVELOPMENT_R6.md)
-- [Семь групп метрик](output/reference_conformity.json) · [Геометрия](output/geometry_report.json) · [Semantic diff](output/semantic_diff.json)
-- [Калибровка на 32 референсах](tests/reports/reference_metrics_r6/reference_report.json) · [Эксперименты и неудачные варианты](tests/reports/r6_experiments.json)
+- **[Скачать результаты на референсах — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/examples/benchmarks/r8/BPMN_Reference_Benchmark_r8.zip)**
+- **[Скачать проверку на смещённых схемах — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/examples/benchmarks/r8/BPMN_Perturbed_References_r8.zip)**
+- [Полный отчёт: методика, ограничения, все 32 входа](docs/DEVELOPMENT_R8.md)
+- [Пример: личные дела — до](examples/benchmarks/r8/ref_11/before.svg) / [после](examples/benchmarks/r8/ref_11/after.svg)
+- [Пример: воинский учёт — до](examples/benchmarks/r8/ref_15/before.svg) / [после](examples/benchmarks/r8/ref_15/after.svg)
 
-Последний локальный шаг r6 → r7: близкие выходы из шлюзов, идущие прямо, **7/12 → 8/12** (в ручном корпусе 99/141). Все прямые близкие связи **33/38 → 34/38**. Изгибы **151 → 149**, контакты **40 → 40**, общая длина **49 858,3 → 49 779,3**. Балл неизменённого профиля референсов **70,39 → 71,16**. Цель 80 и подтверждённое человеком сходство пока не достигнуты. Выигрыш локальный; три близкие связи по-прежнему имеют несколько изгибов. 87 тестов прошли.
+Распакуйте ZIP и откройте **comparison.html**. В галерее есть поиск, масштаб 1:1, результаты до/после и экспорт отдельных SVG со встроенным шрифтом. Все редактируемые BPMN и отчёты находятся рядом; интернет не нужен.
 
-Сохранены 64 узла, 95 переходов, 18 документных связей, 17 документных references и 6 дорожек. Semantic diff и DI diff = 0. Нет потерянных подписей, обрезанного текста, пересечений фигур, проходов сквозь фигуры и рёбер с более чем 8 изгибами. Шрифт Open Sans 13 px. Пересечения линий остаются; печать всей схемы на одном A4 слишком мелкая.
+На 23 сопоставимых успешно построенных референсах: изгибы sequenceFlow **837 → 748 (−10,6%)**, контакты всех линий **153 → 141 (−7,8%)**, длина sequenceFlow **−6,1%**. На семи коротких схемах — **−59% изгибов и −39% длины**. На больших графах выигрыш пока мал.
+
+Проверка шести схем со сдвигом фигур и удалёнными ручными маршрутами: **−20% изгибов, −31% контактов, −12% длины sequenceFlow**. Все 23 успешных результата контроля сохранены; в основном лимите новый режим построил 24 из 25 корректных поддерживаемых входов. Оставшийся вход построен в отдельном расширенном прогоне. Два входа имеют битые ссылки, пять — неподдерживаемые конструкции.
+
+102 теста прошли. Сохранённые модели прошли проверки полного текста, подписей, геометрии, semantic diff = 0 и DI freeze = 0. Это регрессионный корпус разработки; независимое подтверждение 80% визуального сходства не получено.
+
+Для процесса №08 значительного безопасного улучшения пока нет: сохранена геометрия r7. [SVG](output/process_08_v23.svg) · [BPMN](output/process_08_v23.bpmn) · [Отклонённые варианты r8](output/r8_candidate_audit.json). Все 64 узла, 95 переходов, 18 документных связей, 17 документов и 6 ролей сохранены. Пересечения остаются; полная читаемая печать на одном A4 не достигнута.
 
 ```bash
 python -m venv .venv
 .venv/bin/pip install -r requirements.txt
-.venv/bin/python run_v23.py --input inputs/benchmark/process_08_v4_frozen.bpmn \
-  --output-dir experiment-r7 --layout-engine local-continuity \
-  --incumbent examples/process_08_r6.bpmn --candidate-timeout 120 \
-  --reference-profile src/v23/bpmn_v23/assets/reference_conformity_profile.json
+.venv/bin/python run_v23.py --input path/to/model.bpmn --output-dir result --candidate-timeout 30
 PYTHONPATH=src/v23:src/v22 .venv/bin/python -m pytest tests src/v22/tests -q
 ```
 
-Python ≥3.10. Для новой модели сначала запустить обычную компоновку без `--incumbent`, затем применить `local-continuity` к полученному проверенному результату. Если не найден безопасный вариант, алгоритм завершится ошибкой, сохранив предыдущие выходные файлы. Время поиска ограничено, поэтому точные маршруты могут различаться между запусками.
+Python ≥3.10. Node и сеть новому backend не требуются. Для явного старого режима: `--layout-engine human`. При работе с уже проверенной схемой используйте `--incumbent path/to/verified.bpmn`. Поиск ограничен временем, поэтому конкретные маршруты могут различаться между запусками. Результаты сохраняются отдельно от входов.
 
-Основной Python-backend работает без Node, Graphviz и сети. Необязательные внешние эксперименты: `npm ci` (Node ≥20), затем `--layout-engine elk`. ELK-проекция пока не прошла все проверки на других моделях и не заменяет основной алгоритм. Точные версии зафиксированы в lockfile; [ограничения и источники](docs/DEVELOPMENT_R6.md).
-
-[Архитектура](docs/ARCHITECTURE_V23.md) · [Проверки](docs/TEST_REPORT_V23.md) · [История r3](docs/DEVELOPMENT_R3.md) · [r4](docs/DEVELOPMENT_R4.md) · [r5](docs/DEVELOPMENT_R5.md) · [Исследование ручных схем](docs/studies/HUMAN_LAYOUT_AUTOMATION_RULES_RU.md).
-
-Исходная v22 не изменяется. Офисные документы, входные архивы и сырые журналы записи не публикуются.
+[Воспроизведение бенчмарка](docs/DEVELOPMENT_R8.md) · [Архитектура](docs/ARCHITECTURE_V23.md) · [Проверки](docs/TEST_REPORT_V23.md) · [r6](docs/DEVELOPMENT_R6.md) · [r7](docs/DEVELOPMENT_R7.md). Исходная v22 не изменяется. Офисные документы, исходные архивы и сырые журналы записи не публикуются.

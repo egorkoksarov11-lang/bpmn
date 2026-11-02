@@ -1,0 +1,913 @@
+{
+  "protocol": {
+    "archive_sha256": "5a46e6196fab6f628ac802c2c023f84e4920ee0665c427d3758b025756cacd0e",
+    "input_DI": "current source reading geometry; no external coordinate lookup",
+    "stage_from_baseline": true,
+    "baseline": "explicit human mode, decision orientations disabled",
+    "candidate_timeout": 8,
+    "model_timeout": 65,
+    "workers": 1,
+    "note": "development regression corpus; not independent human visual validation; failures stay in the report",
+    "candidate_code_revision": "r8-semantic-axis-recovery",
+    "candidate_workers": 2,
+    "perturbation": {
+      "original_indices": [
+        1,
+        6,
+        11,
+        16,
+        21,
+        26
+      ],
+      "seed_rule": "23 + original file index",
+      "magnitude": 0.12,
+      "all_original_waypoints_discarded": true,
+      "business_XML_and_DI_structure_unchanged": true,
+      "note": "same process corpus, new DI noise; not an independent test on unseen processes"
+    }
+  },
+  "manifest": [
+    {
+      "id": "ref_01",
+      "file": "01--изм 02 Оформление приема сотрудника.bpmn",
+      "sha256": "26bbb02fe15fd056defc8e92c1a0023a15a83cec3e81416d5009b149f0965199",
+      "input_status": "valid",
+      "original": {
+        "features": {
+          "flow_count": 36,
+          "node_count": 31,
+          "lane_count": 6,
+          "return_fraction": 0.1111111111111111,
+          "document_count": 13,
+          "bends_per_flow": 2.0,
+          "straight_fraction": 0.0,
+          "p90_bends": 2,
+          "mean_length_widths": 1.6298072916666668,
+          "p90_length_widths": 4.704000000000001,
+          "contacts_per_flow": 0.3611111111111111,
+          "area_factor": 9.430274420797414,
+          "aspect_ratio": 2.5400453760591097,
+          "axis_aligned_fraction": 0.8611111111111112,
+          "document_distance_widths": 0.46049553571428536,
+          "document_bends": 2.0,
+          "forward_hop_excess": 0.867628,
+          "parallel_crowding_per_flow": 0.238747,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 25,
+        "bends": 100,
+        "length": 10419.2,
+        "sequence_contacts": 13,
+        "sequence_bends": 72,
+        "sequence_length": 9387.69,
+        "extent": {
+          "width": 2620.0,
+          "height": 1090.0,
+          "aspect_ratio": 2.403669724770642
+        },
+        "extent_area": 2855800.0,
+        "hard_geometry": false
+      }
+    },
+    {
+      "id": "ref_02",
+      "file": "06--изм 07 Предоставление отпуска сотруднику.bpmn",
+      "sha256": "cdf3984eb9de1d95c79ecc4f7d77fa185cd27731db8927573b51fc427a507d01",
+      "input_status": "valid",
+      "original": {
+        "features": {
+          "flow_count": 25,
+          "node_count": 21,
+          "lane_count": 6,
+          "return_fraction": 0.12,
+          "document_count": 17,
+          "bends_per_flow": 2.0,
+          "straight_fraction": 0.0,
+          "p90_bends": 2,
+          "mean_length_widths": 1.9587364705882353,
+          "p90_length_widths": 4.901764705882354,
+          "contacts_per_flow": 0.6,
+          "area_factor": 9.152890723356794,
+          "aspect_ratio": 1.5745780051150895,
+          "axis_aligned_fraction": 0.72,
+          "document_distance_widths": 0.38338408304498267,
+          "document_bends": 2.0,
+          "forward_hop_excess": 0.937227,
+          "parallel_crowding_per_flow": 0.433107,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 27,
+        "bends": 84,
+        "length": 9432.61,
+        "sequence_contacts": 15,
+        "sequence_bends": 50,
+        "sequence_length": 8324.63,
+        "extent": {
+          "width": 1920.0,
+          "height": 1200.0,
+          "aspect_ratio": 1.6
+        },
+        "extent_area": 2304000.0,
+        "hard_geometry": false
+      }
+    },
+    {
+      "id": "ref_03",
+      "file": "11--изм 12 Ведение и актуализация личных дел сотрудников.bpmn",
+      "sha256": "0b7530045799aec11e78899ddc0e436ca64229414cd4ebfc34b01a06e266f822",
+      "input_status": "valid",
+      "original": {
+        "features": {
+          "flow_count": 14,
+          "node_count": 16,
+          "lane_count": 1,
+          "return_fraction": 0.07142857142857142,
+          "document_count": 10,
+          "bends_per_flow": 2.0,
+          "straight_fraction": 0.0,
+          "p90_bends": 2,
+          "mean_length_widths": 0.5049682539682541,
+          "p90_length_widths": 1.2865555555555557,
+          "contacts_per_flow": 0.07142857142857142,
+          "area_factor": 4.240351029116466,
+          "aspect_ratio": 1.9815802869478332,
+          "axis_aligned_fraction": 0.9285714285714286,
+          "document_distance_widths": 0.43005050505050507,
+          "document_bends": 2.0,
+          "forward_hop_excess": 0.0,
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 6,
+        "bends": 50,
+        "length": 2124.02,
+        "sequence_contacts": 1,
+        "sequence_bends": 28,
+        "sequence_length": 1272.52,
+        "extent": {
+          "width": 1160.0,
+          "height": 590.0,
+          "aspect_ratio": 1.9661016949152543
+        },
+        "extent_area": 684400.0,
+        "hard_geometry": false
+      }
+    },
+    {
+      "id": "ref_04",
+      "file": "16--изм 17 Воинский учет при увольнении.bpmn",
+      "sha256": "1bd6680e0d4e3b40e3bd79a83694f131cc107c11088d33a0e0998da470b995ab",
+      "input_status": "valid",
+      "original": {
+        "features": {
+          "flow_count": 6,
+          "node_count": 7,
+          "lane_count": 2,
+          "return_fraction": 0.0,
+          "document_count": 13,
+          "bends_per_flow": 2.0,
+          "straight_fraction": 0.0,
+          "p90_bends": 2,
+          "mean_length_widths": 0.6618333333333332,
+          "p90_length_widths": 1.0979999999999999,
+          "contacts_per_flow": 0.16666666666666666,
+          "area_factor": 3.9951987736631196,
+          "aspect_ratio": 2.4290002520565523,
+          "axis_aligned_fraction": 0.8333333333333334,
+          "document_distance_widths": 0.38429615384615384,
+          "document_bends": 2.0,
+          "forward_hop_excess": 0.004473,
+          "parallel_crowding_per_flow": 0.069367,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 12,
+        "bends": 38,
+        "length": 1793.37,
+        "sequence_contacts": 1,
+        "sequence_bends": 12,
+        "sequence_length": 794.2,
+        "extent": {
+          "width": 1240.0,
+          "height": 481.0,
+          "aspect_ratio": 2.577962577962578
+        },
+        "extent_area": 596440.0,
+        "hard_geometry": false
+      }
+    },
+    {
+      "id": "ref_05",
+      "file": "21--изм 22 Рассмотрение обращений жалоб и конфликтов работников.bpmn",
+      "sha256": "7af0137617923935c5320a6514381e79d898b0cbcf1d26afccf689a26b61a4bd",
+      "input_status": "valid",
+      "original": {
+        "features": {
+          "flow_count": 31,
+          "node_count": 27,
+          "lane_count": 5,
+          "return_fraction": 0.03225806451612903,
+          "document_count": 9,
+          "bends_per_flow": 2.0,
+          "straight_fraction": 0.0,
+          "p90_bends": 2,
+          "mean_length_widths": 1.0308790322580645,
+          "p90_length_widths": 1.9625000000000004,
+          "contacts_per_flow": 0.3870967741935484,
+          "area_factor": 5.827714224630703,
+          "aspect_ratio": 2.6496641943584653,
+          "axis_aligned_fraction": 0.7741935483870968,
+          "document_distance_widths": 0.29894444444444457,
+          "document_bends": 2.0,
+          "forward_hop_excess": 0.082348,
+          "parallel_crowding_per_flow": 0.090392,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 18,
+        "bends": 80,
+        "length": 6929.55,
+        "sequence_contacts": 12,
+        "sequence_bends": 62,
+        "sequence_length": 6391.45,
+        "extent": {
+          "width": 2398.0,
+          "height": 900.0,
+          "aspect_ratio": 2.6644444444444444
+        },
+        "extent_area": 2158200.0,
+        "hard_geometry": false
+      }
+    },
+    {
+      "id": "ref_06",
+      "file": "26--изм 27 Организация и проведение корпоративных мероприятий.bpmn",
+      "sha256": "5f6b424ed4d71bf026ee31ef43d0e5b86ed94ed276763928160602560907dfed",
+      "input_status": "valid",
+      "original": {
+        "features": {
+          "flow_count": 32,
+          "node_count": 27,
+          "lane_count": 3,
+          "return_fraction": 0.09375,
+          "document_count": 6,
+          "bends_per_flow": 2.0,
+          "straight_fraction": 0.0,
+          "p90_bends": 2,
+          "mean_length_widths": 1.13708487654321,
+          "p90_length_widths": 2.4558518518518517,
+          "contacts_per_flow": 0.5625,
+          "area_factor": 3.7205050779306488,
+          "aspect_ratio": 3.573053762665417,
+          "axis_aligned_fraction": 0.75,
+          "document_distance_widths": 0.4991604938271605,
+          "document_bends": 2.0,
+          "forward_hop_excess": 0.095323,
+          "parallel_crowding_per_flow": 0.142917,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 22,
+        "bends": 76,
+        "length": 7974.79,
+        "sequence_contacts": 18,
+        "sequence_bends": 64,
+        "sequence_length": 7368.31,
+        "extent": {
+          "width": 2050.0,
+          "height": 649.0,
+          "aspect_ratio": 3.1587057010785826
+        },
+        "extent_area": 1330450.0,
+        "hard_geometry": false
+      }
+    }
+  ],
+  "results": [
+    {
+      "id": "ref_01",
+      "engine": "human",
+      "status": "success",
+      "measurements": {
+        "features": {
+          "flow_count": 36,
+          "node_count": 31,
+          "lane_count": 6,
+          "return_fraction": 0.1111111111111111,
+          "document_count": 13,
+          "bends_per_flow": 1.2777777777777777,
+          "straight_fraction": 0.4444444444444444,
+          "p90_bends": 3,
+          "mean_length_widths": 1.6177020202020203,
+          "p90_length_widths": 3.7781818181818183,
+          "contacts_per_flow": 0.08333333333333333,
+          "area_factor": 7.368205849616621,
+          "aspect_ratio": 1.7267833109017496,
+          "axis_aligned_fraction": 0.6666666666666666,
+          "document_distance_widths": 0.2079220779220779,
+          "document_bends": 0.14285714285714285,
+          "forward_hop_excess": 0.453994,
+          "parallel_crowding_per_flow": 0.006753,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 3,
+        "bends": 48,
+        "length": 13452.6,
+        "sequence_contacts": 3,
+        "sequence_bends": 46,
+        "sequence_length": 12812.2,
+        "extent": {
+          "width": 2890.0,
+          "height": 1576.0,
+          "aspect_ratio": 1.833756345177665
+        },
+        "extent_area": 4554640.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true,
+      "seconds": 18.925
+    },
+    {
+      "id": "ref_02",
+      "engine": "human",
+      "status": "success",
+      "measurements": {
+        "features": {
+          "flow_count": 25,
+          "node_count": 21,
+          "lane_count": 6,
+          "return_fraction": 0.12,
+          "document_count": 17,
+          "bends_per_flow": 2.04,
+          "straight_fraction": 0.4,
+          "p90_bends": 5,
+          "mean_length_widths": 2.0296000000000003,
+          "p90_length_widths": 3.481818181818182,
+          "contacts_per_flow": 0.12,
+          "area_factor": 6.206285967242143,
+          "aspect_ratio": 0.9843081312410842,
+          "axis_aligned_fraction": 0.56,
+          "document_distance_widths": 0.13609625668449196,
+          "document_bends": 0.0,
+          "forward_hop_excess": 1.183995,
+          "parallel_crowding_per_flow": 0.021848,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 3,
+        "bends": 51,
+        "length": 11671.8,
+        "sequence_contacts": 3,
+        "sequence_bends": 51,
+        "sequence_length": 11162.8,
+        "extent": {
+          "width": 1653.0,
+          "height": 1455.0,
+          "aspect_ratio": 1.136082474226804
+        },
+        "extent_area": 2405115.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true,
+      "seconds": 27.842
+    },
+    {
+      "id": "ref_03",
+      "engine": "human",
+      "status": "success",
+      "measurements": {
+        "features": {
+          "flow_count": 14,
+          "node_count": 16,
+          "lane_count": 1,
+          "return_fraction": 0.07142857142857142,
+          "document_count": 10,
+          "bends_per_flow": 0.9285714285714286,
+          "straight_fraction": 0.5,
+          "p90_bends": 2,
+          "mean_length_widths": 1.0547402597402598,
+          "p90_length_widths": 2.830909090909091,
+          "contacts_per_flow": 0.0,
+          "area_factor": 4.692649028801072,
+          "aspect_ratio": 5.717086834733894,
+          "axis_aligned_fraction": 0.5714285714285714,
+          "document_distance_widths": 0.6583471074380164,
+          "document_bends": 0.36363636363636365,
+          "forward_hop_excess": 0.078284,
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 0,
+        "bends": 17,
+        "length": 4841.8,
+        "sequence_contacts": 0,
+        "sequence_bends": 13,
+        "sequence_length": 3248.6,
+        "extent": {
+          "width": 2290.0,
+          "height": 615.0,
+          "aspect_ratio": 3.7235772357723578
+        },
+        "extent_area": 1408350.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true,
+      "seconds": 4.218
+    },
+    {
+      "id": "ref_04",
+      "engine": "human",
+      "status": "success",
+      "measurements": {
+        "features": {
+          "flow_count": 6,
+          "node_count": 7,
+          "lane_count": 2,
+          "return_fraction": 0.0,
+          "document_count": 13,
+          "bends_per_flow": 0.6666666666666666,
+          "straight_fraction": 0.5,
+          "p90_bends": 1,
+          "mean_length_widths": 1.24,
+          "p90_length_widths": 2.0690909090909093,
+          "contacts_per_flow": 0.0,
+          "area_factor": 4.4326098850993985,
+          "aspect_ratio": 1.2916666666666667,
+          "axis_aligned_fraction": 0.6666666666666666,
+          "document_distance_widths": 0.2041958041958042,
+          "document_bends": 0.15384615384615385,
+          "forward_hop_excess": 0.081524,
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 0,
+        "bends": 6,
+        "length": 2220.8,
+        "sequence_contacts": 0,
+        "sequence_bends": 4,
+        "sequence_length": 1636.8,
+        "extent": {
+          "width": 1360.0,
+          "height": 766.0,
+          "aspect_ratio": 1.7754569190600522
+        },
+        "extent_area": 1041760.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true,
+      "seconds": 3.719
+    },
+    {
+      "id": "ref_05",
+      "engine": "human",
+      "status": "success",
+      "measurements": {
+        "features": {
+          "flow_count": 31,
+          "node_count": 27,
+          "lane_count": 5,
+          "return_fraction": 0.03225806451612903,
+          "document_count": 9,
+          "bends_per_flow": 1.3548387096774193,
+          "straight_fraction": 0.3870967741935484,
+          "p90_bends": 2,
+          "mean_length_widths": 1.9856011730205279,
+          "p90_length_widths": 3.731818181818182,
+          "contacts_per_flow": 0.22580645161290322,
+          "area_factor": 4.92695877941395,
+          "aspect_ratio": 0.9905956112852664,
+          "axis_aligned_fraction": 0.6451612903225806,
+          "document_distance_widths": 0.12575757575757576,
+          "document_bends": 0.0,
+          "forward_hop_excess": 0.800798,
+          "parallel_crowding_per_flow": 0.007832,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 7,
+        "bends": 42,
+        "length": 13790.8,
+        "sequence_contacts": 7,
+        "sequence_bends": 42,
+        "sequence_length": 13541.8,
+        "extent": {
+          "width": 1870.0,
+          "height": 1700.0,
+          "aspect_ratio": 1.1
+        },
+        "extent_area": 3179000.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true,
+      "seconds": 42.488
+    },
+    {
+      "id": "ref_06",
+      "engine": "human",
+      "status": "success",
+      "measurements": {
+        "features": {
+          "flow_count": 32,
+          "node_count": 27,
+          "lane_count": 3,
+          "return_fraction": 0.09375,
+          "document_count": 6,
+          "bends_per_flow": 1.25,
+          "straight_fraction": 0.40625,
+          "p90_bends": 3,
+          "mean_length_widths": 1.8094318181818183,
+          "p90_length_widths": 3.7954545454545454,
+          "contacts_per_flow": 0.09375,
+          "area_factor": 3.998504442684965,
+          "aspect_ratio": 1.6272469252601702,
+          "axis_aligned_fraction": 0.5625,
+          "document_distance_widths": 0.1318181818181818,
+          "document_bends": 0.0,
+          "forward_hop_excess": 0.643139,
+          "parallel_crowding_per_flow": 0.038807,
+          "hotspot_excess": 0.006494
+        },
+        "contacts": 3,
+        "bends": 40,
+        "length": 12912.4,
+        "sequence_contacts": 3,
+        "sequence_bends": 40,
+        "sequence_length": 12738.4,
+        "extent": {
+          "width": 1945.0,
+          "height": 1144.0,
+          "aspect_ratio": 1.7001748251748252
+        },
+        "extent_area": 2225080.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true,
+      "seconds": 38.28
+    },
+    {
+      "id": "ref_02",
+      "engine": "adaptive",
+      "status": "success",
+      "seconds": 5.401,
+      "initialization": "verified-baseline-result",
+      "measurements": {
+        "features": {
+          "flow_count": 25,
+          "node_count": 21,
+          "lane_count": 6,
+          "return_fraction": 0.12,
+          "document_count": 17,
+          "bends_per_flow": 2.04,
+          "straight_fraction": 0.4,
+          "p90_bends": 5,
+          "mean_length_widths": 2.0296000000000003,
+          "p90_length_widths": 3.481818181818182,
+          "contacts_per_flow": 0.12,
+          "area_factor": 6.206285967242143,
+          "aspect_ratio": 0.9843081312410842,
+          "axis_aligned_fraction": 0.56,
+          "document_distance_widths": 0.13609625668449196,
+          "document_bends": 0.0,
+          "forward_hop_excess": 1.183995,
+          "parallel_crowding_per_flow": 0.021848,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 3,
+        "bends": 51,
+        "length": 11671.8,
+        "sequence_contacts": 3,
+        "sequence_bends": 51,
+        "sequence_length": 11162.8,
+        "extent": {
+          "width": 1653.0,
+          "height": 1455.0,
+          "aspect_ratio": 1.136082474226804
+        },
+        "extent_area": 2405115.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true
+    },
+    {
+      "id": "ref_01",
+      "engine": "adaptive",
+      "status": "success",
+      "seconds": 6.57,
+      "initialization": "verified-baseline-result",
+      "measurements": {
+        "features": {
+          "flow_count": 36,
+          "node_count": 31,
+          "lane_count": 6,
+          "return_fraction": 0.1111111111111111,
+          "document_count": 13,
+          "bends_per_flow": 1.2777777777777777,
+          "straight_fraction": 0.4444444444444444,
+          "p90_bends": 3,
+          "mean_length_widths": 1.6177020202020203,
+          "p90_length_widths": 3.7781818181818183,
+          "contacts_per_flow": 0.08333333333333333,
+          "area_factor": 7.368205849616621,
+          "aspect_ratio": 1.7267833109017496,
+          "axis_aligned_fraction": 0.6666666666666666,
+          "document_distance_widths": 0.2079220779220779,
+          "document_bends": 0.14285714285714285,
+          "forward_hop_excess": 0.453994,
+          "parallel_crowding_per_flow": 0.006753,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 3,
+        "bends": 48,
+        "length": 13452.6,
+        "sequence_contacts": 3,
+        "sequence_bends": 46,
+        "sequence_length": 12812.2,
+        "extent": {
+          "width": 2890.0,
+          "height": 1576.0,
+          "aspect_ratio": 1.833756345177665
+        },
+        "extent_area": 4554640.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true
+    },
+    {
+      "id": "ref_03",
+      "engine": "adaptive",
+      "status": "success",
+      "seconds": 2.454,
+      "initialization": "verified-baseline-result",
+      "measurements": {
+        "features": {
+          "flow_count": 14,
+          "node_count": 16,
+          "lane_count": 1,
+          "return_fraction": 0.07142857142857142,
+          "document_count": 10,
+          "bends_per_flow": 0.07142857142857142,
+          "straight_fraction": 0.9285714285714286,
+          "p90_bends": 0,
+          "mean_length_widths": 0.2837662337662338,
+          "p90_length_widths": 0.6636363636363637,
+          "contacts_per_flow": 0.0,
+          "area_factor": 5.046898346128085,
+          "aspect_ratio": 1.2684478371501273,
+          "axis_aligned_fraction": 0.9285714285714286,
+          "document_distance_widths": 0.3108264462809917,
+          "document_bends": 0.09090909090909091,
+          "forward_hop_excess": 0.0,
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 0,
+        "bends": 2,
+        "length": 1626.2,
+        "sequence_contacts": 0,
+        "sequence_bends": 1,
+        "sequence_length": 874.0,
+        "extent": {
+          "width": 1131.5,
+          "height": 850.0,
+          "aspect_ratio": 1.3311764705882352
+        },
+        "extent_area": 961775.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true
+    },
+    {
+      "id": "ref_04",
+      "engine": "adaptive",
+      "status": "success",
+      "seconds": 1.811,
+      "initialization": "verified-baseline-result",
+      "measurements": {
+        "features": {
+          "flow_count": 6,
+          "node_count": 7,
+          "lane_count": 2,
+          "return_fraction": 0.0,
+          "document_count": 13,
+          "bends_per_flow": 0.3333333333333333,
+          "straight_fraction": 0.8333333333333334,
+          "p90_bends": 0,
+          "mean_length_widths": 0.3393939393939394,
+          "p90_length_widths": 0.5727272727272728,
+          "contacts_per_flow": 0.0,
+          "area_factor": 3.1018298984740715,
+          "aspect_ratio": 2.711340206185567,
+          "axis_aligned_fraction": 0.8333333333333334,
+          "document_distance_widths": 0.1332867132867133,
+          "document_bends": 0.15384615384615385,
+          "forward_hop_excess": 0.0,
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 0,
+        "bends": 4,
+        "length": 829.2,
+        "sequence_contacts": 0,
+        "sequence_bends": 2,
+        "sequence_length": 448.0,
+        "extent": {
+          "width": 1282.0,
+          "height": 444.0,
+          "aspect_ratio": 2.8873873873873874
+        },
+        "extent_area": 569208.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true
+    },
+    {
+      "id": "ref_05",
+      "engine": "adaptive",
+      "status": "success",
+      "seconds": 5.179,
+      "initialization": "verified-baseline-result",
+      "measurements": {
+        "features": {
+          "flow_count": 31,
+          "node_count": 27,
+          "lane_count": 5,
+          "return_fraction": 0.03225806451612903,
+          "document_count": 9,
+          "bends_per_flow": 0.5483870967741935,
+          "straight_fraction": 0.6774193548387096,
+          "p90_bends": 2,
+          "mean_length_widths": 1.5381231671554252,
+          "p90_length_widths": 3.213636363636364,
+          "contacts_per_flow": 0.06451612903225806,
+          "area_factor": 6.3382613999827955,
+          "aspect_ratio": 1.4218543046357617,
+          "axis_aligned_fraction": 0.7741935483870968,
+          "document_distance_widths": 0.5651515151515152,
+          "document_bends": 0.2222222222222222,
+          "forward_hop_excess": 0.397161,
+          "parallel_crowding_per_flow": 0.000147,
+          "hotspot_excess": 0.0
+        },
+        "contacts": 2,
+        "bends": 19,
+        "length": 11609.0,
+        "sequence_contacts": 2,
+        "sequence_bends": 17,
+        "sequence_length": 10490.0,
+        "extent": {
+          "width": 2281.5,
+          "height": 1566.0,
+          "aspect_ratio": 1.456896551724138
+        },
+        "extent_area": 3572829.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true
+    },
+    {
+      "id": "ref_06",
+      "engine": "adaptive",
+      "status": "success",
+      "seconds": 6.66,
+      "initialization": "verified-baseline-result",
+      "measurements": {
+        "features": {
+          "flow_count": 32,
+          "node_count": 27,
+          "lane_count": 3,
+          "return_fraction": 0.09375,
+          "document_count": 6,
+          "bends_per_flow": 1.25,
+          "straight_fraction": 0.40625,
+          "p90_bends": 3,
+          "mean_length_widths": 1.8094318181818183,
+          "p90_length_widths": 3.7954545454545454,
+          "contacts_per_flow": 0.09375,
+          "area_factor": 3.998504442684965,
+          "aspect_ratio": 1.6272469252601702,
+          "axis_aligned_fraction": 0.5625,
+          "document_distance_widths": 0.1318181818181818,
+          "document_bends": 0.0,
+          "forward_hop_excess": 0.643139,
+          "parallel_crowding_per_flow": 0.038807,
+          "hotspot_excess": 0.006494
+        },
+        "contacts": 3,
+        "bends": 40,
+        "length": 12912.4,
+        "sequence_contacts": 3,
+        "sequence_bends": 40,
+        "sequence_length": 12738.4,
+        "extent": {
+          "width": 1945.0,
+          "height": 1144.0,
+          "aspect_ratio": 1.7001748251748252
+        },
+        "extent_area": 2225080.0,
+        "hard_geometry": true
+      },
+      "semantic_diff": 0,
+      "DI_freeze": true
+    }
+  ],
+  "comparison": {
+    "paired_success_count": 6,
+    "paired_ids": [
+      "ref_01",
+      "ref_02",
+      "ref_03",
+      "ref_04",
+      "ref_05",
+      "ref_06"
+    ],
+    "coverage": {
+      "human": {
+        "success": 6
+      },
+      "adaptive": {
+        "success": 6
+      }
+    },
+    "totals": {
+      "contacts": {
+        "baseline": 16,
+        "candidate": 11,
+        "change_percent": -31.25
+      },
+      "bends": {
+        "baseline": 204,
+        "candidate": 164,
+        "change_percent": -19.6078431372549
+      },
+      "length": {
+        "baseline": 58890.2,
+        "candidate": 52101.2,
+        "change_percent": -11.528233899698082
+      },
+      "sequence_contacts": {
+        "baseline": 16,
+        "candidate": 11,
+        "change_percent": -31.25
+      },
+      "sequence_bends": {
+        "baseline": 196,
+        "candidate": 157,
+        "change_percent": -19.897959183673475
+      },
+      "sequence_length": {
+        "baseline": 55140.6,
+        "candidate": 48525.4,
+        "change_percent": -11.99696775152972
+      },
+      "extent_area": {
+        "baseline": 14813945.0,
+        "candidate": 14288647.0,
+        "change_percent": -3.5459696927455875
+      }
+    },
+    "per_model_median_ratios": {
+      "contacts": 1.0,
+      "bends": 0.8333333333333333,
+      "length": 0.9208965397221336,
+      "sequence_contacts": 1.0,
+      "sequence_bends": 0.75,
+      "sequence_length": 0.8873192633180227,
+      "extent_area": 1.0
+    },
+    "regressions": {
+      "contacts": [],
+      "bends": [],
+      "length": [],
+      "sequence_contacts": [],
+      "sequence_bends": [],
+      "sequence_length": [],
+      "extent_area": [
+        "ref_05"
+      ]
+    },
+    "straight_fraction": {
+      "baseline_median": 0.4253472222222222,
+      "candidate_median": 0.5609318996415771
+    },
+    "forward_hop_excess": {
+      "baseline_median": 0.5485665,
+      "candidate_median": 0.4255775
+    },
+    "parallel_crowding_per_flow": {
+      "baseline_median": 0.0072925,
+      "candidate_median": 0.00345
+    },
+    "hotspot_excess": {
+      "baseline_median": 0.0,
+      "candidate_median": 0.0
+    },
+    "lost_successes": [],
+    "recovered_successes": []
+  }
+}

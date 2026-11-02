@@ -196,7 +196,11 @@ class ContinuityBackend(HumanStyleBackend):
                         if not changed:break
             except TimeoutError:interrupted=True
             output.write_bytes(best_bpmn);svg.write_bytes(best_svg)
-        return {'backend':self.name,'selected_candidate':'local-continuity' if any(c['status']=='accepted' for c in logs) else 'verified-incumbent',
+        accepted=[c for c in logs if c['status']=='accepted']
+        candidates=[{'candidate':'verified-incumbent','status':'verified','rank':baseline_rank}]
+        for index,change in enumerate(accepted):
+            candidates.append({'candidate':'local-continuity' if index==len(accepted)-1 else f'local-continuity-{index+1}','status':'verified','rank':change['after'],'edge':change['edge']})
+        return {'backend':self.name,'candidates':candidates,'selected_candidate':'local-continuity' if accepted else 'verified-incumbent',
                 'quality':quality,'baseline_quality':baseline_rank,'frozen_neighbour_ids':near,'optimization_neighbour_ids':focus,'optimization_radius_task_widths':1.0,
                 'continuity_before':before,'continuity_after':local_metrics(paths,near),
                 'changes':logs,'incumbent_sha256':hashlib.sha256(self.incumbent.read_bytes()).hexdigest(),'interrupted':interrupted,'seconds':round(time.monotonic()-started,3),
