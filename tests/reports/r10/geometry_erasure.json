@@ -1,0 +1,191 @@
+{
+  "protocol": "all original positions, sizes, waypoints and caption bounds randomized; identical canonical planner input required; supported source model and DI structure frozen",
+  "seed": 2371,
+  "results": [
+    {
+      "id": "ref_01",
+      "status": "passed",
+      "canonical_geometry_sha256": "18b985993251258dbf9848a2cfbde5d27968e0082228ef52d36a3437bd1a447c",
+      "source_sha256": "e4b6fa7820f8222247367fae663536fd71d20ab0ea724763666cf8671a290e99"
+    },
+    {
+      "id": "ref_02",
+      "status": "passed",
+      "canonical_geometry_sha256": "b74bc72dacfc8bc699cd6fb65a169e805c8eb32c89824d1e79e1073053031dae",
+      "source_sha256": "8a52e461997d95091730ce8bc79e9f2533b76bb5f7be1d850922bcf44aed6328"
+    },
+    {
+      "id": "ref_03",
+      "status": "passed",
+      "canonical_geometry_sha256": "18a42c94a871491d34510937b1e807b512039bc5ef254436907b8ae964a252f4",
+      "source_sha256": "c95b7b791eddf4e62f140ca01182c3bda0f6ff8fbde0094c94fc9e684a50e91e"
+    },
+    {
+      "id": "ref_04",
+      "status": "passed",
+      "canonical_geometry_sha256": "623d426bedbd016b17e477e9837edb785e1d8219055cb125e634bdb820697c19",
+      "source_sha256": "414ee58b98394d8809a252b8934d2274a982e1e3dde178326edafbd69be79128"
+    },
+    {
+      "id": "ref_05",
+      "status": "rejected_input",
+      "reason": "{'dangling': [['DataRef_T7', 'dataObjectRef', 'DataObject_T7'], ['DataRef_T7_67', 'dataObjectRef', 'DataObject_T7'], ['DataRef_T7_69', 'dataObjectRef', 'DataObject_T7']], 'preflight': {'compatible': True, 'errors': [], 'warnings': [], 'source': '/workspace/work/algorithm-r8/inputs/ref_05.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 19, 'sequence_flows': 21, 'associations': 7, 'data_references': 7, 'lanes': 4}}}"
+    },
+    {
+      "id": "ref_06",
+      "status": "passed",
+      "canonical_geometry_sha256": "dda8c7215b55c80d740ee47d19771d7f6b209aa810b9e83121f050177dd1edff",
+      "source_sha256": "07576890722631586a015ac911179850fefc5fb125bfa1721747c96b77432213"
+    },
+    {
+      "id": "ref_07",
+      "status": "passed",
+      "canonical_geometry_sha256": "a9fe30efc0dfd6dda8f9fa9b22b0994b9dae965efbbd2b8e09bcc342f078e3d8",
+      "source_sha256": "bedf2d93730f8b038bdba6b82f36101ce7b53fb6399d8af037d5d4bc316dc331"
+    },
+    {
+      "id": "ref_08",
+      "status": "passed",
+      "canonical_geometry_sha256": "26fffdc684ae866ae97afc58ff9af976912801cb9f82fcd24d69b3bb1e2b9b78",
+      "source_sha256": "5d2762d5a98fd7e1e9181f8bc29d5602384346bcc24e024b7692960282c2ef6f"
+    },
+    {
+      "id": "ref_09",
+      "status": "passed",
+      "canonical_geometry_sha256": "f81dd324bbdcbdd94fdb655dd93aa54c05d3567f8c26aa006d00ee2b3fc98834",
+      "source_sha256": "be8d2dcd9297638d6887400477cb0f3d33f050c07fe75634e149aa531f3eacaf"
+    },
+    {
+      "id": "ref_10",
+      "status": "rejected_input",
+      "reason": "{'dangling': [], 'preflight': {'compatible': False, 'errors': ['1 messageFlow(s): cross-pool routing is not supported', 'DataInputAssociation_0bv6lv3: multi-source dataInputAssociation not supported', 'Edge DataInputAssociation_0bv6lv3 endpoints are not known nodes/data references: None -> Task_PrepareProject', 'Missing DI edge DataInputAssociation_0bv6lv3', 'Unrouted DI edges are not supported: MessageFlow_Employment'], 'warnings': ['Participants/pools are preserved but not resized or automatically reordered'], 'source': '/workspace/work/algorithm-r8/inputs/ref_10.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 28, 'sequence_flows': 33, 'associations': 16, 'data_references': 15, 'lanes': 5}}}"
+    },
+    {
+      "id": "ref_11",
+      "status": "passed",
+      "canonical_geometry_sha256": "cbe5ae04e63622089b3eb7954b0bf96380ccdfb56708274f32192e99b8b70115",
+      "source_sha256": "9256e1a63ffabb15a2450d2a189e398f6e59d255409c1f23e65820c3d87ef700"
+    },
+    {
+      "id": "ref_12",
+      "status": "passed",
+      "canonical_geometry_sha256": "25daa44942576a4b745eb823579868b6a795dd2461d9695f155df23d34c95e35",
+      "source_sha256": "29bc12bb0bae7a0244f51fbfb839e8dfc5fcc464e80ec7f56fab635153af1f9a"
+    },
+    {
+      "id": "ref_13",
+      "status": "passed",
+      "canonical_geometry_sha256": "43e4a7138dea70d6da77d6e213c5a8afde4b25c76cb010f5afe8f90027884567",
+      "source_sha256": "1d5e2b4d4e1271aec3829532d39860963f75852da4b93b3c40f740cb0058a52b"
+    },
+    {
+      "id": "ref_14",
+      "status": "passed",
+      "canonical_geometry_sha256": "b51c71a6e579c916aaf8f63b7a55d797a8c09dd8537d04e910cab7e174769711",
+      "source_sha256": "0ba7680aae4ed589f5bd7861614bc5ec0c7f6a24e5a8007bfca5b21367ef0d13"
+    },
+    {
+      "id": "ref_15",
+      "status": "passed",
+      "canonical_geometry_sha256": "6fe29a88e045f4f4835f9774970649a581f82dfd94f94cdc9cf29ad2400da2c4",
+      "source_sha256": "a20dd6145620f06a144cb80a18afd487a1aba994b5f95da7e592dd45ed5c983f"
+    },
+    {
+      "id": "ref_16",
+      "status": "passed",
+      "canonical_geometry_sha256": "969b6409ebdefca063e8bed5a112678c6730da5eaa7f9f7efbdd711056898a6a",
+      "source_sha256": "64fa224b7224f9bab8d041934bfcfbb7dfacc1994b72128aa840f7700d018737"
+    },
+    {
+      "id": "ref_17",
+      "status": "rejected_input",
+      "reason": "{'dangling': [], 'preflight': {'compatible': False, 'errors': ['2 messageFlow(s): cross-pool routing is not supported', 'Unrouted DI edges are not supported: MessageFlow_1, MessageFlow_2'], 'warnings': ['Participants/pools are preserved but not resized or automatically reordered'], 'source': '/workspace/work/algorithm-r8/inputs/ref_17.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 17, 'sequence_flows': 21, 'associations': 10, 'data_references': 10, 'lanes': 2}}}"
+    },
+    {
+      "id": "ref_18",
+      "status": "rejected_input",
+      "reason": "{'dangling': [], 'preflight': {'compatible': False, 'errors': ['3 messageFlow(s): cross-pool routing is not supported', 'Unrouted DI edges are not supported: Flow_029mhuh, M1, M2'], 'warnings': ['Participants/pools are preserved but not resized or automatically reordered'], 'source': '/workspace/work/algorithm-r8/inputs/ref_18.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 25, 'sequence_flows': 29, 'associations': 2, 'data_references': 2, 'lanes': 3}}}"
+    },
+    {
+      "id": "ref_19",
+      "status": "rejected_input",
+      "reason": "{'dangling': [], 'preflight': {'compatible': False, 'errors': ['3 messageFlow(s): cross-pool routing is not supported', 'textAnnotation/group: obstacle-aware routing not implemented', 'Unsupported diagram shape Text_Deadline (textAnnotation)', 'Unrouted DI edges are not supported: Association_1jer7l3, MessageFlow_Date, MessageFlow_Result, MessageFlow_Send'], 'warnings': ['Participants/pools are preserved but not resized or automatically reordered'], 'source': '/workspace/work/algorithm-r8/inputs/ref_19.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 14, 'sequence_flows': 15, 'associations': 6, 'data_references': 6, 'lanes': 2}}}"
+    },
+    {
+      "id": "ref_20",
+      "status": "rejected_input",
+      "reason": "{'dangling': [], 'preflight': {'compatible': False, 'errors': ['1 attached boundaryEvent(s): attachment geometry not supported'], 'warnings': [], 'source': '/workspace/work/algorithm-r8/inputs/ref_20.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 30, 'sequence_flows': 34, 'associations': 13, 'data_references': 13, 'lanes': 6}}}"
+    },
+    {
+      "id": "ref_21",
+      "status": "passed",
+      "canonical_geometry_sha256": "8e41f40ce296215ae594f0c1a013ade012218ee4ec4f45c41855ac6ac8c9581f",
+      "source_sha256": "ed91bdefc9b5bc54ced885ecf2603102ae9c784bc29773760419ae12d177dde7"
+    },
+    {
+      "id": "ref_22",
+      "status": "passed",
+      "canonical_geometry_sha256": "aa4ba63673e756477e3592f99d3c3f9a0a1722b742f82f76cfcab001f503ee72",
+      "source_sha256": "108f2c7b20087c5a6251d2a5cbf630462c87018e8dfe507d92233bae0642ec7c"
+    },
+    {
+      "id": "ref_23",
+      "status": "rejected_input",
+      "reason": "{'dangling': [['DR_Assignment_Input', 'dataObjectRef', 'DO_Assignment']], 'preflight': {'compatible': True, 'errors': [], 'warnings': [], 'source': '/workspace/work/algorithm-r8/inputs/ref_23.bpmn', 'counts': {'processes': 1, 'diagrams': 1, 'nodes': 17, 'sequence_flows': 21, 'associations': 3, 'data_references': 3, 'lanes': 4}}}"
+    },
+    {
+      "id": "ref_24",
+      "status": "passed",
+      "canonical_geometry_sha256": "4d8130c7d7300fa7c4e3e6fe2bb7dc8bb81adf20203f4310320499111710abcb",
+      "source_sha256": "0857c7ad98c8922d07aec42da746f59c601d62738955984009da42888a424e33"
+    },
+    {
+      "id": "ref_25",
+      "status": "passed",
+      "canonical_geometry_sha256": "2ee5fd8fe315bd06b36556fc2bdd511e9c9e6184c6f185b3fbe541b3a60e97de",
+      "source_sha256": "f65ad994526c1abbcfe5275b5ca6980b1b2b9000b1d12501c3896fa45bb9ee94"
+    },
+    {
+      "id": "ref_26",
+      "status": "passed",
+      "canonical_geometry_sha256": "0423414008f1cd584c7338b1e63f6d9632f14166d9008f82f810107d12008268",
+      "source_sha256": "6fe42385a58dbaf7ac89efe9e65bfeaacdeedb547c7254c2b4add370f83ef548"
+    },
+    {
+      "id": "ref_27",
+      "status": "passed",
+      "canonical_geometry_sha256": "294d6dd4acfa2fc70b35f890ba0468df1db2a7a8a7e798e38903dc78c8a45fc2",
+      "source_sha256": "75d1bbca41376001105a1f5c9174905795f972d82645cb5142ac9806f1d5f751"
+    },
+    {
+      "id": "ref_28",
+      "status": "passed",
+      "canonical_geometry_sha256": "47bfc0a306255d45408d81bf34900c6e611c5b5052298fc98d6fc6fe0ef844fa",
+      "source_sha256": "9eba7cf5329d5ea375e459a100c501dde1783d67faa69e385e4fc5116ed8a6f5"
+    },
+    {
+      "id": "ref_29",
+      "status": "passed",
+      "canonical_geometry_sha256": "0a21e51cabee882a2a12a64282a09cde8cec035ac7ee9cb12d0c1fb9aa70afcc",
+      "source_sha256": "e32649a302418ac61143e1fc3b331f87fa163b7017dada1e098cfc546eecc051"
+    },
+    {
+      "id": "ref_30",
+      "status": "passed",
+      "canonical_geometry_sha256": "a18a8a3ace57f03ccb20060a3ad57c2134e29ad86ddf80cce43b18a69f1be344",
+      "source_sha256": "9a6254cc9bf2e0d810d533bdaa44f767e657f343ce3a73c74309073587666e68"
+    },
+    {
+      "id": "ref_31",
+      "status": "passed",
+      "canonical_geometry_sha256": "005a031963dadbb159e86e2b4748976af2f74d7994bb0687f478015de265d36f",
+      "source_sha256": "bd13da309d10c9b98b06034b46fcb7c7da8c6a2834761f7f00476867639dfcd1"
+    },
+    {
+      "id": "ref_32",
+      "status": "passed",
+      "canonical_geometry_sha256": "51835f58b44786b59e9e92781240a74204ad131556909e00e5273d1f4fa53649",
+      "source_sha256": "f504120b363915b7bd0c05f0f1057ae0dc37544855f258c44985ba3f608768a7"
+    }
+  ]
+}

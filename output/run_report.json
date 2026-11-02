@@ -1,6 +1,6 @@
 {
   "version": "23.1.2.dev0",
-  "backend": "v23-local-successor-continuity",
+  "backend": "v23-from-scratch",
   "status": "layout_candidate_verified",
   "release_ready": false,
   "limitations": [
@@ -15,7 +15,7 @@
       "compatible": true,
       "errors": [],
       "warnings": [],
-      "source": "/workspace/work/algorithm-r7/v23-stage-5jxan392/process_08_v23.bpmn",
+      "source": "/workspace/work/algorithm-r10/v23-stage-pd0_mybl/process_08_v23.bpmn",
       "counts": {
         "processes": 1,
         "diagrams": 1,
@@ -30,56 +30,116 @@
   "label_placement": {
     "unplaced_labels": [],
     "external_labels": 95,
-    "large_displacements": [
-      {
-        "id": "DOR_LegalCheck",
-        "distance": 341.9
-      },
-      {
-        "id": "F83",
-        "distance": 291.97
-      },
-      {
-        "id": "F93",
-        "distance": 268.33
-      },
-      {
-        "id": "F97",
-        "distance": 300.72
-      }
+    "preserved_labels": [
+      "G53",
+      "S",
+      "G513a",
+      "G511",
+      "G512",
+      "G516a",
+      "G58d",
+      "G513",
+      "G514",
+      "G56",
+      "G57",
+      "G57a",
+      "G54a",
+      "G511b",
+      "G53b",
+      "G59",
+      "G51",
+      "G58",
+      "G516",
+      "G55",
+      "G54b",
+      "E",
+      "G515",
+      "G511a",
+      "DOR_ClosingDocs",
+      "DOR_LegalCheck",
+      "DSR_SupplierOptions",
+      "DOR_ContractBasis_Existing",
+      "DOR_ContractBasis_Final",
+      "DOR_PrePaymentDocs",
+      "DOR_TechTask",
+      "DSR_OperationsFile_Actual",
+      "DSR_OperationsFile_Close",
+      "DSR_OperationsFile_Plan",
+      "DOR_PaymentTask",
+      "DSR_CashFlow_Fact",
+      "DSR_CashFlow_Plan",
+      "DOR_BankDocument",
+      "DOR_AccountantTask",
+      "DOR_InitialTechData",
+      "DOR_Order",
+      "F84",
+      "F82",
+      "F74",
+      "F89",
+      "F95",
+      "F83",
+      "F29",
+      "F53",
+      "F93",
+      "F97",
+      "F94",
+      "F96",
+      "F75",
+      "F81",
+      "F90",
+      "F98",
+      "F28",
+      "F52",
+      "F77",
+      "F76",
+      "F10",
+      "F13",
+      "F16",
+      "F19",
+      "F22",
+      "F26",
+      "F34",
+      "F38",
+      "F43",
+      "F49",
+      "F5",
+      "F57",
+      "F62",
+      "F65",
+      "F69",
+      "F79",
+      "F87",
+      "F12",
+      "F15",
+      "F18",
+      "F21",
+      "F25",
+      "F33",
+      "F37",
+      "F4",
+      "F44",
+      "F50",
+      "F56",
+      "F61",
+      "F64",
+      "F68",
+      "F78",
+      "F88",
+      "F9"
     ],
+    "large_displacements": [],
     "distant_from_owner": [
       {
-        "id": "G53",
-        "distance": 142.86
+        "id": "F10",
+        "distance": 32.78
       },
       {
-        "id": "G511b",
-        "distance": 59.0
+        "id": "F22",
+        "distance": 32.78
       },
       {
-        "id": "F82",
-        "distance": 138.86
-      },
-      {
-        "id": "F83",
-        "distance": 335.4
-      },
-      {
-        "id": "F93",
-        "distance": 115.75
-      },
-      {
-        "id": "F97",
-        "distance": 79.3
-      },
-      {
-        "id": "F98",
-        "distance": 88.04
-      },
-      {
-        "id": "F77",
-        "distance": 58.27
+        "id": "F43",
+        "distance": 32.78
       }
     ],
     "rendering": {
@@ -94,552 +154,4718 @@
         "L5": 14,
         "L6": 14
       },
+      "task_font_sizes": {
+        "T51a": 13,
+        "T51b": 13,
+        "T51c": 13,
+        "T52": 13,
+        "T53": 13,
+        "C53": 13,
+        "T54a": 13,
+        "T54b": 13,
+        "T55": 13,
+        "C55": 13,
+        "T56": 13,
+        "T57": 13,
+        "T58a": 13,
+        "T58b": 13,
+        "T58c": 13,
+        "T59a": 13,
+        "T59b": 13,
+        "T510a": 13,
+        "T510b": 13,
+        "T511a": 13,
+        "T511b": 13,
+        "T511c": 13,
+        "T512a": 13,
+        "T512b": 13,
+        "T513": 13,
+        "T514": 13,
+        "T514c": 13,
+        "T515": 13,
+        "T515c": 13,
+        "T516a": 13,
+        "T516b": 13,
+        "T510c": 13,
+        "T57a": 13,
+        "T58d": 13,
+        "T59c": 13,
+        "T513a": 13,
+        "T51d": 13,
+        "T54c": 13,
+        "T511d": 13,
+        "T516c": 13
+      },
+      "label_font_sizes": {
+        "S": 12,
+        "G54b": 12,
+        "G58": 12,
+        "G54a": 12,
+        "G59": 12,
+        "G516": 12,
+        "G51": 12,
+        "G53": 12,
+        "G53b": 12,
+        "G55": 12,
+        "G56": 12,
+        "G511": 12,
+        "G513": 12,
+        "E": 12,
+        "G57": 12,
+        "G514": 12,
+        "G515": 12,
+        "F4": 12,
+        "F9": 12,
+        "F10": 12,
+        "F12": 12,
+        "F13": 12,
+        "F15": 12,
+        "F18": 12,
+        "F19": 12,
+        "F21": 12,
+        "F22": 12,
+        "F25": 12,
+        "F26": 12,
+        "F33": 12,
+        "F34": 12,
+        "F37": 12,
+        "F38": 12,
+        "F43": 12,
+        "F44": 12,
+        "F49": 12,
+        "F50": 12,
+        "F61": 12,
+        "G57a": 12,
+        "G513a": 12,
+        "F64": 12,
+        "F65": 12,
+        "F68": 12,
+        "F69": 12,
+        "G58d": 12,
+        "G511a": 12,
+        "G511b": 12,
+        "G512": 12,
+        "G516a": 12,
+        "F5": 12,
+        "F16": 12,
+        "F28": 10,
+        "F29": 12,
+        "F52": 11,
+        "F53": 12,
+        "F56": 12,
+        "F57": 12,
+        "F62": 12,
+        "F74": 12,
+        "F75": 12,
+        "F76": 12,
+        "F77": 12,
+        "F78": 12,
+        "F79": 12,
+        "F81": 12,
+        "F82": 10,
+        "F83": 12,
+        "F84": 12,
+        "F87": 12,
+        "F88": 12,
+        "F89": 12,
+        "F90": 12,
+        "F93": 12,
+        "F94": 12,
+        "F95": 12,
+        "F96": 12,
+        "F97": 12,
+        "F98": 12,
+        "DOR_Order": 12,
+        "DSR_SupplierOptions": 12,
+        "DOR_LegalCheck": 12,
+        "DOR_ContractBasis_Existing": 12,
+        "DOR_ContractBasis_Final": 12,
+        "DOR_PrePaymentDocs": 12,
+        "DOR_InitialTechData": 12,
+        "DOR_TechTask": 12,
+        "DOR_PaymentTask": 12,
+        "DOR_BankDocument": 12,
+        "DOR_ClosingDocs": 12,
+        "DOR_AccountantTask": 12,
+        "DSR_OperationsFile_Plan": 12,
+        "DSR_OperationsFile_Actual": 12,
+        "DSR_OperationsFile_Close": 12,
+        "DSR_CashFlow_Plan": 12,
+        "DSR_CashFlow_Fact": 12
+      },
+      "task_font_size_range": [
+        10,
+        13
+      ],
       "text_overflow_ids": []
-    }
+    },
+    "policy": "preserve valid measured bounds; full names; local repair within 32 units; unresolved safe distant captions explicitly reported"
   },
   "backend_report": {
-    "backend": "v23-local-successor-continuity",
-    "selected_candidate": "local-continuity",
+    "selection_policy": {
+      "name": "balanced-readability-v1",
+      "contacts_per_flow": 4.0,
+      "parallel_crowding_per_flow": 8.0,
+      "hotspot_excess": 1.2,
+      "forward_hop_excess": 0.8,
+      "bends_per_flow": 0.35,
+      "style_penalty_scale": 0.001
+    },
+    "backend": "v23-semantic-layers-and-local-information",
+    "selected_candidate": "semantic-longest_path-gap-24-refined",
     "quality": [
-      4,
-      10,
-      -37,
+      9.214926,
       [
-        40,
-        149,
-        49779.3
-      ]
+        84,
+        199,
+        68891.6
+      ],
+      10.5547
     ],
-    "baseline_quality": [
-      5,
-      12,
-      -36,
-      [
-        40,
-        151,
-        49858.3
-      ]
-    ],
-    "frozen_neighbour_ids": [
-      "F1",
-      "F3",
-      "F5",
-      "F8",
-      "F9",
-      "F10",
-      "F11",
-      "F14",
-      "F15",
-      "F16",
-      "F17",
-      "F20",
-      "F21",
-      "F24",
-      "F26",
-      "F27",
-      "F30",
-      "F32",
-      "F36",
-      "F39",
-      "F41",
-      "F42",
-      "F45",
-      "F46",
-      "F47",
-      "F48",
-      "F51",
-      "F55",
-      "F60",
-      "F63",
-      "F66",
-      "F73",
-      "F77",
-      "F82",
-      "F88",
-      "F92",
-      "F93",
-      "F98"
-    ],
-    "optimization_neighbour_ids": [
-      "F1",
-      "F3",
-      "F5",
-      "F8",
-      "F9",
-      "F10",
-      "F11",
-      "F14",
-      "F15",
-      "F16",
-      "F17",
-      "F20",
-      "F21",
-      "F22",
-      "F24",
-      "F26",
-      "F27",
-      "F30",
-      "F32",
-      "F36",
-      "F39",
-      "F41",
-      "F42",
-      "F45",
-      "F46",
-      "F47",
-      "F48",
-      "F51",
-      "F53",
-      "F55",
-      "F60",
-      "F63",
-      "F65",
-      "F66",
-      "F73",
-      "F77",
-      "F82",
-      "F88",
-      "F90",
-      "F92",
-      "F93",
-      "F98"
-    ],
-    "optimization_radius_task_widths": 1.0,
-    "continuity_before": {
-      "frozen_neighbour_count": 38,
-      "straight": 33,
-      "one_bend": 1,
-      "two_plus_bends": 4,
-      "bends": 10,
-      "straight_fraction": 0.868421052631579
-    },
-    "continuity_after": {
-      "frozen_neighbour_count": 38,
-      "straight": 34,
-      "one_bend": 1,
-      "two_plus_bends": 3,
-      "bends": 8,
-      "straight_fraction": 0.8947368421052632
-    },
-    "changes": [
-      {
-        "edge": "F77",
-        "proposal": "axis-alignment-flexible-split-0.5",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            53,
-            152,
-            50006.3
-          ]
-        ]
-      },
-      {
-        "edge": "F77",
-        "proposal": "axis-alignment-rigid-split-0.5",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            55,
-            151,
-            50097.8
-          ]
-        ]
-      },
-      {
-        "edge": "F77",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            53,
-            153,
-            50235.8
-          ]
-        ]
-      },
-      {
-        "edge": "F10",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          10,
-          -37,
-          [
-            42,
-            145,
-            49734.8
-          ]
-        ]
-      },
-      {
-        "edge": "F10",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          10,
-          -37,
-          [
-            42,
-            145,
-            49889.3
-          ]
-        ]
-      },
-      {
-        "edge": "F22",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          10,
-          -37,
-          [
-            41,
-            149,
-            49854.3
-          ]
-        ]
-      },
-      {
-        "edge": "F22",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          10,
-          -37,
-          [
-            41,
-            149,
-            49851.8
-          ]
-        ]
-      },
-      {
-        "edge": "F88",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          10,
-          -37,
-          [
-            41,
-            152,
-            50060.8
-          ]
-        ]
-      },
-      {
-        "edge": "F88",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "accepted",
-        "before": [
-          5,
-          12,
-          -36,
-          [
-            40,
-            151,
-            49858.3
-          ]
-        ],
-        "after": [
-          4,
-          10,
-          -37,
-          [
-            40,
-            149,
-            49779.3
-          ]
-        ]
-      },
-      {
-        "edge": "F93",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            47,
-            147,
-            50382.3
-          ]
-        ]
-      },
-      {
-        "edge": "F93",
-        "proposal": "axis-alignment-rigid-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            47,
-            146,
-            50408.3
-          ]
-        ]
-      },
-      {
-        "edge": "F5",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -38,
-          [
-            41,
-            147,
-            49478.55
-          ]
-        ]
-      },
-      {
-        "edge": "F5",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -38,
-          [
-            43,
-            147,
-            49467.3
-          ]
-        ]
-      },
-      {
-        "edge": "F77",
-        "proposal": "axis-alignment-flexible-split-0.5",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          7,
-          -38,
-          [
-            52,
-            151,
-            49868.3
-          ]
-        ]
-      },
-      {
-        "edge": "F77",
-        "proposal": "axis-alignment-rigid-split-0.5",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          7,
-          -38,
-          [
-            52,
-            154,
-            49878.3
-          ]
-        ]
-      },
-      {
-        "edge": "F77",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          7,
-          -38,
-          [
-            53,
-            149,
-            50102.3
-          ]
-        ]
-      },
-      {
-        "edge": "F10",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          8,
-          -38,
-          [
-            42,
-            143,
-            49655.8
-          ]
-        ]
-      },
-      {
-        "edge": "F10",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          8,
-          -38,
-          [
-            42,
-            143,
-            49810.3
-          ]
-        ]
-      },
-      {
-        "edge": "F22",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          8,
-          -38,
-          [
-            41,
-            147,
-            49775.3
-          ]
-        ]
-      },
-      {
-        "edge": "F22",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          3,
-          8,
-          -38,
-          [
-            41,
-            147,
-            49772.8
-          ]
-        ]
-      },
-      {
-        "edge": "F93",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            47,
-            147,
-            50382.3
-          ]
-        ]
-      },
-      {
-        "edge": "F93",
-        "proposal": "axis-alignment-rigid-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -37,
-          [
-            47,
-            146,
-            50408.3
-          ]
-        ]
-      },
-      {
-        "edge": "F5",
-        "proposal": "axis-alignment-flexible-split-0.25",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -38,
-          [
-            41,
-            147,
-            49478.55
-          ]
-        ]
-      },
-      {
-        "edge": "F5",
-        "proposal": "axis-alignment-flexible-split-1",
-        "status": "rejected-by-objective",
-        "rank": [
-          4,
-          9,
-          -38,
-          [
-            43,
-            147,
-            49467.3
-          ]
-        ]
-      }
-    ],
-    "incumbent_sha256": "1c11ae7c8004819910fc1a98a908c475e5fc0987143ba973c4f8a5eea43d3a44",
-    "interrupted": false,
-    "seconds": 38.004,
-    "constraints": "no increase relative to incumbent in contacts, total bends or total wire length; protect existing straight neighbours; full geometry/text/semantic/DI audits",
-    "output": "output/process_08_v23.bpmn",
-    "artifacts": {
-      "bpmn": "output/process_08_v23.bpmn",
-      "svg": "output/process_08_v23.svg",
-      "png": null
-    },
     "candidates": [
       {
-        "candidate": "verified-incumbent",
-        "status": "verified",
+        "candidate": "semantic-network_simplex-gap-24",
+        "status": "intermediate-excessive-bends",
         "rank": [
-          5,
-          12,
-          -36,
+          11.305073,
           [
-            40,
-            151,
-            49858.3
+            119,
+            212,
+            66302.19
+          ],
+          10.9637
+        ],
+        "seconds": 31.926,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.096875,
+          "hotspot_excess": 0.027461,
+          "peak_flow_load": 7,
+          "forward_hop_excess": 2.954734,
+          "long_forward_hops": 39,
+          "long_forward_hop_ids": [
+            "F9",
+            "F12",
+            "F15",
+            "F16",
+            "F25",
+            "F28",
+            "F29",
+            "F31",
+            "F33",
+            "F35",
+            "F37",
+            "F38",
+            "F39",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F53",
+            "F56",
+            "F57",
+            "F59",
+            "F61",
+            "F71",
+            "F63",
+            "F64",
+            "F66",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F88",
+            "F90",
+            "F95",
+            "F97"
+          ],
+          "bends_per_flow": 2.2,
+          "graph_return_count": 17,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 10.9637,
+          "reference_p90": 9.1665,
+          "within_reference_density": false,
+          "penalty": 2352.8067054873086
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "T51b": "G51",
+            "T53": "G53",
+            "C53": "G53b",
+            "T54a": "G54a",
+            "T54b": "G54b",
+            "T55": "G55",
+            "T56": "G56",
+            "T57": "G57",
+            "T57a": "G57a",
+            "T59b": "G59",
+            "T511a": "G511a",
+            "T511b": "G511",
+            "T512a": "G512",
+            "T511c": "G511b",
+            "T513": "G513a",
+            "T514": "G514",
+            "T515": "G515",
+            "T516b": "G516",
+            "T516c": "G516a",
+            "T58c": "G58",
+            "T58d": "G58d"
+          },
+          "main_macros": [
+            "S",
+            "T51a",
+            "T51b",
+            "T52",
+            "T53",
+            "C53",
+            "T54a",
+            "T54b",
+            "T55",
+            "C55",
+            "T56",
+            "T57",
+            "T59a",
+            "T59b",
+            "T510a",
+            "T510b",
+            "T510c",
+            "T511a",
+            "T511b",
+            "T512a",
+            "T512b",
+            "T513",
+            "G513",
+            "T514",
+            "T515",
+            "T516a",
+            "T516b",
+            "E"
+          ],
+          "feedback_edges": [
+            "F13",
+            "F19",
+            "F34",
+            "F54",
+            "F58",
+            "F6",
+            "F65",
+            "F67",
+            "F70",
+            "F73",
+            "F75",
+            "F84",
+            "F85",
+            "F93",
+            "F94",
+            "F96",
+            "F98"
+          ],
+          "document_owners": {
+            "DOR_Order": "T51a",
+            "DSR_SupplierOptions": "T52",
+            "DOR_LegalCheck": "C53",
+            "DOR_ContractBasis_Existing": "T55",
+            "DOR_ContractBasis_Final": "C55",
+            "DOR_PrePaymentDocs": "T56",
+            "DOR_InitialTechData": "T56",
+            "DOR_TechTask": "T57",
+            "DOR_PaymentTask": "T510c",
+            "DOR_BankDocument": "T511a",
+            "DOR_ClosingDocs": "T513",
+            "DOR_AccountantTask": "T515",
+            "DSR_OperationsFile_Plan": "T510a",
+            "DSR_OperationsFile_Actual": "T511b",
+            "DSR_OperationsFile_Close": "T516a",
+            "DSR_CashFlow_Plan": "T510a",
+            "DSR_CashFlow_Fact": "T511b"
+          },
+          "role_order": [
+            "L1",
+            "L3",
+            "L2",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "routing_priority": [
+            "F68",
+            "F10",
+            "F22",
+            "F4",
+            "F43",
+            "F26",
+            "F1",
+            "F23",
+            "F7",
+            "F11",
+            "F14",
+            "F17",
+            "F20",
+            "F24",
+            "F27",
+            "F3",
+            "F42",
+            "F46",
+            "F48",
+            "F51",
+            "F55",
+            "F60",
+            "F8",
+            "F45",
+            "F36",
+            "F32",
+            "F41",
+            "F21",
+            "F62",
+            "F30",
+            "F2",
+            "F18",
+            "F72",
+            "F52",
+            "F89",
+            "F69",
+            "F16",
+            "F38",
+            "F35",
+            "F39",
+            "F47",
+            "F59",
+            "F61",
+            "F81",
+            "F33",
+            "F12",
+            "F53",
+            "F90",
+            "F29",
+            "F31",
+            "F50",
+            "F25",
+            "F28",
+            "F74",
+            "F15",
+            "F71",
+            "F78",
+            "F56",
+            "F5",
+            "F77",
+            "F92",
+            "F97",
+            "F79",
+            "F87",
+            "F37",
+            "F64",
+            "F9",
+            "F40",
+            "F76",
+            "F44",
+            "F82",
+            "F83",
+            "F88",
+            "F63",
+            "F57",
+            "F66",
+            "F95",
+            "F49",
+            "F13",
+            "F70",
+            "F73",
+            "F54",
+            "F67",
+            "F6",
+            "F98",
+            "F94",
+            "F19",
+            "F93",
+            "F58",
+            "F85",
+            "F96",
+            "F65",
+            "F75",
+            "F84",
+            "F34"
+          ],
+          "reserved_captions": {
+            "S": [
+              100.0,
+              170.0,
+              140,
+              42
+            ],
+            "G53": [
+              885.0,
+              343.0,
+              180,
+              42
+            ],
+            "G513a": [
+              3647.0,
+              343.0,
+              180,
+              42
+            ],
+            "G511": [
+              3091.0,
+              344.0,
+              180,
+              41
+            ],
+            "G512": [
+              3369.0,
+              357.0,
+              180,
+              28
+            ],
+            "G516a": [
+              4365.0,
+              528.0,
+              100,
+              42
+            ],
+            "G58d": [
+              2968.0,
+              545.0,
+              180,
+              25
+            ],
+            "G513": [
+              3837.0,
+              357.0,
+              140,
+              28
+            ],
+            "G514": [
+              3876.0,
+              1232.0,
+              180,
+              28
+            ],
+            "G56": [
+              2062.0,
+              357.0,
+              180,
+              28
+            ],
+            "G57": [
+              2201.0,
+              1232.0,
+              180,
+              28
+            ],
+            "G57a": [
+              3385.0,
+              662.0,
+              180,
+              28
+            ],
+            "G54a": [
+              1302.0,
+              1094.0,
+              180,
+              25
+            ],
+            "G511b": [
+              3401.0,
+              1094.0,
+              180,
+              14
+            ],
+            "G53b": [
+              1163.0,
+              371.0,
+              180,
+              14
+            ],
+            "G59": [
+              2405.0,
+              1094.0,
+              180,
+              14
+            ],
+            "G51": [
+              403.0,
+              371.0,
+              180,
+              14
+            ],
+            "G58": [
+              4406.0,
+              188.0,
+              180,
+              11
+            ],
+            "G516": [
+              4170.0,
+              988.0,
+              180,
+              14
+            ],
+            "G55": [
+              1580.0,
+              371.0,
+              180,
+              14
+            ],
+            "G54b": [
+              1441.0,
+              85.0,
+              180,
+              14
+            ],
+            "E": [
+              4170.0,
+              477.0,
+              180,
+              14
+            ],
+            "G515": [
+              4031.0,
+              1589.0,
+              180,
+              14
+            ],
+            "G511a": [
+              2952.0,
+              1454.0,
+              180,
+              11
+            ],
+            "DOR_LegalCheck": [
+              1093.0,
+              500.0,
+              85,
+              28
+            ],
+            "DOR_ContractBasis_Final": [
+              1766.5,
+              507.0,
+              128,
+              14
+            ],
+            "DSR_CashFlow_Plan": [
+              2509.5,
+              506.0,
+              106,
+              14
+            ],
+            "DSR_OperationsFile_Plan": [
+              2601.0,
+              342.0,
+              123,
+              14
+            ],
+            "DOR_PaymentTask": [
+              2705.5,
+              507.5,
+              108,
+              13
+            ],
+            "DOR_BankDocument": [
+              2591.0,
+              1504.0,
+              94,
+              14
+            ],
+            "DSR_CashFlow_Fact": [
+              3018.5,
+              506.0,
+              104,
+              14
+            ],
+            "DSR_OperationsFile_Actual": [
+              2930.0,
+              342.0,
+              121,
+              14
+            ],
+            "DOR_ClosingDocs": [
+              3474.5,
+              500.0,
+              90,
+              28
+            ],
+            "DOR_AccountantTask": [
+              3758.0,
+              1642.0,
+              71,
+              14
+            ],
+            "DSR_OperationsFile_Close": [
+              4089.5,
+              342.0,
+              120,
+              14
+            ],
+            "DOR_Order": [
+              420.5,
+              221.0,
+              70,
+              14
+            ],
+            "DSR_SupplierOptions": [
+              619.5,
+              499.5,
+              82,
+              27
+            ],
+            "DOR_ContractBasis_Existing": [
+              1488.5,
+              507.0,
+              128,
+              14
+            ],
+            "DOR_InitialTechData": [
+              1997.5,
+              507.5,
+              74,
+              13
+            ],
+            "DOR_PrePaymentDocs": [
+              1959.5,
+              334.5,
+              70,
+              27
+            ],
+            "DOR_TechTask": [
+              2111.5,
+              1382.0,
+              124,
+              14
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                302.0,
+                354.0
+              ],
+              [
+                441.0,
+                493.0
+              ],
+              [
+                584.0,
+                632.0
+              ],
+              [
+                784.0,
+                836.0
+              ],
+              [
+                923.0,
+                975.0
+              ],
+              [
+                1062.0,
+                1114.0
+              ],
+              [
+                1266.0,
+                1253.0
+              ],
+              [
+                1470.0,
+                1392.0
+              ],
+              [
+                1674.0,
+                1531.0
+              ],
+              [
+                1813.0,
+                1670.0
+              ],
+              [
+                1952.0,
+                1809.0
+              ],
+              [
+                2156.0,
+                2013.0
+              ],
+              [
+                2360.0,
+                2152.0
+              ],
+              [
+                2564.0,
+                2291.0
+              ],
+              [
+                2768.0,
+                2307.0
+              ],
+              [
+                2972.0,
+                2495.0
+              ],
+              [
+                3176.0,
+                2634.0
+              ],
+              [
+                3380.0,
+                2838.0
+              ],
+              [
+                3584.0,
+                3042.0
+              ],
+              [
+                3616.3333333333335,
+                3058.0
+              ],
+              [
+                3723.0,
+                3181.0
+              ],
+              [
+                3862.0,
+                3320.0
+              ],
+              [
+                3909.3333333333335,
+                3336.0
+              ],
+              [
+                4001.0,
+                3459.0
+              ],
+              [
+                4044.0,
+                3475.0
+              ],
+              [
+                4117.333333333334,
+                3491.0
+              ],
+              [
+                4140.0,
+                3598.0
+              ],
+              [
+                4279.0,
+                3737.0
+              ],
+              [
+                4353.0,
+                3811.0
+              ],
+              [
+                4492.0,
+                3827.0
+              ],
+              [
+                4631.0,
+                3966.0
+              ],
+              [
+                4778.0,
+                3982.0
+              ],
+              [
+                4974.0,
+                4121.0
+              ],
+              [
+                5113.0,
+                4260.0
+              ],
+              [
+                5182.0,
+                4276.0
+              ],
+              [
+                5339.333333333334,
+                4292.0
+              ],
+              [
+                5464.0,
+                4415.0
+              ],
+              [
+                5547.333333333334,
+                4496.0
+              ]
+            ],
+            "y": [
+              [
+                207.0,
+                145.0
+              ],
+              [
+                389.0,
+                245.0
+              ],
+              [
+                650.0,
+                431.0
+              ],
+              [
+                892.0,
+                616.0
+              ],
+              [
+                1079.0,
+                723.0
+              ],
+              [
+                1218.0,
+                810.0
+              ],
+              [
+                1318.0,
+                910.0
+              ],
+              [
+                1501.0,
+                1048.0
+              ],
+              [
+                1684.0,
+                1154.0
+              ],
+              [
+                1939.0,
+                1306.0
+              ],
+              [
+                2205.0,
+                1511.0
+              ],
+              [
+                2454.0,
+                1649.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "S": 0,
+            "T51a": 1,
+            "T51b": 1,
+            "G51": 2,
+            "T51c": 3,
+            "T52": 3,
+            "T53": 4,
+            "G53": 5,
+            "C53": 6,
+            "G53b": 7,
+            "T54a": 7,
+            "G54a": 8,
+            "T54b": 8,
+            "G54b": 9,
+            "T55": 9,
+            "G55": 10,
+            "C55": 11,
+            "T56": 12,
+            "G56": 13,
+            "T57": 13,
+            "G57": 14,
+            "T58a": 36,
+            "T58b": 36,
+            "T58c": 36,
+            "G58": 38,
+            "T59a": 15,
+            "T59b": 15,
+            "G59": 16,
+            "T510a": 17,
+            "T510b": 17,
+            "T511a": 18,
+            "T511b": 19,
+            "G511": 21,
+            "T511c": 23,
+            "T512a": 22,
+            "T512b": 27,
+            "T513": 27,
+            "G513": 29,
+            "T514": 30,
+            "G514": 31,
+            "T514c": 32,
+            "T515": 32,
+            "G515": 33,
+            "T515c": 35,
+            "T516a": 33,
+            "T516b": 33,
+            "G516": 34,
+            "E": 34,
+            "T510c": 18,
+            "T57a": 14,
+            "G57a": 25,
+            "T58d": 38,
+            "T59c": 16,
+            "G513a": 28,
+            "T513a": 28,
+            "T51d": 3,
+            "T54c": 8,
+            "G58d": 20,
+            "G511a": 19,
+            "G511b": 26,
+            "T511d": 26,
+            "G512": 24,
+            "T516c": 36,
+            "G516a": 37
+          },
+          "axis_rows": {
+            "S": [
+              "L1",
+              0
+            ],
+            "T51a": [
+              "L1",
+              0
+            ],
+            "T51c": [
+              "L1",
+              1
+            ],
+            "T54b": [
+              "L1",
+              0
+            ],
+            "G54b": [
+              "L1",
+              0
+            ],
+            "T58c": [
+              "L1",
+              1
+            ],
+            "G58": [
+              "L1",
+              1
+            ],
+            "T54a": [
+              "L2",
+              0
+            ],
+            "G54a": [
+              "L2",
+              0
+            ],
+            "T58b": [
+              "L2",
+              1
+            ],
+            "T59b": [
+              "L2",
+              0
+            ],
+            "G59": [
+              "L2",
+              0
+            ],
+            "T510b": [
+              "L2",
+              0
+            ],
+            "T511c": [
+              "L2",
+              1
+            ],
+            "T512b": [
+              "L2",
+              0
+            ],
+            "T516b": [
+              "L2",
+              0
+            ],
+            "G516": [
+              "L2",
+              0
+            ],
+            "G511b": [
+              "L2",
+              1
+            ],
+            "T51b": [
+              "L3",
+              0
+            ],
+            "G51": [
+              "L3",
+              0
+            ],
+            "T52": [
+              "L3",
+              0
+            ],
+            "T53": [
+              "L3",
+              0
+            ],
+            "G53": [
+              "L3",
+              0
+            ],
+            "C53": [
+              "L3",
+              0
+            ],
+            "G53b": [
+              "L3",
+              0
+            ],
+            "T55": [
+              "L3",
+              0
+            ],
+            "G55": [
+              "L3",
+              0
+            ],
+            "C55": [
+              "L3",
+              0
+            ],
+            "T56": [
+              "L3",
+              0
+            ],
+            "G56": [
+              "L3",
+              0
+            ],
+            "T58a": [
+              "L3",
+              4
+            ],
+            "T59a": [
+              "L3",
+              0
+            ],
+            "T510a": [
+              "L3",
+              0
+            ],
+            "T511b": [
+              "L3",
+              0
+            ],
+            "G511": [
+              "L3",
+              0
+            ],
+            "T512a": [
+              "L3",
+              0
+            ],
+            "T513": [
+              "L3",
+              0
+            ],
+            "G513": [
+              "L3",
+              0
+            ],
+            "T514c": [
+              "L3",
+              1
+            ],
+            "T515c": [
+              "L3",
+              1
+            ],
+            "T516a": [
+              "L3",
+              0
+            ],
+            "E": [
+              "L3",
+              0
+            ],
+            "T510c": [
+              "L3",
+              0
+            ],
+            "T57a": [
+              "L3",
+              1
+            ],
+            "G57a": [
+              "L3",
+              2
+            ],
+            "T58d": [
+              "L3",
+              3
+            ],
+            "T59c": [
+              "L3",
+              1
+            ],
+            "G513a": [
+              "L3",
+              0
+            ],
+            "T513a": [
+              "L3",
+              3
+            ],
+            "T51d": [
+              "L3",
+              1
+            ],
+            "T54c": [
+              "L3",
+              1
+            ],
+            "G58d": [
+              "L3",
+              1
+            ],
+            "T511d": [
+              "L3",
+              1
+            ],
+            "G512": [
+              "L3",
+              0
+            ],
+            "T516c": [
+              "L3",
+              3
+            ],
+            "G516a": [
+              "L3",
+              1
+            ],
+            "T57": [
+              "L4",
+              0
+            ],
+            "G57": [
+              "L4",
+              0
+            ],
+            "T514": [
+              "L4",
+              0
+            ],
+            "G514": [
+              "L4",
+              0
+            ],
+            "T511a": [
+              "L5",
+              0
+            ],
+            "G511a": [
+              "L5",
+              0
+            ],
+            "T515": [
+              "L6",
+              0
+            ],
+            "G515": [
+              "L6",
+              0
+            ]
+          },
+          "gap": 24,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            80
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              199.0,
+              76.0,
+              16
+            ],
+            [
+              346.0,
+              245.0,
+              16,
+              367.0
+            ],
+            [
+              444.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              518.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              722.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              926.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1000.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1204.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1245.0,
+              675.0,
+              16,
+              788.0
+            ],
+            [
+              1343.0,
+              1493.0,
+              24.0,
+              16
+            ],
+            [
+              1384.0,
+              930.0,
+              16,
+              546.0
+            ],
+            [
+              1482.0,
+              199.0,
+              24.0,
+              16
+            ],
+            [
+              1523.0,
+              232.0,
+              16,
+              380.0
+            ],
+            [
+              1621.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1695.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1899.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              2103.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              2144.0,
+              675.0,
+              16,
+              1226.0
+            ],
+            [
+              2177.0,
+              642.0,
+              40.0,
+              16
+            ],
+            [
+              2242.0,
+              1931.0,
+              24.0,
+              16
+            ],
+            [
+              4382.0,
+              381.0,
+              89.0,
+              16
+            ],
+            [
+              4488.0,
+              414.0,
+              16,
+              766.0
+            ],
+            [
+              2397.0,
+              1493.0,
+              73.0,
+              16
+            ],
+            [
+              2487.0,
+              930.0,
+              16,
+              546.0
+            ],
+            [
+              2626.0,
+              688.0,
+              16,
+              775.0
+            ],
+            [
+              2928.0,
+              2197.0,
+              89.0,
+              16
+            ],
+            [
+              3132.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3206.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3426.0,
+              1676.0,
+              40.0,
+              16
+            ],
+            [
+              3410.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3590.0,
+              688.0,
+              16,
+              775.0
+            ],
+            [
+              3688.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3917.0,
+              1931.0,
+              24.0,
+              16
+            ],
+            [
+              4072.0,
+              2446.0,
+              24.0,
+              16
+            ],
+            [
+              4113.0,
+              688.0,
+              16,
+              775.0
+            ],
+            [
+              4211.0,
+              1493.0,
+              24.0,
+              16
+            ],
+            [
+              2830.0,
+              688.0,
+              16,
+              1479.0
+            ],
+            [
+              3762.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3729.0,
+              675.0,
+              16,
+              505.0
+            ]
+          ],
+          "compact_information_bays": true,
+          "responsive_tasks": true,
+          "row_skyline": {
+            "moves": [
+              {
+                "row": [
+                  "L1",
+                  0
+                ],
+                "dy": -62.0
+              },
+              {
+                "row": [
+                  "L1",
+                  1
+                ],
+                "dy": -144.0
+              },
+              {
+                "row": [
+                  "L3",
+                  0
+                ],
+                "dy": -219.0
+              },
+              {
+                "row": [
+                  "L3",
+                  1
+                ],
+                "dy": -276.0
+              },
+              {
+                "row": [
+                  "L3",
+                  2
+                ],
+                "dy": -356.0
+              },
+              {
+                "row": [
+                  "L3",
+                  3
+                ],
+                "dy": -408.0
+              },
+              {
+                "row": [
+                  "L3",
+                  4
+                ],
+                "dy": -408.0
+              },
+              {
+                "row": [
+                  "L2",
+                  0
+                ],
+                "dy": -453.0
+              },
+              {
+                "row": [
+                  "L2",
+                  1
+                ],
+                "dy": -530.0
+              },
+              {
+                "row": [
+                  "L4",
+                  0
+                ],
+                "dy": -633.0
+              },
+              {
+                "row": [
+                  "L5",
+                  0
+                ],
+                "dy": -694.0
+              },
+              {
+                "row": [
+                  "L6",
+                  0
+                ],
+                "dy": -805.0
+              }
+            ],
+            "old_lane_height": 2499.0,
+            "new_lane_height": 1642.0,
+            "method": "occupied-column envelopes; measured captions; 8px object and corridor separation; fixed role membership"
+          },
+          "layering": "NETWORK_SIMPLEX",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [],
+          "scenario_order": [
+            [
+              "C53",
+              "C55",
+              "E",
+              "G51",
+              "G511",
+              "G511a",
+              "G511b",
+              "G512",
+              "G513",
+              "G513a",
+              "G514",
+              "G515",
+              "G516",
+              "G516a",
+              "G53",
+              "G53b",
+              "G54a",
+              "G54b",
+              "G55",
+              "G56",
+              "G57",
+              "G57a",
+              "G58",
+              "G58d",
+              "G59",
+              "S",
+              "T510a",
+              "T510b",
+              "T510c",
+              "T511a",
+              "T511b",
+              "T511c",
+              "T511d",
+              "T512a",
+              "T512b",
+              "T513",
+              "T513a",
+              "T514",
+              "T514c",
+              "T515",
+              "T515c",
+              "T516a",
+              "T516b",
+              "T516c",
+              "T51a",
+              "T51b",
+              "T51c",
+              "T51d",
+              "T52",
+              "T53",
+              "T54a",
+              "T54b",
+              "T54c",
+              "T55",
+              "T56",
+              "T57",
+              "T57a",
+              "T58a",
+              "T58b",
+              "T58c",
+              "T58d",
+              "T59a",
+              "T59b",
+              "T59c"
+            ]
+          ],
+          "handoff_groups": {
+            "S": "S",
+            "T51a": "T51a",
+            "T51b": "T51a",
+            "G51": "G51",
+            "T51c": "T51c",
+            "T52": "T52",
+            "T53": "T53",
+            "G53": "G53",
+            "C53": "C53",
+            "G53b": "G53b",
+            "T54a": "G53b",
+            "G54a": "G54a",
+            "T54b": "G54a",
+            "G54b": "G54b",
+            "T55": "G54b",
+            "G55": "G55",
+            "C55": "C55",
+            "T56": "T56",
+            "G56": "G56",
+            "T57": "G56",
+            "G57": "G57",
+            "T58a": "T58a",
+            "T58b": "T58a",
+            "T58c": "T58a",
+            "G58": "G58",
+            "T59a": "T59a",
+            "T59b": "T59a",
+            "G59": "G59",
+            "T510a": "T510a",
+            "T510b": "T510a",
+            "T511a": "T510c",
+            "T511b": "G511a",
+            "G511": "G511",
+            "T511c": "T511c",
+            "T512a": "T512a",
+            "T512b": "T512b",
+            "T513": "T512b",
+            "G513": "G513",
+            "T514": "T514",
+            "G514": "G514",
+            "T514c": "T514c",
+            "T515": "T515",
+            "G515": "G515",
+            "T515c": "T515c",
+            "T516a": "G515",
+            "T516b": "G515",
+            "G516": "E",
+            "E": "E",
+            "T510c": "T510c",
+            "T57a": "G57",
+            "G57a": "G57a",
+            "T58d": "G58",
+            "T59c": "G59",
+            "G513a": "G513a",
+            "T513a": "T513a",
+            "T51d": "T51c",
+            "T54c": "G54a",
+            "G58d": "G58d",
+            "G511a": "G511a",
+            "G511b": "G511b",
+            "T511d": "G511b",
+            "G512": "G512",
+            "T516c": "T516c",
+            "G516a": "G516a"
+          },
+          "semantic_spines": [
+            {
+              "main_path": [
+                "S",
+                "T51a",
+                "T51b",
+                "G51",
+                "T52",
+                "T53",
+                "G53",
+                "C53",
+                "G53b",
+                "T54a",
+                "G54a",
+                "T54b",
+                "G54b",
+                "T55",
+                "G55",
+                "C55",
+                "T56",
+                "G56",
+                "T57",
+                "G57",
+                "T59a",
+                "T59b",
+                "G59",
+                "T510a",
+                "T510b",
+                "T510c",
+                "T511a",
+                "G511a",
+                "T511b",
+                "G511",
+                "T512a",
+                "G512",
+                "T512b",
+                "T513",
+                "G513a",
+                "G513",
+                "T514",
+                "G514",
+                "T515",
+                "G515",
+                "T516a",
+                "T516b",
+                "G516",
+                "E"
+              ],
+              "side_nodes": [
+                "G511b",
+                "G516a",
+                "G57a",
+                "G58",
+                "G58d",
+                "T511c",
+                "T511d",
+                "T513a",
+                "T514c",
+                "T515c",
+                "T516c",
+                "T51c",
+                "T51d",
+                "T54c",
+                "T57a",
+                "T58a",
+                "T58b",
+                "T58c",
+                "T58d",
+                "T59c"
+              ],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            }
           ]
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 43,
+          "initial_quality": [
+            132,
+            193,
+            64958.5
+          ],
+          "final_quality": [
+            110,
+            209,
+            64905.9
+          ],
+          "refinements": [
+            {
+              "edge": "F31",
+              "before": [
+                24258.6,
+                14,
+                7,
+                1066.2
+              ],
+              "after": [
+                18577.8,
+                10,
+                10,
+                1127.4
+              ]
+            },
+            {
+              "edge": "F64",
+              "before": [
+                17813.3,
+                11,
+                2,
+                889.0
+              ],
+              "after": [
+                17462.3,
+                11,
+                1,
+                874.0
+              ]
+            },
+            {
+              "edge": "F88",
+              "before": [
+                17121.6,
+                10,
+                3,
+                1170.6
+              ],
+              "after": [
+                16470.1,
+                10,
+                4,
+                1170.6
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                15847.85,
+                9,
+                4,
+                1268.0
+              ],
+              "after": [
+                14406.725,
+                8,
+                4,
+                1238.0
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                10889.0,
+                6,
+                6,
+                1469.0
+              ],
+              "after": [
+                7889.0,
+                4,
+                6,
+                1469.0
+              ]
+            },
+            {
+              "edge": "F61",
+              "before": [
+                10616.2,
+                6,
+                7,
+                1080.2
+              ],
+              "after": [
+                10599.7,
+                6,
+                7,
+                1080.2
+              ]
+            },
+            {
+              "edge": "F50",
+              "before": [
+                8410.0,
+                5,
+                1,
+                840.0
+              ],
+              "after": [
+                7225.5,
+                4,
+                3,
+                921.0
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                8509.0,
+                5,
+                3,
+                753.0
+              ],
+              "after": [
+                4899.0,
+                2,
+                5,
+                847.0
+              ]
+            },
+            {
+              "edge": "F54",
+              "before": [
+                3976.5,
+                2,
+                2,
+                742.0
+              ],
+              "after": [
+                3828.0,
+                2,
+                2,
+                688.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                7196.275,
+                4,
+                4,
+                460.20000000000005
+              ],
+              "after": [
+                3102.825,
+                1,
+                4,
+                510.20000000000005
+              ]
+            },
+            {
+              "edge": "F98",
+              "before": [
+                4244.5,
+                2,
+                5,
+                591.0
+              ],
+              "after": [
+                3898.25,
+                2,
+                3,
+                557.0
+              ]
+            },
+            {
+              "edge": "F94",
+              "before": [
+                4714.75,
+                2,
+                4,
+                1267.0
+              ],
+              "after": [
+                3407.625,
+                1,
+                5,
+                1274.5
+              ]
+            },
+            {
+              "edge": "F87",
+              "before": [
+                7087.2,
+                4,
+                3,
+                755.2
+              ],
+              "after": [
+                7035.2,
+                4,
+                4,
+                755.2
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                6009.1,
+                2,
+                4,
+                917.2
+              ],
+              "after": [
+                3638.0,
+                1,
+                7,
+                976.5
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                4340.5,
+                2,
+                3,
+                823.0
+              ],
+              "after": [
+                4102.0,
+                2,
+                3,
+                780.0
+              ]
+            },
+            {
+              "edge": "F92",
+              "before": [
+                3423.75,
+                2,
+                2,
+                254.0
+              ],
+              "after": [
+                2170.625,
+                1,
+                3,
+                185.0
+              ]
+            },
+            {
+              "edge": "F74",
+              "before": [
+                4742.875,
+                1,
+                7,
+                1298.0
+              ],
+              "after": [
+                4278.875,
+                1,
+                9,
+                1292.0
+              ]
+            },
+            {
+              "edge": "F33",
+              "before": [
+                7085.0,
+                4,
+                0,
+                502.0
+              ],
+              "after": [
+                611.0,
+                0,
+                1,
+                541.0
+              ]
+            },
+            {
+              "edge": "F35",
+              "before": [
+                3541.0,
+                2,
+                0,
+                541.0
+              ],
+              "after": [
+                2458.0,
+                1,
+                4,
+                678.0
+              ]
+            },
+            {
+              "edge": "F28",
+              "before": [
+                1820.325,
+                0,
+                4,
+                1177.2
+              ],
+              "after": [
+                1506.2,
+                0,
+                4,
+                1134.2
+              ]
+            },
+            {
+              "edge": "F5",
+              "before": [
+                1901.0,
+                1,
+                2,
+                261.0
+              ],
+              "after": [
+                1741.2,
+                1,
+                1,
+                171.20000000000005
+              ]
+            },
+            {
+              "edge": "F67",
+              "before": [
+                437.0,
+                0,
+                2,
+                297.0
+              ],
+              "after": [
+                238.2,
+                0,
+                1,
+                168.2
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                2048.5,
+                1,
+                2,
+                384.0
+              ],
+              "after": [
+                1955.0,
+                1,
+                2,
+                315.0
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 2,
+            "initial_quality": [
+              114,
+              215,
+              65784.17
+            ],
+            "final_quality": [
+              114,
+              215,
+              65784.17
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "A_Order_Out",
+            "A_SupplierOptions_Update",
+            "A_LegalCheck_Result",
+            "A_Contract_Existing",
+            "A_PrePaymentDocs_Out",
+            "A_InitialTechData",
+            "A_TechTask_In",
+            "A_PaymentTask_Out",
+            "A_BankDocument_Out",
+            "A_AccountantTask_In",
+            "A_WorkFile_Actual",
+            "A_WorkFile_Close",
+            "A_CashRegister_Plan",
+            "A_CashRegister_Fact"
+          ],
+          "straight_information_links": [
+            "A_ClosingDocs_In"
+          ]
+        },
+        "excessive_bend_edges": [
+          "F31",
+          "F66",
+          "F74",
+          "F84",
+          "F96"
         ]
       },
       {
-        "candidate": "local-continuity",
+        "candidate": "semantic-network_simplex-gap-40",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['F81'], 'label_collisions': [], 'label_line_cuts': [['F81', 'F28']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 47.104
+      },
+      {
+        "candidate": "semantic-longest_path-gap-24",
+        "status": "intermediate-excessive-bends",
+        "rank": [
+          10.78283,
+          [
+            112,
+            235,
+            69800.79
+          ],
+          10.5547
+        ],
+        "seconds": 31.764,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.08363,
+          "hotspot_excess": 0.016028,
+          "peak_flow_load": 7,
+          "forward_hop_excess": 3.383348,
+          "long_forward_hops": 40,
+          "long_forward_hop_ids": [
+            "F5",
+            "F9",
+            "F12",
+            "F15",
+            "F25",
+            "F28",
+            "F29",
+            "F30",
+            "F31",
+            "F35",
+            "F37",
+            "F38",
+            "F39",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F53",
+            "F56",
+            "F57",
+            "F59",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F66",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F88",
+            "F90",
+            "F95",
+            "F97"
+          ],
+          "bends_per_flow": 2.442105,
+          "graph_return_count": 17,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 10.5547,
+          "reference_p90": 9.1665,
+          "within_reference_density": false,
+          "penalty": 1817.3514545571886
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "T51b": "G51",
+            "T53": "G53",
+            "C53": "G53b",
+            "T54a": "G54a",
+            "T54b": "G54b",
+            "T55": "G55",
+            "T56": "G56",
+            "T57": "G57",
+            "T57a": "G57a",
+            "T59b": "G59",
+            "T511a": "G511a",
+            "T511b": "G511",
+            "T512a": "G512",
+            "T511c": "G511b",
+            "T513": "G513a",
+            "T58c": "G58",
+            "T514": "G514",
+            "T58d": "G58d",
+            "T515": "G515",
+            "T516b": "G516",
+            "T516c": "G516a"
+          },
+          "main_macros": [
+            "S",
+            "T51a",
+            "T51b",
+            "T52",
+            "T53",
+            "C53",
+            "T54a",
+            "T54b",
+            "T55",
+            "C55",
+            "T56",
+            "T57",
+            "T59a",
+            "T59b",
+            "T510a",
+            "T510b",
+            "T510c",
+            "T511a",
+            "T511b",
+            "T512a",
+            "T512b",
+            "T513",
+            "G513",
+            "T514",
+            "T515",
+            "T516a",
+            "T516b",
+            "E"
+          ],
+          "feedback_edges": [
+            "F13",
+            "F19",
+            "F34",
+            "F54",
+            "F58",
+            "F6",
+            "F65",
+            "F67",
+            "F70",
+            "F73",
+            "F75",
+            "F84",
+            "F85",
+            "F93",
+            "F94",
+            "F96",
+            "F98"
+          ],
+          "document_owners": {
+            "DOR_Order": "T51a",
+            "DSR_SupplierOptions": "T52",
+            "DOR_LegalCheck": "C53",
+            "DOR_ContractBasis_Existing": "T55",
+            "DOR_ContractBasis_Final": "C55",
+            "DOR_PrePaymentDocs": "T56",
+            "DOR_InitialTechData": "T56",
+            "DOR_TechTask": "T57",
+            "DOR_PaymentTask": "T510c",
+            "DOR_BankDocument": "T511a",
+            "DOR_ClosingDocs": "T513",
+            "DOR_AccountantTask": "T515",
+            "DSR_OperationsFile_Plan": "T510a",
+            "DSR_OperationsFile_Actual": "T511b",
+            "DSR_OperationsFile_Close": "T516a",
+            "DSR_CashFlow_Plan": "T510a",
+            "DSR_CashFlow_Fact": "T511b"
+          },
+          "role_order": [
+            "L1",
+            "L3",
+            "L2",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "routing_priority": [
+            "F68",
+            "F10",
+            "F22",
+            "F4",
+            "F43",
+            "F26",
+            "F1",
+            "F23",
+            "F7",
+            "F11",
+            "F14",
+            "F17",
+            "F20",
+            "F24",
+            "F27",
+            "F3",
+            "F42",
+            "F46",
+            "F48",
+            "F55",
+            "F60",
+            "F8",
+            "F92",
+            "F36",
+            "F51",
+            "F32",
+            "F41",
+            "F21",
+            "F45",
+            "F2",
+            "F18",
+            "F52",
+            "F89",
+            "F33",
+            "F62",
+            "F16",
+            "F38",
+            "F69",
+            "F30",
+            "F97",
+            "F35",
+            "F39",
+            "F47",
+            "F59",
+            "F61",
+            "F81",
+            "F12",
+            "F72",
+            "F66",
+            "F29",
+            "F31",
+            "F50",
+            "F25",
+            "F28",
+            "F74",
+            "F15",
+            "F71",
+            "F78",
+            "F56",
+            "F77",
+            "F63",
+            "F88",
+            "F79",
+            "F87",
+            "F37",
+            "F82",
+            "F9",
+            "F40",
+            "F44",
+            "F76",
+            "F53",
+            "F90",
+            "F83",
+            "F64",
+            "F95",
+            "F57",
+            "F49",
+            "F5",
+            "F73",
+            "F13",
+            "F70",
+            "F67",
+            "F98",
+            "F65",
+            "F94",
+            "F19",
+            "F54",
+            "F93",
+            "F96",
+            "F85",
+            "F58",
+            "F75",
+            "F6",
+            "F34",
+            "F84"
+          ],
+          "reserved_captions": {
+            "S": [
+              100.0,
+              170.0,
+              140,
+              42
+            ],
+            "G53": [
+              885.0,
+              343.0,
+              180,
+              42
+            ],
+            "G513a": [
+              3647.0,
+              343.0,
+              180,
+              42
+            ],
+            "G511": [
+              3091.0,
+              344.0,
+              180,
+              41
+            ],
+            "G512": [
+              3369.0,
+              357.0,
+              180,
+              28
+            ],
+            "G516a": [
+              4390.0,
+              542.0,
+              180,
+              28
+            ],
+            "G58d": [
+              2952.0,
+              545.0,
+              180,
+              25
+            ],
+            "G513": [
+              3721.0,
+              477.0,
+              180,
+              28
+            ],
+            "G514": [
+              3941.0,
+              1132.0,
+              180,
+              28
+            ],
+            "G56": [
+              2062.0,
+              357.0,
+              180,
+              28
+            ],
+            "G57": [
+              2201.0,
+              1132.0,
+              180,
+              28
+            ],
+            "G57a": [
+              2421.0,
+              662.0,
+              180,
+              28
+            ],
+            "G54a": [
+              1302.0,
+              994.0,
+              180,
+              25
+            ],
+            "G511b": [
+              3508.0,
+              994.0,
+              180,
+              14
+            ],
+            "G53b": [
+              1163.0,
+              371.0,
+              180,
+              14
+            ],
+            "G59": [
+              2405.0,
+              888.0,
+              180,
+              14
+            ],
+            "G51": [
+              403.0,
+              371.0,
+              180,
+              14
+            ],
+            "G58": [
+              3941.0,
+              188.0,
+              180,
+              11
+            ],
+            "G516": [
+              4235.0,
+              888.0,
+              180,
+              14
+            ],
+            "G55": [
+              1580.0,
+              371.0,
+              180,
+              14
+            ],
+            "G54b": [
+              1441.0,
+              85.0,
+              180,
+              14
+            ],
+            "E": [
+              4235.0,
+              477.0,
+              180,
+              14
+            ],
+            "G515": [
+              4096.0,
+              1489.0,
+              180,
+              14
+            ],
+            "G511a": [
+              2952.0,
+              1354.0,
+              180,
+              11
+            ],
+            "DOR_LegalCheck": [
+              1093.0,
+              500.0,
+              85,
+              28
+            ],
+            "DOR_ContractBasis_Final": [
+              1766.5,
+              507.0,
+              128,
+              14
+            ],
+            "DSR_CashFlow_Plan": [
+              2509.5,
+              506.0,
+              106,
+              14
+            ],
+            "DSR_OperationsFile_Plan": [
+              2601.0,
+              342.0,
+              123,
+              14
+            ],
+            "DOR_PaymentTask": [
+              2705.5,
+              507.5,
+              108,
+              13
+            ],
+            "DOR_BankDocument": [
+              2591.0,
+              1404.0,
+              94,
+              14
+            ],
+            "DSR_CashFlow_Fact": [
+              3018.5,
+              506.0,
+              104,
+              14
+            ],
+            "DSR_OperationsFile_Actual": [
+              2930.0,
+              342.0,
+              121,
+              14
+            ],
+            "DOR_ClosingDocs": [
+              3574.5,
+              500.0,
+              90,
+              28
+            ],
+            "DOR_AccountantTask": [
+              3823.0,
+              1542.0,
+              71,
+              14
+            ],
+            "DSR_OperationsFile_Close": [
+              4154.5,
+              342.0,
+              120,
+              14
+            ],
+            "DOR_Order": [
+              420.5,
+              221.0,
+              70,
+              14
+            ],
+            "DSR_SupplierOptions": [
+              619.5,
+              499.5,
+              82,
+              27
+            ],
+            "DOR_ContractBasis_Existing": [
+              1488.5,
+              507.0,
+              128,
+              14
+            ],
+            "DOR_InitialTechData": [
+              1997.5,
+              507.5,
+              74,
+              13
+            ],
+            "DOR_PrePaymentDocs": [
+              1959.5,
+              334.5,
+              70,
+              27
+            ],
+            "DOR_TechTask": [
+              2111.5,
+              1282.0,
+              124,
+              14
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                302.0,
+                354.0
+              ],
+              [
+                441.0,
+                493.0
+              ],
+              [
+                580.0,
+                632.0
+              ],
+              [
+                784.0,
+                836.0
+              ],
+              [
+                923.0,
+                975.0
+              ],
+              [
+                1062.0,
+                1114.0
+              ],
+              [
+                1266.0,
+                1253.0
+              ],
+              [
+                1470.0,
+                1392.0
+              ],
+              [
+                1674.0,
+                1531.0
+              ],
+              [
+                1813.0,
+                1670.0
+              ],
+              [
+                1952.0,
+                1809.0
+              ],
+              [
+                2156.0,
+                2013.0
+              ],
+              [
+                2360.0,
+                2152.0
+              ],
+              [
+                2564.0,
+                2291.0
+              ],
+              [
+                2768.0,
+                2307.0
+              ],
+              [
+                2972.0,
+                2495.0
+              ],
+              [
+                3012.0,
+                2511.0
+              ],
+              [
+                3176.0,
+                2634.0
+              ],
+              [
+                3380.0,
+                2838.0
+              ],
+              [
+                3584.0,
+                3042.0
+              ],
+              [
+                3634.0,
+                3058.0
+              ],
+              [
+                3723.0,
+                3181.0
+              ],
+              [
+                3862.0,
+                3320.0
+              ],
+              [
+                3921.333333333333,
+                3336.0
+              ],
+              [
+                4001.0,
+                3459.0
+              ],
+              [
+                4134.666666666666,
+                3598.0
+              ],
+              [
+                4279.0,
+                3737.0
+              ],
+              [
+                4353.0,
+                3811.0
+              ],
+              [
+                4407.333333333334,
+                3827.0
+              ],
+              [
+                4492.0,
+                3843.0
+              ],
+              [
+                4617.333333333334,
+                4031.0
+              ],
+              [
+                4770.0,
+                4047.0
+              ],
+              [
+                4974.0,
+                4186.0
+              ],
+              [
+                5113.0,
+                4325.0
+              ],
+              [
+                5353.0,
+                4341.0
+              ],
+              [
+                5582.666666666666,
+                4480.0
+              ],
+              [
+                6070.0,
+                4619.0
+              ]
+            ],
+            "y": [
+              [
+                207.0,
+                145.0
+              ],
+              [
+                389.0,
+                245.0
+              ],
+              [
+                650.0,
+                431.0
+              ],
+              [
+                892.0,
+                616.0
+              ],
+              [
+                1079.0,
+                723.0
+              ],
+              [
+                1218.0,
+                810.0
+              ],
+              [
+                1401.0,
+                948.0
+              ],
+              [
+                1584.0,
+                1054.0
+              ],
+              [
+                1839.0,
+                1206.0
+              ],
+              [
+                2105.0,
+                1411.0
+              ],
+              [
+                2354.0,
+                1549.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "S": 0,
+            "T51a": 1,
+            "T51b": 1,
+            "G51": 2,
+            "T51c": 21,
+            "T52": 3,
+            "T53": 4,
+            "G53": 5,
+            "C53": 6,
+            "G53b": 7,
+            "T54a": 7,
+            "G54a": 8,
+            "T54b": 8,
+            "G54b": 9,
+            "T55": 9,
+            "G55": 10,
+            "C55": 11,
+            "T56": 12,
+            "G56": 13,
+            "T57": 13,
+            "G57": 14,
+            "T58a": 29,
+            "T58b": 29,
+            "T58c": 29,
+            "G58": 31,
+            "T59a": 15,
+            "T59b": 15,
+            "G59": 16,
+            "T510a": 18,
+            "T510b": 18,
+            "T511a": 19,
+            "T511b": 20,
+            "G511": 22,
+            "T511c": 24,
+            "T512a": 23,
+            "T512b": 26,
+            "T513": 26,
+            "G513": 28,
+            "T514": 30,
+            "G514": 31,
+            "T514c": 37,
+            "T515": 32,
+            "G515": 33,
+            "T515c": 37,
+            "T516a": 33,
+            "T516b": 33,
+            "G516": 34,
+            "E": 34,
+            "T510c": 19,
+            "T57a": 14,
+            "G57a": 17,
+            "T58d": 31,
+            "T59c": 16,
+            "G513a": 27,
+            "T513a": 27,
+            "T51d": 21,
+            "T54c": 8,
+            "G58d": 20,
+            "G511a": 20,
+            "G511b": 26,
+            "T511d": 26,
+            "G512": 25,
+            "T516c": 35,
+            "G516a": 36
+          },
+          "axis_rows": {
+            "S": [
+              "L1",
+              0
+            ],
+            "T51a": [
+              "L1",
+              0
+            ],
+            "T51c": [
+              "L1",
+              1
+            ],
+            "T54b": [
+              "L1",
+              0
+            ],
+            "G54b": [
+              "L1",
+              0
+            ],
+            "T58c": [
+              "L1",
+              1
+            ],
+            "G58": [
+              "L1",
+              1
+            ],
+            "T54a": [
+              "L2",
+              0
+            ],
+            "G54a": [
+              "L2",
+              0
+            ],
+            "T58b": [
+              "L2",
+              1
+            ],
+            "T59b": [
+              "L2",
+              0
+            ],
+            "G59": [
+              "L2",
+              0
+            ],
+            "T510b": [
+              "L2",
+              0
+            ],
+            "T511c": [
+              "L2",
+              1
+            ],
+            "T512b": [
+              "L2",
+              0
+            ],
+            "T516b": [
+              "L2",
+              0
+            ],
+            "G516": [
+              "L2",
+              0
+            ],
+            "G511b": [
+              "L2",
+              1
+            ],
+            "T51b": [
+              "L3",
+              0
+            ],
+            "G51": [
+              "L3",
+              0
+            ],
+            "T52": [
+              "L3",
+              0
+            ],
+            "T53": [
+              "L3",
+              0
+            ],
+            "G53": [
+              "L3",
+              0
+            ],
+            "C53": [
+              "L3",
+              0
+            ],
+            "G53b": [
+              "L3",
+              0
+            ],
+            "T55": [
+              "L3",
+              0
+            ],
+            "G55": [
+              "L3",
+              0
+            ],
+            "C55": [
+              "L3",
+              0
+            ],
+            "T56": [
+              "L3",
+              0
+            ],
+            "G56": [
+              "L3",
+              0
+            ],
+            "T58a": [
+              "L3",
+              1
+            ],
+            "T59a": [
+              "L3",
+              0
+            ],
+            "T510a": [
+              "L3",
+              0
+            ],
+            "T511b": [
+              "L3",
+              0
+            ],
+            "G511": [
+              "L3",
+              0
+            ],
+            "T512a": [
+              "L3",
+              0
+            ],
+            "T513": [
+              "L3",
+              0
+            ],
+            "G513": [
+              "L3",
+              0
+            ],
+            "T514c": [
+              "L3",
+              3
+            ],
+            "T515c": [
+              "L3",
+              1
+            ],
+            "T516a": [
+              "L3",
+              0
+            ],
+            "E": [
+              "L3",
+              0
+            ],
+            "T510c": [
+              "L3",
+              0
+            ],
+            "T57a": [
+              "L3",
+              1
+            ],
+            "G57a": [
+              "L3",
+              2
+            ],
+            "T58d": [
+              "L3",
+              1
+            ],
+            "T59c": [
+              "L3",
+              1
+            ],
+            "G513a": [
+              "L3",
+              0
+            ],
+            "T513a": [
+              "L3",
+              3
+            ],
+            "T51d": [
+              "L3",
+              3
+            ],
+            "T54c": [
+              "L3",
+              1
+            ],
+            "G58d": [
+              "L3",
+              1
+            ],
+            "T511d": [
+              "L3",
+              1
+            ],
+            "G512": [
+              "L3",
+              0
+            ],
+            "T516c": [
+              "L3",
+              1
+            ],
+            "G516a": [
+              "L3",
+              1
+            ],
+            "T57": [
+              "L4",
+              0
+            ],
+            "G57": [
+              "L4",
+              0
+            ],
+            "T514": [
+              "L4",
+              0
+            ],
+            "G514": [
+              "L4",
+              0
+            ],
+            "T511a": [
+              "L5",
+              0
+            ],
+            "G511a": [
+              "L5",
+              0
+            ],
+            "T515": [
+              "L6",
+              0
+            ],
+            "G515": [
+              "L6",
+              0
+            ]
+          },
+          "gap": 24,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            80
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              199.0,
+              76.0,
+              16
+            ],
+            [
+              346.0,
+              245.0,
+              16,
+              367.0
+            ],
+            [
+              444.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              518.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              722.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              926.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1000.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1204.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1245.0,
+              675.0,
+              16,
+              688.0
+            ],
+            [
+              1343.0,
+              1393.0,
+              24.0,
+              16
+            ],
+            [
+              1384.0,
+              930.0,
+              16,
+              446.0
+            ],
+            [
+              1482.0,
+              199.0,
+              24.0,
+              16
+            ],
+            [
+              1523.0,
+              232.0,
+              16,
+              380.0
+            ],
+            [
+              1621.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1695.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              1899.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              2103.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              2144.0,
+              675.0,
+              16,
+              1126.0
+            ],
+            [
+              2177.0,
+              642.0,
+              40.0,
+              16
+            ],
+            [
+              2242.0,
+              1831.0,
+              24.0,
+              16
+            ],
+            [
+              3917.0,
+              381.0,
+              89.0,
+              16
+            ],
+            [
+              4023.0,
+              414.0,
+              16,
+              440.0
+            ],
+            [
+              2397.0,
+              1393.0,
+              73.0,
+              16
+            ],
+            [
+              2626.0,
+              688.0,
+              16,
+              675.0
+            ],
+            [
+              2928.0,
+              2097.0,
+              89.0,
+              16
+            ],
+            [
+              3132.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3206.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3426.0,
+              1576.0,
+              147.0,
+              16
+            ],
+            [
+              3410.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3688.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              3933.0,
+              1831.0,
+              73.0,
+              16
+            ],
+            [
+              4137.0,
+              2346.0,
+              24.0,
+              16
+            ],
+            [
+              4178.0,
+              688.0,
+              16,
+              675.0
+            ],
+            [
+              4276.0,
+              1393.0,
+              24.0,
+              16
+            ],
+            [
+              2830.0,
+              688.0,
+              16,
+              1379.0
+            ],
+            [
+              3762.0,
+              642.0,
+              24.0,
+              16
+            ],
+            [
+              4431.0,
+              884.0,
+              24.0,
+              16
+            ]
+          ],
+          "compact_information_bays": true,
+          "responsive_tasks": true,
+          "row_skyline": {
+            "moves": [
+              {
+                "row": [
+                  "L1",
+                  0
+                ],
+                "dy": -62.0
+              },
+              {
+                "row": [
+                  "L1",
+                  1
+                ],
+                "dy": -144.0
+              },
+              {
+                "row": [
+                  "L3",
+                  0
+                ],
+                "dy": -219.0
+              },
+              {
+                "row": [
+                  "L3",
+                  1
+                ],
+                "dy": -276.0
+              },
+              {
+                "row": [
+                  "L3",
+                  2
+                ],
+                "dy": -356.0
+              },
+              {
+                "row": [
+                  "L3",
+                  3
+                ],
+                "dy": -408.0
+              },
+              {
+                "row": [
+                  "L2",
+                  0
+                ],
+                "dy": -453.0
+              },
+              {
+                "row": [
+                  "L2",
+                  1
+                ],
+                "dy": -530.0
+              },
+              {
+                "row": [
+                  "L4",
+                  0
+                ],
+                "dy": -633.0
+              },
+              {
+                "row": [
+                  "L5",
+                  0
+                ],
+                "dy": -694.0
+              },
+              {
+                "row": [
+                  "L6",
+                  0
+                ],
+                "dy": -805.0
+              }
+            ],
+            "old_lane_height": 2399.0,
+            "new_lane_height": 1542.0,
+            "method": "occupied-column envelopes; measured captions; 8px object and corridor separation; fixed role membership"
+          },
+          "layering": "LONGEST_PATH",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [],
+          "scenario_order": [
+            [
+              "C53",
+              "C55",
+              "E",
+              "G51",
+              "G511",
+              "G511a",
+              "G511b",
+              "G512",
+              "G513",
+              "G513a",
+              "G514",
+              "G515",
+              "G516",
+              "G516a",
+              "G53",
+              "G53b",
+              "G54a",
+              "G54b",
+              "G55",
+              "G56",
+              "G57",
+              "G57a",
+              "G58",
+              "G58d",
+              "G59",
+              "S",
+              "T510a",
+              "T510b",
+              "T510c",
+              "T511a",
+              "T511b",
+              "T511c",
+              "T511d",
+              "T512a",
+              "T512b",
+              "T513",
+              "T513a",
+              "T514",
+              "T514c",
+              "T515",
+              "T515c",
+              "T516a",
+              "T516b",
+              "T516c",
+              "T51a",
+              "T51b",
+              "T51c",
+              "T51d",
+              "T52",
+              "T53",
+              "T54a",
+              "T54b",
+              "T54c",
+              "T55",
+              "T56",
+              "T57",
+              "T57a",
+              "T58a",
+              "T58b",
+              "T58c",
+              "T58d",
+              "T59a",
+              "T59b",
+              "T59c"
+            ]
+          ],
+          "handoff_groups": {
+            "S": "S",
+            "T51a": "T51a",
+            "T51b": "T51a",
+            "G51": "G51",
+            "T51c": "T51c",
+            "T52": "T52",
+            "T53": "T53",
+            "G53": "G53",
+            "C53": "C53",
+            "G53b": "G53b",
+            "T54a": "G53b",
+            "G54a": "G54a",
+            "T54b": "G54a",
+            "G54b": "G54b",
+            "T55": "G54b",
+            "G55": "G55",
+            "C55": "C55",
+            "T56": "T56",
+            "G56": "G56",
+            "T57": "G56",
+            "G57": "G57",
+            "T58a": "T58a",
+            "T58b": "T58a",
+            "T58c": "T58a",
+            "G58": "G58",
+            "T59a": "T59a",
+            "T59b": "T59a",
+            "G59": "G59",
+            "T510a": "T510a",
+            "T510b": "T510a",
+            "T511a": "T510c",
+            "T511b": "G511a",
+            "G511": "G511",
+            "T511c": "T511c",
+            "T512a": "T512a",
+            "T512b": "T512b",
+            "T513": "T512b",
+            "G513": "G513",
+            "T514": "T514",
+            "G514": "G514",
+            "T514c": "T514c",
+            "T515": "T515",
+            "G515": "G515",
+            "T515c": "T515c",
+            "T516a": "G515",
+            "T516b": "G515",
+            "G516": "E",
+            "E": "E",
+            "T510c": "T510c",
+            "T57a": "G57",
+            "G57a": "G57a",
+            "T58d": "G58",
+            "T59c": "G59",
+            "G513a": "G513a",
+            "T513a": "T513a",
+            "T51d": "T51c",
+            "T54c": "G54a",
+            "G58d": "G58d",
+            "G511a": "G511a",
+            "G511b": "G511b",
+            "T511d": "G511b",
+            "G512": "G512",
+            "T516c": "T516c",
+            "G516a": "G516a"
+          },
+          "semantic_spines": [
+            {
+              "main_path": [
+                "S",
+                "T51a",
+                "T51b",
+                "G51",
+                "T52",
+                "T53",
+                "G53",
+                "C53",
+                "G53b",
+                "T54a",
+                "G54a",
+                "T54b",
+                "G54b",
+                "T55",
+                "G55",
+                "C55",
+                "T56",
+                "G56",
+                "T57",
+                "G57",
+                "T59a",
+                "T59b",
+                "G59",
+                "T510a",
+                "T510b",
+                "T510c",
+                "T511a",
+                "G511a",
+                "T511b",
+                "G511",
+                "T512a",
+                "G512",
+                "T512b",
+                "T513",
+                "G513a",
+                "G513",
+                "T514",
+                "G514",
+                "T515",
+                "G515",
+                "T516a",
+                "T516b",
+                "G516",
+                "E"
+              ],
+              "side_nodes": [
+                "G511b",
+                "G516a",
+                "G57a",
+                "G58",
+                "G58d",
+                "T511c",
+                "T511d",
+                "T513a",
+                "T514c",
+                "T515c",
+                "T516c",
+                "T51c",
+                "T51d",
+                "T54c",
+                "T57a",
+                "T58a",
+                "T58b",
+                "T58c",
+                "T58d",
+                "T59c"
+              ],
+              "method": "longest productive semantic path; fixed roles; common row and separated columns; short fork branches"
+            }
+          ]
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 40,
+          "initial_quality": [
+            126,
+            195,
+            66155.9
+          ],
+          "final_quality": [
+            95,
+            232,
+            68430.3
+          ],
+          "refinements": [
+            {
+              "edge": "F5",
+              "before": [
+                33021.0,
+                20,
+                2,
+                2881.0
+              ],
+              "after": [
+                20386.45,
+                11,
+                9,
+                3126.6
+              ]
+            },
+            {
+              "edge": "F64",
+              "before": [
+                27337.0,
+                17,
+                4,
+                1557.0
+              ],
+              "after": [
+                24587.0,
+                15,
+                4,
+                1669.0
+              ]
+            },
+            {
+              "edge": "F66",
+              "before": [
+                17659.0,
+                11,
+                3,
+                949.0
+              ],
+              "after": [
+                15079.25,
+                9,
+                5,
+                1161.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                14727.825,
+                9,
+                3,
+                592.2
+              ],
+              "after": [
+                11580.7,
+                7,
+                3,
+                754.2
+              ]
+            },
+            {
+              "edge": "F94",
+              "before": [
+                11382.7,
+                6,
+                7,
+                1694.0
+              ],
+              "after": [
+                11258.2,
+                6,
+                7,
+                1684.0
+              ]
+            },
+            {
+              "edge": "F88",
+              "before": [
+                11130.0,
+                7,
+                2,
+                490.0
+              ],
+              "after": [
+                10995.2,
+                6,
+                9,
+                655.0
+              ]
+            },
+            {
+              "edge": "F61",
+              "before": [
+                10620.8,
+                6,
+                7,
+                980.2
+              ],
+              "after": [
+                5034.55,
+                2,
+                7,
+                1060.2
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                9445.5,
+                5,
+                5,
+                1366.0
+              ],
+              "after": [
+                9243.0,
+                5,
+                5,
+                1393.0
+              ]
+            },
+            {
+              "edge": "F54",
+              "before": [
+                9037.3,
+                5,
+                5,
+                1082.4
+              ],
+              "after": [
+                9036.8,
+                5,
+                5,
+                1082.4
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                7084.1,
+                3,
+                4,
+                817.2
+              ],
+              "after": [
+                3479.5,
+                1,
+                6,
+                985.0
+              ]
+            },
+            {
+              "edge": "F57",
+              "before": [
+                8241.5,
+                4,
+                2,
+                1251.0
+              ],
+              "after": [
+                4804.1,
+                2,
+                2,
+                1659.6
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                5511.4,
+                3,
+                2,
+                869.0
+              ],
+              "after": [
+                4003.0,
+                2,
+                1,
+                933.0
+              ]
+            },
+            {
+              "edge": "F98",
+              "before": [
+                7087.75,
+                4,
+                2,
+                503.5
+              ],
+              "after": [
+                6893.45,
+                3,
+                7,
+                909.7
+              ]
+            },
+            {
+              "edge": "F74",
+              "before": [
+                4115.25,
+                1,
+                5,
+                1147.0
+              ],
+              "after": [
+                3430.0,
+                1,
+                5,
+                1141.0
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                4268.0,
+                2,
+                2,
+                921.0
+              ],
+              "after": [
+                4011.25,
+                2,
+                2,
+                852.0
+              ]
+            },
+            {
+              "edge": "F35",
+              "before": [
+                5128.25,
+                3,
+                0,
+                441.0
+              ],
+              "after": [
+                3904.0,
+                2,
+                4,
+                578.0
+              ]
+            },
+            {
+              "edge": "F34",
+              "before": [
+                9922.6,
+                4,
+                4,
+                3524.2
+              ],
+              "after": [
+                9809.0,
+                4,
+                3,
+                3599.0
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                7392.0,
+                4,
+                2,
+                1164.0
+              ],
+              "after": [
+                7261.1,
+                3,
+                6,
+                1218.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                6879.3,
+                4,
+                2,
+                391.20000000000005
+              ],
+              "after": [
+                4059.2,
+                2,
+                6,
+                621.2
+              ]
+            },
+            {
+              "edge": "F28",
+              "before": [
+                3340.45,
+                1,
+                4,
+                1077.2
+              ],
+              "after": [
+                3023.45,
+                1,
+                6,
+                1056.2
+              ]
+            },
+            {
+              "edge": "F69",
+              "before": [
+                3822.0,
+                2,
+                0,
+                316.0
+              ],
+              "after": [
+                3753.25,
+                2,
+                2,
+                328.0
+              ]
+            },
+            {
+              "edge": "F47",
+              "before": [
+                5651.0,
+                3,
+                2,
+                487.40000000000003
+              ],
+              "after": [
+                5478.6,
+                3,
+                3,
+                508.2
+              ]
+            },
+            {
+              "edge": "F87",
+              "before": [
+                3969.7,
+                2,
+                2,
+                541.0
+              ],
+              "after": [
+                3573.2,
+                2,
+                1,
+                503.20000000000005
+              ]
+            },
+            {
+              "edge": "F78",
+              "before": [
+                6393.25,
+                3,
+                5,
+                1260.0
+              ],
+              "after": [
+                6286.2,
+                3,
+                6,
+                1317.2
+              ]
+            },
+            {
+              "edge": "F44",
+              "before": [
+                5355.0,
+                3,
+                2,
+                715.0
+              ],
+              "after": [
+                5195.2,
+                3,
+                1,
+                625.2
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                2089.0,
+                1,
+                2,
+                400.0
+              ],
+              "after": [
+                1991.75,
+                1,
+                2,
+                331.0
+              ]
+            },
+            {
+              "edge": "F82",
+              "before": [
+                6396.5,
+                3,
+                6,
+                1021.0
+              ],
+              "after": [
+                6320.5,
+                3,
+                6,
+                1021.0
+              ]
+            },
+            {
+              "edge": "F85",
+              "before": [
+                6525.0,
+                3,
+                4,
+                1745.0
+              ],
+              "after": [
+                6519.0,
+                3,
+                4,
+                1739.0
+              ]
+            },
+            {
+              "edge": "F72",
+              "before": [
+                2965.55,
+                1,
+                3,
+                642.2
+              ],
+              "after": [
+                2780.15,
+                1,
+                5,
+                642.2
+              ]
+            },
+            {
+              "edge": "F37",
+              "before": [
+                4405.0,
+                2,
+                4,
+                1014.0
+              ],
+              "after": [
+                4314.0,
+                2,
+                4,
+                1034.0
+              ]
+            },
+            {
+              "edge": "F83",
+              "before": [
+                4011.0,
+                2,
+                3,
+                769.0
+              ],
+              "after": [
+                3979.0,
+                2,
+                3,
+                769.0
+              ]
+            },
+            {
+              "edge": "F63",
+              "before": [
+                1898.0,
+                1,
+                2,
+                212.0
+              ],
+              "after": [
+                1765.0,
+                1,
+                1,
+                195.0
+              ]
+            },
+            {
+              "edge": "F19",
+              "before": [
+                4598.0,
+                2,
+                3,
+                1388.0
+              ],
+              "after": [
+                3152.0,
+                1,
+                3,
+                1442.0
+              ]
+            },
+            {
+              "edge": "F67",
+              "before": [
+                563.25,
+                0,
+                2,
+                297.0
+              ],
+              "after": [
+                329.0,
+                0,
+                2,
+                189.0
+              ]
+            },
+            {
+              "edge": "F79",
+              "before": [
+                2176.0,
+                1,
+                2,
+                536.0
+              ],
+              "after": [
+                2104.0,
+                1,
+                1,
+                534.0
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 4,
+            "initial_quality": [
+              106,
+              238,
+              69378.58
+            ],
+            "final_quality": [
+              106,
+              238,
+              69378.58
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "A_Order_Out",
+            "A_Contract_Existing",
+            "A_PrePaymentDocs_Out",
+            "A_InitialTechData",
+            "A_BankDocument_Out",
+            "A_AccountantTask_In",
+            "A_CashRegister_Fact"
+          ],
+          "straight_information_links": [
+            "A_PaymentTask_Out",
+            "A_WorkFile_Actual",
+            "A_CashRegister_Plan"
+          ]
+        },
+        "excessive_bend_edges": [
+          "F5",
+          "F49",
+          "F50",
+          "F84",
+          "F88"
+        ]
+      },
+      {
+        "candidate": "semantic-longest_path-gap-40",
+        "status": "rejected",
+        "reason": "No distinct-channel route for F85",
+        "seconds": 36.095
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['G511', 'G514', 'G56', 'G57a', 'G511b', 'DSR_CashFlow_Fact', 'DSR_CashFlow_Plan'], 'label_collisions': [['G514', 'F50'], ['F78', 'DSR_CashFlow_Fact'], ['DSR_CashFlow_Plan', 'T511b'], ['DSR_CashFlow_Fact', 'DSR_OperationsFile_Actual']], 'label_line_cuts': [['G56', 'F44'], ['G56', 'F83'], ['G56', 'A_PrePaymentDocs_Out'], ['G511', 'F44'], ['G514', 'F89'], ['G57a', 'F44'], ['G511b', 'F29'], ['DSR_CashFlow_Plan', 'F71'], ['DSR_CashFlow_Plan', 'F74'], ['DSR_CashFlow_Plan', 'F88'], ['DSR_CashFlow_Fact', 'F78'], ['DSR_CashFlow_Fact', 'F88']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 50.328
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1-roles-1",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['G511', 'G514', 'G56', 'DSR_SupplierOptions'], 'label_collisions': [['G511', 'F43'], ['DSR_SupplierOptions', 'T55']], 'label_line_cuts': [['G56', 'F25'], ['G56', 'A_PrePaymentDocs_Out'], ['G511', 'F88'], ['G514', 'F52'], ['DSR_SupplierOptions', 'F15'], ['DSR_SupplierOptions', 'F72']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 51.767
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['G53', 'G513a', 'G511', 'G516a', 'G56', 'G57a', 'DSR_SupplierOptions', 'DSR_CashFlow_Plan'], 'label_collisions': [['G53', 'F18'], ['G513a', 'F94'], ['G516a', 'F62'], ['DSR_SupplierOptions', 'T55'], ['DSR_CashFlow_Plan', 'T511b']], 'label_line_cuts': [['G53', 'F18'], ['G56', 'A_PrePaymentDocs_Out'], ['G56', 'A_InitialTechData'], ['G511', 'F40'], ['G57a', 'F67'], ['G513a', 'F94'], ['G516a', 'F62'], ['DSR_SupplierOptions', 'F7'], ['DSR_SupplierOptions', 'F19'], ['DSR_CashFlow_Plan', 'F35'], ['DSR_CashFlow_Plan', 'F88']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 62.018
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2-roles-1",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['G513a', 'G511', 'G56', 'G51', 'DOR_ContractBasis_Final', 'DOR_PaymentTask', 'F98', 'DOR_BankDocument'], 'label_collisions': [['G51', 'F4'], ['G56', 'F22'], ['G511', 'F43'], ['G511', 'F76'], ['G513a', 'F98'], ['DOR_ContractBasis_Final', 'T59a'], ['DOR_PaymentTask', 'T512a']], 'label_line_cuts': [['G51', 'F16'], ['G56', 'F23'], ['G56', 'F72'], ['G511', 'F78'], ['G513a', 'F69'], ['G513a', 'F70'], ['F98', 'F70'], ['DOR_ContractBasis_Final', 'F74'], ['DOR_PaymentTask', 'F62'], ['DOR_PaymentTask', 'F81'], ['DOR_PaymentTask', 'F82'], ['DOR_BankDocument', 'F71']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 56.136
+      },
+      {
+        "candidate": "semantic-longest_path-gap-24-refined",
         "status": "verified",
         "rank": [
-          4,
-          10,
-          -37,
+          9.214926,
           [
-            40,
-            149,
-            49779.3
-          ]
+            84,
+            199,
+            68891.6
+          ],
+          10.5547
         ],
-        "edge": "F88"
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.058609,
+          "hotspot_excess": 0.012907,
+          "peak_flow_load": 7,
+          "forward_hop_excess": 3.317833,
+          "long_forward_hops": 41,
+          "long_forward_hop_ids": [
+            "F5",
+            "F9",
+            "F12",
+            "F15",
+            "F21",
+            "F25",
+            "F28",
+            "F29",
+            "F30",
+            "F31",
+            "F35",
+            "F37",
+            "F38",
+            "F39",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F53",
+            "F56",
+            "F57",
+            "F59",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F66",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F88",
+            "F90",
+            "F95",
+            "F97"
+          ],
+          "bends_per_flow": 2.063158,
+          "graph_return_count": 17,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "refinement_interrupted": true,
+        "refinements": []
       }
-    ]
-  },
-  "final_reaudit": {
-    "full_semantics": true,
-    "DI_freeze": true,
-    "bpmn_sha256": "326d7bc23830b9876de3c7268725f7912be84c8d9c2577644a6fa1d56c5e3fa2"
-  },
-  "audit_schema_update": "Candidate records normalized from existing verified incumbent and accepted local-change audit; geometry unchanged",
-  "role_caption_reaudit": "Only role-label fit in SVG improved; BPMN geometry and business XML unchanged"
+    ],
+    "seconds": 476.74,
+    "source_reference_models": 32,
+    "selection": "best verified empirical-style candidate; no global optimum guarantee",
+    "removed_redundant_associations": [],
+    "local_attachment_moves": {
+      "changes": [
+        {
+          "document": "DSR_CashFlow_Plan",
+          "fixed_owner": "T510a",
+          "gap_before": 46.06788469204984,
+          "gap_after": 20.0
+        },
+        {
+          "document": "DSR_OperationsFile_Actual",
+          "fixed_owner": "T511b",
+          "gap_before": 35.22782990761707,
+          "gap_after": 20.0
+        }
+      ],
+      "trials": 2,
+      "seconds": 1.917,
+      "before": {
+        "fixed_owners": {
+          "DOR_Order": "T51a",
+          "DSR_SupplierOptions": "T52",
+          "DOR_LegalCheck": "C53",
+          "DOR_ContractBasis_Existing": "T55",
+          "DOR_ContractBasis_Final": "C55",
+          "DOR_PrePaymentDocs": "T56",
+          "DOR_InitialTechData": "T56",
+          "DOR_TechTask": "T57",
+          "DOR_PaymentTask": "T510c",
+          "DOR_BankDocument": "T511a",
+          "DOR_ClosingDocs": "T513",
+          "DOR_AccountantTask": "T515",
+          "DSR_OperationsFile_Plan": "T510a",
+          "DSR_OperationsFile_Actual": "T511b",
+          "DSR_OperationsFile_Close": "T516a",
+          "DSR_CashFlow_Plan": "T510a",
+          "DSR_CashFlow_Fact": "T511b"
+        },
+        "anchor_gaps": {
+          "DOR_Order": 20.0,
+          "DSR_SupplierOptions": 20.0,
+          "DOR_LegalCheck": 20.0,
+          "DOR_ContractBasis_Existing": 20.0,
+          "DOR_ContractBasis_Final": 20.0,
+          "DOR_PrePaymentDocs": 20.0,
+          "DOR_InitialTechData": 20.0,
+          "DOR_TechTask": 20.0,
+          "DOR_PaymentTask": 53.388,
+          "DOR_BankDocument": 20.0,
+          "DOR_ClosingDocs": 20.0,
+          "DOR_AccountantTask": 20.0,
+          "DSR_OperationsFile_Plan": 20.0,
+          "DSR_OperationsFile_Actual": 35.228,
+          "DSR_OperationsFile_Close": 20.0,
+          "DSR_CashFlow_Plan": 46.068,
+          "DSR_CashFlow_Fact": 20.0
+        },
+        "mean_anchor_gap": 24.393176470588234,
+        "association_bends": 3,
+        "association_length": 773.3957908711126,
+        "consumer_links": [
+          {
+            "id": "A_Order_Out",
+            "gap": 20.0
+          },
+          {
+            "id": "A_SupplierOptions_Update",
+            "gap": 20.0
+          },
+          {
+            "id": "A_LegalCheck_Result",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Contract_Existing",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Contract_New",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Contract_ToOperation",
+            "gap": 164.719
+          },
+          {
+            "id": "A_PrePaymentDocs_Out",
+            "gap": 20.0
+          },
+          {
+            "id": "A_InitialTechData",
+            "gap": 20.0
+          },
+          {
+            "id": "A_TechTask_In",
+            "gap": 20.0
+          },
+          {
+            "id": "A_PaymentTask_Out",
+            "gap": 53.388
+          },
+          {
+            "id": "A_BankDocument_Out",
+            "gap": 20.0
+          },
+          {
+            "id": "A_ClosingDocs_In",
+            "gap": 20.0
+          },
+          {
+            "id": "A_AccountantTask_In",
+            "gap": 20.0
+          },
+          {
+            "id": "A_WorkFile_Plan",
+            "gap": 20.0
+          },
+          {
+            "id": "A_WorkFile_Actual",
+            "gap": 35.228
+          },
+          {
+            "id": "A_WorkFile_Close",
+            "gap": 20.0
+          },
+          {
+            "id": "A_CashRegister_Plan",
+            "gap": 46.068
+          },
+          {
+            "id": "A_CashRegister_Fact",
+            "gap": 20.0
+          }
+        ]
+      },
+      "after": {
+        "fixed_owners": {
+          "DOR_Order": "T51a",
+          "DSR_SupplierOptions": "T52",
+          "DOR_LegalCheck": "C53",
+          "DOR_ContractBasis_Existing": "T55",
+          "DOR_ContractBasis_Final": "C55",
+          "DOR_PrePaymentDocs": "T56",
+          "DOR_InitialTechData": "T56",
+          "DOR_TechTask": "T57",
+          "DOR_PaymentTask": "T510c",
+          "DOR_BankDocument": "T511a",
+          "DOR_ClosingDocs": "T513",
+          "DOR_AccountantTask": "T515",
+          "DSR_OperationsFile_Plan": "T510a",
+          "DSR_OperationsFile_Actual": "T511b",
+          "DSR_OperationsFile_Close": "T516a",
+          "DSR_CashFlow_Plan": "T510a",
+          "DSR_CashFlow_Fact": "T511b"
+        },
+        "anchor_gaps": {
+          "DOR_Order": 20.0,
+          "DSR_SupplierOptions": 20.0,
+          "DOR_LegalCheck": 20.0,
+          "DOR_ContractBasis_Existing": 20.0,
+          "DOR_ContractBasis_Final": 20.0,
+          "DOR_PrePaymentDocs": 20.0,
+          "DOR_InitialTechData": 20.0,
+          "DOR_TechTask": 20.0,
+          "DOR_PaymentTask": 53.388,
+          "DOR_BankDocument": 20.0,
+          "DOR_ClosingDocs": 20.0,
+          "DOR_AccountantTask": 20.0,
+          "DSR_OperationsFile_Plan": 20.0,
+          "DSR_OperationsFile_Actual": 20.0,
+          "DSR_OperationsFile_Close": 20.0,
+          "DSR_CashFlow_Plan": 20.0,
+          "DSR_CashFlow_Fact": 20.0
+        },
+        "mean_anchor_gap": 21.964,
+        "association_bends": 3,
+        "association_length": 690.1537001309642,
+        "consumer_links": [
+          {
+            "id": "A_Order_Out",
+            "gap": 20.0
+          },
+          {
+            "id": "A_SupplierOptions_Update",
+            "gap": 20.0
+          },
+          {
+            "id": "A_LegalCheck_Result",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Contract_Existing",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Contract_New",
+            "gap": 20.0
+          },
+          {
+            "id": "A_Contract_ToOperation",
+            "gap": 164.719
+          },
+          {
+            "id": "A_PrePaymentDocs_Out",
+            "gap": 20.0
+          },
+          {
+            "id": "A_InitialTechData",
+            "gap": 20.0
+          },
+          {
+            "id": "A_TechTask_In",
+            "gap": 20.0
+          },
+          {
+            "id": "A_PaymentTask_Out",
+            "gap": 53.388
+          },
+          {
+            "id": "A_BankDocument_Out",
+            "gap": 20.0
+          },
+          {
+            "id": "A_ClosingDocs_In",
+            "gap": 20.0
+          },
+          {
+            "id": "A_AccountantTask_In",
+            "gap": 20.0
+          },
+          {
+            "id": "A_WorkFile_Plan",
+            "gap": 20.0
+          },
+          {
+            "id": "A_WorkFile_Actual",
+            "gap": 20.0
+          },
+          {
+            "id": "A_WorkFile_Close",
+            "gap": 20.0
+          },
+          {
+            "id": "A_CashRegister_Plan",
+            "gap": 20.0
+          },
+          {
+            "id": "A_CashRegister_Fact",
+            "gap": 20.0
+          }
+        ]
+      },
+      "sequence_nodes_and_waypoints_preserved": true,
+      "guards": "no new contacts, no longer individual consumer link, no larger page, full text, strict geometry and XML freeze"
+    },
+    "geometry_erasure": {
+      "source_positions_used": false,
+      "source_dimensions_used": false,
+      "source_waypoints_used": false,
+      "source_label_bounds_used": false,
+      "external_incumbent_used": false,
+      "source_lane_order_used": false,
+      "role_order_method": "graph distance from starts, then role name; business XML lane order unchanged",
+      "inputs": "business graph, fixed role membership, full names, shape kinds; neutral canonical DI and measured text sizes"
+    },
+    "from_scratch": true,
+    "reference_target_met": false,
+    "output": "/workspace/work/algorithm-r10/final-main/process_08_v23.bpmn",
+    "artifacts": {
+      "bpmn": "/workspace/work/algorithm-r10/final-main/process_08_v23.bpmn",
+      "svg": "/workspace/work/algorithm-r10/final-main/process_08_v23.svg",
+      "png": null
+    }
+  }
 }

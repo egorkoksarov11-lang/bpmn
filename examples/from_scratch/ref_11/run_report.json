@@ -17,7 +17,7 @@
       "warnings": [
         "Participants/pools are preserved but not resized or automatically reordered"
       ],
-      "source": "/workspace/work/algorithm-r10/release/candidate/v23-stage-akpdzbm6/process_08_v23.bpmn",
+      "source": "/workspace/work/algorithm-r10/acceptance/candidate/v23-stage-lvoqy8ye/process_08_v23.bpmn",
       "counts": {
         "processes": 1,
         "diagrams": 1,
@@ -34,28 +34,28 @@
     "external_labels": 23,
     "preserved_labels": [
       "Start_Update",
-      "Gateway_Include",
-      "DR_Inventory",
-      "DR_File_Update",
-      "Start_Hire",
       "End_Current",
-      "DR_Composition_Check",
-      "DR_File",
-      "DR_Inventory_Update",
       "End_NoUpdate",
-      "DR_Certifier",
-      "DR_Inventory_Close",
-      "DR_File_Close",
-      "DR_Composition_Close",
-      "DR_File_Archive",
-      "End_Archived",
       "Start_Dismissal",
-      "Gateway_Complete",
+      "Gateway_Include",
+      "Start_Hire",
+      "End_Archived",
       "End_Updated",
+      "Gateway_Complete",
+      "DR_Inventory",
+      "DR_Inventory_Close",
+      "DR_Inventory_Update",
+      "DR_Composition_Check",
+      "DR_Composition_Close",
+      "DR_File",
+      "DR_File_Archive",
+      "DR_File_Close",
+      "DR_File_Update",
+      "DR_Certifier",
+      "F10",
       "F5",
       "F6",
-      "F9",
-      "F10"
+      "F9"
     ],
     "large_displacements": [],
     "distant_from_owner": [
@@ -87,7 +87,7 @@
         "DR_File_Update": 12,
         "Start_Hire": 12,
         "End_Current": 12,
-        "DR_Composition_Check": 12,
+        "DR_Composition_Check": 11,
         "DR_File": 12,
         "DR_Inventory_Update": 12,
         "End_NoUpdate": 12,
@@ -126,28 +126,28 @@
     "backend": "v23-semantic-layers-and-local-information",
     "selected_candidate": "semantic-network_simplex-gap-24-refined",
     "quality": [
-      0.05,
+      0.621429,
       [
-        0,
-        4,
-        1358.04
+        2,
+        6,
+        1463.93
       ],
-      5.2761
+      4.7138
     ],
     "candidates": [
       {
         "candidate": "semantic-network_simplex-gap-24",
         "status": "verified",
         "rank": [
-          0.05,
+          0.621429,
           [
-            0,
-            4,
-            1359.97
+            2,
+            6,
+            1463.94
           ],
-          5.2761
+          4.7138
         ],
-        "seconds": 0.813,
+        "seconds": 0.917,
         "readability": {
           "policy": "balanced-readability-v1",
           "parallel_crowding_per_flow": 0.0,
@@ -164,7 +164,7 @@
           "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
         },
         "style": {
-          "area_factor": 5.2761,
+          "area_factor": 4.7138,
           "reference_p90": 9.1665,
           "within_reference_density": true,
           "penalty": 0
@@ -227,7 +227,7 @@
           "reserved_captions": {
             "Start_Update": [
               100.0,
-              442.0,
+              388.0,
               140,
               56
             ],
@@ -239,67 +239,103 @@
             ],
             "Start_Dismissal": [
               100.0,
-              702.0,
+              662.0,
               140,
               42
             ],
+            "End_Current": [
+              403.0,
+              239.0,
+              180,
+              42
+            ],
+            "End_NoUpdate": [
+              403.0,
+              479.0,
+              180,
+              42
+            ],
+            "Gateway_Include": [
+              403.0,
+              289.0,
+              180,
+              28
+            ],
+            "End_Archived": [
+              600.0,
+              683.0,
+              180,
+              28
+            ],
+            "End_Updated": [
+              992.0,
+              409.0,
+              100,
+              39
+            ],
+            "Gateway_Complete": [
+              885.0,
+              306.0,
+              180,
+              11
+            ],
             "DR_File_Archive": [
-              528.5,
-              746.0,
+              488.5,
+              706.0,
               102,
               28
             ],
             "DR_Composition_Check": [
-              325.0,
-              320.0,
+              285.0,
+              266.0,
               101,
               28
             ],
             "DR_Certifier": [
               324.0,
-              746.5,
+              706.5,
               103,
               27
             ],
             "DR_Composition_Close": [
               325.0,
-              580.0,
+              540.0,
               101,
               28
             ],
             "DR_File_Close": [
-              144.5,
-              580.0,
+              101.5,
+              540.0,
               102,
               28
             ],
             "DR_Inventory_Close": [
               499.5,
-              580.0,
+              540.0,
               112,
               28
             ],
             "DR_File": [
               324.5,
-              262.0,
+              96.0,
               102,
               28
             ],
             "DR_Inventory": [
-              319.5,
+              96.5,
               96.0,
               112,
               28
             ],
             "DR_File_Update": [
               602.5,
-              486.0,
+              432.0,
               102,
               28
             ],
             "DR_Inventory_Update": [
-              597.5,
-              320.0,
+              637.5,
+              266.0,
               112,
               28
             ]
@@ -350,19 +386,19 @@
               ],
               [
                 467.0,
-                417.0
+                363.0
               ],
               [
                 627.0,
-                497.0
+                453.0
               ],
               [
                 793.0,
-                577.0
+                533.0
               ],
               [
                 973.0,
-                677.0
+                637.0
               ]
             ]
           },
@@ -553,32 +589,32 @@
                   "Lane_Personnel",
                   1
                 ],
-                "dy": -50.0
+                "dy": -104.0
               },
               {
                 "row": [
                   "Lane_Personnel",
                   2
                 ],
-                "dy": -130.0
+                "dy": -174.0
               },
               {
                 "row": [
                   "Lane_Personnel",
                   3
                 ],
-                "dy": -216.0
+                "dy": -260.0
               },
               {
                 "row": [
                   "Lane_Personnel",
                   4
                 ],
-                "dy": -296.0
+                "dy": -336.0
               }
             ],
             "old_lane_height": 1062.0,
-            "new_lane_height": 740.0,
+            "new_lane_height": 700.0,
             "method": "occupied-column envelopes; measured captions; 8px object and corridor separation; fixed role membership"
           },
           "layering": "NETWORK_SIMPLEX",
@@ -675,66 +711,68 @@
           "initial_quality": [
             0,
             2,
-            838.4
+            868.4
           ],
           "final_quality": [
             0,
             2,
-            838.4
+            868.4
           ],
           "refinements": [],
           "information_routing": {
             "refinement_interrupted": false,
-            "astar_fallbacks": 1,
+            "astar_fallbacks": 0,
             "initial_quality": [
-              1,
+              2,
               6,
-              1480.28
+              1463.94
             ],
             "final_quality": [
-              1,
+              2,
               6,
-              1480.28
+              1463.94
             ],
             "refinements": []
           },
           "direct_information_seeds": [
             "DataOutputAssociation_0a19uzl",
             "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1h0ktpn",
             "DataOutputAssociation_1kirtse",
-            "DataOutputAssociation_04l1gny",
             "DataInputAssociation_1baszxx",
             "DataOutputAssociation_1n362rp",
             "DataOutputAssociation_1xx268g",
             "A_Composition_Check",
             "A_File_Archive"
           ],
-          "straight_information_links": [
-            "A_File_Close"
-          ]
-        }
+          "straight_information_links": []
+        },
+        "excessive_bend_edges": []
       },
       {
         "candidate": "semantic-network_simplex-gap-40",
         "status": "verified",
         "rank": [
-          1.124153,
+          1.980849,
           [
-            0,
-            7,
-            2371.68
+            2,
+            11,
+            2965.87
           ],
-          9.8911
+          10.0879
         ],
-        "seconds": 0.448,
+        "seconds": 0.801,
         "readability": {
           "policy": "balanced-readability-v1",
           "parallel_crowding_per_flow": 0.0,
           "hotspot_excess": 0.0,
-          "peak_flow_load": 3,
-          "forward_hop_excess": 0.000678,
-          "long_forward_hops": 0,
-          "long_forward_hop_ids": [],
+          "peak_flow_load": 2,
+          "forward_hop_excess": 0.035191,
+          "long_forward_hops": 2,
+          "long_forward_hop_ids": [
+            "F5",
+            "F9"
+          ],
           "bends_per_flow": 0.5,
           "graph_return_count": 1,
           "normalization_task_width": 180.0,
@@ -743,10 +781,10 @@
           "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
         },
         "style": {
-          "area_factor": 9.8911,
+          "area_factor": 10.0879,
           "reference_p90": 9.1665,
           "within_reference_density": true,
-          "penalty": 948.6109549240088
+          "penalty": 1206.2679298685052
         },
         "layout": {
           "external_engine": "elkjs@0.12.1-semantic-graph-only",
@@ -806,7 +844,7 @@
           "reserved_captions": {
             "Start_Update": [
               100.0,
-              662.0,
+              723.0,
               140,
               56
             ],
@@ -818,42 +856,78 @@
             ],
             "Start_Dismissal": [
               100.0,
-              1371.0,
+              1444.0,
               140,
               42
             ],
+            "End_Current": [
+              435.0,
+              325.0,
+              180,
+              42
+            ],
+            "End_NoUpdate": [
+              500.0,
+              481.0,
+              180,
+              42
+            ],
+            "Gateway_Include": [
+              435.0,
+              624.0,
+              180,
+              28
+            ],
+            "End_Archived": [
+              648.0,
+              1465.0,
+              180,
+              28
+            ],
+            "End_Updated": [
+              907.0,
+              744.0,
+              180,
+              28
+            ],
+            "Gateway_Complete": [
+              891.0,
+              898.0,
+              180,
+              11
+            ],
             "DR_File_Archive": [
-              560.5,
-              1415.0,
+              520.5,
+              1488.0,
               102,
               28
             ],
             "DR_Certifier": [
               340.0,
-              1415.5,
+              1488.5,
               103,
               27
             ],
             "DR_Composition_Close": [
               341.0,
-              1249.0,
+              1322.0,
               101,
               28
             ],
             "DR_File_Close": [
-              160.5,
-              1249.0,
+              117.5,
+              1322.0,
               102,
               28
             ],
             "DR_Inventory_Close": [
               515.5,
-              1249.0,
+              1322.0,
               112,
               28
             ],
             "DR_Composition_Check": [
-              341.0,
+              301.0,
               348.0,
               101,
               28
@@ -865,20 +939,20 @@
               28
             ],
             "DR_Inventory": [
-              515.5,
-              348.0,
+              112.5,
+              182.0,
               112,
               28
             ],
             "DR_File_Update": [
               576.5,
-              951.0,
+              1024.0,
               102,
               28
             ],
             "DR_Inventory_Update": [
-              571.5,
-              785.0,
+              341.0,
+              941.0,
               112,
               28
             ]
@@ -937,19 +1011,19 @@
               ],
               [
                 327.8333333333333,
-                637.0
+                698.0
               ],
               [
                 370.0,
-                882.0
+                955.0
               ],
               [
                 418.0,
-                1078.0
+                1151.0
               ],
               [
                 574.0,
-                1346.0
+                1419.0
               ]
             ]
           },
@@ -1047,25 +1121,25 @@
           "protected_direct_corridors": [
             [
               188.0,
-              629.0,
+              690.0,
               92.0,
               16
             ],
             [
               460.0,
-              629.0,
+              690.0,
               40.0,
               16
             ],
             [
               696.0,
-              874.0,
+              947.0,
               40.0,
               16
             ],
             [
               916.0,
-              874.0,
+              947.0,
               40.0,
               16
             ],
@@ -1083,19 +1157,19 @@
             ],
             [
               188.0,
-              1338.0,
+              1411.0,
               92.0,
               16
             ],
             [
               460.0,
-              1338.0,
+              1411.0,
               40.0,
               16
             ],
             [
               680.0,
-              1338.0,
+              1411.0,
               40.0,
               16
             ]
@@ -1156,16 +1230,16 @@
         },
         "routing": {
           "refinement_interrupted": false,
-          "astar_fallbacks": 1,
+          "astar_fallbacks": 2,
           "initial_quality": [
             1,
             6,
-            1805.5
+            2188.4
           ],
           "final_quality": [
             0,
             7,
-            1699.9
+            2082.8
           ],
           "refinements": [
             {
@@ -1203,14 +1277,14 @@
             "refinement_interrupted": false,
             "astar_fallbacks": 0,
             "initial_quality": [
-              1,
-              9,
-              2453.49
+              2,
+              11,
+              2913.67
             ],
             "final_quality": [
-              1,
-              9,
-              2453.49
+              2,
+              11,
+              2913.67
             ],
             "refinements": []
           },
@@ -1219,31 +1293,29 @@
             "DataOutputAssociation_18b4cmc",
             "DataOutputAssociation_1h0ktpn",
             "DataOutputAssociation_1kirtse",
-            "DataOutputAssociation_04l1gny",
             "DataInputAssociation_1baszxx",
             "DataOutputAssociation_1n362rp",
             "DataOutputAssociation_1xx268g",
             "A_Composition_Check",
             "A_File_Archive"
           ],
-          "straight_information_links": [
-            "A_File_Close"
-          ]
-        }
+          "straight_information_links": []
+        },
+        "excessive_bend_edges": []
       },
       {
         "candidate": "semantic-longest_path-gap-24",
         "status": "verified",
         "rank": [
-          0.05,
+          0.621429,
           [
-            0,
-            4,
-            1359.97
+            2,
+            6,
+            1463.94
           ],
-          5.2761
+          4.7138
         ],
-        "seconds": 0.33,
+        "seconds": 0.812,
         "readability": {
           "policy": "balanced-readability-v1",
           "parallel_crowding_per_flow": 0.0,
@@ -1260,7 +1332,7 @@
           "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
         },
         "style": {
-          "area_factor": 5.2761,
+          "area_factor": 4.7138,
           "reference_p90": 9.1665,
           "within_reference_density": true,
           "penalty": 0
@@ -1323,7 +1395,7 @@
           "reserved_captions": {
             "Start_Update": [
               100.0,
-              442.0,
+              388.0,
               140,
               56
             ],
@@ -1335,67 +1407,103 @@
             ],
             "Start_Dismissal": [
               100.0,
-              702.0,
+              662.0,
               140,
               42
             ],
+            "End_Current": [
+              403.0,
+              239.0,
+              180,
+              42
+            ],
+            "End_NoUpdate": [
+              403.0,
+              479.0,
+              180,
+              42
+            ],
+            "Gateway_Include": [
+              403.0,
+              289.0,
+              180,
+              28
+            ],
+            "End_Archived": [
+              600.0,
+              683.0,
+              180,
+              28
+            ],
+            "End_Updated": [
+              992.0,
+              409.0,
+              100,
+              39
+            ],
+            "Gateway_Complete": [
+              885.0,
+              306.0,
+              180,
+              11
+            ],
             "DR_File_Archive": [
-              528.5,
-              746.0,
+              488.5,
+              706.0,
               102,
               28
             ],
             "DR_Composition_Check": [
-              325.0,
-              320.0,
+              285.0,
+              266.0,
               101,
               28
             ],
             "DR_Certifier": [
               324.0,
-              746.5,
+              706.5,
               103,
               27
             ],
             "DR_Composition_Close": [
               325.0,
-              580.0,
+              540.0,
               101,
               28
             ],
             "DR_File_Close": [
-              144.5,
-              580.0,
+              101.5,
+              540.0,
               102,
               28
             ],
             "DR_Inventory_Close": [
               499.5,
-              580.0,
+              540.0,
               112,
               28
             ],
             "DR_File": [
               324.5,
-              262.0,
+              96.0,
               102,
               28
             ],
             "DR_Inventory": [
-              319.5,
+              96.5,
               96.0,
               112,
               28
             ],
             "DR_File_Update": [
               602.5,
-              486.0,
+              432.0,
               102,
               28
             ],
             "DR_Inventory_Update": [
-              597.5,
-              320.0,
+              637.5,
+              266.0,
               112,
               28
             ]
@@ -1446,19 +1554,19 @@
               ],
               [
                 467.0,
-                417.0
+                363.0
               ],
               [
                 627.0,
-                497.0
+                453.0
               ],
               [
                 793.0,
-                577.0
+                533.0
               ],
               [
                 973.0,
-                677.0
+                637.0
               ]
             ]
           },
@@ -1649,32 +1757,32 @@
                   "Lane_Personnel",
                   1
                 ],
-                "dy": -50.0
+                "dy": -104.0
               },
               {
                 "row": [
                   "Lane_Personnel",
                   2
                 ],
-                "dy": -130.0
+                "dy": -174.0
               },
               {
                 "row": [
                   "Lane_Personnel",
                   3
                 ],
-                "dy": -216.0
+                "dy": -260.0
               },
               {
                 "row": [
                   "Lane_Personnel",
                   4
                 ],
-                "dy": -296.0
+                "dy": -336.0
               }
             ],
             "old_lane_height": 1062.0,
-            "new_lane_height": 740.0,
+            "new_lane_height": 700.0,
             "method": "occupied-column envelopes; measured captions; 8px object and corridor separation; fixed role membership"
           },
           "layering": "LONGEST_PATH",
@@ -1771,69 +1879,68 @@
           "initial_quality": [
             0,
             2,
-            838.4
+            868.4
           ],
           "final_quality": [
             0,
             2,
-            838.4
+            868.4
           ],
           "refinements": [],
           "information_routing": {
             "refinement_interrupted": false,
-            "astar_fallbacks": 1,
+            "astar_fallbacks": 0,
             "initial_quality": [
-              1,
+              2,
               6,
-              1480.28
+              1463.94
             ],
             "final_quality": [
-              1,
+              2,
               6,
-              1480.28
+              1463.94
             ],
             "refinements": []
           },
           "direct_information_seeds": [
             "DataOutputAssociation_0a19uzl",
             "DataOutputAssociation_18b4cmc",
+            "DataOutputAssociation_1h0ktpn",
             "DataOutputAssociation_1kirtse",
-            "DataOutputAssociation_04l1gny",
             "DataInputAssociation_1baszxx",
             "DataOutputAssociation_1n362rp",
             "DataOutputAssociation_1xx268g",
             "A_Composition_Check",
             "A_File_Archive"
           ],
-          "straight_information_links": [
-            "A_File_Close"
-          ]
-        }
+          "straight_information_links": []
+        },
+        "excessive_bend_edges": []
       },
       {
         "candidate": "semantic-longest_path-gap-40",
         "status": "verified",
         "rank": [
-          1.273009,
+          2.454256,
           [
-            0,
-            6,
-            2850.99
+            5,
+            12,
+            3298.87
           ],
-          9.8522
+          9.5505
         ],
-        "seconds": 0.343,
+        "seconds": 1.144,
         "readability": {
           "policy": "balanced-readability-v1",
-          "parallel_crowding_per_flow": 0.0,
+          "parallel_crowding_per_flow": 0.000468,
           "hotspot_excess": 0.0,
-          "peak_flow_load": 2,
-          "forward_hop_excess": 0.281613,
+          "peak_flow_load": 3,
+          "forward_hop_excess": 0.399032,
           "long_forward_hops": 1,
           "long_forward_hop_ids": [
             "F5"
           ],
-          "bends_per_flow": 0.428571,
+          "bends_per_flow": 0.571429,
           "graph_return_count": 1,
           "normalization_task_width": 180.0,
           "wire_gap_diagnostic": 11.4,
@@ -1841,10 +1948,10 @@
           "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
         },
         "style": {
-          "area_factor": 9.8522,
+          "area_factor": 9.5505,
           "reference_p90": 9.1665,
           "within_reference_density": true,
-          "penalty": 897.7185947027513
+          "penalty": 502.7152289528667
         },
         "layout": {
           "external_engine": "elkjs@0.12.1-semantic-graph-only",
@@ -1920,8 +2027,44 @@
               140,
               42
             ],
+            "End_Current": [
+              435.0,
+              325.0,
+              180,
+              42
+            ],
+            "End_NoUpdate": [
+              1048.0,
+              481.0,
+              180,
+              42
+            ],
+            "Gateway_Include": [
+              435.0,
+              643.0,
+              180,
+              28
+            ],
+            "End_Archived": [
+              648.0,
+              1227.0,
+              180,
+              28
+            ],
+            "End_Updated": [
+              1048.0,
+              763.0,
+              180,
+              28
+            ],
+            "Gateway_Complete": [
+              965.0,
+              660.0,
+              180,
+              11
+            ],
             "DR_File_Archive": [
-              560.5,
+              520.5,
               1250.0,
               102,
               28
@@ -1939,7 +2082,7 @@
               28
             ],
             "DR_File_Close": [
-              160.5,
+              117.5,
               1084.0,
               102,
               28
@@ -1951,7 +2094,7 @@
               28
             ],
             "DR_Composition_Check": [
-              341.0,
+              301.0,
               348.0,
               101,
               28
@@ -1963,8 +2106,8 @@
               28
             ],
             "DR_Inventory": [
-              515.5,
-              348.0,
+              112.5,
+              182.0,
               112,
               28
             ],
@@ -1975,7 +2118,7 @@
               28
             ],
             "DR_Inventory_Update": [
-              645.5,
+              685.5,
               620.0,
               112,
               28
@@ -2262,46 +2405,31 @@
         },
         "routing": {
           "refinement_interrupted": false,
-          "astar_fallbacks": 0,
+          "astar_fallbacks": 3,
           "initial_quality": [
-            1,
-            4,
-            2162.0
+            2,
+            8,
+            2419.2
           ],
           "final_quality": [
-            0,
-            6,
-            2123.4
+            2,
+            8,
+            2434.2
           ],
           "refinements": [
             {
-              "edge": "F10",
+              "edge": "F5",
               "before": [
-                1633.0,
-                1,
-                0,
-                133.0
+                4130.95,
+                2,
+                3,
+                898.2
               ],
               "after": [
-                384.0,
-                0,
+                4129.7,
                 2,
-                244.0
-              ]
-            },
-            {
-              "edge": "F11",
-              "before": [
-                734.0,
-                0,
-                2,
-                594.0
-              ],
-              "after": [
-                584.4,
-                0,
-                2,
-                444.4000000000001
+                3,
+                913.2
               ]
             }
           ],
@@ -2309,33 +2437,30 @@
             "refinement_interrupted": false,
             "astar_fallbacks": 0,
             "initial_quality": [
-              1,
-              8,
-              2956.3
+              5,
+              12,
+              3280.27
             ],
             "final_quality": [
-              1,
-              8,
-              2956.3
+              5,
+              12,
+              3280.27
             ],
             "refinements": []
           },
           "direct_information_seeds": [
             "DataOutputAssociation_0a19uzl",
-            "DataOutputAssociation_18b4cmc",
             "DataOutputAssociation_1h0ktpn",
             "DataOutputAssociation_1kirtse",
-            "DataOutputAssociation_04l1gny",
             "DataInputAssociation_1baszxx",
             "DataOutputAssociation_1n362rp",
             "DataOutputAssociation_1xx268g",
             "A_Composition_Check",
             "A_File_Archive"
           ],
-          "straight_information_links": [
-            "A_File_Close"
-          ]
-        }
+          "straight_information_links": []
+        },
+        "excessive_bend_edges": []
       },
       {
         "candidate": "human-blocks-2-secondary-1",
@@ -2349,7 +2474,7 @@
           ],
           5.0956
         ],
-        "seconds": 1.034,
+        "seconds": 2.289,
         "readability": {
           "policy": "balanced-readability-v1",
           "parallel_crowding_per_flow": 0.0,
@@ -2642,7 +2767,8 @@
             "A_File_Archive"
           ],
           "straight_information_links": []
-        }
+        },
+        "excessive_bend_edges": []
       },
       {
         "candidate": "human-blocks-2-secondary-2",
@@ -2656,7 +2782,7 @@
           ],
           5.0956
         ],
-        "seconds": 0.641,
+        "seconds": 1.07,
         "readability": {
           "policy": "balanced-readability-v1",
           "parallel_crowding_per_flow": 0.0,
@@ -2949,19 +3075,20 @@
             "A_File_Archive"
           ],
           "straight_information_links": []
-        }
+        },
+        "excessive_bend_edges": []
       },
       {
         "candidate": "semantic-network_simplex-gap-24-refined",
         "status": "verified",
         "rank": [
-          0.05,
+          0.621429,
           [
-            0,
-            4,
-            1358.04
+            2,
+            6,
+            1463.93
           ],
-          5.2761
+          4.7138
         ],
         "readability": {
           "policy": "balanced-readability-v1",
@@ -2982,7 +3109,7 @@
         "refinements": []
       }
     ],
-    "seconds": 4.797,
+    "seconds": 9.223,
     "source_reference_models": 32,
     "selection": "best verified empirical-style candidate; no global optimum guarantee",
     "removed_redundant_associations": [],
@@ -2991,12 +3118,24 @@
         {
           "document": "DR_File_Close",
           "fixed_owner": "Task_CloseFile",
-          "gap_before": 128.07126922147683,
+          "gap_before": 26.575364531836623,
+          "gap_after": 20.0
+        },
+        {
+          "document": "DR_Composition_Check",
+          "fixed_owner": "Task_CreateFile",
+          "gap_before": 24.0,
+          "gap_after": 20.0
+        },
+        {
+          "document": "DR_Inventory",
+          "fixed_owner": "Task_CreateFile",
+          "gap_before": 23.58495283014151,
           "gap_after": 20.0
         }
       ],
-      "trials": 13,
-      "seconds": 0.161,
+      "trials": 3,
+      "seconds": 0.441,
       "before": {
         "fixed_owners": {
           "DR_Inventory": "Task_CreateFile",
@@ -3011,20 +3150,20 @@
           "DR_File_Archive": "Task_Archive"
         },
         "anchor_gaps": {
-          "DR_Inventory": 20.0,
+          "DR_Inventory": 23.585,
           "DR_File_Update": 20.0,
-          "DR_Composition_Check": 78.0,
+          "DR_Composition_Check": 24.0,
           "DR_File": 20.0,
           "DR_Inventory_Update": 20.0,
           "DR_Certifier": 20.0,
           "DR_Inventory_Close": 23.585,
-          "DR_File_Close": 128.071,
+          "DR_File_Close": 26.575,
           "DR_Composition_Close": 20.0,
           "DR_File_Archive": 20.0
         },
-        "mean_anchor_gap": 36.9656,
-        "association_bends": 2,
-        "association_length": 519.6406538521716,
+        "mean_anchor_gap": 21.7745,
+        "association_bends": 4,
+        "association_length": 595.5293627382346,
         "consumer_links": [
           {
             "id": "DataOutputAssociation_0a19uzl",
@@ -3036,7 +3175,7 @@
           },
           {
             "id": "DataOutputAssociation_1h0ktpn",
-            "gap": 78.0
+            "gap": 24.0
           },
           {
             "id": "DataOutputAssociation_1kirtse",
@@ -3044,7 +3183,7 @@
           },
           {
             "id": "DataOutputAssociation_04l1gny",
-            "gap": 20.0
+            "gap": 23.585
           },
           {
             "id": "DataInputAssociation_1baszxx",
@@ -3064,7 +3203,7 @@
           },
           {
             "id": "A_File_Close",
-            "gap": 128.071
+            "gap": 26.575
           },
           {
             "id": "A_File_Archive",
@@ -3088,7 +3227,7 @@
         "anchor_gaps": {
           "DR_Inventory": 20.0,
           "DR_File_Update": 20.0,
-          "DR_Composition_Check": 78.0,
+          "DR_Composition_Check": 20.0,
           "DR_File": 20.0,
           "DR_Inventory_Update": 20.0,
           "DR_Certifier": 20.0,
@@ -3097,9 +3236,9 @@
           "DR_Composition_Close": 20.0,
           "DR_File_Archive": 20.0
         },
-        "mean_anchor_gap": 26.158499999999997,
-        "association_bends": 2,
-        "association_length": 408.73378565346957,
+        "mean_anchor_gap": 20.3585,
+        "association_bends": 0,
+        "association_length": 311.1755798070037,
         "consumer_links": [
           {
             "id": "DataOutputAssociation_0a19uzl",
@@ -3111,7 +3250,7 @@
           },
           {
             "id": "DataOutputAssociation_1h0ktpn",
-            "gap": 78.0
+            "gap": 20.0
           },
           {
             "id": "DataOutputAssociation_1kirtse",
@@ -3135,7 +3274,7 @@
           },
           {
             "id": "A_Composition_Check",
-            "gap": 20.0
+            "gap": 24.0
           },
           {
             "id": "A_File_Close",
@@ -3156,14 +3295,16 @@
       "source_waypoints_used": false,
       "source_label_bounds_used": false,
       "external_incumbent_used": false,
+      "source_lane_order_used": false,
+      "role_order_method": "graph distance from starts, then role name; business XML lane order unchanged",
       "inputs": "business graph, fixed role membership, full names, shape kinds; neutral canonical DI and measured text sizes"
     },
     "from_scratch": true,
     "reference_target_met": false,
-    "output": "from_scratch.bpmn",
+    "output": "/workspace/work/algorithm-r10/acceptance/candidate/ref_11/process_08_v23.bpmn",
     "artifacts": {
-      "bpmn": "from_scratch.bpmn",
-      "svg": "from_scratch.svg",
+      "bpmn": "/workspace/work/algorithm-r10/acceptance/candidate/ref_11/process_08_v23.bpmn",
+      "svg": "/workspace/work/algorithm-r10/acceptance/candidate/ref_11/process_08_v23.svg",
       "png": null
     }
   }

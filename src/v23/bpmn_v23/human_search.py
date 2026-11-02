@@ -2,7 +2,7 @@
 from pathlib import Path
 from lxml import etree as ET
 import copy,tempfile,time,json
-from bpmn_refkit.model import read_bpmn,set_di
+from bpmn_refkit.model import read_bpmn,set_di,TAG_TASK
 from bpmn_refkit.geometry import geometry_audit
 from bpmn_universal.engine import save_labels,arrange_flow_labels
 from bpmn_universal.cli import deadline
@@ -93,7 +93,8 @@ class HumanStyleBackend:
                 try:
                     with deadline(self.candidate_seconds):
                         routing_boxes={**ob,**{f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes}}
-                        routing_boxes.update({f'__caption_{n}':tuple(b) for n,b in report.get('reserved_captions',{}).items()})
+                        caption_prefix='__text_' if getattr(self,'straight_documents',False) else '__caption_'
+                        routing_boxes.update({caption_prefix+n:tuple(b) for n,b in report.get('reserved_captions',{}).items()})
                         hints=None if report.get('external_engine') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})
                         fixed=None
                         if report.get('preserve_corridors'):
@@ -105,13 +106,13 @@ class HumanStyleBackend:
                             # its information links; most close docs need no A*.
                             from .document_layout import straight_link,safe_link
                             from .quality import contacts
-                            paths,details=route_graph(routing_boxes,nodes,seq,[],docs,oldpaths,rounds=1,avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,[],boxes),hints=hints)
+                            paths,details=route_graph(routing_boxes,nodes,seq,[],docs,oldpaths,rounds=1,avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,[],boxes),hints=hints,expand_windows=True)
                             full_uv={i:(u,v) for i,u,v,_ in seq+assocs};direct=[]
                             for i,u,v,_ in assocs:
                                 p=straight_link(u,v,boxes,nodes)
                                 if safe_link(i,p,routing_boxes,full_uv,paths,nodes=nodes) and len(contacts({**paths,i:p},full_uv))==len(contacts(paths,full_uv)):
                                     paths[i]=p;direct.append(i)
-                            paths,information_details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=0,avoid_crowding=True,priority=report.get('routing_priority'),fixed_paths=paths)
+                            paths,information_details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=0,avoid_crowding=True,priority=report.get('routing_priority'),fixed_paths=paths,expand_windows=True)
                             details.update(information_routing=information_details,direct_information_seeds=direct)
                         else:
                             paths,details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,assocs,boxes),hints=hints,fixed_paths=fixed)
@@ -131,7 +132,7 @@ class HumanStyleBackend:
                         if labels['unplaced_labels'] or labels['rendering']['text_overflow_ids'] or g['label_collision_pairs'] or g['label_line_cuts'] or not g['routing_safety_passed'] or not g['edge_clearance_passed']:raise ValueError({'readability_or_routing_audit_failed':{'unplaced_labels':labels['unplaced_labels'],'label_collisions':g['label_collision_pairs'],'label_line_cuts':g['label_line_cuts'],'clearance_violations':g['edge_object_clearance_violations'],'lane_header_cuts':g['lane_header_cuts'],'invalid_endpoints':g['invalid_endpoints'],'routing_safety_passed':g['routing_safety_passed']}})
                         if not semantic_equality(source,bp) or not di_equal(source,bp):raise ValueError('freeze violation')
                         quality=self.candidate_rank(bp,boxes,paths,uv,nodes,docs,seq)
-                        logs.append({'candidate':name,'status':'verified','rank':quality,'seconds':round(time.monotonic()-at,3),'readability':reading_metrics(boxes,paths,nodes,seq),'style':style_cost(boxes,nodes,docs),'layout':report,'routing':details})
+                        logs.append({'candidate':name,'status':'intermediate-excessive-bends' if getattr(self,'straight_documents',False) and g['excessive_bend_edges'] else 'verified','rank':quality,'seconds':round(time.monotonic()-at,3),'readability':reading_metrics(boxes,paths,nodes,seq),'style':style_cost(boxes,nodes,docs),'layout':report,'routing':details,'excessive_bend_edges':g['excessive_bend_edges']})
                         entry=(quality,name,bp.read_bytes(),sp.read_bytes(),report)
                         safe=not g['excessive_bend_edges']
                         if safe and (best_safe is None or quality<best_safe[0]):best_safe=entry
@@ -143,17 +144,31 @@ class HumanStyleBackend:
             # Human editing proceeds from a good whole layout, then improves wires.
             bp=td/'best.bpmn';sp=td/'best.svg';bp.write_bytes(bpmn);sp.write_bytes(svg_bytes)
             rt,root,_,plane,_,_,_,_,_,_,boxes,paths=read_bpmn(bp)
-            paths=bounding_ports(paths,uv,boxes,nodes);ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
+            if getattr(self,'straight_documents',False):
+                paths={**paths,**bounding_ports({i:paths[i] for i,_,_,_ in seq},uv,boxes,nodes)}
+            else:paths=bounding_ports(paths,uv,boxes,nodes)
+            ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
             ob.update({f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes})
+            if getattr(self,'straight_documents',False):
+                for bounds in root.xpath('.//bd:BPMNShape/bd:BPMNLabel/dc:Bounds',namespaces=NS):
+                    owner=bounds.getparent().getparent().get('bpmnElement')
+                    if owner in nodes and nodes[owner]['kind'] in TAG_TASK:continue
+                    ob['__text_'+owner]=tuple(float(bounds.get(k)) for k in ('x','y','width','height'))
             interrupted=False
             try:
                 with deadline(min(120,self.candidate_seconds)):
-                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
+                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),protected_ids=[i for i,_,_,_ in assocs] if getattr(self,'straight_documents',False) else (),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
             except TimeoutError:refinements=[];interrupted=True
-            paths=attach(paths,uv,boxes,nodes);set_di(root,plane,{},paths);save_labels(root,plane,boxes,nodes,paths);arrange_flow_labels(root,plane,ob,seq,paths)
+            paths=attach(paths,uv,boxes,nodes)
+            if getattr(self,'straight_documents',False):
+                from .di_geometry import update_geometry
+                update_geometry(root,plane,{},paths)
+            else:
+                set_di(root,plane,{},paths);save_labels(root,plane,boxes,nodes,paths);arrange_flow_labels(root,plane,ob,seq,paths)
             rt.write(str(bp),encoding='utf-8',xml_declaration=True);labels=place_labels(bp,sp,preserve=getattr(self,'preserve_labels',False));g=geometry(bp)
             new_rank=self.candidate_rank(bp,boxes,paths,uv,nodes,docs,seq)
-            if new_rank<quality and not labels['unplaced_labels'] and not labels['rendering']['text_overflow_ids'] and not g['label_collision_pairs'] and not g['label_line_cuts'] and g['routing_safety_passed'] and g['edge_clearance_passed'] and not g['excessive_bend_edges'] and semantic_equality(source,bp) and di_equal(source,bp):
+            improve_rank=new_rank<quality or (not selected_safe and (best_safe is None or new_rank<best_safe[0]))
+            if improve_rank and not labels['unplaced_labels'] and not labels['rendering']['text_overflow_ids'] and not g['label_collision_pairs'] and not g['label_line_cuts'] and g['routing_safety_passed'] and g['edge_clearance_passed'] and not g['excessive_bend_edges'] and semantic_equality(source,bp) and di_equal(source,bp):
                 logs.append({'candidate':name+'-refined','status':'verified','rank':new_rank,'readability':reading_metrics(boxes,paths,nodes,seq),'refinement_interrupted':interrupted,'refinements':refinements})
                 quality,name,bpmn,svg_bytes=new_rank,name+'-refined',bp.read_bytes(),sp.read_bytes()
                 selected_safe=True

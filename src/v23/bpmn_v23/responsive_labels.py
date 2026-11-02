@@ -56,6 +56,9 @@ def place_responsive_labels(path,svg):
                 old=tight
                 for k,v in zip(('x','y','width','height'),old):label.set(k,str(round(v,2)))
         entries.append((owner,label,old))
+    # Named shapes and documents get their planned caption bays before short
+    # flow labels. XML DI element ordering must not decide label ownership.
+    entries.sort(key=lambda item:(0 if item[0] in nodes else 1 if item[0] in docs else 2,-len(names[item[0]]),item[0]))
     # Reserve all already-valid captions before repairing any conflicting ones.
     pending=[];far_valid=[];kept=[];unplaced=[];distances=[]
     def targets_for(owner):

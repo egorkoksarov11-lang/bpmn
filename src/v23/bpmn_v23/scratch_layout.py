@@ -4,6 +4,7 @@ Only business XML, role membership, complete names and shape kinds survive.
 Reference coordinates and input waypoints never enter either layout engine.
 """
 from pathlib import Path
+from collections import deque
 import json,math,re,subprocess,tempfile,time
 from bpmn_refkit.model import read_bpmn,TAG_TASK,TAG_GATE,TAG_EVENT
 from bpmn_universal.contract import NS,semantic_equality
@@ -64,8 +65,20 @@ def canonical_task(name,kind):
     return 240,max(76,math.ceil(fit['required_height']/4)*4)
 
 
+def semantic_role_order(nodes,seq,member,lanes):
+    outgoing={n:[] for n in nodes};indegree={n:0 for n in nodes}
+    for _,u,v,_ in seq:outgoing[u].append(v);indegree[v]+=1
+    roots=sorted(n for n,o in nodes.items() if o['kind']=='startEvent' or indegree[n]==0);distance={n:0 for n in roots};queue=deque(roots)
+    while queue:
+        u=queue.popleft()
+        for v in outgoing[u]:
+            if v not in distance:distance[v]=distance[u]+1;queue.append(v)
+    return sorted(lanes,key=lambda lane:(min((distance.get(n,10**9) for n in nodes if member.get(n)==lane),default=10**9),lanes[lane],lane))
+
+
 def erase_geometry(source,target):
     tree,root,_,plane,nodes,seq,assocs,docs,member,lanes,boxes,paths=read_bpmn(source)
+    role_order=semantic_role_order(nodes,seq,member,lanes)
     neutral={}
     for n in sorted(boxes):
         if n in nodes:
@@ -75,7 +88,7 @@ def erase_geometry(source,target):
         elif n in docs:
             w,h=(50,48) if docs[n]['kind']=='dataStoreReference' else (36,50)
             neutral[n]=(200-w/2,200-h/2,w,h)
-        elif n in lanes:neutral[n]=(30,65+list(lanes).index(n)*200,1000,200)
+        elif n in lanes:neutral[n]=(30,65+role_order.index(n)*200,1000,200)
         else:neutral[n]=(0,65,1030,max(200,len(lanes)*200))
     dummy={i:[(200,200),(200,200)] for i in paths}
     update_geometry(root,plane,neutral,dummy)
@@ -83,6 +96,7 @@ def erase_geometry(source,target):
     tree.write(str(target),encoding='utf-8',xml_declaration=True)
     if not semantic_equality(source,target) or not di_equal(source,target):raise ValueError('Canonicalization freeze violation')
     return {'source_positions_used':False,'source_dimensions_used':False,'source_waypoints_used':False,'source_label_bounds_used':False,'external_incumbent_used':False,
+            'source_lane_order_used':False,'role_order_method':'graph distance from starts, then role name; business XML lane order unchanged',
             'inputs':'business graph, fixed role membership, full names, shape kinds; neutral canonical DI and measured text sizes'}
 
 
@@ -90,6 +104,8 @@ class GraphChannelsBackend(HumanStyleBackend):
     name='v23-semantic-layers-and-local-information'
     preserve_labels=True
     straight_documents=True
+    simplify_routes=True
+    return_corridors=True
     def __init__(self,**kwargs):
         super().__init__(orient_decisions=False,**kwargs);self.max_search_seconds=max(45,self.candidate_seconds*8)
     def candidate_rank(self,*args):

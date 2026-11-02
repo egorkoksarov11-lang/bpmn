@@ -1,0 +1,513 @@
+{
+  "before": {
+    "shape_overlaps": 0,
+    "shape_overlap_examples": [],
+    "line_through_shapes": 0,
+    "line_through_examples": [],
+    "crossings": {
+      "flow_flow": 5
+    },
+    "crossing_examples": {
+      "flow_flow": [
+        [
+          "f3",
+          "f4a"
+        ],
+        [
+          "f9",
+          "fendInit"
+        ],
+        [
+          "f28",
+          "fnewc"
+        ],
+        [
+          "fresExecNo",
+          "f20"
+        ],
+        [
+          "f20",
+          "f24b"
+        ]
+      ]
+    },
+    "total_bends": 31,
+    "avg_flow_length": 206.86,
+    "avg_document_length": 40.17,
+    "document_references": 16,
+    "flow_count": 51,
+    "association_count": 17,
+    "readability": {
+      "policy": "balanced-readability-v1",
+      "parallel_crowding_per_flow": 0.006667,
+      "hotspot_excess": 0.0,
+      "peak_flow_load": 3,
+      "forward_hop_excess": 0.419393,
+      "long_forward_hops": 6,
+      "long_forward_hop_ids": [
+        "f10",
+        "f12",
+        "f13",
+        "f24",
+        "fresExecNo",
+        "f24b"
+      ],
+      "bends_per_flow": 0.607843,
+      "graph_return_count": 4,
+      "normalization_task_width": 193.0,
+      "wire_gap_diagnostic": 11.549999999999999,
+      "hotspot_cell_size": 77.0,
+      "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+    },
+    "ambiguous_contacts": 5,
+    "contact_examples": [
+      [
+        "f3",
+        "f4a",
+        [
+          475.0,
+          367.0
+        ]
+      ],
+      [
+        "f9",
+        "fendInit",
+        [
+          895.0,
+          528.0
+        ]
+      ],
+      [
+        "f28",
+        "fnewc",
+        [
+          2095.0,
+          609.0
+        ]
+      ],
+      [
+        "fresExecNo",
+        "f20",
+        [
+          1879.0,
+          1059.0
+        ]
+      ],
+      [
+        "f20",
+        "f24b",
+        [
+          1879.0,
+          1069.0
+        ]
+      ]
+    ],
+    "task_text_overflows": [],
+    "label_line_cuts": [
+      [
+        "D_OrderAtExecution",
+        "a05"
+      ],
+      [
+        "GresExec",
+        "fresExecNo"
+      ],
+      [
+        "Gcur",
+        "f20"
+      ],
+      [
+        "f8",
+        "f8"
+      ],
+      [
+        "fnoInitial",
+        "fnoInitial"
+      ],
+      [
+        "fnewc",
+        "f28"
+      ]
+    ],
+    "missing_named_flow_labels": [],
+    "edge_object_clearance_violations": [
+      [
+        "f29",
+        "Gnew"
+      ]
+    ],
+    "lane_header_cuts": [],
+    "edge_clearance_passed": false,
+    "reference_style": {
+      "area_factor": 6.2032,
+      "reference_p90": 9.1665,
+      "within_reference_density": true,
+      "penalty": 0
+    },
+    "diagonal_segments": 0,
+    "diagonal_edges": [],
+    "excessive_bend_edges": [],
+    "invalid_endpoints": [
+      "a01"
+    ],
+    "nonfinite_waypoints": [],
+    "outside_lanes": [],
+    "task_sizes": [
+      [
+        185.0,
+        76.0
+      ],
+      [
+        190.0,
+        76.0
+      ],
+      [
+        190.0,
+        78.0
+      ],
+      [
+        192.0,
+        77.0
+      ],
+      [
+        193.0,
+        77.0
+      ],
+      [
+        193.0,
+        78.0
+      ],
+      [
+        194.0,
+        77.0
+      ],
+      [
+        198.0,
+        78.0
+      ],
+      [
+        200.0,
+        77.0
+      ],
+      [
+        200.0,
+        78.0
+      ],
+      [
+        202.0,
+        78.0
+      ],
+      [
+        203.0,
+        78.0
+      ],
+      [
+        204.0,
+        76.0
+      ],
+      [
+        225.0,
+        78.0
+      ],
+      [
+        240.0,
+        78.0
+      ],
+      [
+        245.0,
+        82.0
+      ]
+    ],
+    "task_sizes_uniform": false,
+    "label_collision_pairs": [
+      [
+        "Gnewok",
+        "f29"
+      ],
+      [
+        "f19",
+        "GresExec"
+      ],
+      [
+        "f20",
+        "C7"
+      ],
+      [
+        "fnoExec",
+        "Gcur"
+      ]
+    ],
+    "extent": {
+      "width": 2250.0,
+      "height": 1378.0,
+      "aspect_ratio": 1.632801161103048
+    },
+    "a4_ratio_passed": true,
+    "estimated_A4_min_font_pt": 3.49,
+    "minimum_measured_font_size": 10,
+    "a4_legible_at_8pt": false,
+    "text_overflow_check": "shared_measured_ink_layout_OpenSans_10_to_13px",
+    "crossing_avoidability": "not_proven",
+    "collinear_overlap_pairs": [],
+    "allowed_straight_document_diagonals": [
+      "DataInputAssociation_0fcnwq1",
+      "DataOutputAssociation_194cdhw",
+      "DataOutputAssociation_1n42ykp",
+      "a01",
+      "a04",
+      "a05",
+      "a08",
+      "a12",
+      "a13",
+      "a14",
+      "a17",
+      "a18",
+      "a20",
+      "a23"
+    ],
+    "routing_safety_passed": false,
+    "release_geometry_passed": false
+  },
+  "after": {
+    "shape_overlaps": 0,
+    "shape_overlap_examples": [],
+    "line_through_shapes": 0,
+    "line_through_examples": [],
+    "crossings": {
+      "flow_association": 1,
+      "flow_flow": 10
+    },
+    "crossing_examples": {
+      "flow_association": [
+        [
+          "a18",
+          "fnoExec"
+        ]
+      ],
+      "flow_flow": [
+        [
+          "fnoInitial",
+          "f12"
+        ],
+        [
+          "fnoInitial",
+          "f13"
+        ],
+        [
+          "fresInitNo",
+          "f12"
+        ],
+        [
+          "fresInitNo",
+          "f13"
+        ],
+        [
+          "f16",
+          "f27"
+        ],
+        [
+          "f19",
+          "f20"
+        ],
+        [
+          "f19",
+          "fnoExec"
+        ],
+        [
+          "fnoNew",
+          "f20"
+        ],
+        [
+          "fresNewNo",
+          "f20"
+        ],
+        [
+          "f20",
+          "f24b"
+        ]
+      ]
+    },
+    "total_bends": 41,
+    "avg_flow_length": 427.55,
+    "avg_document_length": 43.77,
+    "document_references": 16,
+    "flow_count": 51,
+    "association_count": 17,
+    "readability": {
+      "policy": "balanced-readability-v1",
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0,
+      "peak_flow_load": 4,
+      "forward_hop_excess": 1.795977,
+      "long_forward_hops": 17,
+      "long_forward_hop_ids": [
+        "f2",
+        "f4",
+        "f8",
+        "fnoInitial",
+        "f12",
+        "f13",
+        "f22",
+        "f16",
+        "f24",
+        "f25",
+        "fnoNew",
+        "fresNewNo",
+        "f20",
+        "fnoExec",
+        "f30",
+        "f31",
+        "ffinishNo"
+      ],
+      "bends_per_flow": 0.784314,
+      "graph_return_count": 4,
+      "normalization_task_width": 180.0,
+      "wire_gap_diagnostic": 11.4,
+      "hotspot_cell_size": 76.0,
+      "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+    },
+    "ambiguous_contacts": 11,
+    "contact_examples": [
+      [
+        "a18",
+        "fnoExec",
+        [
+          2490.0,
+          1026.0
+        ]
+      ],
+      [
+        "fnoInitial",
+        "f12",
+        [
+          1156.0,
+          995.0
+        ]
+      ],
+      [
+        "fnoInitial",
+        "f13",
+        [
+          1193.0,
+          995.0
+        ]
+      ],
+      [
+        "fresInitNo",
+        "f12",
+        [
+          1156.0,
+          1585.2
+        ]
+      ],
+      [
+        "fresInitNo",
+        "f13",
+        [
+          1193.0,
+          1585.2
+        ]
+      ],
+      [
+        "f16",
+        "f27",
+        [
+          2057.0,
+          1096.0
+        ]
+      ],
+      [
+        "f19",
+        "f20",
+        [
+          2694.0,
+          1096.0
+        ]
+      ],
+      [
+        "f19",
+        "fnoExec",
+        [
+          2694.0,
+          1026.0
+        ]
+      ],
+      [
+        "fnoNew",
+        "f20",
+        [
+          2837.0,
+          1096.0
+        ]
+      ],
+      [
+        "fresNewNo",
+        "f20",
+        [
+          2864.0,
+          1096.0
+        ]
+      ],
+      [
+        "f20",
+        "f24b",
+        [
+          2962.0,
+          980.0
+        ]
+      ]
+    ],
+    "task_text_overflows": [],
+    "label_line_cuts": [],
+    "missing_named_flow_labels": [],
+    "edge_object_clearance_violations": [],
+    "lane_header_cuts": [],
+    "edge_clearance_passed": true,
+    "reference_style": {
+      "area_factor": 20.0763,
+      "reference_p90": 9.1665,
+      "within_reference_density": false,
+      "penalty": 14282.340378897705
+    },
+    "diagonal_segments": 0,
+    "diagonal_edges": [],
+    "excessive_bend_edges": [],
+    "invalid_endpoints": [],
+    "nonfinite_waypoints": [],
+    "outside_lanes": [],
+    "task_sizes": [
+      [
+        180.0,
+        76.0
+      ]
+    ],
+    "task_sizes_uniform": true,
+    "label_collision_pairs": [],
+    "extent": {
+      "width": 3482.0,
+      "height": 2618.0,
+      "aspect_ratio": 1.3300229182582124
+    },
+    "a4_ratio_passed": false,
+    "estimated_A4_min_font_pt": 2.47,
+    "minimum_measured_font_size": 12,
+    "a4_legible_at_8pt": false,
+    "text_overflow_check": "shared_measured_ink_layout_OpenSans_10_to_13px",
+    "crossing_avoidability": "not_proven",
+    "collinear_overlap_pairs": [],
+    "allowed_straight_document_diagonals": [
+      "DataInputAssociation_0fcnwq1",
+      "a01",
+      "a04",
+      "a05",
+      "a11",
+      "a13",
+      "a14",
+      "a17",
+      "a19",
+      "a27"
+    ],
+    "routing_safety_passed": true,
+    "release_geometry_passed": false
+  }
+}

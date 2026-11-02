@@ -15,6 +15,10 @@ def scrambled(source,target):
     for index,b in enumerate(tree.xpath('.//dc:Bounds',namespaces=NS)):
         for key,value in zip(('x','y','width','height'),(20000-index*123,10000+index*55,900+index*17,300+index*3)):b.set(key,str(value))
     for index,p in enumerate(tree.xpath('.//di:waypoint',namespaces=NS)):p.set('x',str(-10000+index*211));p.set('y',str(6000-index*41))
+    for plane in tree.xpath('.//bd:BPMNPlane',namespaces=NS):
+        children=list(plane)
+        for child in children:plane.remove(child)
+        for child in reversed(children):plane.append(child)
     tree.write(str(target),encoding='utf-8',xml_declaration=True)
 
 
@@ -39,6 +43,9 @@ def test_actual_reconstruction_is_invariant_to_all_original_coordinates(tmp_path
     run(other,tmp_path/'scrambled',ScratchBackend(candidate_seconds=3))
     a=tmp_path/'original/process_08_v23.bpmn';b=tmp_path/'scrambled/process_08_v23.bpmn';ma,mb=read_bpmn(a),read_bpmn(b)
     assert ma[-2]==mb[-2] and ma[-1]==mb[-1]
+    def labels(m):
+        return {b.getparent().getparent().get('bpmnElement'):tuple(float(b.get(k)) for k in ('x','y','width','height')) for b in m[1].xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)}
+    assert labels(ma)==labels(mb)
     assert semantic_equality(source,a) and semantic_equality(other,b)
     for folder in ('original','scrambled'):
         report=json.loads((tmp_path/folder/'run_report.json').read_text())['backend_report']
@@ -55,6 +62,13 @@ def test_document_dependency_orders_independent_scenarios_without_adding_flows()
     index={n:i for i,c in enumerate(components) for n in c}
     assert index['writer']<index['reader'] and deps
     assert (nodes,docs,seq,assocs)==before
+
+
+def test_role_order_comes_from_graph_instead_of_lane_listing_order():
+    from bpmn_v23.scratch_layout import semantic_role_order
+    nodes={'s':{'kind':'startEvent'},'a':{'kind':'task'},'b':{'kind':'task'}};seq=[('f','s','a',''),('g','a','b','')];member={'s':'initiator','a':'initiator','b':'reviewer'}
+    assert semantic_role_order(nodes,seq,member,{'reviewer':'A','initiator':'Z'})==['initiator','reviewer']
+    assert semantic_role_order(nodes,seq,member,{'initiator':'Z','reviewer':'A'})==['initiator','reviewer']
 
 
 def test_productive_spine_continues_through_actions_instead_of_early_exit(tmp_path):
@@ -96,3 +110,12 @@ def test_default_pipeline_audits_reference_geometry_only_after_reconstruction(tm
     report=json.loads((tmp_path/'default/run_report.json').read_text())
     assert report['backend']=='v23-from-scratch' and report['backend_report']['from_scratch']
     assert events.index('reconstruction_complete')<events.index('reference_audit')
+
+
+def test_routing_window_can_expand_around_a_real_caption_barrier():
+    from bpmn_v23.router import astar,overlapping
+    from bpmn_v23.clearance import safe_poly
+    d=json.loads((ROOT/'tests/fixtures/scratch_f38_routing.json').read_text())
+    route=astar(d['edge'],d['boxes'],d['uv'],d['paths'],d['pairs'],avoid_crowding=True,window_margin=300)
+    assert route is not None and safe_poly(d['edge'],route,d['boxes'],d['uv'])
+    assert not overlapping(route,d['paths'])

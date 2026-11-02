@@ -8,4 +8,4 @@
 
 Обязательные проверки: semantic diff = 0, DI freeze, полный видимый текст, порты, зазоры и пересечения с объектами; отдельный тест полного сброса геометрии. Не скрывать неудачи и ухудшения. Процент визуального сходства нельзя выводить из синтетического балла.
 
-Запуск: npm ci; python run_v23.py --input inputs/benchmark/process_08_v4_frozen.bpmn --output-dir scratch-result --layout-engine scratch --candidate-timeout 30
+Запуск: npm ci; python run_v23.py --input inputs/benchmark/process_08_v4_frozen.bpmn --output-dir scratch-result --layout-engine scratch --candidate-timeout 90

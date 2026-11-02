@@ -19,3 +19,11 @@
 Добавлены `axis_layout.py`, `axis_corridors.py`, `axis_labels.py`, `adaptive_layout.py`; adaptive стал обычным режимом CLI/API. Legacy-флаги размещения без явного движка сохраняют human. Добавлены инструменты `benchmark_references.py`, `perturb_reference_di.py`, `package_benchmark.py`, регрессии осей, упаковки и заголовков ролей. Основные данные — `tests/reports/r8/`, полный прогон — `tests/reports/r8_all_tests.xml`, описание — `docs/DEVELOPMENT_R8.md`.
 
 `examples/benchmarks/r8/` содержит отдельные BPMN/SVG до/после, два ZIP с автономными галереями и контрольные SHA256SUMS. Основной пакет содержит 49 редактируемых BPMN (контроль/новые/расширенный прогон); тест со смещениями — ещё 12 файлов до/после. Это версии результатов, а не число разных процессов. Исходные архивы и офисные документы в пакет не включены. Геометрия №08 остаётся r7; новые предложения отражены в `output/r8_candidate_audit.json`. У `output/run_report.json` нормализован аудит кандидатов, а в SVG исправлено вписывание полных названий ролей.
+
+## r10: новая основная поставка — построение с нуля
+
+По умолчанию CLI/API используют `scratch`. Требуются закреплённые npm-зависимости и Node.js; установите `npm ci`. Исходный DI полностью стирается до планирования. Старые разделы r3–r8 описывают исторические эксперименты с геометрией. Пять основных файлов в `output/` обновлены на scratch-результат; оставшиеся исторические отчёты перечислены в `output/README.md`.
+
+Новая реализация: `scratch_layout.py`, `semantic_spines.py`, `skyline_layout.py`, `attachment_axes.py`, `document_layout.py`, `di_geometry.py`, `responsive_labels.py` и изменения трассировки/типографики. Метаморфные и интеграционные проверки: `test_scratch_layout.py`, `test_scratch_metrics.py`, `test_reference_attachments.py`. Корпусные инструменты: `benchmark_reference_fidelity.py`, `verify_geometry_erasure.py`, `collect_scratch_results.py`, `package_reference_fidelity.py`.
+
+Новые примеры публикуются в `examples/from_scratch/`, корпусная поставка — в `examples/benchmarks/r10/`, проверяемые отчёты — в `tests/reports/r10/`. Файлы `CODEX_TASK.md` и `docs/DEVELOPMENT_R10.md` задают актуальный протокол. Достижение 80% визуального сходства не заявляется. Исходные архивы, офисные документы и сырая запись работы исключены из публикации.

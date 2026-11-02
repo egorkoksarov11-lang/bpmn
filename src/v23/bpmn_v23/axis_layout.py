@@ -101,6 +101,19 @@ def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_res
         for a,b in zip(ordered,ordered[1:]):
             if cols[a]==cols[b]:raise ValueError('Input row has overlapping axis anchors')
             constraints[cols[b]].append((cols[a],frames[a]/2+frames[b]/2+gap))
+        if responsive:
+            from .typography import text_layout
+            half=max(sizes[n][1]/2 for n in ids)
+            for n in ids:
+                kind=nodes.get(n,{}).get('kind','');name=nodes.get(n,{}).get('name','')
+                if not name:continue
+                if kind in TAG_GATE:
+                    cap=text_layout(name,100,1000,(12,),2,1)['required_height']
+                    above[n]=max(above[n],half+cap+8)
+                    below[n]=max(below[n],half+cap+8)
+                elif kind=='endEvent':
+                    cap=text_layout(name,140,1000,(12,),2,1)['required_height']
+                    below[n]=max(below[n],half+cap+8)
     caption_specs={}
     if start_above:
         for r,ids in byrow.items():

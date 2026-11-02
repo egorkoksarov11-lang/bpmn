@@ -1,0 +1,12 @@
+{
+  "equal": true,
+  "diff_count": 0,
+  "whitelist": [],
+  "comparison": "canonical complete XML excluding BPMNDiagram",
+  "source_file": "gold_reference_000017.bpmn",
+  "source_sha256": "302f533a4843b05183e5de482421032dd441faefedef708490edb880f485e954",
+  "before_semantic_sha256": "5157713ee2c5dad5d66ce8c47f02bc36acbac9fb8971ae7a0c36f5adc98da8af",
+  "after_semantic_sha256": "5157713ee2c5dad5d66ce8c47f02bc36acbac9fb8971ae7a0c36f5adc98da8af",
+  "di_structure_preserved": true,
+  "di_structure_sha256": "62776523a06020273f7ce159e35708bd1f14929529689eb65987e5aeb70c5546"
+}

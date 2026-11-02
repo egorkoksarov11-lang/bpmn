@@ -1,0 +1,3006 @@
+{
+  "version": "23.1.2.dev0",
+  "backend": "v23-from-scratch",
+  "status": "layout_candidate_verified",
+  "release_ready": false,
+  "limitations": [
+    "global optimality is not proven",
+    "see geometry_report.json for remaining readability limitations"
+  ],
+  "source_file": "gold_reference_000017.bpmn",
+  "validation": {
+    "xml_parse": true,
+    "reference_integrity": true,
+    "preflight": {
+      "compatible": true,
+      "errors": [],
+      "warnings": [
+        "Participants/pools are preserved but not resized or automatically reordered"
+      ],
+      "source": "/workspace/work/algorithm-r10/acceptance/v23-stage-4wqitdas/process_08_v23.bpmn",
+      "counts": {
+        "processes": 1,
+        "diagrams": 1,
+        "nodes": 40,
+        "sequence_flows": 51,
+        "associations": 17,
+        "data_references": 16,
+        "lanes": 4
+      }
+    }
+  },
+  "label_placement": {
+    "unplaced_labels": [],
+    "external_labels": 56,
+    "preserved_labels": [
+      "Erej",
+      "E",
+      "EinitDenied",
+      "Gcur",
+      "Gcheck",
+      "S",
+      "Gfinish",
+      "Gmatch",
+      "Gnewok",
+      "Gappr",
+      "Gnew",
+      "GresExec",
+      "GresInit",
+      "GresNew",
+      "Gfull",
+      "D_ClientOrder",
+      "D_OrderInitial",
+      "D_CheckChanged",
+      "D_OrderChange",
+      "D_WorkUpdatedFinance",
+      "D_BankManager",
+      "D_BankOperator",
+      "D_CheckAtC2",
+      "D_CheckAtC6",
+      "D_CheckExecute",
+      "D_OrderAtExecution",
+      "D_OrderAtPlan",
+      "D_OrderCompare",
+      "D_WorkPlan",
+      "D_WorkPlanFinance",
+      "StoreBankClient",
+      "f18",
+      "f8",
+      "f10",
+      "f20",
+      "fnewc",
+      "fnoExec",
+      "fnoInitial",
+      "fnoNew",
+      "fresExecNo",
+      "fresInitNo",
+      "fresNewNo",
+      "f19",
+      "f28",
+      "f9",
+      "f21",
+      "f24",
+      "f29",
+      "f4",
+      "ffinishNo",
+      "f16",
+      "f25",
+      "f27",
+      "f6",
+      "ffinishYes",
+      "fnewb"
+    ],
+    "large_displacements": [],
+    "distant_from_owner": [
+      {
+        "id": "f18",
+        "distance": 87.0
+      }
+    ],
+    "rendering": {
+      "font": "Open Sans bundled",
+      "task_font_size": 13,
+      "label_font_size": 12,
+      "lane_font_sizes": {
+        "L1F": 14,
+        "L1O": 14,
+        "L1C": 14,
+        "L1A": 14
+      },
+      "task_font_sizes": {
+        "C1": 13,
+        "A1": 13,
+        "A2": 13,
+        "Crequest": 13,
+        "C2": 13,
+        "CdeniedInit": 13,
+        "CallCheck": 13,
+        "C3": 13,
+        "F1": 13,
+        "C4": 13,
+        "C5": 13,
+        "Cchg": 13,
+        "A3": 13,
+        "C6": 13,
+        "C9": 13,
+        "Cnewcheck": 13,
+        "CallCheck3": 13,
+        "CallCheck2": 13,
+        "Cnotify": 12,
+        "C7": 13,
+        "F2": 13,
+        "CblockedDoc": 13,
+        "O1": 13,
+        "R1": 13,
+        "R2": 13
+      },
+      "label_font_sizes": {
+        "S": 12,
+        "D_OrderInitial": 12,
+        "Gfull": 12,
+        "D_OrderCompare": 12,
+        "Gcheck": 12,
+        "GresInit": 12,
+        "D_CheckAtC2": 12,
+        "EinitDenied": 12,
+        "D_OrderAtPlan": 12,
+        "D_WorkPlan": 12,
+        "D_BankManager": 12,
+        "D_OrderAtExecution": 12,
+        "Gmatch": 12,
+        "Gappr": 12,
+        "D_ClientOrder": 12,
+        "Gnew": 12,
+        "D_OrderChange": 12,
+        "Gnewok": 12,
+        "GresNew": 12,
+        "D_CheckAtC6": 12,
+        "GresExec": 12,
+        "Gcur": 12,
+        "D_CheckChanged": 12,
+        "D_CheckExecute": 12,
+        "D_BankOperator": 12,
+        "StoreBankClient": 12,
+        "D_WorkPlanFinance": 12,
+        "D_WorkUpdatedFinance": 12,
+        "E": 12,
+        "Gfinish": 12,
+        "Erej": 12,
+        "f4": 12,
+        "f6": 12,
+        "f9": 12,
+        "f8": 12,
+        "f10": 12,
+        "fnoInitial": 12,
+        "fresInitNo": 12,
+        "f21": 12,
+        "f16": 12,
+        "f24": 12,
+        "f25": 12,
+        "f19": 12,
+        "f29": 12,
+        "fnewb": 12,
+        "f27": 12,
+        "f28": 12,
+        "fnewc": 12,
+        "fnoNew": 12,
+        "fresNewNo": 12,
+        "f18": 12,
+        "fresExecNo": 12,
+        "f20": 12,
+        "fnoExec": 12,
+        "ffinishYes": 12,
+        "ffinishNo": 12
+      },
+      "task_font_size_range": [
+        10,
+        13
+      ],
+      "text_overflow_ids": []
+    },
+    "policy": "preserve valid measured bounds; full names; local repair within 32 units; unresolved safe distant captions explicitly reported"
+  },
+  "backend_report": {
+    "selection_policy": {
+      "name": "balanced-readability-v1",
+      "contacts_per_flow": 4.0,
+      "parallel_crowding_per_flow": 8.0,
+      "hotspot_excess": 1.2,
+      "forward_hop_excess": 0.8,
+      "bends_per_flow": 0.35,
+      "style_penalty_scale": 0.001
+    },
+    "backend": "v23-semantic-layers-and-local-information",
+    "selected_candidate": "semantic-network_simplex-gap-40-refined",
+    "quality": [
+      16.856377,
+      [
+        11,
+        41,
+        22666.58
+      ],
+      20.0763
+    ],
+    "candidates": [
+      {
+        "candidate": "semantic-network_simplex-gap-24",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['f10'], 'label_collisions': [['Gcheck', 'f10']], 'label_line_cuts': [], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 9.664
+      },
+      {
+        "candidate": "semantic-network_simplex-gap-40",
+        "status": "verified",
+        "rank": [
+          17.407057,
+          [
+            15,
+            52,
+            23275.97
+          ],
+          20.0763
+        ],
+        "seconds": 7.574,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.006748,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 4,
+          "forward_hop_excess": 1.930327,
+          "long_forward_hops": 17,
+          "long_forward_hop_ids": [
+            "f2",
+            "f4",
+            "f8",
+            "fnoInitial",
+            "f12",
+            "f13",
+            "f22",
+            "f16",
+            "f24",
+            "f25",
+            "fnoNew",
+            "fresNewNo",
+            "f20",
+            "fnoExec",
+            "f30",
+            "f31",
+            "ffinishNo"
+          ],
+          "bends_per_flow": 1.0,
+          "graph_return_count": 4,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 20.0763,
+          "reference_p90": 9.1665,
+          "within_reference_density": false,
+          "penalty": 14282.340378897705
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "C1": "Gfull",
+            "C2": "Gcheck",
+            "CallCheck": "GresInit",
+            "C5": "Gmatch",
+            "A3": "Gappr",
+            "C9": "Gnew",
+            "Cnewcheck": "Gnewok",
+            "C6": "Gcur",
+            "CallCheck3": "GresNew",
+            "CallCheck2": "GresExec",
+            "R2": "Gfinish"
+          },
+          "main_macros": [
+            "S",
+            "A1",
+            "C1",
+            "C2",
+            "C3",
+            "F1",
+            "R1",
+            "O1",
+            "C4",
+            "C5",
+            "Cchg",
+            "A3",
+            "C9",
+            "Cnewcheck",
+            "C6",
+            "CallCheck2",
+            "Cnotify",
+            "CblockedDoc",
+            "F2",
+            "R2",
+            "E"
+          ],
+          "feedback_edges": [
+            "f19",
+            "f28",
+            "f5",
+            "f9"
+          ],
+          "document_owners": {
+            "D_OrderInitial": "A1",
+            "D_OrderCompare": "C2",
+            "D_CheckAtC2": "CallCheck",
+            "D_OrderAtPlan": "C3",
+            "D_WorkPlan": "C3",
+            "D_BankManager": "C4",
+            "D_OrderAtExecution": "C5",
+            "D_ClientOrder": "C5",
+            "D_OrderChange": "C9",
+            "D_CheckAtC6": "C6",
+            "D_CheckChanged": "CallCheck3",
+            "D_CheckExecute": "CallCheck2",
+            "D_BankOperator": "O1",
+            "StoreBankClient": "O1",
+            "D_WorkPlanFinance": "R1",
+            "D_WorkUpdatedFinance": "R2"
+          },
+          "role_order": [
+            "L1A",
+            "L1C",
+            "L1F",
+            "L1O"
+          ],
+          "routing_priority": [
+            "ffinishYes",
+            "f18",
+            "f6",
+            "fresExecNo",
+            "f29",
+            "f1",
+            "f11",
+            "f14",
+            "f24b",
+            "f15",
+            "f17",
+            "f26",
+            "f3",
+            "f31b",
+            "f7",
+            "fnewa",
+            "fresExecIn",
+            "fendInit",
+            "f27",
+            "fnewc",
+            "fblockedToFin",
+            "fnewb",
+            "f23",
+            "fresInitIn",
+            "f21",
+            "f10",
+            "f12b",
+            "f4a",
+            "fresNewIn",
+            "fnoExec",
+            "f8",
+            "f2",
+            "f22",
+            "f25",
+            "f31",
+            "f12",
+            "fresInitNo",
+            "ffinishNo",
+            "f4",
+            "f30",
+            "f20",
+            "fresNewNo",
+            "f16",
+            "fnoNew",
+            "fnoInitial",
+            "f24",
+            "f13",
+            "f19",
+            "f28",
+            "f9",
+            "f5"
+          ],
+          "reserved_captions": {
+            "S": [
+              100.0,
+              348.0,
+              140,
+              25
+            ],
+            "Erej": [
+              3248.0,
+              2258.0,
+              180,
+              42
+            ],
+            "E": [
+              3248.0,
+              1936.0,
+              180,
+              42
+            ],
+            "EinitDenied": [
+              1349.0,
+              1654.0,
+              180,
+              28
+            ],
+            "Gcur": [
+              2309.0,
+              906.0,
+              180,
+              28
+            ],
+            "Gcheck": [
+              745.0,
+              906.0,
+              180,
+              28
+            ],
+            "Gfinish": [
+              3165.0,
+              1816.0,
+              180,
+              28
+            ],
+            "Gmatch": [
+              1576.0,
+              644.0,
+              180,
+              14
+            ],
+            "Gnewok": [
+              2138.0,
+              1150.0,
+              180,
+              14
+            ],
+            "Gappr": [
+              1812.0,
+              266.0,
+              180,
+              11
+            ],
+            "Gnew": [
+              1967.0,
+              920.0,
+              180,
+              14
+            ],
+            "GresExec": [
+              2619.0,
+              920.0,
+              180,
+              14
+            ],
+            "GresInit": [
+              981.0,
+              1396.0,
+              180,
+              14
+            ],
+            "GresNew": [
+              2464.0,
+              1396.0,
+              180,
+              14
+            ],
+            "Gfull": [
+              435.0,
+              921.0,
+              180,
+              13
+            ],
+            "D_OrderInitial": [
+              229.5,
+              393.5,
+              124,
+              25
+            ],
+            "D_OrderCompare": [
+              637.5,
+              1056.0,
+              128,
+              14
+            ],
+            "D_OrderAtPlan": [
+              808.5,
+              780.0,
+              128,
+              14
+            ],
+            "D_WorkPlan": [
+              575.0,
+              697.0,
+              123,
+              14
+            ],
+            "D_BankManager": [
+              1250.5,
+              781.5,
+              124,
+              11
+            ],
+            "D_ClientOrder": [
+              1472.5,
+              773.5,
+              120,
+              27
+            ],
+            "D_OrderAtExecution": [
+              1428.5,
+              614.0,
+              128,
+              14
+            ],
+            "D_CheckAtC6": [
+              2205.0,
+              1056.0,
+              121,
+              14
+            ],
+            "D_OrderChange": [
+              1884.0,
+              1049.0,
+              79,
+              28
+            ],
+            "D_CheckAtC2": [
+              812.0,
+              1532.0,
+              121,
+              14
+            ],
+            "D_CheckExecute": [
+              2515.0,
+              1056.0,
+              121,
+              14
+            ],
+            "D_CheckChanged": [
+              2205.0,
+              1526.5,
+              121,
+              25
+            ],
+            "D_BankOperator": [
+              1030.5,
+              2590.5,
+              124,
+              11
+            ],
+            "StoreBankClient": [
+              827.0,
+              2507.5,
+              77,
+              11
+            ],
+            "D_WorkPlanFinance": [
+              931.0,
+              2212.0,
+              123,
+              14
+            ],
+            "D_WorkUpdatedFinance": [
+              3081.5,
+              1959.0,
+              80,
+              28
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                254.0,
+                370.0
+              ],
+              [
+                397.0,
+                525.0
+              ],
+              [
+                540.0,
+                680.0
+              ],
+              [
+                683.0,
+                835.0
+              ],
+              [
+                828.0,
+                851.0
+              ],
+              [
+                1036.0,
+                1071.0
+              ],
+              [
+                1244.0,
+                1291.0
+              ],
+              [
+                1380.0,
+                1439.0
+              ],
+              [
+                1452.0,
+                1511.0
+              ],
+              [
+                1595.0,
+                1666.0
+              ],
+              [
+                1738.0,
+                1682.0
+              ],
+              [
+                1946.0,
+                1902.0
+              ],
+              [
+                2089.0,
+                2057.0
+              ],
+              [
+                2232.0,
+                2073.0
+              ],
+              [
+                2375.0,
+                2228.0
+              ],
+              [
+                2520.0,
+                2244.0
+              ],
+              [
+                2663.0,
+                2399.0
+              ],
+              [
+                2806.0,
+                2554.0
+              ],
+              [
+                3014.0,
+                2709.0
+              ],
+              [
+                3234.0,
+                2864.0
+              ],
+              [
+                3442.0,
+                3084.0
+              ],
+              [
+                3650.0,
+                3100.0
+              ],
+              [
+                3793.0,
+                3255.0
+              ],
+              [
+                3864.0,
+                3338.0
+              ]
+            ],
+            "y": [
+              [
+                143.95833333333334,
+                508.0
+              ],
+              [
+                149.91666666666669,
+                127.0
+              ],
+              [
+                222.5,
+                1890.0
+              ],
+              [
+                234.16666666666669,
+                2136.0
+              ],
+              [
+                234.16666666666669,
+                2513.0
+              ],
+              [
+                234.16666666666669,
+                704.0
+              ],
+              [
+                247.0,
+                980.0
+              ],
+              [
+                252.20833333333331,
+                323.0
+              ],
+              [
+                290.1666666666667,
+                2232.0
+              ],
+              [
+                292.75,
+                1210.0
+              ],
+              [
+                353.58333333333337,
+                1456.0
+              ],
+              [
+                385.5,
+                1608.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "S": 0,
+            "C1": 1,
+            "A1": 1,
+            "A2": 3,
+            "Crequest": 3,
+            "Gfull": 2,
+            "C2": 3,
+            "Gcheck": 4,
+            "CdeniedInit": 7,
+            "CallCheck": 5,
+            "GresInit": 6,
+            "EinitDenied": 8,
+            "C3": 5,
+            "F1": 6,
+            "C4": 7,
+            "C5": 9,
+            "Cchg": 11,
+            "Gmatch": 10,
+            "A3": 11,
+            "Gappr": 12,
+            "C6": 16,
+            "C9": 12,
+            "Gnew": 13,
+            "Cnewcheck": 14,
+            "Gnewok": 15,
+            "CallCheck3": 16,
+            "GresNew": 18,
+            "CallCheck2": 18,
+            "GresExec": 19,
+            "Gcur": 17,
+            "Cnotify": 20,
+            "C7": 19,
+            "F2": 22,
+            "CblockedDoc": 21,
+            "O1": 6,
+            "R1": 6,
+            "R2": 22,
+            "E": 24,
+            "Gfinish": 23,
+            "Erej": 24
+          },
+          "axis_rows": {
+            "R1": [
+              "L1F",
+              1
+            ],
+            "R2": [
+              "L1F",
+              0
+            ],
+            "E": [
+              "L1F",
+              0
+            ],
+            "Gfinish": [
+              "L1F",
+              0
+            ],
+            "Erej": [
+              "L1F",
+              2
+            ],
+            "O1": [
+              "L1O",
+              0
+            ],
+            "C1": [
+              "L1C",
+              2
+            ],
+            "Crequest": [
+              "L1C",
+              0
+            ],
+            "Gfull": [
+              "L1C",
+              2
+            ],
+            "C2": [
+              "L1C",
+              2
+            ],
+            "Gcheck": [
+              "L1C",
+              2
+            ],
+            "CdeniedInit": [
+              "L1C",
+              5
+            ],
+            "CallCheck": [
+              "L1C",
+              4
+            ],
+            "GresInit": [
+              "L1C",
+              4
+            ],
+            "EinitDenied": [
+              "L1C",
+              5
+            ],
+            "C3": [
+              "L1C",
+              1
+            ],
+            "F1": [
+              "L1C",
+              1
+            ],
+            "C4": [
+              "L1C",
+              1
+            ],
+            "C5": [
+              "L1C",
+              1
+            ],
+            "Cchg": [
+              "L1C",
+              2
+            ],
+            "Gmatch": [
+              "L1C",
+              1
+            ],
+            "C6": [
+              "L1C",
+              2
+            ],
+            "C9": [
+              "L1C",
+              2
+            ],
+            "Gnew": [
+              "L1C",
+              2
+            ],
+            "Cnewcheck": [
+              "L1C",
+              3
+            ],
+            "Gnewok": [
+              "L1C",
+              3
+            ],
+            "CallCheck3": [
+              "L1C",
+              4
+            ],
+            "GresNew": [
+              "L1C",
+              4
+            ],
+            "CallCheck2": [
+              "L1C",
+              2
+            ],
+            "GresExec": [
+              "L1C",
+              2
+            ],
+            "Gcur": [
+              "L1C",
+              2
+            ],
+            "Cnotify": [
+              "L1C",
+              2
+            ],
+            "C7": [
+              "L1C",
+              0
+            ],
+            "F2": [
+              "L1C",
+              1
+            ],
+            "CblockedDoc": [
+              "L1C",
+              2
+            ],
+            "S": [
+              "L1A",
+              1
+            ],
+            "A1": [
+              "L1A",
+              1
+            ],
+            "A2": [
+              "L1A",
+              0
+            ],
+            "A3": [
+              "L1A",
+              1
+            ],
+            "Gappr": [
+              "L1A",
+              1
+            ]
+          },
+          "gap": 40,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            96
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              315.0,
+              92.0,
+              16
+            ],
+            [
+              362.0,
+              361.0,
+              16,
+              581.0
+            ],
+            [
+              460.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              672.0,
+              165.0,
+              16,
+              305.0
+            ],
+            [
+              550.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              770.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              1381.0,
+              1600.0,
+              40.0,
+              16
+            ],
+            [
+              941.0,
+              1448.0,
+              105.0,
+              16
+            ],
+            [
+              941.0,
+              696.0,
+              40.0,
+              16
+            ],
+            [
+              1381.0,
+              696.0,
+              40.0,
+              16
+            ],
+            [
+              1601.0,
+              696.0,
+              40.0,
+              16
+            ],
+            [
+              1772.0,
+              315.0,
+              105.0,
+              16
+            ],
+            [
+              1894.0,
+              348.0,
+              16,
+              594.0
+            ],
+            [
+              2082.0,
+              972.0,
+              72.0,
+              16
+            ],
+            [
+              2334.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              1992.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              2163.0,
+              1202.0,
+              40.0,
+              16
+            ],
+            [
+              2334.0,
+              1448.0,
+              195.0,
+              16
+            ],
+            [
+              2424.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              2644.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              2734.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              2954.0,
+              972.0,
+              40.0,
+              16
+            ],
+            [
+              1063.0,
+              2174.0,
+              16,
+              301.0
+            ],
+            [
+              3190.0,
+              1882.0,
+              40.0,
+              16
+            ],
+            [
+              3280.0,
+              1882.0,
+              40.0,
+              16
+            ]
+          ],
+          "compact_information_bays": false,
+          "responsive_tasks": true,
+          "layering": "NETWORK_SIMPLEX",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [],
+          "scenario_order": [
+            [
+              "A1",
+              "A2",
+              "A3",
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5",
+              "C6",
+              "C7",
+              "C9",
+              "CallCheck",
+              "CallCheck2",
+              "CallCheck3",
+              "CblockedDoc",
+              "Cchg",
+              "CdeniedInit",
+              "Cnewcheck",
+              "Cnotify",
+              "Crequest",
+              "E",
+              "EinitDenied",
+              "Erej",
+              "F1",
+              "F2",
+              "Gappr",
+              "Gcheck",
+              "Gcur",
+              "Gfinish",
+              "Gfull",
+              "Gmatch",
+              "Gnew",
+              "Gnewok",
+              "GresExec",
+              "GresInit",
+              "GresNew",
+              "O1",
+              "R1",
+              "R2",
+              "S"
+            ]
+          ],
+          "handoff_groups": {
+            "S": "S",
+            "C1": "A1",
+            "A1": "A1",
+            "A2": "A2",
+            "Crequest": "A2",
+            "Gfull": "Gfull",
+            "C2": "C2",
+            "Gcheck": "Gcheck",
+            "CdeniedInit": "CdeniedInit",
+            "CallCheck": "CallCheck",
+            "GresInit": "GresInit",
+            "EinitDenied": "EinitDenied",
+            "C3": "C3",
+            "F1": "F1",
+            "C4": "C4",
+            "C5": "C5",
+            "Cchg": "A3",
+            "Gmatch": "Gmatch",
+            "A3": "A3",
+            "Gappr": "C9",
+            "C6": "C6",
+            "C9": "C9",
+            "Gnew": "Gnew",
+            "Cnewcheck": "Cnewcheck",
+            "Gnewok": "Gnewok",
+            "CallCheck3": "CallCheck3",
+            "GresNew": "GresNew",
+            "CallCheck2": "CallCheck2",
+            "GresExec": "GresExec",
+            "Gcur": "Gcur",
+            "Cnotify": "Cnotify",
+            "C7": "C7",
+            "F2": "F2",
+            "CblockedDoc": "CblockedDoc",
+            "O1": "F1",
+            "R1": "F1",
+            "R2": "F2",
+            "E": "E",
+            "Gfinish": "Gfinish",
+            "Erej": "Erej"
+          },
+          "semantic_spines": []
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 16,
+          "initial_quality": [
+            13,
+            54,
+            22317.4
+          ],
+          "final_quality": [
+            11,
+            51,
+            22215.8
+          ],
+          "refinements": [
+            {
+              "edge": "fnoNew",
+              "before": [
+                6100.25,
+                3,
+                5,
+                824.0
+              ],
+              "after": [
+                2690.0,
+                1,
+                3,
+                796.0
+              ]
+            },
+            {
+              "edge": "fresInitNo",
+              "before": [
+                3549.0,
+                2,
+                2,
+                257.0
+              ],
+              "after": [
+                3289.2,
+                2,
+                1,
+                219.20000000000005
+              ]
+            },
+            {
+              "edge": "fnoExec",
+              "before": [
+                2129.5,
+                1,
+                2,
+                425.0
+              ],
+              "after": [
+                2127.7,
+                1,
+                3,
+                404.20000000000005
+              ]
+            },
+            {
+              "edge": "fresNewNo",
+              "before": [
+                2363.0,
+                1,
+                2,
+                723.0
+              ],
+              "after": [
+                2278.0,
+                1,
+                1,
+                708.0
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 2,
+            "initial_quality": [
+              15,
+              53,
+              23120.63
+            ],
+            "final_quality": [
+              15,
+              53,
+              23120.63
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "DataInputAssociation_0fcnwq1",
+            "a04",
+            "a08",
+            "a14",
+            "a05",
+            "a17",
+            "a19",
+            "a12",
+            "a13",
+            "a11",
+            "a27"
+          ],
+          "straight_information_links": [
+            "a01"
+          ]
+        },
+        "excessive_bend_edges": []
+      },
+      {
+        "candidate": "semantic-longest_path-gap-24",
+        "status": "rejected",
+        "reason": "BPMN routing exceeded 20 seconds",
+        "seconds": 20.001
+      },
+      {
+        "candidate": "semantic-longest_path-gap-40",
+        "status": "verified",
+        "rank": [
+          24.311609,
+          [
+            23,
+            51,
+            34826.78
+          ],
+          23.1605
+        ],
+        "seconds": 16.357,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.000128,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 4,
+          "forward_hop_excess": 4.804545,
+          "long_forward_hops": 16,
+          "long_forward_hop_ids": [
+            "f2",
+            "f4",
+            "f8",
+            "fnoInitial",
+            "f12",
+            "f13",
+            "f22",
+            "f16",
+            "f24",
+            "f25",
+            "fnewb",
+            "f20",
+            "fnoExec",
+            "f30",
+            "f31",
+            "ffinishYes"
+          ],
+          "bends_per_flow": 0.980392,
+          "graph_return_count": 4,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 23.1605,
+          "reference_p90": 9.1665,
+          "within_reference_density": false,
+          "penalty": 18319.890036657478
+        },
+        "layout": {
+          "external_engine": "elkjs@0.12.1-semantic-graph-only",
+          "family": "workflow-and-information-blocks",
+          "pairs": {
+            "C1": "Gfull",
+            "C2": "Gcheck",
+            "C5": "Gmatch",
+            "A3": "Gappr",
+            "C9": "Gnew",
+            "Cnewcheck": "Gnewok",
+            "C6": "Gcur",
+            "CallCheck2": "GresExec",
+            "CallCheck3": "GresNew",
+            "CallCheck": "GresInit",
+            "R2": "Gfinish"
+          },
+          "main_macros": [
+            "S",
+            "A1",
+            "C1",
+            "C2",
+            "C3",
+            "F1",
+            "R1",
+            "O1",
+            "C4",
+            "C5",
+            "Cchg",
+            "A3",
+            "C9",
+            "Cnewcheck",
+            "C6",
+            "CallCheck2",
+            "Cnotify",
+            "CblockedDoc",
+            "F2",
+            "R2",
+            "E"
+          ],
+          "feedback_edges": [
+            "f19",
+            "f28",
+            "f5",
+            "f9"
+          ],
+          "document_owners": {
+            "D_OrderInitial": "A1",
+            "D_OrderCompare": "C2",
+            "D_CheckAtC2": "CallCheck",
+            "D_OrderAtPlan": "C3",
+            "D_WorkPlan": "C3",
+            "D_BankManager": "C4",
+            "D_OrderAtExecution": "C5",
+            "D_ClientOrder": "C5",
+            "D_OrderChange": "C9",
+            "D_CheckAtC6": "C6",
+            "D_CheckChanged": "CallCheck3",
+            "D_CheckExecute": "CallCheck2",
+            "D_BankOperator": "O1",
+            "StoreBankClient": "O1",
+            "D_WorkPlanFinance": "R1",
+            "D_WorkUpdatedFinance": "R2"
+          },
+          "role_order": [
+            "L1A",
+            "L1C",
+            "L1F",
+            "L1O"
+          ],
+          "routing_priority": [
+            "f10",
+            "f21",
+            "f6",
+            "fresInitNo",
+            "f1",
+            "f11",
+            "f14",
+            "f24b",
+            "f15",
+            "f17",
+            "f26",
+            "f3",
+            "f7",
+            "fnewa",
+            "fresExecIn",
+            "fresInitIn",
+            "fresNewIn",
+            "fendInit",
+            "f31b",
+            "f27",
+            "fresExecNo",
+            "f18",
+            "f23",
+            "fnoNew",
+            "fresNewNo",
+            "f4a",
+            "fblockedToFin",
+            "f12b",
+            "fnewb",
+            "f30",
+            "f2",
+            "f22",
+            "f25",
+            "f12",
+            "f31",
+            "ffinishNo",
+            "fnewc",
+            "ffinishYes",
+            "f29",
+            "f20",
+            "fnoExec",
+            "f16",
+            "f24",
+            "f13",
+            "f8",
+            "fnoInitial",
+            "f4",
+            "f19",
+            "f28",
+            "f9",
+            "f5"
+          ],
+          "reserved_captions": {
+            "S": [
+              100.0,
+              348.0,
+              140,
+              25
+            ],
+            "Erej": [
+              3452.0,
+              2403.0,
+              180,
+              42
+            ],
+            "E": [
+              3452.0,
+              2012.0,
+              180,
+              42
+            ],
+            "EinitDenied": [
+              3452.0,
+              1850.0,
+              180,
+              28
+            ],
+            "Gcur": [
+              2587.0,
+              746.0,
+              180,
+              28
+            ],
+            "Gcheck": [
+              745.0,
+              1006.0,
+              180,
+              28
+            ],
+            "Gfinish": [
+              3320.0,
+              2157.0,
+              180,
+              28
+            ],
+            "Gmatch": [
+              1715.0,
+              1020.0,
+              180,
+              14
+            ],
+            "Gnewok": [
+              2416.0,
+              1266.0,
+              180,
+              14
+            ],
+            "Gappr": [
+              2090.0,
+              266.0,
+              180,
+              11
+            ],
+            "Gnew": [
+              2245.0,
+              1020.0,
+              180,
+              14
+            ],
+            "GresExec": [
+              2758.0,
+              1020.0,
+              180,
+              14
+            ],
+            "GresInit": [
+              3149.0,
+              1744.0,
+              180,
+              14
+            ],
+            "GresNew": [
+              2758.0,
+              1512.0,
+              180,
+              14
+            ],
+            "Gfull": [
+              435.0,
+              1021.0,
+              180,
+              13
+            ],
+            "D_OrderInitial": [
+              229.5,
+              393.5,
+              124,
+              25
+            ],
+            "D_OrderCompare": [
+              637.5,
+              1156.0,
+              128,
+              14
+            ],
+            "D_OrderAtPlan": [
+              947.5,
+              1156.0,
+              128,
+              14
+            ],
+            "D_WorkPlan": [
+              990.0,
+              990.0,
+              123,
+              14
+            ],
+            "D_BankManager": [
+              1389.5,
+              1157.5,
+              124,
+              11
+            ],
+            "D_ClientOrder": [
+              1611.5,
+              1149.5,
+              120,
+              27
+            ],
+            "D_OrderAtExecution": [
+              1567.5,
+              990.0,
+              128,
+              14
+            ],
+            "D_CheckAtC6": [
+              2483.0,
+              896.0,
+              121,
+              14
+            ],
+            "D_OrderChange": [
+              2162.0,
+              1149.0,
+              79,
+              28
+            ],
+            "D_CheckAtC2": [
+              3045.0,
+              1880.0,
+              121,
+              14
+            ],
+            "D_CheckExecute": [
+              2654.0,
+              1156.0,
+              121,
+              14
+            ],
+            "D_CheckChanged": [
+              2654.0,
+              1642.5,
+              121,
+              25
+            ],
+            "D_BankOperator": [
+              1169.5,
+              2735.5,
+              124,
+              11
+            ],
+            "StoreBankClient": [
+              966.0,
+              2652.5,
+              77,
+              11
+            ],
+            "D_WorkPlanFinance": [
+              1070.0,
+              2307.0,
+              123,
+              14
+            ],
+            "D_WorkUpdatedFinance": [
+              3220.5,
+              2300.0,
+              80,
+              28
+            ]
+          },
+          "mapped_axes": {
+            "x": [
+              [
+                118.0,
+                170.0
+              ],
+              [
+                254.0,
+                370.0
+              ],
+              [
+                397.0,
+                525.0
+              ],
+              [
+                540.0,
+                680.0
+              ],
+              [
+                683.0,
+                835.0
+              ],
+              [
+                828.0,
+                990.0
+              ],
+              [
+                1036.0,
+                1210.0
+              ],
+              [
+                1244.0,
+                1430.0
+              ],
+              [
+                1452.0,
+                1650.0
+              ],
+              [
+                1595.0,
+                1805.0
+              ],
+              [
+                1738.0,
+                1960.0
+              ],
+              [
+                1946.0,
+                2180.0
+              ],
+              [
+                2089.0,
+                2335.0
+              ],
+              [
+                2232.0,
+                2351.0
+              ],
+              [
+                2375.0,
+                2506.0
+              ],
+              [
+                2520.0,
+                2522.0
+              ],
+              [
+                2663.0,
+                2677.0
+              ],
+              [
+                2808.0,
+                2693.0
+              ],
+              [
+                2951.0,
+                2848.0
+              ],
+              [
+                3106.0,
+                2864.0
+              ],
+              [
+                3314.0,
+                3084.0
+              ],
+              [
+                3522.0,
+                3239.0
+              ],
+              [
+                3730.0,
+                3394.0
+              ],
+              [
+                3751.6666666666665,
+                3410.0
+              ],
+              [
+                3866.0,
+                3542.0
+              ],
+              [
+                3938.0,
+                3558.0
+              ]
+            ],
+            "y": [
+              [
+                138.0,
+                508.0
+              ],
+              [
+                138.0,
+                127.0
+              ],
+              [
+                208.66666666666663,
+                624.0
+              ],
+              [
+                284.3333333333333,
+                1986.0
+              ],
+              [
+                295.25,
+                820.0
+              ],
+              [
+                316.16666666666663,
+                2658.0
+              ],
+              [
+                317.0,
+                2231.0
+              ],
+              [
+                322.91666666666663,
+                1080.0
+              ],
+              [
+                324.625,
+                323.0
+              ],
+              [
+                355.08333333333337,
+                1326.0
+              ],
+              [
+                360.3333333333333,
+                2377.0
+              ],
+              [
+                419.91666666666663,
+                1572.0
+              ],
+              [
+                503.25,
+                1804.0
+              ]
+            ]
+          },
+          "axis_columns": {
+            "S": 0,
+            "C1": 1,
+            "A1": 1,
+            "A2": 25,
+            "Crequest": 25,
+            "Gfull": 2,
+            "C2": 3,
+            "Gcheck": 4,
+            "CdeniedInit": 22,
+            "CallCheck": 20,
+            "GresInit": 21,
+            "EinitDenied": 24,
+            "C3": 5,
+            "F1": 6,
+            "C4": 7,
+            "C5": 8,
+            "Cchg": 10,
+            "Gmatch": 9,
+            "A3": 10,
+            "Gappr": 11,
+            "C6": 15,
+            "C9": 11,
+            "Gnew": 12,
+            "Cnewcheck": 13,
+            "Gnewok": 14,
+            "CallCheck3": 17,
+            "GresNew": 18,
+            "CallCheck2": 17,
+            "GresExec": 18,
+            "Gcur": 16,
+            "Cnotify": 19,
+            "C7": 20,
+            "F2": 21,
+            "CblockedDoc": 20,
+            "O1": 6,
+            "R1": 6,
+            "R2": 21,
+            "E": 24,
+            "Gfinish": 23,
+            "Erej": 24
+          },
+          "axis_rows": {
+            "R1": [
+              "L1F",
+              1
+            ],
+            "R2": [
+              "L1F",
+              1
+            ],
+            "E": [
+              "L1F",
+              0
+            ],
+            "Gfinish": [
+              "L1F",
+              1
+            ],
+            "Erej": [
+              "L1F",
+              2
+            ],
+            "O1": [
+              "L1O",
+              0
+            ],
+            "C1": [
+              "L1C",
+              3
+            ],
+            "Crequest": [
+              "L1C",
+              0
+            ],
+            "Gfull": [
+              "L1C",
+              3
+            ],
+            "C2": [
+              "L1C",
+              3
+            ],
+            "Gcheck": [
+              "L1C",
+              3
+            ],
+            "CdeniedInit": [
+              "L1C",
+              6
+            ],
+            "CallCheck": [
+              "L1C",
+              6
+            ],
+            "GresInit": [
+              "L1C",
+              6
+            ],
+            "EinitDenied": [
+              "L1C",
+              6
+            ],
+            "C3": [
+              "L1C",
+              3
+            ],
+            "F1": [
+              "L1C",
+              3
+            ],
+            "C4": [
+              "L1C",
+              3
+            ],
+            "C5": [
+              "L1C",
+              3
+            ],
+            "Cchg": [
+              "L1C",
+              3
+            ],
+            "Gmatch": [
+              "L1C",
+              3
+            ],
+            "C6": [
+              "L1C",
+              2
+            ],
+            "C9": [
+              "L1C",
+              3
+            ],
+            "Gnew": [
+              "L1C",
+              3
+            ],
+            "Cnewcheck": [
+              "L1C",
+              4
+            ],
+            "Gnewok": [
+              "L1C",
+              4
+            ],
+            "CallCheck3": [
+              "L1C",
+              5
+            ],
+            "GresNew": [
+              "L1C",
+              5
+            ],
+            "CallCheck2": [
+              "L1C",
+              3
+            ],
+            "GresExec": [
+              "L1C",
+              3
+            ],
+            "Gcur": [
+              "L1C",
+              2
+            ],
+            "Cnotify": [
+              "L1C",
+              4
+            ],
+            "C7": [
+              "L1C",
+              1
+            ],
+            "F2": [
+              "L1C",
+              3
+            ],
+            "CblockedDoc": [
+              "L1C",
+              4
+            ],
+            "S": [
+              "L1A",
+              1
+            ],
+            "A1": [
+              "L1A",
+              1
+            ],
+            "A2": [
+              "L1A",
+              0
+            ],
+            "A3": [
+              "L1A",
+              1
+            ],
+            "Gappr": [
+              "L1A",
+              1
+            ]
+          },
+          "gap": 40,
+          "caption_reserve": 1,
+          "task_size": [
+            220.0,
+            96
+          ],
+          "method": "source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference",
+          "protected_direct_corridors": [
+            [
+              188.0,
+              315.0,
+              92.0,
+              16
+            ],
+            [
+              362.0,
+              361.0,
+              16,
+              681.0
+            ],
+            [
+              460.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              3550.0,
+              165.0,
+              16,
+              305.0
+            ],
+            [
+              550.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              770.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              860.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              3264.0,
+              1796.0,
+              40.0,
+              16
+            ],
+            [
+              3484.0,
+              1796.0,
+              40.0,
+              16
+            ],
+            [
+              3174.0,
+              1796.0,
+              40.0,
+              16
+            ],
+            [
+              1080.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              1202.0,
+              1118.0,
+              16,
+              1075.0
+            ],
+            [
+              1520.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              1740.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              1830.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              1952.0,
+              361.0,
+              16,
+              681.0
+            ],
+            [
+              2050.0,
+              315.0,
+              105.0,
+              16
+            ],
+            [
+              2172.0,
+              348.0,
+              16,
+              694.0
+            ],
+            [
+              2612.0,
+              812.0,
+              40.0,
+              16
+            ],
+            [
+              2270.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              2441.0,
+              1318.0,
+              40.0,
+              16
+            ],
+            [
+              2531.0,
+              1318.0,
+              243.0,
+              16
+            ],
+            [
+              2783.0,
+              1564.0,
+              40.0,
+              16
+            ],
+            [
+              2783.0,
+              1072.0,
+              40.0,
+              16
+            ],
+            [
+              2954.0,
+              1318.0,
+              40.0,
+              16
+            ],
+            [
+              1202.0,
+              2269.0,
+              16,
+              351.0
+            ],
+            [
+              3329.0,
+              2223.0,
+              56.0,
+              16
+            ]
+          ],
+          "compact_information_bays": false,
+          "responsive_tasks": true,
+          "layering": "LONGEST_PATH",
+          "source_geometry_used": false,
+          "scenario_dependency_hints": [],
+          "scenario_order": [
+            [
+              "A1",
+              "A2",
+              "A3",
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5",
+              "C6",
+              "C7",
+              "C9",
+              "CallCheck",
+              "CallCheck2",
+              "CallCheck3",
+              "CblockedDoc",
+              "Cchg",
+              "CdeniedInit",
+              "Cnewcheck",
+              "Cnotify",
+              "Crequest",
+              "E",
+              "EinitDenied",
+              "Erej",
+              "F1",
+              "F2",
+              "Gappr",
+              "Gcheck",
+              "Gcur",
+              "Gfinish",
+              "Gfull",
+              "Gmatch",
+              "Gnew",
+              "Gnewok",
+              "GresExec",
+              "GresInit",
+              "GresNew",
+              "O1",
+              "R1",
+              "R2",
+              "S"
+            ]
+          ],
+          "handoff_groups": {
+            "S": "S",
+            "C1": "A1",
+            "A1": "A1",
+            "A2": "A2",
+            "Crequest": "A2",
+            "Gfull": "Gfull",
+            "C2": "C2",
+            "Gcheck": "Gcheck",
+            "CdeniedInit": "CdeniedInit",
+            "CallCheck": "CallCheck",
+            "GresInit": "GresInit",
+            "EinitDenied": "EinitDenied",
+            "C3": "C3",
+            "F1": "F1",
+            "C4": "C4",
+            "C5": "C5",
+            "Cchg": "A3",
+            "Gmatch": "Gmatch",
+            "A3": "A3",
+            "Gappr": "C9",
+            "C6": "C6",
+            "C9": "C9",
+            "Gnew": "Gnew",
+            "Cnewcheck": "Cnewcheck",
+            "Gnewok": "Gnewok",
+            "CallCheck3": "CallCheck3",
+            "GresNew": "GresNew",
+            "CallCheck2": "CallCheck2",
+            "GresExec": "GresExec",
+            "Gcur": "Gcur",
+            "Cnotify": "Cnotify",
+            "C7": "C7",
+            "F2": "F2",
+            "CblockedDoc": "CblockedDoc",
+            "O1": "F1",
+            "R1": "F1",
+            "R2": "F2",
+            "E": "E",
+            "Gfinish": "Gfinish",
+            "Erej": "Erej"
+          },
+          "semantic_spines": []
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 14,
+          "initial_quality": [
+            21,
+            54,
+            33872.0
+          ],
+          "final_quality": [
+            19,
+            50,
+            33588.8
+          ],
+          "refinements": [
+            {
+              "edge": "f4",
+              "before": [
+                14276.95,
+                7,
+                3,
+                3544.2
+              ],
+              "after": [
+                14275.7,
+                7,
+                3,
+                3559.2
+              ]
+            },
+            {
+              "edge": "f8",
+              "before": [
+                10550.0,
+                5,
+                2,
+                2910.0
+              ],
+              "after": [
+                9026.2,
+                4,
+                2,
+                2886.2
+              ]
+            },
+            {
+              "edge": "fnoInitial",
+              "before": [
+                9321.0,
+                4,
+                2,
+                3181.0
+              ],
+              "after": [
+                9291.0,
+                4,
+                2,
+                3151.0
+              ]
+            },
+            {
+              "edge": "f13",
+              "before": [
+                6258.0,
+                3,
+                2,
+                1618.0
+              ],
+              "after": [
+                6212.4,
+                3,
+                2,
+                1572.3999999999999
+              ]
+            },
+            {
+              "edge": "f20",
+              "before": [
+                2128.0,
+                1,
+                2,
+                488.0
+              ],
+              "after": [
+                2041.0,
+                1,
+                1,
+                471.0
+              ]
+            },
+            {
+              "edge": "f28",
+              "before": [
+                2575.0,
+                1,
+                4,
+                795.0
+              ],
+              "after": [
+                843.0,
+                0,
+                2,
+                703.0
+              ]
+            },
+            {
+              "edge": "fnewc",
+              "before": [
+                510.0,
+                0,
+                2,
+                370.0
+              ],
+              "after": [
+                350.2,
+                0,
+                1,
+                280.20000000000005
+              ]
+            }
+          ],
+          "information_routing": {
+            "refinement_interrupted": false,
+            "astar_fallbacks": 2,
+            "initial_quality": [
+              23,
+              52,
+              34656.44
+            ],
+            "final_quality": [
+              23,
+              52,
+              34656.44
+            ],
+            "refinements": []
+          },
+          "direct_information_seeds": [
+            "a08",
+            "a14",
+            "a05",
+            "a17",
+            "a19",
+            "a20",
+            "a18",
+            "a12",
+            "a13",
+            "a11",
+            "a27"
+          ],
+          "straight_information_links": [
+            "a01"
+          ]
+        },
+        "excessive_bend_edges": []
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['Gcheck', 'f10', 'fnoExec'], 'label_collisions': [['Gcheck', 'f6']], 'label_line_cuts': [['Gcheck', 'f6'], ['fnoExec', 'f20']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 19.878
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1-roles-1",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['fnoExec'], 'label_collisions': [], 'label_line_cuts': [['fnoExec', 'f20']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 18.786
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['Gcheck', 'f10', 'fnoExec'], 'label_collisions': [['Gcheck', 'f6']], 'label_line_cuts': [['Gcheck', 'f6'], ['fnoExec', 'f20']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 17.757
+      },
+      {
+        "candidate": "human-blocks-2-secondary-2-roles-1",
+        "status": "rejected",
+        "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['fnoExec'], 'label_collisions': [], 'label_line_cuts': [['fnoExec', 'f20']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}",
+        "seconds": 19.092
+      },
+      {
+        "candidate": "semantic-network_simplex-gap-40-refined",
+        "status": "verified",
+        "rank": [
+          16.856377,
+          [
+            11,
+            41,
+            22666.58
+          ],
+          20.0763
+        ],
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.0,
+          "hotspot_excess": 0.0,
+          "peak_flow_load": 4,
+          "forward_hop_excess": 1.795977,
+          "long_forward_hops": 17,
+          "long_forward_hop_ids": [
+            "f2",
+            "f4",
+            "f8",
+            "fnoInitial",
+            "f12",
+            "f13",
+            "f22",
+            "f16",
+            "f24",
+            "f25",
+            "fnoNew",
+            "fresNewNo",
+            "f20",
+            "fnoExec",
+            "f30",
+            "f31",
+            "ffinishNo"
+          ],
+          "bends_per_flow": 0.784314,
+          "graph_return_count": 4,
+          "normalization_task_width": 180.0,
+          "wire_gap_diagnostic": 11.4,
+          "hotspot_cell_size": 76.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "refinement_interrupted": false,
+        "refinements": [
+          {
+            "edge": "f19",
+            "before": [
+              false,
+              4458.35,
+              2,
+              5,
+              905.6
+            ],
+            "after": [
+              false,
+              3855.6,
+              2,
+              3,
+              639.6
+            ]
+          },
+          {
+            "edge": "f12",
+            "before": [
+              false,
+              4542.4,
+              2,
+              2,
+              1402.3999999999999
+            ],
+            "after": [
+              false,
+              4356.0,
+              2,
+              0,
+              1356.0
+            ]
+          },
+          {
+            "edge": "f13",
+            "before": [
+              false,
+              4989.0,
+              2,
+              2,
+              1849.0
+            ],
+            "after": [
+              false,
+              4943.4,
+              2,
+              2,
+              1803.3999999999999
+            ]
+          },
+          {
+            "edge": "f16",
+            "before": [
+              false,
+              4258.0,
+              2,
+              4,
+              978.0
+            ],
+            "after": [
+              false,
+              2947.2,
+              1,
+              5,
+              1097.2
+            ]
+          },
+          {
+            "edge": "fnoExec",
+            "before": [
+              false,
+              3614.2,
+              2,
+              3,
+              404.20000000000005
+            ],
+            "after": [
+              false,
+              3565.0,
+              2,
+              2,
+              425.0
+            ]
+          },
+          {
+            "edge": "fnoNew",
+            "before": [
+              false,
+              2506.0,
+              1,
+              3,
+              796.0
+            ],
+            "after": [
+              false,
+              2346.0,
+              1,
+              1,
+              776.0
+            ]
+          },
+          {
+            "edge": "f28",
+            "before": [
+              false,
+              2327.0,
+              1,
+              2,
+              687.0
+            ],
+            "after": [
+              false,
+              1021.0,
+              0,
+              2,
+              881.0
+            ]
+          },
+          {
+            "edge": "f4",
+            "before": [
+              false,
+              2782.2,
+              1,
+              3,
+              1072.2
+            ],
+            "after": [
+              false,
+              2488.95,
+              1,
+              4,
+              686.2
+            ]
+          },
+          {
+            "edge": "f9",
+            "before": [
+              false,
+              2706.2,
+              1,
+              5,
+              856.2
+            ],
+            "after": [
+              false,
+              1346.2,
+              0,
+              5,
+              996.2
+            ]
+          },
+          {
+            "edge": "f31",
+            "before": [
+              false,
+              1387.2,
+              0,
+              3,
+              1177.2
+            ],
+            "after": [
+              false,
+              1110.0,
+              0,
+              0,
+              1110.0
+            ]
+          },
+          {
+            "edge": "f5",
+            "before": [
+              false,
+              2886.95,
+              1,
+              3,
+              1154.2
+            ],
+            "after": [
+              false,
+              1146.0,
+              0,
+              2,
+              1006.0
+            ]
+          },
+          {
+            "edge": "f4",
+            "before": [
+              false,
+              966.2,
+              0,
+              4,
+              686.2
+            ],
+            "after": [
+              false,
+              722.2,
+              0,
+              2,
+              582.2
+            ]
+          }
+        ]
+      }
+    ],
+    "seconds": 149.915,
+    "source_reference_models": 32,
+    "selection": "best verified empirical-style candidate; no global optimum guarantee",
+    "removed_redundant_associations": [],
+    "local_attachment_moves": {
+      "changes": [
+        {
+          "document": "D_OrderInitial",
+          "fixed_owner": "A1",
+          "gap_before": 60.878978309429606,
+          "gap_after": 20.0
+        },
+        {
+          "document": "D_WorkPlanFinance",
+          "fixed_owner": "R1",
+          "gap_before": 60.40695324215582,
+          "gap_after": 20.0
+        }
+      ],
+      "trials": 2,
+      "seconds": 3.241,
+      "before": {
+        "fixed_owners": {
+          "D_OrderInitial": "A1",
+          "D_OrderCompare": "C2",
+          "D_CheckAtC2": "CallCheck",
+          "D_OrderAtPlan": "C3",
+          "D_WorkPlan": "C3",
+          "D_BankManager": "C4",
+          "D_OrderAtExecution": "C5",
+          "D_ClientOrder": "C5",
+          "D_OrderChange": "C9",
+          "D_CheckAtC6": "C6",
+          "D_CheckChanged": "CallCheck3",
+          "D_CheckExecute": "CallCheck2",
+          "D_BankOperator": "O1",
+          "StoreBankClient": "O1",
+          "D_WorkPlanFinance": "R1",
+          "D_WorkUpdatedFinance": "R2"
+        },
+        "anchor_gaps": {
+          "D_OrderInitial": 60.879,
+          "D_OrderCompare": 20.0,
+          "D_CheckAtC2": 20.0,
+          "D_OrderAtPlan": 20.0,
+          "D_WorkPlan": 20.0,
+          "D_BankManager": 20.0,
+          "D_OrderAtExecution": 20.0,
+          "D_ClientOrder": 20.0,
+          "D_OrderChange": 20.0,
+          "D_CheckAtC6": 20.0,
+          "D_CheckChanged": 20.0,
+          "D_CheckExecute": 20.0,
+          "D_BankOperator": 20.0,
+          "StoreBankClient": 20.0,
+          "D_WorkPlanFinance": 60.407,
+          "D_WorkUpdatedFinance": 20.0
+        },
+        "mean_anchor_gap": 25.080375,
+        "association_bends": 1,
+        "association_length": 861.5815738876511,
+        "consumer_links": [
+          {
+            "id": "DataInputAssociation_0fcnwq1",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_194cdhw",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_1n42ykp",
+            "gap": 20.0
+          },
+          {
+            "id": "a01",
+            "gap": 60.879
+          },
+          {
+            "id": "a04",
+            "gap": 20.0
+          },
+          {
+            "id": "a08",
+            "gap": 20.0
+          },
+          {
+            "id": "a14",
+            "gap": 20.0
+          },
+          {
+            "id": "a05",
+            "gap": 20.0
+          },
+          {
+            "id": "a17",
+            "gap": 20.0
+          },
+          {
+            "id": "a19",
+            "gap": 20.0
+          },
+          {
+            "id": "a20",
+            "gap": 20.0
+          },
+          {
+            "id": "a23",
+            "gap": 266.0
+          },
+          {
+            "id": "a18",
+            "gap": 20.0
+          },
+          {
+            "id": "a12",
+            "gap": 20.0
+          },
+          {
+            "id": "a13",
+            "gap": 20.0
+          },
+          {
+            "id": "a11",
+            "gap": 60.407
+          },
+          {
+            "id": "a27",
+            "gap": 20.0
+          }
+        ]
+      },
+      "after": {
+        "fixed_owners": {
+          "D_OrderInitial": "A1",
+          "D_OrderCompare": "C2",
+          "D_CheckAtC2": "CallCheck",
+          "D_OrderAtPlan": "C3",
+          "D_WorkPlan": "C3",
+          "D_BankManager": "C4",
+          "D_OrderAtExecution": "C5",
+          "D_ClientOrder": "C5",
+          "D_OrderChange": "C9",
+          "D_CheckAtC6": "C6",
+          "D_CheckChanged": "CallCheck3",
+          "D_CheckExecute": "CallCheck2",
+          "D_BankOperator": "O1",
+          "StoreBankClient": "O1",
+          "D_WorkPlanFinance": "R1",
+          "D_WorkUpdatedFinance": "R2"
+        },
+        "anchor_gaps": {
+          "D_OrderInitial": 20.0,
+          "D_OrderCompare": 20.0,
+          "D_CheckAtC2": 20.0,
+          "D_OrderAtPlan": 20.0,
+          "D_WorkPlan": 20.0,
+          "D_BankManager": 20.0,
+          "D_OrderAtExecution": 20.0,
+          "D_ClientOrder": 20.0,
+          "D_OrderChange": 20.0,
+          "D_CheckAtC6": 20.0,
+          "D_CheckChanged": 20.0,
+          "D_CheckExecute": 20.0,
+          "D_BankOperator": 20.0,
+          "StoreBankClient": 20.0,
+          "D_WorkPlanFinance": 20.0,
+          "D_WorkUpdatedFinance": 20.0
+        },
+        "mean_anchor_gap": 20.0,
+        "association_bends": 1,
+        "association_length": 744.0646643684037,
+        "consumer_links": [
+          {
+            "id": "DataInputAssociation_0fcnwq1",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_194cdhw",
+            "gap": 20.0
+          },
+          {
+            "id": "DataOutputAssociation_1n42ykp",
+            "gap": 20.0
+          },
+          {
+            "id": "a01",
+            "gap": 20.0
+          },
+          {
+            "id": "a04",
+            "gap": 20.0
+          },
+          {
+            "id": "a08",
+            "gap": 20.0
+          },
+          {
+            "id": "a14",
+            "gap": 20.0
+          },
+          {
+            "id": "a05",
+            "gap": 20.0
+          },
+          {
+            "id": "a17",
+            "gap": 20.0
+          },
+          {
+            "id": "a19",
+            "gap": 20.0
+          },
+          {
+            "id": "a20",
+            "gap": 20.0
+          },
+          {
+            "id": "a23",
+            "gap": 266.0
+          },
+          {
+            "id": "a18",
+            "gap": 20.0
+          },
+          {
+            "id": "a12",
+            "gap": 20.0
+          },
+          {
+            "id": "a13",
+            "gap": 20.0
+          },
+          {
+            "id": "a11",
+            "gap": 20.0
+          },
+          {
+            "id": "a27",
+            "gap": 20.0
+          }
+        ]
+      },
+      "sequence_nodes_and_waypoints_preserved": true,
+      "guards": "no new contacts, no longer individual consumer link, no larger page, full text, strict geometry and XML freeze"
+    },
+    "geometry_erasure": {
+      "source_positions_used": false,
+      "source_dimensions_used": false,
+      "source_waypoints_used": false,
+      "source_label_bounds_used": false,
+      "external_incumbent_used": false,
+      "source_lane_order_used": false,
+      "role_order_method": "graph distance from starts, then role name; business XML lane order unchanged",
+      "inputs": "business graph, fixed role membership, full names, shape kinds; neutral canonical DI and measured text sizes"
+    },
+    "from_scratch": true,
+    "reference_target_met": false,
+    "output": "/workspace/work/algorithm-r10/acceptance/gold/process_08_v23.bpmn",
+    "artifacts": {
+      "bpmn": "/workspace/work/algorithm-r10/acceptance/gold/process_08_v23.bpmn",
+      "svg": "/workspace/work/algorithm-r10/acceptance/gold/process_08_v23.svg",
+      "png": null
+    }
+  }
+}

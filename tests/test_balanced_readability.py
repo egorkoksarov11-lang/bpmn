@@ -49,3 +49,21 @@ def test_crowding_aware_astar_preserves_clearance_and_distinct_channels():
     pairs=[(s,t) for s in [(40,20),(20,0)] for t in [(240,20),(260,0)]]
     ps=astar('f',boxes,uv,others,pairs,avoid_crowding=True)
     assert ps is not None and safe_poly('f',ps,boxes,uv) and not overlapping(ps,others)
+
+
+def test_simplifying_one_wire_cannot_trade_hard_bend_safety_for_fewer_contacts(monkeypatch):
+    from bpmn_v23 import router
+    # Isolate acceptance from proposal generation: both proposals are clear,
+    # but the lower-contact proposal exceeds the eight-bend readability limit.
+    safe=[(10*((i+1)//2),10*(i//2)) for i in range(10)]
+    tangled=[(10*((i+1)//2),10*(i//2)) for i in range(11)]
+    monkeypatch.setattr(router,'burdens',lambda *args:{'f':1})
+    monkeypatch.setattr(router,'quick_routes',lambda *args:[tangled])
+    monkeypatch.setattr(router,'orthogonal_shortcuts',lambda *args:[])
+    monkeypatch.setattr(router,'safe_poly',lambda *args:True)
+    monkeypatch.setattr(router,'overlapping',lambda *args:False)
+    monkeypatch.setattr(router,'astar',lambda *args,**kwargs:None)
+    monkeypatch.setattr(router,'choice_score',lambda eid,p,*args:(0,0,0) if p==tangled else (1,0,0))
+    paths={'f':safe}
+    router.refine_paths({}, {'f':('a','b')},paths,rounds=1,simplify=True)
+    assert paths['f']==safe
