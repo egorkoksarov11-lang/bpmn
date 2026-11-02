@@ -5,7 +5,9 @@ from bpmn_universal.contract import NS,Q,BD,DC
 
 def seed_captions(root,captions):
     for n,box in captions.items():
-        shape=root.xpath('.//bd:BPMNShape[@bpmnElement=$id]',namespaces=NS,id=n)[0]
+        matches=root.xpath('.//bd:BPMNShape[@bpmnElement=$id] | .//bd:BPMNEdge[@bpmnElement=$id]',namespaces=NS,id=n)
+        if not matches:raise ValueError('Caption owner missing: '+n)
+        shape=matches[0]
         for old in list(shape.findall(Q(BD,'BPMNLabel'))):shape.remove(old)
         label=ET.SubElement(shape,Q(BD,'BPMNLabel'))
         ET.SubElement(label,Q(DC,'Bounds'),**dict(zip(('x','y','width','height'),map(str,box))))

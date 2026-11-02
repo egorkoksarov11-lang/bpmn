@@ -1,0 +1,182 @@
+{
+  "v2": {
+    "extent": {
+      "width": 6834.1,
+      "height": 2534.35,
+      "aspect_ratio": 2.6965888689407542
+    },
+    "contacts": 16,
+    "sequence_bends": 77,
+    "sequence_length": 40542.549999999996,
+    "cross_role_length": 29737.649999999998,
+    "role_order": [
+      "Операционист",
+      "Уполномоченное лицо",
+      "Касса",
+      "Руководитель финансового блока",
+      "Клиентский менеджер",
+      "Факторинговая компания",
+      "Клиент",
+      "Главный бухгалтер / бухгалтерия",
+      "Кадровик / HR"
+    ],
+    "information_links": 17,
+    "vertical_sequence_edges": 24
+  },
+  "v3": {
+    "extent": {
+      "width": 3440.27,
+      "height": 2895.5,
+      "aspect_ratio": 1.1881436712139526
+    },
+    "contacts": 40,
+    "sequence_bends": 135,
+    "sequence_length": 68612.34,
+    "cross_role_length": 44966.11,
+    "role_order": [
+      "Касса",
+      "Операционист",
+      "Уполномоченное лицо",
+      "Руководитель финансового блока",
+      "Клиент",
+      "Клиентский менеджер",
+      "Факторинговая компания",
+      "Главный бухгалтер / бухгалтерия",
+      "Кадровик / HR"
+    ],
+    "information_links": 17,
+    "vertical_sequence_edges": 24
+  },
+  "v3_tasks": {
+    "extent": {
+      "width": 6423.52,
+      "height": 1815.0,
+      "aspect_ratio": 3.5391294765840224
+    },
+    "contacts": 11,
+    "sequence_bends": 133,
+    "sequence_length": 36997.3,
+    "cross_role_length": 24295.18,
+    "role_order": [
+      "Операционист",
+      "Уполномоченное лицо",
+      "Касса",
+      "Руководитель финансового блока",
+      "Клиентский менеджер",
+      "Факторинговая компания",
+      "Клиент",
+      "Главный бухгалтер / бухгалтерия",
+      "Кадровик / HR"
+    ],
+    "information_links": 17,
+    "vertical_sequence_edges": 19,
+    "folded_chains": [
+      {
+        "nodes": [
+          "T52",
+          "T53"
+        ],
+        "direction": "down"
+      },
+      {
+        "nodes": [
+          "T53_Check",
+          "T54"
+        ],
+        "direction": "up"
+      },
+      {
+        "nodes": [
+          "T56",
+          "T57_CM"
+        ],
+        "direction": "down"
+      },
+      {
+        "nodes": [
+          "T59_CM",
+          "T510_CM"
+        ],
+        "direction": "up"
+      }
+    ]
+  },
+  "v3_selected": {
+    "extent": {
+      "width": 5835.0,
+      "height": 1815.0,
+      "aspect_ratio": 3.2148760330578514
+    },
+    "contacts": 11,
+    "sequence_bends": 103,
+    "sequence_length": 33646.6,
+    "cross_role_length": 23572.2,
+    "role_order": [
+      "Операционист",
+      "Уполномоченное лицо",
+      "Касса",
+      "Руководитель финансового блока",
+      "Клиентский менеджер",
+      "Факторинговая компания",
+      "Клиент",
+      "Главный бухгалтер / бухгалтерия",
+      "Кадровик / HR"
+    ],
+    "information_links": 17,
+    "vertical_sequence_edges": 19,
+    "folded_chains": [
+      {
+        "nodes": [
+          "T52",
+          "T53"
+        ],
+        "direction": "down"
+      },
+      {
+        "nodes": [
+          "T53_Check",
+          "T54"
+        ],
+        "direction": "up"
+      },
+      {
+        "nodes": [
+          "T56",
+          "T57_CM"
+        ],
+        "direction": "down"
+      },
+      {
+        "nodes": [
+          "T59_CM",
+          "T510_CM"
+        ],
+        "direction": "up"
+      }
+    ]
+  },
+  "v3_preview": {
+    "extent": {
+      "width": 4871.26,
+      "height": 1990.0,
+      "aspect_ratio": 2.4478693467336683
+    },
+    "contacts": 12,
+    "sequence_bends": 116,
+    "sequence_length": 35848.66,
+    "selected_candidate": "semantic-network_simplex-gap-24-spacing-1.0-fold-24-refined",
+    "checks": {
+      "from_scratch": true,
+      "source_geometry_erased": true,
+      "business_xml_equal": true,
+      "di_identity_equal": true,
+      "all_visible_names": true,
+      "routing_safety": true,
+      "clearance": true,
+      "labels_clear": true,
+      "task_text_fits": true,
+      "bend_limit": true
+    },
+    "glyph_sizes_and_role_order_preserved": true
+  }
+}

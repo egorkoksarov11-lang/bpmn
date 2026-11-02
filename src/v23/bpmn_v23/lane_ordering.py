@@ -58,7 +58,9 @@ def reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,requested='auto'):
     for role in order:
         x,y,w,h=boxes[role];shift[role]=cursor-y;out[role]=(x,cursor,w,h);cursor+=h
     owners=report['document_owners']
-    def role_of(n):return member.get(owners.get(n,n))
+    flow_owner={i:u for i,u,_,_ in seq}
+    def role_of(n):
+        owner=owners.get(n,n);return member.get(flow_owner.get(owner,owner))
     for n,b in boxes.items():
         if n not in nodes and n not in docs:continue
         role=role_of(n)

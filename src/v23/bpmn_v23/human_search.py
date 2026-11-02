@@ -150,7 +150,9 @@ class HumanStyleBackend:
             ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
             ob.update({f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes})
             if getattr(self,'straight_documents',False):
-                for bounds in root.xpath('.//bd:BPMNShape/bd:BPMNLabel/dc:Bounds',namespaces=NS):
+                caption_query='.//bd:BPMNShape/bd:BPMNLabel/dc:Bounds'
+                if report.get('reserved_flow_captions'):caption_query+=' | .//bd:BPMNEdge/bd:BPMNLabel/dc:Bounds'
+                for bounds in root.xpath(caption_query,namespaces=NS):
                     owner=bounds.getparent().getparent().get('bpmnElement')
                     if owner in nodes and nodes[owner]['kind'] in TAG_TASK:continue
                     ob['__text_'+owner]=tuple(float(bounds.get(k)) for k in ('x','y','width','height'))

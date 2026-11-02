@@ -15,7 +15,7 @@ from bpmn_universal.contract import semantic_equality
 from audit_scratch_result import audit
 
 
-def generate(source,destination,*,omissions=None,role_order='auto',factors=(1.,1.3,1.6),candidate_seconds=45,search_seconds=45):
+def generate(source,destination,*,omissions=None,role_order='auto',factors=(1.,1.3,1.6),candidate_seconds=45,search_seconds=45,local_fold=False,fold_kind='tasks'):
     source=Path(source).resolve();destination=Path(destination).resolve()
     if source.is_relative_to(destination):raise ValueError('Input must be outside the result directory')
     if not factors or any(not math.isfinite(f) or f<1 for f in factors):raise ValueError('Spacing factors must be finite and at least 1')
@@ -33,7 +33,15 @@ def generate(source,destination,*,omissions=None,role_order='auto',factors=(1.,1
                     extra={**report,'reserved_captions':{n:scaled(b) for n,b in report.get('reserved_captions',{}).items()},'spacing_factor':factor}
                     if 'lane_order_optimization' in extra:
                         detail=extra['lane_order_optimization'];extra['lane_order_optimization']={**detail,'before':detail['before']*factor,'after':detail['after']*factor}
-                    yield name+'-spacing-'+str(factor),placed,extra
+                    if local_fold:
+                        from bpmn_v23.block_compaction import compact_blocks
+                        from bpmn_v23.lane_ordering import reorder_lanes
+                        for local_gap in (24,40):
+                            folded,fold_report=compact_blocks(placed,extra,*args[:3],args[4],args[5],gap=local_gap,task_pairs_only=fold_kind in ('tasks','hybrid'),secondary_checks=fold_kind=='hybrid')
+                            if role_order is not None:folded,fold_report=reorder_lanes(folded,fold_report,*args[:2],args[2],args[4],args[5],role_order)
+                            yield name+'-spacing-'+str(factor)+'-fold-'+str(local_gap),folded,fold_report
+                    else:
+                        yield name+'-spacing-'+str(factor),placed,extra
     with tempfile.TemporaryDirectory(prefix='compact-process-',dir=destination.parent) as folder:
         stage=Path(folder);prepared=stage/'presentation_input.bpmn';journal=stage/'document_changes.json';result=stage/'result'
         plan=apply_first_appearance(source,prepared,journal,omissions)
@@ -57,9 +65,11 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--input',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
     p.add_argument('--omit-documents',type=Path,help='JSON mapping of reviewed redundant reference IDs to reasons; never inferred from similar names')
     p.add_argument('--role-order',nargs='+',default=['auto'],help='auto, or every lane ID in the desired order')
+    p.add_argument('--fold-kind',choices=['tasks','hybrid','all'],default='tasks',help='prefer short operation chains; all also stacks decisions')
+    p.add_argument('--local-fold',action='store_true',help='pack occupied space and stack short same-role chains without reducing text sizes')
     p.add_argument('--spacing-factors',nargs='+',type=float,default=[1.,1.3,1.6]);p.add_argument('--candidate-timeout',type=int,default=45);p.add_argument('--search-seconds',type=float,default=45)
     a=p.parse_args();omissions=json.loads(a.omit_documents.read_text()) if a.omit_documents else None;order='auto' if a.role_order==['auto'] else a.role_order
-    print(json.dumps(generate(a.input,a.output_dir,omissions=omissions,role_order=order,factors=a.spacing_factors,candidate_seconds=a.candidate_timeout,search_seconds=a.search_seconds),ensure_ascii=False,indent=2))
+    print(json.dumps(generate(a.input,a.output_dir,omissions=omissions,role_order=order,factors=a.spacing_factors,candidate_seconds=a.candidate_timeout,search_seconds=a.search_seconds,local_fold=a.local_fold,fold_kind=a.fold_kind),ensure_ascii=False,indent=2))
 
 
 if __name__=='__main__':main()
