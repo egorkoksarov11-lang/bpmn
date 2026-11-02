@@ -11,12 +11,12 @@ from bpmn_refkit.geometry import bbox_intersect_seg
 import math
 
 
-def attachment_axes(nodes,docs,seq,assocs,member,lanes,original,gap_size=28,compact_bays=False):
+def attachment_axes(nodes,docs,seq,assocs,member,lanes,original,gap_size=28,compact_bays=False,overlap_corridors=False):
     owners=owners_for(nodes,docs,assocs,original)
     if len(owners)!=len(docs):raise ValueError('Unanchored document')
     base={n:b for n,b in original.items() if n not in docs}
     counts=dict(Counter(owners.values()));reserves={n:min(2,c) if compact_bays else c for n,c in counts.items()}
-    out,report=axis_proposal(nodes,{},seq,[],member,lanes,base,gap_size,1,False,True,reserves)
+    out,report=axis_proposal(nodes,{},seq,[],member,lanes,base,gap_size,1,False,True,reserves,flow_caption_reserve=overlap_corridors)
     for n in out:
         if n not in nodes:
             x,y,w,h=out[n];out[n]=(x,y,w+96,h)
@@ -30,12 +30,14 @@ def attachment_axes(nodes,docs,seq,assocs,member,lanes,original,gap_size=28,comp
         return not any(bbox_intersect_seg(box,a,b,clearance=-8) for n,box in out.items() if n in nodes and n not in (u,v))
     for i,u,v,_ in seq:
         a,b=out[u],out[v];ac=(a[0]+a[2]/2,a[1]+a[3]/2);bc=(b[0]+b[2]/2,b[1]+b[3]/2)
-        if abs(ac[1]-bc[1])<.1 and (a[0]+a[2]<=b[0] or b[0]+b[2]<=a[0]):
-            left,right=(a,b) if ac[0]<bc[0] else (b,a)
-            if clear_direct(u,v,(left[0]+left[2],ac[1]),(right[0],ac[1])):corridors.append((left[0]+left[2],ac[1]-8,right[0]-left[0]-left[2],16))
-        elif abs(ac[0]-bc[0])<.1 and (a[1]+a[3]<=b[1] or b[1]+b[3]<=a[1]):
-            top,bottom=(a,b) if ac[1]<bc[1] else (b,a)
-            if clear_direct(u,v,(ac[0],top[1]+top[3]),(ac[0],bottom[1])):corridors.append((ac[0]-8,top[1]+top[3],16,bottom[1]-top[1]-top[3]))
+        overlap_y=(max(a[1],b[1])+4,min(a[1]+a[3],b[1]+b[3])-4)
+        overlap_x=(max(a[0],b[0])+4,min(a[0]+a[2],b[0]+b[2])-4)
+        if (abs(ac[1]-bc[1])<.1 or overlap_corridors and overlap_y[1]>overlap_y[0]) and (a[0]+a[2]<=b[0] or b[0]+b[2]<=a[0]):
+            left,right=(a,b) if ac[0]<bc[0] else (b,a);cy=(overlap_y[0]+overlap_y[1])/2
+            if clear_direct(u,v,(left[0]+left[2],cy),(right[0],cy)):corridors.append((left[0]+left[2],cy-8,right[0]-left[0]-left[2],16))
+        elif (abs(ac[0]-bc[0])<.1 or overlap_corridors and overlap_x[1]>overlap_x[0]) and (a[1]+a[3]<=b[1] or b[1]+b[3]<=a[1]):
+            top,bottom=(a,b) if ac[1]<bc[1] else (b,a);cx=(overlap_x[0]+overlap_x[1])/2
+            if clear_direct(u,v,(cx,top[1]+top[3]),(cx,bottom[1])):corridors.append((cx-8,top[1]+top[3],16,bottom[1]-top[1]-top[3]))
     occupied.extend(corridors)
     def overlap(a,b):return gap(a,b)<8
     external=[n for n,o in nodes.items() if o.get('name') and (o['kind'] in TAG_GATE or o['kind']=='endEvent')]

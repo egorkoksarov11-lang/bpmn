@@ -203,13 +203,14 @@ def run(source, destination, backend=None):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
+    p.add_argument('--search-seconds',type=float,default=None,help='candidate search budget; verified whole-layout fallback required before stopping')
     p.add_argument('--candidate-timeout',type=int,default=30,help='maximum routing seconds per placement candidate (1..600)')
     p.add_argument('--no-decision-orientations',action='store_true',help='compare with the four baseline human-style placements')
     p.add_argument('--incumbent',type=Path,help='optional previously verified layout of the identical frozen model')
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
     p.add_argument('--scenario-blocks',action='store_true',help='experimental compact local loops and joint moves')
-    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity','axes','adaptive','reference','attachments','scratch','scratch-human'],default=None,help='default: scratch; erase every input coordinate before reconstruction')
+    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine','local-continuity','axes','adaptive','reference','attachments','scratch','scratch-legacy','scratch-human'],default=None,help='default: scratch; erase every input coordinate before reconstruction')
     p.add_argument('--elk-module',type=Path,help='optional elk.bundled.js path; otherwise install npm dependencies')
     p.add_argument('--reference-profile',type=Path,help='frozen profile from tools/calibrate_references.py')
     p.add_argument('--seed-report',type=Path,help='original placement report for contextual orientation')
@@ -217,10 +218,10 @@ def main():
     a=p.parse_args()
     if a.layout_engine is None:a.layout_engine='human' if a.orientations_only or a.repack_spine or a.scenario_blocks else 'scratch'
     if a.refine_only and (a.layout_engine!='reference' or a.incumbent is None):p.error('--refine-only requires --layout-engine reference and --incumbent')
-    if a.layout_engine in ('scratch','scratch-human'):
+    if a.layout_engine in ('scratch','scratch-legacy','scratch-human'):
         if a.incumbent is not None:p.error('Scratch reconstruction forbids external incumbents')
-        from .scratch_layout import ScratchBackend
-        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human')
+        from .scratch_layout import ScratchBackend,GraphChannelsBackend
+        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human',search_seconds=a.search_seconds,graph_backend=GraphChannelsBackend if a.layout_engine=='scratch-legacy' else None)
     elif a.layout_engine=='attachments':
         from .attachment_refinement import AttachmentBackend
         backend=AttachmentBackend(incumbent=a.incumbent,seconds=a.candidate_timeout)

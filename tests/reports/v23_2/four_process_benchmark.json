@@ -1,0 +1,433 @@
+{
+  "version": "23.2.0",
+  "date": "2026-11-02",
+  "protocol": {
+    "source": "four latest hash-verified observation snapshots",
+    "initial_geometry_erased": true,
+    "external_incumbent_used": false,
+    "reference_geometry_used_only_for_assessment": true,
+    "development_corpus_not_held_out": true,
+    "known_overlap": "S1 final snapshot already appeared in prior gold corpus",
+    "candidate_timeout": 60,
+    "search_budget_seconds": 200,
+    "internal_cold_guard": "fresh construction from same erased model, with explicit bounded compactness trade",
+    "benchmark_guard_provenance": "S2 guard selection finalized using the two fresh cold alternatives from this benchmark; complete erasure and full semantic equality verified",
+    "timing_comparison": "not comparable: concurrent construction phases; no speedup claim",
+    "visual_human_similarity_80_percent": "not achieved or established; wire bend counts remain substantially above manual references",
+    "physical_bend_definition": "nonzero segment direction changes; collinear forward points excluded",
+    "code_python_sha256": "05f7bd5f4dd3e310e850bd8a126b3e6034fa1943ba9dce275eb16101d32c1fd4"
+  },
+  "coverage": {
+    "new_verified": 4,
+    "new_total": 4,
+    "legacy_verified": 3,
+    "legacy_total": 4
+  },
+  "tests": {
+    "tests": 162,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 44.746
+  },
+  "native_import": [
+    {
+      "case": "S1",
+      "source_import": true,
+      "generated_import": true,
+      "source_warning_count": 0,
+      "generated_warning_count": 0,
+      "new_warning_count": 0
+    },
+    {
+      "case": "S2",
+      "source_import": true,
+      "generated_import": true,
+      "source_warning_count": 0,
+      "generated_warning_count": 0,
+      "new_warning_count": 0
+    },
+    {
+      "case": "S3",
+      "source_import": true,
+      "generated_import": true,
+      "source_warning_count": 0,
+      "generated_warning_count": 0,
+      "new_warning_count": 0
+    },
+    {
+      "case": "S4",
+      "source_import": true,
+      "generated_import": true,
+      "source_warning_count": 0,
+      "generated_warning_count": 0,
+      "new_warning_count": 0
+    }
+  ],
+  "coordinate_erasure_tests": [
+    {
+      "case": "S1",
+      "neutral_boxes_equal": true,
+      "neutral_routes_equal": true,
+      "labels_removed": true,
+      "semantic_freeze": true,
+      "source_sha256": "302f533a4843b05183e5de482421032dd441faefedef708490edb880f485e954"
+    },
+    {
+      "case": "S2",
+      "neutral_boxes_equal": true,
+      "neutral_routes_equal": true,
+      "labels_removed": true,
+      "semantic_freeze": true,
+      "source_sha256": "40d5106a09caaa78ca6313a1f9763f3b3591ffe8abeffd95dd03daa26f8516d4"
+    },
+    {
+      "case": "S3",
+      "neutral_boxes_equal": true,
+      "neutral_routes_equal": true,
+      "labels_removed": true,
+      "semantic_freeze": true,
+      "source_sha256": "56d8faaef8e2439eabeb866926c197dba149c7bd07a9fb849d1f5f8b33a740e7"
+    },
+    {
+      "case": "S4",
+      "neutral_boxes_equal": true,
+      "neutral_routes_equal": true,
+      "labels_removed": true,
+      "semantic_freeze": true,
+      "source_sha256": "8c85beeb81a198c995e32d431f8a299c275a0b0d34a0c41ed348c2d0e1a184ff"
+    }
+  ],
+  "results": [
+    {
+      "case": "S1",
+      "counts": {
+        "nodes": 40,
+        "flows": 51,
+        "documents": 16,
+        "information_links": 17,
+        "roles": 4
+      },
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "reference": {
+        "contacts": 5,
+        "sequence_contacts": 5,
+        "sequence_bends": 31,
+        "sequence_length": 10550.0,
+        "association_bends": 0,
+        "association_length": 682.8312011620169,
+        "mean_anchor_gap": 35.438625,
+        "extent_area": 3100500.0,
+        "straight_fraction": 0.5882352941176471,
+        "at_most_one_bend_fraction": 0.803921568627451,
+        "normalized_sequence_length": 54.66321243523316,
+        "sequence_bends_per_flow": 0.6078431372549019,
+        "sequence_stretch_p90": 1.724025974025974,
+        "task_width_median": 193.0,
+        "hard_geometry": false
+      },
+      "generated": {
+        "contacts": 9,
+        "sequence_contacts": 6,
+        "sequence_bends": 43,
+        "sequence_length": 14367.39,
+        "association_bends": 3,
+        "association_length": 794.1904258400004,
+        "mean_anchor_gap": 29.471249999999998,
+        "extent_area": 5080836.45,
+        "straight_fraction": 0.6078431372549019,
+        "at_most_one_bend_fraction": 0.7058823529411765,
+        "normalized_sequence_length": 79.81883333333333,
+        "sequence_bends_per_flow": 0.8431372549019608,
+        "sequence_stretch_p90": 1.5127450980392159,
+        "task_width_median": 180.0,
+        "hard_geometry": true
+      },
+      "extent": {
+        "width": 3805.87,
+        "height": 1335.0,
+        "aspect_ratio": 2.850838951310861
+      },
+      "selected_candidate": "episode-rows-2-seed-23-vertical-0-refined",
+      "source_sha256": "302f533a4843b05183e5de482421032dd441faefedef708490edb880f485e954",
+      "output_sha256": "74f9a814b46749ef5a9d75bff27ba356023f6c711fa05908b8cbc12b33ce8850",
+      "legacy_status": "verified",
+      "legacy": {
+        "contacts": 18,
+        "sequence_contacts": 11,
+        "sequence_bends": 80,
+        "sequence_length": 18253.85,
+        "association_bends": 8,
+        "association_length": 1641.7881861239816,
+        "mean_anchor_gap": 52.8125,
+        "extent_area": 4686600.0,
+        "straight_fraction": 0.4117647058823529,
+        "at_most_one_bend_fraction": 0.45098039215686275,
+        "normalized_sequence_length": 82.97204545454545,
+        "sequence_bends_per_flow": 1.5686274509803921,
+        "sequence_stretch_p90": 1.6650246305418719,
+        "task_width_median": 220.0,
+        "hard_geometry": true
+      }
+    },
+    {
+      "case": "S2",
+      "counts": {
+        "nodes": 64,
+        "flows": 93,
+        "documents": 10,
+        "information_links": 11,
+        "roles": 6
+      },
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "reference": {
+        "contacts": 57,
+        "sequence_contacts": 55,
+        "sequence_bends": 70,
+        "sequence_length": 41265.0,
+        "association_bends": 0,
+        "association_length": 416.48234207884815,
+        "mean_anchor_gap": 22.6863,
+        "extent_area": 6565520.0,
+        "straight_fraction": 0.5268817204301075,
+        "at_most_one_bend_fraction": 0.7741935483870968,
+        "normalized_sequence_length": 206.325,
+        "sequence_bends_per_flow": 0.7526881720430108,
+        "sequence_stretch_p90": 1.5757575757575757,
+        "task_width_median": 200.0,
+        "hard_geometry": false
+      },
+      "generated": {
+        "contacts": 54,
+        "sequence_contacts": 51,
+        "sequence_bends": 168,
+        "sequence_length": 49435.2,
+        "association_bends": 2,
+        "association_length": 569.7279706025867,
+        "mean_anchor_gap": 36.9888,
+        "extent_area": 6148840.0,
+        "straight_fraction": 0.4946236559139785,
+        "at_most_one_bend_fraction": 0.5591397849462365,
+        "normalized_sequence_length": 274.64,
+        "sequence_bends_per_flow": 1.8064516129032258,
+        "sequence_stretch_p90": 1.5578686493184635,
+        "task_width_median": 180.0,
+        "hard_geometry": true
+      },
+      "extent": {
+        "width": 4430.0,
+        "height": 1388.0,
+        "aspect_ratio": 3.19164265129683
+      },
+      "selected_candidate": "internal-cold-guard/semantic-network_simplex-gap-24-refined",
+      "source_sha256": "40d5106a09caaa78ca6313a1f9763f3b3591ffe8abeffd95dd03daa26f8516d4",
+      "output_sha256": "3e9cc0fe4f72cd3f2ba36dcfbb932ff7e09b6ebef42d77b4c2ad31b97d8843a2",
+      "legacy_status": "verified",
+      "legacy": {
+        "contacts": 55,
+        "sequence_contacts": 52,
+        "sequence_bends": 172,
+        "sequence_length": 50034.2,
+        "association_bends": 2,
+        "association_length": 569.7279706025867,
+        "mean_anchor_gap": 36.9888,
+        "extent_area": 6305024.0,
+        "straight_fraction": 0.4838709677419355,
+        "at_most_one_bend_fraction": 0.5268817204301075,
+        "normalized_sequence_length": 277.96777777777777,
+        "sequence_bends_per_flow": 1.8494623655913978,
+        "sequence_stretch_p90": 1.56078860898138,
+        "task_width_median": 180.0,
+        "hard_geometry": true
+      }
+    },
+    {
+      "case": "S3",
+      "counts": {
+        "nodes": 32,
+        "flows": 36,
+        "documents": 14,
+        "information_links": 15,
+        "roles": 6
+      },
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "reference": {
+        "contacts": 12,
+        "sequence_contacts": 10,
+        "sequence_bends": 23,
+        "sequence_length": 11247.0,
+        "association_bends": 0,
+        "association_length": 535.8949964540718,
+        "mean_anchor_gap": 32.01892857142857,
+        "extent_area": 2314200.0,
+        "straight_fraction": 0.5555555555555556,
+        "at_most_one_bend_fraction": 0.8055555555555556,
+        "normalized_sequence_length": 51.122727272727275,
+        "sequence_bends_per_flow": 0.6388888888888888,
+        "sequence_stretch_p90": 1.321223709369025,
+        "task_width_median": 220.0,
+        "hard_geometry": false
+      },
+      "generated": {
+        "contacts": 5,
+        "sequence_contacts": 5,
+        "sequence_bends": 29,
+        "sequence_length": 13577.3,
+        "association_bends": 2,
+        "association_length": 458.92298402207484,
+        "mean_anchor_gap": 12.0,
+        "extent_area": 4551750.0,
+        "straight_fraction": 0.6111111111111112,
+        "at_most_one_bend_fraction": 0.75,
+        "normalized_sequence_length": 75.42944444444444,
+        "sequence_bends_per_flow": 0.8055555555555556,
+        "sequence_stretch_p90": 1.2887989203778678,
+        "task_width_median": 180.0,
+        "hard_geometry": true
+      },
+      "extent": {
+        "width": 3570.0,
+        "height": 1275.0,
+        "aspect_ratio": 2.8
+      },
+      "selected_candidate": "semantic-network_simplex-gap-24-episode-packed-refined",
+      "source_sha256": "56d8faaef8e2439eabeb866926c197dba149c7bd07a9fb849d1f5f8b33a740e7",
+      "output_sha256": "7c7d2475c9c4555adfd90e16d88e0079f40f4fca102ddd601316f8e0a19039da",
+      "legacy_status": "verified",
+      "legacy": {
+        "contacts": 10,
+        "sequence_contacts": 9,
+        "sequence_bends": 40,
+        "sequence_length": 18872.0,
+        "association_bends": 2,
+        "association_length": 498.05075237900473,
+        "mean_anchor_gap": 20.714285714285715,
+        "extent_area": 3805302.0,
+        "straight_fraction": 0.5,
+        "at_most_one_bend_fraction": 0.6111111111111112,
+        "normalized_sequence_length": 85.78181818181818,
+        "sequence_bends_per_flow": 1.1111111111111112,
+        "sequence_stretch_p90": 1.2084291187739464,
+        "task_width_median": 220.0,
+        "hard_geometry": true
+      }
+    },
+    {
+      "case": "S4",
+      "counts": {
+        "nodes": 69,
+        "flows": 86,
+        "documents": 11,
+        "information_links": 11,
+        "roles": 9
+      },
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "reference": {
+        "contacts": 19,
+        "sequence_contacts": 19,
+        "sequence_bends": 40,
+        "sequence_length": 21694.0,
+        "association_bends": 0,
+        "association_length": 312.4787461984886,
+        "mean_anchor_gap": 26.636363636363637,
+        "extent_area": 5380160.0,
+        "straight_fraction": 0.6395348837209303,
+        "at_most_one_bend_fraction": 0.8953488372093024,
+        "normalized_sequence_length": 120.52222222222223,
+        "sequence_bends_per_flow": 0.46511627906976744,
+        "sequence_stretch_p90": 1.676056338028169,
+        "task_width_median": 180.0,
+        "hard_geometry": false
+      },
+      "generated": {
+        "contacts": 12,
+        "sequence_contacts": 11,
+        "sequence_bends": 104,
+        "sequence_length": 32209.2,
+        "association_bends": 0,
+        "association_length": 242.88518781145015,
+        "mean_anchor_gap": 20.136363636363637,
+        "extent_area": 10219446.0,
+        "straight_fraction": 0.6046511627906976,
+        "at_most_one_bend_fraction": 0.6395348837209303,
+        "normalized_sequence_length": 178.94,
+        "sequence_bends_per_flow": 1.2093023255813953,
+        "sequence_stretch_p90": 1.5399361022364217,
+        "task_width_median": 180.0,
+        "hard_geometry": true
+      },
+      "extent": {
+        "width": 5373.0,
+        "height": 1902.0,
+        "aspect_ratio": 2.824921135646688
+      },
+      "selected_candidate": "inline-episodes-secondary-vertical-0-roles-refined",
+      "source_sha256": "8c85beeb81a198c995e32d431f8a299c275a0b0d34a0c41ed348c2d0e1a184ff",
+      "output_sha256": "2841f480885f682cb01d8b995e30d0c3f9ea6321ae35f9d0e8707e1bc9b5aa01",
+      "legacy_status": "failed",
+      "legacy_failure_category": "No candidate passed independent text-label audits"
+    }
+  ],
+  "comparison_on_common_successes": {
+    "sequence_bends": {
+      "legacy_total": 292,
+      "generated_total": 240,
+      "change_percent": -17.808219178082197
+    },
+    "sequence_length": {
+      "legacy_total": 87160.04999999999,
+      "generated_total": 77379.89,
+      "change_percent": -11.220920593781203
+    },
+    "contacts": {
+      "legacy_total": 83,
+      "generated_total": 68,
+      "change_percent": -18.07228915662651
+    },
+    "extent_area": {
+      "legacy_total": 14796926.0,
+      "generated_total": 15781426.45,
+      "change_percent": 6.653411999222003
+    }
+  }
+}

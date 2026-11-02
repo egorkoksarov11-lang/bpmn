@@ -4,9 +4,11 @@ import heapq,re
 from bpmn_refkit.model import TAG_TASK,TAG_GATE
 
 
-def analyze(nodes,seq,membership,original):
+def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=False):
     def repair(n):
-        return nodes[n]['kind'] in TAG_TASK and bool(re.search(r'уточн|исправ|устран|доработ|расхожд|измененн|недоста|незакрыт|повторн|отклонени',nodes[n].get('name','').lower()))
+        name=nodes[n].get('name','').lower()
+        return (nodes[n]['kind'] in TAG_TASK and bool(re.search(r'уточн|исправ|устран|доработ|расхожд|измененн|недоста|незакрыт|повторн|отклонени',name)) or
+                penalize_stops and bool(re.search(r'отмен|прекращ|недопуск|отказ|невозможн|cancel|reject|abort',name)))
     def reading(n):
         x,y,w,h=original[n];return (x+w/2,y+h/2,n)
     outgoing=defaultdict(list);incoming=defaultdict(list)
@@ -17,7 +19,7 @@ def analyze(nodes,seq,membership,original):
         successors=outgoing[u]
         if nodes[u]['kind'] in TAG_TASK and len(successors)==1:
             v=successors[0][1]
-            if nodes[v]['kind'] in TAG_GATE and membership.get(u)==membership.get(v) and v not in claimed:
+            if nodes[v]['kind'] in TAG_GATE and membership.get(u)==membership.get(v) and v not in claimed and (pair_merges or len(incoming[v])==1):
                 pairs[u]=v;claimed.add(v)
     owner={n:n for n in nodes}
     for u,v in pairs.items():owner[v]=u

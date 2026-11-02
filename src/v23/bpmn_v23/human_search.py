@@ -106,13 +106,13 @@ class HumanStyleBackend:
                             # its information links; most close docs need no A*.
                             from .document_layout import straight_link,safe_link
                             from .quality import contacts
-                            paths,details=route_graph(routing_boxes,nodes,seq,[],docs,oldpaths,rounds=1,avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,[],boxes),hints=hints,expand_windows=True)
+                            paths,details=route_graph(routing_boxes,nodes,seq,[],docs,oldpaths,rounds=getattr(self,'candidate_refine_rounds',1),avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,[],boxes),hints=hints,expand_windows=True,routing_policy=getattr(self,'routing_policy',None))
                             full_uv={i:(u,v) for i,u,v,_ in seq+assocs};direct=[]
                             for i,u,v,_ in assocs:
                                 p=straight_link(u,v,boxes,nodes)
                                 if safe_link(i,p,routing_boxes,full_uv,paths,nodes=nodes) and len(contacts({**paths,i:p},full_uv))==len(contacts(paths,full_uv)):
                                     paths[i]=p;direct.append(i)
-                            paths,information_details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=0,avoid_crowding=True,priority=report.get('routing_priority'),fixed_paths=paths,expand_windows=True)
+                            paths,information_details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=0,avoid_crowding=True,priority=report.get('routing_priority'),fixed_paths=paths,expand_windows=True,routing_policy=getattr(self,'routing_policy',None))
                             details.update(information_routing=information_details,direct_information_seeds=direct)
                         else:
                             paths,details=route_graph(routing_boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,avoid_crowding=True,priority=report.get('routing_priority') or routing_order(report,nodes,seq,assocs,boxes),hints=hints,fixed_paths=fixed)
@@ -159,7 +159,7 @@ class HumanStyleBackend:
             interrupted=False
             try:
                 with deadline(min(120,self.candidate_seconds)):
-                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),protected_ids=[i for i,_,_,_ in assocs if len(paths[i])<=10] if getattr(self,'straight_documents',False) else (),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
+                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),routing_policy=getattr(self,'routing_policy',None),protected_ids=[i for i,_,_,_ in assocs if len(paths[i])<=10] if getattr(self,'straight_documents',False) else (),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
             except TimeoutError:refinements=[];interrupted=True
             paths=attach(paths,uv,boxes,nodes)
             if getattr(self,'straight_documents',False):

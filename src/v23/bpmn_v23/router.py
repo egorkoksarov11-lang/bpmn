@@ -20,7 +20,7 @@ def overlapping(p, paths):
     return any(segment_overlap(a,b,c,d)>.01 for a,b in zip(p,p[1:]) for ps in paths.values() for c,d in zip(ps,ps[1:]))
 
 
-def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_margin=120,bend_penalty=70):
+def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_margin=120,bend_penalty=70,crossing_penalty=1500):
     u,v=uv[eid];bu,bv=boxes[u],boxes[v]
     x0=min(bu[0],bv[0])-window_margin;x1=max(bu[0]+bu[2],bv[0]+bv[2])+window_margin
     y0=min(bu[1],bv[1])-window_margin;y1=max(bu[1]+bu[3],bv[1]+bv[3])+window_margin
@@ -58,7 +58,7 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_
             if segment_overlap(a,b,c,d)>.01:return math.inf
             if intersection(a,b,c,d) is not None:crossings+=1
             if avoid_crowding:near+=parallel_nearness(a,b,c,d,12)
-        return abs(a[0]-b[0])+abs(a[1]-b[1])+crossings*1500+near*3
+        return abs(a[0]-b[0])+abs(a[1]-b[1])+crossings*crossing_penalty+near*3
     if not pairs:return None
     pairs=[(tuple(s),tuple(t)) for s,t in pairs]
     sources=list(dict.fromkeys(s for s,t in pairs));targets=list(dict.fromkeys(t for s,t in pairs))
@@ -112,11 +112,38 @@ def free_pairs(boxes,uv,paths,u,v):
     return [(s,t) for s in ports(u) for t in ports(v)]
 
 
-def choice_score(eid,points,others,uv,avoid_crowding=False):
+
+def orthogonal_candidates(eid,boxes,uv,paths,base_path=None):
+    """Include perpendicular ports: a local diagonal handoff needs one elbow.
+
+    The legacy candidate generator only pairs opposite sides. Checking adjacent
+    sides here prevents a two-bend dogleg from hiding an available L connection.
+    Every added route passes the same clearance and terminal checks.
+    """
+    result=quick_routes(eid,boxes,uv,paths,base_path);seen={tuple(p) for p in result};u,v=uv[eid]
+    def ports(box,fraction):
+        x,y,w,h=box
+        return {'R':(x+w,y+h*fraction),'L':(x,y+h*fraction),'T':(x+w*fraction,y),'B':(x+w*fraction,y+h)}
+    for source_fraction in (.5,.35,.65,.2,.8):
+        for target_fraction in (.5,.35,.65,.2,.8):
+            a,b=ports(boxes[u],source_fraction),ports(boxes[v],target_fraction)
+            for side in ('R','L','T','B'):
+                for target in (('T','B') if side in ('R','L') else ('R','L')):
+                    start,end=a[side],b[target]
+                    for elbow in ((start[0],end[1]),(end[0],start[1])):
+                        points=compress([start,elbow,end]);key=tuple(points)
+                        if key in seen or len(points)<2:continue
+                        seen.add(key)
+                        if safe_poly(eid,points,boxes,uv):result.append(points)
+    return result
+
+
+def choice_score(eid,points,others,uv,avoid_crowding=False,routing_policy=None):
     raw=edge_score(eid,points,others,uv)
     if not avoid_crowding:return raw
     near=edge_crowding(points,others,12)
-    return (round(raw[0]*1500+near*3+raw[1]*70+raw[2],4),*raw)
+    policy=routing_policy or {}
+    return (round(raw[0]*policy.get('crossing_penalty',1500)+near*3+raw[1]*policy.get('bend_penalty',70)+raw[2],4),*raw)
 
 
 def orthogonal_shortcuts(points):
@@ -138,7 +165,7 @@ def orthogonal_shortcuts(points):
                 if not crossed:yield candidate
 
 
-def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowding=False,simplify=False,protected_ids=()):
+def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowding=False,simplify=False,protected_ids=(),routing_policy=None):
     """Rip up congested edges; commit only a strictly better global score."""
     changes=[]
     for iteration in range(rounds):
@@ -154,18 +181,18 @@ def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowd
             if count[eid]<1 and eid not in crowded and eid not in simplify_ids:continue
             old=paths[eid];others={k:p for k,p in paths.items() if k!=eid}
             def value_of(points):
-                value=choice_score(eid,points,others,uv,avoid_crowding)
+                value=choice_score(eid,points,others,uv,avoid_crowding,routing_policy)
                 return (len(points)>10,*value) if simplify else value
             before=value_of(old)
-            variants=quick_routes(eid,boxes,uv,others,old)
+            variants=(orthogonal_candidates if routing_policy is not None else quick_routes)(eid,boxes,uv,others,old)
             if simplify:variants.extend(orthogonal_shortcuts(old))
             if hints:variants.extend(p for p in hints(eid,others) if safe_poly(eid,p,boxes,uv))
             variants=[p for p in variants if safe_poly(eid,p,boxes,uv) and not overlapping(p,others)]
             u,v=uv[eid]
             # A* needs only the already valid ports; alternative sides come from quick routes.
             port_pairs=free_pairs(boxes,uv,others,u,v) if avoid_crowding or count[eid]>1 else [(old[0],old[-1])]
-            routed=astar(eid,boxes,uv,others,port_pairs,clip_window=clip_window,avoid_crowding=avoid_crowding)
-            if routed is None and not clip_window:routed=astar(eid,boxes,uv,others,port_pairs,avoid_crowding=avoid_crowding)
+            routed=astar(eid,boxes,uv,others,port_pairs,clip_window=clip_window,avoid_crowding=avoid_crowding,**(routing_policy or {}))
+            if routed is None and not clip_window:routed=astar(eid,boxes,uv,others,port_pairs,avoid_crowding=avoid_crowding,**(routing_policy or {}))
             if routed:variants.append(routed)
             if simplify and len(old)>10:
                 for penalty in (240,1000):
@@ -182,7 +209,7 @@ def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowd
     return changes
 
 
-def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,priority=None,hints=None,avoid_crowding=False,fixed_paths=None,expand_windows=False):
+def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,priority=None,hints=None,avoid_crowding=False,fixed_paths=None,expand_windows=False,routing_policy=None):
     uv={i:(u,v) for i,u,v,_ in seq+assocs};paths={i:list(p) for i,p in (fixed_paths or {}).items()};usage=defaultdict(set)
     if not set(paths).issubset(uv):raise ValueError('Unknown fixed edge')
     for eid,p in paths.items():
@@ -209,10 +236,10 @@ def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,p
     for eid in order:
         if eid in paths:continue
         u,v=uv[eid]
-        variants=quick_routes(eid,boxes,uv,paths,oldpaths[eid])
+        variants=(orthogonal_candidates if routing_policy is not None else quick_routes)(eid,boxes,uv,paths,oldpaths[eid])
         if hints:variants.extend(p for p in hints(eid,paths) if safe_poly(eid,p,boxes,uv))
         variants=[p for p in variants if p[0] not in usage[u] and p[-1] not in usage[v] and safe_poly(eid,p,boxes,uv) and not overlapping(p,paths)]
-        if variants:p=min(variants,key=lambda p:choice_score(eid,p,paths,uv,avoid_crowding))
+        if variants:p=min(variants,key=lambda p:choice_score(eid,p,paths,uv,avoid_crowding,routing_policy))
         else:
             pairs=[(s,t) for s in port_options(u) for t in port_options(v)]
             pairs.sort(key=lambda st:abs(st[0][0]-st[1][0])+abs(st[0][1]-st[1][1]))
@@ -221,19 +248,21 @@ def route_graph(boxes,nodes,seq,assocs,docs,oldpaths,rounds=2,clip_window=True,p
                 if pair[0] not in used_s and pair[1] not in used_t:
                     diverse.append(pair);used_s.add(pair[0]);used_t.add(pair[1])
             pairs=diverse+[pair for pair in pairs if pair not in diverse]
-            p=astar(eid,boxes,uv,paths,pairs,clip_window=clip_window,avoid_crowding=avoid_crowding)
+            p=astar(eid,boxes,uv,paths,pairs,clip_window=clip_window,avoid_crowding=avoid_crowding,**(routing_policy or {}))
             if p is None and expand_windows:
                 for margin in (300,600):
-                    p=astar(eid,boxes,uv,paths,pairs,clip_window=clip_window,avoid_crowding=avoid_crowding,window_margin=margin)
+                    p=astar(eid,boxes,uv,paths,pairs,clip_window=clip_window,avoid_crowding=avoid_crowding,window_margin=margin,**(routing_policy or {}))
                     if p is not None:break
-            if p is None and not clip_window:p=astar(eid,boxes,uv,paths,pairs,avoid_crowding=avoid_crowding)
+            if p is None and not clip_window:p=astar(eid,boxes,uv,paths,pairs,avoid_crowding=avoid_crowding,**(routing_policy or {}))
             fallbacks+=1
         if p is None:raise RuntimeError('No distinct-channel route for '+eid)
         paths[eid]=p;usage[u].add(p[0]);usage[v].add(p[-1])
     initial=score(paths,uv)
     interrupted=False
-    try:changes=refine_paths(boxes,uv,paths,rounds=0 if fixed_paths else rounds,clip_window=clip_window,hints=hints,avoid_crowding=avoid_crowding)
-    except TimeoutError:changes=[];interrupted=True
+    try:changes=refine_paths(boxes,uv,paths,rounds=0 if fixed_paths else rounds,clip_window=clip_window,hints=hints,avoid_crowding=avoid_crowding,routing_policy=routing_policy)
+    except TimeoutError:
+        if routing_policy is not None:raise
+        changes=[];interrupted=True
     return paths,{'refinement_interrupted':interrupted,'astar_fallbacks':fallbacks,'initial_quality':initial,'final_quality':score(paths,uv),'refinements':changes}
 
 

@@ -150,7 +150,7 @@ class GraphChannelsBackend(HumanStyleBackend):
                 # the former coordinates of a document in the input diagram.
                 for d,owner in semantic_document_owners(nodes,docs,assocs,basis).items():
                     x,y,w,h=basis[owner];dw,dh=original[d][2:];basis[d]=(x+w/2-dw/2,y+h+24,dw,dh)
-                try:boxes,report=attachment_axes(nodes,docs,seq,assocs,member,lanes,basis,gap_size=gap,compact_bays=gap==24)
+                try:boxes,report=attachment_axes(nodes,docs,seq,assocs,member,lanes,basis,gap_size=gap,compact_bays=gap==24,overlap_corridors=getattr(self,'overlap_corridors',False))
                 except ValueError:continue
                 if gap==24:
                     from .skyline_layout import compact_rows
@@ -180,12 +180,30 @@ class ScratchBackend:
         started=time.monotonic()
         with tempfile.TemporaryDirectory(prefix='semantic-only-',dir=Path(output).parent) as folder:
             neutral=Path(folder)/'neutral.bpmn';erasure=erase_geometry(source,neutral)
-            backend=HumanStyleBackend(candidate_seconds=self.candidate_seconds,orient_decisions=False) if self.control else (self.graph_backend or GraphChannelsBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
+            if self.control:
+                backend=HumanStyleBackend(candidate_seconds=self.candidate_seconds,orient_decisions=False)
+            else:
+                from .episode_layout import EpisodeGraphBackend
+                backend=(self.graph_backend or EpisodeGraphBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
             result=backend.layout(neutral,output,svg)
+            if not self.control and getattr(backend,'local_episode_editing',False):
+                from .cold_guard import protect_cold_result
+                guard,adopted=protect_cold_result(neutral,output,svg,candidate_seconds=self.candidate_seconds,search_seconds=self.search_seconds or 200,role_order=self.role_order)
+                if adopted is not None:
+                    result['primary_candidate_before_guard']=result['selected_candidate']
+                    result['selected_candidate']='internal-cold-guard/'+adopted['selected_candidate']
+                result['internal_cold_guard']=guard
             if not self.control:
                 from .attachment_refinement import compact_attachments
                 final=read_bpmn(output);anchors=semantic_document_owners(final[4],final[7],final[6],final[-2])
                 result['local_attachment_moves']=compact_attachments(output,svg,neutral,seconds=min(12,self.candidate_seconds*2),fixed_owners=anchors)
+                if getattr(backend,'local_episode_editing',False):
+                    from .local_editing import edit_groups
+                    result['local_episode_edits']=edit_groups(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
+                    from .port_refinement import refine_ports
+                    result['port_refinement']=refine_ports(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
+                    from .whitespace import compact_whitespace
+                    result['whitespace_compaction']=compact_whitespace(output,svg,neutral)
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')
         result['geometry_erasure']=erasure;result['from_scratch']=True;result['seconds']=round(time.monotonic()-started,3)
         result['reference_target_met']=False

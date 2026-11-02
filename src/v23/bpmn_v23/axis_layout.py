@@ -45,7 +45,7 @@ def semantic_axes(values,initial,edges,tolerance,blocked=None):
     return {n:order[root(initial[n])] for n in values}
 
 
-def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_reserve=1.0,start_above=False,responsive=False,attachment_owners=()):
+def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_reserve=1.0,start_above=False,responsive=False,attachment_owners=(),flow_caption_reserve=False):
     motifs=analyze(nodes,seq,member,original);objects=nodes|docs
     source_tasks=[original[n] for n,o in nodes.items() if o['kind'] in TAG_TASK]
     sw=median(b[2] for b in source_tasks) if source_tasks else 200
@@ -114,6 +114,24 @@ def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_res
                 elif kind=='endEvent':
                     cap=text_layout(name,140,1000,(12,),2,1)['required_height']
                     below[n]=max(below[n],half+cap+8)
+    flow_bays=[]
+    if flow_caption_reserve:
+        from .typography import text_layout,width as text_width
+        vertical_extra={}
+        for eid,u,v,name in seq:
+            if len(name)<9 or member[u]!=member[v]:continue
+            capw=min(140,max(80,text_width(name,12)+4));caph=text_layout(name,capw,1000,(12,),2,1)['required_height']
+            a,b=cols[u],cols[v]
+            if a!=b:
+                left,right=(u,v) if a<b else (v,u)
+                constraints[cols[right]].append((cols[left],frames[left]/2+frames[right]/2+max(gap,capw*.7+16)))
+            elif rows[u]!=rows[v]:
+                key=(u,'below' if cy[u]<cy[v] else 'above')
+                vertical_extra[key]=max(vertical_extra.get(key,0),caph+16)
+            flow_bays.append(eid)
+        for (n,side),extra in vertical_extra.items():
+            if side=='below':below[n]+=extra
+            else:above[n]+=extra
     caption_specs={}
     if start_above:
         for r,ids in byrow.items():
@@ -154,7 +172,7 @@ def axis_proposal(nodes,docs,seq,assocs,member,lanes,original,gap=28,caption_res
     report={'external_engine':'axis-separation-constraints','family':'reading-axis-refinement','pairs':motifs['pairs'],'main_macros':[n for c in motifs['components'] for n in c['backbone']],
             'feedback_edges':sorted(feedback),'document_owners':owners,'role_order':laneorder,
             'routing_priority':[i for i,_,_,_ in sorted(seq,key=priority)]+[i for i,_,_,_ in assocs],
-            'reserved_captions':captions,'mapped_axes':{'x':[[median(original[n][0]+original[n][2]/2 for n in objects if cols[n]==c),x[c]] for c in sorted(x)],'y':[[median(original[n][1]+original[n][3]/2 for n in objects if rows[n]==r),median(out[n][1]+out[n][3]/2 for n in objects if rows[n]==r)] for r in sorted(byrow,key=lambda r:median(original[n][1]+original[n][3]/2 for n in byrow[r]))]},'axis_columns':cols,'axis_rows':{n:list(r) for n,r in rows.items()},'gap':gap,'caption_reserve':caption_reserve,'task_size':[taskw,taskh],
+            'reserved_captions':captions,'mapped_axes':{'x':[[median(original[n][0]+original[n][2]/2 for n in objects if cols[n]==c),x[c]] for c in sorted(x)],'y':[[median(original[n][1]+original[n][3]/2 for n in objects if rows[n]==r),median(out[n][1]+out[n][3]/2 for n in objects if rows[n]==r)] for r in sorted(byrow,key=lambda r:median(original[n][1]+original[n][3]/2 for n in byrow[r]))]},'axis_columns':cols,'axis_rows':{n:list(r) for n,r in rows.items()},'gap':gap,'flow_caption_bays':flow_bays,'caption_reserve':caption_reserve,'task_size':[taskw,taskh],
             'method':'source reading axes, full-text envelopes, DAG separation constraints; geometry hints, not a copied reference'}
     return out,report
 
