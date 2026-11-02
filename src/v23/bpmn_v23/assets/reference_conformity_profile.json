@@ -1,0 +1,125 @@
+{
+  "complexity_ranges": {
+    "flow_count": [
+      6,
+      69
+    ],
+    "node_count": [
+      7,
+      59
+    ],
+    "lane_count": [
+      1,
+      8
+    ],
+    "return_fraction": [
+      0.0,
+      0.14285714285714285
+    ]
+  },
+  "version": "reference-conformity-v1",
+  "reference_count": 32,
+  "bands": {
+    "bends_per_flow": {
+      "direction": "low",
+      "p10": 0.2631578947368421,
+      "median": 0.5,
+      "p90": 0.6896551724137931,
+      "scale": 0.2716346153846154
+    },
+    "straight_fraction": {
+      "direction": "high",
+      "p10": 0.5072463768115942,
+      "median": 0.6363636363636364,
+      "p90": 0.8,
+      "scale": 0.1590909090909091
+    },
+    "p90_bends": {
+      "direction": "low",
+      "p10": 1,
+      "median": 2,
+      "p90": 2,
+      "scale": 1
+    },
+    "mean_length_widths": {
+      "direction": "low",
+      "p10": 0.6858823529411764,
+      "median": 1.0237547892720307,
+      "p90": 1.6552083333333334,
+      "scale": 0.44914757824794527
+    },
+    "p90_length_widths": {
+      "direction": "low",
+      "p10": 1.5476190476190477,
+      "median": 2.359090909090909,
+      "p90": 4.91875,
+      "scale": 1.3049999999999997
+    },
+    "forward_hop_excess": {
+      "direction": "low",
+      "p10": 0.021121,
+      "median": 0.127971,
+      "p90": 0.829051,
+      "scale": 0.380599
+    },
+    "contacts_per_flow": {
+      "direction": "low",
+      "p10": 0.0,
+      "median": 0.041666666666666664,
+      "p90": 0.3448275862068966,
+      "scale": 0.10714285714285714
+    },
+    "parallel_crowding_per_flow": {
+      "direction": "low",
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.0023,
+      "scale": 0.05
+    },
+    "hotspot_excess": {
+      "direction": "low",
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.0,
+      "scale": 0.05
+    },
+    "area_factor": {
+      "direction": "low",
+      "p10": 4.056109230344065,
+      "median": 5.083119920654894,
+      "p90": 9.166462471799985,
+      "scale": 1.2707799801637234
+    },
+    "aspect_ratio": {
+      "direction": "range",
+      "p10": 1.310569105691057,
+      "median": 2.136,
+      "p90": 2.69811320754717,
+      "scale": 0.7152542372881354
+    },
+    "axis_aligned_fraction": {
+      "direction": "high",
+      "p10": 0.7058823529411765,
+      "median": 0.7857142857142857,
+      "p90": 0.8947368421052632,
+      "scale": 0.19642857142857142
+    },
+    "document_distance_widths": {
+      "direction": "low",
+      "p10": 0.10755676104232255,
+      "median": 0.18300350792051817,
+      "p90": 0.2427632059093468,
+      "scale": 0.05265645339568065
+    },
+    "document_bends": {
+      "direction": "low",
+      "p10": 0.0,
+      "median": 0.0,
+      "p90": 0.25,
+      "scale": 0.05
+    }
+  },
+  "target": 80,
+  "interpretation": "diagnostic conformity, NOT 80% human-rated visual similarity",
+  "archive_sha256": "5ea4afb24930ce38fa6576c716e8f5df2731d7023b955ed7e31a38129f807c0e"
+}

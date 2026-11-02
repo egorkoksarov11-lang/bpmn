@@ -1,0 +1,20 @@
+{
+  "method": "file-level bootstrap; NOT a confidence interval of human similarity; related models may be dependent",
+  "resamples": 300,
+  "seed": 23,
+  "file_count": 32,
+  "unique_raw_hashes": 32,
+  "scores": {
+    "baseline": {
+      "p05": 40.64,
+      "median": 53.6,
+      "p95": 68.82
+    },
+    "candidate": {
+      "p05": 51.48,
+      "median": 66.745,
+      "p95": 83.02
+    }
+  },
+  "candidate_improves_baseline_fraction": 1.0
+}

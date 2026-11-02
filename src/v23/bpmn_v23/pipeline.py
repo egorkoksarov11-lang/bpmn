@@ -162,6 +162,10 @@ def run(source, destination, backend=None):
                   'before_semantic_sha256':hashlib.sha256(normalized_model(source)).hexdigest(),
                   'after_semantic_sha256':hashlib.sha256(normalized_model(bpmn)).hexdigest(),
                   'di_structure_preserved':True,'di_structure_sha256':di_structure_digest(bpmn)}
+        if getattr(backend,'reference_profile',None):
+            from .reference_metrics import features,evaluate
+            checks={'semantic_freeze':True,'DI_freeze':True,'routing_safety':after['routing_safety_passed'],'clearance':after['edge_clearance_passed'],'text_and_labels':not(after['task_text_overflows'] or after['label_collision_pairs'] or after['label_line_cuts']),'no_pathological_bends':not after['excessive_bend_edges']}
+            save_json(stage/'reference_conformity.json',evaluate(features(bpmn),backend.reference_profile,checks))
         save_json(stage/'semantic_diff.json',semantic)
         save_json(stage/'geometry_report.json',{'before':before,'after':after})
         report['output']=str(destination/'process_08_v23.bpmn')
@@ -185,5 +189,26 @@ def main():
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
     p.add_argument('--repack-spine',action='store_true',help='experimental joint placement of primary steps and corrections')
     p.add_argument('--scenario-blocks',action='store_true',help='experimental compact local loops and joint moves')
+    p.add_argument('--layout-engine',choices=['human','elk','author-stages','lane-align','seed-orient','route-refine'],default='human')
+    p.add_argument('--elk-module',type=Path,help='optional elk.bundled.js path; otherwise install npm dependencies')
+    p.add_argument('--reference-profile',type=Path,help='frozen profile from tools/calibrate_references.py')
+    p.add_argument('--seed-report',type=Path,help='original placement report for contextual orientation')
     a=p.parse_args()
-    print(json.dumps(run(a.input,a.output_dir,HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only,repack_spine=a.repack_spine,scenario_blocks=a.scenario_blocks)),ensure_ascii=False,indent=2))
+    if a.layout_engine=='elk':
+        from .elk_layout import ElkBackend
+        backend=ElkBackend(elk_module=a.elk_module,candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='route-refine':
+        from .route_refinement import RouteRefinementBackend
+        backend=RouteRefinementBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='seed-orient':
+        if a.seed_report is None:p.error('--seed-report is required for seed-orient')
+        from .seed_orientation import SeedOrientationBackend
+        backend=SeedOrientationBackend(seed_report=a.seed_report,candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='lane-align':
+        from .lane_alignment import LaneAlignmentBackend
+        backend=LaneAlignmentBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    elif a.layout_engine=='author-stages':
+        from .phase_layout import PhaseBackend
+        backend=PhaseBackend(candidate_seconds=a.candidate_timeout,incumbent=a.incumbent,reference_profile=a.reference_profile)
+    else:backend=HumanStyleBackend(candidate_seconds=a.candidate_timeout,orient_decisions=not a.no_decision_orientations,incumbent=a.incumbent,orientations_only=a.orientations_only,repack_spine=a.repack_spine,scenario_blocks=a.scenario_blocks,reference_profile=a.reference_profile)
+    print(json.dumps(run(a.input,a.output_dir,backend),ensure_ascii=False,indent=2))

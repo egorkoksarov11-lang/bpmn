@@ -112,17 +112,19 @@ def choice_score(eid,points,others,uv,avoid_crowding=False):
     return (round(raw[0]*1500+near*3+raw[1]*70+raw[2],4),*raw)
 
 
-def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowding=False):
+def refine_paths(boxes,uv,paths,rounds=2,clip_window=True,hints=None,avoid_crowding=False,simplify=False):
     """Rip up congested edges; commit only a strictly better global score."""
     changes=[]
     for iteration in range(rounds):
         count=burdens(paths,uv);changed=False;crowded={}
+        simplify_ids={eid for eid,p in paths.items() if len(p)>4} if simplify else set()
+        for eid in simplify_ids:count.setdefault(eid,0)
         if avoid_crowding:
             for eid,points in paths.items():
                 near=edge_crowding(points,{k:p for k,p in paths.items() if k!=eid},12)
                 if near>24:crowded[eid]=near;count.setdefault(eid,0)
         for eid in sorted(count,key=lambda k:(-count[k]*1500-crowded.get(k,0)*3,k)):
-            if count[eid]<1 and eid not in crowded:continue
+            if count[eid]<1 and eid not in crowded and eid not in simplify_ids:continue
             old=paths[eid];others={k:p for k,p in paths.items() if k!=eid};before=choice_score(eid,old,others,uv,avoid_crowding)
             variants=quick_routes(eid,boxes,uv,others,old)
             if hints:variants.extend(p for p in hints(eid,others) if safe_poly(eid,p,boxes,uv))

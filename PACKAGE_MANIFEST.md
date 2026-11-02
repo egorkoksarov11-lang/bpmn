@@ -5,3 +5,7 @@
 Источник бизнес-логики — inputs/benchmark/process_08_v4_frozen.bpmn. examples/process_08_r2.bpmn — только проверяемая исходная геометрия для сравнительного эксперимента, не замена frozen v4.
 
 Запуск, ограничения и показатели приведены в README.md и docs/DEVELOPMENT_R3.md. Результат экспериментальный; полная читаемая печать на A4 и глобальная оптимальность не заявляются.
+
+## Дополнение r6
+
+Новые необязательные npm-зависимости зафиксированы в `package.json`/`package-lock.json`. Добавлены `tools/calibrate_references.py`, `tools/reference_sensitivity.py`, `tools/probe_auto_layout.cjs`, адаптеры размещения и статический профиль `src/v23/bpmn_v23/assets/reference_conformity_profile.json`. Внешние библиотеки и node_modules не публикуются. Результаты: `output/reference_conformity.json`, `tests/reports/reference_metrics_r6/`, `tests/reports/r6_experiments.json`, `tests/reports/r6_all_tests.xml`; описание — `docs/DEVELOPMENT_R6.md`. Исходный r4 сохранён в `examples/process_08_r4.bpmn` с его отчётом размещения.

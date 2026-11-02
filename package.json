@@ -1,0 +1,1 @@
+{"name":"bpmn-universal-layout-lab","private":true,"version":"23.1.2-dev","description":"Optional reproducible layout-engine experiments","dependencies":{"elkjs":"0.12.1","bpmn-auto-layout":"1.3.0"}}

@@ -1,0 +1,114 @@
+{
+  "outside_reference_complexity": {
+    "flow_count": 95,
+    "node_count": 64,
+    "return_fraction": 0.17894736842105263
+  },
+  "conformity_percent": 70.39,
+  "family_scores": {
+    "routes": 33.78,
+    "distance": 55.77,
+    "crossings": 77.3,
+    "crowding": 81.22,
+    "packing": 100.0,
+    "alignment": 72.39,
+    "documents": 100.0
+  },
+  "metrics": {
+    "bends_per_flow": {
+      "value": 1.568421052631579,
+      "score": 19.84,
+      "reference_p10": 0.2631578947368421,
+      "reference_p90": 0.6896551724137931
+    },
+    "straight_fraction": {
+      "value": 0.4631578947368421,
+      "score": 87.06,
+      "reference_p10": 0.5072463768115942,
+      "reference_p90": 0.8
+    },
+    "p90_bends": {
+      "value": 5,
+      "score": 22.31,
+      "reference_p10": 1,
+      "reference_p90": 2
+    },
+    "mean_length_widths": {
+      "value": 2.345923444976077,
+      "score": 46.35,
+      "reference_p10": 0.6858823529411764,
+      "reference_p90": 1.6552083333333334
+    },
+    "p90_length_widths": {
+      "value": 6.040909090909091,
+      "score": 65.05,
+      "reference_p10": 1.5476190476190477,
+      "reference_p90": 4.91875
+    },
+    "forward_hop_excess": {
+      "value": 1.249785,
+      "score": 57.54,
+      "reference_p10": 0.021121,
+      "reference_p90": 0.829051
+    },
+    "contacts_per_flow": {
+      "value": 0.4,
+      "score": 77.3,
+      "reference_p10": 0.0,
+      "reference_p90": 0.3448275862068966
+    },
+    "parallel_crowding_per_flow": {
+      "value": 0.030865,
+      "score": 75.15,
+      "reference_p10": 0.0,
+      "reference_p90": 0.0023
+    },
+    "hotspot_excess": {
+      "value": 0.013036,
+      "score": 87.78,
+      "reference_p10": 0.0,
+      "reference_p90": 0.0
+    },
+    "area_factor": {
+      "value": 7.682261105928846,
+      "score": 100.0,
+      "reference_p10": 4.056109230344065,
+      "reference_p90": 9.166462471799985
+    },
+    "aspect_ratio": {
+      "value": 1.7026884554559831,
+      "score": 100.0,
+      "reference_p10": 1.310569105691057,
+      "reference_p90": 2.69811320754717
+    },
+    "axis_aligned_fraction": {
+      "value": 0.5789473684210527,
+      "score": 72.39,
+      "reference_p10": 0.7058823529411765,
+      "reference_p90": 0.8947368421052632
+    },
+    "document_distance_widths": {
+      "value": 0.20921717171717172,
+      "score": 100.0,
+      "reference_p10": 0.10755676104232255,
+      "reference_p90": 0.2427632059093468
+    },
+    "document_bends": {
+      "value": 0.1111111111111111,
+      "score": 100.0,
+      "reference_p10": 0.0,
+      "reference_p90": 0.25
+    }
+  },
+  "hard_checks": {
+    "semantic_freeze": true,
+    "DI_freeze": true,
+    "routing_safety": true,
+    "clearance": true,
+    "text_and_labels": true,
+    "no_pathological_bends": true
+  },
+  "target_reached": false,
+  "visual_similarity_verified": false,
+  "scope": "7 statistical families plus mandatory semantics/text/geometry gates; visual 80% needs user validation"
+}

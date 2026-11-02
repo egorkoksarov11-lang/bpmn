@@ -1,0 +1,1183 @@
+{
+  "profile": {
+    "complexity_ranges": {
+      "flow_count": [
+        6,
+        69
+      ],
+      "node_count": [
+        7,
+        59
+      ],
+      "lane_count": [
+        1,
+        8
+      ],
+      "return_fraction": [
+        0.0,
+        0.14285714285714285
+      ]
+    },
+    "version": "reference-conformity-v1",
+    "reference_count": 32,
+    "bands": {
+      "bends_per_flow": {
+        "direction": "low",
+        "p10": 0.2631578947368421,
+        "median": 0.5,
+        "p90": 0.6896551724137931,
+        "scale": 0.2716346153846154
+      },
+      "straight_fraction": {
+        "direction": "high",
+        "p10": 0.5072463768115942,
+        "median": 0.6363636363636364,
+        "p90": 0.8,
+        "scale": 0.1590909090909091
+      },
+      "p90_bends": {
+        "direction": "low",
+        "p10": 1,
+        "median": 2,
+        "p90": 2,
+        "scale": 1
+      },
+      "mean_length_widths": {
+        "direction": "low",
+        "p10": 0.6858823529411764,
+        "median": 1.0237547892720307,
+        "p90": 1.6552083333333334,
+        "scale": 0.44914757824794527
+      },
+      "p90_length_widths": {
+        "direction": "low",
+        "p10": 1.5476190476190477,
+        "median": 2.359090909090909,
+        "p90": 4.91875,
+        "scale": 1.3049999999999997
+      },
+      "forward_hop_excess": {
+        "direction": "low",
+        "p10": 0.021121,
+        "median": 0.127971,
+        "p90": 0.829051,
+        "scale": 0.380599
+      },
+      "contacts_per_flow": {
+        "direction": "low",
+        "p10": 0.0,
+        "median": 0.041666666666666664,
+        "p90": 0.3448275862068966,
+        "scale": 0.10714285714285714
+      },
+      "parallel_crowding_per_flow": {
+        "direction": "low",
+        "p10": 0.0,
+        "median": 0.0,
+        "p90": 0.0023,
+        "scale": 0.05
+      },
+      "hotspot_excess": {
+        "direction": "low",
+        "p10": 0.0,
+        "median": 0.0,
+        "p90": 0.0,
+        "scale": 0.05
+      },
+      "area_factor": {
+        "direction": "low",
+        "p10": 4.056109230344065,
+        "median": 5.083119920654894,
+        "p90": 9.166462471799985,
+        "scale": 1.2707799801637234
+      },
+      "aspect_ratio": {
+        "direction": "range",
+        "p10": 1.310569105691057,
+        "median": 2.136,
+        "p90": 2.69811320754717,
+        "scale": 0.7152542372881354
+      },
+      "axis_aligned_fraction": {
+        "direction": "high",
+        "p10": 0.7058823529411765,
+        "median": 0.7857142857142857,
+        "p90": 0.8947368421052632,
+        "scale": 0.19642857142857142
+      },
+      "document_distance_widths": {
+        "direction": "low",
+        "p10": 0.10755676104232255,
+        "median": 0.18300350792051817,
+        "p90": 0.2427632059093468,
+        "scale": 0.05265645339568065
+      },
+      "document_bends": {
+        "direction": "low",
+        "p10": 0.0,
+        "median": 0.0,
+        "p90": 0.25,
+        "scale": 0.05
+      }
+    },
+    "target": 80,
+    "interpretation": "diagnostic conformity, NOT 80% human-rated visual similarity",
+    "archive_sha256": "5ea4afb24930ce38fa6576c716e8f5df2731d7023b955ed7e31a38129f807c0e"
+  },
+  "failures": [],
+  "reference_files": [
+    {
+      "file": "изм 02 Оформление приема сотрудника.bpmn",
+      "sha256": "e4b6fa7820f8222247367fae663536fd71d20ab0ea724763666cf8671a290e99"
+    },
+    {
+      "file": "изм 03 Подготовка к выходу нового сотрудника.bpmn",
+      "sha256": "8a52e461997d95091730ce8bc79e9f2533b76bb5f7be1d850922bcf44aed6328"
+    },
+    {
+      "file": "изм 04 Адаптация нового сотрудника.bpmn",
+      "sha256": "c95b7b791eddf4e62f140ca01182c3bda0f6ff8fbde0094c94fc9e684a50e91e"
+    },
+    {
+      "file": "изм 05 Изменение условий труда и кадровое перемещение.bpmn",
+      "sha256": "414ee58b98394d8809a252b8934d2274a982e1e3dde178326edafbd69be79128"
+    },
+    {
+      "file": "изм 06 Формирование и утверждение графика отпусков.bpmn",
+      "sha256": "6f80c12931ab029e6c2ab0e843ca84162b41e34a0d0bdd877a21501b85316a31"
+    },
+    {
+      "file": "изм 07 Предоставление отпуска сотруднику.bpmn",
+      "sha256": "07576890722631586a015ac911179850fefc5fb125bfa1721747c96b77432213"
+    },
+    {
+      "file": "изм 08 Установление причины отсутствия сотрудника.bpmn",
+      "sha256": "bedf2d93730f8b038bdba6b82f36101ce7b53fb6399d8af037d5d4bc316dc331"
+    },
+    {
+      "file": "изм 09 Оформление временной нетрудоспособности сотрудника.bpmn",
+      "sha256": "5d2762d5a98fd7e1e9181f8bc29d5602384346bcc24e024b7692960282c2ef6f"
+    },
+    {
+      "file": "изм 10 Увольнение сотрудника.bpmn",
+      "sha256": "be8d2dcd9297638d6887400477cb0f3d33f050c07fe75634e149aa531f3eacaf"
+    },
+    {
+      "file": "изм 11 Сокращение численности и штата.bpmn",
+      "sha256": "9042e29827f9c24931fb47705a67667d40fa66e15ed6296339a9e80ba6a19578"
+    },
+    {
+      "file": "изм 12 Ведение и актуализация личных дел сотрудников.bpmn",
+      "sha256": "9256e1a63ffabb15a2450d2a189e398f6e59d255409c1f23e65820c3d87ef700"
+    },
+    {
+      "file": "изм 13 Табелирование и учет рабочего времени.bpmn",
+      "sha256": "29bc12bb0bae7a0244f51fbfb839e8dfc5fcc464e80ec7f56fab635153af1f9a"
+    },
+    {
+      "file": "изм 14 Схема процесса ЛНА.bpmn",
+      "sha256": "1d5e2b4d4e1271aec3829532d39860963f75852da4b93b3c40f740cb0058a52b"
+    },
+    {
+      "file": "изм 15 Воинский учет при приеме сотрудника.bpmn",
+      "sha256": "0ba7680aae4ed589f5bd7861614bc5ec0c7f6a24e5a8007bfca5b21367ef0d13"
+    },
+    {
+      "file": "изм 16 Актуализация сведений воинского учета.bpmn",
+      "sha256": "a20dd6145620f06a144cb80a18afd487a1aba994b5f95da7e592dd45ed5c983f"
+    },
+    {
+      "file": "изм 17 Воинский учет при увольнении.bpmn",
+      "sha256": "64fa224b7224f9bab8d041934bfcfbb7dfacc1994b72128aa840f7700d018737"
+    },
+    {
+      "file": "изм 18 Периодическая сверка сведений воинского учета.bpmn",
+      "sha256": "8f77779354dd23b08a9b9ae7dd9698f72cb2447f6e361b6b7953713c6eb8601f"
+    },
+    {
+      "file": "изм 19 Обработка документов и запросов военного комиссариата.bpmn",
+      "sha256": "a2be2ec51754d5df615de2af5dba8b6c527d41d979317c04e83c5dc9e04ebbe5"
+    },
+    {
+      "file": "изм 20 Планирование мероприятий воинского учета.bpmn",
+      "sha256": "2406809e79d23297c65bb488217870a47353928c0232b62fee3b2aa0d15bda4d"
+    },
+    {
+      "file": "изм 21 Рассмотрение дисциплинарного проступка сотрудника.bpmn",
+      "sha256": "9ff84cd8926959f4643f145e7088b55e99f927a76ba067e64094ef2ebc7aaaeb"
+    },
+    {
+      "file": "изм 22 Рассмотрение обращений жалоб и конфликтов работников.bpmn",
+      "sha256": "ed91bdefc9b5bc54ced885ecf2603102ae9c784bc29773760419ae12d177dde7"
+    },
+    {
+      "file": "изм 23 Кадровое сопровождение претензионной и судебной работы.bpmn",
+      "sha256": "108f2c7b20087c5a6251d2a5cbf630462c87018e8dfe507d92233bae0642ec7c"
+    },
+    {
+      "file": "изм 24 Подготовка кадровых документов при проверках государственных органов.bpmn",
+      "sha256": "32b18c0ebacd2375673cdc470697f3b5714b2208c2bb56665a16640ab03c7cda"
+    },
+    {
+      "file": "изм 25 Планирование и изменение штатной численности.bpmn",
+      "sha256": "0857c7ad98c8922d07aec42da746f59c601d62738955984009da42888a424e33"
+    },
+    {
+      "file": "изм 26 HR-бюджетирование и контроль расходов на персонал.bpmn",
+      "sha256": "f65ad994526c1abbcfe5275b5ca6980b1b2b9000b1d12501c3896fa45bb9ee94"
+    },
+    {
+      "file": "изм 27 Организация и проведение корпоративных мероприятий.bpmn",
+      "sha256": "6fe42385a58dbaf7ac89efe9e65bfeaacdeedb547c7254c2b4add370f83ef548"
+    },
+    {
+      "file": "СБ/изм 06 Анализ книг покупок на налоговые риски.bpmn",
+      "sha256": "75d1bbca41376001105a1f5c9174905795f972d82645cb5142ac9806f1d5f751"
+    },
+    {
+      "file": "СБ/изм 07 Подготовка материалов по запросам банков.bpmn",
+      "sha256": "9eba7cf5329d5ea375e459a100c501dde1783d67faa69e385e4fc5116ed8a6f5"
+    },
+    {
+      "file": "СБ/изм 08 Подготовка материалов по требованиям ФНС.bpmn",
+      "sha256": "e32649a302418ac61143e1fc3b331f87fa163b7017dada1e098cfc546eecc051"
+    },
+    {
+      "file": "СБ/изм 09 Подготовка материалов по запросам правоохранительных органов.bpmn",
+      "sha256": "9a6254cc9bf2e0d810d533bdaa44f767e657f343ce3a73c74309073587666e68"
+    },
+    {
+      "file": "СБ/изм 10 Оценка рисков участия в государственных контрактах и проектах с бюджетным финансированием.bpmn",
+      "sha256": "bd13da309d10c9b98b06034b46fcb7c7da8c6a2834761f7f00476867639dfcd1"
+    },
+    {
+      "file": "СБ/изм 11 Ведение реестра договорных цепочек.bpmn",
+      "sha256": "f504120b363915b7bd0c05f0f1057ae0dc37544855f258c44985ba3f608768a7"
+    }
+  ],
+  "reference_features": [
+    {
+      "flow_count": 36,
+      "node_count": 31,
+      "lane_count": 6,
+      "return_fraction": 0.1111111111111111,
+      "document_count": 13,
+      "bends_per_flow": 0.3333333333333333,
+      "straight_fraction": 0.75,
+      "p90_bends": 1,
+      "mean_length_widths": 1.6552083333333334,
+      "p90_length_widths": 4.91875,
+      "contacts_per_flow": 0.0,
+      "area_factor": 9.36997500598659,
+      "aspect_ratio": 2.549949545913219,
+      "axis_aligned_fraction": 0.8611111111111112,
+      "document_distance_widths": 0.21032740362755398,
+      "document_bends": 0.07142857142857142,
+      "forward_hop_excess": 0.829051,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 19,
+      "node_count": 18,
+      "lane_count": 4,
+      "return_fraction": 0.05263157894736842,
+      "document_count": 3,
+      "bends_per_flow": 0.2631578947368421,
+      "straight_fraction": 0.7368421052631579,
+      "p90_bends": 1,
+      "mean_length_widths": 0.9500000000000001,
+      "p90_length_widths": 1.76875,
+      "contacts_per_flow": 0.0,
+      "area_factor": 10.734686795072012,
+      "aspect_ratio": 2.4275184275184274,
+      "axis_aligned_fraction": 0.7368421052631579,
+      "document_distance_widths": 0.1871013584305934,
+      "document_bends": 0.3333333333333333,
+      "forward_hop_excess": 0.057766,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 24,
+      "node_count": 23,
+      "lane_count": 4,
+      "return_fraction": 0.041666666666666664,
+      "document_count": 8,
+      "bends_per_flow": 0.5833333333333334,
+      "straight_fraction": 0.625,
+      "p90_bends": 2,
+      "mean_length_widths": 1.3942708333333333,
+      "p90_length_widths": 3.175,
+      "contacts_per_flow": 0.041666666666666664,
+      "area_factor": 8.937376631645973,
+      "aspect_ratio": 3.4971181556195967,
+      "axis_aligned_fraction": 0.75,
+      "document_distance_widths": 0.17221225548685962,
+      "document_bends": 0.25,
+      "forward_hop_excess": 0.283398,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 26,
+      "node_count": 22,
+      "lane_count": 6,
+      "return_fraction": 0.038461538461538464,
+      "document_count": 20,
+      "bends_per_flow": 0.8076923076923077,
+      "straight_fraction": 0.5,
+      "p90_bends": 2,
+      "mean_length_widths": 3.2900452488687786,
+      "p90_length_widths": 6.670588235294118,
+      "contacts_per_flow": 0.038461538461538464,
+      "area_factor": 15.17021847656879,
+      "aspect_ratio": 1.9114114114114114,
+      "axis_aligned_fraction": 0.6153846153846154,
+      "document_distance_widths": 0.2527036048093495,
+      "document_bends": 0.9,
+      "forward_hop_excess": 4.138559,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 21,
+      "node_count": 19,
+      "lane_count": 4,
+      "return_fraction": 0.14285714285714285,
+      "document_count": 7,
+      "bends_per_flow": 0.6666666666666666,
+      "straight_fraction": 0.5714285714285714,
+      "p90_bends": 2,
+      "mean_length_widths": 1.2462406015037593,
+      "p90_length_widths": 2.789473684210526,
+      "contacts_per_flow": 0.14285714285714285,
+      "area_factor": 5.020672352491445,
+      "aspect_ratio": 1.5116279069767442,
+      "axis_aligned_fraction": 0.9047619047619048,
+      "document_distance_widths": 0.1938917429214846,
+      "document_bends": 0.8571428571428571,
+      "forward_hop_excess": 0.165605,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 25,
+      "node_count": 21,
+      "lane_count": 6,
+      "return_fraction": 0.12,
+      "document_count": 17,
+      "bends_per_flow": 0.68,
+      "straight_fraction": 0.56,
+      "p90_bends": 2,
+      "mean_length_widths": 2.039529411764706,
+      "p90_length_widths": 6.4,
+      "contacts_per_flow": 0.04,
+      "area_factor": 9.166462471799985,
+      "aspect_ratio": 1.5688775510204083,
+      "axis_aligned_fraction": 0.72,
+      "document_distance_widths": 0.19841108735257157,
+      "document_bends": 0.11764705882352941,
+      "forward_hop_excess": 1.216765,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 42,
+      "node_count": 36,
+      "lane_count": 3,
+      "return_fraction": 0.0,
+      "document_count": 11,
+      "bends_per_flow": 0.4523809523809524,
+      "straight_fraction": 0.6666666666666666,
+      "p90_bends": 2,
+      "mean_length_widths": 1.186038961038961,
+      "p90_length_widths": 3.2045454545454546,
+      "contacts_per_flow": 0.35714285714285715,
+      "area_factor": 5.211195616617599,
+      "aspect_ratio": 1.6854460093896713,
+      "axis_aligned_fraction": 0.7380952380952381,
+      "document_distance_widths": 0.1388293208947636,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.373572,
+      "parallel_crowding_per_flow": 0.046429,
+      "hotspot_excess": 0.04065
+    },
+    {
+      "flow_count": 30,
+      "node_count": 26,
+      "lane_count": 2,
+      "return_fraction": 0.06666666666666667,
+      "document_count": 11,
+      "bends_per_flow": 0.5666666666666667,
+      "straight_fraction": 0.5666666666666667,
+      "p90_bends": 2,
+      "mean_length_widths": 1.1749472811376287,
+      "p90_length_widths": 3.9263157894736844,
+      "contacts_per_flow": 0.13333333333333333,
+      "area_factor": 4.163104476714922,
+      "aspect_ratio": 2.1985915492957746,
+      "axis_aligned_fraction": 0.6,
+      "document_distance_widths": 0.13647149040574852,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.462345,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 69,
+      "node_count": 53,
+      "lane_count": 8,
+      "return_fraction": 0.014492753623188406,
+      "document_count": 16,
+      "bends_per_flow": 0.8260869565217391,
+      "straight_fraction": 0.3333333333333333,
+      "p90_bends": 2,
+      "mean_length_widths": 2.436082477002081,
+      "p90_length_widths": 5.738095238095238,
+      "contacts_per_flow": 0.8115942028985508,
+      "area_factor": 9.027369541344108,
+      "aspect_ratio": 1.9877825290164937,
+      "axis_aligned_fraction": 0.4927536231884058,
+      "document_distance_widths": 0.17098832152287427,
+      "document_bends": 0.0,
+      "forward_hop_excess": 1.816364,
+      "parallel_crowding_per_flow": 0.713043,
+      "hotspot_excess": 0.026252
+    },
+    {
+      "flow_count": 33,
+      "node_count": 28,
+      "lane_count": 5,
+      "return_fraction": 0.06060606060606061,
+      "document_count": 15,
+      "bends_per_flow": 0.6666666666666666,
+      "straight_fraction": 0.6363636363636364,
+      "p90_bends": 2,
+      "mean_length_widths": 0.9819819819819819,
+      "p90_length_widths": 1.9351351351351351,
+      "contacts_per_flow": 0.030303030303030304,
+      "area_factor": 5.083119920654894,
+      "aspect_ratio": 1.7536723163841808,
+      "axis_aligned_fraction": 0.8484848484848485,
+      "document_distance_widths": 0.1688268637302469,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.395489,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 14,
+      "node_count": 16,
+      "lane_count": 1,
+      "return_fraction": 0.07142857142857142,
+      "document_count": 10,
+      "bends_per_flow": 0.07142857142857142,
+      "straight_fraction": 0.9285714285714286,
+      "p90_bends": 0,
+      "mean_length_widths": 0.5095238095238095,
+      "p90_length_widths": 1.5555555555555556,
+      "contacts_per_flow": 0.0,
+      "area_factor": 4.176889375684556,
+      "aspect_ratio": 2.0153256704980844,
+      "axis_aligned_fraction": 0.9285714285714286,
+      "document_distance_widths": 0.1858734481068496,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.0,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 12,
+      "node_count": 12,
+      "lane_count": 2,
+      "return_fraction": 0.0,
+      "document_count": 2,
+      "bends_per_flow": 0.4166666666666667,
+      "straight_fraction": 0.75,
+      "p90_bends": 2,
+      "mean_length_widths": 0.797093023255814,
+      "p90_length_widths": 1.7325581395348837,
+      "contacts_per_flow": 0.0,
+      "area_factor": 4.938499953759364,
+      "aspect_ratio": 2.136,
+      "axis_aligned_fraction": 0.8333333333333334,
+      "document_distance_widths": 0.10755676104232255,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.168161,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 27,
+      "node_count": 23,
+      "lane_count": 6,
+      "return_fraction": 0.1111111111111111,
+      "document_count": 8,
+      "bends_per_flow": 0.5185185185185185,
+      "straight_fraction": 0.7037037037037037,
+      "p90_bends": 1,
+      "mean_length_widths": 1.2181657848324516,
+      "p90_length_widths": 2.376190476190476,
+      "contacts_per_flow": 0.2222222222222222,
+      "area_factor": 5.229103337885663,
+      "aspect_ratio": 1.1665158371040725,
+      "axis_aligned_fraction": 0.7777777777777778,
+      "document_distance_widths": 0.10275576962087343,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.620844,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 18,
+      "node_count": 17,
+      "lane_count": 2,
+      "return_fraction": 0.0,
+      "document_count": 11,
+      "bends_per_flow": 0.5,
+      "straight_fraction": 0.6111111111111112,
+      "p90_bends": 1,
+      "mean_length_widths": 0.7566666666666666,
+      "p90_length_widths": 1.87,
+      "contacts_per_flow": 0.0,
+      "area_factor": 3.2502970002970004,
+      "aspect_ratio": 2.6407766990291264,
+      "axis_aligned_fraction": 0.7222222222222222,
+      "document_distance_widths": 0.08384202000974274,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.076511,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 15,
+      "node_count": 13,
+      "lane_count": 2,
+      "return_fraction": 0.06666666666666667,
+      "document_count": 8,
+      "bends_per_flow": 0.2,
+      "straight_fraction": 0.8666666666666667,
+      "p90_bends": 1,
+      "mean_length_widths": 0.6858823529411764,
+      "p90_length_widths": 1.8823529411764706,
+      "contacts_per_flow": 0.06666666666666667,
+      "area_factor": 4.073316241001874,
+      "aspect_ratio": 1.310569105691057,
+      "axis_aligned_fraction": 0.8666666666666667,
+      "document_distance_widths": 0.1527217964424081,
+      "document_bends": 0.25,
+      "forward_hop_excess": 0.038571,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 6,
+      "node_count": 7,
+      "lane_count": 2,
+      "return_fraction": 0.0,
+      "document_count": 13,
+      "bends_per_flow": 0.0,
+      "straight_fraction": 1.0,
+      "p90_bends": 0,
+      "mean_length_widths": 0.46249999999999997,
+      "p90_length_widths": 1.03,
+      "contacts_per_flow": 0.0,
+      "area_factor": 4.056109230344065,
+      "aspect_ratio": 2.4149659863945576,
+      "axis_aligned_fraction": 1.0,
+      "document_distance_widths": 0.20184938942354752,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.0,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 21,
+      "node_count": 17,
+      "lane_count": 2,
+      "return_fraction": 0.0,
+      "document_count": 10,
+      "bends_per_flow": 0.3333333333333333,
+      "straight_fraction": 0.7619047619047619,
+      "p90_bends": 1,
+      "mean_length_widths": 0.7921768707482993,
+      "p90_length_widths": 1.5476190476190477,
+      "contacts_per_flow": 0.0,
+      "area_factor": 5.13970858332313,
+      "aspect_ratio": 2.69811320754717,
+      "axis_aligned_fraction": 0.8571428571428571,
+      "document_distance_widths": 0.18300350792051817,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.021121,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 29,
+      "node_count": 25,
+      "lane_count": 3,
+      "return_fraction": 0.0,
+      "document_count": 2,
+      "bends_per_flow": 0.6896551724137931,
+      "straight_fraction": 0.4827586206896552,
+      "p90_bends": 2,
+      "mean_length_widths": 1.0237547892720307,
+      "p90_length_widths": 2.3055555555555554,
+      "contacts_per_flow": 0.3448275862068966,
+      "area_factor": 5.209055342482634,
+      "aspect_ratio": 1.766857142857143,
+      "axis_aligned_fraction": 0.7241379310344828,
+      "document_distance_widths": 0.16781614625414193,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.125424,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 15,
+      "node_count": 14,
+      "lane_count": 2,
+      "return_fraction": 0.06666666666666667,
+      "document_count": 6,
+      "bends_per_flow": 0.26666666666666666,
+      "straight_fraction": 0.8,
+      "p90_bends": 1,
+      "mean_length_widths": 0.7633333333333333,
+      "p90_length_widths": 2.4263157894736844,
+      "contacts_per_flow": 0.0,
+      "area_factor": 3.6814936644596283,
+      "aspect_ratio": 2.468926553672316,
+      "axis_aligned_fraction": 0.8,
+      "document_distance_widths": 0.20518302169455668,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.034237,
+      "parallel_crowding_per_flow": 0.001058,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 34,
+      "node_count": 30,
+      "lane_count": 6,
+      "return_fraction": 0.029411764705882353,
+      "document_count": 13,
+      "bends_per_flow": 0.6176470588235294,
+      "straight_fraction": 0.5882352941176471,
+      "p90_bends": 2,
+      "mean_length_widths": 1.5866830065359476,
+      "p90_length_widths": 3.5555555555555554,
+      "contacts_per_flow": 0.08823529411764706,
+      "area_factor": 7.307658405303776,
+      "aspect_ratio": 2.207968901846453,
+      "axis_aligned_fraction": 0.7058823529411765,
+      "document_distance_widths": 0.16985194162167913,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.585751,
+      "parallel_crowding_per_flow": 0.0023,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 31,
+      "node_count": 27,
+      "lane_count": 5,
+      "return_fraction": 0.03225806451612903,
+      "document_count": 9,
+      "bends_per_flow": 0.4838709677419355,
+      "straight_fraction": 0.6451612903225806,
+      "p90_bends": 2,
+      "mean_length_widths": 1.007261166193331,
+      "p90_length_widths": 2.665,
+      "contacts_per_flow": 0.06451612903225806,
+      "area_factor": 5.787101633225012,
+      "aspect_ratio": 2.6694117647058824,
+      "axis_aligned_fraction": 0.7741935483870968,
+      "document_distance_widths": 0.17266730595833688,
+      "document_bends": 0.2222222222222222,
+      "forward_hop_excess": 0.118422,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 19,
+      "node_count": 15,
+      "lane_count": 3,
+      "return_fraction": 0.10526315789473684,
+      "document_count": 3,
+      "bends_per_flow": 0.47368421052631576,
+      "straight_fraction": 0.631578947368421,
+      "p90_bends": 1,
+      "mean_length_widths": 0.8828609986504724,
+      "p90_length_widths": 1.241025641025641,
+      "contacts_per_flow": 0.05263157894736842,
+      "area_factor": 4.611944098676021,
+      "aspect_ratio": 1.8860544217687074,
+      "axis_aligned_fraction": 0.8947368421052632,
+      "document_distance_widths": 0.20537824983808875,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.058418,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 21,
+      "node_count": 17,
+      "lane_count": 4,
+      "return_fraction": 0.09523809523809523,
+      "document_count": 3,
+      "bends_per_flow": 0.5714285714285714,
+      "straight_fraction": 0.6190476190476191,
+      "p90_bends": 2,
+      "mean_length_widths": 0.861111111111111,
+      "p90_length_widths": 2.0527777777777776,
+      "contacts_per_flow": 0.0,
+      "area_factor": 4.571201599056966,
+      "aspect_ratio": 1.7863924050632911,
+      "axis_aligned_fraction": 0.8095238095238095,
+      "document_distance_widths": 0.1509126382736539,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.041334,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 26,
+      "node_count": 23,
+      "lane_count": 5,
+      "return_fraction": 0.11538461538461539,
+      "document_count": 1,
+      "bends_per_flow": 0.6153846153846154,
+      "straight_fraction": 0.5384615384615384,
+      "p90_bends": 2,
+      "mean_length_widths": 1.1333916083916085,
+      "p90_length_widths": 2.672727272727273,
+      "contacts_per_flow": 0.038461538461538464,
+      "area_factor": 5.179072372632451,
+      "aspect_ratio": 1.477404403244496,
+      "axis_aligned_fraction": 0.7692307692307693,
+      "document_distance_widths": 0.12306351246073531,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.127971,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 47,
+      "node_count": 42,
+      "lane_count": 6,
+      "return_fraction": 0.02127659574468085,
+      "document_count": 5,
+      "bends_per_flow": 0.5531914893617021,
+      "straight_fraction": 0.6170212765957447,
+      "p90_bends": 2,
+      "mean_length_widths": 0.7803191489361702,
+      "p90_length_widths": 1.71,
+      "contacts_per_flow": 0.0851063829787234,
+      "area_factor": 4.787032891666111,
+      "aspect_ratio": 2.4274725274725273,
+      "axis_aligned_fraction": 0.8723404255319149,
+      "document_distance_widths": 0.23753794717935683,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.031624,
+      "parallel_crowding_per_flow": 0.000652,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 32,
+      "node_count": 27,
+      "lane_count": 3,
+      "return_fraction": 0.09375,
+      "document_count": 6,
+      "bends_per_flow": 0.34375,
+      "straight_fraction": 0.6875,
+      "p90_bends": 1,
+      "mean_length_widths": 1.049074074074074,
+      "p90_length_widths": 2.162962962962963,
+      "contacts_per_flow": 0.09375,
+      "area_factor": 3.743378856340221,
+      "aspect_ratio": 3.616636528028933,
+      "axis_aligned_fraction": 0.78125,
+      "document_distance_widths": 0.2907580721352811,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.087782,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 28,
+      "node_count": 23,
+      "lane_count": 4,
+      "return_fraction": 0.03571428571428571,
+      "document_count": 4,
+      "bends_per_flow": 0.5,
+      "straight_fraction": 0.6428571428571429,
+      "p90_bends": 2,
+      "mean_length_widths": 1.0696864111498257,
+      "p90_length_widths": 1.9024390243902438,
+      "contacts_per_flow": 0.0,
+      "area_factor": 4.687849059761123,
+      "aspect_ratio": 3.2422360248447206,
+      "axis_aligned_fraction": 0.7857142857142857,
+      "document_distance_widths": 0.10340178738685955,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.26006,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 31,
+      "node_count": 26,
+      "lane_count": 6,
+      "return_fraction": 0.06451612903225806,
+      "document_count": 6,
+      "bends_per_flow": 0.2903225806451613,
+      "straight_fraction": 0.7419354838709677,
+      "p90_bends": 1,
+      "mean_length_widths": 1.347283531409168,
+      "p90_length_widths": 3.9263157894736844,
+      "contacts_per_flow": 0.0,
+      "area_factor": 4.778710082931086,
+      "aspect_ratio": 1.3038321167883211,
+      "axis_aligned_fraction": 0.8387096774193549,
+      "document_distance_widths": 0.32038985007923093,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.483881,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 69,
+      "node_count": 54,
+      "lane_count": 7,
+      "return_fraction": 0.028985507246376812,
+      "document_count": 4,
+      "bends_per_flow": 0.7536231884057971,
+      "straight_fraction": 0.5072463768115942,
+      "p90_bends": 2,
+      "mean_length_widths": 1.5325771896660365,
+      "p90_length_widths": 2.9869565217391303,
+      "contacts_per_flow": 0.34782608695652173,
+      "area_factor": 5.161761763385735,
+      "aspect_ratio": 2.1199701937406856,
+      "axis_aligned_fraction": 0.7391304347826086,
+      "document_distance_widths": 0.2427632059093468,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.438365,
+      "parallel_crowding_per_flow": 0.002455,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 26,
+      "node_count": 23,
+      "lane_count": 6,
+      "return_fraction": 0.11538461538461539,
+      "document_count": 4,
+      "bends_per_flow": 0.46153846153846156,
+      "straight_fraction": 0.6153846153846154,
+      "p90_bends": 1,
+      "mean_length_widths": 0.6038461538461538,
+      "p90_length_widths": 1.161904761904762,
+      "contacts_per_flow": 0.038461538461538464,
+      "area_factor": 4.273560380414903,
+      "aspect_ratio": 2.595774647887324,
+      "axis_aligned_fraction": 0.8461538461538461,
+      "document_distance_widths": 0.17704303179652353,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.007447,
+      "parallel_crowding_per_flow": 0.0,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 28,
+      "node_count": 24,
+      "lane_count": 5,
+      "return_fraction": 0.07142857142857142,
+      "document_count": 7,
+      "bends_per_flow": 0.35714285714285715,
+      "straight_fraction": 0.6785714285714286,
+      "p90_bends": 1,
+      "mean_length_widths": 0.9415436453588006,
+      "p90_length_widths": 2.036842105263158,
+      "contacts_per_flow": 0.10714285714285714,
+      "area_factor": 4.069841079494515,
+      "aspect_ratio": 1.1548154815481548,
+      "axis_aligned_fraction": 0.7857142857142857,
+      "document_distance_widths": 0.22196432637359903,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.082589,
+      "parallel_crowding_per_flow": 0.000675,
+      "hotspot_excess": 0.0
+    },
+    {
+      "flow_count": 64,
+      "node_count": 59,
+      "lane_count": 6,
+      "return_fraction": 0.046875,
+      "document_count": 21,
+      "bends_per_flow": 0.515625,
+      "straight_fraction": 0.578125,
+      "p90_bends": 1,
+      "mean_length_widths": 0.887997159090909,
+      "p90_length_widths": 2.359090909090909,
+      "contacts_per_flow": 0.296875,
+      "area_factor": 5.270696331699489,
+      "aspect_ratio": 2.2165754495699765,
+      "axis_aligned_fraction": 0.859375,
+      "document_distance_widths": 0.23489823099340887,
+      "document_bends": 0.0,
+      "forward_hop_excess": 0.058932,
+      "parallel_crowding_per_flow": 0.000411,
+      "hotspot_excess": 0.0
+    }
+  ],
+  "leave_one_file_out_scores": [
+    95.17,
+    89.75,
+    95.71,
+    33.0,
+    64.81,
+    88.31,
+    89.82,
+    95.73,
+    29.57,
+    100.0,
+    100.0,
+    100.0,
+    98.43,
+    100.0,
+    99.15,
+    100.0,
+    99.85,
+    95.52,
+    100.0,
+    99.4,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    100.0,
+    91.72,
+    97.01,
+    93.68,
+    94.61,
+    100.0,
+    98.37,
+    100.0
+  ],
+  "validation_note": "leave-one-file-out is diagnostic only; related process versions may not be independent",
+  "candidates": {
+    "process_08_r4.bpmn@f57fc3436237": {
+      "outside_reference_complexity": {
+        "flow_count": 95,
+        "node_count": 64,
+        "return_fraction": 0.17894736842105263
+      },
+      "conformity_percent": 57.16,
+      "family_scores": {
+        "routes": 21.37,
+        "distance": 49.55,
+        "crossings": 73.59,
+        "crowding": 60.38,
+        "packing": 100.0,
+        "alignment": 42.36,
+        "documents": 100.0
+      },
+      "metrics": {
+        "bends_per_flow": {
+          "value": 2.0631578947368423,
+          "score": 7.98,
+          "reference_p10": 0.2631578947368421,
+          "reference_p90": 0.6896551724137931
+        },
+        "straight_fraction": {
+          "value": 0.3157894736842105,
+          "score": 54.79,
+          "reference_p10": 0.5072463768115942,
+          "reference_p90": 0.8
+        },
+        "p90_bends": {
+          "value": 5,
+          "score": 22.31,
+          "reference_p10": 1,
+          "reference_p90": 2
+        },
+        "mean_length_widths": {
+          "value": 2.4468325358851675,
+          "score": 41.43,
+          "reference_p10": 0.6858823529411764,
+          "reference_p90": 1.6552083333333334
+        },
+        "p90_length_widths": {
+          "value": 6.3090909090909095,
+          "score": 58.7,
+          "reference_p10": 1.5476190476190477,
+          "reference_p90": 4.91875
+        },
+        "forward_hop_excess": {
+          "value": 1.356108,
+          "score": 50.04,
+          "reference_p10": 0.021121,
+          "reference_p90": 0.829051
+        },
+        "contacts_per_flow": {
+          "value": 0.4105263157894737,
+          "score": 73.59,
+          "reference_p10": 0.0,
+          "reference_p90": 0.3448275862068966
+        },
+        "parallel_crowding_per_flow": {
+          "value": 0.047757,
+          "score": 63.47,
+          "reference_p10": 0.0,
+          "reference_p90": 0.0023
+        },
+        "hotspot_excess": {
+          "value": 0.05543,
+          "score": 57.45,
+          "reference_p10": 0.0,
+          "reference_p90": 0.0
+        },
+        "area_factor": {
+          "value": 7.325499754260323,
+          "score": 100.0,
+          "reference_p10": 4.056109230344065,
+          "reference_p90": 9.166462471799985
+        },
+        "aspect_ratio": {
+          "value": 1.6236162361623616,
+          "score": 100.0,
+          "reference_p10": 1.310569105691057,
+          "reference_p90": 2.69811320754717
+        },
+        "axis_aligned_fraction": {
+          "value": 0.3684210526315789,
+          "score": 42.36,
+          "reference_p10": 0.7058823529411765,
+          "reference_p90": 0.8947368421052632
+        },
+        "document_distance_widths": {
+          "value": 0.21515151515151515,
+          "score": 100.0,
+          "reference_p10": 0.10755676104232255,
+          "reference_p90": 0.2427632059093468
+        },
+        "document_bends": {
+          "value": 0.16666666666666666,
+          "score": 100.0,
+          "reference_p10": 0.0,
+          "reference_p90": 0.25
+        }
+      },
+      "hard_checks": null,
+      "target_reached": false,
+      "visual_similarity_verified": false,
+      "scope": "7 statistical families plus mandatory semantics/text/geometry gates; visual 80% needs user validation"
+    },
+    "process_08_v23.bpmn@1c11ae7c8004": {
+      "outside_reference_complexity": {
+        "flow_count": 95,
+        "node_count": 64,
+        "return_fraction": 0.17894736842105263
+      },
+      "conformity_percent": 70.39,
+      "family_scores": {
+        "routes": 33.78,
+        "distance": 55.77,
+        "crossings": 77.3,
+        "crowding": 81.22,
+        "packing": 100.0,
+        "alignment": 72.39,
+        "documents": 100.0
+      },
+      "metrics": {
+        "bends_per_flow": {
+          "value": 1.568421052631579,
+          "score": 19.84,
+          "reference_p10": 0.2631578947368421,
+          "reference_p90": 0.6896551724137931
+        },
+        "straight_fraction": {
+          "value": 0.4631578947368421,
+          "score": 87.06,
+          "reference_p10": 0.5072463768115942,
+          "reference_p90": 0.8
+        },
+        "p90_bends": {
+          "value": 5,
+          "score": 22.31,
+          "reference_p10": 1,
+          "reference_p90": 2
+        },
+        "mean_length_widths": {
+          "value": 2.345923444976077,
+          "score": 46.35,
+          "reference_p10": 0.6858823529411764,
+          "reference_p90": 1.6552083333333334
+        },
+        "p90_length_widths": {
+          "value": 6.040909090909091,
+          "score": 65.05,
+          "reference_p10": 1.5476190476190477,
+          "reference_p90": 4.91875
+        },
+        "forward_hop_excess": {
+          "value": 1.249785,
+          "score": 57.54,
+          "reference_p10": 0.021121,
+          "reference_p90": 0.829051
+        },
+        "contacts_per_flow": {
+          "value": 0.4,
+          "score": 77.3,
+          "reference_p10": 0.0,
+          "reference_p90": 0.3448275862068966
+        },
+        "parallel_crowding_per_flow": {
+          "value": 0.030865,
+          "score": 75.15,
+          "reference_p10": 0.0,
+          "reference_p90": 0.0023
+        },
+        "hotspot_excess": {
+          "value": 0.013036,
+          "score": 87.78,
+          "reference_p10": 0.0,
+          "reference_p90": 0.0
+        },
+        "area_factor": {
+          "value": 7.682261105928846,
+          "score": 100.0,
+          "reference_p10": 4.056109230344065,
+          "reference_p90": 9.166462471799985
+        },
+        "aspect_ratio": {
+          "value": 1.7026884554559831,
+          "score": 100.0,
+          "reference_p10": 1.310569105691057,
+          "reference_p90": 2.69811320754717
+        },
+        "axis_aligned_fraction": {
+          "value": 0.5789473684210527,
+          "score": 72.39,
+          "reference_p10": 0.7058823529411765,
+          "reference_p90": 0.8947368421052632
+        },
+        "document_distance_widths": {
+          "value": 0.20921717171717172,
+          "score": 100.0,
+          "reference_p10": 0.10755676104232255,
+          "reference_p90": 0.2427632059093468
+        },
+        "document_bends": {
+          "value": 0.1111111111111111,
+          "score": 100.0,
+          "reference_p10": 0.0,
+          "reference_p90": 0.25
+        }
+      },
+      "hard_checks": null,
+      "target_reached": false,
+      "visual_similarity_verified": false,
+      "scope": "7 statistical families plus mandatory semantics/text/geometry gates; visual 80% needs user validation"
+    }
+  }
+}

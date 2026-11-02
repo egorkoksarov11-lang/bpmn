@@ -1,0 +1,2088 @@
+{
+  "version": "23.1.2.dev0",
+  "backend": "v23-human-pattern-construction",
+  "status": "layout_candidate_verified",
+  "release_ready": false,
+  "limitations": [
+    "global optimality is not proven",
+    "see geometry_report.json for remaining readability limitations"
+  ],
+  "source_file": "process_08_v4_frozen.bpmn",
+  "validation": {
+    "xml_parse": true,
+    "reference_integrity": true,
+    "preflight": {
+      "compatible": true,
+      "errors": [],
+      "warnings": [],
+      "source": "/workspace/work/algorithm-r4/v23-stage-prqus5ii/process_08_v23.bpmn",
+      "counts": {
+        "processes": 1,
+        "diagrams": 1,
+        "nodes": 64,
+        "sequence_flows": 95,
+        "associations": 18,
+        "data_references": 17,
+        "lanes": 6
+      }
+    }
+  },
+  "label_placement": {
+    "unplaced_labels": [],
+    "external_labels": 95,
+    "large_displacements": [
+      {
+        "id": "G53b",
+        "distance": 192.0
+      },
+      {
+        "id": "G58",
+        "distance": 145.99
+      },
+      {
+        "id": "DSR_CashFlow_Plan",
+        "distance": 153.67
+      },
+      {
+        "id": "F33",
+        "distance": 426.1
+      }
+    ],
+    "distant_from_owner": [
+      {
+        "id": "G512",
+        "distance": 214.84
+      },
+      {
+        "id": "S",
+        "distance": 50.0
+      },
+      {
+        "id": "DOR_PaymentTask",
+        "distance": 53.0
+      },
+      {
+        "id": "F98",
+        "distance": 76.0
+      },
+      {
+        "id": "F77",
+        "distance": 68.27
+      },
+      {
+        "id": "F26",
+        "distance": 49.0
+      }
+    ],
+    "rendering": {
+      "font": "Open Sans bundled",
+      "task_font_size": 13,
+      "label_font_size": 12,
+      "text_overflow_ids": []
+    }
+  },
+  "backend_report": {
+    "selection_policy": {
+      "name": "balanced-readability-v1",
+      "contacts_per_flow": 4.0,
+      "parallel_crowding_per_flow": 8.0,
+      "hotspot_excess": 1.2,
+      "forward_hop_excess": 0.8,
+      "bends_per_flow": 0.35,
+      "style_penalty_scale": 0.001
+    },
+    "backend": "v23-human-pattern-construction",
+    "selected_candidate": "human-blocks-2-secondary-1-repacked-refined",
+    "quality": [
+      3.939774,
+      [
+        40,
+        199,
+        51990.8
+      ],
+      7.3255
+    ],
+    "candidates": [
+      {
+        "candidate": "verified-incumbent",
+        "status": "verified",
+        "rank": [
+          4.707598,
+          [
+            60,
+            200,
+            55159.8
+          ],
+          7.2033
+        ],
+        "source_file": "process_08_v23.bpmn",
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.03554,
+          "hotspot_excess": 0.065178,
+          "peak_flow_load": 8,
+          "forward_hop_excess": 1.361593,
+          "long_forward_hops": 33,
+          "long_forward_hop_ids": [
+            "F2",
+            "F5",
+            "F12",
+            "F16",
+            "F18",
+            "F25",
+            "F28",
+            "F30",
+            "F33",
+            "F35",
+            "F38",
+            "F40",
+            "F44",
+            "F47",
+            "F49",
+            "F50",
+            "F56",
+            "F57",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F69",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F82",
+            "F83",
+            "F87",
+            "F97"
+          ],
+          "bends_per_flow": 2.084211,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1-repacked",
+        "status": "verified",
+        "rank": [
+          4.081257,
+          [
+            42,
+            203,
+            51953.8
+          ],
+          7.3255
+        ],
+        "seconds": 52.416,
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.053054,
+          "hotspot_excess": 0.055923,
+          "peak_flow_load": 7,
+          "forward_hop_excess": 1.355568,
+          "long_forward_hops": 31,
+          "long_forward_hop_ids": [
+            "F4",
+            "F7",
+            "F12",
+            "F18",
+            "F25",
+            "F28",
+            "F33",
+            "F35",
+            "F37",
+            "F40",
+            "F43",
+            "F44",
+            "F49",
+            "F50",
+            "F52",
+            "F56",
+            "F57",
+            "F59",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F83",
+            "F89",
+            "F95"
+          ],
+          "bends_per_flow": 2.105263,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "style": {
+          "area_factor": 7.3255,
+          "reference_p90": 9.1665,
+          "within_reference_density": true,
+          "penalty": 0
+        },
+        "layout": {
+          "family": "human-patterns",
+          "chain_depth": 2,
+          "secondary_rows": 1,
+          "task_width": 220.0,
+          "column_stride": 340.0,
+          "body_x": 170,
+          "columns": 9,
+          "paired_decisions": 21,
+          "main_macros": [
+            "S",
+            "T51a",
+            "T51b",
+            "T52",
+            "T53",
+            "C53",
+            "T54a",
+            "T54b",
+            "T55",
+            "C55",
+            "T56",
+            "T57",
+            "T59a",
+            "T59b",
+            "T510a",
+            "T510b",
+            "T510c",
+            "T511a",
+            "T511b",
+            "T512a",
+            "T512b",
+            "T513",
+            "G513",
+            "T514",
+            "T515",
+            "T516a",
+            "T516b",
+            "E"
+          ],
+          "feedback_edges": [
+            "F13",
+            "F19",
+            "F29",
+            "F34",
+            "F53",
+            "F57",
+            "F6",
+            "F62",
+            "F67",
+            "F69",
+            "F73",
+            "F75",
+            "F82",
+            "F84",
+            "F85",
+            "F88",
+            "F90",
+            "F93",
+            "F94",
+            "F95",
+            "F96",
+            "F97",
+            "F98"
+          ],
+          "slots": {
+            "S": [
+              0,
+              0
+            ],
+            "T51a": [
+              0,
+              0
+            ],
+            "T51b": [
+              0,
+              0
+            ],
+            "T52": [
+              0,
+              3
+            ],
+            "T53": [
+              1,
+              0
+            ],
+            "C53": [
+              1,
+              1
+            ],
+            "T54a": [
+              1,
+              0
+            ],
+            "T54b": [
+              2,
+              0
+            ],
+            "T55": [
+              1,
+              2
+            ],
+            "C55": [
+              1,
+              3
+            ],
+            "T56": [
+              2,
+              2
+            ],
+            "T57": [
+              2,
+              0
+            ],
+            "T59a": [
+              3,
+              2
+            ],
+            "T59b": [
+              2,
+              0
+            ],
+            "T510a": [
+              4,
+              0
+            ],
+            "T510b": [
+              3,
+              0
+            ],
+            "T510c": [
+              4,
+              1
+            ],
+            "T511a": [
+              4,
+              0
+            ],
+            "T511b": [
+              4,
+              3
+            ],
+            "T512a": [
+              5,
+              1
+            ],
+            "T512b": [
+              6,
+              0
+            ],
+            "T513": [
+              6,
+              0
+            ],
+            "G513": [
+              6,
+              1
+            ],
+            "T514": [
+              6,
+              0
+            ],
+            "T515": [
+              6,
+              0
+            ],
+            "T516a": [
+              6,
+              2
+            ],
+            "T516b": [
+              8,
+              0
+            ],
+            "E": [
+              8,
+              1
+            ],
+            "T516c": [
+              5,
+              2
+            ],
+            "T511c": [
+              4,
+              0
+            ],
+            "T58a": [
+              5,
+              0
+            ],
+            "T57a": [
+              2,
+              3
+            ],
+            "T514c": [
+              7,
+              3
+            ],
+            "T54c": [
+              2,
+              0
+            ],
+            "T58d": [
+              4,
+              2
+            ],
+            "T58c": [
+              4,
+              0
+            ],
+            "T58b": [
+              5,
+              0
+            ],
+            "T59c": [
+              2,
+              1
+            ],
+            "T511d": [
+              5,
+              3
+            ],
+            "T513a": [
+              8,
+              0
+            ],
+            "T515c": [
+              6,
+              3
+            ],
+            "T51d": [
+              0,
+              1
+            ],
+            "T51c": [
+              1,
+              0
+            ]
+          },
+          "source_reference_models": 32,
+          "pairs": {
+            "T51b": "G51",
+            "T53": "G53",
+            "C53": "G53b",
+            "T54a": "G54a",
+            "T54b": "G54b",
+            "T55": "G55",
+            "T56": "G56",
+            "T57a": "G57a",
+            "T57": "G57",
+            "T58c": "G58",
+            "T58d": "G58d",
+            "T59b": "G59",
+            "T511a": "G511a",
+            "T511b": "G511",
+            "T511c": "G511b",
+            "T512a": "G512",
+            "T513": "G513a",
+            "T515": "G515",
+            "T514": "G514",
+            "T516c": "G516a",
+            "T516b": "G516"
+          },
+          "document_label_anchors": {
+            "DOR_Order": [
+              395.0,
+              186.0,
+              80,
+              58
+            ],
+            "DSR_SupplierOptions": [
+              395.0,
+              1199.0,
+              80,
+              58
+            ],
+            "DOR_LegalCheck": [
+              557.0,
+              844,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Existing": [
+              557.0,
+              1034,
+              110,
+              45
+            ],
+            "DOR_ContractBasis_Final": [
+              735.0,
+              1199.0,
+              80,
+              58
+            ],
+            "DOR_InitialTechData": [
+              897.0,
+              1034,
+              110,
+              45
+            ],
+            "DOR_PrePaymentDocs": [
+              1052.0,
+              1034,
+              110,
+              45
+            ],
+            "DOR_TechTask": [
+              897.0,
+              1536,
+              110,
+              45
+            ],
+            "DOR_PaymentTask": [
+              1755.0,
+              779.0,
+              80,
+              58
+            ],
+            "DOR_BankDocument": [
+              1577.0,
+              1761,
+              110,
+              45
+            ],
+            "DOR_ClosingDocs": [
+              2257.0,
+              654,
+              110,
+              45
+            ],
+            "DOR_AccountantTask": [
+              2257.0,
+              1986,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Plan": [
+              1755.0,
+              589.0,
+              80,
+              58
+            ],
+            "DSR_OperationsFile_Plan": [
+              1597.0,
+              654,
+              110,
+              45
+            ],
+            "DSR_CashFlow_Fact": [
+              1597.0,
+              1264,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Actual": [
+              1752.0,
+              1264,
+              110,
+              45
+            ],
+            "DSR_OperationsFile_Close": [
+              2435.0,
+              969.0,
+              80,
+              58
+            ]
+          },
+          "document_owners": {
+            "DOR_Order": "T51a",
+            "DSR_SupplierOptions": "T52",
+            "DOR_LegalCheck": "C53",
+            "DOR_ContractBasis_Existing": "T55",
+            "DOR_ContractBasis_Final": "C55",
+            "DOR_PrePaymentDocs": "T56",
+            "DOR_InitialTechData": "T56",
+            "DOR_TechTask": "T57",
+            "DOR_PaymentTask": "T510c",
+            "DOR_BankDocument": "T511a",
+            "DOR_ClosingDocs": "T513",
+            "DOR_AccountantTask": "T515",
+            "DSR_OperationsFile_Plan": "T510a",
+            "DSR_OperationsFile_Actual": "T511b",
+            "DSR_OperationsFile_Close": "T516a",
+            "DSR_CashFlow_Plan": "T510a",
+            "DSR_CashFlow_Fact": "T511b"
+          },
+          "role_order": [
+            "L1",
+            "L2",
+            "L3",
+            "L4",
+            "L5",
+            "L6"
+          ],
+          "return_reserves": {
+            "L1": 0,
+            "L2": 0,
+            "L3": 63,
+            "L4": 7,
+            "L5": 0,
+            "L6": 0
+          },
+          "placement_optimization": {
+            "initial_cost": 48154.439999999995,
+            "final_cost": 21466.119999999995,
+            "moves": 28,
+            "iterations": 1600,
+            "seed": 23,
+            "free_spine": true,
+            "spine_moves": 14
+          }
+        },
+        "routing": {
+          "refinement_interrupted": false,
+          "astar_fallbacks": 19,
+          "initial_quality": [
+            157,
+            219,
+            59917.0
+          ],
+          "final_quality": [
+            37,
+            203,
+            51207.7
+          ],
+          "refinements": [
+            {
+              "edge": "F18",
+              "before": [
+                27650.0,
+                17,
+                4,
+                1665.0
+              ],
+              "after": [
+                7784.5,
+                4,
+                6,
+                1114.0
+              ]
+            },
+            {
+              "edge": "F6",
+              "before": [
+                23117.0,
+                14,
+                5,
+                1435.0
+              ],
+              "after": [
+                2249.0,
+                1,
+                3,
+                539.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                21419.25,
+                13,
+                5,
+                894.0
+              ],
+              "after": [
+                5337.75,
+                3,
+                4,
+                498.0
+              ]
+            },
+            {
+              "edge": "F62",
+              "before": [
+                18060.5,
+                9,
+                4,
+                2133.0
+              ],
+              "after": [
+                9232.0,
+                4,
+                9,
+                1732.0
+              ]
+            },
+            {
+              "edge": "F33",
+              "before": [
+                11699.0,
+                6,
+                5,
+                1371.0
+              ],
+              "after": [
+                9948.25,
+                5,
+                10,
+                1130.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                13916.0,
+                7,
+                4,
+                1466.0
+              ],
+              "after": [
+                6641.0,
+                3,
+                5,
+                1791.0
+              ]
+            },
+            {
+              "edge": "F5",
+              "before": [
+                13342.0,
+                8,
+                5,
+                806.0
+              ],
+              "after": [
+                251.0,
+                0,
+                1,
+                181.0
+              ]
+            },
+            {
+              "edge": "F34",
+              "before": [
+                10523.0,
+                5,
+                4,
+                2743.0
+              ],
+              "after": [
+                3372.0,
+                0,
+                5,
+                3022.0
+              ]
+            },
+            {
+              "edge": "F50",
+              "before": [
+                10965.75,
+                6,
+                4,
+                1358.0
+              ],
+              "after": [
+                4808.75,
+                2,
+                4,
+                951.0
+              ]
+            },
+            {
+              "edge": "F71",
+              "before": [
+                13203.5,
+                7,
+                5,
+                1553.0
+              ],
+              "after": [
+                5791.75,
+                3,
+                2,
+                1093.0
+              ]
+            },
+            {
+              "edge": "F89",
+              "before": [
+                10471.25,
+                6,
+                4,
+                992.0
+              ],
+              "after": [
+                708.0,
+                0,
+                2,
+                568.0
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                11383.75,
+                6,
+                9,
+                1380.0
+              ],
+              "after": [
+                7693.625,
+                3,
+                4,
+                894.5
+              ]
+            },
+            {
+              "edge": "F72",
+              "before": [
+                6283.75,
+                3,
+                2,
+                713.0
+              ],
+              "after": [
+                3185.5,
+                1,
+                5,
+                693.0
+              ]
+            },
+            {
+              "edge": "F12",
+              "before": [
+                9506.5,
+                5,
+                4,
+                909.0
+              ],
+              "after": [
+                2690.0,
+                1,
+                4,
+                910.0
+              ]
+            },
+            {
+              "edge": "F16",
+              "before": [
+                3736.0,
+                2,
+                5,
+                377.0
+              ],
+              "after": [
+                1874.0,
+                1,
+                2,
+                234.0
+              ]
+            },
+            {
+              "edge": "F7",
+              "before": [
+                4266.0,
+                2,
+                5,
+                916.0
+              ],
+              "after": [
+                4051.0,
+                2,
+                4,
+                771.0
+              ]
+            },
+            {
+              "edge": "F49",
+              "before": [
+                7864.5,
+                4,
+                5,
+                1501.0
+              ],
+              "after": [
+                7627.25,
+                3,
+                5,
+                1592.0
+              ]
+            },
+            {
+              "edge": "F25",
+              "before": [
+                8768.0,
+                5,
+                4,
+                988.0
+              ],
+              "after": [
+                4175.0,
+                2,
+                3,
+                729.0
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                7940.0,
+                5,
+                2,
+                300.0
+              ],
+              "after": [
+                6437.0,
+                4,
+                3,
+                227.0
+              ]
+            },
+            {
+              "edge": "F43",
+              "before": [
+                6520.0,
+                3,
+                2,
+                460.0
+              ],
+              "after": [
+                5672.5,
+                3,
+                4,
+                449.0
+              ]
+            },
+            {
+              "edge": "F15",
+              "before": [
+                1850.0,
+                1,
+                2,
+                210.0
+              ],
+              "after": [
+                1741.0,
+                1,
+                1,
+                171.0
+              ]
+            },
+            {
+              "edge": "F83",
+              "before": [
+                5684.0,
+                3,
+                3,
+                660.0
+              ],
+              "after": [
+                5388.0,
+                3,
+                3,
+                660.0
+              ]
+            },
+            {
+              "edge": "F74",
+              "before": [
+                3682.0,
+                2,
+                2,
+                542.0
+              ],
+              "after": [
+                2200.0,
+                1,
+                1,
+                630.0
+              ]
+            },
+            {
+              "edge": "F57",
+              "before": [
+                4653.75,
+                1,
+                5,
+                1382.0
+              ],
+              "after": [
+                3005.0,
+                1,
+                3,
+                1295.0
+              ]
+            },
+            {
+              "edge": "F59",
+              "before": [
+                7624.0,
+                4,
+                5,
+                1259.0
+              ],
+              "after": [
+                3334.0,
+                1,
+                3,
+                1388.0
+              ]
+            },
+            {
+              "edge": "F73",
+              "before": [
+                5133.0,
+                3,
+                2,
+                493.0
+              ],
+              "after": [
+                609.0,
+                0,
+                4,
+                329.0
+              ]
+            },
+            {
+              "edge": "F94",
+              "before": [
+                4130.0,
+                2,
+                2,
+                420.0
+              ],
+              "after": [
+                767.0,
+                0,
+                5,
+                417.0
+              ]
+            },
+            {
+              "edge": "F23",
+              "before": [
+                5390.5,
+                3,
+                5,
+                536.0
+              ],
+              "after": [
+                615.25,
+                0,
+                3,
+                330.0
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                4310.0,
+                2,
+                5,
+                960.0
+              ],
+              "after": [
+                2223.125,
+                1,
+                3,
+                282.5
+              ]
+            },
+            {
+              "edge": "F37",
+              "before": [
+                5323.0,
+                3,
+                2,
+                683.0
+              ],
+              "after": [
+                1065.5,
+                0,
+                3,
+                700.0
+              ]
+            },
+            {
+              "edge": "F82",
+              "before": [
+                676.625,
+                0,
+                2,
+                343.0
+              ],
+              "after": [
+                504.5,
+                0,
+                2,
+                269.5
+              ]
+            },
+            {
+              "edge": "F44",
+              "before": [
+                8118.25,
+                4,
+                7,
+                1400.0
+              ],
+              "after": [
+                6302.75,
+                3,
+                6,
+                1334.0
+              ]
+            },
+            {
+              "edge": "F28",
+              "before": [
+                2338.625,
+                1,
+                2,
+                612.0
+              ],
+              "after": [
+                2171.0,
+                1,
+                2,
+                531.0
+              ]
+            },
+            {
+              "edge": "F35",
+              "before": [
+                4013.0,
+                2,
+                2,
+                873.0
+              ],
+              "after": [
+                3914.0,
+                2,
+                2,
+                774.0
+              ]
+            },
+            {
+              "edge": "F38",
+              "before": [
+                4319.5,
+                2,
+                4,
+                909.0
+              ],
+              "after": [
+                1984.0,
+                1,
+                1,
+                414.0
+              ]
+            },
+            {
+              "edge": "F40",
+              "before": [
+                2639.0,
+                1,
+                5,
+                729.0
+              ],
+              "after": [
+                593.0,
+                0,
+                1,
+                523.0
+              ]
+            },
+            {
+              "edge": "F53",
+              "before": [
+                522.0,
+                0,
+                2,
+                382.0
+              ],
+              "after": [
+                371.0,
+                0,
+                1,
+                301.0
+              ]
+            },
+            {
+              "edge": "F85",
+              "before": [
+                3897.0,
+                2,
+                2,
+                757.0
+              ],
+              "after": [
+                861.0,
+                0,
+                2,
+                721.0
+              ]
+            },
+            {
+              "edge": "F90",
+              "before": [
+                373.0,
+                0,
+                1,
+                303.0
+              ],
+              "after": [
+                343.0,
+                0,
+                1,
+                273.0
+              ]
+            },
+            {
+              "edge": "F58",
+              "before": [
+                2959.5,
+                1,
+                4,
+                736.0
+              ],
+              "after": [
+                2548.5,
+                1,
+                2,
+                742.0
+              ]
+            },
+            {
+              "edge": "A_Contract_ToOperation",
+              "before": [
+                790.25,
+                0,
+                2,
+                339.0
+              ],
+              "after": [
+                513.75,
+                0,
+                3,
+                295.0
+              ]
+            },
+            {
+              "edge": "F39",
+              "before": [
+                493.0,
+                0,
+                2,
+                353.0
+              ],
+              "after": [
+                457.0,
+                0,
+                2,
+                317.0
+              ]
+            },
+            {
+              "edge": "F75",
+              "before": [
+                4322.5,
+                2,
+                2,
+                1070.0
+              ],
+              "after": [
+                1371.0,
+                0,
+                2,
+                1231.0
+              ]
+            },
+            {
+              "edge": "F78",
+              "before": [
+                2237.0,
+                1,
+                2,
+                597.0
+              ],
+              "after": [
+                2128.0,
+                1,
+                2,
+                488.0
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                5622.25,
+                2,
+                7,
+                1453.0
+              ],
+              "after": [
+                5057.0,
+                2,
+                5,
+                1707.0
+              ]
+            },
+            {
+              "edge": "F10",
+              "before": [
+                430.0,
+                0,
+                2,
+                290.0
+              ],
+              "after": [
+                321.0,
+                0,
+                2,
+                181.0
+              ]
+            },
+            {
+              "edge": "F13",
+              "before": [
+                1101.0,
+                0,
+                5,
+                751.0
+              ],
+              "after": [
+                1009.0,
+                0,
+                3,
+                799.0
+              ]
+            },
+            {
+              "edge": "F22",
+              "before": [
+                470.0,
+                0,
+                2,
+                330.0
+              ],
+              "after": [
+                422.0,
+                0,
+                2,
+                282.0
+              ]
+            },
+            {
+              "edge": "F31",
+              "before": [
+                1412.75,
+                0,
+                4,
+                1076.0
+              ],
+              "after": [
+                534.0,
+                0,
+                2,
+                394.0
+              ]
+            },
+            {
+              "edge": "F52",
+              "before": [
+                690.0,
+                0,
+                2,
+                550.0
+              ],
+              "after": [
+                624.0,
+                0,
+                2,
+                484.0
+              ]
+            },
+            {
+              "edge": "F88",
+              "before": [
+                1930.0,
+                1,
+                2,
+                290.0
+              ],
+              "after": [
+                1751.0,
+                1,
+                1,
+                181.0
+              ]
+            },
+            {
+              "edge": "F64",
+              "before": [
+                14122.25,
+                8,
+                3,
+                1551.0
+              ],
+              "after": [
+                13148.625,
+                7,
+                7,
+                1291.0
+              ]
+            },
+            {
+              "edge": "F79",
+              "before": [
+                9344.5,
+                5,
+                5,
+                1409.0
+              ],
+              "after": [
+                9241.5,
+                5,
+                4,
+                1397.0
+              ]
+            },
+            {
+              "edge": "F33",
+              "before": [
+                9468.875,
+                4,
+                10,
+                1130.0
+              ],
+              "after": [
+                8783.625,
+                4,
+                9,
+                997.0
+              ]
+            },
+            {
+              "edge": "F81",
+              "before": [
+                6612.125,
+                3,
+                4,
+                894.5
+              ],
+              "after": [
+                6482.125,
+                3,
+                5,
+                866.5
+              ]
+            },
+            {
+              "edge": "F77",
+              "before": [
+                6437.0,
+                4,
+                3,
+                227.0
+              ],
+              "after": [
+                6261.0,
+                4,
+                1,
+                191.0
+              ]
+            },
+            {
+              "edge": "F43",
+              "before": [
+                4187.25,
+                2,
+                4,
+                449.0
+              ],
+              "after": [
+                4121.5,
+                2,
+                4,
+                449.0
+              ]
+            },
+            {
+              "edge": "F44",
+              "before": [
+                7802.75,
+                4,
+                6,
+                1334.0
+              ],
+              "after": [
+                6716.5,
+                3,
+                10,
+                1464.0
+              ]
+            },
+            {
+              "edge": "F83",
+              "before": [
+                5413.875,
+                3,
+                3,
+                660.0
+              ],
+              "after": [
+                2719.5,
+                1,
+                4,
+                467.0
+              ]
+            },
+            {
+              "edge": "F95",
+              "before": [
+                5252.0,
+                3,
+                2,
+                612.0
+              ],
+              "after": [
+                2663.75,
+                1,
+                4,
+                767.0
+              ]
+            },
+            {
+              "edge": "F97",
+              "before": [
+                3795.25,
+                2,
+                4,
+                498.0
+              ],
+              "after": [
+                3679.0,
+                2,
+                4,
+                399.0
+              ]
+            },
+            {
+              "edge": "F54",
+              "before": [
+                4145.0,
+                2,
+                2,
+                356.0
+              ],
+              "after": [
+                3656.25,
+                2,
+                4,
+                356.0
+              ]
+            },
+            {
+              "edge": "F56",
+              "before": [
+                5141.0,
+                2,
+                5,
+                1791.0
+              ],
+              "after": [
+                4989.5,
+                2,
+                4,
+                1661.0
+              ]
+            },
+            {
+              "edge": "F7",
+              "before": [
+                4051.0,
+                2,
+                4,
+                771.0
+              ],
+              "after": [
+                2660.75,
+                1,
+                4,
+                682.0
+              ]
+            },
+            {
+              "edge": "F71",
+              "before": [
+                4233.0,
+                2,
+                2,
+                1093.0
+              ],
+              "after": [
+                4185.5,
+                2,
+                2,
+                903.0
+              ]
+            },
+            {
+              "edge": "F96",
+              "before": [
+                5105.5,
+                2,
+                5,
+                1707.0
+              ],
+              "after": [
+                2221.0,
+                0,
+                6,
+                1801.0
+              ]
+            },
+            {
+              "edge": "F50",
+              "before": [
+                3425.75,
+                1,
+                4,
+                951.0
+              ],
+              "after": [
+                3155.0,
+                1,
+                5,
+                1000.0
+              ]
+            },
+            {
+              "edge": "F29",
+              "before": [
+                2024.0,
+                1,
+                3,
+                282.5
+              ],
+              "after": [
+                1946.5,
+                1,
+                2,
+                275.0
+              ]
+            },
+            {
+              "edge": "F58",
+              "before": [
+                882.0,
+                0,
+                2,
+                742.0
+              ],
+              "after": [
+                830.0,
+                0,
+                2,
+                690.0
+              ]
+            },
+            {
+              "edge": "F68",
+              "before": [
+                1930.0,
+                1,
+                2,
+                290.0
+              ],
+              "after": [
+                1830.0,
+                1,
+                1,
+                260.0
+              ]
+            },
+            {
+              "edge": "F74",
+              "before": [
+                2200.0,
+                1,
+                1,
+                630.0
+              ],
+              "after": [
+                2134.0,
+                1,
+                1,
+                564.0
+              ]
+            },
+            {
+              "edge": "F87",
+              "before": [
+                2111.75,
+                1,
+                2,
+                463.0
+              ],
+              "after": [
+                1994.0,
+                1,
+                1,
+                424.0
+              ]
+            },
+            {
+              "edge": "F61",
+              "before": [
+                899.0,
+                0,
+                2,
+                523.0
+              ],
+              "after": [
+                567.2,
+                0,
+                1,
+                497.20000000000005
+              ]
+            },
+            {
+              "edge": "F6",
+              "before": [
+                912.0,
+                0,
+                3,
+                539.0
+              ],
+              "after": [
+                737.0,
+                0,
+                3,
+                515.0
+              ]
+            },
+            {
+              "edge": "F37",
+              "before": [
+                1005.5,
+                0,
+                3,
+                700.0
+              ],
+              "after": [
+                880.0,
+                0,
+                3,
+                670.0
+              ]
+            },
+            {
+              "edge": "F82",
+              "before": [
+                604.0,
+                0,
+                2,
+                269.5
+              ],
+              "after": [
+                402.0,
+                0,
+                2,
+                262.0
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "candidate": "human-blocks-2-secondary-1-repacked-refined",
+        "status": "verified",
+        "rank": [
+          3.939774,
+          [
+            40,
+            199,
+            51990.8
+          ],
+          7.3255
+        ],
+        "readability": {
+          "policy": "balanced-readability-v1",
+          "parallel_crowding_per_flow": 0.047757,
+          "hotspot_excess": 0.05543,
+          "peak_flow_load": 7,
+          "forward_hop_excess": 1.356108,
+          "long_forward_hops": 31,
+          "long_forward_hop_ids": [
+            "F4",
+            "F7",
+            "F12",
+            "F18",
+            "F25",
+            "F28",
+            "F33",
+            "F35",
+            "F37",
+            "F40",
+            "F43",
+            "F44",
+            "F49",
+            "F50",
+            "F52",
+            "F56",
+            "F57",
+            "F59",
+            "F61",
+            "F62",
+            "F71",
+            "F64",
+            "F72",
+            "F74",
+            "F76",
+            "F78",
+            "F79",
+            "F81",
+            "F83",
+            "F89",
+            "F95"
+          ],
+          "bends_per_flow": 2.063158,
+          "graph_return_count": 17,
+          "normalization_task_width": 220.0,
+          "wire_gap_diagnostic": 12.0,
+          "hotspot_cell_size": 80.0,
+          "notes": "soft diagnostics; legitimate convergence may create unavoidable density; thresholds are engineering settings"
+        },
+        "refinement_interrupted": false,
+        "refinements": [
+          {
+            "edge": "F79",
+            "before": [
+              9934.5,
+              5,
+              4,
+              1397.0
+            ],
+            "after": [
+              9584.75,
+              4,
+              4,
+              1415.0
+            ]
+          },
+          {
+            "edge": "F33",
+            "before": [
+              9059.75,
+              4,
+              9,
+              997.0
+            ],
+            "after": [
+              8335.0,
+              4,
+              9,
+              997.0
+            ]
+          },
+          {
+            "edge": "F81",
+            "before": [
+              7316.375,
+              3,
+              5,
+              866.5
+            ],
+            "after": [
+              7186.5,
+              3,
+              5,
+              874.0
+            ]
+          },
+          {
+            "edge": "F84",
+            "before": [
+              7661.0,
+              3,
+              4,
+              2370.0
+            ],
+            "after": [
+              7326.5,
+              3,
+              6,
+              2402.0
+            ]
+          },
+          {
+            "edge": "F62",
+            "before": [
+              6907.0,
+              3,
+              9,
+              1732.0
+            ],
+            "after": [
+              6613.5,
+              3,
+              5,
+              1732.0
+            ]
+          },
+          {
+            "edge": "F95",
+            "before": [
+              4230.25,
+              2,
+              4,
+              767.0
+            ],
+            "after": [
+              2854.0,
+              1,
+              4,
+              833.0
+            ]
+          },
+          {
+            "edge": "F72",
+            "before": [
+              2555.0,
+              1,
+              5,
+              693.0
+            ],
+            "after": [
+              2543.0,
+              1,
+              5,
+              693.0
+            ]
+          },
+          {
+            "edge": "F50",
+            "before": [
+              1712.75,
+              0,
+              5,
+              1000.0
+            ],
+            "after": [
+              1622.0,
+              0,
+              5,
+              967.0
+            ]
+          },
+          {
+            "edge": "F56",
+            "before": [
+              3441.0,
+              1,
+              4,
+              1661.0
+            ],
+            "after": [
+              3426.0,
+              1,
+              4,
+              1646.0
+            ]
+          },
+          {
+            "edge": "F79",
+            "before": [
+              8622.0,
+              4,
+              4,
+              1415.0
+            ],
+            "after": [
+              8620.75,
+              4,
+              4,
+              1417.0
+            ]
+          },
+          {
+            "edge": "F81",
+            "before": [
+              7345.75,
+              3,
+              5,
+              874.0
+            ],
+            "after": [
+              7270.25,
+              3,
+              5,
+              874.0
+            ]
+          },
+          {
+            "edge": "F84",
+            "before": [
+              7326.5,
+              3,
+              6,
+              2402.0
+            ],
+            "after": [
+              7202.25,
+              3,
+              4,
+              2402.0
+            ]
+          },
+          {
+            "edge": "F95",
+            "before": [
+              2796.25,
+              1,
+              4,
+              833.0
+            ],
+            "after": [
+              2763.25,
+              1,
+              4,
+              800.0
+            ]
+          },
+          {
+            "edge": "F72",
+            "before": [
+              2558.75,
+              1,
+              5,
+              693.0
+            ],
+            "after": [
+              2543.0,
+              1,
+              5,
+              693.0
+            ]
+          }
+        ]
+      }
+    ],
+    "seconds": 92.996,
+    "source_reference_models": 32,
+    "selection": "best verified empirical-style candidate; no global optimum guarantee",
+    "removed_redundant_associations": [],
+    "output": "/workspace/work/algorithm-r4/header-safe/process_08_v23.bpmn",
+    "artifacts": {
+      "bpmn": "/workspace/work/algorithm-r4/header-safe/process_08_v23.bpmn",
+      "svg": "/workspace/work/algorithm-r4/header-safe/process_08_v23.svg",
+      "png": null
+    }
+  }
+}

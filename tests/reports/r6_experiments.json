@@ -1,0 +1,512 @@
+{
+  "note": "Earlier trial verified status predates the extra >8-bend candidate rejection. Current final-output gates reject pathological bends or fall back safely. Results are experiments, not proof of independent generalization. Profile frozen; no node ID special cases.",
+  "experiments": [
+    {
+      "experiment": "result",
+      "selected": "verified-incumbent",
+      "seconds": 162.098,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            3.939774,
+            [
+              40,
+              199,
+              51990.8
+            ],
+            7.3255
+          ]
+        },
+        {
+          "candidate": "elk-layer-groups-3",
+          "status": "verified",
+          "rank": [
+            6.638615,
+            [
+              81,
+              207,
+              65435.8
+            ],
+            9.3907
+          ]
+        },
+        {
+          "candidate": "elk-layer-groups-4",
+          "status": "verified",
+          "rank": [
+            6.489628,
+            [
+              86,
+              216,
+              66506.8
+            ],
+            7.7192
+          ]
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 2.0631578947368423,
+        "straight_fraction": 0.3157894736842105,
+        "p90_bends": 5,
+        "mean_length_widths": 2.4468325358851675,
+        "p90_length_widths": 6.3090909090909095,
+        "contacts_per_flow": 0.4105263157894737,
+        "area_factor": 7.325499754260323,
+        "aspect_ratio": 1.6236162361623616,
+        "axis_aligned_fraction": 0.3684210526315789,
+        "document_distance_widths": 0.21515151515151515,
+        "document_bends": 0.16666666666666666,
+        "forward_hop_excess": 1.356108,
+        "parallel_crowding_per_flow": 0.047757,
+        "hotspot_excess": 0.05543
+      }
+    },
+    {
+      "experiment": "handoff-result",
+      "selected": "verified-incumbent",
+      "seconds": 159.064,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            3.939774,
+            [
+              40,
+              199,
+              51990.8
+            ],
+            7.3255
+          ]
+        },
+        {
+          "candidate": "elk-layer-groups-3",
+          "status": "rejected",
+          "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['F74'], 'label_collisions': [['G56', 'F74']], 'label_line_cuts': [], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}"
+        },
+        {
+          "candidate": "elk-layer-groups-4",
+          "status": "verified",
+          "rank": [
+            7.250807,
+            [
+              80,
+              253,
+              62398.8
+            ],
+            5.2706
+          ]
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 2.0631578947368423,
+        "straight_fraction": 0.3157894736842105,
+        "p90_bends": 5,
+        "mean_length_widths": 2.4468325358851675,
+        "p90_length_widths": 6.3090909090909095,
+        "contacts_per_flow": 0.4105263157894737,
+        "area_factor": 7.325499754260323,
+        "aspect_ratio": 1.6236162361623616,
+        "axis_aligned_fraction": 0.3684210526315789,
+        "document_distance_widths": 0.21515151515151515,
+        "document_bends": 0.16666666666666666,
+        "forward_hop_excess": 1.356108,
+        "parallel_crowding_per_flow": 0.047757,
+        "hotspot_excess": 0.05543
+      }
+    },
+    {
+      "experiment": "phase-result",
+      "selected": "verified-incumbent",
+      "seconds": 183.544,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            3.939774,
+            [
+              40,
+              199,
+              51990.8
+            ],
+            7.3255
+          ]
+        },
+        {
+          "candidate": "author-stages-2",
+          "status": "verified",
+          "rank": [
+            6.336844,
+            [
+              85,
+              229,
+              58387.8
+            ],
+            6.9933
+          ]
+        },
+        {
+          "candidate": "author-stages-3",
+          "status": "rejected",
+          "reason": "{'readability_or_routing_audit_failed': {'unplaced_labels': ['G58d'], 'label_collisions': [['G58d', 'T58d']], 'label_line_cuts': [['G58d', 'F33'], ['G58d', 'F65']], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}"
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 2.0631578947368423,
+        "straight_fraction": 0.3157894736842105,
+        "p90_bends": 5,
+        "mean_length_widths": 2.4468325358851675,
+        "p90_length_widths": 6.3090909090909095,
+        "contacts_per_flow": 0.4105263157894737,
+        "area_factor": 7.325499754260323,
+        "aspect_ratio": 1.6236162361623616,
+        "axis_aligned_fraction": 0.3684210526315789,
+        "document_distance_widths": 0.21515151515151515,
+        "document_bends": 0.16666666666666666,
+        "forward_hop_excess": 1.356108,
+        "parallel_crowding_per_flow": 0.047757,
+        "hotspot_excess": 0.05543
+      }
+    },
+    {
+      "experiment": "aligned-result",
+      "selected": "lane-port-alignment-2-refined",
+      "seconds": 120.153,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            42.84,
+            [
+              40,
+              199,
+              51990.8
+            ],
+            7.3255
+          ]
+        },
+        {
+          "candidate": "lane-port-alignment-1",
+          "status": "verified",
+          "rank": [
+            35.61,
+            [
+              46,
+              189,
+              51325.3
+            ],
+            7.6823
+          ]
+        },
+        {
+          "candidate": "lane-port-alignment-2",
+          "status": "verified",
+          "rank": [
+            33.25,
+            [
+              46,
+              159,
+              50354.3
+            ],
+            7.6823
+          ]
+        },
+        {
+          "candidate": "lane-port-alignment-2-refined",
+          "status": "verified",
+          "rank": [
+            29.61,
+            [
+              40,
+              151,
+              49858.3
+            ],
+            7.6823
+          ],
+          "refinement_interrupted": false
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 1.568421052631579,
+        "straight_fraction": 0.4631578947368421,
+        "p90_bends": 5,
+        "mean_length_widths": 2.345923444976077,
+        "p90_length_widths": 6.040909090909091,
+        "contacts_per_flow": 0.4,
+        "area_factor": 7.682261105928846,
+        "aspect_ratio": 1.7026884554559831,
+        "axis_aligned_fraction": 0.5789473684210527,
+        "document_distance_widths": 0.20921717171717172,
+        "document_bends": 0.1111111111111111,
+        "forward_hop_excess": 1.249785,
+        "parallel_crowding_per_flow": 0.030865,
+        "hotspot_excess": 0.013036
+      }
+    },
+    {
+      "experiment": "oriented-result",
+      "selected": "verified-incumbent-refined",
+      "seconds": 118.682,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            29.61,
+            [
+              40,
+              151,
+              49858.3
+            ],
+            7.6823
+          ]
+        },
+        {
+          "candidate": "contextual-decisions",
+          "status": "verified",
+          "rank": [
+            34.66,
+            [
+              48,
+              145,
+              57268.8
+            ],
+            9.2929
+          ]
+        },
+        {
+          "candidate": "same-column-return-decisions",
+          "status": "verified",
+          "rank": [
+            33.86,
+            [
+              48,
+              165,
+              51100.8
+            ],
+            7.6823
+          ]
+        },
+        {
+          "candidate": "verified-incumbent-refined",
+          "status": "verified",
+          "rank": [
+            29.09,
+            [
+              40,
+              150,
+              49840.3
+            ],
+            7.6823
+          ],
+          "refinement_interrupted": false
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 1.5578947368421052,
+        "straight_fraction": 0.4631578947368421,
+        "p90_bends": 5,
+        "mean_length_widths": 2.3450622009569377,
+        "p90_length_widths": 6.040909090909091,
+        "contacts_per_flow": 0.4,
+        "area_factor": 7.682261105928846,
+        "aspect_ratio": 1.7026884554559831,
+        "axis_aligned_fraction": 0.5789473684210527,
+        "document_distance_widths": 0.20921717171717172,
+        "document_bends": 0.1111111111111111,
+        "forward_hop_excess": 1.248013,
+        "parallel_crowding_per_flow": 0.023182,
+        "hotspot_excess": 0.011983
+      }
+    },
+    {
+      "experiment": "corridors-result",
+      "selected": "verified-incumbent",
+      "seconds": 43.835,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            29.61,
+            [
+              40,
+              151,
+              49858.3
+            ],
+            7.6823
+          ]
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 1.568421052631579,
+        "straight_fraction": 0.4631578947368421,
+        "p90_bends": 5,
+        "mean_length_widths": 2.345923444976077,
+        "p90_length_widths": 6.040909090909091,
+        "contacts_per_flow": 0.4,
+        "area_factor": 7.682261105928846,
+        "aspect_ratio": 1.7026884554559831,
+        "axis_aligned_fraction": 0.5789473684210527,
+        "document_distance_widths": 0.20921717171717172,
+        "document_bends": 0.1111111111111111,
+        "forward_hop_excess": 1.249785,
+        "parallel_crowding_per_flow": 0.030865,
+        "hotspot_excess": 0.013036
+      }
+    },
+    {
+      "experiment": "final-align",
+      "selected": "lane-port-alignment-2-refined",
+      "seconds": 124.374,
+      "candidates": [
+        {
+          "candidate": "verified-incumbent",
+          "status": "verified",
+          "rank": [
+            42.84,
+            [
+              40,
+              199,
+              51990.8
+            ],
+            7.3255
+          ]
+        },
+        {
+          "candidate": "lane-port-alignment-1",
+          "status": "verified",
+          "rank": [
+            35.61,
+            [
+              46,
+              189,
+              51325.3
+            ],
+            7.6823
+          ]
+        },
+        {
+          "candidate": "lane-port-alignment-2",
+          "status": "verified",
+          "rank": [
+            33.25,
+            [
+              46,
+              159,
+              50354.3
+            ],
+            7.6823
+          ]
+        },
+        {
+          "candidate": "lane-port-alignment-2-refined",
+          "status": "verified",
+          "rank": [
+            29.61,
+            [
+              40,
+              151,
+              49858.3
+            ],
+            7.6823
+          ],
+          "refinement_interrupted": false
+        }
+      ],
+      "metrics": {
+        "flow_count": 95,
+        "node_count": 64,
+        "lane_count": 6,
+        "return_fraction": 0.17894736842105263,
+        "document_count": 17,
+        "bends_per_flow": 1.568421052631579,
+        "straight_fraction": 0.4631578947368421,
+        "p90_bends": 5,
+        "mean_length_widths": 2.345923444976077,
+        "p90_length_widths": 6.040909090909091,
+        "contacts_per_flow": 0.4,
+        "area_factor": 7.682261105928846,
+        "aspect_ratio": 1.7026884554559831,
+        "axis_aligned_fraction": 0.5789473684210527,
+        "document_distance_widths": 0.20921717171717172,
+        "document_bends": 0.1111111111111111,
+        "forward_hop_excess": 1.249785,
+        "parallel_crowding_per_flow": 0.030865,
+        "hotspot_excess": 0.013036
+      }
+    }
+  ],
+  "transfer_diagnostics": [
+    {
+      "reference": "изм 12 Ведение и актуализация личных дел сотрудников.bpmn",
+      "result": {
+        "failed": "{'no_verified_human_style_layout': [{'candidate': 'elk-layer-groups-3', 'status': 'rejected', 'reason': \"{'readability_or_routing_audit_failed': {'unplaced_labels': ['End_NoUpdate', 'Start_Update'], 'label_collisions': [], 'label_line_cuts': [], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}\", 'seconds': 0.873}, {'candidate': 'elk-layer-groups-4', 'status': 'rejected', 'reason': \"{'readability_or_routing_audit_failed': {'unplaced_labels': ['End_NoUpdate', 'Start_Update'], 'label_collisions': [], 'label_line_cuts': [], 'clearance_violations': [], 'lane_header_cuts': [], 'invalid_endpoints': [], 'routing_safety_passed': True}}\", 'seconds': 0.883}]}"
+      },
+      "engine": "elk"
+    },
+    {
+      "reference": "изм 13 Табелирование и учет рабочего времени.bpmn",
+      "result": {
+        "failed": "{'no_verified_human_style_layout': [{'candidate': 'elk-layer-groups-3', 'status': 'rejected', 'reason': 'shape overlap'}, {'candidate': 'elk-layer-groups-4', 'status': 'rejected', 'reason': 'shape overlap'}]}"
+      },
+      "engine": "elk"
+    },
+    {
+      "reference": "изм 12 Ведение и актуализация личных дел сотрудников.bpmn",
+      "result": {
+        "status": "layout_candidate_verified",
+        "release_ready": false,
+        "semantic_diff": 0,
+        "routing_safety": true,
+        "a4_ratio_passed": false
+      },
+      "engine": "human"
+    },
+    {
+      "reference": "изм 13 Табелирование и учет рабочего времени.bpmn",
+      "result": {
+        "status": "layout_candidate_verified",
+        "release_ready": false,
+        "semantic_diff": 0,
+        "routing_safety": true,
+        "a4_ratio_passed": false
+      },
+      "engine": "human"
+    }
+  ]
+}

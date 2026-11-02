@@ -9,7 +9,7 @@ from .typography import wrap
 from bpmn_refkit.model import TAG_TASK
 
 
-def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_rows=1,chain_depths=(2,3),role_variants=2,free_spine=False,scenario_blocks=False):
+def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_rows=1,chain_depths=(2,3),role_variants=2,free_spine=False,scenario_blocks=False,slot_plan=None,compact_doc_bays=False):
     motifs=analyze(nodes,seq,membership,original)
     motifs['entry_macros']=[motifs['owner'][n] for n,o in nodes.items() if o['kind']=='startEvent']
     lanes=sorted(lane_names,key=lambda n:(original[n][1],n))
@@ -56,7 +56,10 @@ def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_ro
                         if best is None or option<best:best=option
                 _,row,c=best;slots[macro]=(c,row);occupied.add((c,lane,row));remaining.remove(macro);col=max(col,c)
             component_start=max(c for c,_ in slots.values())+1
-        slots,placement_optimization=optimize_slots(slots,motifs,seq,membership,lanes,free_spine=free_spine,scenario_blocks=scenario_blocks)
+        if slot_plan is not None:
+            if set(slot_plan)!=set(slots):raise ValueError('External slot plan has different macro IDs')
+            slots=dict(slot_plan);placement_optimization={'method':'external layer order, fixed roles'}
+        else:slots,placement_optimization=optimize_slots(slots,motifs,seq,membership,lanes,free_spine=free_spine,scenario_blocks=scenario_blocks)
         # Decide whether the local decision is alongside or below its task.
         main_next={a:b for component in motifs['components'] for a,b in zip(component['backbone'],component['backbone'][1:])}
         vertical={}
@@ -71,6 +74,7 @@ def _proposals(nodes,docs,seq,assocs,membership,lane_names,original,secondary_ro
         grouped_docs=defaultdict(list)
         for d,macro in doc_owners.items():grouped_docs[macro].append(d)
         doc_extra={macro:(95 if macro in motifs['pairs'] and len(ds)>1 else 55 if macro in motifs['pairs'] or len(ds)>1 else 0) for macro,ds in grouped_docs.items()}
+        if compact_doc_bays:doc_extra={m:min(55,v) for m,v in doc_extra.items()}
         for macro,extra in doc_extra.items():
             info=rows[membership.get(macro)][slots[macro][1]];info['doc_extra']=max(info.get('doc_extra',0),extra)
 
