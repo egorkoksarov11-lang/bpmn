@@ -75,12 +75,16 @@ def place_responsive_labels(path,svg):
     for owner,label,old in pending+far_valid:
         name=names[owner];candidates=[]
         targets=targets_for(owner)
+        anchors=targets
+        if owner in paths:
+            # A busy midpoint must not hide clear bays along a long segment.
+            anchors=targets+[(x+w*f,y+h*f,0,0) for x,y,w,h in targets for f in (.1,.25,.75,.9)]
         for size in (12,11,10):
             for w in sorted({max(36,old[2]),80,110,140,180,220}):
                 fit=text_layout(name,w,1000,(size,),2,1);h=fit['required_height']
                 # Tighten unused vertical whitespace, preserving the old centre.
                 candidates.append((old[0]+(old[2]-w)/2,old[1]+(old[3]-h)/2,w,h,size))
-                for x,y,tw,th in targets:
+                for x,y,tw,th in anchors:
                     for delta in (0,-12,12,-24,24,-36,36,-48,48,-64,64):
                         candidates.extend([(x+tw/2-w/2+delta,y-h-7,w,h,size),(x+tw/2-w/2+delta,y+th+7,w,h,size),(x+tw+7,y+th/2-h/2+delta,w,h,size),(x-w-7,y+th/2-h/2+delta,w,h,size)])
         def distance(b):return min((gap(b,t) for t in targets),default=0)

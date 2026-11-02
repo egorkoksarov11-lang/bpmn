@@ -150,3 +150,24 @@ def test_refinement_updates_preserve_original_shape_and_branch_caption_bounds():
     update_geometry(m[1],m[3],m[-2],m[-1])
     after={e.get('bpmnElement'):[ET.tostring(l) for l in e.xpath('bd:BPMNLabel',namespaces=NS)] for e in m[3]}
     assert before==after and any(v for k,v in before.items() if k in {i for i,_,_,name in m[5] if name})
+
+
+def test_flow_caption_uses_clear_quarter_when_midpoint_is_congested(tmp_path,monkeypatch):
+    from bpmn_v23 import responsive_labels as labels
+    from bpmn_universal.contract import Q,BD,DC
+    from bpmn_refkit.geometry import bbox_intersect_seg
+    root=ET.Element('definitions');plane=ET.SubElement(root,Q(BD,'BPMNPlane'))
+    edge=ET.SubElement(plane,Q(BD,'BPMNEdge'),bpmnElement='f');label=ET.SubElement(edge,Q(BD,'BPMNLabel'))
+    bounds=ET.SubElement(label,Q(DC,'Bounds'),x='470',y='117',width='80',height='24')
+    nodes={'s':{'kind':'task'},'t':{'kind':'task'}}
+    boxes={'s':(0,50,20,120),'t':(1000,50,100,120),'frame':(0,0,1200,400)}
+    wires={str(x):[(x,70),(x,150)] for x in range(350,651,16)}
+    paths={'f':[(20,110),(1000,110)],**wires}
+    model=(ET.ElementTree(root),root,None,plane,nodes,[('f','s','t','Да')],[],{},{},{},boxes,paths)
+    monkeypatch.setattr(labels,'read_bpmn',lambda path:model)
+    monkeypatch.setattr(labels,'render',lambda *args:{'text_overflow_ids':[]})
+    report=labels.place_responsive_labels(tmp_path/'layout.bpmn',tmp_path/'layout.svg')
+    assert report['unplaced_labels']==[]
+    b=tuple(float(bounds.get(k)) for k in ('x','y','width','height'))
+    assert all(not bbox_intersect_seg(b,a,c,clearance=1) for ps in paths.values() for a,c in zip(ps,ps[1:]))
+    assert labels.gap(b,(20,110,980,0))<=32

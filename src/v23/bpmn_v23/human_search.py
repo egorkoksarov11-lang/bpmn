@@ -157,7 +157,7 @@ class HumanStyleBackend:
             interrupted=False
             try:
                 with deadline(min(120,self.candidate_seconds)):
-                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),protected_ids=[i for i,_,_,_ in assocs] if getattr(self,'straight_documents',False) else (),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
+                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),protected_ids=[i for i,_,_,_ in assocs if len(paths[i])<=10] if getattr(self,'straight_documents',False) else (),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
             except TimeoutError:refinements=[];interrupted=True
             paths=attach(paths,uv,boxes,nodes)
             if getattr(self,'straight_documents',False):
