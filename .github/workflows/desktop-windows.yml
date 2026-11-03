@@ -1,0 +1,34 @@
+name: Desktop Windows smoke
+on:
+  push:
+    paths: ['desktop/**', 'START_WINDOWS.cmd', 'src/**', 'package*.json', '.github/workflows/desktop-windows.yml']
+  workflow_dispatch:
+jobs:
+  desktop:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap isolated dependencies
+        shell: powershell
+        run: ./desktop/Start.ps1 -SetupOnly
+      - name: Generate from scratch
+        shell: powershell
+        run: |
+          $env:PATH = "$PWD\.runtime\node-v22.14.0-win-x64;$env:PATH"
+          $env:PYTHONUTF8 = '1'
+          & ./.venv-desktop/Scripts/python.exe desktop/app.py --input tests/fixtures/straight_pair.bpmn --results desktop-smoke
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Desktop integration checks
+        shell: powershell
+        run: |
+          $env:PYTHONPATH = "$PWD\src\v23;$PWD\src\v22"
+          & ./.runtime/uv.exe pip install --python ./.venv-desktop/Scripts/python.exe pytest==8.3.5
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & ./.venv-desktop/Scripts/python.exe -m pytest tests/test_desktop.py -q
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-desktop-smoke
+          path: desktop-smoke/

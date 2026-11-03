@@ -5,7 +5,7 @@ import copy,tempfile,time,json
 from bpmn_refkit.model import read_bpmn,set_di,TAG_TASK
 from bpmn_refkit.geometry import geometry_audit
 from bpmn_universal.engine import save_labels,arrange_flow_labels
-from bpmn_universal.cli import deadline
+from .deadline import deadline
 from bpmn_universal.contract import NS,semantic_equality
 from .human_layout import proposals
 from .reference_style import style_cost

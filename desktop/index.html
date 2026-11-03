@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BPMN — генератор схем</title>
+<style>
+body{font:17px/1.5 system-ui,sans-serif;background:#f1f5f9;color:#172b40;max-width:850px;margin:5vh auto;padding:24px}
+main{background:white;border-radius:16px;padding:32px;box-shadow:0 8px 30px #172b4010}h1{font-size:30px;margin:0}p{color:#475569}
+button,.download{display:inline-block;background:#1861cd;color:white;padding:12px 18px;border:0;border-radius:8px;font:inherit;cursor:pointer;text-decoration:none;margin:8px 8px 8px 0}
+button:disabled{opacity:.5;cursor:wait}input{display:block;margin:24px 0;max-width:100%;font:inherit}.download{background:#edf4ff;color:#164b92}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto;background:#eef2f6;padding:16px;font-size:13px}#folder{overflow-wrap:anywhere}
+.error{color:#a82020}.working{color:#1a62bd}small{color:#64748b}progress{width:100%}
+</style>
+<main><h1>BPMN — новая компоновка</h1>
+<p>Выберите BPMN-файл. Генератор заново расставит шаги, роли, документы и линии по связям, сохранив бизнес-логику.</p>
+<input id="file" type="file" accept=".bpmn"><button id="generate">Создать схему</button>
+<small>Файл обрабатывается на вашем компьютере.</small>
+<p id="status" role="status" aria-live="polite">Готов к работе</p><progress id="progress" hidden></progress>
+<div id="downloads"></div><p id="folder"></p>
+<details><summary>Журнал работы</summary><pre id="log"></pre></details>
+<p><small>Обычно требуется несколько минут. Время зависит от размера схемы; лимит поиска не равен общему времени работы. Исходный файл сохраняется. Для завершения приложения закройте его консольное окно.</small></p>
+</main>
+<script>
+const token=new URLSearchParams(location.search).get('token');
+const el=id=>document.getElementById(id);
+const url=(path,params={})=>path+'?'+new URLSearchParams({token,...params});
+let uploading=false,localError='';
+async function refresh(){
+ try{
+  const response=await fetch(url('/status'));if(!response.ok)throw Error('Приложение недоступно');
+  const s=await response.json(),busy=s.status==='running'||uploading;
+  el('generate').disabled=busy;el('file').disabled=busy;el('progress').hidden=!busy;
+  el('status').className=s.status==='error'?'error':busy?'working':'';
+  el('status').textContent=localError||(s.status==='running'?`Строим схему «${s.name}». Прошло ${s.elapsed} сек…`:s.status==='done'?'Схема готова. Бизнес-логика проверена и сохранена.':s.status==='error'?s.error:'Готов к работе');
+  el('log').textContent=s.log;el('folder').textContent=s.folder?'Папка результата: '+s.folder:'';
+  el('downloads').replaceChildren();
+  for(const name of s.files){const a=document.createElement('a');a.className='download';a.href=url('/download',{name});a.download=name;a.textContent=name==='result.zip'?'Скачать всё (ZIP)':name;el('downloads').append(a);}
+ }catch(e){el('status').textContent='Нет связи с приложением. Проверьте, открыто ли его консольное окно.';}
+}
+el('generate').onclick=async()=>{
+ localError='';const file=el('file').files[0];if(!file){localError='Сначала выберите BPMN-файл';await refresh();return;}
+ if(!file.name.toLowerCase().endsWith('.bpmn')||!file.size||file.size>25*1024*1024){localError='Нужен файл .bpmn размером до 25 МБ';await refresh();return;}
+ uploading=true;el('generate').disabled=true;
+ try{const r=await fetch(url('/generate',{name:file.name}),{method:'POST',body:file});if(!r.ok){const data=await r.json();throw Error(data.error||'Не удалось начать обработку');}}
+ catch(e){localError=e.message;}
+ finally{uploading=false;el('generate').disabled=false;}
+ await refresh();
+};
+refresh();setInterval(refresh,1500);
+</script></html>
