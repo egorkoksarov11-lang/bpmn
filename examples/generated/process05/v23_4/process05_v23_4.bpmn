@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Defs_Contract" targetNamespace="http://example.com/contract">
+  <bpmn:process id="Process_Contract" name="Подготовка, согласование и заключение договора" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="L_Init" name="Инициатор договора">
+        <bpmn:flowNodeRef>S</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T52</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T53</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T54_Send</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_ProfileOK</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T54_Rework</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_LawProfile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T55_Reapprove</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Form</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T56_Own</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T56_CP</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Merge</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T57_Send</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_CP</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_ChangeProfile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C_Profile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T57_Check</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_ChangeType</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T57_New</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Dispute</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T59_Apply</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E_Stop</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T510_Init</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T513_Init</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>E</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>G_AddRoute</bpmn:flowNodeRef><bpmn:flowNodeRef>T54_AddRoute</bpmn:flowNodeRef><bpmn:flowNodeRef>G_ChangeJoin</bpmn:flowNodeRef><bpmn:flowNodeRef>T59_Init</bpmn:flowNodeRef><bpmn:flowNodeRef>T59_Continue</bpmn:flowNodeRef><bpmn:flowNodeRef>G59_ProfileImpact</bpmn:flowNodeRef><bpmn:flowNodeRef>C_Profile_Final</bpmn:flowNodeRef><bpmn:flowNodeRef>G510_Profile</bpmn:flowNodeRef><bpmn:flowNodeRef>G510_Merge</bpmn:flowNodeRef><bpmn:flowNodeRef>T511_Init</bpmn:flowNodeRef><bpmn:flowNodeRef>G55_ReapproveOK</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="L_UL" name="Уполномоченное лицо">
+        <bpmn:flowNodeRef>T53_UL</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Route</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T59_UL</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_Dec</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T511_UL</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_Profile" name="Профильный согласующий">
+        <bpmn:flowNodeRef>T54_Profile</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T57_Profile</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>T510_Profile</bpmn:flowNodeRef><bpmn:flowNodeRef>T55_Profile_Reapprove</bpmn:flowNodeRef></bpmn:lane>
+      <bpmn:lane id="L_Law" name="Юрист">
+        <bpmn:flowNodeRef>T55_Law</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T57_Law</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T510_Law</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_CP" name="Контрагент">
+        <bpmn:flowNodeRef>T57_CP</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T511_CP</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_Sec" name="Секретарь / делопроизводитель">
+        <bpmn:flowNodeRef>T511_Sec</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T512_Sec</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>T513_Sec</bpmn:flowNodeRef>
+      <bpmn:flowNodeRef>G512_Received</bpmn:flowNodeRef></bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="S" name="В профильном процессе определена необходимость договорного оформления">
+      <bpmn:outgoing>F1</bpmn:outgoing></bpmn:startEvent>
+    <bpmn:userTask id="T52" name="5.2 Подготовить проект договорного документа">
+      <bpmn:incoming>F1</bpmn:incoming><bpmn:outgoing>F3</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T53" name="5.3 Проверить проект и сформировать Лист согласования">
+      <bpmn:incoming>F3</bpmn:incoming><bpmn:outgoing>F4</bpmn:outgoing><bpmn:incoming>F7</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T53_UL" name="Предварительно согласовать состав согласующих">
+      <bpmn:incoming>F4</bpmn:incoming><bpmn:outgoing>F5</bpmn:outgoing><bpmn:incoming>F58</bpmn:incoming></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_Route" name="Маршрут согласован?">
+      <bpmn:incoming>F5</bpmn:incoming><bpmn:outgoing>F6</bpmn:outgoing><bpmn:outgoing>F7</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T54_Send" name="5.4 Направить проект договора и единый Лист согласования участникам утвержденного маршрута">
+      <bpmn:incoming>F6</bpmn:incoming><bpmn:outgoing>F8</bpmn:outgoing><bpmn:incoming>F12</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T54_Profile" name="Проверить договор по своему направлению и зафиксировать результат в едином Листе согласования">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="false"><bpmn:loopDataInputRef>DOR_ApprovalSheet</bpmn:loopDataInputRef><bpmn:inputDataItem id="T54_Profile_Item" name="Участник утвержденного маршрута"/></bpmn:multiInstanceLoopCharacteristics><bpmn:incoming>F8</bpmn:incoming><bpmn:outgoing>F9</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_ProfileOK" name="Все согласующие утвержденного маршрута зафиксировали окончательный результат «Согласовано»?">
+      <bpmn:outgoing>F10</bpmn:outgoing><bpmn:outgoing>F11</bpmn:outgoing><bpmn:incoming>F57</bpmn:incoming></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T54_Rework" name="Урегулировать замечания и отказы согласующих, актуализировать проект и повторно направить его участникам утвержденного маршрута">
+      <bpmn:incoming>F11</bpmn:incoming><bpmn:outgoing>F12</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T55_Law" name="5.5 Провести юридическую проверку внутренне согласованного проекта и зафиксировать результат">
+      <bpmn:incoming>F10</bpmn:incoming><bpmn:outgoing>F13</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_LawProfile" name="Правки юриста затрагивают профильные условия?">
+      <bpmn:incoming>F13</bpmn:incoming><bpmn:outgoing>F14</bpmn:outgoing><bpmn:outgoing>F15</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T55_Reapprove" name="Определить затронутых профильных согласующих, направить им измененную часть и зафиксировать состав повторной проверки в Листе согласования">
+      <bpmn:incoming>F15</bpmn:incoming><bpmn:incoming>F68</bpmn:incoming><bpmn:outgoing>F16</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T55_Profile_Reapprove" name="Повторно проверить измененную часть только затронутым профильным согласующим"><bpmn:multiInstanceLoopCharacteristics isSequential="false"><bpmn:loopDataInputRef>DOR_ApprovalSheet</bpmn:loopDataInputRef><bpmn:inputDataItem id="T55_Profile_Reapprove_Item" name="Затронутый профильный согласующий"/></bpmn:multiInstanceLoopCharacteristics><bpmn:incoming>F16</bpmn:incoming><bpmn:outgoing>F66</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G55_ReapproveOK" name="Все затронутые профильные согласующие подтвердили измененную часть?" gatewayDirection="Diverging"><bpmn:incoming>F66</bpmn:incoming><bpmn:outgoing>F67</bpmn:outgoing><bpmn:outgoing>F68</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:exclusiveGateway id="G_Form" name="Исходная форма договора?">
+      <bpmn:incoming>F14</bpmn:incoming><bpmn:incoming>F67</bpmn:incoming><bpmn:outgoing>F17</bpmn:outgoing><bpmn:outgoing>F18</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T56_Own" name="5.6 Сформировать согласованную редакцию по форме организации">
+      <bpmn:incoming>F17</bpmn:incoming><bpmn:outgoing>F19</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T56_CP" name="5.6 Сформировать согласованную редакцию с комментариями к изменениям">
+      <bpmn:incoming>F18</bpmn:incoming><bpmn:outgoing>F20</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_Merge" name="Редакция для контрагента готова">
+      <bpmn:incoming>F19</bpmn:incoming><bpmn:incoming>F20</bpmn:incoming><bpmn:outgoing>F21</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T57_Send" name="5.7 Направить редакцию контрагенту">
+      <bpmn:incoming>F21</bpmn:incoming><bpmn:outgoing>F22</bpmn:outgoing><bpmn:incoming>F34</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T57_CP" name="Рассмотреть редакцию и направить ответ">
+      <bpmn:incoming>F22</bpmn:incoming><bpmn:outgoing>F23</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_CP" name="Контрагент согласовал редакцию?">
+      <bpmn:incoming>F23</bpmn:incoming><bpmn:outgoing>F24</bpmn:outgoing><bpmn:outgoing>F25</bpmn:outgoing></bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="G_ChangeProfile" name="Изменение затрагивает ранее согласованные параметры профильной операции?">
+      <bpmn:incoming>F25</bpmn:incoming><bpmn:outgoing>F26</bpmn:outgoing><bpmn:outgoing>F28</bpmn:outgoing><bpmn:incoming>F63</bpmn:incoming></bpmn:exclusiveGateway>
+    <bpmn:callActivity id="C_Profile" name="5.8 Передать измененные параметры на повторное согласование в профильный процесс и получить его решение" calledElement="Profile_Process">
+      <bpmn:incoming>F26</bpmn:incoming><bpmn:outgoing>F27</bpmn:outgoing></bpmn:callActivity>
+    <bpmn:userTask id="T57_Check" name="Актуализировать проект по решению профильного процесса (если он вызывался), определить затронутые направления и зафиксировать в Листе согласования только участников повторной проверки">
+      <bpmn:incoming>F27</bpmn:incoming><bpmn:incoming>F28</bpmn:incoming><bpmn:outgoing>F29</bpmn:outgoing></bpmn:userTask>
+    <bpmn:inclusiveGateway id="G_ChangeType" name="Какие внутренние направления затронуты изменениями? (может быть выбрано несколько)" gatewayDirection="Diverging" default="F69">
+      <bpmn:incoming>F29</bpmn:incoming><bpmn:outgoing>F30</bpmn:outgoing><bpmn:outgoing>F31</bpmn:outgoing><bpmn:outgoing>F69</bpmn:outgoing></bpmn:inclusiveGateway>
+    <bpmn:userTask id="T57_Profile" name="Повторно согласовать измененную часть только с затронутыми профильными участниками (финансовое, учетное, техническое и проектное направления — при применимости)">
+      <bpmn:multiInstanceLoopCharacteristics isSequential="false"><bpmn:loopDataInputRef>DOR_ApprovalSheet</bpmn:loopDataInputRef><bpmn:inputDataItem id="T57_Profile_Item" name="Затронутый профильный согласующий"/></bpmn:multiInstanceLoopCharacteristics><bpmn:incoming>F30</bpmn:incoming><bpmn:outgoing>F32</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T57_Law" name="Повторно согласовать только затронутые юридические изменения">
+      <bpmn:incoming>F31</bpmn:incoming><bpmn:outgoing>F33</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T57_New" name="Сформировать следующую единую редакцию после завершения необходимых внутренних проверок">
+      <bpmn:incoming>F35</bpmn:incoming><bpmn:incoming>F69</bpmn:incoming><bpmn:outgoing>F34</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_Dispute" name="Остались разногласия, неурегулированные в пределах полномочий участников?">
+      <bpmn:outgoing>F35</bpmn:outgoing><bpmn:outgoing>F36</bpmn:outgoing><bpmn:incoming>F64</bpmn:incoming></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T59_UL" name="5.9 Принять решение по неурегулированным разногласиям">
+      <bpmn:incoming>F37</bpmn:incoming><bpmn:outgoing>F65</bpmn:outgoing></bpmn:userTask>
+    <bpmn:exclusiveGateway id="G_Dec" name="Решение уполномоченного лица">
+      <bpmn:outgoing>F38</bpmn:outgoing><bpmn:outgoing>F39</bpmn:outgoing><bpmn:outgoing>F62</bpmn:outgoing><bpmn:incoming>F65</bpmn:incoming></bpmn:exclusiveGateway>
+    <bpmn:userTask id="T59_Apply" name="Учесть принятое отклонение и актуализировать редакцию договора">
+      <bpmn:incoming>F39</bpmn:incoming><bpmn:outgoing>F40</bpmn:outgoing></bpmn:userTask>
+    <bpmn:endEvent id="E_Stop" name="Договор не заключается">
+      <bpmn:incoming>F38</bpmn:incoming></bpmn:endEvent>
+    <bpmn:userTask id="T510_Init" name="5.10 Актуализировать итоговую редакцию по результату профильного процесса (если он вызывался), проверить изменения и определить затронутых профильных согласующих для повторного подтверждения">
+      <bpmn:incoming>F24</bpmn:incoming><bpmn:outgoing>F41</bpmn:outgoing><bpmn:incoming>F60</bpmn:incoming><bpmn:incoming>F61</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T510_Law" name="5.10 Подтвердить отсутствие юридических замечаний">
+      <bpmn:incoming>F41</bpmn:incoming><bpmn:outgoing>F42</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T511_Sec" name="5.11 Организовать подписание">
+      <bpmn:incoming>F47</bpmn:incoming><bpmn:outgoing>F48</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T511_UL" name="Подписать со стороны организации">
+      <bpmn:incoming>F48</bpmn:incoming><bpmn:outgoing>F49</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T511_CP" name="Подписать со стороны контрагента">
+      <bpmn:incoming>F49</bpmn:incoming><bpmn:outgoing>F50</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T512_Sec" name="Организовать обмен подписанными экземплярами и контролировать получение экземпляра, подписанного обеими сторонами">
+      <bpmn:incoming>F50</bpmn:incoming><bpmn:outgoing>F51</bpmn:outgoing><bpmn:incoming>F53</bpmn:incoming></bpmn:userTask>
+    <bpmn:userTask id="T513_Sec" name="5.13 Передать подписанный документ инициатору и на хранение">
+      <bpmn:incoming>F52</bpmn:incoming><bpmn:outgoing>F54</bpmn:outgoing></bpmn:userTask>
+    <bpmn:userTask id="T513_Init" name="5.13 Зафиксировать договорное основание в профильном процессе">
+      <bpmn:incoming>F54</bpmn:incoming><bpmn:outgoing>F55</bpmn:outgoing></bpmn:userTask>
+    <bpmn:endEvent id="E" name="Договор заключен">
+      <bpmn:incoming>F55</bpmn:incoming></bpmn:endEvent>
+    <bpmn:exclusiveGateway id="G_AddRoute" name="Требуется подключить дополнительное направление?" gatewayDirection="Diverging"><bpmn:incoming>F9</bpmn:incoming><bpmn:outgoing>F56</bpmn:outgoing><bpmn:outgoing>F57</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:userTask id="T54_AddRoute" name="Дополнить Лист согласования новым направлением и передать изменение состава на предварительное утверждение"><bpmn:incoming>F56</bpmn:incoming><bpmn:outgoing>F58</bpmn:outgoing></bpmn:userTask><bpmn:inclusiveGateway id="G_ChangeJoin" name="Все затронутые направления завершили повторную проверку" gatewayDirection="Converging"><bpmn:incoming>F32</bpmn:incoming><bpmn:incoming>F33</bpmn:incoming><bpmn:outgoing>F64</bpmn:outgoing></bpmn:inclusiveGateway><bpmn:userTask id="T59_Init" name="5.9 Сформировать и передать уполномоченному лицу спорные положения, внутреннюю позицию и позицию контрагента"><bpmn:incoming>F36</bpmn:incoming><bpmn:outgoing>F37</bpmn:outgoing></bpmn:userTask><bpmn:userTask id="T59_Continue" name="Подготовить редакцию для продолжения переговоров на иных условиях"><bpmn:incoming>F62</bpmn:incoming><bpmn:outgoing>F63</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G59_ProfileImpact" name="Принятое отклонение затрагивает ранее согласованные параметры профильной операции?" gatewayDirection="Diverging"><bpmn:incoming>F40</bpmn:incoming><bpmn:outgoing>F59</bpmn:outgoing><bpmn:outgoing>F60</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:callActivity id="C_Profile_Final" name="Повторно согласовать принятые изменения параметров в профильном процессе и получить решение" calledElement="Profile_Process"><bpmn:incoming>F59</bpmn:incoming><bpmn:outgoing>F61</bpmn:outgoing></bpmn:callActivity><bpmn:exclusiveGateway id="G510_Profile" name="Профильные условия изменялись после последнего согласования?" gatewayDirection="Diverging"><bpmn:incoming>F42</bpmn:incoming><bpmn:outgoing>F43</bpmn:outgoing><bpmn:outgoing>F44</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:userTask id="T510_Profile" name="Подтвердить итоговую редакцию только у затронутых профильных согласующих"><bpmn:multiInstanceLoopCharacteristics isSequential="false"><bpmn:loopDataInputRef>DOR_ApprovalSheet</bpmn:loopDataInputRef><bpmn:inputDataItem id="T510_Profile_Item" name="Профильный согласующий, чьи условия изменялись"/></bpmn:multiInstanceLoopCharacteristics><bpmn:incoming>F43</bpmn:incoming><bpmn:outgoing>F45</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G510_Merge" name="Финальная проверка завершена" gatewayDirection="Converging"><bpmn:incoming>F44</bpmn:incoming><bpmn:incoming>F45</bpmn:incoming><bpmn:outgoing>F46</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:userTask id="T511_Init" name="Передать итоговую редакцию и Лист согласования секретарю с задачей на организацию подписания"><bpmn:incoming>F46</bpmn:incoming><bpmn:outgoing>F47</bpmn:outgoing></bpmn:userTask><bpmn:exclusiveGateway id="G512_Received" name="Получен экземпляр, подписанный обеими сторонами?" gatewayDirection="Diverging"><bpmn:incoming>F51</bpmn:incoming><bpmn:outgoing>F52</bpmn:outgoing><bpmn:outgoing>F53</bpmn:outgoing></bpmn:exclusiveGateway><bpmn:sequenceFlow id="F1" sourceRef="S" targetRef="T52"/><bpmn:sequenceFlow id="F3" sourceRef="T52" targetRef="T53"/><bpmn:sequenceFlow id="F4" sourceRef="T53" targetRef="T53_UL"/><bpmn:sequenceFlow id="F5" sourceRef="T53_UL" targetRef="G_Route"/><bpmn:sequenceFlow id="F6" sourceRef="G_Route" targetRef="T54_Send" name="Да"/><bpmn:sequenceFlow id="F7" sourceRef="G_Route" targetRef="T53" name="Нет"/><bpmn:sequenceFlow id="F8" sourceRef="T54_Send" targetRef="T54_Profile"/><bpmn:sequenceFlow id="F9" sourceRef="T54_Profile" targetRef="G_AddRoute"/><bpmn:sequenceFlow id="F10" sourceRef="G_ProfileOK" targetRef="T55_Law" name="Да"/><bpmn:sequenceFlow id="F11" sourceRef="G_ProfileOK" targetRef="T54_Rework" name="Нет"/><bpmn:sequenceFlow id="F12" sourceRef="T54_Rework" targetRef="T54_Send"/><bpmn:sequenceFlow id="F13" sourceRef="T55_Law" targetRef="G_LawProfile"/><bpmn:sequenceFlow id="F14" sourceRef="G_LawProfile" targetRef="G_Form" name="Нет"/><bpmn:sequenceFlow id="F15" sourceRef="G_LawProfile" targetRef="T55_Reapprove" name="Да"/><bpmn:sequenceFlow id="F16" sourceRef="T55_Reapprove" targetRef="T55_Profile_Reapprove"/><bpmn:sequenceFlow id="F17" sourceRef="G_Form" targetRef="T56_Own" name="Форма организации"/><bpmn:sequenceFlow id="F18" sourceRef="G_Form" targetRef="T56_CP" name="Форма контрагента"/><bpmn:sequenceFlow id="F19" sourceRef="T56_Own" targetRef="G_Merge"/><bpmn:sequenceFlow id="F20" sourceRef="T56_CP" targetRef="G_Merge"/><bpmn:sequenceFlow id="F21" sourceRef="G_Merge" targetRef="T57_Send"/><bpmn:sequenceFlow id="F22" sourceRef="T57_Send" targetRef="T57_CP"/><bpmn:sequenceFlow id="F23" sourceRef="T57_CP" targetRef="G_CP"/><bpmn:sequenceFlow id="F24" sourceRef="G_CP" targetRef="T510_Init" name="Да"/><bpmn:sequenceFlow id="F25" sourceRef="G_CP" targetRef="G_ChangeProfile" name="Нет"/><bpmn:sequenceFlow id="F26" sourceRef="G_ChangeProfile" targetRef="C_Profile" name="Да"/><bpmn:sequenceFlow id="F27" sourceRef="C_Profile" targetRef="T57_Check"/><bpmn:sequenceFlow id="F28" sourceRef="G_ChangeProfile" targetRef="T57_Check" name="Нет"/><bpmn:sequenceFlow id="F29" sourceRef="T57_Check" targetRef="G_ChangeType"/><bpmn:sequenceFlow id="F30" sourceRef="G_ChangeType" targetRef="T57_Profile" name="Профильные изменения"/><bpmn:sequenceFlow id="F31" sourceRef="G_ChangeType" targetRef="T57_Law" name="Юридические изменения"/><bpmn:sequenceFlow id="F32" sourceRef="T57_Profile" targetRef="G_ChangeJoin"/><bpmn:sequenceFlow id="F33" sourceRef="T57_Law" targetRef="G_ChangeJoin"/><bpmn:sequenceFlow id="F34" sourceRef="T57_New" targetRef="T57_Send"/><bpmn:sequenceFlow id="F35" sourceRef="G_Dispute" targetRef="T57_New" name="Нет"/><bpmn:sequenceFlow id="F36" sourceRef="G_Dispute" targetRef="T59_Init" name="Да"/><bpmn:sequenceFlow id="F37" sourceRef="T59_Init" targetRef="T59_UL"/><bpmn:sequenceFlow id="F38" sourceRef="G_Dec" targetRef="E_Stop" name="Отказаться от заключения договора"/><bpmn:sequenceFlow id="F39" sourceRef="G_Dec" targetRef="T59_Apply" name="Принять отклонение"/><bpmn:sequenceFlow id="F40" sourceRef="T59_Apply" targetRef="G59_ProfileImpact"/><bpmn:sequenceFlow id="F41" sourceRef="T510_Init" targetRef="T510_Law"/><bpmn:sequenceFlow id="F42" sourceRef="T510_Law" targetRef="G510_Profile"/><bpmn:sequenceFlow id="F43" sourceRef="G510_Profile" targetRef="T510_Profile" name="Да"/><bpmn:sequenceFlow id="F44" sourceRef="G510_Profile" targetRef="G510_Merge" name="Нет"/><bpmn:sequenceFlow id="F45" sourceRef="T510_Profile" targetRef="G510_Merge"/><bpmn:sequenceFlow id="F46" sourceRef="G510_Merge" targetRef="T511_Init"/><bpmn:sequenceFlow id="F47" sourceRef="T511_Init" targetRef="T511_Sec"/><bpmn:sequenceFlow id="F48" sourceRef="T511_Sec" targetRef="T511_UL"/><bpmn:sequenceFlow id="F49" sourceRef="T511_UL" targetRef="T511_CP"/><bpmn:sequenceFlow id="F50" sourceRef="T511_CP" targetRef="T512_Sec"/><bpmn:sequenceFlow id="F51" sourceRef="T512_Sec" targetRef="G512_Received"/><bpmn:sequenceFlow id="F52" sourceRef="G512_Received" targetRef="T513_Sec" name="Да"/><bpmn:sequenceFlow id="F53" sourceRef="G512_Received" targetRef="T512_Sec" name="Нет"/><bpmn:sequenceFlow id="F54" sourceRef="T513_Sec" targetRef="T513_Init"/><bpmn:sequenceFlow id="F55" sourceRef="T513_Init" targetRef="E"/><bpmn:sequenceFlow id="F56" sourceRef="G_AddRoute" targetRef="T54_AddRoute" name="Да"/><bpmn:sequenceFlow id="F57" sourceRef="G_AddRoute" targetRef="G_ProfileOK" name="Нет"/><bpmn:sequenceFlow id="F58" sourceRef="T54_AddRoute" targetRef="T53_UL"/><bpmn:sequenceFlow id="F59" sourceRef="G59_ProfileImpact" targetRef="C_Profile_Final" name="Да"/><bpmn:sequenceFlow id="F60" sourceRef="G59_ProfileImpact" targetRef="T510_Init" name="Нет"/><bpmn:sequenceFlow id="F61" sourceRef="C_Profile_Final" targetRef="T510_Init"/><bpmn:sequenceFlow id="F62" sourceRef="G_Dec" targetRef="T59_Continue" name="Продолжить переговоры на иных условиях"/><bpmn:sequenceFlow id="F63" sourceRef="T59_Continue" targetRef="G_ChangeProfile"/><bpmn:sequenceFlow id="F64" sourceRef="G_ChangeJoin" targetRef="G_Dispute"/><bpmn:sequenceFlow id="F65" sourceRef="T59_UL" targetRef="G_Dec"/><bpmn:dataObject id="DO_ApprovalSheet" name="Лист согласования договора"/><bpmn:dataObject id="DO_Dispute" name="Решение по неурегулированным разногласиям по договору"/><bpmn:dataObject id="DO_SigningTask" name="Задача на организацию подписания договорного документа"/><bpmn:dataObjectReference id="DOR_ApprovalSheet" dataObjectRef="DO_ApprovalSheet" name="Лист согласования договора"/><bpmn:dataObjectReference id="DOR_Dispute" dataObjectRef="DO_Dispute" name="Решение по разногласиям"/><bpmn:dataObjectReference id="DOR_SigningTask" dataObjectRef="DO_SigningTask" name="Задача на организацию подписания"/><bpmn:association id="A08" sourceRef="T53" targetRef="DOR_ApprovalSheet" associationDirection="One"/><bpmn:association id="A20" sourceRef="T59_Init" targetRef="DOR_Dispute" associationDirection="One"/><bpmn:association id="A27" sourceRef="T511_Init" targetRef="DOR_SigningTask" associationDirection="One"/><bpmn:sequenceFlow id="F66" sourceRef="T55_Profile_Reapprove" targetRef="G55_ReapproveOK"/><bpmn:sequenceFlow id="F67" sourceRef="G55_ReapproveOK" targetRef="G_Form" name="Да"/><bpmn:sequenceFlow id="F68" sourceRef="G55_ReapproveOK" targetRef="T55_Reapprove" name="Нет"/><bpmn:sequenceFlow id="F69" sourceRef="G_ChangeType" targetRef="T57_New" name="Ни одно внутреннее направление не затронуто"/></bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_1">
+    <bpmndi:BPMNPlane id="Plane_1" bpmnElement="Process_Contract">
+      <bpmndi:BPMNShape id="L_Init_di" bpmnElement="L_Init" isHorizontal="true">
+        <dc:Bounds x="30.0" y="641.0" width="4225.27" height="492.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_UL_di" bpmnElement="L_UL" isHorizontal="true">
+        <dc:Bounds x="30.0" y="351.0" width="4225.27" height="290.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_Profile_di" bpmnElement="L_Profile" isHorizontal="true">
+        <dc:Bounds x="30.0" y="1133.0" width="4225.27" height="120.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_Law_di" bpmnElement="L_Law" isHorizontal="true">
+        <dc:Bounds x="30.0" y="1253.0" width="4225.27" height="120.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_CP_di" bpmnElement="L_CP" isHorizontal="true">
+        <dc:Bounds x="30.0" y="231.0" width="4225.27" height="120.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_Sec_di" bpmnElement="L_Sec" isHorizontal="true">
+        <dc:Bounds x="30.0" y="65.0" width="4225.27" height="166.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_di" bpmnElement="S">
+        <dc:Bounds x="152.0" y="907.0" width="36.0" height="36.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="104.0" y="950.0" width="132.0" height="70.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T52_di" bpmnElement="T52">
+        <dc:Bounds x="272.0" y="887.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T53_di" bpmnElement="T53">
+        <dc:Bounds x="272.0" y="725.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T54_Send_di" bpmnElement="T54_Send">
+        <dc:Bounds x="484.0" y="725.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_ProfileOK_di" bpmnElement="G_ProfileOK" isMarkerVisible="true">
+        <dc:Bounds x="777.0" y="900.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="724.0" y="809.0" width="156.0" height="70.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T54_Rework_di" bpmnElement="T54_Rework">
+        <dc:Bounds x="908.0" y="725.0" width="220.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_LawProfile_di" bpmnElement="G_LawProfile" isMarkerVisible="true">
+        <dc:Bounds x="1160.0" y="738.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="1099.5" y="689.0" width="171.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T55_Reapprove_di" bpmnElement="T55_Reapprove">
+        <dc:Bounds x="1091.0" y="887.0" width="220.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_Form_di" bpmnElement="G_Form" isMarkerVisible="true">
+        <dc:Bounds x="1425.0" y="900.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="1418.0" y="971.0" width="64.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T56_Own_di" bpmnElement="T56_Own">
+        <dc:Bounds x="1737.27" y="887.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T56_CP_di" bpmnElement="T56_CP">
+        <dc:Bounds x="1574.27" y="725.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_Merge_di" bpmnElement="G_Merge" isMarkerVisible="true">
+        <dc:Bounds x="1786.27" y="738.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="1752.27" y="689.0" width="118.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T57_Send_di" bpmnElement="T57_Send">
+        <dc:Bounds x="1868.27" y="725.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_CP_di" bpmnElement="G_CP" isMarkerVisible="true">
+        <dc:Bounds x="2080.27" y="900.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2005.77" y="851.0" width="71.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_ChangeProfile_di" bpmnElement="G_ChangeProfile" isMarkerVisible="true">
+        <dc:Bounds x="2080.27" y="738.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2032.27" y="661.0" width="146.0" height="56.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C_Profile_di" bpmnElement="C_Profile">
+        <dc:Bounds x="2182.27" y="725.0" width="200.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T57_Check_di" bpmnElement="T57_Check">
+        <dc:Bounds x="2162.27" y="887.0" width="240.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_ChangeType_di" bpmnElement="G_ChangeType" isMarkerVisible="true">
+        <dc:Bounds x="2257.27" y="1063.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2316.27" y="971.0" width="124.0" height="84.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T57_New_di" bpmnElement="T57_New">
+        <dc:Bounds x="2421.27" y="725.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_Dispute_di" bpmnElement="G_Dispute" isMarkerVisible="true">
+        <dc:Bounds x="2633.27" y="738.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2581.27" y="661.0" width="154.0" height="56.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T59_Apply_di" bpmnElement="T59_Apply">
+        <dc:Bounds x="2927.27" y="725.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T510_Init_di" bpmnElement="T510_Init">
+        <dc:Bounds x="3191.27" y="887.0" width="240.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="E_Stop_di" bpmnElement="E_Stop">
+        <dc:Bounds x="2927.27" y="907.0" width="36.0" height="36.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2871.27" y="971.0" width="148.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T513_Init_di" bpmnElement="T513_Init">
+        <dc:Bounds x="4051.27" y="887.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="E_di" bpmnElement="E">
+        <dc:Bounds x="3987.27" y="907.0" width="36.0" height="36.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="3948.27" y="971.0" width="114.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T53_UL_di" bpmnElement="T53_UL">
+        <dc:Bounds x="484.0" y="371.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_Route_di" bpmnElement="G_Route" isMarkerVisible="true">
+        <dc:Bounds x="549.0" y="471.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="507.5" y="529.0" width="133.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T59_UL_di" bpmnElement="T59_UL">
+        <dc:Bounds x="2715.27" y="371.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_Dec_di" bpmnElement="G_Dec" isMarkerVisible="true">
+        <dc:Bounds x="2780.27" y="471.0" width="50.0" height="50.0"/>
+      <bpmndi:BPMNLabel><dc:Bounds x="2733.77" y="529.0" width="143.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T511_UL_di" bpmnElement="T511_UL">
+        <dc:Bounds x="3757.27" y="545.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T54_Profile_di" bpmnElement="T54_Profile">
+        <dc:Bounds x="484.0" y="1153.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T57_Profile_di" bpmnElement="T57_Profile">
+        <dc:Bounds x="2162.27" y="1153.0" width="240.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T55_Law_di" bpmnElement="T55_Law">
+        <dc:Bounds x="928.0" y="1273.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T57_Law_di" bpmnElement="T57_Law">
+        <dc:Bounds x="2192.27" y="1273.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T510_Law_di" bpmnElement="T510_Law">
+        <dc:Bounds x="3221.27" y="1273.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T57_CP_di" bpmnElement="T57_CP">
+        <dc:Bounds x="2031.27" y="251.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T511_CP_di" bpmnElement="T511_CP">
+        <dc:Bounds x="3757.27" y="251.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T511_Sec_di" bpmnElement="T511_Sec">
+        <dc:Bounds x="3545.27" y="135.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T512_Sec_di" bpmnElement="T512_Sec">
+        <dc:Bounds x="3757.27" y="135.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="T513_Sec_di" bpmnElement="T513_Sec">
+        <dc:Bounds x="4051.27" y="135.0" width="180.0" height="76.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F3_di" bpmnElement="F3">
+        <di:waypoint x="362.0" y="887.0"/><di:waypoint x="362.0" y="801.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F4_di" bpmnElement="F4">
+        <di:waypoint x="416.0" y="725.0"/><di:waypoint x="416.0" y="431.8"/><di:waypoint x="484.0" y="431.8"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F5_di" bpmnElement="F5">
+        <di:waypoint x="574.0" y="447.0"/><di:waypoint x="574.0" y="471.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F6_di" bpmnElement="F6">
+        <di:waypoint x="564.0" y="511.0"/><di:waypoint x="476.0" y="511.0"/><di:waypoint x="476.0" y="740.2"/><di:waypoint x="484.0" y="740.2"/><bpmndi:BPMNLabel><dc:Bounds x="494.5" y="664.94" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F7_di" bpmnElement="F7">
+        <di:waypoint x="549.0" y="496.0"/><di:waypoint x="464.0" y="496.0"/><di:waypoint x="464.0" y="763.0"/><di:waypoint x="452.0" y="763.0"/><bpmndi:BPMNLabel><dc:Bounds x="426.0" y="706.8" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F8_di" bpmnElement="F8">
+        <di:waypoint x="489.0" y="801.0"/><di:waypoint x="489.0" y="1153.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
+        <di:waypoint x="817.0" y="935.0"/><di:waypoint x="817.0" y="1288.2"/><di:waypoint x="928.0" y="1288.2"/><bpmndi:BPMNLabel><dc:Bounds x="885.2" y="1304.7" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
+        <di:waypoint x="812.0" y="910.0"/><di:waypoint x="952.0" y="910.0"/><di:waypoint x="952.0" y="801.0"/><bpmndi:BPMNLabel><dc:Bounds x="968.15" y="871.8" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
+        <di:waypoint x="952.0" y="725.0"/><di:waypoint x="952.0" y="717.0"/><di:waypoint x="628.0" y="717.0"/><di:waypoint x="628.0" y="725.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
+        <di:waypoint x="1072.0" y="1273.0"/><di:waypoint x="1072.0" y="809.0"/><di:waypoint x="1170.0" y="809.0"/><di:waypoint x="1170.0" y="773.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
+        <di:waypoint x="1195.0" y="778.0"/><di:waypoint x="1457.5" y="778.0"/><di:waypoint x="1457.5" y="907.5"/><bpmndi:BPMNLabel><dc:Bounds x="1472.0" y="829.2" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F15_di" bpmnElement="F15">
+        <di:waypoint x="1185.0" y="788.0"/><di:waypoint x="1185.0" y="887.0"/><bpmndi:BPMNLabel><dc:Bounds x="1203.5" y="850.8" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F17_di" bpmnElement="F17">
+        <di:waypoint x="1475.0" y="925.0"/><di:waypoint x="1737.27" y="925.0"/><bpmndi:BPMNLabel><dc:Bounds x="1481.83" y="886.0" width="124.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
+        <di:waypoint x="1460.0" y="910.0"/><di:waypoint x="1610.27" y="910.0"/><di:waypoint x="1610.27" y="801.0"/><bpmndi:BPMNLabel><dc:Bounds x="1473.77" y="812.5" width="119.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F19_di" bpmnElement="F19">
+        <di:waypoint x="1811.27" y="887.0"/><di:waypoint x="1811.27" y="788.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F20_di" bpmnElement="F20">
+        <di:waypoint x="1754.27" y="763.0"/><di:waypoint x="1786.27" y="763.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F21_di" bpmnElement="F21">
+        <di:waypoint x="1836.27" y="763.0"/><di:waypoint x="1868.27" y="763.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F22_di" bpmnElement="F22">
+        <di:waypoint x="1985.27" y="725.0"/><di:waypoint x="1985.27" y="311.8"/><di:waypoint x="2031.27" y="311.8"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F23_di" bpmnElement="F23">
+        <di:waypoint x="2211.27" y="311.8"/><di:waypoint x="2390.27" y="311.8"/><di:waypoint x="2390.27" y="814.0"/><di:waypoint x="2112.77" y="814.0"/><di:waypoint x="2112.77" y="907.5"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F25_di" bpmnElement="F25">
+        <di:waypoint x="2105.27" y="900.0"/><di:waypoint x="2105.27" y="788.0"/><bpmndi:BPMNLabel><dc:Bounds x="2134.42" y="860.9" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F26_di" bpmnElement="F26">
+        <di:waypoint x="2130.27" y="763.0"/><di:waypoint x="2182.27" y="763.0"/><bpmndi:BPMNLabel><dc:Bounds x="2149.97" y="770.0" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F27_di" bpmnElement="F27">
+        <di:waypoint x="2282.27" y="801.0"/><di:waypoint x="2282.27" y="887.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F28_di" bpmnElement="F28">
+        <di:waypoint x="2090.27" y="773.0"/><di:waypoint x="2090.27" y="892.0"/><di:waypoint x="2056.27" y="892.0"/><di:waypoint x="2056.27" y="971.0"/><di:waypoint x="2210.27" y="971.0"/><di:waypoint x="2210.27" y="963.0"/><bpmndi:BPMNLabel><dc:Bounds x="2151.07" y="996.5" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F29_di" bpmnElement="F29">
+        <di:waypoint x="2282.27" y="963.0"/><di:waypoint x="2282.27" y="1063.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F30_di" bpmnElement="F30">
+        <di:waypoint x="2282.27" y="1113.0"/><di:waypoint x="2282.27" y="1153.0"/><bpmndi:BPMNLabel><dc:Bounds x="2197.77" y="1125.5" width="75.0" height="23.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F31_di" bpmnElement="F31">
+        <di:waypoint x="2272.27" y="1103.0"/><di:waypoint x="2154.27" y="1103.0"/><di:waypoint x="2154.27" y="1288.2"/><di:waypoint x="2192.27" y="1288.2"/><bpmndi:BPMNLabel><dc:Bounds x="2161.27" y="1250.68" width="155.0" height="14.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F34_di" bpmnElement="F34">
+        <di:waypoint x="2457.27" y="725.0"/><di:waypoint x="2457.27" y="659.0"/><di:waypoint x="2012.27" y="659.0"/><di:waypoint x="2012.27" y="725.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F38_di" bpmnElement="F38">
+        <di:waypoint x="2830.27" y="496.0"/><di:waypoint x="2919.27" y="496.0"/><di:waypoint x="2919.27" y="914.2"/><di:waypoint x="2930.87" y="914.2"/><bpmndi:BPMNLabel><dc:Bounds x="2803.27" y="607.5" width="86.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F39_di" bpmnElement="F39">
+        <di:waypoint x="2815.27" y="481.0"/><di:waypoint x="2963.27" y="481.0"/><di:waypoint x="2963.27" y="725.0"/><bpmndi:BPMNLabel><dc:Bounds x="2865.27" y="449.0" width="74.0" height="25.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F41_di" bpmnElement="F41">
+        <di:waypoint x="3311.27" y="963.0"/><di:waypoint x="3311.27" y="1273.0"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="G_AddRoute_di" bpmnElement="G_AddRoute" isMarkerVisible="true"><dc:Bounds x="565.0" y="900.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="521.0" y="837.0" width="138.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="T54_AddRoute_di" bpmnElement="T54_AddRoute"><dc:Bounds x="696.0" y="725.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="G_ChangeJoin_di" bpmnElement="G_ChangeJoin" isMarkerVisible="true"><dc:Bounds x="2434.27" y="900.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="2383.27" y="837.0" width="152.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="T59_Init_di" bpmnElement="T59_Init"><dc:Bounds x="2715.27" y="725.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="T59_Continue_di" bpmnElement="T59_Continue"><dc:Bounds x="2715.27" y="887.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="G59_ProfileImpact_di" bpmnElement="G59_ProfileImpact" isMarkerVisible="true"><dc:Bounds x="3139.27" y="738.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="3083.27" y="661.0" width="162.0" height="56.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="C_Profile_Final_di" bpmnElement="C_Profile_Final"><dc:Bounds x="3217.27" y="725.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="G510_Profile_di" bpmnElement="G510_Profile" isMarkerVisible="true"><dc:Bounds x="3459.27" y="900.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="3404.27" y="838.0" width="160.0" height="41.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="T510_Profile_di" bpmnElement="T510_Profile"><dc:Bounds x="3394.27" y="1153.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="G510_Merge_di" bpmnElement="G510_Merge" isMarkerVisible="true"><dc:Bounds x="3537.27" y="900.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="3490.77" y="957.0" width="71.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="T511_Init_di" bpmnElement="T511_Init"><dc:Bounds x="3615.27" y="887.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="G512_Received_di" bpmnElement="G512_Received" isMarkerVisible="true"><dc:Bounds x="3969.27" y="148.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="3932.77" y="85.0" width="123.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="DOR_ApprovalSheet_di" bpmnElement="DOR_ApprovalSheet"><dc:Bounds x="216.0" y="690.0" width="36.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="117.0" y="694.0" width="84.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="DOR_Dispute_di" bpmnElement="DOR_Dispute"><dc:Bounds x="2731.77" y="821.0" width="36.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="2774.77" y="832.0" width="104.0" height="28.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNShape id="DOR_SigningTask_di" bpmnElement="DOR_SigningTask"><dc:Bounds x="3725.27" y="987.0" width="36.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="3768.27" y="991.5" width="84.0" height="41.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id="F1_di" bpmnElement="F1"><di:waypoint x="188.0" y="925.0"/><di:waypoint x="272.0" y="925.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F9_di" bpmnElement="F9"><di:waypoint x="574.0" y="1153.0"/><di:waypoint x="574.0" y="934.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F24_di" bpmnElement="F24"><di:waypoint x="2120.27" y="915.0"/><di:waypoint x="2120.27" y="835.0"/><di:waypoint x="2691.27" y="835.0"/><di:waypoint x="2691.27" y="987.0"/><di:waypoint x="3239.27" y="987.0"/><di:waypoint x="3239.27" y="963.0"/><bpmndi:BPMNLabel><dc:Bounds x="3257.77" y="973.3" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F32_di" bpmnElement="F32"><di:waypoint x="2402.27" y="1168.2"/><di:waypoint x="2451.77" y="1168.2"/><di:waypoint x="2451.77" y="942.5"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F33_di" bpmnElement="F33"><di:waypoint x="2372.27" y="1288.2"/><di:waypoint x="2466.77" y="1288.2"/><di:waypoint x="2466.77" y="942.5"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F35_di" bpmnElement="F35"><di:waypoint x="2633.27" y="763.0"/><di:waypoint x="2601.27" y="763.0"/><bpmndi:BPMNLabel><dc:Bounds x="2606.27" y="789.0" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F36_di" bpmnElement="F36"><di:waypoint x="2683.27" y="763.0"/><di:waypoint x="2715.27" y="763.0"/><bpmndi:BPMNLabel><dc:Bounds x="2687.77" y="780.0" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F37_di" bpmnElement="F37"><di:waypoint x="2751.27" y="725.0"/><di:waypoint x="2751.27" y="559.0"/><di:waypoint x="2707.27" y="559.0"/><di:waypoint x="2707.27" y="431.8"/><di:waypoint x="2715.27" y="431.8"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F40_di" bpmnElement="F40"><di:waypoint x="3107.27" y="763.0"/><di:waypoint x="3139.27" y="763.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F42_di" bpmnElement="F42"><di:waypoint x="3365.27" y="1273.0"/><di:waypoint x="3365.27" y="1111.5"/><di:waypoint x="3469.27" y="1111.5"/><di:waypoint x="3469.27" y="935.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F43_di" bpmnElement="F43"><di:waypoint x="3484.27" y="950.0"/><di:waypoint x="3484.27" y="1153.0"/><bpmndi:BPMNLabel><dc:Bounds x="3499.77" y="1033.0" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F44_di" bpmnElement="F44"><di:waypoint x="3509.27" y="925.0"/><di:waypoint x="3537.27" y="925.0"/><bpmndi:BPMNLabel><dc:Bounds x="3510.27" y="938.5" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F45_di" bpmnElement="F45"><di:waypoint x="3520.27" y="1153.0"/><di:waypoint x="3520.27" y="1051.5"/><di:waypoint x="3572.27" y="1051.5"/><di:waypoint x="3572.27" y="940.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F46_di" bpmnElement="F46"><di:waypoint x="3587.27" y="925.0"/><di:waypoint x="3615.27" y="925.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F47_di" bpmnElement="F47"><di:waypoint x="3615.27" y="909.8"/><di:waypoint x="3599.27" y="909.8"/><di:waypoint x="3599.27" y="211.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F48_di" bpmnElement="F48"><di:waypoint x="3689.27" y="211.0"/><di:waypoint x="3689.27" y="560.2"/><di:waypoint x="3757.27" y="560.2"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F49_di" bpmnElement="F49"><di:waypoint x="3847.27" y="545.0"/><di:waypoint x="3847.27" y="327.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F50_di" bpmnElement="F50"><di:waypoint x="3847.27" y="251.0"/><di:waypoint x="3847.27" y="211.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F51_di" bpmnElement="F51"><di:waypoint x="3937.27" y="153.0"/><di:waypoint x="3989.27" y="153.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F52_di" bpmnElement="F52"><di:waypoint x="4019.27" y="173.0"/><di:waypoint x="4051.27" y="173.0"/><bpmndi:BPMNLabel><dc:Bounds x="4021.77" y="180.0" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F53_di" bpmnElement="F53"><di:waypoint x="3969.27" y="173.0"/><di:waypoint x="3937.27" y="173.0"/><bpmndi:BPMNLabel><dc:Bounds x="3944.27" y="180.0" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F54_di" bpmnElement="F54"><di:waypoint x="4141.27" y="211.0"/><di:waypoint x="4141.27" y="887.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F55_di" bpmnElement="F55"><di:waypoint x="4051.27" y="925.0"/><di:waypoint x="4023.27" y="925.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F56_di" bpmnElement="F56"><di:waypoint x="600.0" y="910.0"/><di:waypoint x="688.0" y="910.0"/><di:waypoint x="688.0" y="785.8"/><di:waypoint x="696.0" y="785.8"/><bpmndi:BPMNLabel><dc:Bounds x="653.5" y="815.72" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F57_di" bpmnElement="F57"><di:waypoint x="615.0" y="925.0"/><di:waypoint x="777.0" y="925.0"/><bpmndi:BPMNLabel><dc:Bounds x="715.4" y="950.5" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F58_di" bpmnElement="F58"><di:waypoint x="732.0" y="725.0"/><di:waypoint x="732.0" y="431.8"/><di:waypoint x="664.0" y="431.8"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F59_di" bpmnElement="F59"><di:waypoint x="3189.27" y="763.0"/><di:waypoint x="3217.27" y="763.0"/><bpmndi:BPMNLabel><dc:Bounds x="3180.47" y="781.0" width="18.0" height="12.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F60_di" bpmnElement="F60"><di:waypoint x="3164.27" y="788.0"/><di:waypoint x="3164.27" y="902.2"/><di:waypoint x="3191.27" y="902.2"/><bpmndi:BPMNLabel><dc:Bounds x="3176.27" y="847.05" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F61_di" bpmnElement="F61"><di:waypoint x="3307.27" y="801.0"/><di:waypoint x="3307.27" y="887.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F62_di" bpmnElement="F62"><di:waypoint x="2815.27" y="511.0"/><di:waypoint x="2903.27" y="511.0"/><di:waypoint x="2903.27" y="902.2"/><di:waypoint x="2895.27" y="902.2"/><bpmndi:BPMNLabel><dc:Bounds x="2779.77" y="563.8" width="93.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F63_di" bpmnElement="F63"><di:waypoint x="2715.27" y="902.2"/><di:waypoint x="2707.27" y="902.2"/><di:waypoint x="2707.27" y="809.0"/><di:waypoint x="2120.27" y="809.0"/><di:waypoint x="2120.27" y="773.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F64_di" bpmnElement="F64"><di:waypoint x="2469.27" y="910.0"/><di:waypoint x="2658.27" y="910.0"/><di:waypoint x="2658.27" y="788.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F65_di" bpmnElement="F65"><di:waypoint x="2805.27" y="447.0"/><di:waypoint x="2805.27" y="471.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="A08_di" bpmnElement="A08"><di:waypoint x="272.0" y="729.25"/><di:waypoint x="252.0" y="721.75"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="A20_di" bpmnElement="A20"><di:waypoint x="2779.86" y="801.0"/><di:waypoint x="2766.48" y="821.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="A27_di" bpmnElement="A27"><di:waypoint x="3721.87" y="963.0"/><di:waypoint x="3732.35" y="987.0"/></bpmndi:BPMNEdge><bpmndi:BPMNShape id="T55_Profile_Reapprove_di" bpmnElement="T55_Profile_Reapprove"><dc:Bounds x="1294.0" y="1153.0" width="180.0" height="76.0"/></bpmndi:BPMNShape><bpmndi:BPMNShape id="G55_ReapproveOK_di" bpmnElement="G55_ReapproveOK" isMarkerVisible="true"><dc:Bounds x="1343.0" y="900.0" width="50.0" height="50.0"/><bpmndi:BPMNLabel><dc:Bounds x="1280.5" y="837.0" width="175.0" height="42.0"/></bpmndi:BPMNLabel></bpmndi:BPMNShape><bpmndi:BPMNEdge id="F16_di" bpmnElement="F16"><di:waypoint x="1299.0" y="963.0"/><di:waypoint x="1299.0" y="1153.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F66_di" bpmnElement="F66"><di:waypoint x="1384.0" y="1153.0"/><di:waypoint x="1384.0" y="934.0"/></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F67_di" bpmnElement="F67"><di:waypoint x="1393.0" y="925.0"/><di:waypoint x="1425.0" y="925.0"/><bpmndi:BPMNLabel><dc:Bounds x="1399.5" y="941.5" width="19.0" height="13.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F68_di" bpmnElement="F68"><di:waypoint x="1343.0" y="925.0"/><di:waypoint x="1311.0" y="925.0"/><bpmndi:BPMNLabel><dc:Bounds x="1314.0" y="950.5" width="26.0" height="11.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge><bpmndi:BPMNEdge id="F69_di" bpmnElement="F69"><di:waypoint x="2292.27" y="1073.0"/><di:waypoint x="2442.27" y="1073.0"/><di:waypoint x="2442.27" y="969.0"/><di:waypoint x="2426.27" y="969.0"/><di:waypoint x="2426.27" y="881.0"/><di:waypoint x="2538.27" y="881.0"/><di:waypoint x="2538.27" y="801.0"/><bpmndi:BPMNLabel><dc:Bounds x="2558.77" y="853.0" width="83.0" height="56.0"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge></bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
