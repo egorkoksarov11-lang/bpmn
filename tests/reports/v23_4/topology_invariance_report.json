@@ -1,0 +1,89 @@
+{
+  "protocol": "all node, flow and role display labels replaced; geometry envelopes held fixed; no file mutations; grouping, spine, regions, slots and role/scenario order must be identical",
+  "results": [
+    {
+      "case": "S1",
+      "source_sha256": "302f533a4843b05183e5de482421032dd441faefedef708490edb880f485e954",
+      "all_variants_equal": true,
+      "variants": [
+        {
+          "variant": "empty",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "reversed_numbers_and_keywords",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "unrelated_words",
+          "structural_signature_equal": true
+        }
+      ],
+      "source_unchanged": true,
+      "region_count": 12
+    },
+    {
+      "case": "S2",
+      "source_sha256": "40d5106a09caaa78ca6313a1f9763f3b3591ffe8abeffd95dd03daa26f8516d4",
+      "all_variants_equal": true,
+      "variants": [
+        {
+          "variant": "empty",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "reversed_numbers_and_keywords",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "unrelated_words",
+          "structural_signature_equal": true
+        }
+      ],
+      "source_unchanged": true,
+      "region_count": 38
+    },
+    {
+      "case": "S3",
+      "source_sha256": "56d8faaef8e2439eabeb866926c197dba149c7bd07a9fb849d1f5f8b33a740e7",
+      "all_variants_equal": true,
+      "variants": [
+        {
+          "variant": "empty",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "reversed_numbers_and_keywords",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "unrelated_words",
+          "structural_signature_equal": true
+        }
+      ],
+      "source_unchanged": true,
+      "region_count": 3
+    },
+    {
+      "case": "S4",
+      "source_sha256": "8c85beeb81a198c995e32d431f8a299c275a0b0d34a0c41ed348c2d0e1a184ff",
+      "all_variants_equal": true,
+      "variants": [
+        {
+          "variant": "empty",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "reversed_numbers_and_keywords",
+          "structural_signature_equal": true
+        },
+        {
+          "variant": "unrelated_words",
+          "structural_signature_equal": true
+        }
+      ],
+      "source_unchanged": true,
+      "region_count": 21
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "protocol": "same typed graph, labels unused; compare legacy cycle cutting with bounded complete-path protection; dominator returns excluded only in this structural diagnostic, never deleted from BPMN",
+  "results": [
+    {
+      "case": "S1",
+      "macro_path_before": 21,
+      "macro_path_after": 21,
+      "visible_nodes_before": 30,
+      "visible_nodes_after": 30,
+      "complete_path_protection_applied": false
+    },
+    {
+      "case": "S2",
+      "macro_path_before": 35,
+      "macro_path_after": 35,
+      "visible_nodes_before": 52,
+      "visible_nodes_after": 52,
+      "complete_path_protection_applied": false
+    },
+    {
+      "case": "S3",
+      "macro_path_before": 22,
+      "macro_path_after": 22,
+      "visible_nodes_before": 27,
+      "visible_nodes_after": 27,
+      "complete_path_protection_applied": false
+    },
+    {
+      "case": "S4",
+      "macro_path_before": 29,
+      "macro_path_after": 44,
+      "visible_nodes_before": 35,
+      "visible_nodes_after": 54,
+      "complete_path_protection_applied": true
+    }
+  ]
+}

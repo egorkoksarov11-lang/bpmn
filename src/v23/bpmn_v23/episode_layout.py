@@ -165,40 +165,50 @@ def episode_proposal(nodes,docs,seq,assocs,member,lanes,original,*,rows=2,seed=2
 
 
 class EpisodeGraphBackend(GraphChannelsBackend):
-    name='v23.2-semantic-episodes'
-    selection_policy='human-episodes-balanced-v2'
+    name='v23.4-graph-regions'
+    selection_policy='graph-only-regions-balanced-v3'
     candidate_refine_rounds=0
     overlap_corridors=True
     local_episode_editing=True
-    routing_policy={'crossing_penalty':1500,'bend_penalty':140}
+    routing_policy={'crossing_penalty':1600,'bend_penalty':240}
     def candidate_rank(self,path,boxes,paths,uv,nodes,docs,seq):
-        from .quality import score,path_length
-        from .readability import metrics
-        from .local_editing import physical_bends
-        from bpmn_universal.contract import NS
-        from lxml import etree as ET
-        quality=score(paths,uv);reading=metrics(boxes,paths,nodes,seq);count=max(1,len(seq))
-        bends=sum(physical_bends(paths[i]) for i,*_ in seq)/count
-        length=sum(path_length(paths[i]) for i,*_ in seq)/(200*count)
-        rects=list(boxes.values())+[tuple(float(b.get(k)) for k in ('x','y','width','height')) for b in ET.parse(str(path)).xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)]
-        points=[p for ps in paths.values() for p in ps]
-        width=max([b[0]+b[2] for b in rects]+[p[0] for p in points])-min([b[0] for b in rects]+[p[0] for p in points])
-        height=max([b[1]+b[3] for b in rects]+[p[1] for p in points])-min([b[1] for b in rects]+[p[1] for p in points])
-        packing=math.sqrt(width*height/(max(1,len(nodes))*200*80))
-        overspan=max(0,width/(200*math.sqrt(max(1,len(nodes)))*1.8)-1)**2
-        # Fixed physical normalization prevents larger task boxes from getting
-        # an artificial density reward. The weights are explicit engineering
-        # choices; no metric is presented as a human similarity percentage.
-        value=8*quality[0]/count+1.2*bends+length+.4*packing+.4*overspan+6*reading['parallel_crowding_per_flow']+1.2*reading['hotspot_excess']+.25*reading['forward_hop_excess']
-        return (round(value,6),quality,round(packing,6))
+        from bpmn_refkit.model import read_bpmn
+        from .layout_objective import objective
+        from .quality import score
+        parsed=read_bpmn(path)
+        labels=[tuple(float(b.get(k)) for k in ('x','y','width','height')) for b in parsed[1].xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=__import__('bpmn_universal.contract',fromlist=['NS']).NS)]
+        value,detail=objective(boxes,paths,nodes,seq,parsed[8],docs,parsed[6],labels)
+        return (round(value/max(1,len(seq)),6),score(paths,uv),round(detail['packing'],6))
 
     def placements(self,nodes,docs,seq,assocs,member,lanes,original):
+        self.placement_failures=[]
         seen=set()
-        for name,boxes,report in self._placements(nodes,docs,seq,assocs,member,lanes,original):
+        from itertools import chain
+        initial=self._initial_families(nodes,docs,seq,assocs,member,lanes,original)
+        for name,boxes,report in chain(initial,self._placements(nodes,docs,seq,assocs,member,lanes,original)):
             signature=(tuple((n,tuple(round(v,3) for v in b)) for n,b in sorted(boxes.items())),tuple(sorted(report.get('reserved_captions',{}).items())))
             if signature in seen:continue
             seen.add(signature)
             yield name,boxes,report
+
+    def _initial_families(self,nodes,docs,seq,assocs,member,lanes,original):
+        """One candidate per major graph family before variants consume budget."""
+        from .lane_ordering import reorder_lanes
+        from .spine_episodes import spine_proposal
+        from .micro_episodes import micro_proposal
+        lanes={l:lanes[l] for l in sorted(lanes,key=lambda l:(original[l][1],l))}
+        builders=[('spine',lambda:spine_proposal(nodes,docs,seq,assocs,member,lanes,original,wrap=False,attach_next=False)),
+                  ('inline',lambda:micro_proposal(nodes,docs,seq,assocs,member,lanes,original,vertical_secondary=True)),
+                  ('layered',lambda:next(GraphChannelsBackend.placements(self,nodes,docs,seq,assocs,member,lanes,original))[1:]),
+                  ('regions',lambda:episode_proposal(nodes,docs,seq,assocs,member,lanes,original,rows=2,seed=23,vertical=True))]
+        for family,build in builders:
+            try:
+                boxes,report=build();report=reserve_flow_labels(boxes,report,nodes,docs,seq,lanes)
+                boxes,report=reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,self.role_order or 'auto')
+                report['candidate_family']=family;report['candidate_scheduling']='one initial candidate per graph family before variants'
+                yield 'graph-first-'+family,boxes,report
+            except (ValueError,StopIteration) as error:
+                self.placement_failures.append({'family':family,'reason':str(error)})
 
     def _placements(self,nodes,docs,seq,assocs,member,lanes,original):
         # These Y coordinates belong to the erased neutral model: they encode
@@ -213,7 +223,9 @@ class EpisodeGraphBackend(GraphChannelsBackend):
                 from .lane_ordering import reorder_lanes
                 changed,detail=reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,self.role_order or 'auto')
                 yield f'inline-episodes-secondary-vertical-{int(vertical)}-roles',changed,detail
-            except ValueError:continue
+            except ValueError as error:
+                self.placement_failures.append({'family':'graph-episode-candidate','reason':str(error)})
+                continue
         from .human_search import HumanStyleBackend
         # Preserve the previous cold constructor as a genuine graph-only
         # candidate. It is not an archived layout or an external incumbent.
@@ -225,13 +237,13 @@ class EpisodeGraphBackend(GraphChannelsBackend):
             from .block_compaction import compact_blocks
             packed,packed_report=compact_blocks(boxes,report,nodes,docs,seq,member,lanes,gap=32,stack=False)
             packed_report=reserve_flow_labels(packed,packed_report,nodes,docs,seq,lanes)
-            yield 'numbered-episodes-packed',packed,packed_report
+            yield 'graph-region-episodes-packed',packed,packed_report
             report=reserve_flow_labels(boxes,report,nodes,docs,seq,lanes)
-            yield 'numbered-episodes',boxes,report
+            yield 'graph-region-episodes',boxes,report
             from .lane_ordering import reorder_lanes
             changed,detail=reorder_lanes(packed,packed_report,nodes,docs,seq,member,lanes,self.role_order or 'auto')
-            yield 'numbered-episodes-roles',changed,detail
-        except ValueError:pass
+            yield 'graph-region-episodes-roles',changed,detail
+        except ValueError as error:self.placement_failures.append({'family':'graph-region-stage','reason':str(error)})
         from .spine_episodes import spine_proposal
         for wrap,attach_next in ((False,False),):
             try:
@@ -244,7 +256,9 @@ class EpisodeGraphBackend(GraphChannelsBackend):
                     from .lane_ordering import reorder_lanes
                     changed,detail=reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,'auto')
                     yield f'role-spine-wrap-{int(wrap)}-next-{int(attach_next)}-roles',changed,detail
-            except ValueError:continue
+            except ValueError as error:
+                self.placement_failures.append({'family':'graph-episode-candidate','reason':str(error)})
+                continue
         # Role order starts from graph distance; XML listing has no visual meaning.
         for rows,seed,vertical in ((2,23,False),(3,71,True)):
             try:
@@ -253,7 +267,9 @@ class EpisodeGraphBackend(GraphChannelsBackend):
                     from .lane_ordering import reorder_lanes
                     boxes,report=reorder_lanes(boxes,report,nodes,docs,seq,member,lanes,self.role_order)
                 yield f'episode-rows-{rows}-seed-{seed}-vertical-{int(vertical)}',boxes,report
-            except ValueError:continue
+            except ValueError as error:
+                self.placement_failures.append({'family':'graph-episode-candidate','reason':str(error)})
+                continue
         # Existing cold placements remain available; no external incumbent or
         # source coordinates may be used as a fallback.
         from .block_compaction import compact_blocks
@@ -267,6 +283,6 @@ class EpisodeGraphBackend(GraphChannelsBackend):
                 packed,detail=compact_blocks(boxes,report,nodes,docs,seq,member,lanes,gap=32,stack=False)
                 detail=reserve_flow_labels(packed,detail,nodes,docs,seq,lanes)
                 yield name+'-episode-packed',packed,detail
-            except ValueError:pass
+            except ValueError as error:self.placement_failures.append({'family':'graph-region-stage','reason':str(error)})
             report=reserve_flow_labels(boxes,report,nodes,docs,seq,lanes)
             yield name+'-role-stable',boxes,report

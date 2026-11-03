@@ -71,7 +71,5 @@ def metrics(boxes,paths,nodes,seq,member,docs=None,assocs=None):
 
 
 def local_loss(paths,uv,seq,window,member):
-    # Do not penalize raw direction reversals: human examples use them for
-    # compact folding. Evaluate the wires themselves, in fixed physical units.
-    i,j=window['edges']
-    return sum(physical_bends(paths[e])*1.5+path_length(paths[e])/200 for e in (i,j))
+    from .layout_objective import wire_cost
+    return sum(wire_cost(paths[e]) for e in window['edges'])

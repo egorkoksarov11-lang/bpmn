@@ -113,19 +113,23 @@ def repack_documents(boxes,labels,moved,owners,nodes,docs,member,lanes,seq,affec
     out=dict(boxes);caps=dict(labels);moving_docs=sorted(n for n in moved if n in docs)
     occupied=[b for n,b in out.items() if n in nodes or n in docs and n not in moving_docs]
     occupied+=[b for n,b in caps.items() if n not in moving_docs and n not in affected and not(n in nodes and nodes[n]['kind'] in TAG_TASK)]
+    def clear_corridor(rect,u,v):
+        return not any(_rect_overlap(rect,b,0) for n,b in out.items() if n not in (u,v) and (n in nodes or n in docs and n not in moving_docs))
     for eid,u,v,*_ in seq:
         if u not in nodes or v not in nodes:continue
         a,b=out[u],out[v];left=max(a[0],b[0]);right=min(a[0]+a[2],b[0]+b[2]);top=max(a[1],b[1]);bottom=min(a[1]+a[3],b[1]+b[3])
         if right-left>12 and (a[1]+a[3]<b[1] or b[1]+b[3]<a[1]):
-            upper,lower=(a,b) if a[1]<b[1] else (b,a);occupied.append(((left+right)/2-6,upper[1]+upper[3],12,lower[1]-upper[1]-upper[3]))
+            upper,lower=(a,b) if a[1]<b[1] else (b,a);corridor=((left+right)/2-6,upper[1]+upper[3],12,lower[1]-upper[1]-upper[3])
+            if clear_corridor(corridor,u,v):occupied.append(corridor)
         elif bottom-top>12 and (a[0]+a[2]<b[0] or b[0]+b[2]<a[0]):
-            first,last=(a,b) if a[0]<b[0] else (b,a);occupied.append((first[0]+first[2],(top+bottom)/2-6,last[0]-first[0]-first[2],12))
+            first,last=(a,b) if a[0]<b[0] else (b,a);corridor=(first[0]+first[2],(top+bottom)/2-6,last[0]-first[0]-first[2],12)
+            if clear_corridor(corridor,u,v):occupied.append(corridor)
     for d in moving_docs:
         owner=owners[d];a=out[owner];glyph=out[d];caption=caps.get(d);pieces=[glyph]+([caption] if caption else [])
         x=min(b[0] for b in pieces);y=min(b[1] for b in pieces);w=max(b[0]+b[2] for b in pieces)-x;h=max(b[1]+b[3] for b in pieces)-y;lane=out[member[owner]]
         choices=[(x,y,w,h)]
         for distance in (24,36,52):
-            for offset in (0,-32,32):choices.extend([(a[0]+a[2]+distance,a[1]+a[3]/2-h/2+offset,w,h),(a[0]-distance-w,a[1]+a[3]/2-h/2+offset,w,h),(a[0]+a[2]/2-w/2+offset,a[1]-distance-h,w,h),(a[0]+a[2]/2-w/2+offset,a[1]+a[3]+distance,w,h)])
+            for offset in (0,-32,32,-64,64,-96,96,-128,128,-w/2-20,w/2+20):choices.extend([(a[0]+a[2]+distance,a[1]+a[3]/2-h/2+offset,w,h),(a[0]-distance-w,a[1]+a[3]/2-h/2+offset,w,h),(a[0]+a[2]/2-w/2+offset,a[1]-distance-h,w,h),(a[0]+a[2]/2-w/2+offset,a[1]+a[3]+distance,w,h)])
         def valid(b):return b[0]>=lane[0]+56 and b[1]>=lane[1]+8 and b[0]+w<=lane[0]+lane[2]-8 and b[1]+h<=lane[1]+lane[3]-8 and not any(gap(b,q)<6 for q in occupied)
         choices=[b for b in choices if valid(b)]
         if not choices:return None
@@ -136,8 +140,15 @@ def repack_documents(boxes,labels,moved,owners,nodes,docs,member,lanes,seq,affec
     return out,caps
 
 
-def joint_routes(boxes,nodes,seq,assocs,paths,affected,internal,obstacles,old_boxes=None,beam_width=3):
-    uv={i:(u,v) for i,u,v,*_ in seq+assocs};fixed={i:p for i,p in paths.items() if i not in affected};best=None;cache={}
+def joint_routes(boxes,nodes,seq,assocs,paths,affected,internal,obstacles,old_boxes=None,beam_width=3,fixed_seed=None):
+    from .layout_objective import wire_cost
+    uv={i:(u,v) for i,u,v,*_ in seq+assocs};fixed={i:(fixed_seed or {}).get(i,p) for i,p in paths.items() if i not in affected};best=None;cache={}
+    info={i for i,u,v,*_ in assocs if u not in nodes or v not in nodes}
+    def valid(eid,p,other):
+        if eid in info and len(p)==2:
+            from .document_layout import safe_link
+            return safe_link(eid,p,obstacles,uv,other,nodes=nodes)
+        return safe_poly(eid,p,obstacles,uv,nodes=nodes) and not overlapping(p,other)
     def options_for(eid):
         # Geometry and fixed wires are identical in both orders and all beams.
         # Validate them once; only variable-wire overlap and occupied ports vary.
@@ -145,11 +156,14 @@ def joint_routes(boxes,nodes,seq,assocs,paths,affected,internal,obstacles,old_bo
             u,v=uv[eid];options=compact_route_options(eid,obstacles,uv,fixed)
             if old_boxes is not None:
                 options.extend(p for p in reanchored_options(eid,old_boxes,boxes,uv,paths) if safe_poly(eid,p,obstacles,uv) and not overlapping(p,fixed))
-                if boxes[u]==old_boxes[u] and boxes[v]==old_boxes[v] and safe_poly(eid,paths[eid],obstacles,uv) and not overlapping(paths[eid],fixed):options.append(paths[eid])
+                if boxes[u]==old_boxes[u] and boxes[v]==old_boxes[v] and valid(eid,paths[eid],fixed):options.append(paths[eid])
+            if eid in info:
+                from .document_layout import straight_link
+                options.append(straight_link(u,v,boxes,nodes))
             unique={}
             for p in options:
                 p=attach({eid:p},uv,boxes,nodes)[eid]
-                if safe_poly(eid,p,obstacles,uv) and not overlapping(p,fixed):unique[tuple(p)]=p
+                if valid(eid,p,fixed):unique[tuple(p)]=p
             cache[eid]=list(unique.values())
         return cache[eid]
     for first in (internal,tuple(reversed(internal))):
@@ -159,103 +173,125 @@ def joint_routes(boxes,nodes,seq,assocs,paths,affected,internal,obstacles,old_bo
             for current,total in beam:
                 used={n:{p[0] for i,p in current.items() if uv[i][0]==n}|{p[-1] for i,p in current.items() if uv[i][1]==n} for n in (u,v)}
                 choices=[]
-                for p in options_for(eid):
+                options=options_for(eid)
+                if not options:
+                    from .router import astar
+                    def ports(n):
+                        x,y,w,h=boxes[n];return [(x,y+h/2),(x+w,y+h/2),(x+w/2,y),(x+w/2,y+h)]
+                    raw=astar(eid,obstacles,uv,current,[(s,t) for s in ports(u) for t in ports(v)],avoid_crowding=True,bend_penalty=240,crossing_penalty=1600,max_seconds=.4)
+                    if raw is not None:
+                        pp=attach({eid:raw},uv,boxes,nodes)[eid]
+                        if safe_poly(eid,pp,obstacles,uv,nodes=nodes):options=[pp]
+                for p in options:
                     if p[0] in used[u] or p[-1] in used[v] or overlapping(p,current):continue
-                    q=edge_score(eid,p,current,uv);choices.append((q[0]*8+physical_bends(p)*1.5+path_length(p)/200,p))
-                for value,p in nsmallest(beam_width if index<2 else 1,choices,key=lambda t:t[0]):next_beam.append(({**current,eid:p},total+value))
+                    q=edge_score(eid,p,current,uv)
+                    from .readability import edge_crowding
+                    choices.append((wire_cost(p,q[0])+3*edge_crowding(p,current,12)/200,p))
+                for value,p in nsmallest(beam_width if index<2 else min(2,beam_width),choices,key=lambda t:t[0]):next_beam.append(({**current,eid:p},total+value))
             if not next_beam:beam=[];break
             # Incremental scores count each variable/fixed or variable/variable
             # contact once. Fixed/fixed contacts are constant across all choices.
-            beam=nsmallest(beam_width if index<2 else 1,next_beam,key=lambda item:item[1])
+            beam=nsmallest(beam_width if index<2 else min(2,beam_width),next_beam,key=lambda item:item[1])
         for candidate,_ in beam:
             quality=local_quality(candidate,uv,seq)
-            if best is None or quality<best[0]:best=quality,candidate
+            rank=8*quality[0]+sum(wire_cost(candidate[i]) for i in affected)
+            if best is None or rank<best[0]:best=rank,candidate
     return None if best is None else best[1]
 
 
 def _rect_overlap(a,b,gap=4):return min(a[0]+a[2]+gap,b[0]+b[2])-max(a[0]-gap,b[0])>0 and min(a[1]+a[3]+gap,b[1]+b[3])-max(a[1]-gap,b[1])>0
 
 
-def refine_windows(path,svg,source,seconds=35,max_windows=24):
+def extract_labels(root):
+    return {b.getparent().getparent().get('bpmnElement'):tuple(float(b.get(k)) for k in ('x','y','width','height')) for b in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)}
+
+
+def refine_windows(path,svg,source,seconds=60,max_windows=None):
     from .pipeline import geometry
-    if not math.isfinite(seconds) or seconds<=0 or max_windows<=0:raise ValueError('Positive finite window budget and window count required')
+    from .group_space import repair_space
+    from .layout_objective import objective,wire_cost
+    from collections import Counter
+    if not math.isfinite(seconds) or seconds<=0 or max_windows is not None and max_windows<=0:raise ValueError('Positive finite window budget and window count required')
     started=time.monotonic();initial=read_bpmn(path);initial_bytes=Path(path).read_bytes();initial_svg=Path(svg).read_bytes();nodes,seq,assocs,docs,member,lanes,boxes,paths=initial[4:];uv={i:(u,v) for i,u,v,*_ in seq+assocs}
-    best_bytes=initial_bytes;best_svg=initial_svg;best_quality=None;best_accepted=0
-    before=local_quality(paths,uv,seq);before_metrics=metrics(boxes,paths,nodes,seq,member,docs,assocs);logs=[];accepted=0;attempts=0;visited=0
     if not lanes or any(n not in member for n in nodes):return {'status':'skipped-incomplete-role-model','accepted_windows':0}
-    ww=windows(nodes,seq)
-    # Choose a small problem region, then progress in graph order through it.
-    inc=defaultdict(int);out=defaultdict(list)
-    for i,u,v,*_ in seq:inc[v]+=1;out[u].append(v)
-    roots=sorted(n for n,o in nodes.items() if o['kind']=='startEvent' or not inc[n]);distance={n:0 for n in roots};queue=deque(roots)
-    while queue:
-        u=queue.popleft()
-        for v in out[u]:
-            if v not in distance:distance[v]=distance[u]+1;queue.append(v)
-    ww=sorted(ww,key=lambda w:(-local_loss(paths,uv,seq,w,member),w['nodes']))[:max_windows]
-    ww.sort(key=lambda w:(distance.get(w['nodes'][1],10**6),w['nodes']))
-    with tempfile.TemporaryDirectory(prefix='three-step-',dir=Path(path).parent) as folder:
+    before=local_quality(paths,uv,seq);initial_score,initial_detail=objective(boxes,paths,nodes,seq,member,docs,assocs,extract_labels(initial[1]).values());best_score=initial_score;best_bytes=initial_bytes;best_svg=initial_svg;best_count=0
+    logs=[];rejections=Counter();attempts=0;visited=0;accepted=0;temps=0
+    all_windows=windows(nodes,seq);candidates_windows=sorted(all_windows,key=lambda w:(-sum(physical_bends(paths[i]) for i in w['edges']),-local_loss(paths,uv,seq,w,member),w['nodes']))
+    if max_windows is not None:candidates_windows=candidates_windows[:max_windows]
+    # Two complete worklists, alternating difficult-first and topology order.
+    # Do not repeatedly spend the whole budget on the same 24 blocked windows.
+    worklist=candidates_windows+list(reversed(candidates_windows))
+    with tempfile.TemporaryDirectory(prefix='adaptive-group-',dir=Path(path).parent) as folder:
         trial=Path(folder)/'trial.bpmn';preview=trial.with_suffix('.svg')
-        for w in ww:
+        for w in worklist:
             if time.monotonic()-started>seconds:break
-            visited+=1;window_deadline=min(started+seconds,time.monotonic()+max(2.5,seconds/max(1,len(ww))*2))
-            state=read_bpmn(path);tree,root,_,plane,nodes,seq,assocs,docs,member,lanes,boxes,paths=state;uv={i:(u,v) for i,u,v,*_ in seq+assocs};old=local_quality(paths,uv,seq);old_local=local_loss(paths,uv,seq,w,member);owners=semantic_document_owners(nodes,docs,assocs,boxes)
-            labels={b.getparent().getparent().get('bpmnElement'):tuple(float(b.get(k)) for k in ('x','y','width','height')) for b in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)}
-            candidates=[]
+            visited+=1;window_deadline=min(started+seconds,time.monotonic()+max(1.2,seconds/max(1,len(candidates_windows))))
+            state=read_bpmn(path);tree,root,_,plane,nodes,seq,assocs,docs,member,lanes,boxes,paths=state;uv={i:(u,v) for i,u,v,*_ in seq+assocs};old=local_quality(paths,uv,seq);old_local=local_loss(paths,uv,seq,w,member);labels=extract_labels(root)
+            old_score,_=objective(boxes,paths,nodes,seq,member,docs,assocs,labels.values());owners=semantic_document_owners(nodes,docs,assocs,boxes);candidates=[]
             for name,placement in proposals(w,boxes,member):
-                if time.monotonic()>window_deadline:break
-                attempts+=1;moved={n for n,b in placement.items() if any(abs(x-y)>.1 for x,y in zip(b,boxes[n]))}
-                if not moved and name!='wire-only':continue
-                new={**boxes,**placement};shifts={n:(new[n][0]-boxes[n][0],new[n][1]-boxes[n][1]) for n in moved};new_labels=dict(labels)
-                for n in list(moved):
-                    dx,dy=shifts[n]
-                    if n in new_labels:x,y,tw,th=new_labels[n];new_labels[n]=(x+dx,y+dy,tw,th)
-                    for d,owner in owners.items():
-                        if owner!=n:continue
-                        x,y,dw,dh=boxes[d];new[d]=(x+dx,y+dy,dw,dh);moved.add(d)
-                        if d in new_labels:x,y,lw,lh=new_labels[d];new_labels[d]=(x+dx,y+dy,lw,lh)
-                affected={i for i,(u,v) in uv.items() if u in moved or v in moved}|set(w['edges'])
-                packed=repack_documents(new,new_labels,moved,owners,nodes,docs,member,lanes,seq,affected)
-                if packed is None:continue
+                if time.monotonic()>window_deadline:rejections['window-budget']+=1;break
+                attempts+=1
+                if name=='wire-only':new=dict(boxes);new_labels=dict(labels);moved=set();space={'neighbor_roots_moved':0,'expanded_role_bands':0}
+                else:
+                    repaired,reason=repair_space(boxes,labels,placement,nodes,docs,owners,member,lanes,w['nodes'][0])
+                    if repaired is None:rejections[reason]+=1;continue
+                    new,new_labels,moved,space=repaired
+                    if not moved:continue
+                moved_objects=moved&(nodes.keys()|docs.keys());affected={i for i,(u,v) in uv.items() if u in moved_objects or v in moved_objects}|set(w['edges'])
+                packed=repack_documents(new,new_labels,moved_objects,owners,nodes,docs,member,lanes,seq,affected)
+                if packed is None:rejections['document-bay']+=1;continue
                 new,new_labels=packed
-                role=lambda n:member.get(owners.get(n,n))
-                if any(role(n) not in lanes or new[n][0]<boxes[role(n)][0]+56 or new[n][1]<boxes[role(n)][1]+8 or new[n][0]+new[n][2]>boxes[role(n)][0]+boxes[role(n)][2]-8 or new[n][1]+new[n][3]>boxes[role(n)][1]+boxes[role(n)][3]-8 for n in moved):continue
-                if any(_rect_overlap(new[n],b) for n in moved for v,b in new.items() if v!=n and (v in nodes or v in docs)):continue
-                affected={i for i,(u,v) in uv.items() if u in moved or v in moved}|set(w['edges']);fixed={i:p for i,p in paths.items() if i not in affected}
-                if any(bbox_intersect_seg(new[n],a,b,clearance=-7.9) for n in moved for p in fixed.values() for a,b in zip(p,p[1:])):continue
-                obstacles={n:b for n,b in new.items() if n in nodes or n in docs};obstacles.update({f'__header_{l}':(b[0],b[1],48,b[3]) for l,b in boxes.items() if l in lanes})
+                obstacles={n:b for n,b in new.items() if n in nodes or n in docs};obstacles.update({f'__header_{l}':(new[l][0],new[l][1],48,new[l][3]) for l in lanes})
+                # Translate unchanged internal paths with a uniformly shifted
+                # role/group. Only invalidated corridors need reconstruction.
+                role_order=sorted(lanes,key=lambda l:(boxes[l][1],l))
+                def mapped_y(y):
+                    # Insert role space into existing corridors. Horizontal
+                    # lines keep a common Y, vertical lines keep their X.
+                    lane=next((l for l in role_order if boxes[l][1]<=y<boxes[l][1]+boxes[l][3]),role_order[0] if y<boxes[role_order[0]][1] else role_order[-1])
+                    return y+space.get('role_offsets',{}).get(lane,0)
+                seed={i:compress([(x,mapped_y(y)) for x,y in p]) for i,p in paths.items()}
+                for i,b in list(new_labels.items()):
+                    if i in uv:new_labels[i]=(b[0],mapped_y(b[1]),b[2],b[3])
+                info={i for i,u,v,*_ in assocs if u in docs or v in docs}
+                def seed_safe(i,p):
+                    if i in info and len(p)==2:
+                        from .document_layout import safe_link
+                        return safe_link(i,p,obstacles,uv,{},nodes=nodes)
+                    return safe_poly(i,p,obstacles,uv,nodes=nodes)
+                for i,p in seed.items():
+                    if i not in w['edges'] and seed_safe(i,p):affected.discard(i)
+                for i,p in seed.items():
+                    if i not in affected and not seed_safe(i,p):affected.add(i)
+                from .quality import overlap_pairs
+                for i,j in overlap_pairs(seed):affected.update((i,j))
+                if len(affected)>24:rejections['reroute-region-limit']+=1;continue
                 obstacles.update({'__text_'+n:b for n,b in new_labels.items() if n not in affected and not(n in nodes and nodes[n]['kind'] in TAG_TASK)})
-                routed=joint_routes(new,nodes,seq,assocs,paths,affected,w['edges'],obstacles,old_boxes=boxes)
-                if routed is None:continue
-                quality=local_quality(routed,uv,seq);new_local=local_loss(routed,uv,seq,w,member)
-                # A neutral frontier move may improve the current window while
-                # length is transferred to its still-unplaced boundary step.
-                if quality[0]>old[0] or quality[1]>before[1]+1 or quality[2]>before[2]*1.01 or new_local>=old_local-.02:continue
-                if sum(path_length(routed[i]) for i,*_ in assocs)>sum(path_length(paths[i]) for i,*_ in assocs)*1.05+.1:continue
-                candidates.append((quality[0]*8+quality[1]*1.2+quality[2]/200+new_local*.5,name,new,new_labels,routed,quality,new_local,moved,affected))
-            for _,name,new,new_labels,routed,quality,new_local,moved,affected in sorted(candidates,key=lambda c:c[0])[:3]:
+                routed=joint_routes(new,nodes,seq,assocs,paths,affected,w['edges'],obstacles,old_boxes=boxes,fixed_seed=seed)
+                if routed is None:rejections['no-joint-route']+=1;continue
+                quality=local_quality(routed,uv,seq);estimate,detail=objective(new,routed,nodes,seq,member,docs,assocs,new_labels.values());new_local=local_loss(routed,uv,seq,w,member)
+                # Metric tradeoffs are soft inside the uncommitted group. All
+                # business/contour/text/overlap requirements remain mandatory.
+                if quality[0]>before[0]*1.1+1 or quality[1]>before[1]*1.15+1 or quality[2]>before[2]*1.1 or detail['area']>initial_detail['area']*1.25:rejections['bounded-quality-trade']+=1;continue
+                if estimate>=old_score-.02 and (temps>=2 or new_local>=old_local*.8 or estimate>old_score*1.015):rejections['no-readability-gain']+=1;continue
+                candidates.append((estimate,name,new,new_labels,routed,moved,affected,space))
+            for _,name,new,new_labels,routed,moved,affected,space in sorted(candidates,key=lambda c:c[0])[:3]:
                 ct=copy.deepcopy(tree);cr=ct.getroot();cp=cr.xpath('.//bd:BPMNPlane',namespaces=NS)[0];update_geometry(cr,cp,{n:new[n] for n in moved},routed)
                 for b in cr.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS):
                     n=b.getparent().getparent().get('bpmnElement')
                     if n in affected:b.getparent().getparent().remove(b.getparent())
-                    elif n in moved and n in new_labels:
+                    elif n in new_labels:
                         for k,v in zip(('x','y','width','height'),new_labels[n]):b.set(k,str(v))
                 ct.write(str(trial),encoding='utf-8',xml_declaration=True);lr=place_labels(trial,preview,preserve=True);g=geometry(trial)
-                if lr['unplaced_labels'] or lr['rendering']['text_overflow_ids'] or not g['routing_safety_passed'] or not g['edge_clearance_passed'] or g['label_collision_pairs'] or g['label_line_cuts'] or g['task_text_overflows'] or g['missing_named_flow_labels'] or g['excessive_bend_edges']:continue
-                if any(d['id'] in affected|moved for d in lr['distant_from_owner']):continue
-                if not semantic_equality(source,trial) or not equal(source,trial):raise ValueError('Three-step freeze violation')
-                Path(path).write_bytes(trial.read_bytes());Path(svg).write_bytes(preview.read_bytes());accepted+=1
-                if quality[0]<=before[0] and quality[1]<=before[1] and quality[2]<=before[2]*1.01 and quality<before and (best_quality is None or quality<best_quality):
-                    best_bytes=Path(path).read_bytes();best_svg=Path(svg).read_bytes();best_quality=quality;best_accepted=accepted
-                logs.append({'window':list(w['nodes']),'plan':name,'quality_before':old,'quality_after':quality,'local_before':old_local,'local_after':new_local,'boundary_edges_reconnected':len(affected-set(w['edges']))});break
-    trial_accepted=accepted
-    final=read_bpmn(path);after=local_quality(final[-1],uv,seq)
-    # Commit a whole staged pass only if the complete wire score also improves.
-    after_metrics=metrics(final[-2],final[-1],nodes,seq,member,docs,assocs)
-    continuity_gain=after_metrics['simple_window_fraction']>before_metrics['simple_window_fraction']+.01 or after_metrics['excess_wire_mean_task_units']<before_metrics['excess_wire_mean_task_units']-.05
-    retained=after[0]<=before[0] and after[1]<=before[1] and after[2]<=before[2]*1.01 and (after[1]<before[1] or after[2]<before[2]-.1 or after[0]<before[0] or continuity_gain)
-    if best_quality is not None and (not retained or best_quality<after):
-        Path(path).write_bytes(best_bytes);Path(svg).write_bytes(best_svg);final=read_bpmn(path);after=best_quality;retained=True;accepted=best_accepted
-    elif not retained:Path(path).write_bytes(initial_bytes);Path(svg).write_bytes(initial_svg);final=initial;after=before
-    for index,log in enumerate(logs):log['retained']=retained and index<accepted
-    return {'method':'overlapping A-B-C windows; anchored A; joint B/C placement; paired-wire beam search in both orders; boundary reconnection; full freeze/geometry/text audits','accepted_windows':accepted if retained else 0,'trial_windows_accepted':trial_accepted,'whole_pass_retained':retained,'placement_attempts':attempts,'windows_visited':visited,'best_verified_prefix_windows':best_accepted,'before':before,'after':after,'diagnostics_before':before_metrics,'diagnostics_after':metrics(final[-2],final[-1],nodes,seq,member,docs,assocs),'stages':logs,'seconds':round(time.monotonic()-started,3),'source_reference_geometry_used':False}
+                if lr['unplaced_labels'] or lr['rendering']['text_overflow_ids'] or not g['routing_safety_passed'] or not g['edge_clearance_passed'] or g['label_collision_pairs'] or g['label_line_cuts'] or g['task_text_overflows'] or g['missing_named_flow_labels'] or g['excessive_bend_edges']:rejections['full-geometry-or-text-audit']+=1;continue
+                if any(d['id'] in affected|moved for d in lr['distant_from_owner']):rejections['caption-distance']+=1;continue
+                if not semantic_equality(source,trial) or not equal(source,trial):raise ValueError('Adaptive group freeze violation')
+                actual=read_bpmn(trial);value,detail=objective(actual[-2],actual[-1],nodes,seq,member,docs,assocs,extract_labels(actual[1]).values())
+                if value>=old_score-.02 and (temps>=2 or value>old_score*1.015):rejections['post-label-objective']+=1;continue
+                Path(path).write_bytes(trial.read_bytes());Path(svg).write_bytes(preview.read_bytes());accepted+=1;temps=temps+1 if value>=old_score else 0
+                logs.append({'window':list(w['nodes']),'plan':name,'quality_before':old,'quality_after':local_quality(actual[-1],uv,seq),'objective_before':old_score,'objective_after':value,'boundary_edges_reconnected':len(affected-set(w['edges'])),**space})
+                if value<best_score-.02:best_score=value;best_bytes=trial.read_bytes();best_svg=preview.read_bytes();best_count=accepted
+                break
+    Path(path).write_bytes(best_bytes);Path(svg).write_bytes(best_svg);final=read_bpmn(path)
+    for index,log in enumerate(logs):log['retained']=index<best_count
+    return {'method':'graph-only overlapping windows; adaptive neighbor displacement and role expansion; consistent readability objective; best verified prefix','accepted_windows':best_count,'trial_windows_accepted':accepted,'whole_pass_retained':best_count>0,'placement_attempts':attempts,'windows_visited':visited,'distinct_windows_available':len(all_windows),'window_limit':max_windows,'rejections':dict(rejections),'before':before,'after':local_quality(final[-1],uv,seq),'objective_before':initial_score,'objective_after':best_score,'diagnostics_before':initial_detail['window_readability'],'diagnostics_after':metrics(final[-2],final[-1],nodes,seq,member,docs,assocs),'stages':logs,'seconds':round(time.monotonic()-started,3),'source_reference_geometry_used':False,'names_or_step_numbers_used_for_structure':False}

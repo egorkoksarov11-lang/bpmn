@@ -98,7 +98,7 @@ def test_shared_store_keeps_all_consumers_and_uses_fixed_anchor():
     assocs.append(('other','b','d',''));paths['other']=[(220,60),(220,160),(38,160),(38,140)]
     fixed=owners_for(nodes,docs,assocs,boxes);moved={**boxes,'d':(220,90,36,50)}
     assert fixed=={'d':'a'}
-    assert owners_for(nodes,docs,assocs,moved)=={'d':'b'}
+    assert owners_for(nodes,docs,assocs,moved)=={'d':'a'}  # Graph owner is independent of positions.
     report=attachment_metrics(nodes,docs,assocs,moved,paths,fixed)
     assert report['fixed_owners']==fixed and len(report['consumer_links'])==2
     assert report['anchor_gaps']['d']>100

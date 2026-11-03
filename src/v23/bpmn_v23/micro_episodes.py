@@ -13,7 +13,7 @@ from .skyline_layout import compact_rows
 
 def micro_proposal(nodes,docs,seq,assocs,member,lanes,original,*,vertical_secondary=True):
     motifs,stages=semantic_stages(nodes,seq,member,original);owner=motifs['owner'];pairs=motifs['pairs']
-    primary=Counter(member[n] for n,o in nodes.items() if o['kind'] in TAG_TASK).most_common(1)[0][0]
+    primary=(Counter(member[n] for n,o in nodes.items() if o['kind'] in TAG_TASK) or Counter(member.values())).most_common(1)[0][0]
     backbone=[n for c in motifs['components'] for n in c['backbone']];main_index={n:i for i,n in enumerate(backbone)}
     inc=defaultdict(set);out=defaultdict(set);actual_in=defaultdict(list);actual_out=defaultdict(list)
     for eid,u,v,_ in seq:
@@ -22,12 +22,15 @@ def micro_proposal(nodes,docs,seq,assocs,member,lanes,original,*,vertical_second
     role_index={l:i for i,l in enumerate(lanes)};orient={};sizes={}
     for n in motifs['macros']:
         w,h=original[n][2:];g=pairs.get(n);orientation='right'
-        if g and vertical_secondary and member[n]!=primary:
+        if g and vertical_secondary:
             predecessors=[u for u,v in actual_in[n] if member[u]!=member[n]]
             # Keep the incoming approach free. A review reached from below
             # puts its decision above; one reached from above puts it below.
+            successors=[v for u,v in actual_out[n] if member[v]!=member[n]]
+            approach=sum(role_index[member[v]]-role_index[member[n]] for v in successors)
             incoming=sum(role_index[member[u]]-role_index[member[n]] for u in predecessors)
-            orientation='up' if incoming>0 else 'down'
+            if successors:orientation='down' if approach>=0 else 'up'
+            elif predecessors:orientation='up' if incoming>0 else 'down'
         orient[n]=orientation
         if g:
             gw,gh=original[g][2:];sizes[n]=(w+28+gw,max(h,gh)) if orientation=='right' else (max(w,gw),h+24+gh)
@@ -37,7 +40,7 @@ def micro_proposal(nodes,docs,seq,assocs,member,lanes,original,*,vertical_second
         allowed={n for n,s in stages.items() if s==stage};anchors=[n for n in backbone if n in allowed and member[n]==primary]
         if not anchors:
             local_primary=Counter(member[n] for n in allowed).most_common(1)[0][0]
-            anchors=sorted((n for n in allowed if member[n]==local_primary),key=lambda n:(main_index.get(n,10**6),nodes[n].get('name',''),n))[:1]
+            anchors=sorted((n for n in allowed if member[n]==local_primary),key=lambda n:(main_index.get(n,10**6),n))[:1]
         local={};occupied=defaultdict(list);cursor=0.
         def put(n,x,row):
             ww,hh=sizes[n]
@@ -59,7 +62,7 @@ def micro_proposal(nodes,docs,seq,assocs,member,lanes,original,*,vertical_second
             return left+original[macro][2]/2
         remaining=allowed-set(local)
         while remaining:
-            n=min(remaining,key=lambda n:(-sum(v in local for v in inc[n]|out[n]),main_index.get(n,10**6),nodes[n].get('name',''),n))
+            n=min(remaining,key=lambda n:(-sum(v in local for v in inc[n]|out[n]),main_index.get(n,10**6),n))
             direct=[u for u,v in actual_in[n] if owner[u] in local]
             following=[v for u,v in actual_out[n] if owner[v] in local]
             if direct:cx=sum(node_cx(u) for u in direct)/len(direct)

@@ -60,9 +60,9 @@ def test_new_default_has_exact_semantic_freeze_and_visible_names(tmp_path):
     output=tmp_path/'result/process_08_v23.bpmn';assert semantic_equality(source,output) and equal(source,output)
     assert source.read_bytes()==before
     r=json.loads((tmp_path/'result/run_report.json').read_text())
-    assert r['version']=='23.3.0' and r['backend_report']['from_scratch']
+    assert r['version']=='23.4.0' and r['backend_report']['from_scratch']
     assert r['backend_report']['geometry_erasure']['source_positions_used'] is False
-    assert r['backend_report']['selection_policy']=='human-episodes-balanced-v2'
+    assert r['backend_report']['selection_policy']=='graph-only-regions-balanced-v3'
     g=geometry(output);assert g['routing_safety_passed'] and not g['label_collision_pairs'] and not g['missing_named_flow_labels']
 
 
@@ -76,13 +76,15 @@ def test_multi_input_join_is_not_owned_by_one_arbitrary_preceding_task():
     assert set(motifs['owner'])==set(nodes)
 
 
-def test_productive_spine_does_not_prefer_long_cancellation_branch():
+def test_spine_does_not_infer_business_outcome_from_names():
     from bpmn_v23.patterns import analyze
     nodes={n:{'kind':k,'name':name} for n,k,name in [('s','startEvent','Начало'),('g','exclusiveGateway','Продолжить?'),('a','task','Выполнить операцию'),('e','endEvent','Завершено'),('x','task','Отменить поручение'),('y','task','Отменить платеж'),('z','endEvent','Операция прекращена')]}
     seq=[(str(i),u,v,'') for i,(u,v) in enumerate([('s','g'),('g','a'),('a','e'),('g','x'),('x','y'),('y','z')])]
     boxes={n:(200,200,180,76) for n in nodes};member={n:'role' for n in nodes}
     m=analyze(nodes,seq,member,boxes,pair_merges=False,penalize_stops=True)
-    assert 'a' in m['components'][0]['backbone'] and 'x' not in m['components'][0]['backbone']
+    changed={n:{**o,'name':('Выполнить' if n in {'x','y','z'} else 'Отменить')} for n,o in nodes.items()}
+    assert m['components']==analyze(changed,seq,member,boxes,pair_merges=False,penalize_stops=True)['components']
+    assert 'x' in m['components'][0]['backbone']
 
 
 def test_local_group_drag_shortens_a_dogleg_without_changing_business_xml(tmp_path):

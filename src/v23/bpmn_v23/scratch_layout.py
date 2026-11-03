@@ -24,7 +24,7 @@ def semantic_document_owners(nodes,docs,assocs,boxes):
     for d in docs:
         links={v if u==d else u for _,u,v,_ in assocs if d in (u,v)}&nodes.keys()
         writers={u for _,u,v,_ in assocs if v==d and u in nodes}
-        if links:owners[d]=min(writers or links,key=lambda n:(boxes[n][0],boxes[n][1],n))
+        if links:owners[d]=min(writers or links)
     return owners
 
 
@@ -45,11 +45,8 @@ def independent_scenarios(nodes,seq,docs,assocs):
         writers={u for _,u,v,_ in assocs if v==d and u in nodes};readers={v for _,u,v,_ in assocs if u==d and v in nodes}
         deps|={(owner[w],owner[r]) for w in writers for r in readers if owner[w]!=owner[r]}
     def hint(i):
-        numbers=[]
-        for n in components[i]:
-            match=re.match(r'^\s*(\d+(?:[.,]\d+)*)(?:[\s.)-]|$)',nodes[n].get('name',''))
-            if match:numbers.append(tuple(int(v) for v in re.split('[.,]',match.group(1))))
-        return (min(numbers,default=(10**9,)),min(nodes[n].get('name','') for n in components[i]),min(components[i]))
+        component=components[i]
+        return (len(component),sum(u in component and v in component for _,u,v,*_ in seq),min(component))
     remaining=set(range(len(components)));order=[]
     while remaining:
         ready={c for c in remaining if not any(v==c and u in remaining for u,v in deps)}
@@ -73,7 +70,7 @@ def semantic_role_order(nodes,seq,member,lanes):
         u=queue.popleft()
         for v in outgoing[u]:
             if v not in distance:distance[v]=distance[u]+1;queue.append(v)
-    return sorted(lanes,key=lambda lane:(min((distance.get(n,10**9) for n in nodes if member.get(n)==lane),default=10**9),lanes[lane],lane))
+    return sorted(lanes,key=lambda lane:(min((distance.get(n,10**9) for n in nodes if member.get(n)==lane),default=10**9),lane))
 
 
 def erase_geometry(source,target):
@@ -96,7 +93,7 @@ def erase_geometry(source,target):
     tree.write(str(target),encoding='utf-8',xml_declaration=True)
     if not semantic_equality(source,target) or not di_equal(source,target):raise ValueError('Canonicalization freeze violation')
     return {'source_positions_used':False,'source_dimensions_used':False,'source_waypoints_used':False,'source_label_bounds_used':False,'external_incumbent_used':False,
-            'source_lane_order_used':False,'role_order_method':'graph distance from starts, then role name; business XML lane order unchanged',
+            'source_lane_order_used':False,'role_order_method':'graph distance from starts; opaque ID tie break; business XML lane order unchanged',
             'inputs':'business graph, fixed role membership, full names, shape kinds; neutral canonical DI and measured text sizes'}
 
 
@@ -109,10 +106,12 @@ class GraphChannelsBackend(HumanStyleBackend):
     def __init__(self,role_order=None,search_seconds=None,**kwargs):
         super().__init__(orient_decisions=False,**kwargs);self.max_search_seconds=max(45,self.candidate_seconds*8) if search_seconds is None else search_seconds;self.role_order=role_order
         if not math.isfinite(self.max_search_seconds) or self.max_search_seconds<=0:raise ValueError('search_seconds must be positive')
-    def candidate_rank(self,*args):
-        # A single avoided crossing must not justify a much longer navigation
-        # path. Use the balanced raw contact/continuity/crowding/area policy.
-        return super().candidate_rank(*args)
+    def candidate_rank(self,path,boxes,paths,uv,nodes,docs,seq):
+        from .layout_objective import objective
+        model=read_bpmn(path)
+        labels=[tuple(float(b.get(k)) for k in ('x','y','width','height')) for b in model[1].xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)]
+        value,detail=objective(boxes,paths,nodes,seq,model[8],docs,model[6],labels)
+        return round(value/max(1,len(seq)),6),score(paths,uv),round(detail['packing'],6)
     def placements(self,nodes,docs,seq,assocs,member,lanes,original):
         returns=graph_returns(nodes,seq)
         motifs=analyze(nodes,[e for e in seq if e[0] not in returns],member,original);macro_owner=motifs['owner']
@@ -203,11 +202,16 @@ class ScratchBackend:
                     from .port_refinement import refine_ports
                     result['port_refinement']=refine_ports(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
                     if self.staged_windows:
-                        from .window_planner import refine_windows
-                        result['staged_window_refinement']=refine_windows(output,svg,neutral,seconds=min(45,self.candidate_seconds*2))
+                        from .graph_refinement import refine_graph
+                        refinement=refine_graph(output,svg,neutral,seconds=min(100,self.candidate_seconds*3))
+                        result['graph_refinement']=refinement
+                        if refinement['rounds']:
+                            result['staged_window_refinement']=refinement['rounds'][0]['groups']
+                            result['current_role_refinement']=refinement['rounds'][-1]['roles']
                     from .whitespace import compact_whitespace
                     result['whitespace_compaction']=compact_whitespace(output,svg,neutral)
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')
         result['geometry_erasure']=erasure;result['from_scratch']=True;result['seconds']=round(time.monotonic()-started,3)
         result['reference_target_met']=False
+        result['structural_signals']={'sequence_links':True,'data_links':True,'role_membership':True,'bpmn_kinds':True,'names':False,'step_numbers':False,'text_usage':'measured typography only; no lexical meaning or ordering'}
         return result

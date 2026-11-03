@@ -1,0 +1,686 @@
+{
+  "version": "23.4.0",
+  "protocol": {
+    "fresh_cold_construction": true,
+    "input_geometry_erased": true,
+    "names_and_step_numbers_used_for_structure": false,
+    "text_used_only_for_measured_presentation": true,
+    "development_corpus_not_held_out": true,
+    "percent_human_similarity_claimed": false,
+    "some_experiments_overlapped_no_speed_comparison": true,
+    "extra_graph_finishing_pass": true
+  },
+  "results": [
+    {
+      "case": "S1",
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "counts": {
+        "nodes": 40,
+        "flows": 51,
+        "documents": 16,
+        "information_links": 17,
+        "roles": 4
+      },
+      "reference": {
+        "contacts": 5,
+        "sequence_contacts": 5,
+        "sequence_bends": 31,
+        "sequence_length": 10550.0,
+        "association_bends": 0,
+        "association_length": 682.8312011620169,
+        "mean_anchor_gap": 36.313625,
+        "extent_area": 3100500.0,
+        "straight_fraction": 0.5882352941176471,
+        "normalized_sequence_length": 54.66321243523316,
+        "at_most_one_bend_fraction": 0.803921568627451,
+        "sequence_stretch_p90": 1.724025974025974,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.7047619047619048,
+          "contact_types": {
+            "control_control": 5
+          },
+          "flow_length_p90_task_units": 2.655,
+          "excess_wire_p90_task_units": 0.56,
+          "window_count": 54,
+          "serial_task_windows": 20,
+          "serial_through": 7,
+          "serial_quarter_turn": 10,
+          "serial_hairpins": 3,
+          "request_reply_windows": 0,
+          "request_reply_turns": {},
+          "request_reply_compact": 0,
+          "request_reply_gap_mean_task_units": 0.0,
+          "excess_wire_mean_task_units": 0.23941176470588232,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 1,
+          "parallel_pressure_fixed_units": 0.00799019607843137,
+          "long_flow_count": 5,
+          "simple_window_fraction": 0.7,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_3": {
+        "contacts": 9,
+        "sequence_contacts": 6,
+        "sequence_bends": 43,
+        "sequence_length": 14323.39,
+        "association_bends": 4,
+        "association_length": 816.2244107502527,
+        "mean_anchor_gap": 20.25,
+        "extent_area": 5080836.45,
+        "straight_fraction": 0.6078431372549019,
+        "normalized_sequence_length": 79.57438888888889,
+        "at_most_one_bend_fraction": 0.7058823529411765,
+        "sequence_stretch_p90": 1.5127450980392159,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.6219047619047618,
+          "contact_types": {
+            "control_information": 3,
+            "control_control": 6
+          },
+          "flow_length_p90_task_units": 3.29,
+          "excess_wire_p90_task_units": 1.15,
+          "window_count": 54,
+          "serial_task_windows": 20,
+          "serial_through": 7,
+          "serial_quarter_turn": 11,
+          "serial_hairpins": 2,
+          "request_reply_windows": 0,
+          "request_reply_turns": {},
+          "request_reply_compact": 0,
+          "request_reply_gap_mean_task_units": 0.0,
+          "excess_wire_mean_task_units": 0.2837058823529412,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 0,
+          "parallel_pressure_fixed_units": 0.0,
+          "long_flow_count": 10,
+          "simple_window_fraction": 0.65,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_4": {
+        "contacts": 10,
+        "sequence_contacts": 7,
+        "sequence_bends": 40,
+        "sequence_length": 15086.19,
+        "association_bends": 3,
+        "association_length": 785.145747273978,
+        "mean_anchor_gap": 20.0,
+        "extent_area": 4813715.65,
+        "straight_fraction": 0.6666666666666666,
+        "normalized_sequence_length": 83.81216666666667,
+        "at_most_one_bend_fraction": 0.7254901960784313,
+        "sequence_stretch_p90": 1.4570080391471512,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.7019047619047619,
+          "contact_types": {
+            "control_information": 3,
+            "control_control": 7
+          },
+          "flow_length_p90_task_units": 3.7118499999999996,
+          "excess_wire_p90_task_units": 1.07,
+          "window_count": 54,
+          "serial_task_windows": 20,
+          "serial_through": 6,
+          "serial_quarter_turn": 12,
+          "serial_hairpins": 2,
+          "request_reply_windows": 0,
+          "request_reply_turns": {},
+          "request_reply_compact": 0,
+          "request_reply_gap_mean_task_units": 0.0,
+          "excess_wire_mean_task_units": 0.31586274509803924,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 0,
+          "parallel_pressure_fixed_units": 3.921568627451872e-05,
+          "long_flow_count": 9,
+          "simple_window_fraction": 0.75,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "cross_role_bends": {
+        "reference": 12,
+        "v23_3": 15,
+        "v23_4": 11
+      },
+      "objective": 313.82641089145335,
+      "structural_signals": {
+        "sequence_links": true,
+        "data_links": true,
+        "role_membership": true,
+        "bpmn_kinds": true,
+        "names": false,
+        "step_numbers": false,
+        "text_usage": "measured typography only; no lexical meaning or ordering"
+      },
+      "accepted_group_windows": 0,
+      "accepted_role_reorders": 1,
+      "constructor_failures": 0
+    },
+    {
+      "case": "S2",
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "counts": {
+        "nodes": 64,
+        "flows": 93,
+        "documents": 10,
+        "information_links": 11,
+        "roles": 6
+      },
+      "reference": {
+        "contacts": 57,
+        "sequence_contacts": 55,
+        "sequence_bends": 70,
+        "sequence_length": 41265.0,
+        "association_bends": 0,
+        "association_length": 416.48234207884815,
+        "mean_anchor_gap": 24.8946,
+        "extent_area": 6565520.0,
+        "straight_fraction": 0.5268817204301075,
+        "normalized_sequence_length": 206.325,
+        "at_most_one_bend_fraction": 0.7741935483870968,
+        "sequence_stretch_p90": 1.5757575757575757,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.8196969696969697,
+          "contact_types": {
+            "control_control": 55,
+            "control_information": 2
+          },
+          "flow_length_p90_task_units": 5.055,
+          "excess_wire_p90_task_units": 1.375,
+          "window_count": 88,
+          "serial_task_windows": 26,
+          "serial_through": 7,
+          "serial_quarter_turn": 15,
+          "serial_hairpins": 0,
+          "request_reply_windows": 4,
+          "request_reply_turns": {
+            "hairpin": 2,
+            "quarter_turn": 2
+          },
+          "request_reply_compact": 2,
+          "request_reply_gap_mean_task_units": 0.63125,
+          "excess_wire_mean_task_units": 0.3969354838709677,
+          "short_internal_jogs": 1,
+          "tight_parallel_pairs": 5,
+          "parallel_pressure_fixed_units": 0.03743727598566308,
+          "long_flow_count": 21,
+          "simple_window_fraction": 0.8846153846153846,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_3": {
+        "contacts": 55,
+        "sequence_contacts": 52,
+        "sequence_bends": 168,
+        "sequence_length": 49894.2,
+        "association_bends": 2,
+        "association_length": 569.7279706025867,
+        "mean_anchor_gap": 22.5169,
+        "extent_area": 6305024.0,
+        "straight_fraction": 0.4838709677419355,
+        "normalized_sequence_length": 277.19,
+        "at_most_one_bend_fraction": 0.5376344086021505,
+        "sequence_stretch_p90": 1.56078860898138,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.4333333333333333,
+          "contact_types": {
+            "information_information": 2,
+            "control_control": 52,
+            "control_information": 1
+          },
+          "flow_length_p90_task_units": 6.436,
+          "excess_wire_p90_task_units": 1.61,
+          "window_count": 88,
+          "serial_task_windows": 26,
+          "serial_through": 8,
+          "serial_quarter_turn": 10,
+          "serial_hairpins": 4,
+          "request_reply_windows": 4,
+          "request_reply_turns": {
+            "hairpin": 2,
+            "quarter_turn": 2
+          },
+          "request_reply_compact": 4,
+          "request_reply_gap_mean_task_units": 0.1775,
+          "excess_wire_mean_task_units": 0.5292580645161291,
+          "short_internal_jogs": 11,
+          "tight_parallel_pairs": 10,
+          "parallel_pressure_fixed_units": 0.041950492831541224,
+          "long_flow_count": 31,
+          "simple_window_fraction": 0.4230769230769231,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_4": {
+        "contacts": 58,
+        "sequence_contacts": 56,
+        "sequence_bends": 145,
+        "sequence_length": 49541.2,
+        "association_bends": 2,
+        "association_length": 521.216305778711,
+        "mean_anchor_gap": 20.0,
+        "extent_area": 6942834.0,
+        "straight_fraction": 0.5161290322580645,
+        "normalized_sequence_length": 275.2288888888889,
+        "at_most_one_bend_fraction": 0.6129032258064516,
+        "sequence_stretch_p90": 1.61524064171123,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.5696969696969697,
+          "contact_types": {
+            "information_information": 2,
+            "control_control": 56
+          },
+          "flow_length_p90_task_units": 6.041,
+          "excess_wire_p90_task_units": 1.6220000000000006,
+          "window_count": 88,
+          "serial_task_windows": 26,
+          "serial_through": 8,
+          "serial_quarter_turn": 11,
+          "serial_hairpins": 3,
+          "request_reply_windows": 4,
+          "request_reply_turns": {
+            "hairpin": 1,
+            "quarter_turn": 3
+          },
+          "request_reply_compact": 4,
+          "request_reply_gap_mean_task_units": 0.16125,
+          "excess_wire_mean_task_units": 0.5256559139784946,
+          "short_internal_jogs": 5,
+          "tight_parallel_pairs": 4,
+          "parallel_pressure_fixed_units": 0.013275985663082432,
+          "long_flow_count": 27,
+          "simple_window_fraction": 0.6153846153846154,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "cross_role_bends": {
+        "reference": 57,
+        "v23_3": 157,
+        "v23_4": 126
+      },
+      "objective": 1142.6410539157762,
+      "structural_signals": {
+        "sequence_links": true,
+        "data_links": true,
+        "role_membership": true,
+        "bpmn_kinds": true,
+        "names": false,
+        "step_numbers": false,
+        "text_usage": "measured typography only; no lexical meaning or ordering"
+      },
+      "accepted_group_windows": 0,
+      "accepted_role_reorders": 0,
+      "constructor_failures": 0
+    },
+    {
+      "case": "S3",
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "counts": {
+        "nodes": 32,
+        "flows": 36,
+        "documents": 14,
+        "information_links": 15,
+        "roles": 6
+      },
+      "reference": {
+        "contacts": 12,
+        "sequence_contacts": 10,
+        "sequence_bends": 23,
+        "sequence_length": 11247.0,
+        "association_bends": 0,
+        "association_length": 535.8949964540718,
+        "mean_anchor_gap": 32.01892857142857,
+        "extent_area": 2314200.0,
+        "straight_fraction": 0.5555555555555556,
+        "normalized_sequence_length": 51.122727272727275,
+        "at_most_one_bend_fraction": 0.8055555555555556,
+        "sequence_stretch_p90": 1.321223709369025,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.7678571428571429,
+          "contact_types": {
+            "control_information": 2,
+            "control_control": 10
+          },
+          "flow_length_p90_task_units": 3.575,
+          "excess_wire_p90_task_units": 0.54,
+          "window_count": 35,
+          "serial_task_windows": 20,
+          "serial_through": 4,
+          "serial_quarter_turn": 12,
+          "serial_hairpins": 2,
+          "request_reply_windows": 2,
+          "request_reply_turns": {
+            "quarter_turn": 1,
+            "hairpin": 1
+          },
+          "request_reply_compact": 0,
+          "request_reply_gap_mean_task_units": 1.0925,
+          "excess_wire_mean_task_units": 0.1798611111111111,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 1,
+          "parallel_pressure_fixed_units": 0.01458333333333333,
+          "long_flow_count": 9,
+          "simple_window_fraction": 0.75,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_3": {
+        "contacts": 5,
+        "sequence_contacts": 5,
+        "sequence_bends": 29,
+        "sequence_length": 13489.8,
+        "association_bends": 2,
+        "association_length": 458.92298402207484,
+        "mean_anchor_gap": 12.0,
+        "extent_area": 4357950.0,
+        "straight_fraction": 0.6111111111111112,
+        "normalized_sequence_length": 74.94333333333333,
+        "at_most_one_bend_fraction": 0.75,
+        "sequence_stretch_p90": 1.2887989203778678,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.6607142857142857,
+          "contact_types": {
+            "control_control": 5
+          },
+          "flow_length_p90_task_units": 5.015,
+          "excess_wire_p90_task_units": 0.6060000000000002,
+          "window_count": 35,
+          "serial_task_windows": 20,
+          "serial_through": 8,
+          "serial_quarter_turn": 9,
+          "serial_hairpins": 1,
+          "request_reply_windows": 2,
+          "request_reply_turns": {
+            "quarter_turn": 1,
+            "through": 1
+          },
+          "request_reply_compact": 1,
+          "request_reply_gap_mean_task_units": 0.3025,
+          "excess_wire_mean_task_units": 0.2481666666666667,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 1,
+          "parallel_pressure_fixed_units": 0.0057552083333333335,
+          "long_flow_count": 7,
+          "simple_window_fraction": 0.65,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_4": {
+        "contacts": 5,
+        "sequence_contacts": 5,
+        "sequence_bends": 26,
+        "sequence_length": 13718.0,
+        "association_bends": 3,
+        "association_length": 639.5069813082358,
+        "mean_anchor_gap": 22.073214285714283,
+        "extent_area": 4772925.5,
+        "straight_fraction": 0.6388888888888888,
+        "normalized_sequence_length": 76.21111111111111,
+        "at_most_one_bend_fraction": 0.8055555555555556,
+        "sequence_stretch_p90": 1.3012987012987016,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.7857142857142857,
+          "contact_types": {
+            "control_control": 5
+          },
+          "flow_length_p90_task_units": 3.8810000000000002,
+          "excess_wire_p90_task_units": 0.6060000000000002,
+          "window_count": 35,
+          "serial_task_windows": 20,
+          "serial_through": 7,
+          "serial_quarter_turn": 6,
+          "serial_hairpins": 5,
+          "request_reply_windows": 2,
+          "request_reply_turns": {
+            "quarter_turn": 2
+          },
+          "request_reply_compact": 1,
+          "request_reply_gap_mean_task_units": 0.3225,
+          "excess_wire_mean_task_units": 0.23875000000000002,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 0,
+          "parallel_pressure_fixed_units": 0.0,
+          "long_flow_count": 6,
+          "simple_window_fraction": 0.8,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "cross_role_bends": {
+        "reference": 16,
+        "v23_3": 22,
+        "v23_4": 17
+      },
+      "objective": 213.95935816761474,
+      "structural_signals": {
+        "sequence_links": true,
+        "data_links": true,
+        "role_membership": true,
+        "bpmn_kinds": true,
+        "names": false,
+        "step_numbers": false,
+        "text_usage": "measured typography only; no lexical meaning or ordering"
+      },
+      "accepted_group_windows": 1,
+      "accepted_role_reorders": 0,
+      "constructor_failures": 0
+    },
+    {
+      "case": "S4",
+      "checks": {
+        "semantic_freeze": true,
+        "di_identity": true,
+        "full_visible_names": true,
+        "routing_safety": true,
+        "object_clearance": true,
+        "labels_clear": true,
+        "task_text_fits": true,
+        "bend_limit": true,
+        "source_geometry_erased": true
+      },
+      "counts": {
+        "nodes": 69,
+        "flows": 86,
+        "documents": 11,
+        "information_links": 11,
+        "roles": 9
+      },
+      "reference": {
+        "contacts": 19,
+        "sequence_contacts": 19,
+        "sequence_bends": 40,
+        "sequence_length": 21694.0,
+        "association_bends": 0,
+        "association_length": 312.4787461984886,
+        "mean_anchor_gap": 26.636363636363637,
+        "extent_area": 5380160.0,
+        "straight_fraction": 0.6395348837209303,
+        "normalized_sequence_length": 120.52222222222223,
+        "at_most_one_bend_fraction": 0.8953488372093024,
+        "sequence_stretch_p90": 1.676056338028169,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.8388888888888889,
+          "contact_types": {
+            "control_control": 19
+          },
+          "flow_length_p90_task_units": 2.985,
+          "excess_wire_p90_task_units": 0.695,
+          "window_count": 85,
+          "serial_task_windows": 36,
+          "serial_through": 13,
+          "serial_quarter_turn": 11,
+          "serial_hairpins": 6,
+          "request_reply_windows": 6,
+          "request_reply_turns": {
+            "quarter_turn": 5,
+            "hairpin": 1
+          },
+          "request_reply_compact": 1,
+          "request_reply_gap_mean_task_units": 0.7374999999999999,
+          "excess_wire_mean_task_units": 0.19558148317270765,
+          "short_internal_jogs": 0,
+          "tight_parallel_pairs": 2,
+          "parallel_pressure_fixed_units": 0.00700581395348837,
+          "long_flow_count": 8,
+          "simple_window_fraction": 0.8333333333333334,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_3": {
+        "contacts": 12,
+        "sequence_contacts": 11,
+        "sequence_bends": 102,
+        "sequence_length": 32044.0,
+        "association_bends": 0,
+        "association_length": 246.25866611598724,
+        "mean_anchor_gap": 20.40909090909091,
+        "extent_area": 10227054.0,
+        "straight_fraction": 0.6046511627906976,
+        "normalized_sequence_length": 178.0222222222222,
+        "at_most_one_bend_fraction": 0.6627906976744186,
+        "sequence_stretch_p90": 1.4972972972972973,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.5236111111111111,
+          "contact_types": {
+            "control_information": 1,
+            "control_control": 11
+          },
+          "flow_length_p90_task_units": 4.21,
+          "excess_wire_p90_task_units": 1.04,
+          "window_count": 85,
+          "serial_task_windows": 36,
+          "serial_through": 8,
+          "serial_quarter_turn": 18,
+          "serial_hairpins": 4,
+          "request_reply_windows": 6,
+          "request_reply_turns": {
+            "hairpin": 4,
+            "quarter_turn": 1,
+            "through": 1
+          },
+          "request_reply_compact": 4,
+          "request_reply_gap_mean_task_units": 0.41250000000000003,
+          "excess_wire_mean_task_units": 0.3719186046511629,
+          "short_internal_jogs": 4,
+          "tight_parallel_pairs": 1,
+          "parallel_pressure_fixed_units": 0.014161579457364373,
+          "long_flow_count": 16,
+          "simple_window_fraction": 0.5833333333333334,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "v23_4": {
+        "contacts": 14,
+        "sequence_contacts": 13,
+        "sequence_bends": 105,
+        "sequence_length": 32493.84,
+        "association_bends": 0,
+        "association_length": 242.39174230618272,
+        "mean_anchor_gap": 20.136363636363637,
+        "extent_area": 9991712.5,
+        "straight_fraction": 0.5697674418604651,
+        "normalized_sequence_length": 180.52133333333333,
+        "at_most_one_bend_fraction": 0.6511627906976745,
+        "sequence_stretch_p90": 1.6321678321678337,
+        "window_readability": {
+          "weighted_simple_window_fraction": 0.4986111111111111,
+          "contact_types": {
+            "control_information": 1,
+            "control_control": 13
+          },
+          "flow_length_p90_task_units": 4.676,
+          "excess_wire_p90_task_units": 1.2360000000000002,
+          "window_count": 85,
+          "serial_task_windows": 36,
+          "serial_through": 7,
+          "serial_quarter_turn": 18,
+          "serial_hairpins": 5,
+          "request_reply_windows": 6,
+          "request_reply_turns": {
+            "quarter_turn": 3,
+            "hairpin": 2,
+            "through": 1
+          },
+          "request_reply_compact": 4,
+          "request_reply_gap_mean_task_units": 0.41250000000000003,
+          "excess_wire_mean_task_units": 0.42609534883720934,
+          "short_internal_jogs": 1,
+          "tight_parallel_pairs": 1,
+          "parallel_pressure_fixed_units": 0.011495445736434191,
+          "long_flow_count": 16,
+          "simple_window_fraction": 0.5555555555555556,
+          "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+        }
+      },
+      "cross_role_bends": {
+        "reference": 31,
+        "v23_3": 84,
+        "v23_4": 82
+      },
+      "objective": 643.5153749569663,
+      "structural_signals": {
+        "sequence_links": true,
+        "data_links": true,
+        "role_membership": true,
+        "bpmn_kinds": true,
+        "names": false,
+        "step_numbers": false,
+        "text_usage": "measured typography only; no lexical meaning or ordering"
+      },
+      "accepted_group_windows": 2,
+      "accepted_role_reorders": 0,
+      "constructor_failures": 0
+    }
+  ],
+  "paired_totals": {
+    "sequence_bends": {
+      "v23_3": 342,
+      "v23_4": 316,
+      "change_percent": -7.602339181286554
+    },
+    "contacts": {
+      "v23_3": 81,
+      "v23_4": 87,
+      "change_percent": 7.407407407407418
+    },
+    "sequence_length": {
+      "v23_3": 109751.39,
+      "v23_4": 110839.23,
+      "change_percent": 0.9911856241638484
+    },
+    "extent_area": {
+      "v23_3": 25970864.45,
+      "v23_4": 26521187.65,
+      "change_percent": 2.1190022421452293
+    }
+  }
+}

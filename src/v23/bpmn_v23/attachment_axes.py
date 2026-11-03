@@ -12,7 +12,8 @@ import math
 
 
 def attachment_axes(nodes,docs,seq,assocs,member,lanes,original,gap_size=28,compact_bays=False,overlap_corridors=False):
-    owners=owners_for(nodes,docs,assocs,original)
+    from .scratch_layout import semantic_document_owners
+    owners=semantic_document_owners(nodes,docs,assocs,original)
     if len(owners)!=len(docs):raise ValueError('Unanchored document')
     base={n:b for n,b in original.items() if n not in docs}
     counts=dict(Counter(owners.values()));reserves={n:min(2,c) if compact_bays else c for n,c in counts.items()}

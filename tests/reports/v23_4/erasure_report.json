@@ -1,0 +1,30 @@
+{
+  "protocol": "all original positions, sizes, waypoints and caption bounds randomized; identical canonical planner input required; supported source model and DI structure frozen",
+  "seed": 2371,
+  "results": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "canonical_geometry_sha256": "0743a04a8d37b09969937b3e723d5b969c27fb1e4b29e645c439921c85f12a55",
+      "source_sha256": "302f533a4843b05183e5de482421032dd441faefedef708490edb880f485e954"
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "canonical_geometry_sha256": "9ca15de07a09e2dc55b036f67a2338b90a42255176b7cb20873e353802dd026f",
+      "source_sha256": "40d5106a09caaa78ca6313a1f9763f3b3591ffe8abeffd95dd03daa26f8516d4"
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "canonical_geometry_sha256": "dfa4a40748e8b7dac53781e1e4992d747258d56d2d7f851c66ec9bf0b9315453",
+      "source_sha256": "56d8faaef8e2439eabeb866926c197dba149c7bd07a9fb849d1f5f8b33a740e7"
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "canonical_geometry_sha256": "2d76f7a6d4939e3b2ac199358dd0b96f4260a8055daf288994a88e42e3636820",
+      "source_sha256": "8c85beeb81a198c995e32d431f8a299c275a0b0d34a0c41ed348c2d0e1a184ff"
+    }
+  ]
+}

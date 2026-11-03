@@ -1,7 +1,7 @@
 {
   "name": "bpmn-universal-layout-lab",
   "private": true,
-  "version": "23.3.0",
+  "version": "23.4.0",
   "description": "Reproducible dependencies for semantic BPMN reconstruction",
   "dependencies": {
     "elkjs": "0.12.1",

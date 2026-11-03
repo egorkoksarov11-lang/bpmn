@@ -17,7 +17,9 @@ def owners_for(nodes,docs,assocs,boxes):
     result={}
     for d in docs:
         linked={v if u==d else u for _,u,v,_ in assocs if d in (u,v)}&nodes.keys()
-        if linked:result[d]=min(linked,key=lambda n:(box_gap(boxes[d],boxes[n]),n))
+        if linked:
+            writers={u for _,u,v,*_ in assocs if v==d and u in nodes}
+            result[d]=min(writers or linked)
     return result
 
 

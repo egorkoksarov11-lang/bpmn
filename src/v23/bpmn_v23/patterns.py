@@ -1,16 +1,22 @@
 """Semantic motifs for layout only: graph arcs are classified, never deleted."""
 from collections import defaultdict,deque
-import heapq,re
+import heapq
 from bpmn_refkit.model import TAG_TASK,TAG_GATE
 
 
-def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=False):
-    def repair(n):
-        name=nodes[n].get('name','').lower()
-        return (nodes[n]['kind'] in TAG_TASK and bool(re.search(r'уточн|исправ|устран|доработ|расхожд|измененн|недоста|незакрыт|повторн|отклонени',name)) or
-                penalize_stops and bool(re.search(r'отмен|прекращ|недопуск|отказ|невозможн|cancel|reject|abort',name)))
-    def reading(n):
-        x,y,w,h=original[n];return (x+w/2,y+h/2,n)
+def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=False,_protected_paths=None):
+    # Topology alone cannot distinguish a cancellation from another terminal
+    # branch. Never infer business meaning from a task's wording.
+    def repair(n):return False
+    outgoing_distance=defaultdict(list);indeg=defaultdict(int)
+    for _,u,v,*_ in seq:outgoing_distance[u].append(v);indeg[v]+=1
+    starts=sorted(n for n,o in nodes.items() if o['kind']=='startEvent' or not indeg[n])
+    graph_distance={n:0 for n in starts};queue=deque(starts)
+    while queue:
+        u=queue.popleft()
+        for v in sorted(outgoing_distance[u]):
+            if v not in graph_distance:graph_distance[v]=graph_distance[u]+1;queue.append(v)
+    def reading(n):return (graph_distance.get(n,len(nodes)),n)
     outgoing=defaultdict(list);incoming=defaultdict(list)
     for eid,u,v,name in seq:outgoing[u].append((eid,v,name));incoming[v].append((eid,u,name))
     # Pair an operation with its decision. Avoid claiming the same gateway twice.
@@ -38,7 +44,7 @@ def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=Fals
             for v in sorted(neighbours[u],key=reading):
                 if v not in seen:seen.add(v);stack.append(v)
         components.append(component)
-    blocks=[];feedback=[]
+    blocks=[];feedback=[];improved_protections={}
     for component in components:
         allowed=set(component);dag=defaultdict(list);indegree={n:0 for n in component}
         def reachable(start,target):
@@ -52,9 +58,9 @@ def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=Fals
         for eid,u,v,name in seq:
             a,b=owner[u],owner[v]
             if a in allowed and b in allowed and a!=b:edges.append((eid,a,b))
-        # Protect an actual start-to-end path before considering DI hints.
-        # A later operation may be slightly left of its predecessor (handoff),
-        # which must never turn the semantic spine into a dead end.
+        # Protect a real start-to-end route before cycle cuts. A bounded
+        # complete-path search below can replace this initial protection;
+        # input positions and display labels never determine the spine.
         full=defaultdict(list)
         for eid,a,b in edges:full[a].append((eid,b))
         starts_in=[owner[n] for n in nodes if nodes[n]['kind']=='startEvent' and owner[n] in allowed]
@@ -73,10 +79,12 @@ def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=Fals
             if found is not None:
                 while parents[found] is not None:
                     previous,eid=parents[found];protected.add(eid);found=previous
-        # Original DI is a stability hint for feedback identification, not a
-        # numbered-stage parser. Additional cycles are broken for ranking only.
-        for eid,a,b in sorted(edges,key=lambda e:(e[0] not in protected,reading(e[2])[0]<reading(e[1])[0]-20,reading(e[1]),reading(e[2]),e[0])):
-            if (eid not in protected and reading(b)[0]<reading(a)[0]-20) or reachable(b,a):feedback.append(eid);continue
+        if _protected_paths is not None and frozenset(component) in _protected_paths:
+            protected=set(_protected_paths[frozenset(component)])
+        # Complete graph paths are protected before cycle cuts. These cuts
+        # affect ranking only; all original BPMN transitions stay intact.
+        for eid,a,b in sorted(edges,key=lambda e:(e[0] not in protected,reading(e[1]),reading(e[2]),e[0])):
+            if reachable(b,a):feedback.append(eid);continue
             if b not in dag[a]:dag[a].append(b);indegree[b]+=1
         queue=[(reading(n),n) for n in component if indegree[n]==0];heapq.heapify(queue);order=[]
         while queue:
@@ -100,6 +108,19 @@ def analyze(nodes,seq,membership,original,*,pair_merges=True,penalize_stops=Fals
                 if u not in next_node:break
                 u=next_node[u]
         else:backbone=order[:1]
+        if _protected_paths is None and starts_in and ends_in:
+            from .graph_topology import longest_complete_path
+            weights={n:len(macro_nodes[n]) for n in component}
+            path,edges=longest_complete_path(full,starts_in,ends_in,weights)
+            current=sum(weights[n] for n in backbone);proposed=sum(weights[n] for n in path)
+            # Avoid destabilizing the whole layout for one tie or one tiny gain.
+            import math
+            if proposed>=current+max(2,math.ceil(current*.05)):
+                improved_protections[frozenset(component)]=edges
         blocks.append({'nodes':component,'backbone':backbone})
+    if improved_protections:
+        result=analyze(nodes,seq,membership,original,pair_merges=pair_merges,penalize_stops=penalize_stops,_protected_paths=improved_protections)
+        result['spine_protection_method']='bounded complete graph-path search before cycle cuts'
+        return result
     return {'pairs':pairs,'owner':owner,'macros':macro_nodes,'components':blocks,'feedback_edges':sorted(set(feedback)),
             'outgoing':dict(outgoing),'incoming':dict(incoming)}

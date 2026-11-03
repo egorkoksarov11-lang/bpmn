@@ -1,0 +1,16 @@
+{
+  "version": "23.4.0",
+  "test_command": "PYTHONPATH=src/v23:src/v22 python -m pytest -q tests src/v22/tests",
+  "total_tests_passed": 183,
+  "v23_tests_passed": 175,
+  "v22_tests_passed": 8,
+  "original_v22_modified": false,
+  "verified_cold_models": 4,
+  "full_semantic_and_di_freeze_cases": 4,
+  "source_geometry_erasure_cases": 4,
+  "label_independence_variants": 12,
+  "source_and_output_native_imports": 8,
+  "native_import_warnings": 0,
+  "business_names_changed": false,
+  "names_or_step_numbers_used_for_structure": false
+}

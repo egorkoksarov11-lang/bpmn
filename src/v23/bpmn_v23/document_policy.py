@@ -66,7 +66,7 @@ def first_appearance_plan(source,omissions=None):
             n=v if u==d else u
             if n not in nodes:continue
             # Gateways merely test data; a nearby real operation owns the glyph.
-            rank=(nodes[n]['kind'] not in TAG_TASK,distance.get(n,10**9),u!=n,nodes[n].get('name',''),n,i)
+            rank=(nodes[n]['kind'] not in TAG_TASK,distance.get(n,10**9),u!=n,n,i)
             candidates.append((rank,i,d,n))
         if not candidates:
             # Unconnected references still denote distinct information; retain one.

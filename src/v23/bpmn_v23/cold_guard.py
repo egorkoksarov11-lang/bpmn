@@ -18,7 +18,7 @@ def needs_guard(quality,flow_count):
 
 
 
-def prefer_control(before,candidate,area_ratio):
+def prefer_control(before,candidate,area_ratio,objective_ratio=None):
     pareto=(all(a<=b+1e-6 for a,b in zip(candidate,before)) and any(a<b-1e-6 for a,b in zip(candidate,before)) and area_ratio<=1.25)
     # A substantial reduction in footprint and travel can justify a small
     # increase in crossings/bends. Keep the permitted trade explicit/bounded.
@@ -28,7 +28,8 @@ def prefer_control(before,candidate,area_ratio):
     old_wire=8*before[0]+1.2*before[1]+before[2]/200
     new_wire=8*candidate[0]+1.2*candidate[1]+candidate[2]/200
     reading=(before[0]>=4 and candidate[0]<=before[0]*.8 and candidate[1]<=max(1,before[1])*1.2 and candidate[2]<=before[2]*1.05 and area_ratio<=1.1 and new_wire<=old_wire*.93)
-    return pareto or compact or reading,('pareto' if pareto else 'bounded_compactness_trade' if compact else 'bounded_wire_readability_trade' if reading else 'retained_primary')
+    shared=(objective_ratio is not None and objective_ratio<.98 and candidate[0]<=max(1,before[0])*1.2+1 and candidate[1]<=max(1,before[1])*1.2+1 and candidate[2]<=before[2]*1.1 and area_ratio<=1.15)
+    return pareto or compact or reading or shared,('pareto' if pareto else 'bounded_compactness_trade' if compact else 'bounded_wire_readability_trade' if reading else 'bounded_shared_objective_trade' if shared else 'retained_primary')
 
 
 def protect_cold_result(source,output,svg,*,candidate_seconds=60,search_seconds=200,role_order=None):
@@ -45,7 +46,13 @@ def protect_cold_result(source,output,svg,*,candidate_seconds=60,search_seconds=
         m=read_bpmn(candidate);uv={i:(u,v) for i,u,v,*_ in m[5]+m[6]};quality=local_quality(m[-1],uv,m[5]);g=geometry(candidate);old=geometry(output)
         report['candidate_quality']=quality
         area=g['extent']['width']*g['extent']['height'];old_area=old['extent']['width']*old['extent']['height']
-        accepted,reason=prefer_control(before,quality,area/max(1,old_area))
+        from .layout_objective import objective
+        from .window_planner import extract_labels
+        original=read_bpmn(output)
+        old_value,_=objective(original[-2],original[-1],original[4],original[5],original[8],original[7],original[6],extract_labels(original[1]).values())
+        candidate_value,_=objective(m[-2],m[-1],m[4],m[5],m[8],m[7],m[6],extract_labels(m[1]).values())
+        report.update(objective_before=old_value,objective_candidate=candidate_value)
+        accepted,reason=prefer_control(before,quality,area/max(1,old_area),candidate_value/max(.001,old_value))
         report['selection_reason']=reason
         accepted=accepted and g['routing_safety_passed'] and g['edge_clearance_passed'] and not(g['label_collision_pairs'] or g['label_line_cuts'] or g['excessive_bend_edges'] or g['task_text_overflows'] or g['missing_named_flow_labels'])
         if not semantic_equality(source,candidate) or not equal(source,candidate):raise ValueError('Internal cold guard freeze violation')

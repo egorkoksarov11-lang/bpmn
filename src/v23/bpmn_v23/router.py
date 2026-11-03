@@ -20,7 +20,7 @@ def overlapping(p, paths):
     return any(segment_overlap(a,b,c,d)>.01 for a,b in zip(p,p[1:]) for ps in paths.values() for c,d in zip(ps,ps[1:]))
 
 
-def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_margin=120,bend_penalty=70,crossing_penalty=1500):
+def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_margin=120,bend_penalty=70,crossing_penalty=1500,max_seconds=8):
     u,v=uv[eid];bu,bv=boxes[u],boxes[v]
     x0=min(bu[0],bv[0])-window_margin;x1=max(bu[0]+bu[2],bv[0]+bv[2])+window_margin
     y0=min(bu[1],bv[1])-window_margin;y1=max(bu[1]+bu[3],bv[1]+bv[3])+window_margin
@@ -74,7 +74,7 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_
         visited=0
         while queue:
             visited+=1
-            if visited%512==0 and (visited>90000 or time.monotonic()-started>8):return None
+            if visited%512==0 and (visited>90000 or time.monotonic()-started>max_seconds):return None
             _,g,state=heapq.heappop(queue);i,j,axis=state
             if g!=dist.get(state):continue
             if (i,j) in goals:
@@ -98,7 +98,7 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_
     # Rare explicitly restricted pairings retain their pair constraints.
     for source,target in pairs:
         if u==v and source==target:continue
-        if time.monotonic()-started>8:break
+        if time.monotonic()-started>max_seconds:break
         result=search([source],[target])
         if result:return result
     return None

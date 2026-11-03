@@ -1,0 +1,53 @@
+{
+  "candidate_schedule": "one initial graph-family proposal before variants; finite time still limits routed coverage",
+  "results": [
+    {
+      "case": "S1",
+      "initial_families_constructed": [
+        "graph-first-spine",
+        "graph-first-inline",
+        "graph-first-layered",
+        "graph-first-regions"
+      ],
+      "failed_families": [],
+      "source_geometry_erased": true,
+      "qualification": "placement construction only; final routing/text acceptance measured separately"
+    },
+    {
+      "case": "S2",
+      "initial_families_constructed": [
+        "graph-first-spine",
+        "graph-first-inline",
+        "graph-first-layered",
+        "graph-first-regions"
+      ],
+      "failed_families": [],
+      "source_geometry_erased": true,
+      "qualification": "placement construction only; final routing/text acceptance measured separately"
+    },
+    {
+      "case": "S3",
+      "initial_families_constructed": [
+        "graph-first-spine",
+        "graph-first-inline",
+        "graph-first-layered",
+        "graph-first-regions"
+      ],
+      "failed_families": [],
+      "source_geometry_erased": true,
+      "qualification": "placement construction only; final routing/text acceptance measured separately"
+    },
+    {
+      "case": "S4",
+      "initial_families_constructed": [
+        "graph-first-spine",
+        "graph-first-inline",
+        "graph-first-layered",
+        "graph-first-regions"
+      ],
+      "failed_families": [],
+      "source_geometry_erased": true,
+      "qualification": "placement construction only; final routing/text acceptance measured separately"
+    }
+  ]
+}

@@ -31,7 +31,7 @@ def align_spines(boxes,motifs,nodes,seq,member,grouping,gap=24):
         for n in path:
             x,y,w,h=out[n];out[n]=(x,row_y[member[n]]-h/2,w,h)
         placed=[(member[n],out[n]) for n in path]
-        for n in sorted(allowed-main,key=lambda n:(old_centres[n][0],old_centres[n][1],nodes[n].get('name',''),n)):
+        for n in sorted(allowed-main,key=lambda n:(old_centres[n][0],old_centres[n][1],n)):
             # Find a graph ancestor on the main spine; no names or DI positions
             # determine which business edge is the continuation.
             queue=deque(incoming[n]);seen=set();anchor=None
