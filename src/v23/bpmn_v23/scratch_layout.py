@@ -172,9 +172,9 @@ class ScratchBackend:
     name='v23-from-scratch'
     preserve_labels=True
     source_geometry_used=False
-    def __init__(self,candidate_seconds=30,control=False,role_order=None,search_seconds=None,graph_backend=None):
+    def __init__(self,candidate_seconds=30,control=False,role_order=None,search_seconds=None,graph_backend=None,staged_windows=True):
         if control and role_order is not None:raise ValueError('Role optimization requires the graph scratch backend')
-        self.candidate_seconds=candidate_seconds;self.control=control;self.role_order=role_order;self.search_seconds=search_seconds;self.graph_backend=graph_backend
+        self.candidate_seconds=candidate_seconds;self.control=control;self.role_order=role_order;self.search_seconds=search_seconds;self.graph_backend=graph_backend;self.staged_windows=staged_windows
 
     def layout(self,source,output,svg):
         started=time.monotonic()
@@ -202,6 +202,9 @@ class ScratchBackend:
                     result['local_episode_edits']=edit_groups(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
                     from .port_refinement import refine_ports
                     result['port_refinement']=refine_ports(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
+                    if self.staged_windows:
+                        from .window_planner import refine_windows
+                        result['staged_window_refinement']=refine_windows(output,svg,neutral,seconds=min(45,self.candidate_seconds*2))
                     from .whitespace import compact_whitespace
                     result['whitespace_compaction']=compact_whitespace(output,svg,neutral)
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')

@@ -32,6 +32,8 @@ def measure(path,owners):
             import math
             stretch.append(sum(math.dist(x,y) for x,y in zip(m[-1][i],m[-1][i][1:]))/gap)
     value['sequence_stretch_p90']=sorted(stretch)[min(len(stretch)-1,int(len(stretch)*.9))] if stretch else None
+    from bpmn_v23.window_metrics import metrics as window_metrics
+    value['window_readability']=window_metrics(m[-2],m[-1],m[4],m[5],m[8],m[7],m[6])
     return value
 
 

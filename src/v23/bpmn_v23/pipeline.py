@@ -105,6 +105,8 @@ def geometry(path):
         for eid,points in paths.items():
             if any(bbox_intersect_seg(rect,a,b,clearance=1) for a,b in zip(points,points[1:])):label_line_cuts.append([owner,eid])
     result['readability']=reading_metrics(boxes,paths,nodes,seq)
+    from .window_metrics import metrics as window_metrics
+    result['window_readability']=window_metrics(boxes,paths,nodes,seq,membership,docs,assocs)
     result.update(ambiguous_contacts=len(robust_contacts),contact_examples=robust_contacts[:40],task_text_overflows=overflow,label_line_cuts=label_line_cuts)
     label_owners={e.getparent().getparent().get('bpmnElement') for e in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)}
     result['missing_named_flow_labels']=[i for i,_,_,name in seq if name and i not in label_owners]
@@ -203,6 +205,7 @@ def run(source, destination, backend=None):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--output-dir',type=Path,required=True)
+    p.add_argument('--skip-staged-windows',action='store_true',help='control: disable only the new overlapping 3-step refinement')
     p.add_argument('--search-seconds',type=float,default=None,help='candidate search budget; verified whole-layout fallback required before stopping')
     p.add_argument('--candidate-timeout',type=int,default=30,help='maximum routing seconds per placement candidate (1..600)')
     p.add_argument('--no-decision-orientations',action='store_true',help='compare with the four baseline human-style placements')
@@ -221,7 +224,7 @@ def main():
     if a.layout_engine in ('scratch','scratch-legacy','scratch-human'):
         if a.incumbent is not None:p.error('Scratch reconstruction forbids external incumbents')
         from .scratch_layout import ScratchBackend,GraphChannelsBackend
-        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human',search_seconds=a.search_seconds,graph_backend=GraphChannelsBackend if a.layout_engine=='scratch-legacy' else None)
+        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human',search_seconds=a.search_seconds,staged_windows=not a.skip_staged_windows,graph_backend=GraphChannelsBackend if a.layout_engine=='scratch-legacy' else None)
     elif a.layout_engine=='attachments':
         from .attachment_refinement import AttachmentBackend
         backend=AttachmentBackend(incumbent=a.incumbent,seconds=a.candidate_timeout)

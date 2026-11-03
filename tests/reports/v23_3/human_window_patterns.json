@@ -1,0 +1,187 @@
+{
+  "protocol": {
+    "source": "consecutive saved BPMN states",
+    "no_cursor_recording": true,
+    "reference_coordinates_used_by_generator": false,
+    "counts_are_overlapping_windows_not_independent_user_actions": true,
+    "whole_diagram_translations_removed": true,
+    "development_corpus_not_held_out": true
+  },
+  "sessions": [
+    {
+      "session": "S1",
+      "saved_states": 18,
+      "saved_transitions": 17,
+      "transitions_with_business_xml_changes": 16,
+      "window_observations": {
+        "stable_window_observations": 902,
+        "edited_windows": 113,
+        "joint_relative_node_edits": 74,
+        "single_relative_node_edits": 27,
+        "both_wires_edited": 84,
+        "wire_only_edits": 12,
+        "fewer_bends": 36,
+        "more_bends": 39,
+        "became_simple_pair": 20
+      },
+      "final_diagnostics": {
+        "weighted_simple_window_fraction": 0.7047619047619048,
+        "contact_types": {
+          "control_control": 5
+        },
+        "flow_length_p90_task_units": 2.655,
+        "excess_wire_p90_task_units": 0.56,
+        "window_count": 54,
+        "serial_task_windows": 20,
+        "serial_through": 7,
+        "serial_quarter_turn": 10,
+        "serial_hairpins": 3,
+        "request_reply_windows": 0,
+        "request_reply_turns": {},
+        "request_reply_compact": 0,
+        "request_reply_gap_mean_task_units": 0.0,
+        "excess_wire_mean_task_units": 0.23941176470588232,
+        "short_internal_jogs": 0,
+        "tight_parallel_pairs": 1,
+        "parallel_pressure_fixed_units": 0.00799019607843137,
+        "long_flow_count": 5,
+        "simple_window_fraction": 0.7,
+        "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+      }
+    },
+    {
+      "session": "S2",
+      "saved_states": 16,
+      "saved_transitions": 15,
+      "transitions_with_business_xml_changes": 13,
+      "window_observations": {
+        "stable_window_observations": 1236,
+        "edited_windows": 181,
+        "joint_relative_node_edits": 103,
+        "single_relative_node_edits": 62,
+        "both_wires_edited": 124,
+        "wire_only_edits": 16,
+        "fewer_bends": 92,
+        "more_bends": 27,
+        "became_simple_pair": 54
+      },
+      "final_diagnostics": {
+        "weighted_simple_window_fraction": 0.8196969696969697,
+        "contact_types": {
+          "control_control": 55,
+          "control_information": 2
+        },
+        "flow_length_p90_task_units": 5.055,
+        "excess_wire_p90_task_units": 1.375,
+        "window_count": 88,
+        "serial_task_windows": 26,
+        "serial_through": 7,
+        "serial_quarter_turn": 15,
+        "serial_hairpins": 0,
+        "request_reply_windows": 4,
+        "request_reply_turns": {
+          "hairpin": 2,
+          "quarter_turn": 2
+        },
+        "request_reply_compact": 2,
+        "request_reply_gap_mean_task_units": 0.63125,
+        "excess_wire_mean_task_units": 0.3969354838709677,
+        "short_internal_jogs": 1,
+        "tight_parallel_pairs": 5,
+        "parallel_pressure_fixed_units": 0.03743727598566308,
+        "long_flow_count": 21,
+        "simple_window_fraction": 0.8846153846153846,
+        "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+      }
+    },
+    {
+      "session": "S3",
+      "saved_states": 11,
+      "saved_transitions": 10,
+      "transitions_with_business_xml_changes": 7,
+      "window_observations": {
+        "stable_window_observations": 350,
+        "edited_windows": 65,
+        "joint_relative_node_edits": 40,
+        "single_relative_node_edits": 23,
+        "both_wires_edited": 46,
+        "wire_only_edits": 2,
+        "fewer_bends": 31,
+        "more_bends": 6,
+        "became_simple_pair": 23
+      },
+      "final_diagnostics": {
+        "weighted_simple_window_fraction": 0.7678571428571429,
+        "contact_types": {
+          "control_information": 2,
+          "control_control": 10
+        },
+        "flow_length_p90_task_units": 3.575,
+        "excess_wire_p90_task_units": 0.54,
+        "window_count": 35,
+        "serial_task_windows": 20,
+        "serial_through": 4,
+        "serial_quarter_turn": 12,
+        "serial_hairpins": 2,
+        "request_reply_windows": 2,
+        "request_reply_turns": {
+          "quarter_turn": 1,
+          "hairpin": 1
+        },
+        "request_reply_compact": 0,
+        "request_reply_gap_mean_task_units": 1.0925,
+        "excess_wire_mean_task_units": 0.1798611111111111,
+        "short_internal_jogs": 0,
+        "tight_parallel_pairs": 1,
+        "parallel_pressure_fixed_units": 0.01458333333333333,
+        "long_flow_count": 9,
+        "simple_window_fraction": 0.75,
+        "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+      }
+    },
+    {
+      "session": "S4",
+      "saved_states": 14,
+      "saved_transitions": 13,
+      "transitions_with_business_xml_changes": 13,
+      "window_observations": {
+        "stable_window_observations": 1077,
+        "edited_windows": 185,
+        "joint_relative_node_edits": 120,
+        "single_relative_node_edits": 49,
+        "both_wires_edited": 137,
+        "wire_only_edits": 16,
+        "fewer_bends": 88,
+        "more_bends": 33,
+        "became_simple_pair": 59
+      },
+      "final_diagnostics": {
+        "weighted_simple_window_fraction": 0.8388888888888889,
+        "contact_types": {
+          "control_control": 19
+        },
+        "flow_length_p90_task_units": 2.985,
+        "excess_wire_p90_task_units": 0.695,
+        "window_count": 85,
+        "serial_task_windows": 36,
+        "serial_through": 13,
+        "serial_quarter_turn": 11,
+        "serial_hairpins": 6,
+        "request_reply_windows": 6,
+        "request_reply_turns": {
+          "quarter_turn": 5,
+          "hairpin": 1
+        },
+        "request_reply_compact": 1,
+        "request_reply_gap_mean_task_units": 0.7374999999999999,
+        "excess_wire_mean_task_units": 0.19558148317270765,
+        "short_internal_jogs": 0,
+        "tight_parallel_pairs": 2,
+        "parallel_pressure_fixed_units": 0.00700581395348837,
+        "long_flow_count": 8,
+        "simple_window_fraction": 0.8333333333333334,
+        "interpretation": "reading diagnostics, not business correctness or percentage human similarity; reversals and request/reply spacing are contextual, not defects to minimize"
+      }
+    }
+  ]
+}

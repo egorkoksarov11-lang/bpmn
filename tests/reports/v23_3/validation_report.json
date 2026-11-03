@@ -1,0 +1,14 @@
+{
+  "version": "23.3.0",
+  "v23_tests_passed": 163,
+  "v22_tests_passed": 8,
+  "total_tests_passed": 171,
+  "original_v22_code_modified": false,
+  "early_parallel_v22_test_timeout": "20-second test limit exceeded under concurrent generation; all eight v22 tests passed on isolated rerun",
+  "v23_test_command": "PYTHONPATH=src/v23:src/v22 python -m pytest -q tests",
+  "v22_test_command": "PYTHONPATH=src/v23:src/v22 python -m pytest -q src/v22/tests",
+  "verified_cold_cases": 4,
+  "source_geometry_erasure_cases": 4,
+  "bpmn_moddle_source_and_output_imports": 8,
+  "bpmn_moddle_warnings": 0
+}

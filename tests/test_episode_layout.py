@@ -60,7 +60,7 @@ def test_new_default_has_exact_semantic_freeze_and_visible_names(tmp_path):
     output=tmp_path/'result/process_08_v23.bpmn';assert semantic_equality(source,output) and equal(source,output)
     assert source.read_bytes()==before
     r=json.loads((tmp_path/'result/run_report.json').read_text())
-    assert r['version']=='23.2.0' and r['backend_report']['from_scratch']
+    assert r['version']=='23.3.0' and r['backend_report']['from_scratch']
     assert r['backend_report']['geometry_erasure']['source_positions_used'] is False
     assert r['backend_report']['selection_policy']=='human-episodes-balanced-v2'
     g=geometry(output);assert g['routing_safety_passed'] and not g['label_collision_pairs'] and not g['missing_named_flow_labels']
@@ -135,6 +135,7 @@ def test_perpendicular_ports_produce_a_one_bend_diagonal_handoff():
 def test_cold_guard_targets_dense_long_doglegs_not_every_model():
     from bpmn_v23.cold_guard import needs_guard
     assert needs_guard((80,150,80000),100)
+    assert needs_guard((72,147,55000),93)
     assert not needs_guard((10,130,32000),100)
     assert not needs_guard((5,29,13500),100)
 
@@ -167,3 +168,12 @@ def test_cold_guard_bounds_compactness_trade_instead_of_ignoring_regressions():
     assert prefer_control((50,180,60000),(55,185,45000),.75)[0]
     assert not prefer_control((50,180,60000),(80,185,45000),.75)[0]
     assert not prefer_control((50,180,60000),(55,230,45000),.75)[0]
+
+
+def test_cold_guard_exposes_and_bounds_crossing_vs_bend_trade():
+    from bpmn_v23.cold_guard import prefer_control
+    accepted,reason=prefer_control((70,150,55000),(54,170,50000),.9)
+    assert accepted and reason=='bounded_wire_readability_trade'
+    assert not prefer_control((70,150,55000),(54,190,50000),.9)[0]
+    assert not prefer_control((70,150,55000),(54,170,62000),.9)[0]
+    assert not prefer_control((70,150,55000),(54,170,50000),1.2)[0]
