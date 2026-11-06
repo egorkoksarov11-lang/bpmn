@@ -8,15 +8,41 @@ button,.download{display:inline-block;background:#1861cd;color:white;padding:12p
 button:disabled{opacity:.5;cursor:wait}input{display:block;margin:24px 0;max-width:100%;font:inherit}.download{background:#edf4ff;color:#164b92}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto;background:#eef2f6;padding:16px;font-size:13px}#folder{overflow-wrap:anywhere}
 .error{color:#a82020}.working{color:#1a62bd}small{color:#64748b}progress{width:100%}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid #dbe3ed}code{font-size:.9em}section{margin-top:36px}section pre{max-height:none}h2{font-size:23px}
 </style>
 <main><h1>BPMN — новая компоновка</h1>
-<p>Выберите BPMN-файл. Генератор заново расставит шаги, роли, документы и линии по связям, сохранив бизнес-логику.</p>
-<input id="file" type="file" accept=".bpmn"><button id="generate">Создать схему</button>
+<p>Выберите BPMN, JSON или YAML. Генератор заново расставит шаги, роли, документы и линии по связям, сохранив бизнес-логику.</p>
+<input id="file" type="file" accept=".bpmn,.json,.yaml,.yml,.ylm"><button id="generate">Создать схему</button>
 <small>Файл обрабатывается на вашем компьютере.</small>
 <p id="status" role="status" aria-live="polite">Готов к работе</p><progress id="progress" hidden></progress>
 <div id="downloads"></div><p id="folder"></p>
 <details><summary>Журнал работы</summary><pre id="log"></pre></details>
 <p><small>Обычно требуется несколько минут. Время зависит от размера схемы; лимит поиска не равен общему времени работы. Исходный файл сохраняется. Для завершения приложения закройте его консольное окно.</small></p>
+<section aria-labelledby="format"><h2 id="format">Как подготовить JSON или YAML</h2>
+<p>Начните с готового примера, замените роли, шаги и связи своими и загрузите файл выше. Указывать координаты и размеры не нужно. YAML использует те же поля; расширения <code>.yaml</code>, <code>.yml</code> и <code>.ylm</code> равнозначны. Кодировка — UTF-8.</p>
+<a id="json-example" class="download">Скачать пример JSON</a><a id="yaml-example" class="download">Скачать пример YAML</a>
+<table><thead><tr><th>Поле</th><th>Что указать</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>Обязательно: число <code>1</code>.</td></tr>
+<tr><td><code>process</code></td><td>Обязательно: <code>{id, name}</code> — идентификатор и название процесса.</td></tr>
+<tr><td><code>roles</code></td><td>Обязательно: непустой массив <code>{id, name}</code> — роли участников.</td></tr>
+<tr><td><code>nodes</code></td><td>Обязательно: непустой массив <code>{id, type, name, role}</code>. <code>role</code> — id объявленной роли.</td></tr>
+<tr><td><code>flows</code></td><td>Обязательно: массив <code>{id, source, target}</code> — переходы между узлами. <code>source</code> и <code>target</code> — id из nodes. Можно добавить <code>name</code> (подпись) и <code>condition</code> (условие).</td></tr>
+<tr><td><code>documents</code></td><td>Необязательно: массив <code>{id, type, name}</code>. Тип <code>document</code> — документ, <code>store</code> — база/хранилище.</td></tr>
+<tr><td><code>associations</code></td><td>Необязательно: массив <code>{id, source, target}</code>. Шаг → документ: выдача; документ → шаг: использование. Каждому документу/хранилищу нужна хотя бы одна такая связь.</td></tr>
+</tbody></table>
+<p><strong>Правила id:</strong> уникальны во всём файле, включая процесс, роли и связи. Используйте латинские буквы, цифры, <code>_ . -</code>; первый символ — буква или <code>_</code>. Префикс <code>__import_</code> зарезервирован. Названия <code>name</code> могут быть русскими. Все перечисленные строковые поля — непустые строки; необязательное поле можно не указывать.</p>
+<p><strong>Типы nodes:</strong> <code>startEvent</code> — начало, <code>endEvent</code> — конец; <code>task</code>, <code>userTask</code>, <code>manualTask</code>, <code>serviceTask</code>, <code>sendTask</code>, <code>receiveTask</code>, <code>businessRuleTask</code> — операции; <code>exclusiveGateway</code> — выбор одной ветви, <code>parallelGateway</code> — параллельные ветви, <code>inclusiveGateway</code> — выбор одной или нескольких ветвей.</p>
+<p><strong>Связи определяют порядок.</strong> Положение в массиве и номера в названиях его не задают. В начало нельзя входить, из конца нельзя выходить. Документы не являются шагами и связываются через associations. Вложенные подпроцессы, граничные события и межпуловые сообщения этот формат пока не описывает. Неизвестные поля, повторные ключи и ссылки на несуществующие id вызывают понятную ошибку. YAML-якоря не поддерживаются.</p>
+<h3>Полный рабочий пример</h3><pre id="example-code">Загрузка примера…</pre>
+<h3>Если нужны условия и ветвления</h3>
+<p>Добавьте шлюз с ролью; необязательное поле <code>default</code> — id его исходящего перехода без условия. Подпись <code>name</code> сама по себе не является условием:</p>
+<pre>{"id":"decision","type":"exclusiveGateway","name":"Согласовано?","role":"manager","default":"rejected"}
+
+{"id":"approved","source":"decision","target":"pay","name":"Да","condition":"approved == true"}
+{"id":"rejected","source":"decision","target":"revise","name":"Нет"}</pre>
+<p>Узлы <code>pay</code> и <code>revise</code> должны быть объявлены в nodes. Условия сохраняются дословно как BPMN formalExpression и не выполняются генератором. У startEvent и parallelGateway исходящие условия запрещены; default разрешён у exclusiveGateway/inclusiveGateway. Цикл задайте переходом к уже существующему узлу.</p>
+<p>JSON/YAML сначала преобразуется в BPMN, после чего работает прежний алгоритм. Промежуточный <code>input_model.bpmn</code> и отчёт импорта входят в ZIP результата.</p>
+</section>
 </main>
 <script>
 const token=new URLSearchParams(location.search).get('token');
@@ -36,13 +62,15 @@ async function refresh(){
  }catch(e){el('status').textContent='Нет связи с приложением. Проверьте, открыто ли его консольное окно.';}
 }
 el('generate').onclick=async()=>{
- localError='';const file=el('file').files[0];if(!file){localError='Сначала выберите BPMN-файл';await refresh();return;}
- if(!file.name.toLowerCase().endsWith('.bpmn')||!file.size||file.size>25*1024*1024){localError='Нужен файл .bpmn размером до 25 МБ';await refresh();return;}
+ localError='';const file=el('file').files[0];if(!file){localError='Сначала выберите BPMN, JSON или YAML';await refresh();return;}
+ if(!/\.(bpmn|json|yaml|yml|ylm)$/i.test(file.name)||!file.size||file.size>25000000){localError='Нужен BPMN, JSON или YAML размером до 25 МБ';await refresh();return;}
  uploading=true;el('generate').disabled=true;
  try{const r=await fetch(url('/generate',{name:file.name}),{method:'POST',body:file});if(!r.ok){const data=await r.json();throw Error(data.error||'Не удалось начать обработку');}}
  catch(e){localError=e.message;}
  finally{uploading=false;el('generate').disabled=false;}
  await refresh();
 };
+el('json-example').href=url('/example.json');el('yaml-example').href=url('/example.yaml');
+fetch(url('/example.json')).then(r=>{if(!r.ok)throw Error();return r.text();}).then(text=>el('example-code').textContent=text).catch(()=>el('example-code').textContent='Откройте desktop/example.json в распакованном пакете.');
 refresh();setInterval(refresh,1500);
 </script></html>

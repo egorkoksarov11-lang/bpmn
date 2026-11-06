@@ -1,2 +1,2 @@
-from .pipeline import main
+from .input_cli import main
 main()

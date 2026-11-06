@@ -19,7 +19,7 @@ import webbrowser
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-MAX_INPUT = 25 * 1024 * 1024
+MAX_INPUT = 25_000_000
 
 
 def command(source, output):
@@ -44,8 +44,9 @@ class Application:
             return result
 
     def start(self, name, data):
-        if not name.lower().endswith('.bpmn'):
-            raise ValueError('Выберите файл с расширением .bpmn')
+        suffix = Path(name).suffix.lower()
+        if suffix not in {'.bpmn', '.json', '.yaml', '.yml', '.ylm'}:
+            raise ValueError('Выберите .bpmn, .json, .yaml или .yml (.ylm также принимается)')
         if not data or len(data) > MAX_INPUT:
             raise ValueError('Размер файла должен быть от 1 байта до 25 МБ')
         with self.lock:
@@ -54,7 +55,7 @@ class Application:
             # Never use user-provided names as paths. Keep originals untouched.
             folder = self.results / (time.strftime('%Y%m%d-%H%M%S') + '-' + secrets.token_hex(3))
             folder.mkdir(parents=True)
-            source = folder / 'original.bpmn'
+            source = folder / ('original' + suffix)
             source.write_bytes(data)
             self.state = {'status': 'running', 'name': name, 'started': time.monotonic(),
                           'folder': str(folder), 'log': 'Построение новой схемы по связям…\n', 'files': []}
@@ -76,7 +77,10 @@ class Application:
                         self.state['log'] = log.read_text(encoding='utf-8', errors='replace')[-16000:]
                     time.sleep(.5)
                 if process.returncode:
-                    raise RuntimeError('Генератор отклонил схему. Подробности — в журнале ниже.')
+                    lines = log.read_text(encoding='utf-8', errors='replace').splitlines()
+                    errors = [line for line in lines if line.startswith('ValueError:') or ': error:' in line]
+                    detail = errors[-1][:600] if errors else 'Подробности — в журнале ниже.'
+                    raise RuntimeError('Генератор отклонил схему. ' + detail)
             output = folder / 'output'
             semantic = json.loads((output / 'semantic_diff.json').read_text(encoding='utf-8'))
             if semantic.get('equal') is not True or semantic.get('diff_count') != 0:
@@ -87,6 +91,12 @@ class Application:
                 shutil.copy2(output / name, folder / name)
             names = ['generated.bpmn', 'generated.svg', 'geometry_report.json',
                      'semantic_diff.json', 'run_report.json', 'generation.log']
+            for name in ('input_model.bpmn', 'input_report.json'):
+                if (output / name).is_file():
+                    shutil.copy2(output / name, folder / name)
+                    names.append(name)
+            if source.suffix.lower() != '.bpmn':
+                names.append(source.name)
             manifest = {name: hashlib.sha256((folder / name).read_bytes()).hexdigest() for name in names}
             (folder / 'SHA256.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
             with zipfile.ZipFile(folder / 'result.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
@@ -153,6 +163,10 @@ def make_server(app):
                 self.send(200, (ROOT / 'desktop/index.html').read_bytes(), 'text/html; charset=utf-8')
             elif path == '/status':
                 self.send(200, json.dumps(app.snapshot(), ensure_ascii=False))
+            elif path in ('/example.json', '/example.yaml'):
+                name = 'example' + Path(path).suffix
+                self.send(200, (ROOT / 'desktop' / name).read_bytes(),
+                          'application/octet-stream', name)
             elif path == '/download':
                 name = parse_qs(urlsplit(self.path).query).get('name', [''])[0]
                 with app.lock:

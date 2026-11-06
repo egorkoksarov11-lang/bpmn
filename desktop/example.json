@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "process": {"id": "contract", "name": "Подготовка и оплата"},
+  "roles": [
+    {"id": "manager", "name": "Менеджер"},
+    {"id": "accountant", "name": "Бухгалтер"}
+  ],
+  "nodes": [
+    {"id": "start", "type": "startEvent", "name": "Запрос получен", "role": "manager"},
+    {"id": "prepare", "type": "userTask", "name": "Подготовить счёт", "role": "manager"},
+    {"id": "pay", "type": "userTask", "name": "Оплатить счёт", "role": "accountant"},
+    {"id": "end", "type": "endEvent", "name": "Оплата выполнена", "role": "accountant"}
+  ],
+  "flows": [
+    {"id": "request_to_prepare", "source": "start", "target": "prepare"},
+    {"id": "prepare_to_pay", "source": "prepare", "target": "pay"},
+    {"id": "pay_to_end", "source": "pay", "target": "end"}
+  ],
+  "documents": [
+    {"id": "invoice", "type": "document", "name": "Счёт"}
+  ],
+  "associations": [
+    {"id": "invoice_created", "source": "prepare", "target": "invoice"},
+    {"id": "invoice_used", "source": "invoice", "target": "pay"}
+  ]
+}

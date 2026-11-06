@@ -60,7 +60,8 @@ def test_new_default_has_exact_semantic_freeze_and_visible_names(tmp_path):
     output=tmp_path/'result/process_08_v23.bpmn';assert semantic_equality(source,output) and equal(source,output)
     assert source.read_bytes()==before
     r=json.loads((tmp_path/'result/run_report.json').read_text())
-    assert r['version']=='23.4.0' and r['backend_report']['from_scratch']
+    from bpmn_v23 import __version__
+    assert r['version']==__version__ and r['backend_report']['from_scratch']
     assert r['backend_report']['geometry_erasure']['source_positions_used'] is False
     assert r['backend_report']['selection_policy']=='graph-only-regions-balanced-v3'
     g=geometry(output);assert g['routing_safety_passed'] and not g['label_collision_pairs'] and not g['missing_named_flow_labels']

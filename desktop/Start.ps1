@@ -1,5 +1,6 @@
 param([switch]$SetupOnly)
 $ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $root

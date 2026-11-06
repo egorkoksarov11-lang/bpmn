@@ -1,6 +1,6 @@
 # BPMN Universal Engine v23.4
 
-**[Скачать генератор для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_4_1.zip)**. Распакуйте архив, запустите `START_WINDOWS.cmd`, дождитесь установки и выберите BPMN в браузере. [Инструкция самостоятельного запуска](desktop/README.md). Исходники включены; обработка выполняется локально, результаты сохраняются в `results`.
+**[Скачать генератор v23.4.2 для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_4_2.zip)**. Распакуйте архив, запустите `START_WINDOWS.cmd`, дождитесь установки и выберите BPMN, JSON или YAML в браузере. Структура JSON и скачиваемые примеры показаны на первой странице. [Инструкция](desktop/README.md) · [формат входных данных](desktop/INPUT_FORMAT.md). Исходники включены; обработка выполняется локально, результаты сохраняются в `results`.
 
 Структура строится по связям, принадлежности ролям и типам BPMN. **Наименования и номера шагов не используются для выбора групп, основного пути и порядка ролей.** Полный текст сохраняется и измеряется для отрисовки.
 

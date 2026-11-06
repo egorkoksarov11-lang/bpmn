@@ -63,6 +63,10 @@ def test_http_access_and_input_rejection(tmp_path):
     thread.start()
     try:
         assert urllib.request.urlopen(url).status == 200
+        sample = urllib.request.urlopen(url.replace('/?', '/example.json?'))
+        assert json.loads(sample.read())['schema_version'] == 1
+        assert sample.headers['Content-Disposition'] == 'attachment; filename="example.json"'
+        assert b'schema_version: 1' in urllib.request.urlopen(url.replace('/?', '/example.yaml?')).read()
         with pytest.raises(urllib.error.HTTPError) as missing:
             urllib.request.urlopen(url.split('?')[0] + 'status')
         assert missing.value.code == 403
