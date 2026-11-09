@@ -76,6 +76,25 @@ def test_audit_rejects_corrupt_message_endpoint(built,tmp_path):
     assert not collaboration_geometry(target)['routing_safety_passed']
 
 
+@pytest.mark.parametrize('kind',['exclusiveGateway','intermediateCatchEvent'])
+@pytest.mark.parametrize('inside',[False,True])
+def test_collaboration_uses_true_contours_for_label_collisions(built,tmp_path,kind,inside):
+    _,folder,_=built;root=parse(folder/'process_08_v23.bpmn')
+    node=root.xpath('.//b:userTask[@id="review"]',namespaces=NS)[0]
+    node.tag=Q(B,kind)  # An internal node, never a message endpoint.
+    boxes,_=boxes_paths(root);x,y,w,h=boxes['review']
+    label=root.xpath('.//bd:BPMNEdge[@bpmnElement="M2"]/bd:BPMNLabel/dc:Bounds',namespaces=NS)[0]
+    rect=(x+w/2-2,y+h/2-2,4,4) if inside else (x,y,4,4)
+    for key,value in zip(('x','y','width','height'),rect):label.set(key,str(value))
+    target=tmp_path/'label.bpmn';write(root,target)
+    validate_xml(target)
+    report=collaboration_geometry(target)
+    assert (['M2','review'] in report['label_collision_pairs']) is inside
+    if inside:
+        from bpmn_v23.collaboration import rejection_reasons
+        assert any('M2' in reason and 'review' in reason for reason in rejection_reasons(report))
+
+
 def test_raw_bpmn_without_customer_lanes_and_bare_catch(tmp_path):
     source=tmp_path/'source.bpmn';to_bpmn(example(),source);root=parse(source)
     customer=root.xpath('./b:process[@id="CustomerProcess"]',namespaces=NS)[0]

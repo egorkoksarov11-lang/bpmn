@@ -56,6 +56,21 @@ def test_failed_engine_does_not_offer_diagram(tmp_path, monkeypatch):
     assert 'bad model' in result['log']
 
 
+def test_geometry_failure_offers_full_diagnostic_without_diagram(tmp_path,monkeypatch):
+    script="""import pathlib,json,sys
+p=pathlib.Path(sys.argv[1]);p.mkdir()
+(p/'geometry_error.json').write_text(json.dumps({'error':'collaboration_geometry_rejected','failed_checks':['label M2/review']}))
+raise ValueError('label M2/review; geometry_error.json')
+"""
+    monkeypatch.setattr(app_module,'command',lambda source,output:[sys.executable,'-c',script,str(output)])
+    app=app_module.Application(tmp_path);app.start('model.json',b'{}')
+    result=await_result(app)
+    assert result['status']=='error'
+    assert result['files']==['generation.log','geometry_error.json']
+    assert 'M2/review' in result['error']
+    assert json.loads((Path(result['folder'])/'geometry_error.json').read_text())['failed_checks']==['label M2/review']
+
+
 def test_http_access_and_input_rejection(tmp_path):
     app = app_module.Application(tmp_path)
     server, url = app_module.make_server(app)

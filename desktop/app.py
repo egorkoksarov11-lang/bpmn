@@ -110,7 +110,11 @@ class Application:
             with log.open('a', encoding='utf-8') as stream:
                 traceback.print_exc(file=stream)
             with self.lock:
-                self.state.update(status='error', error=str(error), files=['generation.log'],
+                files=['generation.log']
+                diagnostic=folder/'output/geometry_error.json'
+                if diagnostic.is_file():
+                    shutil.copy2(diagnostic,folder/'geometry_error.json');files.append('geometry_error.json')
+                self.state.update(status='error', error=str(error), files=files,
                                   log=log.read_text(encoding='utf-8', errors='replace')[-16000:])
         finally:
             with self.lock:

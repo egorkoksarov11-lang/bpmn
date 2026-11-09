@@ -17,6 +17,25 @@ from .typography import wrap, width
 NODE = TAG_TASK | TAG_GATE | TAG_EVENT
 
 
+def rejection_reasons(report):
+    """Report the failed checks, rather than burying them after all metrics."""
+    names = {'label_collision_pairs':'наложение подписей/фигур', 'label_line_cuts':'линии пересекают подписи',
+             'invalid_endpoints':'неверные концы линий', 'line_through_shapes':'линии проходят через фигуры',
+             'diagonal_edges':'диагональные сообщения', 'outside_pools':'элементы вне пулов',
+             'collinear_overlap_pairs':'совпадающие отрезки', 'edge_object_clearance_violations':'недостаточный зазор',
+             'lane_header_cuts':'линии пересекают заголовки'}
+    reasons=[]
+    for key,label in names.items():
+        if report.get(key): reasons.append(label+': '+str(report[key][:4]))
+    if report.get('pool_overlaps'):reasons.append('пулы накладываются')
+    for i,process in enumerate(report.get('processes',[])):
+        if not process.get('routing_safety_passed') or not process.get('edge_clearance_passed'):
+            reasons.append(f'процесс {i+1}: геометрия/зазоры не прошли проверку')
+    if not reasons and (not report.get('routing_safety_passed') or not report.get('edge_clearance_passed')):
+        reasons.append('не пройдена проверка геометрии')
+    return reasons
+
+
 def is_collaboration(path, for_geometry=False):
     root = parse(path)
     if for_geometry:
@@ -295,7 +314,10 @@ def run_collaboration(source, destination, backend):
         if not semantic_equality(source,target) or not di_equal(source,target): raise ValueError('Collaboration semantic/DI freeze violation')
         geometry = collaboration_geometry(target)
         if not geometry['routing_safety_passed'] or not geometry['edge_clearance_passed'] or geometry['label_collision_pairs'] or geometry['label_line_cuts']:
-            raise ValueError({'collaboration_geometry_rejected':geometry})
+            reasons=rejection_reasons(geometry)
+            destination.mkdir(parents=True,exist_ok=True)
+            save_json(destination/'geometry_error.json',{'error':'collaboration_geometry_rejected','failed_checks':reasons,'geometry':geometry})
+            raise ValueError('Не прошла проверка компоновки: '+'; '.join(reasons)[:380]+'. Полный отчёт: geometry_error.json')
         from .collaboration_svg import render_collaboration
         render_collaboration(target,stage/'process_08_v23.svg')
         validate_collaboration(target)
@@ -316,7 +338,7 @@ def run_collaboration(source, destination, backend):
 
 def collaboration_geometry(path):
     from .pipeline import geometry
-    from .contours import on_contour
+    from .contours import on_contour, label_hits_shape
     from .quality import contacts, overlap_pairs, path_length
     root = parse(path); boxes, paths = boxes_paths(root)
     per_process = []
@@ -358,11 +380,13 @@ def collaboration_geometry(path):
         for eid,ps in paths.items():
             if eid in internal_ids and any(a<x+36 or b<y or a>x+w or b>y+h for a,b in ps):outside.append(eid)
     from .labels import overlap
-    labels=[(b.getparent().getparent().get('bpmnElement'),tuple(float(b.get(k)) for k in ('x','y','width','height'))) for b in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)]
+    labels=[(b.getparent().getparent().get('bpmnElement'),tuple(float(b.get(k)) for k in ('x','y','width','height'))) for b in root.xpath('.//bd:BPMNLabel/dc:Bounds',namespaces=NS)
+            if nodes.get(b.getparent().getparent().get('bpmnElement')) not in TAG_TASK]
     collisions=[];cuts=[]
     for i,(owner,rect) in enumerate(labels):
         collisions.extend([owner,n] for n,other in labels[i+1:] if overlap(rect,other,gap=0))
-        collisions.extend([owner,n] for n in nodes if n!=owner and overlap(rect,boxes[n],gap=0))
+        # Match the per-process audit: diamond/ellipse bbox corners are empty.
+        collisions.extend([owner,n] for n in nodes if n!=owner and label_hits_shape(rect,boxes[n],nodes[n]))
         cuts.extend([owner,eid] for eid,ps in paths.items() if any(bbox_intersect_seg(rect,a,b,clearance=0) for a,b in zip(ps,ps[1:])))
     overlaps=overlap_pairs(paths);allcontacts=contacts(paths,uv)
     pool_overlap=any(overlap(boxes[a.get('id')],boxes[b.get('id')],gap=0) for i,a in enumerate(parts) for b in parts[i+1:])
