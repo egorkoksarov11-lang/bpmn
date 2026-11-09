@@ -11,7 +11,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto;b
 table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid #dbe3ed}code{font-size:.9em}section{margin-top:36px}section pre{max-height:none}h2{font-size:23px}
 </style>
 <main><h1>BPMN — новая компоновка</h1>
-<p>Выберите BPMN, JSON или YAML. Генератор заново расставит шаги, роли, документы и линии по связям, сохранив бизнес-логику.</p>
+<p>Выберите BPMN, JSON или YAML с одним или двумя процессами. Генератор заново расставит шаги, роли, документы и линии по связям, сохранив бизнес-логику. Для взаимодействия организаций используются отдельные пулы и потоки сообщений.</p>
 <input id="file" type="file" accept=".bpmn,.json,.yaml,.yml,.ylm"><button id="generate">Создать схему</button>
 <small>Файл обрабатывается на вашем компьютере.</small>
 <p id="status" role="status" aria-live="polite">Готов к работе</p><progress id="progress" hidden></progress>
@@ -22,17 +22,19 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;v
 <p>Начните с готового примера, замените роли, шаги и связи своими и загрузите файл выше. Указывать координаты и размеры не нужно. YAML использует те же поля; расширения <code>.yaml</code>, <code>.yml</code> и <code>.ylm</code> равнозначны. Кодировка — UTF-8.</p>
 <a id="json-example" class="download">Скачать пример JSON</a><a id="yaml-example" class="download">Скачать пример YAML</a>
 <table><thead><tr><th>Поле</th><th>Что указать</th></tr></thead><tbody>
-<tr><td><code>schema_version</code></td><td>Обязательно: число <code>1</code>.</td></tr>
-<tr><td><code>process</code></td><td>Обязательно: <code>{id, name}</code> — идентификатор и название процесса.</td></tr>
+<tr><td><code>schema_version</code></td><td><code>1</code> — один процесс по таблице ниже. <code>2</code> — один или два процесса с пулами, см. раздел «Два процесса».</td></tr>
+<tr><td><code>process</code></td><td>В версии 1 обязательно: <code>{id, name}</code> — идентификатор и название процесса.</td></tr>
 <tr><td><code>roles</code></td><td>Обязательно: непустой массив <code>{id, name}</code> — роли участников.</td></tr>
 <tr><td><code>nodes</code></td><td>Обязательно: непустой массив <code>{id, type, name, role}</code>. <code>role</code> — id объявленной роли.</td></tr>
 <tr><td><code>flows</code></td><td>Обязательно: массив <code>{id, source, target}</code> — переходы между узлами. <code>source</code> и <code>target</code> — id из nodes. Можно добавить <code>name</code> (подпись) и <code>condition</code> (условие).</td></tr>
-<tr><td><code>documents</code></td><td>Необязательно: массив <code>{id, type, name}</code>. Тип <code>document</code> — документ, <code>store</code> — база/хранилище.</td></tr>
+<tr><td><code>documents</code></td><td>Необязательно: массив <code>{id, type, name}</code>. Тип <code>document</code> — значок документа, <code>store</code> — базы/хранилища. Дополнительно <code>object_ref</code> / <code>store_ref</code> — id определения из data_objects / data_stores. Два значка могут ссылаться на один документ, сохраняя разные id.</td></tr>
+<tr><td><code>data_objects</code>, <code>data_stores</code></td><td>Необязательно: массивы определений <code>{id, name}</code>. Их id отличаются от id видимых ссылок documents.</td></tr>
+<tr><td><code>messages</code></td><td>Необязательно: глобальный массив сообщений <code>{id, name}</code>; используется через message_ref в событии или messageFlow.</td></tr>
 <tr><td><code>associations</code></td><td>Необязательно: массив <code>{id, source, target}</code>. Шаг → документ: выдача; документ → шаг: использование. Каждому документу/хранилищу нужна хотя бы одна такая связь.</td></tr>
 </tbody></table>
 <p><strong>Правила id:</strong> уникальны во всём файле, включая процесс, роли и связи. Используйте латинские буквы, цифры, <code>_ . -</code>; первый символ — буква или <code>_</code>. Префикс <code>__import_</code> зарезервирован. Названия <code>name</code> могут быть русскими. Все перечисленные строковые поля — непустые строки; необязательное поле можно не указывать.</p>
-<p><strong>Типы nodes:</strong> <code>startEvent</code> — начало, <code>endEvent</code> — конец; <code>task</code>, <code>userTask</code>, <code>manualTask</code>, <code>serviceTask</code>, <code>sendTask</code>, <code>receiveTask</code>, <code>businessRuleTask</code> — операции; <code>exclusiveGateway</code> — выбор одной ветви, <code>parallelGateway</code> — параллельные ветви, <code>inclusiveGateway</code> — выбор одной или нескольких ветвей.</p>
-<p><strong>Связи определяют порядок.</strong> Положение в массиве и номера в названиях его не задают. В начало нельзя входить, из конца нельзя выходить. Документы не являются шагами и связываются через associations. Вложенные подпроцессы, граничные события и межпуловые сообщения этот формат пока не описывает. Неизвестные поля, повторные ключи и ссылки на несуществующие id вызывают понятную ошибку. YAML-якоря не поддерживаются.</p>
+<p><strong>Типы nodes:</strong> <code>startEvent</code> — начало, <code>endEvent</code> — конец; <code>intermediateCatchEvent</code> — промежуточное ожидание, <code>intermediateThrowEvent</code> — отправка события; <code>task</code>, <code>userTask</code>, <code>manualTask</code>, <code>serviceTask</code>, <code>sendTask</code>, <code>receiveTask</code>, <code>businessRuleTask</code> — операции; <code>exclusiveGateway</code> — выбор одной ветви, <code>parallelGateway</code> — параллельные ветви, <code>inclusiveGateway</code> — выбор одной или нескольких ветвей.</p>
+<p><strong>Связи определяют порядок.</strong> Положение в массиве и номера в названиях его не задают. В начало нельзя входить, из конца нельзя выходить. Документы не являются шагами и связываются через associations. Вложенные подпроцессы и граничные события этот JSON-формат пока не описывает. Неизвестные поля, повторные ключи и ссылки на несуществующие id вызывают ошибку. YAML-якоря не поддерживаются.</p>
 <h3>Полный рабочий пример</h3><pre id="example-code">Загрузка примера…</pre>
 <h3>Если нужны условия и ветвления</h3>
 <p>Добавьте шлюз с ролью; необязательное поле <code>default</code> — id его исходящего перехода без условия. Подпись <code>name</code> сама по себе не является условием:</p>
@@ -42,6 +44,19 @@ table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;v
 {"id":"rejected","source":"decision","target":"revise","name":"Нет"}</pre>
 <p>Узлы <code>pay</code> и <code>revise</code> должны быть объявлены в nodes. Условия сохраняются дословно как BPMN formalExpression и не выполняются генератором. У startEvent и parallelGateway исходящие условия запрещены; default разрешён у exclusiveGateway/inclusiveGateway. Цикл задайте переходом к уже существующему узлу.</p>
 <p>JSON/YAML сначала преобразуется в BPMN, после чего работает прежний алгоритм. Промежуточный <code>input_model.bpmn</code> и отчёт импорта входят в ZIP результата.</p>
+<h2>Два процесса и сообщения между пулами — версия 2</h2>
+<p>Используйте <code>schema_version: 2</code>. Вместо process и общих roles/nodes/flows задайте <code>processes</code>: массив из одного или двух объектов <code>{id, name, roles, nodes, flows}</code>. У каждого процесса свои documents, associations, data_objects и data_stores при необходимости. Общие определения сообщений лежат в корневом массиве <code>messages</code>.</p>
+<table><thead><tr><th>Поле collaboration</th><th>Содержание</th></tr></thead><tbody>
+<tr><td><code>id</code>, <code>name</code></td><td>id общего взаимодействия обязателен; name — необязательное название.</td></tr>
+<tr><td><code>participants</code></td><td>Массив <code>{id, name, process_ref}</code>: отдельный пул для каждого процесса. process_ref — id из processes. Пустые пулы без процесса пока не поддерживаются.</td></tr>
+<tr><td><code>message_flows</code></td><td>Массив <code>{id, source, target}</code>; дополнительно name и message_ref. Концы — операции, события или пулы <strong>разных</strong> участников. source/target указывают их id. Это пунктирные сообщения; flows остаются только внутри своего процесса.</td></tr>
+</tbody></table>
+<p>Все id уникальны во всей схеме, включая оба процесса. Пулы не заменяют роли. Событие ожидания принимает сообщение; промежуточное событие отправки его выдаёт. Для конкретного сообщения добавьте узлу поле:</p>
+<pre>"event_definition": {"id":"wait_definition","type":"message","message_ref":"msg_confirmation"}</pre>
+<p>Объявите <code>{"id":"msg_confirmation","name":"Подтверждение"}</code> в messages. Без event_definition сохраняется обычное событие без выдуманного триггера; входящий messageFlow сам по себе определение события не создаёт.</p>
+<p>Для двух ссылок на один документ объявите <code>{"id":"Contract","name":"Договор"}</code> в data_objects, а в documents — два объекта с разными id и <code>"object_ref":"Contract"</code>. Связи associations ведите к id ссылок, не к Contract. Их названия и идентификаторы сохраняются раздельно.</p>
+<a id="collaboration-json" class="download">Пример двух процессов — JSON</a><a id="collaboration-yaml" class="download">Пример двух процессов — YAML</a>
+<details><summary>Полный рабочий пример двух процессов</summary><pre id="collaboration-code">Загрузка примера…</pre></details>
 </section>
 </main>
 <script>
@@ -71,6 +86,8 @@ el('generate').onclick=async()=>{
  await refresh();
 };
 el('json-example').href=url('/example.json');el('yaml-example').href=url('/example.yaml');
+el('collaboration-json').href=url('/example-collaboration.json');el('collaboration-yaml').href=url('/example-collaboration.yaml');
+fetch(url('/example-collaboration.json')).then(r=>r.text()).then(text=>el('collaboration-code').textContent=text).catch(()=>el('collaboration-code').textContent='Откройте desktop/example-collaboration.json в пакете.');
 fetch(url('/example.json')).then(r=>{if(!r.ok)throw Error();return r.text();}).then(text=>el('example-code').textContent=text).catch(()=>el('example-code').textContent='Откройте desktop/example.json в распакованном пакете.');
 refresh();setInterval(refresh,1500);
 </script></html>

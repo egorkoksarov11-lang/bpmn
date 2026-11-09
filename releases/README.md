@@ -1,11 +1,9 @@
 # Генератор для самостоятельного использования
 
-[Скачать BPMN Generator v23.4.2 для Windows](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_4_2.zip).
+[Скачать BPMN Generator v23.5.0 для Windows](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_5_0.zip).
 
-Распакуйте ZIP целиком, дважды нажмите `START_WINDOWS.cmd`, дождитесь установки, выберите `.bpmn`, `.json`, `.yaml`, `.yml` или `.ylm` и нажмите «Создать схему». Структура JSON, условия, типы узлов и примеры для скачивания показаны прямо на первой странице.
+Распакуйте ZIP целиком, запустите `START_WINDOWS.cmd`, дождитесь установки, выберите BPMN/JSON/YAML и нажмите «Создать схему». Один или два процесса в отдельных пулах; промежуточные события, сообщения и независимые ссылки на документы. Полная структура JSON и примеры обоих форматов показаны на первой странице.
 
-BPMN, SVG и отчёты сохраняются в новой папке `results`. Python, Node.js и библиотеки устанавливаются автоматически внутри пакета; права администратора не требуются. JSON/YAML преобразуется во входной BPMN, далее работает прежний алгоритм scratch.
+[Инструкция](../desktop/README.md) · [Контракт v1/v2](../desktop/INPUT_FORMAT.md) · [JSON двух процессов](../desktop/example-collaboration.json) · [YAML двух процессов](../desktop/example-collaboration.yaml) · [Устройство и проверки v23.5](../docs/COLLABORATION_V23_5.md).
 
-[Инструкция](../desktop/README.md) · [Формат JSON/YAML](../desktop/INPUT_FORMAT.md) · [Пример JSON](../desktop/example.json) · [Пример YAML](../desktop/example.yaml) · [Проверки v23.4.2](../docs/INPUT_ADAPTER_V23_4_2.md) · [Windows Actions](https://github.com/egorkoksarov11-lang/bpmn/actions/workflows/desktop-windows.yml).
-
-Полный код включён в ZIP. Пользовательских процессов в архиве нет. Первая установка требует интернета; обработка файлов локальная. Предыдущий пакет v23.4.1 остаётся доступен в этой папке.
+BPMN, SVG и отчёты сохраняются в results. Зависимости устанавливаются локально без прав администратора; первая установка требует интернета. Полный код включён, исходные пользовательские схемы и архивы не включены. Предыдущие версии сохранены в этой папке.

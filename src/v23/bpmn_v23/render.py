@@ -84,8 +84,9 @@ def render(path,svg_path):
                 add(group,'circle',cx=x+w/2,cy=y+h/2,r=min(w,h)*.29,fill='none',stroke=colour)
                 add(group,'path',d=f'M{x+w/2} {y+h*.28} V{y+h/2} L{x+w*.68} {y+h*.6}',fill='none',stroke=colour)
             elif element.find(Q(B,'messageEventDefinition')) is not None:
-                add(group,'rect',x=x+w*.22,y=y+h*.32,width=w*.56,height=h*.36,fill='none',stroke=colour)
-                add(group,'path',d=f'M{x+w*.22} {y+h*.32} L{x+w/2} {y+h*.52} L{x+w*.78} {y+h*.32}',fill='none',stroke=colour)
+                throwing=kind in ('endEvent','intermediateThrowEvent')
+                add(group,'rect',x=x+w*.22,y=y+h*.32,width=w*.56,height=h*.36,fill=colour if throwing else 'white',stroke=colour)
+                add(group,'path',d=f'M{x+w*.22} {y+h*.32} L{x+w/2} {y+h*.52} L{x+w*.78} {y+h*.32}',fill='none',stroke='white' if throwing else colour)
         else:
             add(group,'rect',x=x,y=y,width=w,height=h,rx=10,fill='white',stroke='#344f65',stroke_width=3 if kind=='callActivity' else 1.5)
             # Preserve subprocess/call activity type visually; no invented BPMN logic.

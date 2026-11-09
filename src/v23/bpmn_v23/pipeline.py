@@ -47,6 +47,8 @@ class V22Backend:
 
 
 def geometry(path):
+    from .collaboration import is_collaboration, collaboration_geometry
+    if is_collaboration(path,for_geometry=True): return collaboration_geometry(path)
     _, root, _, _, nodes, seq, assocs, docs, membership, _, boxes, paths = read_bpmn(path)
     result = geometry_audit(boxes, paths, seq, assocs, nodes, docs)
     diagonal=[]; allowed_doc_diagonals=[]; excessive=[]; endpoints=[]; outside=[]; nonfinite=[]
@@ -138,11 +140,13 @@ def geometry(path):
 
 
 def validate_xml(path):
+    from .collaboration import is_collaboration, validate_collaboration
+    if is_collaboration(path): return validate_collaboration(path)
     root=parse(path)
     ids={e.get('id') for e in root.iter() if e.get('id')}
     dangling=[]
     for e in root.iter():
-        for attr in ('sourceRef','targetRef','bpmnElement','dataObjectRef','dataStoreRef','attachedToRef','processRef'):
+        for attr in ('sourceRef','targetRef','bpmnElement','dataObjectRef','dataStoreRef','attachedToRef','processRef','messageRef'):
             if e.get(attr) and e.get(attr) not in ids:dangling.append([e.get('id'),attr,e.get(attr)])
         if e.tag in {Q(B,'sourceRef'),Q(B,'targetRef'),Q(B,'flowNodeRef')} and (e.text or '').strip() not in ids:
             dangling.append([e.getparent().get('id'),ET.QName(e).localname,e.text])
@@ -158,6 +162,8 @@ def run(source, destination, backend=None):
         backend=ScratchBackend()
     if destination==source.parent or source.is_relative_to(destination):
         raise ValueError('Destination must be separate from input directory')
+    from .collaboration import is_collaboration, run_collaboration
+    if is_collaboration(source): return run_collaboration(source,destination,backend)
     validate_xml(source)
     destination.mkdir(parents=True,exist_ok=True)
     source_bytes=source.read_bytes()

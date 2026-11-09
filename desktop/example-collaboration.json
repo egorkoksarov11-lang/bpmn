@@ -1,0 +1,195 @@
+{
+  "schema_version": 2,
+  "messages": [
+    {
+      "id": "msg_package",
+      "name": "Комплект документов"
+    },
+    {
+      "id": "msg_confirmation",
+      "name": "Подтверждение принятия"
+    }
+  ],
+  "processes": [
+    {
+      "id": "OrganizationProcess",
+      "name": "Подготовка и согласование",
+      "roles": [
+        {
+          "id": "org_role",
+          "name": "Специалист организации"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "OS",
+          "type": "startEvent",
+          "name": "Начало подготовки",
+          "role": "org_role"
+        },
+        {
+          "id": "send",
+          "type": "sendTask",
+          "name": "Направить комплект заказчику",
+          "role": "org_role"
+        },
+        {
+          "id": "wait",
+          "type": "intermediateCatchEvent",
+          "name": "Получено подтверждение заказчика",
+          "role": "org_role",
+          "event_definition": {
+            "id": "wait_message",
+            "type": "message",
+            "message_ref": "msg_confirmation"
+          }
+        },
+        {
+          "id": "OE",
+          "type": "endEvent",
+          "name": "Согласование завершено",
+          "role": "org_role"
+        }
+      ],
+      "flows": [
+        {
+          "id": "OF1",
+          "source": "OS",
+          "target": "send"
+        },
+        {
+          "id": "OF2",
+          "source": "send",
+          "target": "wait"
+        },
+        {
+          "id": "OF3",
+          "source": "wait",
+          "target": "OE"
+        }
+      ],
+      "data_objects": [
+        {
+          "id": "DO_Package",
+          "name": "Комплект документов"
+        }
+      ],
+      "documents": [
+        {
+          "id": "DOR_Outgoing",
+          "type": "document",
+          "name": "Комплект — отправка",
+          "object_ref": "DO_Package"
+        },
+        {
+          "id": "DOR_Accepted",
+          "type": "document",
+          "name": "Комплект — принятие",
+          "object_ref": "DO_Package"
+        }
+      ],
+      "associations": [
+        {
+          "id": "DA1",
+          "source": "DOR_Outgoing",
+          "target": "send"
+        },
+        {
+          "id": "DA2",
+          "source": "wait",
+          "target": "DOR_Accepted"
+        }
+      ]
+    },
+    {
+      "id": "CustomerProcess",
+      "name": "Рассмотрение заказчиком",
+      "roles": [
+        {
+          "id": "customer_role",
+          "name": "Представитель заказчика"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "CS",
+          "type": "startEvent",
+          "name": "Получен комплект",
+          "role": "customer_role",
+          "event_definition": {
+            "id": "start_message",
+            "type": "message",
+            "message_ref": "msg_package"
+          }
+        },
+        {
+          "id": "review",
+          "type": "userTask",
+          "name": "Рассмотреть комплект",
+          "role": "customer_role"
+        },
+        {
+          "id": "confirm",
+          "type": "sendTask",
+          "name": "Подтвердить принятие",
+          "role": "customer_role"
+        },
+        {
+          "id": "CE",
+          "type": "endEvent",
+          "name": "Рассмотрение завершено",
+          "role": "customer_role"
+        }
+      ],
+      "flows": [
+        {
+          "id": "CF1",
+          "source": "CS",
+          "target": "review"
+        },
+        {
+          "id": "CF2",
+          "source": "review",
+          "target": "confirm"
+        },
+        {
+          "id": "CF3",
+          "source": "confirm",
+          "target": "CE"
+        }
+      ]
+    }
+  ],
+  "collaboration": {
+    "id": "Collaboration",
+    "name": "Организация и заказчик",
+    "participants": [
+      {
+        "id": "OrgPool",
+        "name": "Организация",
+        "process_ref": "OrganizationProcess"
+      },
+      {
+        "id": "CustomerPool",
+        "name": "Заказчик",
+        "process_ref": "CustomerProcess"
+      }
+    ],
+    "message_flows": [
+      {
+        "id": "M1",
+        "source": "send",
+        "target": "CS",
+        "name": "Комплект документов",
+        "message_ref": "msg_package"
+      },
+      {
+        "id": "M2",
+        "source": "confirm",
+        "target": "wait",
+        "name": "Подтверждение принятия",
+        "message_ref": "msg_confirmation"
+      }
+    ]
+  }
+}

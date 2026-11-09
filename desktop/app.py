@@ -163,8 +163,8 @@ def make_server(app):
                 self.send(200, (ROOT / 'desktop/index.html').read_bytes(), 'text/html; charset=utf-8')
             elif path == '/status':
                 self.send(200, json.dumps(app.snapshot(), ensure_ascii=False))
-            elif path in ('/example.json', '/example.yaml'):
-                name = 'example' + Path(path).suffix
+            elif path in ('/example.json', '/example.yaml', '/example-collaboration.json', '/example-collaboration.yaml'):
+                name = path[1:]
                 self.send(200, (ROOT / 'desktop' / name).read_bytes(),
                           'application/octet-stream', name)
             elif path == '/download':

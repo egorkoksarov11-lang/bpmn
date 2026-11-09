@@ -1,4 +1,6 @@
-# BPMN Universal Engine v23.4
+# BPMN Universal Engine v23.5
+
+**[Скачать генератор v23.5.0 для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_5_0.zip)**. Добавлены два процесса в отдельных пулах, потоки сообщений, промежуточные события и отдельные ссылки на общий документ. BPMN / JSON / YAML; старый JSON версии 1 совместим, для collaboration используется версия 2. [Входные форматы и примеры](desktop/INPUT_FORMAT.md) · [устройство и проверки v23.5](docs/COLLABORATION_V23_5.md).
 
 **[Скачать генератор v23.4.2 для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_4_2.zip)**. Распакуйте архив, запустите `START_WINDOWS.cmd`, дождитесь установки и выберите BPMN, JSON или YAML в браузере. Структура JSON и скачиваемые примеры показаны на первой странице. [Инструкция](desktop/README.md) · [формат входных данных](desktop/INPUT_FORMAT.md). Исходники включены; обработка выполняется локально, результаты сохраняются в `results`.
 
