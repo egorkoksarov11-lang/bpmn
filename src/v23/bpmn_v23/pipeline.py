@@ -174,6 +174,9 @@ def run(source, destination, backend=None):
         before=None if getattr(backend,'source_geometry_used',True) is False else geometry(source)
         report=backend.layout(source,bpmn,svg)
         label_report=place_labels(bpmn,svg,preserve=getattr(backend,'preserve_labels',False))
+        if getattr(backend,'stable_finalization',False):
+            from .stable_blocks import finalize_geometry
+            report['stable_finalization']=finalize_geometry(bpmn,svg)
         if before is None:before=geometry(source)
         validation=validate_xml(bpmn)
         if not semantic_equality(source,bpmn):raise ValueError('Semantic freeze violation')

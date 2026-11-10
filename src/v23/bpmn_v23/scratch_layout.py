@@ -171,6 +171,7 @@ class ScratchBackend:
     name='v23-from-scratch'
     preserve_labels=True
     source_geometry_used=False
+    stable_finalization=True
     def __init__(self,candidate_seconds=30,control=False,role_order=None,search_seconds=None,graph_backend=None,staged_windows=True):
         if control and role_order is not None:raise ValueError('Role optimization requires the graph scratch backend')
         self.candidate_seconds=candidate_seconds;self.control=control;self.role_order=role_order;self.search_seconds=search_seconds;self.graph_backend=graph_backend;self.staged_windows=staged_windows
@@ -182,8 +183,8 @@ class ScratchBackend:
             if self.control:
                 backend=HumanStyleBackend(candidate_seconds=self.candidate_seconds,orient_decisions=False)
             else:
-                from .episode_layout import EpisodeGraphBackend
-                backend=(self.graph_backend or EpisodeGraphBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
+                from .block_layout import WholeBlockBackend
+                backend=(self.graph_backend or WholeBlockBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
             result=backend.layout(neutral,output,svg)
             if not self.control and getattr(backend,'local_episode_editing',False):
                 from .cold_guard import protect_cold_result
@@ -203,13 +204,18 @@ class ScratchBackend:
                     result['port_refinement']=refine_ports(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
                     if self.staged_windows:
                         from .graph_refinement import refine_graph
-                        refinement=refine_graph(output,svg,neutral,seconds=min(100,self.candidate_seconds*3))
+                        refinement=refine_graph(output,svg,neutral,seconds=min(100,self.candidate_seconds*4))
                         result['graph_refinement']=refinement
                         if refinement['rounds']:
                             result['staged_window_refinement']=refinement['rounds'][0]['groups']
                             result['current_role_refinement']=refinement['rounds'][-1]['roles']
                     from .whitespace import compact_whitespace
                     result['whitespace_compaction']=compact_whitespace(output,svg,neutral)
+                    from .orthogonal_compaction import compact_orthogonal
+                    result['orthogonal_compaction']=compact_orthogonal(output,svg,neutral)
+                    if self.staged_windows:
+                        from .stable_blocks import refine_blocks
+                        result['stable_blocks']=refine_blocks(output,svg,neutral,seconds=min(30,self.candidate_seconds))
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')
         result['geometry_erasure']=erasure;result['from_scratch']=True;result['seconds']=round(time.monotonic()-started,3)
         result['reference_target_met']=False

@@ -2,3 +2,6 @@ lxml>=4.9
 pytest>=7
 Pillow>=10
 PyYAML==6.0.2
+numpy==2.2.6; sys_platform != 'win32' or platform_machine != 'ARM64'
+numpy==2.3.5; sys_platform == 'win32' and platform_machine == 'ARM64'
+scipy==1.16.3
