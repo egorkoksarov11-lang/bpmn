@@ -183,9 +183,13 @@ class ScratchBackend:
             if self.control:
                 backend=HumanStyleBackend(candidate_seconds=self.candidate_seconds,orient_decisions=False)
             else:
-                from .block_layout import WholeBlockBackend
-                backend=(self.graph_backend or WholeBlockBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
+                from .reading_backend import ReadableBlocksBackend
+                backend=(self.graph_backend or ReadableBlocksBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
             result=backend.layout(neutral,output,svg)
+            reading_checkpoint=None
+            if getattr(backend,'unified_reading',False):
+                from .narrative_planner import reading_measure
+                reading_checkpoint=(Path(output).read_bytes(),Path(svg).read_bytes(),reading_measure(read_bpmn(output)))
             if not self.control and getattr(backend,'local_episode_editing',False):
                 from .cold_guard import protect_cold_result
                 guard,adopted=protect_cold_result(neutral,output,svg,candidate_seconds=self.candidate_seconds,search_seconds=self.search_seconds or 200,role_order=self.role_order)
@@ -216,6 +220,13 @@ class ScratchBackend:
                     if self.staged_windows:
                         from .stable_blocks import refine_blocks
                         result['stable_blocks']=refine_blocks(output,svg,neutral,seconds=min(30,self.candidate_seconds))
+                        if reading_checkpoint is not None:
+                            from .narrative_planner import prefer_reading
+                            old=reading_checkpoint[2];current=reading_measure(read_bpmn(output))
+                            restore=(current['score']>old['score']+.1 or current['contacts']>old['contacts'] or current['hairpins']>old['hairpins']
+                                     or current['broken_serial']>old['broken_serial'] and not prefer_reading(old,current))
+                            if restore:Path(output).write_bytes(reading_checkpoint[0]);Path(svg).write_bytes(reading_checkpoint[1])
+                            result['reading_checkpoint']={'initial':old,'legacy_candidate':current,'restored_initial':restore}
                         from .narrative_refinement import refine_narrative
                         result['narrative_refinement']=refine_narrative(output,svg,neutral,seconds=min(60,self.candidate_seconds*2))
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')

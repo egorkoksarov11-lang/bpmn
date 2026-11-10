@@ -87,7 +87,7 @@ def reading_measure(state):
     feedback=graph_returns(nodes,seq);forward=sorted(path_length(paths[i])/tw for i,*_ in seq if i not in feedback)
     jumps=sum(max(0,v-3)**2 for v in forward)
     span_loss=8*max(0,width/(tw*max(4,math.sqrt(n)*1.25))-1)**2
-    loss=8*touches+length/tw+.55*bends+10*packing+3*broken+4*wm['serial_hairpins']+4*len(seq)*wm['parallel_pressure_fixed_units']+.6*jumps+span_loss
+    loss=16*touches+length/tw+.55*bends+10*packing+3*broken+4*wm['serial_hairpins']+4*len(seq)*wm['parallel_pressure_fixed_units']+.6*jumps+span_loss
     return {'score':loss,'area':area,'width':width,'height':height,'length':length,'information_length':info,'bends':bends,'contacts':touches,
             'serial_links':len(serial),'broken_serial':broken,'hairpins':wm['serial_hairpins'],'crowding':wm['parallel_pressure_fixed_units'],
             'forward_max_task_units':max(forward,default=0),'forward_p90_task_units':forward[min(len(forward)-1,int(len(forward)*.9))] if forward else 0,
