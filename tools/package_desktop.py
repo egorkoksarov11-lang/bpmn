@@ -10,12 +10,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def build(target):
     paths = [ROOT / name for name in (
-        'START_WINDOWS.cmd', 'run_v23.py', 'package.json', 'package-lock.json',
+        'START_WINDOWS.cmd', 'run_v23.py', 'requirements.txt', 'package.json', 'package-lock.json',
         'README.md', 'desktop/Start.ps1', 'desktop/app.py', 'desktop/index.html',
         'desktop/README.md', 'desktop/requirements.txt', 'desktop/example.json',
         'desktop/example.yaml', 'desktop/example-collaboration.json',
         'desktop/example-collaboration.yaml', 'desktop/INPUT_FORMAT.md',
-        'docs/COLLABORATION_V23_5.md', 'docs/FIX_V23_5_1.md', 'docs/DEVELOPMENT_V23_6.md', 'tools/package_desktop.py')]
+        'docs/COLLABORATION_V23_5.md', 'docs/FIX_V23_5_1.md', 'docs/DEVELOPMENT_V23_6.md', 'tools/package_desktop.py',
+        'tools/compare_layout_versions.py', 'tests/reports/v23_6/comparison.json', 'tests/reports/v23_6/comparison.csv')]
     for name in ('src/v23/bpmn_v23', 'src/v22/bpmn_universal', 'src/v22/bpmn_refkit', 'src/v22/schemas'):
         paths.extend(p for p in (ROOT / name).rglob('*')
                      if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc')
