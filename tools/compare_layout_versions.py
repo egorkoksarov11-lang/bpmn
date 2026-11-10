@@ -55,15 +55,25 @@ def inspect(case,folder):
     gs=geo.get('processes',[geo]);reports=run['backend_report'].get('processes',[run])
     stable=[r['backend_report'].get('stable_blocks',{}) for r in reports]
     final=[r['backend_report'].get('stable_finalization',{}) for r in reports]
+    narrative=[r['backend_report'].get('narrative_refinement',{}) for r in reports]
+    from bpmn_refkit.model import read_bpmn
+    state=read_bpmn(path)
+    if len(state[4])==m['nodes']:
+        from bpmn_v23.narrative_planner import reading_measure
+        reading=reading_measure(state)
+        m.update(reading_score=reading['score'],serial_hairpins=reading['hairpins'],parallel_pressure=reading['crowding'],broken_serial=reading['broken_serial'])
     m.update(status='verified',version=run['version'],semantic_equal=True,di_structure_equal=True,contacts=geo['ambiguous_contacts'],
              crossings={key:sum(g.get('crossings',{}).get(key,0) for g in gs) for key in ('flow_flow','flow_assoc','assoc_assoc')},
              minimum_font=min(g['minimum_measured_font_size'] for g in gs),overflows=sum(len(g['task_text_overflows']) for g in gs),
              stable_blocks=sum(r.get('accepted_blocks',0) for r in stable),outside_nodes_moved=sum(b['outside_nodes_moved'] for r in stable for b in r.get('blocks',[])),
+             narrative_edits=sum(r.get('accepted',0) for r in narrative),
+             narrative_edit_kinds=[e['kind'] for r in narrative for e in r.get('edits',[])],
+             narrative_diagnostics=[{k:r[k] for k in ('before','after','rejections','seconds') if k in r} for r in narrative if r],
              finalization_idempotent=all(r.get('idempotent',False) for r in final) if all(final) else None)
     return m
 
 
-def compare(manifest,baseline,new,output):
+def compare(manifest,baseline,new,output,protocol_note=None):
     cases=json.loads(Path(manifest).read_text());rows=[]
     for case in cases:
         assert hashlib.sha256(Path(case['input']).read_bytes()).hexdigest()==case['sha256']
@@ -74,8 +84,8 @@ def compare(manifest,baseline,new,output):
         if a['status']==b['status']=='verified':
             row['change_percent']={k:round(100*(b[k]/a[k]-1),2) if a[k] else None for k in ('area','width','height','flow_length','information_length','bends','contacts')}
         rows.append(row)
-    report={'method':'same normalized input; cold layout; 60s per candidate/200s search; common independent XML geometry measurements; new atomic finishing pass up to 30s extra',
-            'note':'wall times are diagnostic; baseline serial and new two single-core workers; no speedup claim','cases':rows}
+    report={'method':'same normalized input; cold layout; common independent XML geometry measurements',
+            'note':protocol_note or 'Consult run reports for search/finishing budgets and execution conditions; wall times are diagnostic, not a speedup claim.','cases':rows}
     paired=[r for r in rows if r['baseline']['status']==r['new']['status']=='verified']
     report['aggregate']={}
     for key in ('area','flow_length','information_length','bends','contacts'):
@@ -91,6 +101,6 @@ def compare(manifest,baseline,new,output):
 
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--manifest',required=True);parser.add_argument('--baseline',required=True);parser.add_argument('--new',required=True);parser.add_argument('--output',required=True);a=parser.parse_args()
-    report=compare(a.manifest,a.baseline,a.new,a.output)
+    parser=argparse.ArgumentParser();parser.add_argument('--manifest',required=True);parser.add_argument('--baseline',required=True);parser.add_argument('--new',required=True);parser.add_argument('--output',required=True);parser.add_argument('--protocol-note');a=parser.parse_args()
+    report=compare(a.manifest,a.baseline,a.new,a.output,a.protocol_note)
     print(json.dumps(report,ensure_ascii=False,indent=2))

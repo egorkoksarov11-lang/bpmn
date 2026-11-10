@@ -15,8 +15,9 @@ def build(target):
         'desktop/README.md', 'desktop/requirements.txt', 'desktop/example.json',
         'desktop/example.yaml', 'desktop/example-collaboration.json',
         'desktop/example-collaboration.yaml', 'desktop/INPUT_FORMAT.md',
-        'docs/COLLABORATION_V23_5.md', 'docs/FIX_V23_5_1.md', 'docs/DEVELOPMENT_V23_6.md', 'tools/package_desktop.py',
-        'tools/compare_layout_versions.py', 'tests/reports/v23_6/comparison.json', 'tests/reports/v23_6/comparison.csv')]
+        'docs/COLLABORATION_V23_5.md', 'docs/FIX_V23_5_1.md', 'docs/DEVELOPMENT_V23_6.md', 'docs/DEVELOPMENT_V23_7.md', 'tools/package_desktop.py',
+        'tools/compare_layout_versions.py', 'tests/reports/v23_6/comparison.json', 'tests/reports/v23_6/comparison.csv',
+        'tests/reports/v23_7/comparison.json', 'tests/reports/v23_7/comparison.csv', 'tests/reports/v23_7/provenance.json')]
     for name in ('src/v23/bpmn_v23', 'src/v22/bpmn_universal', 'src/v22/bpmn_refkit', 'src/v22/schemas'):
         paths.extend(p for p in (ROOT / name).rglob('*')
                      if p.is_file() and '__pycache__' not in p.parts and p.suffix != '.pyc')

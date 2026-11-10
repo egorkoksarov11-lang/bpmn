@@ -1,0 +1,34 @@
+{
+  "baseline_commit": "23db417daf9b3cea7bd28e8d98d027f035cf3890",
+  "tested_implementation_commit": "643451b312fe12d15f4e07a267ac82f8c3f69f20",
+  "windows_tests": 71,
+  "windows_run": 42853312473,
+  "source_frozen_during_benchmark": true,
+  "cases": [
+    {
+      "case": "case_1",
+      "input_sha256": "1ac857404e619eadcd28b5150345fbfb44e078772fb48ae7f0c9cd97701b315a",
+      "baseline_bpmn_sha256": "45cce844bc8f070326794ba54f83fc41b38d174321f9e729a2e4385f58a5ce69",
+      "new_bpmn_sha256": "b71807732692b7fafb4042b2a9cca37a8e590b82e8f99956f7f276a304707862"
+    },
+    {
+      "case": "case_2",
+      "input_sha256": "f25715a5c029b991245e934900793170140a2c31652c96eb452ab2cf068f5312",
+      "baseline_bpmn_sha256": "d21c4dd29b4ca81ee863f635cab85fb54e75d976cc677a343e3f9de58887c136",
+      "new_bpmn_sha256": "315fe7ab8f574fe7fb01e0196fb1c590f15f1da153efe100cf0f3a7724d1bb2d"
+    },
+    {
+      "case": "case_3",
+      "input_sha256": "140838a447a4c8831e50db6d73121c3fe6423c0c1d3658797ca7a081a6b38ba1",
+      "baseline_bpmn_sha256": "fc78805ddbcfc0117b297204daea257820ecb7adc8a05d20b1c22ac13b3c566e",
+      "new_bpmn_sha256": "2c3472b9a331a36b3ad968bd879c9c7b47683207af11ce6790e32a5334d9b848"
+    },
+    {
+      "case": "case_4",
+      "input_sha256": "eca567ddcf638c95444a49e90fc813da99a4f5b7441d7442d0de04762f7a0dcb",
+      "baseline_bpmn_sha256": "75fc1524bc749d5fb6c6f739687945ed443f60fd981fca5f7df3a0046889798c",
+      "new_bpmn_sha256": "0708da239e5538b9c88ef017daea82dfcc43195a6100aec7af163781955d2ed4"
+    }
+  ],
+  "python_tests": 254
+}
