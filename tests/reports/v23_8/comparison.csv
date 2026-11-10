@@ -1,0 +1,9 @@
+﻿case,version,status,area,flow_length,bends,contacts,minimum_font,stable_blocks,finalization_idempotent
+case_1,baseline,verified,3362112.75,11670.23,45,8,10,0,True
+case_1,new,verified,3362112.75,11670.23,45,8,10,0,True
+case_2,baseline,verified,2851843.55,18945.26,59,13,10,2,True
+case_2,new,verified,2519637.14,17219.24,52,21,10,1,True
+case_3,baseline,verified,1975236.81,1432.06,1,0,11,0,True
+case_3,new,verified,1432617.12,2066.81,6,0,10,0,True
+case_4,baseline,verified,1348533.91,3287.91,5,1,10,0,True
+case_4,new,verified,784698.94,2753.51,11,1,12,1,True

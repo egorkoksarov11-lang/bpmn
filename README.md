@@ -1,6 +1,6 @@
 # BPMN Universal Engine v23.5
 
-**[Скачать генератор v23.7.0 для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_7_0.zip)**. Добавлены цепочки взаимодействий через границы ролей, совместное изменение X/Y и высот дорожек, эластичные черновые варианты и совместный выбор портов конфликтующих связей. [Изменения и сравнение с v23.6](docs/DEVELOPMENT_V23_7.md). BPMN / JSON / YAML, один или два процесса. [Входные форматы и примеры](desktop/INPUT_FORMAT.md).
+**Экспериментальная v23.8 — [скачать ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/v23.8-readable-turns/releases/BPMN_Generator_Windows_v23_8_0_experimental.zip)**. Приняты перенос целого участка и повороты на шагах; на одном из четырёх процессов выросло число контактов. [Сравнение и ограничения](docs/DEVELOPMENT_V23_8.md). Стабильная v23.7 остаётся в [main](https://github.com/egorkoksarov11-lang/bpmn). BPMN / JSON / YAML, один или два процесса. [Структура входа](desktop/INPUT_FORMAT.md).
 
 **[Скачать генератор v23.4.2 для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_4_2.zip)**. Распакуйте архив, запустите `START_WINDOWS.cmd`, дождитесь установки и выберите BPMN, JSON или YAML в браузере. Структура JSON и скачиваемые примеры показаны на первой странице. [Инструкция](desktop/README.md) · [формат входных данных](desktop/INPUT_FORMAT.md). Исходники включены; обработка выполняется локально, результаты сохраняются в `results`.
 
@@ -53,6 +53,6 @@ python -m venv .venv
 PYTHONPATH=src/v23:src/v22 .venv/bin/python -m pytest tests src/v22/tests -q
 ```
 
-Нужны Python ≥3.11 и Node.js. `scratch` выбран по умолчанию; лимит CLI по умолчанию — 30 секунд на кандидат. Изменение времени и нагрузки может менять набор завершённых кандидатов. Результаты актуальных проверок и ограничения перечислены в [отчёте v23.7](docs/DEVELOPMENT_V23_7.md).
+Нужны Python ≥3.11 и Node.js. `scratch` выбран по умолчанию; лимит CLI по умолчанию — 30 секунд на кандидат. Изменение времени и нагрузки может менять набор завершённых кандидатов. Результаты актуальных проверок и ограничения перечислены в [отчёте v23.8](docs/DEVELOPMENT_V23_8.md).
 
 Исторические результаты уточнения готового расположения: [r8](docs/DEVELOPMENT_R8.md). Режимы `reference` и `adaptive` выбираются явно; их результаты не доказывают построение с нуля. Исходный v22 не изменён. Исходные архивы, офисные формы и сырая запись работы не публикуются.

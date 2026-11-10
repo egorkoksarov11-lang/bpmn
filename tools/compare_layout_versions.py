@@ -62,6 +62,8 @@ def inspect(case,folder):
         from bpmn_v23.narrative_planner import reading_measure
         reading=reading_measure(state)
         m.update(reading_score=reading['score'],serial_hairpins=reading['hairpins'],parallel_pressure=reading['crowding'],broken_serial=reading['broken_serial'])
+        for key in ('forward_max_task_units','forward_p90_task_units','long_forward_count','forward_jump_loss','horizontal_span_loss','information_mean_task_units','information_max_task_units'):
+            if key in reading:m[key]=reading[key]
     m.update(status='verified',version=run['version'],semantic_equal=True,di_structure_equal=True,contacts=geo['ambiguous_contacts'],
              crossings={key:sum(g.get('crossings',{}).get(key,0) for g in gs) for key in ('flow_flow','flow_assoc','assoc_assoc')},
              minimum_font=min(g['minimum_measured_font_size'] for g in gs),overflows=sum(len(g['task_text_overflows']) for g in gs),
