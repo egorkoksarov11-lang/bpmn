@@ -91,3 +91,10 @@ def test_balanced_paragraph_allows_one_clear_row_transition_not_many_jumps():
     assert not prefer_reading(a,{**b,'forward_p90_task_units':2})
     assert not prefer_reading(a,{**b,'long_forward_count':2})
     assert not prefer_reading(a,{**b,'area':900})
+
+
+def test_small_serial_count_can_fold_if_no_direct_link_is_lost():
+    a={**measure(),'serial_links':7,'broken_serial':1,'width':2000}
+    b={**a,'score':90,'width':1400,'area':720,'length':140}
+    assert prefer_reading(a,b)
+    assert not prefer_reading(a,{**b,'broken_serial':2})

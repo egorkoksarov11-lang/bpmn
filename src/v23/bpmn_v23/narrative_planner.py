@@ -100,8 +100,9 @@ def prefer_reading(before,after):
     # gain by losing an existing direct continuation or adding a crossing.
     major_fold=((after['area']<=before['area']*.55 and after['length']<=before['length']*1.4
                  or after['area']<=before['area']*.75 and after.get('width',math.inf)<=before.get('width',0)*.75 and after['length']<=before['length']*1.5)
-                and before.get('serial_links',0)>=8 and after['broken_serial']<=before['broken_serial']+1
-                and after['broken_serial']<=math.floor(before['serial_links']*.2)
+                and (after['broken_serial']<=before['broken_serial']
+                     or before.get('serial_links',0)>=8 and after['broken_serial']<=before['broken_serial']+1
+                     and after['broken_serial']<=math.floor(before['serial_links']*.2))
                 and after.get('forward_max_task_units',math.inf)<=max(4,before.get('forward_max_task_units',0)*1.2)
                 and after.get('forward_p90_task_units',0)<=before.get('forward_p90_task_units',0)*1.4+.1
                 and after.get('long_forward_count',0)<=before.get('long_forward_count',0)+1)
