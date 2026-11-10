@@ -216,6 +216,8 @@ class ScratchBackend:
                     if self.staged_windows:
                         from .stable_blocks import refine_blocks
                         result['stable_blocks']=refine_blocks(output,svg,neutral,seconds=min(30,self.candidate_seconds))
+                        from .narrative_refinement import refine_narrative
+                        result['narrative_refinement']=refine_narrative(output,svg,neutral,seconds=min(60,self.candidate_seconds*2))
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')
         result['geometry_erasure']=erasure;result['from_scratch']=True;result['seconds']=round(time.monotonic()-started,3)
         result['reference_target_met']=False

@@ -26,21 +26,37 @@ def shift_expr(a,value):return a[0],a[1]+value
 def evaluate(expr,values):return expr[1]+sum(v*values[k] for k,v in expr[0].items())
 
 
-def solve_coordinates(state):
+def solve_coordinates(state,axis=0,width_weight=.5):
     from scipy.optimize import linprog
     from scipy.sparse import lil_matrix
     _,root,_,_,nodes,seq,assocs,docs,member,lanes,boxes,paths=state
     owners=semantic_document_owners(nodes,docs,assocs,boxes);actors={n:n for n in nodes};actors.update(owners)
     if len(actors)!=len(nodes)+len(docs) or not lanes:return None,'incomplete-role-model'
+    if axis not in (0,1):raise ValueError('Axis must be 0 or 1')
+    original_boxes=boxes;labels=extract_labels(root)
+    swap=lambda b:(b[1],b[0],b[3],b[2])
+    if axis:
+        boxes={n:swap(b) for n,b in boxes.items()};paths={i:[(y,x) for x,y in p] for i,p in paths.items()};labels={n:swap(b) for n,b in labels.items()}
     variables=[];bounds=[];cost=[]
     def variable(lo=None,hi=None,weight=0.):
         i=len(variables);variables.append(i);bounds.append((lo,hi));cost.append(weight);return ({i:1.},0.)
-    actor_expr={n:variable(boxes[member[n]][0]+56+boxes[n][2]/2,None,.002) for n in sorted(nodes)}
+    origin=min(boxes[l][0] for l in lanes)
+    actor_expr={n:variable((origin+boxes[n][2]/2 if axis else boxes[member[n]][0]+56+boxes[n][2]/2),None,.002) for n in sorted(nodes)}
     obj_expr={n:shift_expr(actor_expr[o],boxes[n][0]-boxes[o][0]-boxes[o][2]/2) for n,o in actors.items()}
     constraints=[];rhs=[]
     def le(a,b,slack=0.):
         expr=add_expr(a,b,-1);constraints.append(expr[0]);rhs.append(slack-expr[1])
     def eq(a,b):le(a,b,.001);le(b,a,.001)
+    bands={}
+    if axis:
+        previous=None
+        for lane in sorted(lanes,key=lambda n:(boxes[n][0],n)):
+            start=variable(origin,None);end=variable(origin,None)
+            eq(start,previous if previous is not None else ({},origin));le(shift_expr(start,96),end)
+            bands[lane]=(start,end);previous=end
+        for n,expr in obj_expr.items():
+            lane=member[actors[n]];start,end=bands[lane]
+            le(shift_expr(start,8),expr);le(shift_expr(expr,boxes[n][2]+8),end)
     point_expr={};vertical=[];horizontal=[];flow_ids={i for i,*_ in seq};uv={i:(u,v) for i,u,v,*_ in seq+assocs}
     for eid,ps in paths.items():
         if eid not in uv:continue
@@ -62,7 +78,7 @@ def solve_coordinates(state):
                 weight=1. if eid in flow_ids else .25
                 for k,val in add_expr(right,left,-1)[0].items():cost[k]+=weight*val
                 horizontal.append((eid,i,left,right,a,b))
-    labels=extract_labels(root);label_expr={};objects=[]
+    label_expr={};objects=[]
     for n in actors:
         x,y,w,h=boxes[n];objects.append((n,obj_expr[n],x,y,w,h,False))
     for n,(x,y,w,h) in labels.items():
@@ -78,6 +94,8 @@ def solve_coordinates(state):
             old=a[0]*(1-f)+b[0]*f;expr=shift_expr(expr,x-old)
         else:continue
         label_expr[n]=expr;objects.append(('__label_'+n,expr,x,y,w,h,True))
+        if axis and n in actors:
+            start,end=bands[member[actors[n]]];le(shift_expr(start,8),expr);le(shift_expr(expr,w+8),end)
     # Preserve only the ordering of objects that actually overlap vertically.
     for i,a in enumerate(objects):
         na,ea,xa,ya,wa,ha,la=a
@@ -113,8 +131,10 @@ def solve_coordinates(state):
             if not y+.01<a[1]<y+h-.01:continue
             if hi<=x+.01:le(right,ox,-min(2 if islabel else 8,max(0,x-hi)))
             elif lo>=x+w-.01:le(shift_expr(ox,w),left,-min(2 if islabel else 8,max(0,lo-x-w)))
-    maximum=variable(0,None,.5)
-    header_right=max(boxes[l][0]+52 for l in lanes)
+    maximum=variable(0,None,width_weight)
+    header_right=origin-8 if axis else max(boxes[l][0]+52 for l in lanes)
+    if axis:
+        for start,end in bands.values():le(end,maximum)
     for n,expr,x,y,w,h,islabel in objects:
         le(shift_expr(expr,w),maximum)
         le(({},header_right+8),expr)
@@ -133,6 +153,14 @@ def solve_coordinates(state):
     for n,expr in obj_expr.items():new[n]=(round(evaluate(expr,values),2),boxes[n][1],*boxes[n][2:])
     caps={n:(round(evaluate(e,values),2),labels[n][1],*labels[n][2:]) for n,e in label_expr.items()}
     routes={eid:[(round(evaluate(expr,values),2),ps[i][1]) for i,expr in enumerate(point_expr[eid])] if eid in point_expr else ps for eid,ps in paths.items()}
+    if axis:
+        new={n:swap(b) for n,b in new.items()};caps={n:swap(b) for n,b in caps.items()};routes={i:[(y,x) for x,y in ps] for i,ps in routes.items()}
+        for lane,(start,end) in bands.items():
+            x,y,w,h=original_boxes[lane];top=round(evaluate(start,values),2);bottom=round(evaluate(end,values),2);new[lane]=(x,top,w,round(bottom-top,2))
+        first=min(new[l][1] for l in lanes);bottom=max(new[l][1]+new[l][3] for l in lanes)
+        for n in set(original_boxes)-actors.keys()-lanes.keys():
+            x,y,w,h=original_boxes[n];new[n]=(x,min(y,first),w,bottom-min(y,first))
+        return (new,caps,routes),None
     right=max([b[0]+b[2] for n,b in new.items() if n in actors]+[b[0]+b[2] for b in caps.values()]+[x for ps in routes.values() for x,y in ps])+24
     for n in set(boxes)-actors.keys():
         x,y,w,h=boxes[n];new[n]=(x,y,max(100,right-x),h)

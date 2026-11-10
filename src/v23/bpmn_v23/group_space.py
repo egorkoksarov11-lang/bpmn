@@ -3,7 +3,7 @@ from collections import defaultdict
 from .responsive_labels import gap
 
 
-def repair_space(boxes,labels,placement,nodes,docs,owners,member,lanes,anchor,max_neighbors=8):
+def repair_space(boxes,labels,placement,nodes,docs,owners,member,lanes,anchor,max_neighbors=8,defer_documents=False):
     out=dict(boxes);caps=dict(labels);requested=set(placement);changed=set();pushed=set()
     def shift(n,dx,dy):
         if abs(dx)+abs(dy)<.01:return
@@ -19,7 +19,8 @@ def repair_space(boxes,labels,placement,nodes,docs,owners,member,lanes,anchor,ma
     for _ in range(max_neighbors+2):
         conflict=None
         for n in sorted(changed):
-            for other in sorted(nodes.keys()|docs.keys()):
+            if defer_documents and n in docs:continue
+            for other in sorted(nodes.keys() if defer_documents else nodes.keys()|docs.keys()):
                 if n==other or gap(out[n],out[other])>=5:continue
                 if owners.get(n)==other or owners.get(other)==n:continue
                 conflict=n,other;break
@@ -43,7 +44,8 @@ def repair_space(boxes,labels,placement,nodes,docs,owners,member,lanes,anchor,ma
         if rx+dx<lane[0]+56:return None,'left-role-header'
         shift(root,dx,dy);pushed.add(root)
     else:return None,'collision-repair-limit'
-    if any(gap(out[a],out[b])<5 for a in changed for b in nodes.keys()|docs.keys() if a!=b and owners.get(a)!=b and owners.get(b)!=a):return None,'remaining-shape-collision'
+    collision_ids=nodes.keys() if defer_documents else nodes.keys()|docs.keys()
+    if any(gap(out[a],out[b])<5 for a in changed if a in collision_ids for b in collision_ids if a!=b and owners.get(a)!=b and owners.get(b)!=a):return None,'remaining-shape-collision'
     role_of=lambda n:member.get(owners.get(n,n))
     role_objects=defaultdict(list)
     for n in nodes.keys()|docs.keys():
