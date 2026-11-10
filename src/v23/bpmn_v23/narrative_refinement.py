@@ -38,6 +38,8 @@ def draft_placements(region,state):
     from .block_layout import topology_order
     order,_=topology_order(state[4],state[5]);rank={n:i for i,n in enumerate(order)}
     if region['kind']=='strand':rank={n:i for i,n in enumerate(ids)}
+    from .turn_templates import turn_proposals
+    yield from turn_proposals(region,state)
     # Alternatives move a complete interaction, including nodes in other roles.
     # No global serpentine rows: each short local continuation has one turn at
     # most, and the independent continuity metric decides whether it is useful.
@@ -65,7 +67,15 @@ def open_draft_bands(state,caps,proposal,owners):
     nodes,seq,assocs,docs,member,lanes,boxes,paths=state[4:];new=dict(boxes);labels=dict(caps);placed=dict(proposal);cursor=min(boxes[l][1] for l in lanes)
     for lane in sorted(lanes,key=lambda l:(boxes[l][1],l)):
         x,y,w,h=boxes[lane];minimum=min([y+16]+[b[1] for n,b in proposal.items() if member[n]==lane]);extra=max(0,y+16-minimum)
-        bottom=max([y+h]+[b[1]+b[3]+100 for n,b in proposal.items() if member[n]==lane]);height=bottom-y+extra;dy=cursor-y+extra
+        def padding(n):
+            # Reserve the real attachment/caption envelope; bare tasks do not
+            # need the old unconditional 100px document reserve.
+            required=16
+            if n in caps:required=max(required,caps[n][1]+caps[n][3]-boxes[n][1]-boxes[n][3]+8)
+            for d,o in owners.items():
+                if o==n:required=max(required,24+max(boxes[d][3],caps.get(d,(0,0,0,0))[3])+8)
+            return required
+        bottom=max([y+h]+[b[1]+b[3]+padding(n) for n,b in proposal.items() if member[n]==lane]);height=bottom-y+extra;dy=cursor-y+extra
         for n,b in boxes.items():
             owner=owners.get(n,n)
             if member.get(owner)==lane:
@@ -84,7 +94,7 @@ def refine_narrative(path,svg,source,seconds=60):
     from .scratch_layout import semantic_document_owners
     from .group_space import repair_space
     if not math.isfinite(seconds) or seconds<=0:raise ValueError('Positive finite draft budget required')
-    started=time.monotonic();deadline=started+seconds;initial=read_bpmn(path);before=reading_measure(initial);accepted=[];rejected=Counter();trials=0
+    started=time.monotonic();deadline=started+seconds;initial=read_bpmn(path);before=reading_measure(initial);accepted=[];rejected=Counter();trials=0;rejected_reading=[]
     if not initial[9] or any(n not in initial[8] for n in initial[4]):return {'accepted':0,'reason':'incomplete-role-model'}
     regions=interaction_regions(initial[4],initial[5],initial[8])
     with tempfile.TemporaryDirectory(prefix='narrative-draft-',dir=Path(path).parent) as td:
@@ -100,7 +110,11 @@ def refine_narrative(path,svg,source,seconds=60):
             after=reading_measure(read_bpmn(trial));old=reading_measure(read_bpmn(path))
             # A temporary expanded draft is not the incumbent. Both guards are
             # needed: improve the committed result and respect the initial cap.
-            if not acceptable_trial(before,old,after):rejected['reading-trade-rejected']+=1;return False
+            if not acceptable_trial(before,old,after):
+                rejected['reading-trade-rejected']+=1
+                rejected_reading.append({'kind':kind,'before':old,'after':after})
+                rejected_reading.sort(key=lambda r:r['after']['score']);del rejected_reading[8:]
+                return False
             if not semantic_equality(source,trial) or not equal(source,trial):raise ValueError('Narrative refinement semantic/DI freeze violation')
             Path(path).write_bytes(trial.read_bytes());Path(svg).write_bytes(preview.read_bytes())
             accepted.append({'kind':kind,'before':old,'after':after,**(meta or {})});return True
@@ -133,9 +147,38 @@ def refine_narrative(path,svg,source,seconds=60):
             except TimeoutError:rejected['bundle-budget']+=1;continue
             if routed is None:rejected['bundle-no-safe-ports']+=1;continue
             consider(state,boxes,routed,caps,'joint-crossing-bundle',release=affected,meta={'edges':sorted(affected)})
+        # Fold an entire later interaction sequence, preserving translated
+        # internal paths. A local chain cannot close global empty columns alone.
+        from .paragraph_layout import paragraph_candidates
+        from .clearance import safe_poly
+        from .document_layout import safe_link
+        from .quality import overlap_pairs
+        for name,new,caps,fixed in paragraph_candidates(read_bpmn(path)):
+            if time.monotonic()>deadline-2:break
+            state=read_bpmn(path);nodes,seq,assocs,docs,member,lanes,boxes,paths=state[4:];uv={i:(u,v) for i,u,v,*_ in seq+assocs};info={i for i,*_ in assocs}
+            obstacles={n:b for n,b in new.items() if n in nodes or n in docs};obstacles.update({f'__header_{l}':(new[l][0],new[l][1],48,new[l][3]) for l in lanes})
+            obstacles.update({'__text_'+n:b for n,b in caps.items() if n in nodes or n in docs if not(n in nodes and nodes[n]['kind'] in TAG_TASK)})
+            release=set()
+            for i,p in fixed.items():
+                if not(safe_link(i,p,obstacles,uv,{},nodes=nodes) if i in info and len(p)==2 else safe_poly(i,p,obstacles,uv,nodes=nodes)):release.add(i)
+            for i,j in overlap_pairs(fixed):release.update((i,j))
+            fixed={i:p for i,p in fixed.items() if i not in release};affected=set(paths)-fixed.keys()
+            obstacles.update({'__text_'+n:b for n,b in caps.items() if n in fixed})
+            try:
+                with time_limit(max(1,min(8,int(deadline-time.monotonic())))):
+                    routed=joint_routes(new,nodes,seq,assocs,paths,affected,tuple(i for i,*_ in seq if i in affected),obstacles,old_boxes=boxes,beam_width=4,fixed_seed=fixed)
+            except TimeoutError:rejected['paragraph-budget']+=1;continue
+            if routed is None:rejected['paragraph-no-safe-ports']+=1;continue
+            write_trial(state,trial,preview,new,routed,caps,affected);draft=read_bpmn(trial)
+            for axis in (1,0,1):
+                if time.monotonic()>deadline:break
+                solution,error=solve_coordinates(draft,axis=axis,width_weight=1.5)
+                if solution is not None:
+                    new,caps,routed=solution;write_trial(draft,trial,preview,new,routed,caps);draft=read_bpmn(trial)
+            if consider(draft,new,routed,caps,name,meta={'translated_fixed_paths':len(fixed),'rerouted_paths':len(affected)}):break
         # Elastic interaction trials are deliberately before sealing: resizing
         # a band or moving a blocking neighbour is legal inside this transaction.
-        def priority(r):return -sum(path_length(initial[-1][i]) for i,u,v,*_ in initial[5] if u in r['nodes'] and v in r['nodes']),r['nodes']
+        def priority(r):return (0 if r['kind']=='local_strand' else 1),-sum(path_length(initial[-1][i]) for i,u,v,*_ in initial[5] if u in r['nodes'] and v in r['nodes']),r['nodes']
         for region in sorted(regions,key=priority)[:10]:
             if time.monotonic()>deadline-2:break
             if not 3<=len(region['nodes'])<=12:continue
@@ -175,5 +218,5 @@ def refine_narrative(path,svg,source,seconds=60):
                         draft=read_bpmn(trial)
                 if consider(draft,new,routed,captions,'elastic-'+name,meta={'region':region,**space}):break
     return {'method':'interaction hierarchy; draft elastic bands; coupled ports; measured reading continuity; sealed only after independent audit',
-            'accepted':len(accepted),'trials':trials,'edits':accepted,'rejections':dict(rejected),'regions':regions,'before':before,'after':reading_measure(read_bpmn(path)),
+            'accepted':len(accepted),'trials':trials,'edits':accepted,'rejections':dict(rejected),'best_rejected_reading':rejected_reading,'regions':regions,'before':before,'after':reading_measure(read_bpmn(path)),
             'source_geometry_used':False,'names_or_numbers_used':False,'seconds':round(time.monotonic()-started,3)}
