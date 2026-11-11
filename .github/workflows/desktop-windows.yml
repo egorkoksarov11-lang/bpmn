@@ -29,7 +29,7 @@ jobs:
           $env:PYTHONPATH = "$PWD\src\v23;$PWD\src\v22"
           & ./.runtime/uv.exe pip install --python ./.venv-desktop/Scripts/python.exe pytest==8.3.5
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          & ./.venv-desktop/Scripts/python.exe -m pytest tests/test_desktop.py tests/test_input_formats.py tests/test_collaboration.py tests/test_whole_blocks.py tests/test_narrative_layout.py tests/test_turn_templates.py -q
+          & ./.venv-desktop/Scripts/python.exe -m pytest tests/test_desktop.py tests/test_input_formats.py tests/test_collaboration.py tests/test_whole_blocks.py tests/test_narrative_layout.py tests/test_turn_templates.py tests/test_portfolio.py -q
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         if: always()

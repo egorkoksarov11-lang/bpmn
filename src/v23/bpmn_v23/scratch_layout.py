@@ -172,11 +172,68 @@ class ScratchBackend:
     preserve_labels=True
     source_geometry_used=False
     stable_finalization=True
-    def __init__(self,candidate_seconds=30,control=False,role_order=None,search_seconds=None,graph_backend=None,staged_windows=True):
+    def __init__(self,candidate_seconds=30,control=False,role_order=None,search_seconds=None,graph_backend=None,staged_windows=True,candidate_limit=None,portfolio_size=2,astar_nodes=12000):
         if control and role_order is not None:raise ValueError('Role optimization requires the graph scratch backend')
+        if candidate_limit is not None and (not isinstance(candidate_limit,int) or not 1<=candidate_limit<=128):raise ValueError('candidate_limit must be 1..128')
+        if not isinstance(portfolio_size,int) or not 1<=portfolio_size<=4:raise ValueError('portfolio_size must be 1..4')
+        if not isinstance(astar_nodes,int) or astar_nodes<512:raise ValueError('astar_nodes must be >=512')
         self.candidate_seconds=candidate_seconds;self.control=control;self.role_order=role_order;self.search_seconds=search_seconds;self.graph_backend=graph_backend;self.staged_windows=staged_windows
+        self.candidate_limit=candidate_limit;self.portfolio_size=portfolio_size;self.astar_nodes=astar_nodes
+
+    def _finish_candidate(self,neutral,output,svg,backend,result):
+        reading_checkpoint=None
+        if getattr(backend,'unified_reading',False):
+            from .narrative_planner import reading_measure
+            reading_checkpoint=(Path(output).read_bytes(),Path(svg).read_bytes(),reading_measure(read_bpmn(output)))
+        if not self.control and getattr(backend,'local_episode_editing',False):
+            from .cold_guard import protect_cold_result
+            guard,adopted=protect_cold_result(neutral,output,svg,candidate_seconds=self.candidate_seconds,search_seconds=self.search_seconds or 200,role_order=self.role_order)
+            if adopted is not None:
+                result['primary_candidate_before_guard']=result['selected_candidate']
+                result['selected_candidate']='internal-cold-guard/'+adopted['selected_candidate']
+            result['internal_cold_guard']=guard
+        if not self.control:
+            from .attachment_refinement import compact_attachments
+            final=read_bpmn(output);anchors=semantic_document_owners(final[4],final[7],final[6],final[-2])
+            result['local_attachment_moves']=compact_attachments(output,svg,neutral,seconds=min(12,self.candidate_seconds*2),fixed_owners=anchors)
+            if getattr(backend,'local_episode_editing',False):
+                from .local_editing import edit_groups
+                result['local_episode_edits']=edit_groups(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
+                from .port_refinement import refine_ports
+                result['port_refinement']=refine_ports(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
+                if self.staged_windows:
+                    from .graph_refinement import refine_graph
+                    refinement=refine_graph(output,svg,neutral,seconds=min(100,self.candidate_seconds*4))
+                    result['graph_refinement']=refinement
+                    if refinement['rounds']:
+                        result['staged_window_refinement']=refinement['rounds'][0]['groups']
+                        result['current_role_refinement']=refinement['rounds'][-1]['roles']
+                from .whitespace import compact_whitespace
+                result['whitespace_compaction']=compact_whitespace(output,svg,neutral)
+                from .orthogonal_compaction import compact_orthogonal
+                result['orthogonal_compaction']=compact_orthogonal(output,svg,neutral)
+                if self.staged_windows:
+                    from .stable_blocks import refine_blocks
+                    result['stable_blocks']=refine_blocks(output,svg,neutral,seconds=min(30,self.candidate_seconds))
+                    if reading_checkpoint is not None:
+                        from .narrative_planner import prefer_reading
+                        old=reading_checkpoint[2];current=reading_measure(read_bpmn(output))
+                        restore=(current['score']>old['score']+.1 or current['contacts']>old['contacts'] or current['hairpins']>old['hairpins']
+                                 or current['broken_serial']>old['broken_serial'] and not prefer_reading(old,current))
+                        if restore:Path(output).write_bytes(reading_checkpoint[0]);Path(svg).write_bytes(reading_checkpoint[1])
+                        result['reading_checkpoint']={'initial':old,'legacy_candidate':current,'restored_initial':restore}
+                    from .narrative_refinement import refine_narrative
+                    result['narrative_refinement']=refine_narrative(output,svg,neutral,seconds=min(60,self.candidate_seconds*2))
+        return result
 
     def layout(self,source,output,svg):
+        from .work_budget import routing_work
+        with routing_work(fixed=self.candidate_limit is not None,astar_nodes=self.astar_nodes) as work:
+            result=self._layout(source,output,svg)
+            result['work_budget']={**work,'candidate_limit':self.candidate_limit,'scope':'fixed candidate attempts and A* expansions; legacy geometric refinements retain emergency wall budgets','full_pipeline_deterministic':False}
+            return result
+
+    def _layout(self,source,output,svg):
         started=time.monotonic()
         with tempfile.TemporaryDirectory(prefix='semantic-only-',dir=Path(output).parent) as folder:
             neutral=Path(folder)/'neutral.bpmn';erasure=erase_geometry(source,neutral)
@@ -185,50 +242,29 @@ class ScratchBackend:
             else:
                 from .reading_backend import ReadableBlocksBackend
                 backend=(self.graph_backend or ReadableBlocksBackend)(candidate_seconds=self.candidate_seconds,role_order=self.role_order,search_seconds=self.search_seconds)
+                backend.candidate_limit=self.candidate_limit
+                if getattr(backend,'unified_reading',False):backend.portfolio_width=self.portfolio_size
             result=backend.layout(neutral,output,svg)
-            reading_checkpoint=None
-            if getattr(backend,'unified_reading',False):
+            finalists=getattr(backend,'finalists',[])
+            if getattr(backend,'portfolio_width',1)>1 and len(finalists)>1:
                 from .narrative_planner import reading_measure
-                reading_checkpoint=(Path(output).read_bytes(),Path(svg).read_bytes(),reading_measure(read_bpmn(output)))
-            if not self.control and getattr(backend,'local_episode_editing',False):
-                from .cold_guard import protect_cold_result
-                guard,adopted=protect_cold_result(neutral,output,svg,candidate_seconds=self.candidate_seconds,search_seconds=self.search_seconds or 200,role_order=self.role_order)
-                if adopted is not None:
-                    result['primary_candidate_before_guard']=result['selected_candidate']
-                    result['selected_candidate']='internal-cold-guard/'+adopted['selected_candidate']
-                result['internal_cold_guard']=guard
-            if not self.control:
-                from .attachment_refinement import compact_attachments
-                final=read_bpmn(output);anchors=semantic_document_owners(final[4],final[7],final[6],final[-2])
-                result['local_attachment_moves']=compact_attachments(output,svg,neutral,seconds=min(12,self.candidate_seconds*2),fixed_owners=anchors)
-                if getattr(backend,'local_episode_editing',False):
-                    from .local_editing import edit_groups
-                    result['local_episode_edits']=edit_groups(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
-                    from .port_refinement import refine_ports
-                    result['port_refinement']=refine_ports(output,svg,neutral,seconds=min(24,self.candidate_seconds*2))
-                    if self.staged_windows:
-                        from .graph_refinement import refine_graph
-                        refinement=refine_graph(output,svg,neutral,seconds=min(100,self.candidate_seconds*4))
-                        result['graph_refinement']=refinement
-                        if refinement['rounds']:
-                            result['staged_window_refinement']=refinement['rounds'][0]['groups']
-                            result['current_role_refinement']=refinement['rounds'][-1]['roles']
-                    from .whitespace import compact_whitespace
-                    result['whitespace_compaction']=compact_whitespace(output,svg,neutral)
-                    from .orthogonal_compaction import compact_orthogonal
-                    result['orthogonal_compaction']=compact_orthogonal(output,svg,neutral)
-                    if self.staged_windows:
-                        from .stable_blocks import refine_blocks
-                        result['stable_blocks']=refine_blocks(output,svg,neutral,seconds=min(30,self.candidate_seconds))
-                        if reading_checkpoint is not None:
-                            from .narrative_planner import prefer_reading
-                            old=reading_checkpoint[2];current=reading_measure(read_bpmn(output))
-                            restore=(current['score']>old['score']+.1 or current['contacts']>old['contacts'] or current['hairpins']>old['hairpins']
-                                     or current['broken_serial']>old['broken_serial'] and not prefer_reading(old,current))
-                            if restore:Path(output).write_bytes(reading_checkpoint[0]);Path(svg).write_bytes(reading_checkpoint[1])
-                            result['reading_checkpoint']={'initial':old,'legacy_candidate':current,'restored_initial':restore}
-                        from .narrative_refinement import refine_narrative
-                        result['narrative_refinement']=refine_narrative(output,svg,neutral,seconds=min(60,self.candidate_seconds*2))
+                from .pipeline import geometry
+                trials=[];best=None;primary=result['selected_candidate']
+                for index,entry in enumerate(finalists):
+                    candidate=Path(folder)/f'finalist-{index}.bpmn';preview=candidate.with_suffix('.svg')
+                    candidate.write_bytes(entry[2]);preview.write_bytes(entry[3])
+                    initial=reading_measure(read_bpmn(candidate));detail={**result,'selected_candidate':entry[1]}
+                    detail=self._finish_candidate(neutral,candidate,preview,backend,detail)
+                    if not semantic_equality(source,candidate) or not di_equal(source,candidate):raise ValueError('Portfolio finalist freeze violation')
+                    audit=geometry(candidate);after=reading_measure(read_bpmn(candidate))
+                    valid=(audit['routing_safety_passed'] and audit['edge_clearance_passed'] and not(audit['label_collision_pairs'] or audit['label_line_cuts'] or audit['task_text_overflows'] or audit['missing_named_flow_labels'] or audit['excessive_bend_edges']))
+                    trials.append({'candidate':entry[1],'initial':initial,'after':after,'valid':valid,'primary_before_final_refinement':entry[1]==primary})
+                    if valid and (best is None or (after['score'],entry[1])<best[0]):
+                        best=((after['score'],entry[1]),candidate.read_bytes(),preview.read_bytes(),detail)
+                if best is None:raise RuntimeError('No independently verified portfolio finalist')
+                Path(output).write_bytes(best[1]);Path(svg).write_bytes(best[2]);result=best[3]
+                result['portfolio_refinement']={'method':'same cold candidate pool; complementary champions; complete independent refinement before selection','finalists':trials,'selected':result['selected_candidate'],'primary_before_final_refinement':primary}
+            else:result=self._finish_candidate(neutral,output,svg,backend,result)
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')
         result['geometry_erasure']=erasure;result['from_scratch']=True;result['seconds']=round(time.monotonic()-started,3)
         result['reference_target_met']=False

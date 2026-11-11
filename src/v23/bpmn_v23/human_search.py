@@ -66,6 +66,8 @@ class HumanStyleBackend:
             return SearchBackend(self.candidate_seconds).layout(source,output,svg)
         from .pipeline import geometry,validate_xml
         uv={i:(u,v) for i,u,v,_ in seq+assocs};logs=[];best=None;best_safe=None;selected_safe=False;started=time.monotonic()
+        attempted=0;quota=getattr(self,'candidate_limit',None)
+        if hasattr(self,'capture_candidate'):self.portfolio_records=[];self.finalists=[]
         with tempfile.TemporaryDirectory(prefix='human-layout-',dir=output.parent) as td:
             td=Path(td)
             if self.incumbent is not None:
@@ -83,8 +85,11 @@ class HumanStyleBackend:
                 selected_safe=not g['excessive_bend_edges']
                 if selected_safe:best_safe=best
             for name,boxes,report in self.placements(nodes,docs,seq,assocs,member,lanes,original):
-                if best_safe is not None and getattr(self,'max_search_seconds',None) is not None and time.monotonic()-started>self.max_search_seconds:
+                if quota is not None and attempted>=quota and best_safe is not None:
+                    logs.append({'candidate':name,'status':'skipped-candidate-quota'});break
+                if best_safe is not None and getattr(self,'max_search_seconds',None) is not None and time.monotonic()-started>self.max_search_seconds*(3 if quota is not None else 1):
                     logs.append({'candidate':name,'status':'skipped-search-budget'});break
+                attempted+=1
                 if self.orientations_only and not name.endswith('-oriented'):continue
                 at=time.monotonic();ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
                 pre=geometry_audit(ob,{},[],[],nodes,docs)
@@ -135,50 +140,26 @@ class HumanStyleBackend:
                         logs.append({'candidate':name,'status':'intermediate-excessive-bends' if getattr(self,'straight_documents',False) and g['excessive_bend_edges'] else 'verified','rank':quality,'seconds':round(time.monotonic()-at,3),'readability':reading_metrics(boxes,paths,nodes,seq),'style':style_cost(boxes,nodes,docs),'layout':report,'routing':details,'excessive_bend_edges':g['excessive_bend_edges']})
                         entry=(quality,name,bp.read_bytes(),sp.read_bytes(),report)
                         safe=not g['excessive_bend_edges']
+                        if hasattr(self,'capture_candidate'):self.capture_candidate(entry,safe)
                         if safe and (best_safe is None or quality<best_safe[0]):best_safe=entry
                         if best is None or quality<best[0]:best=entry;selected_safe=safe
                 except (ValueError,RuntimeError,TimeoutError) as error:
                     logs.append({'candidate':name,'status':'rejected','reason':str(error),'seconds':round(time.monotonic()-at,3)})
             if best is None:raise RuntimeError({'no_verified_human_style_layout':logs})
-            quality,name,bpmn,svg_bytes,report=best
-            # Human editing proceeds from a good whole layout, then improves wires.
-            bp=td/'best.bpmn';sp=td/'best.svg';bp.write_bytes(bpmn);sp.write_bytes(svg_bytes)
-            rt,root,_,plane,_,_,_,_,_,_,boxes,paths=read_bpmn(bp)
-            if getattr(self,'straight_documents',False):
-                paths={**paths,**bounding_ports({i:paths[i] for i,_,_,_ in seq},uv,boxes,nodes)}
-            else:paths=bounding_ports(paths,uv,boxes,nodes)
-            ob={n:b for n,b in boxes.items() if n in nodes or n in docs}
-            ob.update({f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes})
-            if getattr(self,'straight_documents',False):
-                caption_query='.//bd:BPMNShape/bd:BPMNLabel/dc:Bounds'
-                if report.get('reserved_flow_captions'):caption_query+=' | .//bd:BPMNEdge/bd:BPMNLabel/dc:Bounds'
-                for bounds in root.xpath(caption_query,namespaces=NS):
-                    owner=bounds.getparent().getparent().get('bpmnElement')
-                    if owner in nodes and nodes[owner]['kind'] in TAG_TASK:continue
-                    ob['__text_'+owner]=tuple(float(bounds.get(k)) for k in ('x','y','width','height'))
-            interrupted=False
-            try:
-                with deadline(min(120,self.candidate_seconds)):
-                    refinements=refine_paths(ob,uv,paths,rounds=4,avoid_crowding=True,simplify=getattr(self,'simplify_routes',False),routing_policy=getattr(self,'routing_policy',None),protected_ids=[i for i,_,_,_ in assocs if len(paths[i])<=10] if getattr(self,'straight_documents',False) else (),hints=(return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if getattr(self,'return_corridors',False) else None if report.get('external_engine') or not report.get('slots') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})))
-            except TimeoutError:refinements=[];interrupted=True
-            paths=attach(paths,uv,boxes,nodes)
-            if getattr(self,'straight_documents',False):
-                from .di_geometry import update_geometry
-                update_geometry(root,plane,{},paths)
-            else:
-                set_di(root,plane,{},paths);save_labels(root,plane,boxes,nodes,paths);arrange_flow_labels(root,plane,ob,seq,paths)
-            rt.write(str(bp),encoding='utf-8',xml_declaration=True);labels=place_labels(bp,sp,preserve=getattr(self,'preserve_labels',False));g=geometry(bp)
-            new_rank=self.candidate_rank(bp,boxes,paths,uv,nodes,docs,seq)
-            improve_rank=new_rank<quality or (not selected_safe and (best_safe is None or new_rank<best_safe[0]))
-            if improve_rank and not labels['unplaced_labels'] and not labels['rendering']['text_overflow_ids'] and not g['label_collision_pairs'] and not g['label_line_cuts'] and g['routing_safety_passed'] and g['edge_clearance_passed'] and not g['excessive_bend_edges'] and semantic_equality(source,bp) and di_equal(source,bp):
-                logs.append({'candidate':name+'-refined','status':'verified','rank':new_rank,'readability':reading_metrics(boxes,paths,nodes,seq),'refinement_interrupted':interrupted,'refinements':refinements})
-                quality,name,bpmn,svg_bytes=new_rank,name+'-refined',bp.read_bytes(),sp.read_bytes()
-                selected_safe=True
-            else:
-                logs.append({'candidate':name+'-refined','status':'discarded','rank':new_rank,'refinement_interrupted':interrupted,'excessive_bend_edges':g['excessive_bend_edges'],'reason':'did not improve rank or failed independent geometry/text/freeze checks'})
-            if not selected_safe:
-                if best_safe is None:raise RuntimeError('No verified layout without pathological bends; incumbent retained on disk')
-                quality,name,bpmn,svg_bytes,report=best_safe
-                logs.append({'candidate':name,'status':'safe-fallback','reason':'higher-ranked intermediate had pathological bends'})
+            from .candidate_polish import polish_entry
+            width=getattr(self,'portfolio_width',1)
+            if width>1 and getattr(self,'portfolio_records',None):
+                from .portfolio import choose_records
+                entries=[r['entry'] for r in choose_records(self.portfolio_records,width)]
+            else:entries=[best]
+            polished=[]
+            for index,entry in enumerate(entries):
+                candidate=polish_entry(self,source,entry,td,seq,assocs,nodes,docs,member,lanes,logs)
+                if candidate is not None:polished.append(candidate)
+            if not polished:
+                if best_safe is None:raise RuntimeError('No verified candidate after portfolio polish')
+                polished=[best_safe]
+            self.finalists=polished
+            quality,name,bpmn,svg_bytes,report=min(polished,key=lambda e:(e[0],e[1]))
             output.write_bytes(bpmn);svg.write_bytes(svg_bytes)
-        return {'selection_policy':getattr(self,'selection_policy',self.reference_profile['version'] if self.reference_profile else POLICY),'backend':self.name,'selected_candidate':name,'quality':quality,'candidates':logs,'construction_failures':getattr(self,'placement_failures',[]),'seconds':round(time.monotonic()-started,3),'source_reference_models':32,'selection':'best verified empirical-style candidate; no global optimum guarantee','removed_redundant_associations':[]}
+        return {'selection_policy':getattr(self,'selection_policy',self.reference_profile['version'] if self.reference_profile else POLICY),'backend':self.name,'selected_candidate':name,'quality':quality,'candidates':logs,'construction_failures':getattr(self,'placement_failures',[]),'seconds':round(time.monotonic()-started,3),'source_reference_models':32,'selection':'best verified empirical-style candidate; no global optimum guarantee','removed_redundant_associations':[], 'candidate_attempts':attempted,'candidate_quota':quota,'candidate_quota_completed':quota is not None and attempted>=quota and not any('deadline' in c.get('reason','').lower() for c in logs),'portfolio':{'requested':getattr(self,'portfolio_width',1),'polished':[{'candidate':e[1],'rank':e[0]} for e in self.finalists]}}

@@ -217,6 +217,9 @@ def main():
     p.add_argument('--skip-staged-windows',action='store_true',help='control: disable only the new overlapping 3-step refinement')
     p.add_argument('--search-seconds',type=float,default=None,help='candidate search budget; verified whole-layout fallback required before stopping')
     p.add_argument('--candidate-timeout',type=int,default=30,help='maximum routing seconds per placement candidate (1..600)')
+    p.add_argument('--candidate-limit',type=int,help='fixed placement-attempt quota for scratch tests; per-candidate timeouts remain safety guards')
+    p.add_argument('--portfolio-size',type=int,default=2,help='number of complementary scratch candidates to refine completely (1..4)')
+    p.add_argument('--astar-node-budget',type=int,default=12000,help='A* expansion quota per call in fixed candidate mode')
     p.add_argument('--no-decision-orientations',action='store_true',help='compare with the four baseline human-style placements')
     p.add_argument('--incumbent',type=Path,help='optional previously verified layout of the identical frozen model')
     p.add_argument('--orientations-only',action='store_true',help='experiment: test only oriented proposals plus a required incumbent')
@@ -233,7 +236,7 @@ def main():
     if a.layout_engine in ('scratch','scratch-legacy','scratch-human'):
         if a.incumbent is not None:p.error('Scratch reconstruction forbids external incumbents')
         from .scratch_layout import ScratchBackend,GraphChannelsBackend
-        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human',search_seconds=a.search_seconds,staged_windows=not a.skip_staged_windows,graph_backend=GraphChannelsBackend if a.layout_engine=='scratch-legacy' else None)
+        backend=ScratchBackend(candidate_seconds=a.candidate_timeout,control=a.layout_engine=='scratch-human',search_seconds=a.search_seconds,staged_windows=not a.skip_staged_windows,graph_backend=GraphChannelsBackend if a.layout_engine=='scratch-legacy' else None,candidate_limit=a.candidate_limit,portfolio_size=a.portfolio_size,astar_nodes=a.astar_node_budget)
     elif a.layout_engine=='attachments':
         from .attachment_refinement import AttachmentBackend
         backend=AttachmentBackend(incumbent=a.incumbent,seconds=a.candidate_timeout)

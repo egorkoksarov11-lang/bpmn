@@ -166,7 +166,16 @@ def joint_routes(boxes,nodes,seq,assocs,paths,affected,internal,obstacles,old_bo
                 if valid(eid,p,fixed):unique[tuple(p)]=p
             cache[eid]=list(unique.values())
         return cache[eid]
-    for first in (internal,tuple(reversed(internal))):
+    from .work_budget import current_work
+    work=current_work();degree=defaultdict(int)
+    for u,v in uv.values():degree[u]+=1;degree[v]+=1
+    hard=(len(affected)>=4 and any(degree[n]>2 for i in affected for n in uv[i]) and (work is None or work['adaptive']))
+    width=min(8,max(beam_width,4+len(affected)//3)) if hard else beam_width
+    if work:
+        work['adaptive_joint_calls']+=int(hard);work['maximum_joint_beam']=max(work['maximum_joint_beam'],width)
+    orders=[internal,tuple(reversed(internal))]
+    if hard:orders.append(tuple(sorted(affected,key=lambda i:(len(options_for(i)),-sum(degree[n] for n in uv[i]),i))))
+    for first in orders:
         order=[i for i in first if i in affected]+sorted(affected-set(first),key=lambda i:(i not in {e[0] for e in seq},path_length(paths[i]),i));beam=[(fixed,0.)]
         for index,eid in enumerate(order):
             next_beam=[];u,v=uv[eid]
@@ -187,11 +196,11 @@ def joint_routes(boxes,nodes,seq,assocs,paths,affected,internal,obstacles,old_bo
                     q=edge_score(eid,p,current,uv)
                     from .readability import edge_crowding
                     choices.append((wire_cost(p,q[0])+3*edge_crowding(p,current,12)/200,p))
-                for value,p in nsmallest(beam_width if index<2 else min(2,beam_width),choices,key=lambda t:t[0]):next_beam.append(({**current,eid:p},total+value))
+                for value,p in nsmallest(min(4,width) if hard else beam_width if index<2 else min(2,beam_width),choices,key=lambda t:t[0]):next_beam.append(({**current,eid:p},total+value))
             if not next_beam:beam=[];break
             # Incremental scores count each variable/fixed or variable/variable
             # contact once. Fixed/fixed contacts are constant across all choices.
-            beam=nsmallest(beam_width if index<2 else min(2,beam_width),next_beam,key=lambda item:item[1])
+            beam=nsmallest(width if hard else beam_width if index<2 else min(2,beam_width),next_beam,key=lambda item:item[1])
         for candidate,_ in beam:
             quality=local_quality(candidate,uv,seq)
             rank=8*quality[0]+sum(wire_cost(candidate[i]) for i in affected)

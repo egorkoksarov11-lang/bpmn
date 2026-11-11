@@ -21,6 +21,9 @@ def overlapping(p, paths):
 
 
 def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_margin=120,bend_penalty=70,crossing_penalty=1500,max_seconds=8):
+    from .work_budget import current_work
+    work=current_work();fixed_work=bool(work and work['fixed']);expanded=0
+    if work:work['astar_calls']+=1
     u,v=uv[eid];bu,bv=boxes[u],boxes[v]
     x0=min(bu[0],bv[0])-window_margin;x1=max(bu[0]+bu[2],bv[0]+bv[2])+window_margin
     y0=min(bu[1],bv[1])-window_margin;y1=max(bu[1]+bu[3],bv[1]+bv[3])+window_margin
@@ -64,6 +67,7 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_
     sources=list(dict.fromkeys(s for s,t in pairs));targets=list(dict.fromkeys(t for s,t in pairs))
     started=time.monotonic()
     def search(source_points,target_points):
+        nonlocal expanded
         goals={(xi[round(t[0],2)],yi[round(t[1],2)]) for t in target_points}
         @lru_cache(None)
         def heuristic(i,j):return min(abs(xs[i]-t[0])+abs(ys[j]-t[1]) for t in target_points)
@@ -73,8 +77,12 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_
             dist[state]=0;heapq.heappush(queue,(heuristic(*state[:2]),0,state))
         visited=0
         while queue:
+            if fixed_work and expanded>=work['astar_node_quota']:
+                work['astar_quota_hits']+=1;return None
+            expanded+=1
+            if work:work['astar_expansions']+=1
             visited+=1
-            if visited%512==0 and (visited>90000 or time.monotonic()-started>max_seconds):return None
+            if not fixed_work and visited%512==0 and (visited>90000 or time.monotonic()-started>max_seconds):return None
             _,g,state=heapq.heappop(queue);i,j,axis=state
             if g!=dist.get(state):continue
             if (i,j) in goals:
@@ -98,7 +106,7 @@ def astar(eid,boxes,uv,paths,pairs,clip_window=True,avoid_crowding=False,window_
     # Rare explicitly restricted pairings retain their pair constraints.
     for source,target in pairs:
         if u==v and source==target:continue
-        if time.monotonic()-started>max_seconds:break
+        if not fixed_work and time.monotonic()-started>max_seconds:break
         result=search([source],[target])
         if result:return result
     return None
