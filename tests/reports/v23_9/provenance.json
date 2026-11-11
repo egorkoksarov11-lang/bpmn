@@ -1,0 +1,178 @@
+{
+  "status": "experimental_not_default",
+  "reason": "mixed quality tradeoffs: aggregate area +16.42%, wire +3.61%; case_3 reading score worsens; case_2 serial hairpins increase",
+  "baseline_commit": "ec0ec5788c3c73ba4368de2f9f989f5b59a3e7e6",
+  "tested_implementation_commit": "69db64c0a03816d68660c03a22d932bf7af55d9d",
+  "algorithm_python_sha256": {
+    "src/v23/bpmn_v23/port_refinement.py": "4ddf36994e1eadea85b278d5f7849f29a5191641682389f4ab23c89f83b26a11",
+    "src/v23/bpmn_v23/search.py": "4892e18b6529bd926ca121f6fdd060ceda5c2f300df7fb1a943e965d6921d5a1",
+    "src/v23/bpmn_v23/di_geometry.py": "dd8da80a1a5e31649532d25db42c7fb68e2afe5d2a799457bd28aff5e4232a67",
+    "src/v23/bpmn_v23/human_layout.py": "a278ffee5ef33d3214705d0b5089326de8b1cccf71ca04c3ee6bd7dbd56367dd",
+    "src/v23/bpmn_v23/candidate_polish.py": "41c2c26d5043d82a4701161c40f50346819fd3cd37097a09ae65d6576c7f31f8",
+    "src/v23/bpmn_v23/deadline.py": "aeeada65c73b6bbe54ab312e2a7cd64185217889fd56c9c01a1a08aa245acd7c",
+    "src/v23/bpmn_v23/reading_backend.py": "d8ffebadf9be3e5efcd7981eec10ac01fb1c6364df3b990f6b2bc4670a0dbc1c",
+    "src/v23/bpmn_v23/continuity.py": "37362b739f7bc756d4c06bc55673bc2e36c2a5dff4f2a07f95960214a2683d63",
+    "src/v23/bpmn_v23/scenario_blocks.py": "ab28c4f5a3fb42bff725864b822ed75127bb203e561bf0662c923692fd3333ba",
+    "src/v23/bpmn_v23/return_corridors.py": "4bd13c50087df10878a5c97626bdcec5a13eb020c34e2eadfaeea8618040c07c",
+    "src/v23/bpmn_v23/router.py": "ab4aae30373d99bc7899e05d52020b13af11840e167f4c75dfa2a88569c375c1",
+    "src/v23/bpmn_v23/orthogonal_compaction.py": "cd130c38a299214d9cb9c0d4b6004549ddeabdd73f4015b2b40e998aae4ecf2a",
+    "src/v23/bpmn_v23/freeze.py": "63e5cb0c027599ee38bd97961dfe96158d5201ffbc9deb631350d2bf40efebb6",
+    "src/v23/bpmn_v23/axis_labels.py": "742b69e1733bdd4101f5535087e0ddbb47cf69fb9969fd2b5434a297b2320719",
+    "src/v23/bpmn_v23/responsive_labels.py": "a672455c1a62824e854fc6412e4dbb105ab8a8bdfcf6c6c082637387d5329298",
+    "src/v23/bpmn_v23/patterns.py": "30462a1d40b4d71f566fcba7290d6a2f6fe9b99bc3dfa39ae7b25c0f14f9f84f",
+    "src/v23/bpmn_v23/episode_layout.py": "9847888600f53928c8d6c06965328946e35b88f31b4e2536583784f60290f904",
+    "src/v23/bpmn_v23/portfolio.py": "4882010bc3e97f0988db0a5a682af5e5cb30972dc037c0a122ba20743baa5b0d",
+    "src/v23/bpmn_v23/work_budget.py": "775b902e524931e09bec766f695e2bfb2ae96421b69e918e378aa69dbf66d88b",
+    "src/v23/bpmn_v23/__main__.py": "030f116d66e7271ead4dfd6a3e3db77a22837ffd3d5785690742fa29a45f7d99",
+    "src/v23/bpmn_v23/scratch_layout.py": "bea5ba0ffb5c27692b68d17891d7b9894fe6ecf138819258a4d2f09a96deca2d",
+    "src/v23/bpmn_v23/lane_alignment.py": "2bfa815af7d03799dbf7d66b80f20bac6d44a312fd1b533abfe0964908a218dd",
+    "src/v23/bpmn_v23/role_order.py": "aacb7bb284b420c88248f312d25f2a6678e0e89b9ea3fe6d3c5692f0869b37b4",
+    "src/v23/bpmn_v23/render.py": "2fac3879d757906d5ed4d23dbffde057733f147150da9c14bca490908a5b1b59",
+    "src/v23/bpmn_v23/input_cli.py": "286bca11dd1774d3dbae1516881eb54986f9d2a07aceb38d45799cbd76c80b1d",
+    "src/v23/bpmn_v23/labels.py": "f0c70ade7f7b01e418fc420a5f58fda62a08e39460ca67ce121b5051edeba00d",
+    "src/v23/bpmn_v23/spine_episodes.py": "f8930056f8af3acc25a7ae33e2822276ee9ef17b11a41f80980008e39bbb72c1",
+    "src/v23/bpmn_v23/__init__.py": "6dc6d2b40d75e1e06512286e6622c2d122d9448551cdabc30f29fa4a6b2fdf9a",
+    "src/v23/bpmn_v23/reference_layout.py": "8af60cb2ac3acd374f462cbdb3001d1e45bef30de4377f196e6450a4154d4793",
+    "src/v23/bpmn_v23/window_planner.py": "7b7d8996390b9762662e72fcd12141bfe0a050e143f00f3c13157a197cf7c397",
+    "src/v23/bpmn_v23/collaboration.py": "3f140e6b4566e4bf09b6e847db83a9fc92b00aa3a8c67c4110a174257e4288aa",
+    "src/v23/bpmn_v23/turn_templates.py": "ba8c80a08c58ee6d9a0376366a15f5e58d6a2efdb474f5ea1e4a422674af7b91",
+    "src/v23/bpmn_v23/adaptive_layout.py": "34cafcf06154346c9b4d38fcd93d32b5e1ae4cad8c5b024b2000f6f44c67f194",
+    "src/v23/bpmn_v23/block_compaction.py": "e7c1157452b6a6173e3a7dec4171849cf7291dd4edb4576bbfaf49a723c34858",
+    "src/v23/bpmn_v23/axis_layout.py": "a90fa587f326bb3b012c338209d802d0576a948b2c0b62440a6d1752af43256d",
+    "src/v23/bpmn_v23/whitespace.py": "5faea245ebbe7f7b6135b7c920fab43e3c738200183c0a96ad4ec248d6dc33c3",
+    "src/v23/bpmn_v23/input_formats.py": "f0b7d67738d5e6a537f35a9a1219cdad8ef4bb4e855c9fc6932b461f7340b66d",
+    "src/v23/bpmn_v23/group_space.py": "23e7a5ff3267da9f6b250c841794a6e76264f6e98f1f7198034b6e2fd783651b",
+    "src/v23/bpmn_v23/typography.py": "0ca13b527c0cffbcd51131588b67344df5f80497a95c910a3c5013f6c47b916a",
+    "src/v23/bpmn_v23/narrative_refinement.py": "b8cb52efd664dfb67ed09d6ece9859c16211b91038482329d18760cbaf6ba8b8",
+    "src/v23/bpmn_v23/block_layout.py": "10c3270db3661dba763ef36b4de3f119c07c577f7a23d93e83a2767576d3b875",
+    "src/v23/bpmn_v23/stage_episodes.py": "328ec7c8c5a58173aa6783027088d2a6ead1b79c7823b9a20945ad75fc830054",
+    "src/v23/bpmn_v23/human_search.py": "df81223ffce5072fd86e22495d0202802372697a81753d2a26458a0634ab9d32",
+    "src/v23/bpmn_v23/layout_objective.py": "d49b589bd223009fbeb0f04f7bccfc5b5b0a662d7027d19250e38e29098b6df4",
+    "src/v23/bpmn_v23/micro_episodes.py": "11c290aa1210c91758a783f95f88c71f0af7c46789901da6d3f4fc7be19ea026",
+    "src/v23/bpmn_v23/role_refinement.py": "26cb07c3cee3a70f6a2f5772ea6302166ca326a66c6fbf0ba652adadce8fcc76",
+    "src/v23/bpmn_v23/paragraph_layout.py": "a97dce24908f01613f512cf7ccfc2e6f4177ba05505b69c6c4143695b4f7aaf0",
+    "src/v23/bpmn_v23/axis_corridors.py": "425e2a3d2c9cd56b8ee6fffa8c5cb6c5fd6c4b62e3893806f6161bc274a6ca5f",
+    "src/v23/bpmn_v23/document_layout.py": "8c0c728ce29601e29304623d7040f077549bdfcb396ce66abbb5bd9e5bb2f3b9",
+    "src/v23/bpmn_v23/readability.py": "38d393decfdb1797e1867f61e5a131aba30d4b0dd17d7f07c77b5e48fff90a87",
+    "src/v23/bpmn_v23/local_editing.py": "012aae72c918d4b939f61630bb8c9047b8f81499a4ea61c8c00053f101d366c4",
+    "src/v23/bpmn_v23/elk_layout.py": "67d24d71b0f5bb42dce115f720c69969672ca77ab52d3dd23111fdd09c2eb298",
+    "src/v23/bpmn_v23/phase_layout.py": "be02e49b74845114ed4fa8e8b1de8ab7bcb3e21a80d10875b41f3a7db9d54a4e",
+    "src/v23/bpmn_v23/attachment_axes.py": "48407a786f7f7986c1531dc02987a2418a3c1d6674bdac7666b7da23d6f96eee",
+    "src/v23/bpmn_v23/reference_metrics.py": "6c0f3878ad87297ba6d05da8deacb53e5c098474e705c8b5328c544c154d3ea5",
+    "src/v23/bpmn_v23/route_refinement.py": "b5f634ee6f7b3171a4f16e9e4628b8a6f94cb368bcca0e480fbde41c96ddf9d7",
+    "src/v23/bpmn_v23/block_optimize.py": "b6c2c903de85fde9b68efb1b557f1dbc05cb6fc24a7420769732043d9a4bced4",
+    "src/v23/bpmn_v23/graph_topology.py": "6007c5a9e215e45962a57dcc26303a71f702768469912addbdb3638ea3e6c9ba",
+    "src/v23/bpmn_v23/window_metrics.py": "dc21410e1ed394501f3cf04245f613db1675a30bc845b663dd1f5812e000892e",
+    "src/v23/bpmn_v23/pipeline.py": "ee0e4aeb5f706b18f0bc2e1c47501920d57d65b76dc0143569d681f4a4c52a34",
+    "src/v23/bpmn_v23/document_policy.py": "ee51237cbe50bb1b2257b8524645ed752da9cf2bd539a9a1b4bec9cfd2244a87",
+    "src/v23/bpmn_v23/structured_collaboration.py": "bf9a4b0ae0f67e86106ca072ad4e24ae2ecc1abeb06df9b2e158c3a3593a1ab5",
+    "src/v23/bpmn_v23/stable_blocks.py": "75f74daf18bddf20ac1824b55fe4da3092fe6fac0139360a7c8deb7741000436",
+    "src/v23/bpmn_v23/semantic_spines.py": "7ee7183741307fc3df1addaa5be06d23dfe8d9843c01dc910203308d5cfc19d6",
+    "src/v23/bpmn_v23/skyline_layout.py": "e2de6f38f540ceb2b8bce4e3861aca7577ba0c1f843886194011e60bf25e63e7",
+    "src/v23/bpmn_v23/pattern_routing.py": "6c7678e2a38407b3f468c50a27176af53628bd0fe0ea01510715e2a90e698255",
+    "src/v23/bpmn_v23/seed_orientation.py": "f8ee8730fd5e309688019b1939dbfafa187f8139e1e73e4ca53f63b6b8440412",
+    "src/v23/bpmn_v23/attachment_refinement.py": "50acd4a184b53ccab48d9f775c3db8bf915a48a3825363930ee182243dc3d77d",
+    "src/v23/bpmn_v23/lane_ordering.py": "bcf643d6876aaed50357538baf6f0603b1e53a17414ecf907772100eb68b9b2c",
+    "src/v23/bpmn_v23/graph_refinement.py": "65e0e4f90b8ee93f2e6c7c27c04e5d7b2e6bf02c39423eda9d5e0b39e38f8cb6",
+    "src/v23/bpmn_v23/cold_guard.py": "07be3ddbaa8aced5d22094dc263e744a8c89f5fd720d7fd4b264e8cf4fa686e5",
+    "src/v23/bpmn_v23/contours.py": "5822d521996ab6ac2ee424b19a3f5f95ec0999576c6d97d6a74dbd5641f30885",
+    "src/v23/bpmn_v23/placement.py": "736c66bbd375caf42f3851724ddf248b33afc92606661b36300fa0e483a7ca45",
+    "src/v23/bpmn_v23/clearance.py": "2a1e5a8a9245ae77d9ca5668c4d7c3d71984997f95c0f9071c73040cc1f814ba",
+    "src/v23/bpmn_v23/quality.py": "ecfe656df1657fd815308c7174f9d41548b1e5fc5c4377a517c47f54d7ad6188",
+    "src/v23/bpmn_v23/decision_layout.py": "7ca01aceca71cf699e221c45264c3cb60af7dfdf54c88191ecff530cf35193bb",
+    "src/v23/bpmn_v23/reference_style.py": "b77bb5f3209c29b5e5f446193e3304358887d5233d3e944a646c581a944ac22b",
+    "src/v23/bpmn_v23/collaboration_svg.py": "a7dbaf5f488784f20fdbd35c6ac8202f9e81930b28e06451ab8ddd35e9cc6ac4",
+    "src/v23/bpmn_v23/narrative_planner.py": "d89b578f71735f2b993943770d089976b442496ec915e9e2b6ae80f6d55f1f19"
+  },
+  "windows_tests": 88,
+  "windows_run": 43004780202,
+  "python_tests": 271,
+  "protocol": "Standard timed routing; two fully refined finalists in v23.9 versus one in v23.8. Same normalized inputs with original DI erased. Full wall-work budgets are not equal; no speedup or universal deterministic output claim. Fixed-quota pilot excluded.",
+  "baseline_wall_runs": [
+    {
+      "case": "case_1",
+      "exit_code": 0,
+      "seconds": 341.25,
+      "cpu": 0
+    },
+    {
+      "case": "case_2",
+      "exit_code": 0,
+      "seconds": 407.57,
+      "cpu": 1
+    },
+    {
+      "case": "case_3",
+      "exit_code": 0,
+      "seconds": 212.09,
+      "cpu": 0
+    },
+    {
+      "case": "case_4",
+      "exit_code": 0,
+      "seconds": 185.42,
+      "cpu": 1
+    }
+  ],
+  "new_wall_runs": [
+    {
+      "case": "case_1",
+      "exit_code": 0,
+      "seconds": 593.32,
+      "cpu": 1
+    },
+    {
+      "case": "case_2",
+      "exit_code": 0,
+      "seconds": 700.95,
+      "cpu": 0
+    },
+    {
+      "case": "case_4",
+      "exit_code": 0,
+      "seconds": 414.6,
+      "cpu": 1
+    },
+    {
+      "case": "case_3",
+      "exit_code": 0,
+      "seconds": 473.65,
+      "cpu": 0
+    }
+  ],
+  "cases": [
+    {
+      "case": "case_1",
+      "input_sha256": "1ac857404e619eadcd28b5150345fbfb44e078772fb48ae7f0c9cd97701b315a",
+      "baseline_bpmn_sha256": "b71807732692b7fafb4042b2a9cca37a8e590b82e8f99956f7f276a304707862",
+      "new_bpmn_sha256": "99dadf62f9538826b190fbc8fd0fc8eec99aa221fff1d9e24f237dba8205fa36"
+    },
+    {
+      "case": "case_2",
+      "input_sha256": "f25715a5c029b991245e934900793170140a2c31652c96eb452ab2cf068f5312",
+      "baseline_bpmn_sha256": "a027a4a7c22d1e86114c81f87c562306f91c88de23f9f423aa20230486fdca43",
+      "new_bpmn_sha256": "2ecb9e9544a7be1f00967bbe99bd643652a7ea5e45e0bc6654bcd39dc17e3f43"
+    },
+    {
+      "case": "case_3",
+      "input_sha256": "140838a447a4c8831e50db6d73121c3fe6423c0c1d3658797ca7a081a6b38ba1",
+      "baseline_bpmn_sha256": "9b35c1308f5fd1f6c779fb336625100dbe72a0ace92c816978f55903e1b675d8",
+      "new_bpmn_sha256": "4ec89a3f8c69683b1f8cfce1daca84134614dc5bf0bea2bb98bef693b995c753"
+    },
+    {
+      "case": "case_4",
+      "input_sha256": "eca567ddcf638c95444a49e90fc813da99a4f5b7441d7442d0de04762f7a0dcb",
+      "baseline_bpmn_sha256": "d0132095216091b16c8c8f157411bac81a41c6244c9a1e964ee4cc280c5bcd69",
+      "new_bpmn_sha256": "365fcefa05cab3b24651ebaa2f03c33983b4750a7094aee6667ea99cd778b339"
+    }
+  ],
+  "python_seconds": 171.89,
+  "python_junit_sha256": "c6cdeb5c8ee84b44e4f683a9943fa9bfad984220254cf06d6b474671dda1d316",
+  "distribution_smoke": {
+    "status": "done",
+    "processes": 2,
+    "semantic_diff": 0,
+    "routing_safety": true,
+    "seconds": 35
+  }
+}

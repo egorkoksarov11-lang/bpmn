@@ -1,0 +1,9 @@
+{
+  "equal": true,
+  "diff_count": 0,
+  "comparison": "complete XML excluding BPMNDiagram; participants, processRef, event definitions, messageFlow and document references included",
+  "source_sha256": "b7550459b221267f18fb4d51aa404993cf13dd96dcbb6d3475cc18009abd6a36",
+  "before_semantic_sha256": "3f1a57511695fa381cbfb95010960c4f8589a2fcfe0b5a9e1ae83dfdc157ecba",
+  "after_semantic_sha256": "3f1a57511695fa381cbfb95010960c4f8589a2fcfe0b5a9e1ae83dfdc157ecba",
+  "di_structure_preserved": true
+}

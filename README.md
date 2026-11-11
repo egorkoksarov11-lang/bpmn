@@ -1,6 +1,6 @@
-# BPMN Universal Engine v23.5
+# BPMN Universal Engine v23.9 — экспериментальная версия
 
-**Экспериментальная v23.8 — [скачать ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/v23.8-readable-turns/releases/BPMN_Generator_Windows_v23_8_0_experimental.zip)**. Приняты перенос целого участка и повороты на шагах; на одном из четырёх процессов выросло число контактов. [Сравнение и ограничения](docs/DEVELOPMENT_V23_8.md). Стабильная v23.7 остаётся в [main](https://github.com/egorkoksarov11-lang/bpmn). BPMN / JSON / YAML, один или два процесса. [Структура входа](desktop/INPUT_FORMAT.md).
+**Экспериментальная v23.9 — [скачать ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/v23.9-refined-portfolio/releases/BPMN_Generator_Windows_v23_9_0_experimental.zip)**. До двух разных композиций проходят полный цикл уточнения; победитель выбирается после него. Расширен совместный поиск линий у сложных развилок. [Сравнение и ограничения](docs/DEVELOPMENT_V23_9.md). Стабильная v23.7 остаётся в [main](https://github.com/egorkoksarov11-lang/bpmn). BPMN / JSON / YAML, один или два процесса. [Структура входа](desktop/INPUT_FORMAT.md).
 
 **[Скачать генератор v23.4.2 для Windows — ZIP](https://raw.githubusercontent.com/egorkoksarov11-lang/bpmn/main/releases/BPMN_Generator_Windows_v23_4_2.zip)**. Распакуйте архив, запустите `START_WINDOWS.cmd`, дождитесь установки и выберите BPMN, JSON или YAML в браузере. Структура JSON и скачиваемые примеры показаны на первой странице. [Инструкция](desktop/README.md) · [формат входных данных](desktop/INPUT_FORMAT.md). Исходники включены; обработка выполняется локально, результаты сохраняются в `results`.
 

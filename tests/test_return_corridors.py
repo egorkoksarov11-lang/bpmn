@@ -25,11 +25,11 @@ def test_route_only_mode_requires_frozen_seed():
 def test_failed_bend_repair_cannot_publish_unsafe_incumbent(tmp_path,monkeypatch):
     from pathlib import Path
     from bpmn_v23.pipeline import run
-    import bpmn_v23.human_search as search
+    import bpmn_v23.candidate_polish as polish
     root=Path(__file__).resolve().parents[1]
-    monkeypatch.setattr(search,'refine_paths',lambda *a,**kw:[])
+    monkeypatch.setattr(polish,'refine_paths',lambda *a,**kw:[])
     out=tmp_path/'output';out.mkdir();saved=out/'process_08_v23.bpmn';saved.write_text('previous')
     backend=RouteRefinementBackend(incumbent=root/'examples/process_08_r4.bpmn',candidate_seconds=1)
-    with pytest.raises(RuntimeError,match='pathological bends'):
+    with pytest.raises(RuntimeError,match='No verified candidate after portfolio polish'):
         run(root/'inputs/benchmark/process_08_v4_frozen.bpmn',out,backend)
     assert saved.read_text()=='previous'

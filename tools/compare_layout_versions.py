@@ -56,6 +56,8 @@ def inspect(case,folder):
     stable=[r['backend_report'].get('stable_blocks',{}) for r in reports]
     final=[r['backend_report'].get('stable_finalization',{}) for r in reports]
     narrative=[r['backend_report'].get('narrative_refinement',{}) for r in reports]
+    portfolios=[r['backend_report'].get('portfolio_refinement',{}) for r in reports]
+    work=[r['backend_report'].get('work_budget',{}) for r in reports]
     from bpmn_refkit.model import read_bpmn
     state=read_bpmn(path)
     if len(state[4])==m['nodes']:
@@ -71,6 +73,8 @@ def inspect(case,folder):
              narrative_edits=sum(r.get('accepted',0) for r in narrative),
              narrative_edit_kinds=[e['kind'] for r in narrative for e in r.get('edits',[])],
              narrative_diagnostics=[{k:r[k] for k in ('before','after','rejections','seconds') if k in r} for r in narrative if r],
+             portfolio_finalists=sum(len(r.get('finalists',[])) for r in portfolios),
+             portfolio_diagnostics=[r for r in portfolios if r],routing_work=[r for r in work if r],
              finalization_idempotent=all(r.get('idempotent',False) for r in final) if all(final) else None)
     return m
 
