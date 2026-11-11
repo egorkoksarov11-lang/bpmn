@@ -11,6 +11,7 @@ $env:UV_PYTHON_INSTALL_DIR = Join-Path $runtime 'python'
 $env:UV_CACHE_DIR = Join-Path $runtime 'cache'
 $env:npm_config_cache = Join-Path $runtime 'npm-cache'
 $env:PYTHONUTF8 = '1'
+$env:PYTHONHASHSEED = '0'
 $env:PYTHONIOENCODING = 'utf-8'
 $arch = if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64') { 'aarch64' } else { 'x86_64' }
 $uv = Join-Path $runtime 'uv.exe'

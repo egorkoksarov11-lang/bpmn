@@ -56,6 +56,13 @@ def test_failed_engine_does_not_offer_diagram(tmp_path, monkeypatch):
     assert 'bad model' in result['log']
 
 
+def test_generator_child_uses_a_stable_hash_seed(tmp_path,monkeypatch):
+    monkeypatch.setenv('PYTHONHASHSEED','123')
+    monkeypatch.setattr(app_module,'command',lambda *_:[sys.executable,'-c','import os; print("seed="+os.environ["PYTHONHASHSEED"]); raise SystemExit(1)'])
+    app=app_module.Application(tmp_path);app.start('input.bpmn',b'<xml/>');result=await_result(app)
+    assert result['status']=='error' and 'seed=0' in result['log']
+
+
 def test_geometry_failure_offers_full_diagnostic_without_diagram(tmp_path,monkeypatch):
     script="""import pathlib,json,sys
 p=pathlib.Path(sys.argv[1]);p.mkdir()

@@ -66,7 +66,7 @@ class Application:
     def _run(self, source, folder):
         log = folder / 'generation.log'
         try:
-            env = dict(os.environ, PYTHONUTF8='1', PYTHONIOENCODING='utf-8')
+            env = dict(os.environ, PYTHONUTF8='1', PYTHONIOENCODING='utf-8', PYTHONHASHSEED='0')
             with log.open('w', encoding='utf-8') as stream:
                 with self.lock:
                     process = subprocess.Popen(command(source, folder / 'output'), cwd=ROOT,
