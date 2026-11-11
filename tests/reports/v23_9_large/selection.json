@@ -1,0 +1,90 @@
+[
+  {
+    "case": "large_1",
+    "title": "Схема №4",
+    "input_sha256": "8c85beeb81a198c995e32d431f8a299c275a0b0d34a0c41ed348c2d0e1a184ff",
+    "complexity": {
+      "tasks": 42,
+      "gateways": 21,
+      "events": 6,
+      "flows": 86,
+      "roles": 9,
+      "cross_role_flows": 47,
+      "documents": 11,
+      "independent_control_components": 1,
+      "largest_control_component_nodes": 69,
+      "cyclic_components": 5,
+      "largest_cyclic_component_nodes": 26,
+      "maximum_fanout": 4,
+      "participants": 0,
+      "message_flows": 0
+    },
+    "source_type": "latest_saved_manual_observation"
+  },
+  {
+    "case": "large_2",
+    "title": "Операция через поставщика №08",
+    "input_sha256": "40d5106a09caaa78ca6313a1f9763f3b3591ffe8abeffd95dd03daa26f8516d4",
+    "complexity": {
+      "tasks": 40,
+      "gateways": 22,
+      "events": 2,
+      "flows": 93,
+      "roles": 6,
+      "cross_role_flows": 59,
+      "documents": 10,
+      "independent_control_components": 1,
+      "largest_control_component_nodes": 64,
+      "cyclic_components": 2,
+      "largest_cyclic_component_nodes": 57,
+      "maximum_fanout": 6,
+      "participants": 0,
+      "message_flows": 0
+    },
+    "source_type": "latest_saved_manual_observation"
+  },
+  {
+    "case": "large_3",
+    "title": "Реестр договорных цепочек",
+    "input_sha256": "f504120b363915b7bd0c05f0f1057ae0dc37544855f258c44985ba3f608768a7",
+    "complexity": {
+      "tasks": 38,
+      "gateways": 9,
+      "events": 12,
+      "flows": 64,
+      "roles": 6,
+      "cross_role_flows": 16,
+      "documents": 21,
+      "independent_control_components": 6,
+      "largest_control_component_nodes": 42,
+      "cyclic_components": 2,
+      "largest_cyclic_component_nodes": 17,
+      "maximum_fanout": 4,
+      "participants": 1,
+      "message_flows": 0
+    },
+    "source_type": "reference_corpus"
+  },
+  {
+    "case": "large_4",
+    "title": "Материалы по требованиям ФНС",
+    "input_sha256": "e32649a302418ac61143e1fc3b331f87fa163b7017dada1e098cfc546eecc051",
+    "complexity": {
+      "tasks": 36,
+      "gateways": 15,
+      "events": 3,
+      "flows": 69,
+      "roles": 7,
+      "cross_role_flows": 47,
+      "documents": 4,
+      "independent_control_components": 1,
+      "largest_control_component_nodes": 54,
+      "cyclic_components": 2,
+      "largest_cyclic_component_nodes": 23,
+      "maximum_fanout": 4,
+      "participants": 0,
+      "message_flows": 0
+    },
+    "source_type": "reference_corpus"
+  }
+]
