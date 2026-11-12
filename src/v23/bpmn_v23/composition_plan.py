@@ -167,7 +167,7 @@ def phase_plans(nodes,docs,seq,assocs,member,lanes,canonical):
     from .phase_plan import phase_slots
     started=time.monotonic();chains,feedback=strands(nodes,seq,member)
     dependencies,groups=logical_links(nodes,docs,assocs);roles=sorted(lanes);plans=[];seen=set()
-    for columns in (6,8,12):
+    for columns in (6,8,12,len(nodes)):
         for attach_next in (False,True):
             bases,motifs,components=phase_slots(nodes,docs,seq,assocs,member,lanes,canonical,columns=columns,attach_next=attach_next)
             rows={l:{row:i for i,row in enumerate(sorted({r for n,(c,r) in bases.items() if member[n]==l}))} for l in roles}
@@ -179,13 +179,13 @@ def phase_plans(nodes,docs,seq,assocs,member,lanes,canonical):
             signature=tuple(sorted(slots.items())),tuple(order)
             if signature in seen:continue
             seen.add(signature);score,proxy=estimate(slots,order,heights,seq,member,feedback,dependencies,cw,ch)
-            plans.append({'columns':columns,'mode':'whole-phase-band','attach_next':attach_next,'proxy':proxy,'score':score,'role_order':order,'slots':slots,'rows':{l:len(r) for l,r in rows.items()},'role_cost':detail,'components':components})
+            plans.append({'columns':columns,'mode':('unfolded-phase' if columns==len(nodes) else 'whole-phase-band'),'attach_next':attach_next,'proxy':proxy,'score':score,'role_order':order,'slots':slots,'rows':{l:len(r) for l,r in rows.items()},'role_cost':detail,'components':components})
     plans.sort(key=lambda p:(p['score'],p['columns'],p['attach_next']))
     chosen=plans[:1]
     if chosen:
         alt=[p for p in plans[1:] if p['columns']!=chosen[0]['columns']] or plans[1:]
         if alt:chosen.append(alt[0])
-    return chosen,{'method':'graph spine phase bands and coupled role transfers before measured geometry','seconds':round(time.monotonic()-started,6),'evaluated_plans':len(plans),'logical_document_group_sizes':groups,'logical_dependency_pairs':len(dependencies),'chain_count':len(chains),'feedback_edges':len(feedback),'source_geometry_used':False,'names_or_numbers_used_for_structure':False,'proxy_is_not_a_route_audit':True,'chosen_plans':[{k:p[k] for k in ['columns','mode','attach_next','proxy','score','role_order','rows','role_cost']} for p in chosen]}
+    return plans,{'method':'graph spine phase bands and coupled role transfers before measured geometry','seconds':round(time.monotonic()-started,6),'evaluated_plans':len(plans),'logical_document_group_sizes':groups,'logical_dependency_pairs':len(dependencies),'chain_count':len(chains),'feedback_edges':len(feedback),'source_geometry_used':False,'names_or_numbers_used_for_structure':False,'proxy_is_not_a_route_audit':True,'chosen_plans':[{k:p[k] for k in ['columns','mode','attach_next','proxy','score','role_order','rows','role_cost']} for p in chosen]}
 
 
 def phase_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical):
@@ -202,17 +202,25 @@ def plan(nodes,docs,seq,assocs,member,lanes,canonical):
     started=time.monotonic();args=(nodes,docs,seq,assocs,member,lanes,canonical)
     phase,phase_report=phase_plans(*args);grids,grid_report=grid_plan(*args)
     for p in grids:p['mode']='role-grid'
-    pool=sorted(phase+grids,key=lambda p:(p['score'],p['mode'],p['columns']))
+    all_plans=sorted(phase+grids,key=lambda p:(p['score'],p['mode'],p['columns']))
+    control=min((p for p in phase if p['mode']=='unfolded-phase' and not p['attach_next']),key=lambda p:p['score'])
+    ref=control['proxy'];pool=[];rejections=[]
+    for p in all_plans:
+        q=p['proxy']
+        acceptable=(q['proxy_crossings']<=max(ref['proxy_crossings']+2,ref['proxy_crossings']*1.2)
+                    and q['estimated_area']<=ref['estimated_area']*1.25 and p['score']<=control['score']*1.1)
+        if acceptable or p is control:pool.append(p)
+        else:rejections.append({'mode':p['mode'],'columns':p['columns'],'proxy_score':p['score'],'proxy_crossings':q['proxy_crossings']})
     chosen=pool[:1]
     if chosen:
         best=chosen[0]
-        other=[p for p in pool[1:] if p['mode']!=best['mode'] and p['score']<=best['score']*1.35]
+        other=[p for p in pool[1:] if p['mode']!=best['mode'] and p['score']<=best['score']*1.15]
         if other:chosen.append(other[0])
         elif len(pool)>1:chosen.append(pool[1])
-    report={'method':'early role-grid and whole-phase plans; complementary high-level families before routing','seconds':round(time.monotonic()-started,6),'evaluated_plans':phase_report['evaluated_plans']+grid_report['evaluated_plans'],'logical_document_group_sizes':phase_report['logical_document_group_sizes'],'logical_dependency_pairs':phase_report['logical_dependency_pairs'],'source_geometry_used':False,'names_or_numbers_used_for_structure':False,'proxy_is_not_a_route_audit':True,'chosen_plans':[{k:p[k] for k in ['columns','mode','score','role_order','rows','proxy']} for p in chosen],'families':{'phase':phase_report,'grid':grid_report}}
+    report={'method':'early role-grid and whole-phase plans; complementary high-level families before routing','seconds':round(time.monotonic()-started,6),'evaluated_plans':phase_report['evaluated_plans']+grid_report['evaluated_plans'],'logical_document_group_sizes':phase_report['logical_document_group_sizes'],'logical_dependency_pairs':phase_report['logical_dependency_pairs'],'source_geometry_used':False,'names_or_numbers_used_for_structure':False,'proxy_is_not_a_route_audit':True,'chosen_plans':[{k:p[k] for k in ['columns','mode','score','role_order','rows','proxy']} for p in chosen],'proxy_control':control['proxy'],'proxy_guard_rejections':rejections,'proxy_guard_policy':{'crossings_ratio':1.2,'extra_crossings':2,'area_ratio':1.25,'score_ratio':1.1},'families':{'phase':phase_report,'grid':grid_report}}
     return chosen,report
 
 
 def materialize(p,nodes,docs,seq,assocs,member,lanes,canonical):
-    if p['mode']=='whole-phase-band':return phase_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical)
+    if p['mode'] in ('whole-phase-band','unfolded-phase'):return phase_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical)
     return grid_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical)
