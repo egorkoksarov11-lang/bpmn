@@ -17,7 +17,8 @@ class ReadableBlocksBackend(WholeBlockBackend):
     def _initial_families(self,nodes,docs,seq,assocs,member,lanes,original):
         from .composition_plan import plan,materialize
         import time
-        selected,self.preplanning_report=plan(nodes,docs,seq,assocs,member,lanes,original)
+        try:selected,self.preplanning_report=plan(nodes,docs,seq,assocs,member,lanes,original)
+        except ValueError as error:selected=[];self.preplanning_report={'status':'fallback','reason':str(error),'source_geometry_used':False}
         old=iter(super()._initial_families(nodes,docs,seq,assocs,member,lanes,original))
         first=next(old,None)
         if first is not None:yield first
