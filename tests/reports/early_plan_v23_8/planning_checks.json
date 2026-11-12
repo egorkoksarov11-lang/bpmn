@@ -1,0 +1,82 @@
+{
+  "cli_timings": [
+    {
+      "case": "large_1",
+      "checks_enabled": false,
+      "planning_seconds": 0.532895,
+      "total_seconds": 1.389272,
+      "checks": null
+    },
+    {
+      "case": "large_2",
+      "checks_enabled": false,
+      "planning_seconds": 0.194315,
+      "total_seconds": 0.451333,
+      "checks": null
+    },
+    {
+      "case": "large_3",
+      "checks_enabled": false,
+      "planning_seconds": 0.102502,
+      "total_seconds": 1.816817,
+      "checks": null
+    },
+    {
+      "case": "large_4",
+      "checks_enabled": false,
+      "planning_seconds": 0.194406,
+      "total_seconds": 0.682502,
+      "checks": null
+    }
+  ],
+  "metamorphic_checks": [
+    {
+      "case": "large_1",
+      "planning_seconds": 0.527617,
+      "total_seconds": 3.037847,
+      "checks": {
+        "planning_input_immutable": true,
+        "name_and_number_invariance": true,
+        "repeatability": true,
+        "source_coordinate_invariance": true,
+        "source_geometry_scrambled": true
+      }
+    },
+    {
+      "case": "large_2",
+      "planning_seconds": 0.220861,
+      "total_seconds": 1.18353,
+      "checks": {
+        "planning_input_immutable": true,
+        "name_and_number_invariance": true,
+        "repeatability": true,
+        "source_coordinate_invariance": true,
+        "source_geometry_scrambled": true
+      }
+    },
+    {
+      "case": "large_3",
+      "planning_seconds": 0.10404,
+      "total_seconds": 2.319757,
+      "checks": {
+        "planning_input_immutable": true,
+        "name_and_number_invariance": true,
+        "repeatability": true,
+        "source_coordinate_invariance": true,
+        "source_geometry_scrambled": true
+      }
+    },
+    {
+      "case": "large_4",
+      "planning_seconds": 0.236488,
+      "total_seconds": 1.433692,
+      "checks": {
+        "planning_input_immutable": true,
+        "name_and_number_invariance": true,
+        "repeatability": true,
+        "source_coordinate_invariance": true,
+        "source_geometry_scrambled": true
+      }
+    }
+  ]
+}

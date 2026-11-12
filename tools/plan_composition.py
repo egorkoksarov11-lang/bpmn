@@ -12,7 +12,7 @@ def inspect(source,checks=False):
     start=time.monotonic()
     with tempfile.TemporaryDirectory(prefix='bpmn-plan-') as td:
         neutral=Path(td)/'neutral.bpmn';erasure=erase_geometry(source,neutral);s=read_bpmn(neutral)
-        args=(s[4],s[7],s[5],s[6],s[8],s[9],s[-2]);chosen,report=plan(*args)
+        args=(s[4],s[7],s[5],s[6],s[8],s[9],s[-2]);before=copy.deepcopy(args) if checks else None;chosen,report=plan(*args)
         if checks:
             nodes=copy.deepcopy(s[4]);docs=copy.deepcopy(s[7]);roles={l:'DIFFERENT ROLE NAME' for l in s[9]}
             for o in list(nodes.values())+list(docs.values()):o['name']='UNRELATED TEXT AND 999'
@@ -21,12 +21,16 @@ def inspect(source,checks=False):
             assert chosen==plan(*args)[0],'Plan is not repeatable'
             shifted=Path(td)/'shifted.bpmn';tree=s[0]
             from bpmn_universal.contract import NS
-            for b in tree.getroot().xpath('.//dc:Bounds',namespaces=NS):
-                b.set('x',str(float(b.get('x'))+12345));b.set('y',str(float(b.get('y'))-9876))
+            for i,b in enumerate(tree.getroot().xpath('.//dc:Bounds',namespaces=NS)):
+                b.set('x',str((i*1373)%12001));b.set('y',str((i*977)%9001))
+                b.set('width',str(99+i%101));b.set('height',str(23+(i%7)*17))
+            for i,w in enumerate(tree.getroot().xpath('.//di:waypoint',namespaces=NS)):
+                w.set('x',str((i*311)%7001));w.set('y',str((i*419)%5003))
             tree.write(str(shifted),encoding='utf-8',xml_declaration=True)
             erase_geometry(shifted,neutral);v=read_bpmn(neutral)
             assert chosen==plan(v[4],v[7],v[5],v[6],v[8],v[9],v[-2])[0],'Source coordinates affect plan'
-            report['checks']={'name_and_number_invariance':True,'repeatability':True,'source_coordinate_invariance':True}
+            assert args==before,'Planner mutated its input graph or measured sizes'
+            report['checks']={'planning_input_immutable':True,'name_and_number_invariance':True,'repeatability':True,'source_coordinate_invariance':True,'source_geometry_scrambled':True}
     return {'status':'composition_plan_only_not_a_verified_diagram','geometry_erasure':erasure,'analysis':report,'plans':chosen,'total_seconds':round(time.monotonic()-start,6)}
 
 

@@ -177,7 +177,7 @@ def phase_plans(nodes,docs,seq,assocs,member,lanes,canonical):
             cw=max(canonical[n][2]+(canonical[motifs['pairs'][n]][2]+28 if n in motifs['pairs'] else 0) for n in bases)+44
             ch=max(canonical[n][3] for n in nodes)+130;heights={l:100+max(1,len(rows[l]))*ch for l in roles};order,detail=interaction_order(roles,heights,seq,member)
             signature=tuple(sorted(slots.items())),tuple(order)
-            if signature in seen:continue
+            if signature in seen and (columns!=len(nodes) or any(q['mode']=='unfolded-phase' and not q['attach_next'] for q in plans)):continue
             seen.add(signature);score,proxy=estimate(slots,order,heights,seq,member,feedback,dependencies,cw,ch)
             plans.append({'columns':columns,'mode':('unfolded-phase' if columns==len(nodes) else 'whole-phase-band'),'attach_next':attach_next,'proxy':proxy,'score':score,'role_order':order,'slots':slots,'rows':{l:len(r) for l,r in rows.items()},'role_cost':detail,'components':components})
     plans.sort(key=lambda p:(p['score'],p['columns'],p['attach_next']))
