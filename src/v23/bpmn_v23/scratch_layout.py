@@ -230,6 +230,7 @@ class ScratchBackend:
                         from .narrative_refinement import refine_narrative
                         result['narrative_refinement']=refine_narrative(output,svg,neutral,seconds=min(60,self.candidate_seconds*2))
             if not semantic_equality(source,output) or not di_equal(source,output):raise ValueError('Scratch output freeze violation')
+        result['early_composition_planning']=getattr(backend,'preplanning_report',None)
         result['geometry_erasure']=erasure;result['from_scratch']=True;result['seconds']=round(time.monotonic()-started,3)
         result['reference_target_met']=False
         result['structural_signals']={'sequence_links':True,'data_links':True,'role_membership':True,'bpmn_kinds':True,'names':False,'step_numbers':False,'text_usage':'measured typography only; no lexical meaning or ordering'}

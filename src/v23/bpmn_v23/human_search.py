@@ -95,7 +95,7 @@ class HumanStyleBackend:
                         routing_boxes={**ob,**{f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes}}
                         caption_prefix='__text_' if getattr(self,'straight_documents',False) else '__caption_'
                         routing_boxes.update({caption_prefix+n:tuple(b) for n,b in report.get('reserved_captions',{}).items()})
-                        hints=None if report.get('external_engine') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})
+                        hints=return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if report.get('candidate_family')=='early-plan' else None if report.get('external_engine') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})
                         fixed=None
                         if report.get('preserve_corridors'):
                             from .axis_corridors import mapped_routes
