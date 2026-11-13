@@ -198,7 +198,7 @@ def phase_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical):
     return boxes,r
 
 
-def plan(nodes,docs,seq,assocs,member,lanes,canonical):
+def coarse_plan(nodes,docs,seq,assocs,member,lanes,canonical):
     started=time.monotonic();args=(nodes,docs,seq,assocs,member,lanes,canonical)
     phase,phase_report=phase_plans(*args);grids,grid_report=grid_plan(*args)
     for p in grids:p['mode']='role-grid'
@@ -221,6 +221,18 @@ def plan(nodes,docs,seq,assocs,member,lanes,canonical):
     return chosen,report
 
 
-def materialize(p,nodes,docs,seq,assocs,member,lanes,canonical):
+def materialize_coarse(p,nodes,docs,seq,assocs,member,lanes,canonical):
     if p['mode'] in ('whole-phase-band','unfolded-phase'):return phase_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical)
     return grid_materialize(p,nodes,docs,seq,assocs,member,lanes,canonical)
+
+
+def plan(nodes,docs,seq,assocs,member,lanes,canonical):
+    from .detailed_plan import plan_detailed
+    return plan_detailed(nodes,docs,seq,assocs,member,lanes,canonical)
+
+
+def materialize(p,nodes,docs,seq,assocs,member,lanes,canonical):
+    if 'prepared' in p:
+        import copy
+        return copy.deepcopy(p['prepared']['boxes']),copy.deepcopy(p['prepared']['report'])
+    return materialize_coarse(p,nodes,docs,seq,assocs,member,lanes,canonical)

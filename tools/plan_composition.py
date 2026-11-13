@@ -5,7 +5,8 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'src/v23'),str(ROOT/'src/v22')]
 from bpmn_refkit.model import read_bpmn
 from bpmn_v23.scratch_layout import erase_geometry
-from bpmn_v23.composition_plan import plan
+from bpmn_v23.composition_plan import plan,coarse_plan
+from bpmn_v23.detailed_plan import prepare_candidates,evaluate_prepared
 
 
 def inspect(source,checks=False):
@@ -16,8 +17,15 @@ def inspect(source,checks=False):
         if checks:
             nodes=copy.deepcopy(s[4]);docs=copy.deepcopy(s[7]);roles={l:'DIFFERENT ROLE NAME' for l in s[9]}
             for o in list(nodes.values())+list(docs.values()):o['name']='UNRELATED TEXT AND 999'
-            changed=plan(nodes,docs,s[5],s[6],s[8],roles,s[-2])[0]
-            assert chosen==changed,'Structural plan depends on names'
+            assert coarse_plan(*args)[0]==coarse_plan(nodes,docs,s[5],s[6],s[8],roles,s[-2])[0],'Structural templates depend on names'
+            frozen,_=prepare_candidates(*args)
+            renamed=copy.deepcopy(frozen)
+            for p in renamed:
+                r=p['prepared']['report']
+                if 'lane_order_optimization' in r:r['lane_order_optimization']['order_names']=['REDACTED']*len(roles)
+            a=evaluate_prepared(frozen,*args[:6])[1]
+            b=evaluate_prepared(renamed,nodes,docs,s[5],s[6],s[8],roles)[1]
+            assert a==b,'Measured routing choice depends on lexical contents'
             assert chosen==plan(*args)[0],'Plan is not repeatable'
             shifted=Path(td)/'shifted.bpmn';tree=s[0]
             from bpmn_universal.contract import NS
@@ -30,7 +38,7 @@ def inspect(source,checks=False):
             erase_geometry(shifted,neutral);v=read_bpmn(neutral)
             assert chosen==plan(v[4],v[7],v[5],v[6],v[8],v[9],v[-2])[0],'Source coordinates affect plan'
             assert args==before,'Planner mutated its input graph or measured sizes'
-            report['checks']={'planning_input_immutable':True,'name_and_number_invariance':True,'repeatability':True,'source_coordinate_invariance':True,'source_geometry_scrambled':True}
+            report['checks']={'planning_input_immutable':True,'name_and_number_invariance_at_fixed_measured_geometry':True,'repeatability':True,'source_coordinate_invariance':True,'source_geometry_scrambled':True}
     return {'status':'composition_plan_only_not_a_verified_diagram','geometry_erasure':erasure,'analysis':report,'plans':chosen,'total_seconds':round(time.monotonic()-start,6)}
 
 

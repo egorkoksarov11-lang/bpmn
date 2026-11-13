@@ -16,6 +16,7 @@ from .contours import attach
 from .labels import place_labels
 from .freeze import equal as di_equal
 from .return_corridors import hints_factory as return_hints
+from .preview_routes import route_hints as preview_hints
 from .quality import score
 from .readability import metrics as reading_metrics,cost as reading_cost,POLICY
 
@@ -95,7 +96,7 @@ class HumanStyleBackend:
                         routing_boxes={**ob,**{f'__lane_header_{l}':(boxes[l][0],boxes[l][1],48,boxes[l][3]) for l in lanes}}
                         caption_prefix='__text_' if getattr(self,'straight_documents',False) else '__caption_'
                         routing_boxes.update({caption_prefix+n:tuple(b) for n,b in report.get('reserved_captions',{}).items()})
-                        hints=return_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes}) if report.get('candidate_family')=='early-plan' else None if report.get('external_engine') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})
+                        hints=preview_hints(nodes,seq,boxes,member,{l:boxes[l] for l in lanes},report) if report.get('candidate_family')=='early-plan' else None if report.get('external_engine') else hints_factory(report,boxes,seq,member,{l:boxes[l] for l in lanes})
                         fixed=None
                         if report.get('preserve_corridors'):
                             from .axis_corridors import mapped_routes
