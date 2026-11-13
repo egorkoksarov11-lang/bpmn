@@ -1,4 +1,4 @@
-"""Export an early graph-only plan without routing or changing the input BPMN."""
+"""Export a measured composition plan with bounded route previews; leave input BPMN unchanged."""
 from pathlib import Path
 import argparse,copy,json,sys,tempfile,time
 ROOT=Path(__file__).resolve().parents[1]

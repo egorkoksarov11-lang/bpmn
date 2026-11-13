@@ -1,0 +1,70 @@
+[
+  {
+    "case": "large_1",
+    "analysis_seconds_under_generation_load": 9.830223,
+    "checks": {
+      "planning_input_immutable": true,
+      "name_and_number_invariance_at_fixed_measured_geometry": true,
+      "repeatability": true,
+      "source_coordinate_invariance": true,
+      "source_geometry_scrambled": true
+    },
+    "templates": 18,
+    "measured_candidates": 4,
+    "selected_modes": [
+      "unfolded-phase",
+      "unfolded-phase"
+    ]
+  },
+  {
+    "case": "large_2",
+    "analysis_seconds_under_generation_load": 8.001138,
+    "checks": {
+      "planning_input_immutable": true,
+      "name_and_number_invariance_at_fixed_measured_geometry": true,
+      "repeatability": true,
+      "source_coordinate_invariance": true,
+      "source_geometry_scrambled": true
+    },
+    "templates": 18,
+    "measured_candidates": 4,
+    "selected_modes": [
+      "unfolded-phase",
+      "unfolded-phase"
+    ]
+  },
+  {
+    "case": "large_3",
+    "analysis_seconds_under_generation_load": 6.750673,
+    "checks": {
+      "planning_input_immutable": true,
+      "name_and_number_invariance_at_fixed_measured_geometry": true,
+      "repeatability": true,
+      "source_coordinate_invariance": true,
+      "source_geometry_scrambled": true
+    },
+    "templates": 20,
+    "measured_candidates": 4,
+    "selected_modes": [
+      "unfolded-phase",
+      "unfolded-phase"
+    ]
+  },
+  {
+    "case": "large_4",
+    "analysis_seconds_under_generation_load": 5.722419,
+    "checks": {
+      "planning_input_immutable": true,
+      "name_and_number_invariance_at_fixed_measured_geometry": true,
+      "repeatability": true,
+      "source_coordinate_invariance": true,
+      "source_geometry_scrambled": true
+    },
+    "templates": 17,
+    "measured_candidates": 4,
+    "selected_modes": [
+      "unfolded-phase",
+      "unfolded-phase"
+    ]
+  }
+]

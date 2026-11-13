@@ -1,0 +1,90 @@
+{
+  "scope": "warm preliminary plan AND measured candidate materialization; excludes parse, source erasure and final routing",
+  "repeats": 3,
+  "cases": [
+    {
+      "case": "large_1",
+      "input_sha256": "8c85beeb81a198c995e32d431f8a299c275a0b0d34a0c41ed348c2d0e1a184ff",
+      "nodes": 69,
+      "roles": 9,
+      "samples_seconds": {
+        "previous": [
+          1.034853724999948,
+          1.1791675019999275,
+          1.0195098070000768
+        ],
+        "detailed": [
+          2.6456419180001376,
+          2.758982778000018,
+          2.632419744000117
+        ]
+      },
+      "previous_median_seconds": 1.034853724999948,
+      "detailed_median_seconds": 2.6456419180001376,
+      "ratio": 2.5565370777404026
+    },
+    {
+      "case": "large_2",
+      "input_sha256": "40d5106a09caaa78ca6313a1f9763f3b3591ffe8abeffd95dd03daa26f8516d4",
+      "nodes": 64,
+      "roles": 6,
+      "samples_seconds": {
+        "previous": [
+          0.5879477839998799,
+          0.5810836850000669,
+          0.6027977179999198
+        ],
+        "detailed": [
+          2.123193651000065,
+          2.1402189010000257,
+          2.187904127000138
+        ]
+      },
+      "previous_median_seconds": 0.5879477839998799,
+      "detailed_median_seconds": 2.1402189010000257,
+      "ratio": 3.640151318268193
+    },
+    {
+      "case": "large_3",
+      "input_sha256": "f504120b363915b7bd0c05f0f1057ae0dc37544855f258c44985ba3f608768a7",
+      "nodes": 59,
+      "roles": 6,
+      "samples_seconds": {
+        "previous": [
+          0.6014283740000792,
+          0.5543926180000653,
+          0.5392836129999523
+        ],
+        "detailed": [
+          1.6255103309999868,
+          1.6407920060000833,
+          1.6242780219999986
+        ]
+      },
+      "previous_median_seconds": 0.5543926180000653,
+      "detailed_median_seconds": 1.6255103309999868,
+      "ratio": 2.9320562327541584
+    },
+    {
+      "case": "large_4",
+      "input_sha256": "e32649a302418ac61143e1fc3b331f87fa163b7017dada1e098cfc546eecc051",
+      "nodes": 54,
+      "roles": 7,
+      "samples_seconds": {
+        "previous": [
+          0.5134560119997786,
+          0.5129229309998209,
+          0.5222215789999609
+        ],
+        "detailed": [
+          1.4426951569998892,
+          1.4384039800002029,
+          1.4678803629999493
+        ]
+      },
+      "previous_median_seconds": 0.5134560119997786,
+      "detailed_median_seconds": 1.4426951569998892,
+      "ratio": 2.8097736189337112
+    }
+  ]
+}
